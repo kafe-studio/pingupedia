@@ -1,6 +1,7 @@
 # Sprint 001: Foundation & branding
 
 **Status:** TODO
+**Dashboard Sprint:** 3
 **Cíl:** Očistit kostru, nastavit brand, vytvořit species schema se zdroji a licencemi, zavést pravidla pro zobrazování obrázků bez ořezu.
 **Runy:** 001–003
 

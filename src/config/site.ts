@@ -1,21 +1,22 @@
 export const siteConfig = {
-  name: "Kostra",
-  description: "Popis webu.",
-  url: "https://example.com/",
+  name: "pingupedia",
+  description:
+    "Populárně-naučná encyklopedie všech druhů tučňáků v češtině. Pro děti i dospělé. Z ověřených zdrojů.",
+  url: "https://pingupedia.cz/",
   lang: "cs",
   locale: "cs_CZ",
-  author: "Autor",
+  author: "pingupedia",
   twitter: "",
   ogImage: "/og-image.png",
-  phone: "+420 000 000 000",
-  email: "info@example.com",
-  address: "Ulice 123, Mesto",
+  phone: "",
+  email: "",
+  address: "",
   socialLinks: {
     instagram: "",
     facebook: "",
   },
   navLinks: [
-    { text: "Domu", href: "/" },
-    { text: "Blog", href: "/blog/" },
+    { text: "Druhy", href: "/druhy/" },
+    { text: "O projektu", href: "/o-projektu/" },
   ],
 };

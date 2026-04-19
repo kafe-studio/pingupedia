@@ -1,8 +1,11 @@
 # Run 001: Cleanup kostra, site config, brand
 
-**Status:** TODO
+**Status:** IN_PROGRESS
 **Date:** 2026-04-19
 **Sprint:** 001-foundation
+**Dashboard Run:** 11
+
+<!-- dashboard-tasks: {"Aktualizovat siteConfig + astro.config.mjs (pingupedia brand)": 45, "Redesign homepage + 404 (pingupedia hero, detsky 404)": 46, "Odstranit blog artefakty + upravit content.config.ts": 47, "README cleanup + smazat kostra docs": 48, "Build + typecheck verify": 49} -->
 
 ## Kontext
 
