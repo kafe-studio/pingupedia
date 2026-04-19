@@ -22,7 +22,7 @@ Populárně-naučná encyklopedie všech druhů tučňáků v češtině pro dě
 
 - [x] Run 004 — `/druhy` index (karty bez ořezu) → `docs/sprints/002-species/run-004-druhy-index.done.md` (filtr podle rodu přesunut na Sprint 004 Run 012)
 - [x] Run 005 — `/druhy/[slug]` detail (hero, fakta, historie, zdroje, galerie) → `docs/sprints/002-species/run-005-druhy-detail.done.md`
-- [ ] Run 006 — seed všech druhů tučňáků s texty + fotkami + zdroji
+- [ ] Run 006 — seed všech druhů tučňáků s texty + fotkami + zdroji → `docs/sprints/002-species/run-006-seed-species.md`
 - [ ] Run 007 — fotogalerie per druh (lightbox, responsivní, bez ořezu)
 
 ### Sprint 003 — Mapy, historie, infografiky

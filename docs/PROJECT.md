@@ -101,8 +101,8 @@ Přidá se podle potřeby:
 ### MVP (Sprint 001 + 002)
 - [x] Layout, branding, obrázková pravidla
 - [x] Schema pro druhy se zdroji a licencí fotek
-- [ ] `/druhy` index (hotovo) a `/druhy/[slug]` detail (Run 005)
-- [ ] Všech ~18 druhů naseedovaných se zdroji a fotkami
+- [x] `/druhy` index a `/druhy/[slug]` detail
+- [ ] Všech ~18 druhů naseedovaných se zdroji a fotkami (Run 006)
 
 ### V1 (Sprint 003 + 004)
 - [ ] Mapa výskytu, historická osa, infografiky
@@ -114,5 +114,5 @@ Přidá se podle potřeby:
 
 ## Stav
 
-**Sprint:** 002 **probíhá** — Run 004 hotový (`/druhy` index s kartami druhů)
-**Další krok:** Run 005 — `/druhy/[slug]` detail (hero, fakta, historie, zdroje)
+**Sprint:** 002 **probíhá** — Runy 004 (index) + 005 (detail) hotové, zbývá 006 (seed) + 007 (galerie)
+**Další krok:** Run 006 — seed všech ~18 druhů tučňáků s texty, fotkami a ověřenými zdroji
