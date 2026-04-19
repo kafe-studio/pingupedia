@@ -9,7 +9,7 @@ import { siteConfig } from "../../config/site";
     </a>
     <div class="hidden md:flex items-center gap-8">
       {siteConfig.navLinks.map((link) => (
-        <a href={link.href} class="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground">{link.text}</a>
+        <a href={link.href} data-astro-prefetch="false" class="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground">{link.text}</a>
       ))}
     </div>
     <button id="mobile-menu-button" type="button" class="p-2 rounded-lg text-foreground md:hidden" aria-controls="mobile-menu" aria-expanded="false" aria-label="Menu">
@@ -20,7 +20,7 @@ import { siteConfig } from "../../config/site";
   <div class="hidden md:hidden" id="mobile-menu">
     <div class="glass mx-4 mb-4 p-2 rounded-xl space-y-1">
       {siteConfig.navLinks.map((link) => (
-        <a href={link.href} class="block rounded-lg px-4 py-3 text-base font-medium text-foreground hover:text-primary transition-colors">{link.text}</a>
+        <a href={link.href} data-astro-prefetch="false" class="block rounded-lg px-4 py-3 text-base font-medium text-foreground hover:text-primary transition-colors">{link.text}</a>
       ))}
     </div>
   </div>

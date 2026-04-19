@@ -17,6 +17,6 @@ Projekt startuje z kostra template. Tento sprint připraví stavební kameny pro
 Po dokončení sprintu má projekt: funkční homepage s brandem, layout, schema pro druhy a alespoň 1 testovací druh s ověřeným obsahem a zdroji.
 
 ## Runy
-- [ ] Run 001 — cleanup kostra, site config, brand
+- [x] Run 001 — cleanup kostra, site config, brand
 - [ ] Run 002 — layout, barevné schéma, obrázková pravidla (no-crop util + Image komponenta)
 - [ ] Run 003 — species content collection schema + 1 testovací druh se zdroji

@@ -21,6 +21,34 @@ Nezávislý projekt (nesouvisí s Pinguworld).
 - Fotografie z Wikimedia Commons (CC-BY / public domain) + dalších ověřených zdrojů s jasnou licencí.
 - Licence každé fotky viditelně uvedena (autor, licence, odkaz).
 
+### Jak implementovat no-crop
+
+Pro Astro asset import (ESM, Image optimization):
+
+```astro
+---
+import NoCropImage from "../components/media/NoCropImage.astro";
+import penguin from "../assets/penguins/emperor-penguin.jpg";
+---
+<NoCropImage src={penguin} alt="Tučňák císařský" ratio="4/3" />
+```
+
+Props: `src` (ImageMetadata), `alt` (povinné), `ratio` (default `"4/3"`), `class?`, `sizes?`, `loading?`.
+
+Pro `<img>` tagy mimo Astro komponentu nebo pro embedy:
+
+```html
+<div style="aspect-ratio: 4/3;">
+  <img src="..." alt="..." class="img-nocrop" />
+</div>
+```
+
+Utility `.img-nocrop` je definovaná v `src/styles/global.css` a aplikuje `object-fit: contain; width: 100%; height: 100%; display: block;`.
+
+### Fotky a licence
+
+Každá fotka tučňáka musí mít záznam v `src/assets/penguins/CREDITS.md` (autor, licence, zdrojový URL, místo, datum). Sprint 005 tento soubor promítne do veřejné credits stránky.
+
 ## Tech stack
 
 - **Astro 6** + `@astrojs/cloudflare` (Workers, ne Pages)
@@ -55,5 +83,5 @@ Přidá se podle potřeby:
 ## Stav
 
 **Sprint:** 001
-**Hotové runy:** žádné
-**Aktuální run:** 001
+**Hotové runy:** 001 (cleanup + brand)
+**Aktuální run:** 002 (layout, barevné schéma, obrázková pravidla)
