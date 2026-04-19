@@ -1,0 +1,57 @@
+---
+export const prerender = true;
+import { getCollection } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import SpeciesCard from "../../components/species/SpeciesCard.astro";
+
+const species = await getCollection("species");
+species.sort((a, b) => a.data.nameCs.localeCompare(b.data.nameCs, "cs"));
+
+const metadata = {
+  title: "Druhy tučňáků",
+  description:
+    "Přehled všech druhů tučňáků — česky, s ověřenými zdroji a fotkami bez ořezu.",
+};
+---
+
+<BaseLayout {metadata}>
+  <section class="px-6 pt-32 pb-20">
+    <div class="mx-auto max-w-6xl">
+      <header class="mb-10 max-w-3xl">
+        <p class="text-sm uppercase tracking-wide text-primary mb-3 reveal">Encyklopedie</p>
+        <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight mb-4 reveal">
+          Druhy tučňáků
+        </h1>
+        <p class="text-lg text-muted-foreground reveal">
+          Na planetě žije kolem <strong>18 druhů tučňáků</strong>. Postupně je tu všechny najdete — s ověřenými zdroji, fotkami bez ořezu a historickými souvislostmi.
+        </p>
+      </header>
+
+      {species.length === 0 ? (
+        <div class="rounded-2xl border border-dashed border-border bg-card p-10 text-center reveal">
+          <p class="text-lg text-muted-foreground">
+            Zatím tu žádný druh není. Vracíme se brzy.
+          </p>
+        </div>
+      ) : (
+        <>
+          <p class="text-sm text-muted-foreground mb-6 reveal" aria-live="polite">
+            {species.length === 1
+              ? "Zatím 1 druh — další přibývají."
+              : `Zobrazeno ${species.length} druhů.`}
+          </p>
+          <ul
+            class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3"
+            role="list"
+          >
+            {species.map((entry) => (
+              <li class="reveal">
+                <SpeciesCard species={entry} />
+              </li>
+            ))}
+          </ul>
+        </>
+      )}
+    </div>
+  </section>
+</BaseLayout>
