@@ -1,0 +1,51 @@
+---
+nameCs: "Tučňák uzdičkový"
+nameLat: "Pygoscelis antarcticus"
+nameEn: "Chinstrap penguin"
+genus: "Pygoscelis"
+iucnStatus: "LC"
+description: "Středně velký tučňák s nápadnou černou linkou pod bradou, která vypadá jako řemínek helmy. Jeden z nejběžnějších druhů jižních moří."
+size:
+  heightCm: [68, 78]
+  weightKg: [3.2, 5.5]
+distribution:
+  - "Jižní Georgie, Jižní Sandwichovy ostrovy"
+  - "Jižní Orkneje, Jižní Shetlandy"
+  - "Bouvetův ostrov, Balleny, Falklandy"
+  - "Crozetovy a Kerguelovy ostrovy"
+  - "Pobřeží Antarktidy"
+habitat: "Hnízdí v obřích koloniích na skalnatých svazích subantarktických ostrovů a Antarktického poloostrova. Loví v pelagické i benthické zóně, při hnízdění se obvykle drží do 30–60 km od pobřeží."
+diet:
+  - "Krill antarktický (Euphausia superba) — až 90–100 % stravy"
+  - "Světélkující ryby (Electrona antarctica, Krefftichthys anderssoni)"
+  - "Malé kořisti 1,5–6 cm velké"
+lifespan:
+  wildYears: 20
+population: "Odhad 12–15 milionů jedinců globálně. Jeden z nejpočetnějších tučňáků, ale recenzní studie z roku 2020 ukazuje v některých oblastech pokles až o 57 % za posledních 25 let — pravděpodobně důsledek úbytku krillu kvůli klimatické změně."
+historicalNotes: "Druh popsal v roce 1781 stejný přírodovědec, který popsal i tučňáka oslího — Johann Reinhold Forster. Původně ho zařadil do rodu Aptenodytes (společně s tučňákem císařským), do rodu Pygoscelis byl přeřazen až v roce 1990 na základě srovnání DNA. Český název „uzdičkový“ i anglický „chinstrap“ odkazují na tenkou černou linku, která přechází přes bílou bradu — připomíná řemínek od helmy."
+hero:
+  src: "../../assets/penguins/uzdickovy/hero.jpg"
+  alt: "Dospělý tučňák uzdičkový na ostrově Deception v Antarktidě"
+  author: "Christopher Michel"
+  license: "CC BY 2.0"
+  sourceUrl: "https://commons.wikimedia.org/wiki/File:A_chinstrap_penguin_(Pygoscelis_antarcticus)_on_Deception_Island_in_Antarctica.jpg"
+sources:
+  - url: "https://cs.wikipedia.org/wiki/Tu%C4%8D%C5%88%C3%A1k_uzdi%C4%8Dkov%C3%BD"
+    title: "Tučňák uzdičkový — Wikipedia (CS)"
+    type: "Wikipedia"
+  - url: "https://en.wikipedia.org/wiki/Chinstrap_penguin"
+    title: "Chinstrap penguin — Wikipedia (EN)"
+    type: "Wikipedia"
+  - url: "https://www.iucnredlist.org/species/22697761/184807209"
+    title: "Pygoscelis antarcticus — IUCN Red List"
+    type: "IUCN"
+    note: "Status Least Concern, ale lokální populace klesají"
+  - url: "https://datazone.birdlife.org/species/factsheet/chinstrap-penguin-pygoscelis-antarcticus"
+    title: "Chinstrap Penguin — BirdLife International factsheet"
+    type: "BirdLife"
+updatedAt: "2026-04-19"
+---
+
+Tučňák uzdičkový je snadno rozpoznatelný podle tenké černé linky pod bradou, která se táhne od ucha k uchu a vypadá jako řemínek od helmy — odtud české jméno „uzdičkový" i anglické „chinstrap". Měří kolem 70 centimetrů a váží do pěti kilogramů. Žije v obřích koloniích na skalnatých svazích subantarktických ostrovů, kde páry hnízdí v nápadně hustých skupinách — hnízdo od hnízda bývá vzdálené jen o délku natažené hlavy.
+
+Druh popsal v roce 1781 Johann Reinhold Forster, stejný přírodovědec, který popsal i tučňáka oslího. Zajímavé je, že původně ho zařadil do jiného rodu, a teprve srovnání DNA v roce 1990 ukázalo, že patří mezi *Pygoscelis* společně s kroužkovým a oslím. I když je stále jedním z nejpočetnějších druhů — odhady mluví o 12 až 15 milionech jedinců — v posledních letech se počty v některých koloniích dramaticky propadly. Důvodem je pravděpodobně úbytek krillu, základu jeho stravy, v důsledku oteplování Antarktického poloostrova.

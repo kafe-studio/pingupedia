@@ -1,0 +1,52 @@
+---
+nameCs: "Tučňák oslí"
+nameLat: "Pygoscelis papua"
+nameEn: "Gentoo penguin"
+genus: "Pygoscelis"
+iucnStatus: "LC"
+description: "Třetí největší druh tučňáka s nápadným oranžově-červeným zobákem a bílou skvrnou nad okem. Nejrychlejší plavec ze všech tučňáků."
+size:
+  heightCm: [75, 90]
+  weightKg: [5, 9]
+distribution:
+  - "Antarktický poloostrov"
+  - "Falklandy (asi 40 % světové populace)"
+  - "Jižní Georgie, Jižní Shetlandy, Jižní Orkneje"
+  - "Kerguelovy ostrovy, Crozetovy ostrovy, Heardův a McDonaldovy ostrovy"
+  - "Macquarie, Marion a Prince Edward Islands"
+habitat: "Chladná jižní moře od subantarktických ostrovů po pobřeží Antarktického poloostrova. Hnízdí v koloniích na travnatých nebo skalnatých pobřežích, méně často na ledu."
+diet:
+  - "Ryby z čeledi Nototheniidae (antarktické ryby)"
+  - "Krill antarktický (Euphausia superba)"
+  - "Hlavonožci — chobotnice a kalmary"
+lifespan:
+  wildYears: 13
+  captivityYears: 41
+population: "Odhad kolem 774 000 dospělých jedinců (IUCN 2020), přes 300 000 hnízdících párů. Populace celkově rostoucí — druh se šíří jižněji pravděpodobně v reakci na oteplování."
+historicalNotes: "Druh poprvé popsal německo-skotský přírodovědec Johann Reinhold Forster v roce 1781, když cestoval na Falklandy. Latinské jméno papua je zavádějící — druh nemá s Papuou-Novou Guineou nic společného, Forster ho pravděpodobně odvodil z nepřesné lokalitní poznámky. V péči lidí se dožívá výjimečně dlouho: rekord drží tučňák ze zoologické zahrady Odense v Dánsku, který žil přes 41 let."
+hero:
+  src: "../../assets/penguins/osli/hero.jpg"
+  alt: "Dospělý tučňák oslí stojící v Cooper Bay na Jižní Georgii"
+  author: "Liam Quinn"
+  license: "CC BY-SA 2.0"
+  sourceUrl: "https://commons.wikimedia.org/wiki/File:Gentoo_Penguin_at_Cooper_Bay,_South_Georgia.jpg"
+sources:
+  - url: "https://cs.wikipedia.org/wiki/Tu%C4%8D%C5%88%C3%A1k_osl%C3%AD"
+    title: "Tučňák oslí — Wikipedia (CS)"
+    type: "Wikipedia"
+  - url: "https://en.wikipedia.org/wiki/Gentoo_penguin"
+    title: "Gentoo penguin — Wikipedia (EN)"
+    type: "Wikipedia"
+  - url: "https://www.iucnredlist.org/species/22697755/157664581"
+    title: "Pygoscelis papua — IUCN Red List"
+    type: "IUCN"
+    note: "Status Least Concern, populace celkově rostoucí"
+  - url: "https://datazone.birdlife.org/species/factsheet/gentoo-penguin-pygoscelis-papua"
+    title: "Gentoo Penguin — BirdLife International factsheet"
+    type: "BirdLife"
+updatedAt: "2026-04-19"
+---
+
+Tučňák oslí je třetí největší druh tučňáka a zároveň nejrychlejší plavec ze všech tučňáků — pod vodou dokáže krátce dosáhnout rychlosti až 36 kilometrů v hodině. Poznáte ho podle jasně oranžově-červeného zobáku a bílé skvrny, která se táhne jako čelenka nad oběma očima. Hnízdí v menších koloniích než jeho antarktičtí příbuzní, často na travnatých ostrovech a pobřežích subantarktické zóny. Hnízdo si staví z kamenů, trsů trávy a peří — a podobně jako tučňák kroužkový si kameny rád krade od sousedů.
+
+Druh popsal v roce 1781 přírodovědec Johann Reinhold Forster během své cesty na Falklandy. Dnes žije největší populace právě tam — asi dva z každých pěti tučňáků oslích patří falklandskému stádu. Na rozdíl od mnoha polárních druhů se mu daří dobře: populace celkově roste a druh se navíc šíří jižněji, pravděpodobně jak ustupuje mořský led kolem Antarktického poloostrova. V zoologických zahradách patří mezi nejoblíbenější tučňáky — jeden jedinec v Odense v Dánsku se dožil přes 41 let, což je rekord mezi všemi tučňáky v lidské péči.

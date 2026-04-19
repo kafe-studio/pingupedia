@@ -1,7 +1,7 @@
 # Plan: pingupedia
 
 **Vytvořeno:** 2026-04-19
-**Aktualizováno:** 2026-04-19 (Sprint 002 Run 005 hotový — `/druhy/[slug]` detail)
+**Aktualizováno:** 2026-04-19 (Sprint 002 Run 006a hotový — Pygoscelis 3 druhy seed)
 
 ## Cíl
 
@@ -22,7 +22,10 @@ Populárně-naučná encyklopedie všech druhů tučňáků v češtině pro dě
 
 - [x] Run 004 — `/druhy` index (karty bez ořezu) → `docs/sprints/002-species/run-004-druhy-index.done.md` (filtr podle rodu přesunut na Sprint 004 Run 012)
 - [x] Run 005 — `/druhy/[slug]` detail (hero, fakta, historie, zdroje, galerie) → `docs/sprints/002-species/run-005-druhy-detail.done.md`
-- [ ] Run 006 — seed všech druhů tučňáků s texty + fotkami + zdroji → `docs/sprints/002-species/run-006-seed-species.md`
+- [ ] Run 006 — seed všech druhů tučňáků s texty + fotkami + zdroji (rozdělený na batche)
+  - [x] Run 006a — Pygoscelis (3 druhy: kroužkový, oslí, uzdičkový) → `docs/sprints/002-species/run-006a-pygoscelis.done.md`
+  - [ ] Run 006b — Aptenodytes patagonský + Eudyptes (5–6 druhů)
+  - [ ] Run 006c — Megadyptes + Eudyptula + Spheniscus (5 druhů)
 - [ ] Run 007 — fotogalerie per druh (lightbox, responsivní, bez ořezu)
 
 ### Sprint 003 — Mapy, historie, infografiky
