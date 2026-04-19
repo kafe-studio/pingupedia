@@ -114,5 +114,5 @@ Přidá se podle potřeby:
 
 ## Stav
 
-**Sprint:** 002 **probíhá** — Runy 004 (index) + 005 (detail) hotové, zbývá 006 (seed) + 007 (galerie)
-**Další krok:** Run 006 — seed všech ~18 druhů tučňáků s texty, fotkami a ověřenými zdroji
+**Sprint:** 002 **probíhá** — Runy 004 (index) + 005 (detail) hotové, 006 rozdělen do batchů (006a Pygoscelis hotový, 006b1 Aptenodytes+3 Eudyptes hotový = 8 druhů naseedováno)
+**Další krok:** Run 006b2 — zbývající 3 Eudyptes (skalní severní, snaresky, Sclaterův), pak 006c (Megadyptes + Eudyptula + Spheniscus), pak 007 (galerie)
