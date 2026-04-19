@@ -99,8 +99,8 @@ Přidá se podle potřeby:
 ## Milníky
 
 ### MVP (Sprint 001 + 002)
-- [ ] Layout, branding, obrázková pravidla
-- [ ] Schema pro druhy se zdroji a licencí fotek
+- [x] Layout, branding, obrázková pravidla
+- [x] Schema pro druhy se zdroji a licencí fotek
 - [ ] `/druhy` index a `/druhy/[slug]` detail
 - [ ] Všech ~18 druhů naseedovaných se zdroji a fotkami
 
@@ -114,6 +114,5 @@ Přidá se podle potřeby:
 
 ## Stav
 
-**Sprint:** 001
-**Hotové runy:** 001 (cleanup + brand), 002 (layout + paleta + no-crop)
-**Aktuální run:** 003 (species content collection schema + testovací druh)
+**Sprint:** 001 **hotovo** (001 cleanup+brand, 002 paleta+no-crop, 003 species schema+cisarsky)
+**Další krok:** `/audit` — ověřit sprint, pak Sprint 002 (`/druhy` index + detail + seed všech druhů)

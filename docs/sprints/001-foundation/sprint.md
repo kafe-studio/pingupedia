@@ -1,6 +1,7 @@
 # Sprint 001: Foundation & branding
 
-**Status:** TODO
+**Status:** audited
+**Audit date:** 2026-04-19
 **Dashboard Sprint:** 3
 **Cíl:** Očistit kostru, nastavit brand, vytvořit species schema se zdroji a licencemi, zavést pravidla pro zobrazování obrázků bez ořezu.
 **Runy:** 001–003
@@ -19,4 +20,4 @@ Po dokončení sprintu má projekt: funkční homepage s brandem, layout, schema
 ## Runy
 - [x] Run 001 — cleanup kostra, site config, brand
 - [x] Run 002 — layout, barevné schéma, obrázková pravidla (no-crop util + Image komponenta)
-- [ ] Run 003 — species content collection schema + 1 testovací druh se zdroji
+- [x] Run 003 — species content collection schema + 1 testovací druh se zdroji
