@@ -1,5 +1,12 @@
 # Project rules
 
+## pingupedia specifika
+
+- **Žádný obrázek nesmí být ořezaný.** Nepoužívat `object-cover` ani `background-image` s croppingem. Vždy celý obrázek viditelný — `aspect-ratio` kontejner + `object-contain`, nebo intrinsic dimensions.
+- **Obsah jen z ověřených zdrojů** — Wikipedia, IUCN Red List, BirdLife, vědecké publikace. Každý druh má povinné pole `sources`. Faktické tvrzení bez zdroje sem nepatří.
+- **Cílovka:** děti i dospělí, tón populárně-naučný, ale nezlehčující.
+- Detaily viz `docs/PROJECT.md`.
+
 ## MCP docs — mandatory
 
 NEVER write framework code from memory. Before writing ANY code that uses Effect TS, Svelte 5, Astro 6, daisyUI 5, or Cloudflare Workers APIs, you MUST search MCP docs first:
