@@ -1,0 +1,51 @@
+---
+nameCs: "Tučňák skalní jižní"
+nameLat: "Eudyptes chrysocome"
+nameEn: "Southern rockhopper penguin"
+genus: "Eudyptes"
+iucnStatus: "VU"
+description: "Malý chocholatý tučňák se žlutými pírky nad očima a červenýma očima. Žije na subantarktických ostrovech, kde ke koloniím šplhá po strmých skalách — odtud jeho anglický název rockhopper."
+size:
+  heightCm: [45, 58]
+  weightKg: [2.0, 3.4]
+distribution:
+  - "Falklandy a pobřežní ostrovy Patagonie (Chile, Argentina)"
+  - "Ostrovy prince Edwarda a Marion"
+  - "Crozetovy ostrovy a Kergueleny"
+  - "Ostrovy Tristan da Cunha a Gough"
+  - "Subantarktické ostrovy jižně od Nového Zélandu (Auckland, Campbell, Antipody)"
+habitat: "Strmé skalnaté pobřeží, morénové svahy a lávové útesy. Hnízdí v hustých koloniích vysoko nad mořem, kam se dostává skákáním po skalách a oblázkových plážích."
+diet:
+  - "Antarktický a subantarktický kril"
+  - "Drobné hlavonožce — olihně a sepiolky"
+  - "Korýši amfipodi a drobné mezopelagické ryby"
+lifespan:
+  wildYears: 10
+population: "Přibližně 2,5 milionu dospělých jedinců (IUCN 2020). Populace za posledních 30 let klesla asi o 30 %, hlavně kvůli změnám dostupnosti potravy ve vodách kolem Falkland a Patagonie."
+historicalNotes: "Druh vědecky popsal v roce 1781 německý přírodovědec Johann Reinhold Forster, který doprovázel Jamese Cooka při jeho druhé plavbě kolem světa. Dříve byli všichni rockhoppeři považováni za jeden druh, v roce 2006 se ale skupina rozdělila na jižního (E. chrysocome) a severního (E. moseleyi) na základě rozdílů v hlasovém projevu, vzhledu a genetice."
+hero:
+  src: "../../assets/penguins/skalni-jizni/hero.jpg"
+  alt: "Tučňák skalní jižní stojící na skále s dobře viditelnou žlutou chocholkou"
+  author: "Andrew Shiva"
+  license: "CC BY-SA 4.0"
+  sourceUrl: "https://commons.wikimedia.org/wiki/File:FAL-2016-New_Island,_Falkland_Islands-Rockhopper_penguin_(Eudyptes_chrysocome)_02.jpg"
+sources:
+  - url: "https://cs.wikipedia.org/wiki/Tu%C4%8D%C5%88%C3%A1k_skaln%C3%AD"
+    title: "Tučňák skalní — Wikipedia (CS)"
+    type: "Wikipedia"
+  - url: "https://en.wikipedia.org/wiki/Southern_rockhopper_penguin"
+    title: "Southern rockhopper penguin — Wikipedia (EN)"
+    type: "Wikipedia"
+  - url: "https://www.iucnredlist.org/species/22735250/182762377"
+    title: "Eudyptes chrysocome — IUCN Red List"
+    type: "IUCN"
+    note: "Status Vulnerable, populace klesající"
+  - url: "https://datazone.birdlife.org/species/factsheet/southern-rockhopper-penguin-eudyptes-chrysocome"
+    title: "Southern Rockhopper Penguin — BirdLife International factsheet"
+    type: "BirdLife"
+updatedAt: "2026-04-19"
+---
+
+Tučňák skalní jižní patří mezi nejmenší a zároveň nejcharakterističtější tučňáky vůbec. Dospělec má sotva přes padesát centimetrů a váží okolo dvou a půl kilogramu, přesto je v koloniích neuvěřitelně hlasitý a velmi odolný. Nápadnou vizitkou jsou divoké žluté chocholky nad očima a jasně červené duhovky, které ho odlišují od ostatních chocholatých tučňáků. Díky silným nohám a velké hbitosti dokáže šplhat po skalách do kolonií položených desítky metrů nad mořem — místo kolébání mezi kameny prostě skáče snožmo, odtud i anglický název **rockhopper**.
+
+Druh vědecky popsal v roce 1781 Johann Reinhold Forster během druhé Cookovy expedice. Ještě na začátku 21. století byli všichni rockhoppeři považováni za jeden druh, teprve v roce 2006 se severní populace z ostrovů kolem Tristan da Cunha a St. Paul oddělila jako samostatný druh *Eudyptes moseleyi* — na základě rozdílů v hlase, velikosti chocholky a genetice. Globální populace jižního rockhoppera se za posledních třicet let snížila zhruba o třetinu a IUCN ho proto vede jako **zranitelný**. Hlavními hrozbami jsou změny oceánských proudů ovlivňující dostupnost krilu a historicky také introdukovaní predátoři na některých ostrovech.

@@ -53,3 +53,51 @@ Tento seznam sleduje licenční údaje pro všechny fotografie tučňáků v pro
 - **Datum pořízení:** 2013-01-08
 - **Staženo:** 2026-04-19
 - **Použití:** hero druhu uzdičkový (Run 006a)
+
+## patagonsky/hero.jpg
+
+- **Druh:** Tučňák patagonský (*Aptenodytes patagonicus*)
+- **Autor:** Antoine Lamielle
+- **Licence:** CC BY-SA 4.0
+- **Zdroj:** [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:2020-11_Crozet_Islands_-_King_Penguin_01.jpg)
+- **Originál:** https://upload.wikimedia.org/wikipedia/commons/0/0d/2020-11_Crozet_Islands_-_King_Penguin_01.jpg
+- **Místo:** Possession Island, Crozetovo souostroví
+- **Datum pořízení:** 2020-11-13
+- **Staženo:** 2026-04-19
+- **Použití:** hero druhu patagonský (Run 006b1); staženo jako 2000px thumbnail
+
+## skalni-jizni/hero.jpg
+
+- **Druh:** Tučňák skalní jižní (*Eudyptes chrysocome*)
+- **Autor:** Andrew Shiva (Godot13)
+- **Licence:** CC BY-SA 4.0
+- **Zdroj:** [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:FAL-2016-New_Island,_Falkland_Islands-Rockhopper_penguin_(Eudyptes_chrysocome)_02.jpg)
+- **Originál:** https://upload.wikimedia.org/wikipedia/commons/1/11/FAL-2016-New_Island%2C_Falkland_Islands-Rockhopper_penguin_%28Eudyptes_chrysocome%29_02.jpg
+- **Místo:** New Island, Falklandy (51°43'3"S, 61°18'41"W)
+- **Datum pořízení:** 2016-01-05
+- **Staženo:** 2026-04-19
+- **Použití:** hero druhu skalní jižní (Run 006b1); staženo jako 2000px thumbnail
+
+## zlatovlasy/hero.jpg
+
+- **Druh:** Tučňák zlatovlasý (*Eudyptes chrysolophus*)
+- **Autor:** Jerzy Strzelecki
+- **Licence:** CC BY-SA 3.0
+- **Zdroj:** [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Eudyptes_chrysolophus_(js)_01.jpg)
+- **Originál:** https://upload.wikimedia.org/wikipedia/commons/0/01/Eudyptes_chrysolophus_%28js%29_01.jpg
+- **Místo:** Hannah Point, Livingston Island, Antarktický poloostrov (62°39'S, 60°36'W)
+- **Datum pořízení:** 2000-02
+- **Staženo:** 2026-04-19
+- **Použití:** hero druhu zlatovlasý (Run 006b1); staženo jako 2000px thumbnail
+
+## royal/hero.jpg
+
+- **Druh:** Tučňák královský (*Eudyptes schlegeli*)
+- **Autor:** M. Murphy
+- **Licence:** Public domain (uvolněno autorem)
+- **Zdroj:** [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:RoyalPenguins2.JPG)
+- **Originál:** https://upload.wikimedia.org/wikipedia/commons/4/41/RoyalPenguins2.JPG
+- **Místo:** Macquarie Island
+- **Datum pořízení:** 2006-02-11
+- **Staženo:** 2026-04-19
+- **Použití:** hero druhu royal (Run 006b1); původní rozlišení (1379×1658)
