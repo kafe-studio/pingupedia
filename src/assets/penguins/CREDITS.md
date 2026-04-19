@@ -137,3 +137,39 @@ Tento seznam sleduje licenční údaje pro všechny fotografie tučňáků v pro
 - **Datum pořízení:** 2019-10-25
 - **Staženo:** 2026-04-19
 - **Použití:** hero druhu Sclaterův (Run 006b2); původní rozlišení (970×1500)
+
+## zlutooky/hero.jpg
+
+- **Druh:** Tučňák žlutooký (*Megadyptes antipodes*)
+- **Autor:** Christian Mehlführer (User:Chmehl)
+- **Licence:** CC BY 2.5
+- **Zdroj:** [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Yellow-eyed_Penguin_MC.jpg)
+- **Originál:** https://upload.wikimedia.org/wikipedia/commons/4/4f/Yellow-eyed_Penguin_MC.jpg
+- **Místo:** Curio Bay, Nový Zéland (46°39'44"S, 169°5'56"E)
+- **Datum pořízení:** 2008-02-23
+- **Staženo:** 2026-04-19
+- **Použití:** hero druhu žlutooký (Run 006c1); původní rozlišení (1467×2200)
+
+## nejmensi/hero.jpg
+
+- **Druh:** Tučňák nejmenší (*Eudyptula minor*)
+- **Autor:** Jolaus
+- **Licence:** CC BY 4.0
+- **Zdroj:** [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Eudyptula_minor.jpg)
+- **Originál:** https://upload.wikimedia.org/wikipedia/commons/f/fb/Eudyptula_minor.jpg
+- **Místo:** Waipatiko Beach, Nový Zéland
+- **Datum pořízení:** 2024-01-17
+- **Staženo:** 2026-04-19
+- **Použití:** hero druhu nejmenší (Run 006c1); staženo jako 2000px thumbnail
+
+## galapazsky/hero.jpg
+
+- **Druh:** Tučňák galapážský (*Spheniscus mendiculus*)
+- **Autor:** putneymark
+- **Licence:** CC BY-SA 2.0
+- **Zdroj:** [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Galapagos_penguin_(Spheniscus_mendiculus)_-Isabela2.jpg)
+- **Originál:** https://upload.wikimedia.org/wikipedia/commons/e/e9/Galapagos_penguin_%28Spheniscus_mendiculus%29_-Isabela2.jpg
+- **Místo:** Elizabeth Bay, Isla Isabela, Galapágy
+- **Datum pořízení:** 2007-08-15
+- **Staženo:** 2026-04-19
+- **Použití:** hero druhu galapážský (Run 006c1); původní rozlišení (1662×2424)
