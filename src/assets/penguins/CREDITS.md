@@ -101,3 +101,39 @@ Tento seznam sleduje licenční údaje pro všechny fotografie tučňáků v pro
 - **Datum pořízení:** 2006-02-11
 - **Staženo:** 2026-04-19
 - **Použití:** hero druhu royal (Run 006b1); původní rozlišení (1379×1658)
+
+## skalni-severni/hero.jpg
+
+- **Druh:** Tučňák skalní severní (*Eudyptes moseleyi*)
+- **Autor:** Brian Gratwicke
+- **Licence:** CC BY 2.0
+- **Zdroj:** [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Northern_Rockhopper_Penguin_on_Inaccessible_Island.jpg)
+- **Originál:** https://upload.wikimedia.org/wikipedia/commons/5/5f/Northern_Rockhopper_Penguin_on_Inaccessible_Island.jpg
+- **Místo:** Inaccessible Island, Tristan da Cunha (37°17'05"S, 12°40'16"W)
+- **Datum pořízení:** 2012-03-20
+- **Staženo:** 2026-04-19
+- **Použití:** hero druhu skalní severní (Run 006b2); staženo jako 2000px thumbnail
+
+## snaresky/hero.jpg
+
+- **Druh:** Tučňák snareský (*Eudyptes robustus*)
+- **Autor:** Thomas Mattern (Department of Zoology, University of Otago)
+- **Licence:** CC BY-SA 3.0
+- **Zdroj:** [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:SnaresPenguin_(Mattern)_large.jpg)
+- **Originál:** https://upload.wikimedia.org/wikipedia/commons/8/87/SnaresPenguin_%28Mattern%29_large.jpg
+- **Místo:** Station Cove, North East Island, Snares Islands (48°01'34"S, 166°36'31"E)
+- **Datum pořízení:** 2004-10-24
+- **Staženo:** 2026-04-19
+- **Použití:** hero druhu snareský (Run 006b2); původní rozlišení (680×1024)
+
+## sclateruv/hero.jpg
+
+- **Druh:** Tučňák Sclaterův (*Eudyptes sclateri*)
+- **Autor:** C00ch
+- **Licence:** CC BY-SA 4.0
+- **Zdroj:** [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Erect-crested_penguin_(Eudyptes_sclateri).jpg)
+- **Originál:** https://upload.wikimedia.org/wikipedia/commons/f/f0/Erect-crested_penguin_%28Eudyptes_sclateri%29.jpg
+- **Místo:** Proclamation Island, Bounty Islands, Nový Zéland
+- **Datum pořízení:** 2019-10-25
+- **Staženo:** 2026-04-19
+- **Použití:** hero druhu Sclaterův (Run 006b2); původní rozlišení (970×1500)
