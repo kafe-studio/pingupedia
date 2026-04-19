@@ -101,7 +101,7 @@ Přidá se podle potřeby:
 ### MVP (Sprint 001 + 002)
 - [x] Layout, branding, obrázková pravidla
 - [x] Schema pro druhy se zdroji a licencí fotek
-- [ ] `/druhy` index a `/druhy/[slug]` detail
+- [ ] `/druhy` index (hotovo) a `/druhy/[slug]` detail (Run 005)
 - [ ] Všech ~18 druhů naseedovaných se zdroji a fotkami
 
 ### V1 (Sprint 003 + 004)
@@ -114,5 +114,5 @@ Přidá se podle potřeby:
 
 ## Stav
 
-**Sprint:** 001 **hotovo** (001 cleanup+brand, 002 paleta+no-crop, 003 species schema+cisarsky)
-**Další krok:** `/audit` — ověřit sprint, pak Sprint 002 (`/druhy` index + detail + seed všech druhů)
+**Sprint:** 002 **probíhá** — Run 004 hotový (`/druhy` index s kartami druhů)
+**Další krok:** Run 005 — `/druhy/[slug]` detail (hero, fakta, historie, zdroje)
