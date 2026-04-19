@@ -1,0 +1,101 @@
+---
+export const prerender = true;
+import { getCollection, render } from "astro:content";
+import type { GetStaticPaths } from "astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import NoCropImage from "../../components/media/NoCropImage.astro";
+import SpeciesHero from "../../components/species/SpeciesHero.astro";
+import SpeciesFacts from "../../components/species/SpeciesFacts.astro";
+import SpeciesSources from "../../components/species/SpeciesSources.astro";
+
+export const getStaticPaths = (async () => {
+  const species = await getCollection("species");
+  return species.map((entry) => ({
+    params: { slug: entry.id },
+    props: { entry },
+  }));
+}) satisfies GetStaticPaths;
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+
+const { nameCs, nameLat, description, historicalNotes, gallery } = entry.data;
+
+const metadata = {
+  title: `${nameCs} (${nameLat})`,
+  description,
+};
+---
+
+<BaseLayout {metadata}>
+  <article>
+    <SpeciesHero species={entry} />
+
+    <section class="px-6 py-12" aria-labelledby="about-heading">
+      <div class="mx-auto max-w-3xl">
+        <h2 id="about-heading" class="sr-only">O druhu</h2>
+        <div class="prose prose-invert prose-lg max-w-none reveal prose-headings:font-bold prose-a:text-primary prose-strong:text-foreground">
+          <Content />
+        </div>
+      </div>
+    </section>
+
+    <SpeciesFacts species={entry} />
+
+    {historicalNotes && (
+      <section class="px-6 py-12" aria-labelledby="history-heading">
+        <div class="mx-auto max-w-3xl">
+          <h2 id="history-heading" class="text-2xl md:text-3xl font-bold mb-4 reveal">Historie</h2>
+          <p class="text-base md:text-lg text-foreground/90 leading-relaxed reveal">
+            {historicalNotes}
+          </p>
+        </div>
+      </section>
+    )}
+
+    {gallery && gallery.length > 0 && (
+      <section class="px-6 py-12 bg-muted/50" aria-labelledby="gallery-heading">
+        <div class="mx-auto max-w-6xl">
+          <h2 id="gallery-heading" class="text-2xl md:text-3xl font-bold mb-6 reveal">Galerie</h2>
+          <ul class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3" role="list">
+            {gallery.map((photo) => (
+              <li class="reveal">
+                <figure>
+                  <NoCropImage
+                    src={photo.src}
+                    alt={photo.alt}
+                    ratio="4/3"
+                    sizes="(min-width: 1024px) 400px, (min-width: 640px) 50vw, 100vw"
+                    class="bg-muted rounded-xl overflow-hidden"
+                  />
+                  <figcaption class="mt-2 text-xs text-muted-foreground">
+                    Foto {photo.author}, {photo.license}.
+                    {" "}
+                    <a
+                      href={photo.sourceUrl}
+                      rel="noopener"
+                      target="_blank"
+                      class="underline decoration-dotted hover:text-primary"
+                    >
+                      Zdroj
+                    </a>
+                  </figcaption>
+                </figure>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+    )}
+
+    <SpeciesSources species={entry} />
+
+    <nav class="px-6 pb-20 reveal" aria-label="Navigace zpet">
+      <div class="mx-auto max-w-5xl">
+        <a href="/druhy/" data-astro-prefetch class="inline-flex items-center gap-2 text-sm font-medium text-muted-foreground hover:text-primary transition-colors">
+          ← Zpět na všechny druhy
+        </a>
+      </div>
+    </nav>
+  </article>
+</BaseLayout>

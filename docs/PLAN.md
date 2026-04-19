@@ -1,7 +1,7 @@
 # Plan: pingupedia
 
 **Vytvořeno:** 2026-04-19
-**Aktualizováno:** 2026-04-19 (Sprint 002 Run 004 hotový — `/druhy` index)
+**Aktualizováno:** 2026-04-19 (Sprint 002 Run 005 hotový — `/druhy/[slug]` detail)
 
 ## Cíl
 
@@ -21,7 +21,7 @@ Populárně-naučná encyklopedie všech druhů tučňáků v češtině pro dě
 **Cíl:** `/druhy` index + detail stránky, seed všech ~18 druhů tučňáků se zdroji a fotkami.
 
 - [x] Run 004 — `/druhy` index (karty bez ořezu) → `docs/sprints/002-species/run-004-druhy-index.done.md` (filtr podle rodu přesunut na Sprint 004 Run 012)
-- [ ] Run 005 — `/druhy/[slug]` detail (hero, fakta, historie, zdroje, galerie) → `docs/sprints/002-species/run-005-druhy-detail.md`
+- [x] Run 005 — `/druhy/[slug]` detail (hero, fakta, historie, zdroje, galerie) → `docs/sprints/002-species/run-005-druhy-detail.done.md`
 - [ ] Run 006 — seed všech druhů tučňáků s texty + fotkami + zdroji
 - [ ] Run 007 — fotogalerie per druh (lightbox, responsivní, bez ořezu)
 

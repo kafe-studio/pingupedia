@@ -19,6 +19,6 @@ Po dokončení je pingupedia použitelná jako encyklopedie — návštěvník v
 ## Runy
 
 - [x] Run 004 — `/druhy` index (karty bez ořezu)
-- [ ] Run 005 — `/druhy/[slug]` detail (hero, fakta, historie, zdroje)
+- [x] Run 005 — `/druhy/[slug]` detail (hero, fakta, historie, zdroje)
 - [ ] Run 006 — seed všech druhů tučňáků s texty + fotkami + zdroji
 - [ ] Run 007 — fotogalerie per druh (lightbox, responsivní, bez ořezu)

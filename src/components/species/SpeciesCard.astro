@@ -1,6 +1,7 @@
 ---
 import type { CollectionEntry } from "astro:content";
 import NoCropImage from "../media/NoCropImage.astro";
+import IucnBadge from "./IucnBadge.astro";
 
 interface Props {
   species: CollectionEntry<"species">;
@@ -9,26 +10,6 @@ interface Props {
 const { species } = Astro.props;
 const { nameCs, nameLat, genus, iucnStatus, description, hero } = species.data;
 const href = `/druhy/${species.id}/`;
-
-const iucnLabels: Record<typeof iucnStatus, string> = {
-  LC: "Málo dotčený",
-  NT: "Téměř ohrožený",
-  VU: "Zranitelný",
-  EN: "Ohrožený",
-  CR: "Kriticky ohrožený",
-  DD: "Nedostatek dat",
-  EX: "Vyhynulý",
-};
-
-const iucnTone: Record<typeof iucnStatus, string> = {
-  LC: "bg-emerald-500/15 text-emerald-300 border-emerald-400/30",
-  NT: "bg-lime-500/15 text-lime-200 border-lime-400/30",
-  VU: "bg-amber-500/15 text-amber-200 border-amber-400/30",
-  EN: "bg-orange-500/15 text-orange-200 border-orange-400/30",
-  CR: "bg-red-500/15 text-red-200 border-red-400/30",
-  DD: "bg-sky-500/15 text-sky-200 border-sky-400/30",
-  EX: "bg-stone-500/15 text-stone-200 border-stone-400/30",
-};
 ---
 
 <a
@@ -51,13 +32,7 @@ const iucnTone: Record<typeof iucnStatus, string> = {
         </h3>
         <p class="text-sm italic text-muted-foreground mt-0.5">{nameLat}</p>
       </div>
-      <span
-        class:list={["shrink-0 rounded-full border px-2.5 py-0.5 text-xs font-semibold", iucnTone[iucnStatus]]}
-        title={`IUCN Red List: ${iucnLabels[iucnStatus]}`}
-        aria-label={`IUCN status: ${iucnLabels[iucnStatus]}`}
-      >
-        {iucnStatus}
-      </span>
+      <IucnBadge status={iucnStatus} />
     </div>
     <p class="text-xs uppercase tracking-wide text-muted-foreground mb-3">
       Rod <span class="text-foreground/80">{genus}</span>

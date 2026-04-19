@@ -1,0 +1,56 @@
+---
+import type { CollectionEntry } from "astro:content";
+import NoCropImage from "../media/NoCropImage.astro";
+import IucnBadge from "./IucnBadge.astro";
+
+interface Props {
+  species: CollectionEntry<"species">;
+}
+
+const { species } = Astro.props;
+const { nameCs, nameLat, nameEn, iucnStatus, description, hero } = species.data;
+---
+
+<section class="px-6 pt-32 pb-12">
+  <div class="mx-auto max-w-5xl">
+    <div class="mb-8 reveal">
+      <div class="flex flex-wrap items-center gap-3 mb-4">
+        <IucnBadge status={iucnStatus} size="md" />
+        {nameEn && (
+          <span class="text-sm text-muted-foreground">EN: {nameEn}</span>
+        )}
+      </div>
+      <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight mb-2">
+        {nameCs}
+      </h1>
+      <p class="text-xl italic text-muted-foreground">{nameLat}</p>
+    </div>
+
+    <figure class="reveal">
+      <NoCropImage
+        src={hero.src}
+        alt={hero.alt}
+        ratio="16/10"
+        loading="eager"
+        sizes="(min-width: 1024px) 960px, 100vw"
+        class="bg-muted rounded-2xl overflow-hidden"
+      />
+      <figcaption class="mt-3 text-xs text-muted-foreground">
+        Foto <strong class="font-semibold text-foreground/80">{hero.author}</strong>, licence {hero.license}.
+        {" "}
+        <a
+          href={hero.sourceUrl}
+          class="underline decoration-dotted underline-offset-2 hover:text-primary"
+          rel="noopener"
+          target="_blank"
+        >
+          Zdroj
+        </a>
+      </figcaption>
+    </figure>
+
+    <p class="mt-8 text-lg md:text-xl text-foreground/90 leading-relaxed max-w-3xl reveal">
+      {description}
+    </p>
+  </div>
+</section>
