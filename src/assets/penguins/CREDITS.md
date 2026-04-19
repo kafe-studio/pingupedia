@@ -173,3 +173,39 @@ Tento seznam sleduje licenční údaje pro všechny fotografie tučňáků v pro
 - **Datum pořízení:** 2007-08-15
 - **Staženo:** 2026-04-19
 - **Použití:** hero druhu galapážský (Run 006c1); původní rozlišení (1662×2424)
+
+## brylovy/hero.jpg
+
+- **Druh:** Tučňák brýlový (*Spheniscus demersus*)
+- **Autor:** Bernard Gagnon (Bgag)
+- **Licence:** CC BY-SA 4.0
+- **Zdroj:** [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:African_penguin_at_Boulders_Beach_01.jpg)
+- **Originál:** https://upload.wikimedia.org/wikipedia/commons/f/f2/African_penguin_at_Boulders_Beach_01.jpg
+- **Místo:** Boulders Beach, Simon's Town, Jihoafrická republika (34°11'53"S, 18°27'08"E)
+- **Datum pořízení:** 2017-11-07
+- **Staženo:** 2026-04-19
+- **Použití:** hero druhu brýlový (Run 006c2); staženo jako 2000px thumbnail
+
+## humboldtuv/hero.jpg
+
+- **Druh:** Tučňák Humboldtův (*Spheniscus humboldti*)
+- **Autor:** Pete Cable
+- **Licence:** CC BY 2.0
+- **Zdroj:** [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Spheniscus_humboldti,_Islas_Ballestas_1.jpg)
+- **Originál:** https://upload.wikimedia.org/wikipedia/commons/9/99/Spheniscus_humboldti%2C_Islas_Ballestas_1.jpg
+- **Místo:** Islas Ballestas, Paracas, Peru
+- **Datum pořízení:** 2013-09-20
+- **Staženo:** 2026-04-19
+- **Použití:** hero druhu Humboldtův (Run 006c2); původní rozlišení (3264×2448)
+
+## magellansky/hero.jpg
+
+- **Druh:** Tučňák magellanský (*Spheniscus magellanicus*)
+- **Autor:** Diego Delso (delso.photo)
+- **Licence:** CC BY-SA 3.0
+- **Zdroj:** [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Spheniscus_magellanicus,_Seno_Otway,_Tierra_de_Fuego,_Chile1.jpg)
+- **Originál:** https://upload.wikimedia.org/wikipedia/commons/d/d2/Spheniscus_magellanicus%2C_Seno_Otway%2C_Tierra_de_Fuego%2C_Chile1.jpg
+- **Místo:** Seno Otway, region Magallanes, Chile (pobřeží ~65 km severně od Punta Arenas; pozor: název souboru uvádí "Tierra de Fuego", ale Seno Otway leží na pevnině Magallanes, nikoli v Ohňové zemi)
+- **Datum pořízení:** 2007-01-07
+- **Staženo:** 2026-04-19
+- **Použití:** hero druhu magellanský (Run 006c2); staženo jako 2000px thumbnail

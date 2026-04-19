@@ -1,8 +1,12 @@
 # Run 006c2: Seed zbývající 3 Spheniscus (brýlový, Humboldtův, magellanský)
 
-**Status:** TODO
+**Status:** IN-PROGRESS
 **Date:** 2026-04-19
 **Sprint:** 002-species
+**Dashboard Run:** 20
+
+<!-- dashboard-tasks: {"Výzkum 3 druhů (Wiki CS + EN + IUCN)": 84, "Stáhnout 3 hero fotky + CREDITS záznamy": 85, "Napsat 3 markdown soubory (brylovy, humboldtuv, magellansky)": 86, "Build + astro check verify (17 druhů)": 87} -->
+
 
 ## Kontext
 

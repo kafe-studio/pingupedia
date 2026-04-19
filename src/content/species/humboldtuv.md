@@ -1,0 +1,53 @@
+---
+nameCs: "Tučňák Humboldtův"
+nameLat: "Spheniscus humboldti"
+nameEn: "Humboldt penguin"
+genus: "Spheniscus"
+iucnStatus: "VU"
+description: "Druh žijící podél Humboldtova proudu na pobřeží Peru a Chile. Pojmenován po přírodovědci Alexandru von Humboldtovi. Populace citlivá na cyklus El Niño — při velkém El Niño 1982-83 klesla o 65 %."
+size:
+  heightCm: [56, 73]
+  weightKg: [2.9, 6.0]
+distribution:
+  - "Tichomořské pobřeží Peru a Chile podél Humboldtova proudu"
+  - "Severní hranice u mysu Parinas v Peru (asi 4° j. š.)"
+  - "Jižní hranice u ostrova Chiloé v jižním Chile"
+  - "Isla Chañaral a Isla Choros — největší chilské kolonie (Atacama, Coquimbo)"
+  - "Punta San Juan v Peru — hlavní chráněná kolonie"
+habitat: "Skalnaté pobřežní ostrovy a útesy chlazené Humboldtovým proudem. Tučňáci hnízdí v norách vyhloubených do silných vrstev guana, ve skalních puklinách nebo pod balvany. Upwelling studené vody udržuje teplotu moře kolem 15 °C i v tropech, zatímco vzduch může přes den překročit 30 °C — tučňáci proto pouštějí přebytečné teplo skrz neopeřené plošky na obličeji a nohou."
+diet:
+  - "Drobné hejnové ryby — sardele peruánské a sardinky"
+  - "Severnější kolonie konzumují makrelku severoatlantskou (Scomberesox saurus) a jehlici mořskou (Belone)"
+  - "Doplňkově olihně a drobní korýši"
+  - "Kořist velikosti 3-27 cm, běžný lov do hloubky 30 m, zaznamenáno až 54 m"
+lifespan:
+  wildYears: 15
+  captivityYears: 30
+population: "IUCN v roce 2020 odhaduje přibližně **23 800 dospělých jedinců** a populační trend klesající. Zhruba 80 % světové populace žije v chráněných oblastech severního Chile (regiony Atacama a Coquimbo). Před velkým El Niño 1982-1983 populace čítala odhadem 20 000 dospělých jedinců; po roce 1984 klesla na 2 100-3 000 ptáků, což je propad zhruba o 65 %. Od té doby se stavy zčásti vrátily, ale každé silné El Niño je znovu srazí."
+historicalNotes: "Druh popsal v roce 1834 německý lékař a přírodovědec Franz Julius Ferdinand Meyen během plavby kolem světa na pruské obchodní lodi *Princess Louise*. Jméno dal druhu na počest pruského přírodovědce **Alexandra von Humboldta**, který v letech 1802-1804 mapoval peruánské pobřeží a popsal studený mořský proud, jenž dnes nese jeho jméno a určuje ekologii celého druhu. V Peru se tučňákovi lidově přezdívá *pájaro-niño* (*pták-dítě*) kvůli kolébavé chůzi."
+hero:
+  src: "../../assets/penguins/humboldtuv/hero.jpg"
+  alt: "Tučňák Humboldtův na skalnatém ostrově Islas Ballestas u pobřeží Paracas v Peru"
+  author: "Pete Cable"
+  license: "CC BY 2.0"
+  sourceUrl: "https://commons.wikimedia.org/wiki/File:Spheniscus_humboldti,_Islas_Ballestas_1.jpg"
+sources:
+  - url: "https://cs.wikipedia.org/wiki/Tu%C4%8D%C5%88%C3%A1k_Humboldt%C5%AFv"
+    title: "Tučňák Humboldtův — Wikipedia (CS)"
+    type: "Wikipedia"
+  - url: "https://en.wikipedia.org/wiki/Humboldt_penguin"
+    title: "Humboldt penguin — Wikipedia (EN)"
+    type: "Wikipedia"
+  - url: "https://www.iucnredlist.org/species/22697817/182714418"
+    title: "Spheniscus humboldti — IUCN Red List"
+    type: "IUCN"
+    note: "Status Vulnerable, populace klesající, citlivá na El Niño"
+  - url: "https://datazone.birdlife.org/species/factsheet/humboldt-penguin-spheniscus-humboldti"
+    title: "Humboldt Penguin — BirdLife International factsheet"
+    type: "BirdLife"
+updatedAt: "2026-04-19"
+---
+
+Tučňák Humboldtův je středně velký pobřežní tučňák, který obývá **Tichomořské pobřeží Peru a Chile** podél studeného Humboldtova proudu. Dospělci měří 56 až 73 centimetrů a s hmotností kolem pěti kilogramů patří mezi **nejtěžší druhy rodu Spheniscus** — jsou tedy o něco větší než jejich bližší příbuzní tučňák brýlový a galapážský. Podobně jako ostatní zástupci rodu má černou hlavu lemovanou bílým proužkem od oka přes spánky k hrdlu, ale v porovnání s tučňákem magellanským má jen jeden výrazný černý pás přes hruď. Druh je silně vázaný na **Humboldtův proud** — studenou mořskou masu, která se valí od Antarktidy kolem jihoamerického pobřeží a tlačí se k severu až k Peru. Tam se potkává s teplejšími tropickými vodami a vytváří jeden z nejproduktivnějších mořských ekosystémů planety, plný sardel peruánských a sardinek — hlavní kořisti tučňáků.
+
+Druh popsal v roce 1834 německý přírodovědec **Franz Julius Ferdinand Meyen** během plavby kolem světa a pojmenoval ho po **Alexandru von Humboldtovi**, který o tři desetiletí dříve objevil a zmapoval studený proud odpovědný za neobvyklou produktivitu peruánského moře. Dnes IUCN vede druh jako *Vulnerable* a v roce 2020 odhaduje přibližně 23 800 dospělých jedinců s klesajícím trendem. Populace je mimořádně citlivá na cyklus **El Niño – Southern Oscillation**: když se povrchové vody v Tichomoří oteplí, sardele klesnou do větších hloubek a tučňáci zůstanou bez potravy. Největší zaznamenaný propad přineslo velké El Niño v letech 1982-1983, kdy se globální stavy snížily o zhruba 65 %. Zhruba 80 % dnešní populace žije v chráněných oblastech severního Chile — především na ostrovech **Chañaral** a **Choros**, tvořících národní rezervaci Pingüino de Humboldt. V Peru je klíčová kolonie na poloostrově Punta San Juan, kde druh chrání Peruánská univerzita agrární La Molina spolu s průmyslem sklízejícím guáno. Hlavními hrozbami zůstávají klimatické změny, přerybaření hejnových ryb, bycatch v rybářských sítích a plánovaná těžba u pobřežních kolonií.
