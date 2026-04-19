@@ -24,7 +24,7 @@ Populárně-naučná encyklopedie všech druhů tučňáků v češtině pro dě
 - [x] Run 005 — `/druhy/[slug]` detail (hero, fakta, historie, zdroje, galerie) → `docs/sprints/002-species/run-005-druhy-detail.done.md`
 - [ ] Run 006 — seed všech druhů tučňáků s texty + fotkami + zdroji (rozdělený na batche)
   - [x] Run 006a — Pygoscelis (3 druhy: kroužkový, oslí, uzdičkový) → `docs/sprints/002-species/run-006a-pygoscelis.done.md`
-  - [ ] Run 006b — Aptenodytes patagonský + Eudyptes (5–6 druhů)
+  - [ ] Run 006b — Aptenodytes patagonský + Eudyptes (6–7 druhů) → `docs/sprints/002-species/run-006b-aptenodytes-eudyptes.md`
   - [ ] Run 006c — Megadyptes + Eudyptula + Spheniscus (5 druhů)
 - [ ] Run 007 — fotogalerie per druh (lightbox, responsivní, bez ořezu)
 
