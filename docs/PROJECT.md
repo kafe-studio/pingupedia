@@ -49,6 +49,38 @@ Utility `.img-nocrop` je definovaná v `src/styles/global.css` a aplikuje `objec
 
 Každá fotka tučňáka musí mít záznam v `src/assets/penguins/CREDITS.md` (autor, licence, zdrojový URL, místo, datum). Sprint 005 tento soubor promítne do veřejné credits stránky.
 
+**Konvence adresářů:** `src/assets/penguins/<slug>/hero.jpg` pro hero fotku druhu, `gallery-1.jpg`, `gallery-2.jpg`… pro galerii. Slug odpovídá názvu souboru druhu v `src/content/species/` (např. `cisarsky`).
+
+## Datový model druhů
+
+Druhy jsou spravované přes Astro content collection `species` definovanou v [src/content.config.ts](src/content.config.ts). Každý druh je jeden markdown soubor v `src/content/species/<slug>.md` s frontmatterem validovaným přes zod schema a volitelným markdown body pro rozšířený popis.
+
+### Povinná pole
+
+- `nameCs`, `nameLat`, `genus` — česky, latinsky, rod
+- `iucnStatus` — enum: `LC` | `NT` | `VU` | `EN` | `CR` | `DD` | `EX`
+- `description` — krátký popis (≤ 240 znaků)
+- `size.heightCm`, `size.weightKg` — pole `[min, max]`
+- `distribution` — pole geografických oblastí
+- `habitat`, `diet`, `lifespan.wildYears`
+- `hero` — objekt s `src` (image asset), `alt`, `author`, `license`, `sourceUrl`
+- `sources` — minimálně **2** ověřené zdroje, každý s `url`, `title`, `type` (`Wikipedia` | `IUCN` | `BirdLife` | `Science` | `Museum` | `Other`)
+- `updatedAt` — datum poslední aktualizace
+
+### Volitelná pole
+
+- `nameEn`, `population`, `historicalNotes`
+- `lifespan.captivityYears`
+- `gallery` — pole objektů stejné struktury jako `hero`
+
+### Pravidla
+
+1. **Minimum 2 zdroje** — validator selže, pokud jich je méně. Každé faktické tvrzení v textu má oporu v nějakém z uvedených zdrojů.
+2. **Hero a gallery obrázky** používají Astro `image()` helper → ImageMetadata → přes `<NoCropImage>` renderované.
+3. **Markdown body** je prostor pro dva až čtyři paragrafy populárně-naučného textu — historie, chování, zajímavosti. Tón přístupný pro děti, ale věcný.
+
+Příklad viz [src/content/species/cisarsky.md](src/content/species/cisarsky.md).
+
 ## Tech stack
 
 - **Astro 6** + `@astrojs/cloudflare` (Workers, ne Pages)
@@ -83,5 +115,5 @@ Přidá se podle potřeby:
 ## Stav
 
 **Sprint:** 001
-**Hotové runy:** 001 (cleanup + brand)
-**Aktuální run:** 002 (layout, barevné schéma, obrázková pravidla)
+**Hotové runy:** 001 (cleanup + brand), 002 (layout + paleta + no-crop)
+**Aktuální run:** 003 (species content collection schema + testovací druh)

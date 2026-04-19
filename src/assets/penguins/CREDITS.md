@@ -1,10 +1,12 @@
 # Penguin photo credits
 
-Tento seznam sleduje licenční údaje pro všechny fotografie tučňáků v projektu. Každý soubor v tomto adresáři musí mít záznam níže. Sprint 005 tento soubor promítne do veřejné credits stránky.
+Tento seznam sleduje licenční údaje pro všechny fotografie tučňáků v projektu. Každý soubor v `src/assets/penguins/` musí mít záznam níže. Sprint 005 tento soubor promítne do veřejné credits stránky.
+
+**Konvence:** Fotky jsou organizované per druh v adresáři `src/assets/penguins/<slug>/`. Hero fotka vždy `hero.jpg`, galerie `gallery-1.jpg`, `gallery-2.jpg`, …
 
 ---
 
-## emperor-penguin-snow-hill.jpg
+## cisarsky/hero.jpg
 
 - **Druh:** Tučňák císařský (*Aptenodytes forsteri*)
 - **Autor:** Ian Duffy
@@ -14,3 +16,4 @@ Tento seznam sleduje licenční údaje pro všechny fotografie tučňáků v pro
 - **Místo:** Snow Hill Island, Antarktida
 - **Datum pořízení:** 2009-11-17
 - **Staženo:** 2026-04-19
+- **Použití:** hero druhu císařský, homepage hero (Run 002)

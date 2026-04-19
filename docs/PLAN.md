@@ -1,7 +1,7 @@
 # Plan: pingupedia
 
 **Vytvořeno:** 2026-04-19
-**Aktualizováno:** 2026-04-19 (Run 001 done)
+**Aktualizováno:** 2026-04-19 (Run 002 done)
 
 ## Cíl
 
@@ -14,8 +14,8 @@ Populárně-naučná encyklopedie všech druhů tučňáků v češtině pro dě
 **Cíl:** Očistit kostru, nastavit brand, vytvořit species schema se zdroji a licencemi.
 
 - [x] Run 001 — cleanup kostra, site config, brand → `docs/sprints/001-foundation/run-001-cleanup-brand.done.md`
-- [ ] Run 002 — layout, barevné schéma, obrázková pravidla (no-crop util) → `docs/sprints/001-foundation/run-002-layout-colors-image-rules.md`
-- [ ] Run 003 — species schema (cs), zdroje/citace, image handling
+- [x] Run 002 — layout, barevné schéma, obrázková pravidla (no-crop util) → `docs/sprints/001-foundation/run-002-layout-colors-image-rules.done.md`
+- [ ] Run 003 — species schema (cs), zdroje/citace, image handling → `docs/sprints/001-foundation/run-003-species-schema.md`
 
 ### Sprint 002 — Druhy
 **Cíl:** `/druhy` index + detail stránky, seed všech ~18 druhů tučňáků se zdroji a fotkami.
