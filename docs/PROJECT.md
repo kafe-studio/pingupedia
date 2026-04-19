@@ -114,5 +114,5 @@ Přidá se podle potřeby:
 
 ## Stav
 
-**Sprint:** 002 **probíhá** — Runy 004 (index) + 005 (detail) hotové, 006 rozdělen do batchů (006a Pygoscelis hotový, 006b1 Aptenodytes+3 Eudyptes hotový = 8 druhů naseedováno)
-**Další krok:** Run 006b2 — zbývající 3 Eudyptes (skalní severní, snaresky, Sclaterův), pak 006c (Megadyptes + Eudyptula + Spheniscus), pak 007 (galerie)
+**Sprint:** 002 **probíhá** — Runy 004 (index) + 005 (detail) hotové, 006 rozdělen do batchů (006a Pygoscelis, 006b1 Aptenodytes+3 Eudyptes, 006b2 zbývající 3 Eudyptes = 11 druhů naseedováno). Kompletní rody: Aptenodytes (2/2), Pygoscelis (3/3), Eudyptes (6/6).
+**Další krok:** Run 006c (Megadyptes + Eudyptula + Spheniscus — posledních 6 druhů), pak 007 (galerie)
