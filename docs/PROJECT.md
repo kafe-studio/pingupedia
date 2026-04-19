@@ -102,7 +102,7 @@ Přidá se podle potřeby:
 - [x] Layout, branding, obrázková pravidla
 - [x] Schema pro druhy se zdroji a licencí fotek
 - [x] `/druhy` index a `/druhy/[slug]` detail
-- [ ] Všech ~18 druhů naseedovaných se zdroji a fotkami (Run 006)
+- [x] Všech 17 druhů naseedovaných se zdroji a fotkami (Run 006 hotov — kompletní taxonomie)
 
 ### V1 (Sprint 003 + 004)
 - [ ] Mapa výskytu, historická osa, infografiky
@@ -114,5 +114,5 @@ Přidá se podle potřeby:
 
 ## Stav
 
-**Sprint:** 002 **probíhá** — Runy 004 + 005 + 006a + 006b1 + 006b2 + 006c1 hotové = **14 druhů naseedováno**. Kompletní rody: Aptenodytes (2/2), Pygoscelis (3/3), Eudyptes (6/6), Megadyptes (1/1), Eudyptula (1/1), Spheniscus (1/4 — galapážský).
-**Další krok:** Run 006c2 (zbývající 3 Spheniscus: brýlový, Humboldtův, magellanský) → 17 druhů, pak 007 (galerie)
+**Sprint:** 002 **probíhá** — Runy 004 + 005 + celý 006 hotové = **17/17 druhů naseedováno** (kompletní taxonomie). Kompletní rody: Aptenodytes (2/2), Pygoscelis (3/3), Eudyptes (6/6), Megadyptes (1/1), Eudyptula (1/1), Spheniscus (4/4). Zbývá Run 007 (fotogalerie per druh).
+**Další krok:** `/audit` kompletního seedu (faktická přesnost 17 druhů, IUCN URLs) → potom Run 007 (galerie).

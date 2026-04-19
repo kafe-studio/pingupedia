@@ -1,7 +1,7 @@
 # Plan: pingupedia
 
 **Vytvořeno:** 2026-04-19
-**Aktualizováno:** 2026-04-19 (Sprint 002 Run 006c1 hotový — Megadyptes + Eudyptula + Spheniscus mendiculus, celkem 14/~17 druhů)
+**Aktualizováno:** 2026-04-19 (Sprint 002 Run 006c2 hotový — zbývající 3 Spheniscus, celý seed dokončen 17/17 druhů)
 
 ## Cíl
 
@@ -27,7 +27,7 @@ Populárně-naučná encyklopedie všech druhů tučňáků v češtině pro dě
   - [x] Run 006b1 — Aptenodytes patagonský + 3 Eudyptes (patagonský, skalní jižní, zlatovlasý, royal) → `docs/sprints/002-species/run-006b1-aptenodytes-eudyptes1.done.md`
   - [x] Run 006b2 — zbývající 3 Eudyptes (skalní severní, snareský, Sclaterův) → `docs/sprints/002-species/run-006b2-eudyptes-remaining.done.md`
   - [x] Run 006c1 — Megadyptes + Eudyptula + Spheniscus mendiculus (3 unikátní rody) → `docs/sprints/002-species/run-006c1-unique-genera.done.md`
-  - [ ] Run 006c2 — zbývající 3 Spheniscus (brýlový, Humboldtův, magellanský) → `docs/sprints/002-species/run-006c2-spheniscus-remaining.md`
+  - [x] Run 006c2 — zbývající 3 Spheniscus (brýlový, Humboldtův, magellanský) → `docs/sprints/002-species/run-006c2-spheniscus-remaining.done.md`
 - [ ] Run 007 — fotogalerie per druh (lightbox, responsivní, bez ořezu)
 
 ### Sprint 003 — Mapy, historie, infografiky

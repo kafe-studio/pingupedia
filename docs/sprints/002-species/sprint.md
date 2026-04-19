@@ -20,5 +20,5 @@ Po dokončení je pingupedia použitelná jako encyklopedie — návštěvník v
 
 - [x] Run 004 — `/druhy` index (karty bez ořezu)
 - [x] Run 005 — `/druhy/[slug]` detail (hero, fakta, historie, zdroje)
-- [ ] Run 006 — seed všech druhů tučňáků s texty + fotkami + zdroji
+- [x] Run 006 — seed všech druhů tučňáků s texty + fotkami + zdroji (006a+006b1+006b2+006c1+006c2 = 17 druhů)
 - [ ] Run 007 — fotogalerie per druh (lightbox, responsivní, bez ořezu)
