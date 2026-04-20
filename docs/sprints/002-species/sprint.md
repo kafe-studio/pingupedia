@@ -1,7 +1,8 @@
 # Sprint 002: Druhy
 
-**Status:** in-progress
+**Status:** DONE
 **Dashboard Sprint:** 4
+**Dokončeno:** 2026-04-20 (Run 007e2 — 17/17 druhů s hero + galerií)
 **Cíl:** Veřejné stránky `/druhy/*` — index se seznamem druhů, detail s fakty/zdroji/galerií, seed všech ~18 druhů tučňáků.
 **Runy:** 004–007
 
@@ -21,4 +22,4 @@ Po dokončení je pingupedia použitelná jako encyklopedie — návštěvník v
 - [x] Run 004 — `/druhy` index (karty bez ořezu)
 - [x] Run 005 — `/druhy/[slug]` detail (hero, fakta, historie, zdroje)
 - [x] Run 006 — seed všech druhů tučňáků s texty + fotkami + zdroji (006a+006b1+006b2+006c1+006c2 = 17 druhů)
-- [ ] Run 007 — fotogalerie per druh (lightbox, responsivní, bez ořezu)
+- [x] Run 007 — fotogalerie per druh (lightbox + 17 druhů seeded v runech 007a–007e2)

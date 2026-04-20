@@ -1,7 +1,7 @@
 # Plan: pingupedia
 
 **Vytvořeno:** 2026-04-19
-**Aktualizováno:** 2026-04-20 (Sprint 002 Run 007e1 hotový — 4 druhy galerií: zlutooky, nejmensi, brylovy, humboldtuv)
+**Aktualizováno:** 2026-04-20 (**Sprint 002 KOMPLETNÍ** — 17/17 druhů s hero + galerií, celkem ~67 fotek z Commons)
 
 ## Cíl
 
@@ -18,6 +18,7 @@ Populárně-naučná encyklopedie všech druhů tučňáků v češtině pro dě
 - [x] Run 003 — species schema (cs), zdroje/citace, image handling → `docs/sprints/001-foundation/run-003-species-schema.done.md`
 
 ### Sprint 002 — Druhy
+**Stav:** hotovo (2026-04-20, všech 17 druhů + galerie)
 **Cíl:** `/druhy` index + detail stránky, seed všech ~18 druhů tučňáků se zdroji a fotkami.
 
 - [x] Run 004 — `/druhy` index (karty bez ořezu) → `docs/sprints/002-species/run-004-druhy-index.done.md` (filtr podle rodu přesunut na Sprint 004 Run 012)
@@ -34,7 +35,7 @@ Populárně-naučná encyklopedie všech druhů tučňáků v češtině pro dě
   - [x] Run 007c — galerie Eudyptes batch 1 (skalní jižní, zlatovlasý, royal) → `docs/sprints/002-species/run-007c-eudyptes-batch1.done.md`
   - [x] Run 007d — galerie Eudyptes batch 2 (skalní severní, snareský, Sclaterův) — rod Eudyptes 6/6 → `docs/sprints/002-species/run-007d-eudyptes-batch2.done.md`
   - [x] Run 007e1 — galerie Megadyptes + Eudyptula + 2 Spheniscus (zlutooky, nejmensi, brylovy, humboldtuv) → `docs/sprints/002-species/run-007e1-remaining-genera.done.md`
-  - [ ] Run 007e2 — galerie zbývajících 2 Spheniscus (magellansky, galapazsky) → **dokončení Sprintu 002**
+  - [x] Run 007e2 — galerie posledních 2 Spheniscus (magellansky, galapazsky) → **Sprint 002 KOMPLETNÍ** → `docs/sprints/002-species/run-007e2-final-spheniscus.done.md`
 
 ### Sprint 003 — Mapy, historie, infografiky
 **Cíl:** Interaktivní vizualizace — mapa výskytu, časová osa, infografiky.

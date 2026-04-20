@@ -98,11 +98,12 @@ Přidá se podle potřeby:
 
 ## Milníky
 
-### MVP (Sprint 001 + 002)
+### MVP (Sprint 001 + 002) ✅ HOTOVO
 - [x] Layout, branding, obrázková pravidla
 - [x] Schema pro druhy se zdroji a licencí fotek
 - [x] `/druhy` index a `/druhy/[slug]` detail
-- [x] Všech 17 druhů naseedovaných se zdroji a fotkami (Run 006 hotov — kompletní taxonomie)
+- [x] Všech 17 druhů naseedovaných se zdroji a fotkami (Run 006 hotov)
+- [x] Fotogalerie per druh (Run 007a–007e2: lightbox + ~50 gallery fotek)
 
 ### V1 (Sprint 003 + 004)
 - [ ] Mapa výskytu, historická osa, infografiky
@@ -114,5 +115,5 @@ Přidá se podle potřeby:
 
 ## Stav
 
-**Sprint:** 002 **probíhá** — Runy 004–006 + 007a/b/c/d/e1 hotové. Galerie funkční u **15/17 druhů**. Hotové rody: Aptenodytes (2/2), Pygoscelis (3/3), Eudyptes (6/6), Megadyptes (1/1), Eudyptula (1/1), Spheniscus (2/4 — brylovy + humboldtuv). Zbývá **magellansky + galapazsky**.
-**Další krok:** Run 007e2 — poslední 2 Spheniscus (magellansky, galapazsky) → **Sprint 002 kompletní** 17/17 druhů s galerií.
+**Sprint:** 002 **HOTOVO** (2026-04-20) — **17/17 druhů s hero + galerií**. Všechny rody kompletně pokryté: Aptenodytes (2/2), Pygoscelis (3/3), Eudyptes (6/6), Megadyptes (1/1), Eudyptula (1/1), Spheniscus (4/4). Celkem ~67 fotografií z Wikimedia Commons se správně vyplněnými licenčními údaji. Deploy na https://pingupedia.ukazka.workers.dev aktivní.
+**Další krok:** `/audit` Sprintu 002 (faktická přesnost všech 17 druhů, IUCN URLs, celkový polish) → poté Sprint 003 (mapy/historie/infografiky).
