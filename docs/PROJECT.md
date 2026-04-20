@@ -114,5 +114,5 @@ Přidá se podle potřeby:
 
 ## Stav
 
-**Sprint:** 002 **probíhá** — Runy 004 + 005 + 006 (17/17 druhů) + 007a (lightbox pilot) + **007b (4 druhy gallery)** hotové. Galerie funkční u 5/17 druhů: cisarsky, patagonsky + celý Pygoscelis rod (3 druhy). Zbývá 12 druhů na runy 007c/d/e.
-**Další krok:** Run 007c — galerie pro 3 Eudyptes (patagonský skalní jižní, zlatovlasý, royal). Alternativně `/audit` seedu před pokračováním.
+**Sprint:** 002 **probíhá** — Runy 004–006 + 007a/b/c hotové. Galerie funkční u **8/17 druhů**: cisarsky, patagonsky, 3× Pygoscelis (krouzkovy/osli/uzdickovy), 3× Eudyptes (skalni-jizni/zlatovlasy/royal). Zbývá 9 druhů na 007d + 007e.
+**Další krok:** Run 007d — galerie zbývajících 3 Eudyptes (skalní severní, snareský, Sclaterův).

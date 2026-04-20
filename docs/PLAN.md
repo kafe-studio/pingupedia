@@ -1,7 +1,7 @@
 # Plan: pingupedia
 
 **Vytvořeno:** 2026-04-19
-**Aktualizováno:** 2026-04-20 (Sprint 002 Run 007b hotový — galerie 4 druhů: patagonsky + celý Pygoscelis rod)
+**Aktualizováno:** 2026-04-20 (Sprint 002 Run 007c hotový — galerie 3 Eudyptes: skalní jižní, zlatovlasý, royal)
 
 ## Cíl
 
@@ -31,9 +31,9 @@ Populárně-naučná encyklopedie všech druhů tučňáků v češtině pro dě
 - [ ] Run 007 — fotogalerie per druh (lightbox, responsivní, bez ořezu)
   - [x] Run 007a — lightbox infrastruktura (native `<dialog>`) + pilot cisarsky (3 fotky) → `docs/sprints/002-species/run-007a-lightbox-pilot.done.md`
   - [x] Run 007b — galerie patagonský + celý Pygoscelis rod (4 druhy × 3 fotky) → `docs/sprints/002-species/run-007b-aptenodytes-pygoscelis-gallery.done.md`
-  - [ ] Run 007c — galerie Eudyptes (3 druhy: patagonský skalní jižní, zlatovlasý, royal)
+  - [x] Run 007c — galerie Eudyptes batch 1 (skalní jižní, zlatovlasý, royal) → `docs/sprints/002-species/run-007c-eudyptes-batch1.done.md`
   - [ ] Run 007d — galerie zbývajících Eudyptes (skalní severní, snareský, Sclaterův)
-  - [ ] Run 007e — galerie Megadyptes + Eudyptula + zbývající 3 Spheniscus (brýlový, Humboldtův, magellanský, galapážský)
+  - [ ] Run 007e — galerie Megadyptes + Eudyptula + 4× Spheniscus (brýlový, Humboldtův, magellanský, galapážský); zvaž rozdělit na 007e1/e2 (6 druhů je hodně)
 
 ### Sprint 003 — Mapy, historie, infografiky
 **Cíl:** Interaktivní vizualizace — mapa výskytu, časová osa, infografiky.
