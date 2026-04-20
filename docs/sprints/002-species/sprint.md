@@ -1,8 +1,9 @@
 # Sprint 002: Druhy
 
-**Status:** DONE
+**Status:** audited
 **Dashboard Sprint:** 4
 **Dokončeno:** 2026-04-20 (Run 007e2 — 17/17 druhů s hero + galerií)
+**Audit date:** 2026-04-20 (session 12 v kafe-dash, 17 checklist items)
 **Cíl:** Veřejné stránky `/druhy/*` — index se seznamem druhů, detail s fakty/zdroji/galerií, seed všech ~18 druhů tučňáků.
 **Runy:** 004–007
 
