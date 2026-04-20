@@ -114,5 +114,5 @@ Přidá se podle potřeby:
 
 ## Stav
 
-**Sprint:** 002 **probíhá** — Runy 004–006 + 007a/b/c hotové. Galerie funkční u **8/17 druhů**: cisarsky, patagonsky, 3× Pygoscelis (krouzkovy/osli/uzdickovy), 3× Eudyptes (skalni-jizni/zlatovlasy/royal). Zbývá 9 druhů na 007d + 007e.
-**Další krok:** Run 007d — galerie zbývajících 3 Eudyptes (skalní severní, snareský, Sclaterův).
+**Sprint:** 002 **probíhá** — Runy 004–006 + 007a/b/c/d hotové. Galerie funkční u **11/17 druhů**. Hotové rody: Aptenodytes (2/2), Pygoscelis (3/3), **Eudyptes (6/6 — dokončeno v 007d)**. Zbývá 6 druhů: Megadyptes (zlutooky), Eudyptula (nejmensi), Spheniscus (brylovy, humboldtuv, magellansky, galapazsky).
+**Další krok:** Run 007e1 — batch 4 druhů (Megadyptes + Eudyptula + 2 Spheniscus). Poté 007e2 s posledními 2 Spheniscus dokončí Sprint 002.
