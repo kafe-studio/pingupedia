@@ -642,6 +642,42 @@ Tento seznam sleduje licenční údaje pro všechny fotografie tučňáků v pro
 - **Staženo:** 2026-04-19
 - **Použití:** hero druhu galapážský (Run 006c1); původní rozlišení (1662×2424)
 
+## galapazsky/gallery-1.jpg
+
+- **Druh:** Tučňák galapážský (*Spheniscus mendiculus*) — skupina na lávové skále
+- **Autor:** James Preston
+- **Licence:** CC BY 2.0
+- **Zdroj:** [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Galapagos_penguins_(Spheniscus_mendiculus)_-on_rock_-Fernandina.jpg)
+- **Originál:** https://commons.wikimedia.org/wiki/Special:FilePath/Galapagos%20penguins%20%28Spheniscus%20mendiculus%29%20-on%20rock%20-Fernandina.jpg
+- **Místo:** Punta Espinosa, Fernandina, Galapágy
+- **Datum pořízení:** 2005-10-17
+- **Staženo:** 2026-04-20
+- **Použití:** gallery-1 druhu galapážský (Run 007e2); původní rozlišení (1920×2560)
+
+## galapazsky/gallery-2.jpg
+
+- **Druh:** Tučňák galapážský (*Spheniscus mendiculus*) — při plavání
+- **Autor:** Andrew Skujins (Theskuj)
+- **Licence:** CC BY-SA 3.0
+- **Zdroj:** [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Galapagos_Penguin_Swimming.jpg)
+- **Originál:** https://commons.wikimedia.org/wiki/Special:FilePath/Galapagos%20Penguin%20Swimming.jpg
+- **Místo:** Isabela Island, Galapágy (0°24'S, 90°12'W)
+- **Datum pořízení:** 2013-12-15
+- **Staženo:** 2026-04-20
+- **Použití:** gallery-2 druhu galapážský (Run 007e2); staženo jako 2000px thumbnail (3840×2560)
+
+## galapazsky/gallery-3.jpg
+
+- **Druh:** Tučňák galapážský (*Spheniscus mendiculus*) — recentní detail
+- **Autor:** Enoch Leung
+- **Licence:** CC BY-SA 4.0
+- **Zdroj:** [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Galapagos_penguin_2025-09-02_(54872135677).jpg)
+- **Originál:** https://commons.wikimedia.org/wiki/Special:FilePath/Galapagos%20penguin%202025-09-02%20%2854872135677%29.jpg
+- **Místo:** Galapágy (0°26'35"S, 91°23'20"W)
+- **Datum pořízení:** 2025-09-02
+- **Staženo:** 2026-04-20
+- **Použití:** gallery-3 druhu galapážský (Run 007e2); staženo jako 2000px thumbnail (3840×2560)
+
 ## brylovy/hero.jpg
 
 - **Druh:** Tučňák brýlový (*Spheniscus demersus*)
@@ -749,3 +785,39 @@ Tento seznam sleduje licenční údaje pro všechny fotografie tučňáků v pro
 - **Datum pořízení:** 2007-01-07
 - **Staženo:** 2026-04-19
 - **Použití:** hero druhu magellanský (Run 006c2); staženo jako 2000px thumbnail
+
+## magellansky/gallery-1.jpg
+
+- **Druh:** Tučňák magellanský (*Spheniscus magellanicus*) — v přírodním prostředí Chiloé (Quality image)
+- **Autor:** Charles J. Sharp
+- **Licence:** CC BY-SA 4.0
+- **Zdroj:** [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Magellanic_penguin_(Spheniscus_magellanicus)_Chiloe.jpg)
+- **Originál:** https://commons.wikimedia.org/wiki/Special:FilePath/Magellanic%20penguin%20%28Spheniscus%20magellanicus%29%20Chiloe.jpg
+- **Místo:** Puñihuil, Ancud, Chiloé Island, Chile (41°55'12"S, 74°02'24"W)
+- **Datum pořízení:** 2025-10-13
+- **Staženo:** 2026-04-20
+- **Použití:** gallery-1 druhu magellanský (Run 007e2); staženo jako 2000px thumbnail (3840×2560); Quality image
+
+## magellansky/gallery-2.jpg
+
+- **Druh:** Tučňák magellanský (*Spheniscus magellanicus*) — na Saunders Island
+- **Autor:** Andrew Shiva (User:Godot13)
+- **Licence:** CC BY-SA 4.0
+- **Zdroj:** [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:FAL-2017-Saunders_Island,_Falkland_Islands-Magellanic_penguin_(Spheniscus_magellanicus)_01.jpg)
+- **Originál:** https://commons.wikimedia.org/wiki/Special:FilePath/FAL-2017-Saunders%20Island%2C%20Falkland%20Islands-Magellanic%20penguin%20%28Spheniscus%20magellanicus%29%2001.jpg
+- **Místo:** Saunders Island, Falklandy (51°18'42"S, 60°05'38"W)
+- **Datum pořízení:** 2017-01-11
+- **Staženo:** 2026-04-20
+- **Použití:** gallery-2 druhu magellanský (Run 007e2); staženo jako 2000px thumbnail (3840×2161)
+
+## magellansky/gallery-3.jpg
+
+- **Druh:** Tučňák magellanský (*Spheniscus magellanicus*) — samec hladí samici ploutví
+- **Autor:** Stch2022
+- **Licence:** CC BY 4.0
+- **Zdroj:** [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:A_male_Magellanic_penguin_bird_(Spheniscus_magellanicus)_pats_its_mate_on_the_back_with_a_single_flipper.jpg)
+- **Originál:** https://commons.wikimedia.org/wiki/Special:FilePath/A%20male%20Magellanic%20penguin%20bird%20%28Spheniscus%20magellanicus%29%20pats%20its%20mate%20on%20the%20back%20with%20a%20single%20flipper.jpg
+- **Místo:** neuvedeno v metadatech
+- **Datum pořízení:** 2024-01-29
+- **Staženo:** 2026-04-20
+- **Použití:** gallery-3 druhu magellanský (Run 007e2); staženo jako 2000px thumbnail (3840×5120); Wiki Science Competition 2025
