@@ -258,6 +258,42 @@ Tento seznam sleduje licenční údaje pro všechny fotografie tučňáků v pro
 - **Staženo:** 2026-04-19
 - **Použití:** hero druhu skalní jižní (Run 006b1); staženo jako 2000px thumbnail
 
+## skalni-jizni/gallery-1.jpg
+
+- **Druh:** Tučňák skalní jižní (*Eudyptes chrysocome*) — skupina v kolonii
+- **Autor:** Liam Quinn
+- **Licence:** CC BY-SA 2.0
+- **Zdroj:** [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Rockhopper_Penguins_on_West_Point_Island_(5545427673).jpg)
+- **Originál:** https://commons.wikimedia.org/wiki/Special:FilePath/Rockhopper%20Penguins%20on%20West%20Point%20Island%20%285545427673%29.jpg
+- **Místo:** West Point Island, Falklandy (51°21'32"S, 60°42'28"W)
+- **Datum pořízení:** 2011-01-12
+- **Staženo:** 2026-04-20
+- **Použití:** gallery-1 druhu skalní jižní (Run 007c); 3360×3568
+
+## skalni-jizni/gallery-2.jpg
+
+- **Druh:** Tučňák skalní jižní (*Eudyptes chrysocome*) — vyskakuje na skálu
+- **Autor:** Liam Quinn
+- **Licence:** CC BY-SA 2.0
+- **Zdroj:** [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Rockhopper_Penguin_hopping_onto_rock_(5565663484).jpg)
+- **Originál:** https://commons.wikimedia.org/wiki/Special:FilePath/Rockhopper%20Penguin%20hopping%20onto%20rock%20%285565663484%29.jpg
+- **Místo:** Saunders Island, Falklandy (51°18'39"S, 60°14'10"W)
+- **Datum pořízení:** 2011-01-12
+- **Staženo:** 2026-04-20
+- **Použití:** gallery-2 druhu skalní jižní (Run 007c); staženo jako 2000px thumbnail (3840×2560)
+
+## skalni-jizni/gallery-3.jpg
+
+- **Druh:** Tučňák skalní jižní (*Eudyptes chrysocome*) — detail hlavy s chocholkou
+- **Autor:** Stefan Brending (Wikimedia user 2eight)
+- **Licence:** CC BY-SA 3.0 DE
+- **Zdroj:** [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:2024_Eudyptes_chrysocome_-_Felsenpinguin_-_by_2eight_-_9SC3799.jpg)
+- **Originál:** https://commons.wikimedia.org/wiki/Special:FilePath/2024%20Eudyptes%20chrysocome%20-%20Felsenpinguin%20-%20by%202eight%20-%209SC3799.jpg
+- **Místo:** New Island, Falklandy (51°43'3"S, 61°18'41"W)
+- **Datum pořízení:** 2024-10-22
+- **Staženo:** 2026-04-20
+- **Použití:** gallery-3 druhu skalní jižní (Run 007c); 1733×2600
+
 ## zlatovlasy/hero.jpg
 
 - **Druh:** Tučňák zlatovlasý (*Eudyptes chrysolophus*)
@@ -270,6 +306,42 @@ Tento seznam sleduje licenční údaje pro všechny fotografie tučňáků v pro
 - **Staženo:** 2026-04-19
 - **Použití:** hero druhu zlatovlasý (Run 006b1); staženo jako 2000px thumbnail
 
+## zlatovlasy/gallery-1.jpg
+
+- **Druh:** Tučňák zlatovlasý (*Eudyptes chrysolophus*) — mezi trsy trávy Poa flabellata
+- **Autor:** Liam Quinn
+- **Licence:** CC BY-SA 2.0
+- **Zdroj:** [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Macaroni_Penguin_amid_Tussock_Grass_(5892940910).jpg)
+- **Originál:** https://commons.wikimedia.org/wiki/Special:FilePath/Macaroni%20Penguin%20amid%20Tussock%20Grass%20%285892940910%29.jpg
+- **Místo:** Cooper Bay, Jižní Georgie (54°46'42"S, 35°49'13"W)
+- **Datum pořízení:** 2011-01-19
+- **Staženo:** 2026-04-20
+- **Použití:** gallery-1 druhu zlatovlasý (Run 007c); staženo jako 2000px thumbnail (3840×2560)
+
+## zlatovlasy/gallery-2.jpg
+
+- **Druh:** Tučňák zlatovlasý (*Eudyptes chrysolophus*) — detail hlavy s chocholkou
+- **Autor:** lwolfartist (Flickr)
+- **Licence:** CC BY 2.0
+- **Zdroj:** [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Macaroni_penguin_half_moon_island_1.17.25_DSC_9112-topaz-rawdenoise.jpg)
+- **Originál:** https://commons.wikimedia.org/wiki/Special:FilePath/Macaroni%20penguin%20half%20moon%20island%201.17.25%20DSC%209112-topaz-rawdenoise.jpg
+- **Místo:** Half Moon Island, Jižní Shetlandy, Antarktida
+- **Datum pořízení:** 2025-01-17
+- **Staženo:** 2026-04-20
+- **Použití:** gallery-2 druhu zlatovlasý (Run 007c); staženo jako 2000px thumbnail (3840×3072)
+
+## zlatovlasy/gallery-3.jpg
+
+- **Druh:** Tučňák zlatovlasý (*Eudyptes chrysolophus*) — osamělý pták
+- **Autor:** Nick (Flickr IntrepidExplorer82)
+- **Licence:** CC BY 2.0
+- **Zdroj:** [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Macaroni_penguin_(51051124073).jpg)
+- **Originál:** https://commons.wikimedia.org/wiki/Special:FilePath/Macaroni%20penguin%20%2851051124073%29.jpg
+- **Místo:** Murrell Farm, East Falkland, Falklandy
+- **Datum pořízení:** 2021-03-14
+- **Staženo:** 2026-04-20
+- **Použití:** gallery-3 druhu zlatovlasý (Run 007c); staženo jako 2000px thumbnail (3840×2161)
+
 ## royal/hero.jpg
 
 - **Druh:** Tučňák královský (*Eudyptes schlegeli*)
@@ -281,6 +353,42 @@ Tento seznam sleduje licenční údaje pro všechny fotografie tučňáků v pro
 - **Datum pořízení:** 2006-02-11
 - **Staženo:** 2026-04-19
 - **Použití:** hero druhu royal (Run 006b1); původní rozlišení (1379×1658)
+
+## royal/gallery-1.jpg
+
+- **Druh:** Tučňák královský (*Eudyptes schlegeli*) — kolonie 60 000 ptáků
+- **Autor:** Kimberley Collins
+- **Licence:** CC BY-SA 4.0
+- **Zdroj:** [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Colony_of_60,000_Royal_Penguins_on_MacQuarie_Island.jpg)
+- **Originál:** https://commons.wikimedia.org/wiki/Special:FilePath/Colony%20of%2060%2C000%20Royal%20Penguins%20on%20MacQuarie%20Island.jpg
+- **Místo:** ostrov Macquarie
+- **Datum pořízení:** 2010-12-15
+- **Staženo:** 2026-04-20
+- **Použití:** gallery-1 druhu royal (Run 007c); staženo jako 2000px thumbnail (3840×2571)
+
+## royal/gallery-2.jpg
+
+- **Druh:** Tučňák královský (*Eudyptes schlegeli*) — detail obličeje
+- **Autor:** Lin Padgham
+- **Licence:** CC BY 2.0
+- **Zdroj:** [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Royal_Penguin_FAce.jpg)
+- **Originál:** https://commons.wikimedia.org/wiki/Special:FilePath/Royal%20Penguin%20FAce.jpg
+- **Místo:** ostrov Macquarie
+- **Datum pořízení:** 2007-01-17
+- **Staženo:** 2026-04-20
+- **Použití:** gallery-2 druhu royal (Run 007c); původní rozlišení (843×666) — malý, ale dobrý close-up
+
+## royal/gallery-3.jpg
+
+- **Druh:** Tučňák královský (*Eudyptes schlegeli*) — ptáci na oblázkové pláži
+- **Autor:** M. Murphy
+- **Licence:** Public domain (uvolněno autorem)
+- **Zdroj:** [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:MacquarieIsland9.JPG)
+- **Originál:** https://commons.wikimedia.org/wiki/Special:FilePath/MacquarieIsland9.JPG
+- **Místo:** ostrov Macquarie
+- **Datum pořízení:** 2006-02-11
+- **Staženo:** 2026-04-20
+- **Použití:** gallery-3 druhu royal (Run 007c); původní rozlišení (3072×2304)
 
 ## skalni-severni/hero.jpg
 
