@@ -1,7 +1,7 @@
 # Plan: pingupedia
 
 **Vytvořeno:** 2026-04-19
-**Aktualizováno:** 2026-04-19 (Sprint 002 Run 006c2 hotový — zbývající 3 Spheniscus, celý seed dokončen 17/17 druhů)
+**Aktualizováno:** 2026-04-20 (Sprint 002 Run 007a hotový — lightbox infrastruktura + pilot galerie cisarsky)
 
 ## Cíl
 
@@ -29,6 +29,8 @@ Populárně-naučná encyklopedie všech druhů tučňáků v češtině pro dě
   - [x] Run 006c1 — Megadyptes + Eudyptula + Spheniscus mendiculus (3 unikátní rody) → `docs/sprints/002-species/run-006c1-unique-genera.done.md`
   - [x] Run 006c2 — zbývající 3 Spheniscus (brýlový, Humboldtův, magellanský) → `docs/sprints/002-species/run-006c2-spheniscus-remaining.done.md`
 - [ ] Run 007 — fotogalerie per druh (lightbox, responsivní, bez ořezu)
+  - [x] Run 007a — lightbox infrastruktura (native `<dialog>`) + pilot cisarsky (3 fotky) → `docs/sprints/002-species/run-007a-lightbox-pilot.done.md`
+  - [ ] Run 007b+ — postupný seed galerií pro zbývajících 16 druhů (2-3 fotky/druh, batch 4-5 druhů/run)
 
 ### Sprint 003 — Mapy, historie, infografiky
 **Cíl:** Interaktivní vizualizace — mapa výskytu, časová osa, infografiky.

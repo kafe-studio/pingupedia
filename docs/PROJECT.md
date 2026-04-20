@@ -114,5 +114,5 @@ Přidá se podle potřeby:
 
 ## Stav
 
-**Sprint:** 002 **probíhá** — Runy 004 + 005 + celý 006 hotové = **17/17 druhů naseedováno** (kompletní taxonomie). Kompletní rody: Aptenodytes (2/2), Pygoscelis (3/3), Eudyptes (6/6), Megadyptes (1/1), Eudyptula (1/1), Spheniscus (4/4). Zbývá Run 007 (fotogalerie per druh).
-**Další krok:** `/audit` kompletního seedu (faktická přesnost 17 druhů, IUCN URLs) → potom Run 007 (galerie).
+**Sprint:** 002 **probíhá** — Runy 004 + 005 + 006 (17/17 druhů) + **007a (lightbox pilot)** hotové. Galerie funkční u `cisarsky` (3 fotky). Zbývá Run 007b+ — postupný seed galerií pro zbývajících 16 druhů.
+**Další krok:** Run 007b — batch 4-5 druhů s galeriemi (např. Aptenodytes patagonský + celý Pygoscelis rod). Alternativně `/audit` seedu před pokračováním.
