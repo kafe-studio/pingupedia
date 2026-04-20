@@ -17,6 +17,7 @@ export const siteConfig = {
   },
   navLinks: [
     { text: "Druhy", href: "/druhy/" },
+    { text: "Hry", href: "/hry/" },
     { text: "O projektu", href: "/o-projektu/" },
   ],
 };

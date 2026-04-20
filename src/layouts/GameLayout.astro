@@ -1,0 +1,44 @@
+---
+interface Props {
+  title: string;
+  description?: string;
+}
+import { Font } from "astro:assets";
+import "../styles/global.css";
+import { siteConfig } from "../config/site";
+const { title, description } = Astro.props;
+---
+
+<!doctype html>
+<html lang={siteConfig.lang} data-variant="arctic">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex" />
+    <title>{title} — hry | {siteConfig.name}</title>
+    {description && <meta name="description" content={description} />}
+    <Font cssVariable="--font-inter" preload />
+    <script is:inline>
+      (() => {
+        try {
+          const saved = localStorage.getItem("pingupedia-theme");
+          const valid = ["arctic", "sunny", "ocean", "candy", "midnight"];
+          if (saved && valid.includes(saved)) {
+            document.documentElement.setAttribute("data-variant", saved);
+          }
+        } catch {
+          /* ok */
+        }
+      })();
+    </script>
+  </head>
+  <body class="bg-background text-foreground antialiased">
+    <main class="min-h-screen relative z-10"><slot /></main>
+    <a
+      href="/hry/"
+      class="fixed top-4 left-4 z-50 inline-flex items-center gap-2 rounded-full bg-card border border-border px-3 py-1.5 text-xs font-medium text-foreground/80 backdrop-blur-sm hover:text-primary"
+    >
+      ← Zpět do herny
+    </a>
+  </body>
+</html>

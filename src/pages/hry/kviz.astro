@@ -1,0 +1,155 @@
+---
+export const prerender = true;
+import GameLayout from "../../layouts/GameLayout.astro";
+import { quizQuestions } from "../../lib/games/quiz-data";
+
+const data = JSON.stringify(quizQuestions);
+---
+
+<GameLayout title="Kvíz" description="Otestuj si, co víš o tučňácích.">
+  <div class="mx-auto max-w-2xl px-6 py-20">
+    <header class="mb-8 text-center">
+      <p class="text-xs uppercase tracking-[0.2em] text-primary mb-3">Mini-hra</p>
+      <h1 class="text-4xl md:text-5xl font-black mb-3">Kvíz o tučňácích</h1>
+      <p class="text-muted-foreground">5 otázek. Vyber správnou odpověď a zjisti něco nového.</p>
+    </header>
+
+    <div id="quiz-root" class="bento-card p-6 md:p-8" data-questions={data}>
+      <div class="mb-4 flex items-center justify-between text-sm text-muted-foreground">
+        <span data-progress>Otázka 1 z 5</span>
+        <span data-score>Skóre: 0</span>
+      </div>
+      <div class="h-2 rounded-full bg-muted overflow-hidden mb-6">
+        <div data-bar class="h-full bg-primary transition-[width] duration-300" style="width: 20%;"></div>
+      </div>
+      <h2 data-question class="text-xl md:text-2xl font-bold mb-5 leading-snug"></h2>
+      <ul data-options class="grid gap-3"></ul>
+      <p data-feedback class="mt-5 text-sm" hidden></p>
+      <div class="mt-6 flex justify-end">
+        <button
+          data-next
+          type="button"
+          class="btn-primary"
+          disabled
+        >
+          Další otázka →
+        </button>
+      </div>
+    </div>
+
+    <div id="quiz-finish" class="bento-card bento-surface-aurora p-8 text-center text-white hidden">
+      <p class="text-xs uppercase tracking-widest text-accent font-semibold mb-3">Hotovo!</p>
+      <h2 class="text-3xl font-black mb-2">Tvůj výsledek</h2>
+      <p data-final class="text-6xl font-black my-6">0 / 5</p>
+      <p data-final-msg class="text-white/85 mb-6"></p>
+      <div class="flex flex-wrap justify-center gap-3">
+        <button data-retry type="button" class="btn-primary">Hrát znovu</button>
+        <a href="/druhy/" class="btn-outline text-white border-white/40">Prozkoumat druhy →</a>
+      </div>
+    </div>
+  </div>
+</GameLayout>
+
+<script>
+  interface Question {
+    question: string;
+    options: string[];
+    correct: number;
+    explanation: string;
+  }
+
+  const root = document.getElementById("quiz-root")!;
+  const finish = document.getElementById("quiz-finish")!;
+
+  const questions: Question[] = JSON.parse(root.dataset.questions || "[]");
+  let currentIndex = 0;
+  let score = 0;
+  let answered = false;
+
+  const $question = root.querySelector<HTMLElement>("[data-question]")!;
+  const $options = root.querySelector<HTMLElement>("[data-options]")!;
+  const $feedback = root.querySelector<HTMLParagraphElement>("[data-feedback]")!;
+  const $next = root.querySelector<HTMLButtonElement>("[data-next]")!;
+  const $progress = root.querySelector<HTMLElement>("[data-progress]")!;
+  const $score = root.querySelector<HTMLElement>("[data-score]")!;
+  const $bar = root.querySelector<HTMLElement>("[data-bar]")!;
+  const $final = finish.querySelector<HTMLElement>("[data-final]")!;
+  const $finalMsg = finish.querySelector<HTMLElement>("[data-final-msg]")!;
+  const $retry = finish.querySelector<HTMLButtonElement>("[data-retry]")!;
+
+  function render(): void {
+    const q = questions[currentIndex];
+    answered = false;
+    $question.textContent = q.question;
+    $options.innerHTML = "";
+    $feedback.hidden = true;
+    $next.disabled = true;
+    $next.textContent =
+      currentIndex === questions.length - 1 ? "Ukončit kvíz" : "Další otázka →";
+    $progress.textContent = `Otázka ${currentIndex + 1} z ${questions.length}`;
+    $score.textContent = `Skóre: ${score}`;
+    $bar.style.width = `${((currentIndex + 1) / questions.length) * 100}%`;
+
+    q.options.forEach((text, i) => {
+      const li = document.createElement("li");
+      const btn = document.createElement("button");
+      btn.type = "button";
+      btn.className =
+        "w-full text-left rounded-xl border border-border bg-muted/30 px-4 py-3 font-medium hover:border-border-interactive transition-colors cursor-pointer";
+      btn.textContent = text;
+      btn.addEventListener("click", () => selectAnswer(i));
+      li.appendChild(btn);
+      $options.appendChild(li);
+    });
+  }
+
+  function selectAnswer(index: number): void {
+    if (answered) return;
+    answered = true;
+    const q = questions[currentIndex];
+    const buttons = Array.from($options.querySelectorAll("button"));
+    buttons.forEach((b, i) => {
+      b.disabled = true;
+      if (i === q.correct) b.classList.add("!border-emerald-500", "!bg-emerald-500/10", "!text-emerald-200");
+      if (i === index && i !== q.correct) b.classList.add("!border-rose-500", "!bg-rose-500/10", "!text-rose-200");
+    });
+    if (index === q.correct) score++;
+    $score.textContent = `Skóre: ${score}`;
+    $feedback.textContent = q.explanation;
+    $feedback.hidden = false;
+    $next.disabled = false;
+  }
+
+  function finishQuiz(): void {
+    root.classList.add("hidden");
+    finish.classList.remove("hidden");
+    $final.textContent = `${score} / ${questions.length}`;
+    const pct = score / questions.length;
+    const msg =
+      pct === 1
+        ? "Perfektní! Jsi opravdový znalec tučňáků."
+        : pct >= 0.6
+          ? "Dobrá práce! Většinu tučňáčích záhad máš pod palcem."
+          : "Projdi si pár druhů a zkus to znovu — brzy budeš expert.";
+    $finalMsg.textContent = msg;
+  }
+
+  $next.addEventListener("click", () => {
+    if (currentIndex < questions.length - 1) {
+      currentIndex++;
+      render();
+    } else {
+      finishQuiz();
+    }
+  });
+
+  $retry.addEventListener("click", () => {
+    currentIndex = 0;
+    score = 0;
+    finish.classList.add("hidden");
+    root.classList.remove("hidden");
+    render();
+  });
+
+  render();
+</script>
