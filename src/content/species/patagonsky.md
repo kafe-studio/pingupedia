@@ -46,6 +46,14 @@ gallery:
     author: "Andrew Shiva"
     license: "CC BY-SA 4.0"
     sourceUrl: "https://commons.wikimedia.org/wiki/File:SGI-2016-South_Georgia_(Fortuna_Bay)%E2%80%93King_penguin_(Aptenodytes_patagonicus)_03.jpg"
+audio:
+  mediaUrl: "https://upload.wikimedia.org/wikipedia/commons/9/97/King_Penguin_Rookery_Audio.oga"
+  mimeType: "audio/ogg"
+  caption: "Volání kolonie tučňáků patagonských z Lusitania Bay na ostrově Macquarie — trubkovité zvuky desítek ptáků pohromadě."
+  author: "Hullwarren"
+  license: "CC BY-SA 3.0"
+  sourceUrl: "https://commons.wikimedia.org/wiki/File:King_Penguin_Rookery_Audio.oga"
+  durationSec: 29
 sources:
   - url: "https://cs.wikipedia.org/wiki/Tu%C4%8D%C5%88%C3%A1k_patagonsk%C3%BD"
     title: "Tučňák patagonský — Wikipedia (CS)"

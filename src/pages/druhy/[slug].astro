@@ -7,6 +7,7 @@ import SpeciesHero from "../../components/species/SpeciesHero.astro";
 import SpeciesFacts from "../../components/species/SpeciesFacts.astro";
 import SpeciesSources from "../../components/species/SpeciesSources.astro";
 import SpeciesGallery from "../../components/species/SpeciesGallery.astro";
+import SpeciesMedia from "../../components/species/SpeciesMedia.astro";
 
 export const getStaticPaths = (async () => {
   const species = await getCollection("species");
@@ -56,6 +57,8 @@ const metadata = {
     {gallery && gallery.length > 0 && (
       <SpeciesGallery photos={gallery} galleryId={`gallery-${entry.id}`} />
     )}
+
+    <SpeciesMedia species={entry} />
 
     <SpeciesSources species={entry} />
 

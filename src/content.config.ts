@@ -63,6 +63,29 @@ const species = defineCollection({
           }),
         )
         .optional(),
+      audio: z
+        .object({
+          mediaUrl: z.url(),
+          mimeType: z.string().min(1),
+          caption: z.string().min(1),
+          author: z.string().min(1),
+          license: z.string().min(1),
+          sourceUrl: z.url(),
+          durationSec: z.number().positive().optional(),
+        })
+        .optional(),
+      video: z
+        .object({
+          mediaUrl: z.url(),
+          mimeType: z.string().min(1),
+          caption: z.string().min(1),
+          author: z.string().min(1),
+          license: z.string().min(1),
+          sourceUrl: z.url(),
+          durationSec: z.number().positive().optional(),
+          posterUrl: z.url().optional(),
+        })
+        .optional(),
       sources: z.array(source).min(2),
       updatedAt: z.coerce.date(),
     }),

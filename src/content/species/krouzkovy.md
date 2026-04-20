@@ -44,6 +44,14 @@ gallery:
     author: "ravas51"
     license: "CC BY-SA 2.0"
     sourceUrl: "https://commons.wikimedia.org/wiki/File:Adelie_penguins_in_the_South_Shetland_Islands.jpg"
+video:
+  mediaUrl: "https://upload.wikimedia.org/wikipedia/commons/c/cc/Ad%C3%A9lie_penguin_%28Pygoscelis_adeliae%29_in_Antarctica.webm"
+  mimeType: "video/webm"
+  caption: "Krátký záběr tučňáka kroužkového v Antarktidě, listopad 2012."
+  author: "Lauren Farmer"
+  license: "CC BY 3.0"
+  sourceUrl: "https://commons.wikimedia.org/wiki/File:Ad%C3%A9lie_penguin_(Pygoscelis_adeliae)_in_Antarctica.webm"
+  durationSec: 11
 sources:
   - url: "https://cs.wikipedia.org/wiki/Tu%C4%8D%C5%88%C3%A1k_krou%C5%BEkov%C3%BD"
     title: "Tučňák kroužkový — Wikipedia (CS)"

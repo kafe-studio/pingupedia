@@ -46,6 +46,14 @@ gallery:
     author: "Liam Quinn"
     license: "CC BY-SA 2.0"
     sourceUrl: "https://commons.wikimedia.org/wiki/File:Gentoo_Penguin_out_for_a_stroll_(6122941556).jpg"
+video:
+  mediaUrl: "https://upload.wikimedia.org/wikipedia/commons/a/ae/Gentoo_penguins_%28Pygoscelis_papua%29_in_Antarctica.webm"
+  mimeType: "video/webm"
+  caption: "Tučňáci oslí v Neko Harbor na Antarktickém poloostrově — pohyb koloniem, interakce."
+  author: "Bettina May"
+  license: "CC BY 3.0"
+  sourceUrl: "https://commons.wikimedia.org/wiki/File:Gentoo_penguins_(Pygoscelis_papua)_in_Antarctica.webm"
+  durationSec: 53
 sources:
   - url: "https://cs.wikipedia.org/wiki/Tu%C4%8D%C5%88%C3%A1k_osl%C3%AD"
     title: "Tučňák oslí — Wikipedia (CS)"

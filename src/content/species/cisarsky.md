@@ -42,6 +42,14 @@ gallery:
     author: "Matthieu Weber"
     license: "public domain"
     sourceUrl: "https://commons.wikimedia.org/wiki/File:Cr%C3%A8che_de_poussins_manchot_empereur.jpg"
+video:
+  mediaUrl: "https://upload.wikimedia.org/wikipedia/commons/6/65/Emperor_penguins_%E2%80%93_the_biggest_of_all.webm"
+  mimeType: "video/webm"
+  caption: "Kolonie tučňáků císařských na mořském ledě Antarktidy — chůze, interakce, péče o mláďata."
+  author: "Discovering Antarctica"
+  license: "CC BY 3.0"
+  sourceUrl: "https://commons.wikimedia.org/wiki/File:Emperor_penguins_%E2%80%93_the_biggest_of_all.webm"
+  durationSec: 47
 sources:
   - url: "https://cs.wikipedia.org/wiki/Tu%C4%8D%C5%88%C3%A1k_c%C3%ADsa%C5%99sk%C3%BD"
     title: "Tučňák císařský — Wikipedia (CS)"
