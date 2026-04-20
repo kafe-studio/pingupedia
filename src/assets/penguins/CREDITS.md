@@ -66,6 +66,42 @@ Tento seznam sleduje licenční údaje pro všechny fotografie tučňáků v pro
 - **Staženo:** 2026-04-19
 - **Použití:** hero druhu kroužkový (Run 006a)
 
+## krouzkovy/gallery-1.jpg
+
+- **Druh:** Tučňák kroužkový (*Pygoscelis adeliae*) — vyskakuje z vody na led
+- **Autor:** Rob Oo
+- **Licence:** CC BY 2.0
+- **Zdroj:** [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Jump!_(31423155243).jpg)
+- **Originál:** https://commons.wikimedia.org/wiki/Special:FilePath/Jump%21%20%2831423155243%29.jpg
+- **Místo:** Antarktický poloostrov (63°30'41"S, 56°54'03"W)
+- **Datum pořízení:** 2016-12-13
+- **Staženo:** 2026-04-20
+- **Použití:** gallery-1 druhu kroužkový (Run 007b); staženo jako 2000px thumbnail (3840×2160)
+
+## krouzkovy/gallery-2.jpg
+
+- **Druh:** Tučňák kroužkový (*Pygoscelis adeliae*) — mláďata v péřovém šatě
+- **Autor:** Grant.C (Grant Culham)
+- **Licence:** CC BY 2.0
+- **Zdroj:** [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Penguin_chicks_(24340488350).jpg)
+- **Originál:** https://commons.wikimedia.org/wiki/Special:FilePath/Penguin%20chicks%20%2824340488350%29.jpg
+- **Místo:** Paulet Island, Antarktida
+- **Datum pořízení:** 2015-12-23
+- **Staženo:** 2026-04-20
+- **Použití:** gallery-2 druhu kroužkový (Run 007b); staženo jako 2000px thumbnail (3600×2400)
+
+## krouzkovy/gallery-3.jpg
+
+- **Druh:** Tučňák kroužkový (*Pygoscelis adeliae*) — tři adultní ptáci na sněhu (Featured picture)
+- **Autor:** ravas51 (Flickr)
+- **Licence:** CC BY-SA 2.0
+- **Zdroj:** [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Adelie_penguins_in_the_South_Shetland_Islands.jpg)
+- **Originál:** https://commons.wikimedia.org/wiki/Special:FilePath/Adelie%20penguins%20in%20the%20South%20Shetland%20Islands.jpg
+- **Místo:** Jižní Shetlandy, Antarktida
+- **Datum pořízení:** 2013-02-04
+- **Staženo:** 2026-04-20
+- **Použití:** gallery-3 druhu kroužkový (Run 007b); Featured picture Commons (POTD 2023-11-26); staženo jako 2000px thumbnail (3840×2160)
+
 ## osli/hero.jpg
 
 - **Druh:** Tučňák oslí (*Pygoscelis papua*)
@@ -77,6 +113,42 @@ Tento seznam sleduje licenční údaje pro všechny fotografie tučňáků v pro
 - **Datum pořízení:** 2011-01-19
 - **Staženo:** 2026-04-19
 - **Použití:** hero druhu oslí (Run 006a)
+
+## osli/gallery-1.jpg
+
+- **Druh:** Tučňák oslí (*Pygoscelis papua*) — kolonie
+- **Autor:** Nick (Flickr IntrepidExplorer82)
+- **Licence:** CC BY 2.0
+- **Zdroj:** [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Gentoo_colony_(51051933422).jpg)
+- **Originál:** https://commons.wikimedia.org/wiki/Special:FilePath/Gentoo%20colony%20%2851051933422%29.jpg
+- **Místo:** Murrell Farm, East Falkland, Falklandy
+- **Datum pořízení:** 2021-03-14
+- **Staženo:** 2026-04-20
+- **Použití:** gallery-1 druhu oslí (Run 007b); staženo jako 2000px thumbnail (3840×2161)
+
+## osli/gallery-2.jpg
+
+- **Druh:** Tučňák oslí (*Pygoscelis papua*) — mládě
+- **Autor:** Christopher Michel
+- **Licence:** CC BY 2.0
+- **Zdroj:** [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Gentoo_Penguin_Baby_(24940372635).jpg)
+- **Originál:** https://commons.wikimedia.org/wiki/Special:FilePath/Gentoo%20Penguin%20Baby%20%2824940372635%29.jpg
+- **Místo:** Antarktida (loď Sea Adventurer)
+- **Datum pořízení:** 2016-02-02
+- **Staženo:** 2026-04-20
+- **Použití:** gallery-2 druhu oslí (Run 007b); původní rozlišení (1117×1280)
+
+## osli/gallery-3.jpg
+
+- **Druh:** Tučňák oslí (*Pygoscelis papua*) — dospělec na procházce
+- **Autor:** Liam Quinn
+- **Licence:** CC BY-SA 2.0
+- **Zdroj:** [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Gentoo_Penguin_out_for_a_stroll_(6122941556).jpg)
+- **Originál:** https://commons.wikimedia.org/wiki/Special:FilePath/Gentoo%20Penguin%20out%20for%20a%20stroll%20%286122941556%29.jpg
+- **Místo:** Waterboat Point, Antarktida (64°49'05"S, 62°52'40"W)
+- **Datum pořízení:** 2011-01-25
+- **Staženo:** 2026-04-20
+- **Použití:** gallery-3 druhu oslí (Run 007b); staženo jako 2000px thumbnail (3840×2668)
 
 ## uzdickovy/hero.jpg
 
@@ -90,6 +162,42 @@ Tento seznam sleduje licenční údaje pro všechny fotografie tučňáků v pro
 - **Staženo:** 2026-04-19
 - **Použití:** hero druhu uzdičkový (Run 006a)
 
+## uzdickovy/gallery-1.jpg
+
+- **Druh:** Tučňák uzdičkový (*Pygoscelis antarcticus*) — kolonie
+- **Autor:** Christopher Michel
+- **Licence:** CC BY 2.0
+- **Zdroj:** [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Antarctica_2013_Journey_to_the_Crystal_Desert_(8370611982).jpg)
+- **Originál:** https://commons.wikimedia.org/wiki/Special:FilePath/Antarctica%202013%20Journey%20to%20the%20Crystal%20Desert%20%288370611982%29.jpg
+- **Místo:** Jižní Shetlandy, Antarktida (62°55'20"S, 60°38'13"W)
+- **Datum pořízení:** 2013-01-08
+- **Staženo:** 2026-04-20
+- **Použití:** gallery-1 druhu uzdičkový (Run 007b); staženo jako 2000px thumbnail (3840×2781)
+
+## uzdickovy/gallery-2.jpg
+
+- **Druh:** Tučňák uzdičkový (*Pygoscelis antarcticus*) — dospělec s mláďaty
+- **Autor:** Lt. Philip Hall, NOAA Corps
+- **Licence:** Public domain (work of U.S. federal employee / NOAA)
+- **Zdroj:** [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Chinstrap_penguin_and_chicks_on_Seal_Island,_1993-94_Austral_Summer.jpg)
+- **Originál:** https://commons.wikimedia.org/wiki/Special:FilePath/Chinstrap%20penguin%20and%20chicks%20on%20Seal%20Island%2C%201993-94%20Austral%20Summer.jpg
+- **Místo:** Seal Island, Jižní Shetlandy, Antarktida
+- **Datum pořízení:** 1993/94 Austral Summer
+- **Staženo:** 2026-04-20
+- **Použití:** gallery-2 druhu uzdičkový (Run 007b); původní rozlišení (1208×1808)
+
+## uzdickovy/gallery-3.jpg
+
+- **Druh:** Tučňák uzdičkový (*Pygoscelis antarcticus*) — detail hlavy
+- **Autor:** lwolfartist (Flickr)
+- **Licence:** CC BY 2.0
+- **Zdroj:** [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Chinstrap_penguin_half_moon_island_1.17.25_DSC_9069-topaz-rawdenoise.jpg)
+- **Originál:** https://commons.wikimedia.org/wiki/Special:FilePath/Chinstrap%20penguin%20half%20moon%20island%201.17.25%20DSC%209069-topaz-rawdenoise.jpg
+- **Místo:** Half Moon Island, Jižní Shetlandy, Antarktida
+- **Datum pořízení:** 2025-01-17
+- **Staženo:** 2026-04-20
+- **Použití:** gallery-3 druhu uzdičkový (Run 007b); staženo jako 2000px thumbnail (3840×2555)
+
 ## patagonsky/hero.jpg
 
 - **Druh:** Tučňák patagonský (*Aptenodytes patagonicus*)
@@ -101,6 +209,42 @@ Tento seznam sleduje licenční údaje pro všechny fotografie tučňáků v pro
 - **Datum pořízení:** 2020-11-13
 - **Staženo:** 2026-04-19
 - **Použití:** hero druhu patagonský (Run 006b1); staženo jako 2000px thumbnail
+
+## patagonsky/gallery-1.jpg
+
+- **Druh:** Tučňák patagonský (*Aptenodytes patagonicus*) — dospělec v kolonii
+- **Autor:** Andrew Shiva (User:Godot13)
+- **Licence:** CC BY-SA 4.0
+- **Zdroj:** [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:SGI-2016-South_Georgia_(Salisbury_Plain)%E2%80%93King_penguin_(Aptenodytes_patagonicus)_02.jpg)
+- **Originál:** https://commons.wikimedia.org/wiki/Special:FilePath/SGI-2016-South%20Georgia%20%28Salisbury%20Plain%29%E2%80%93King%20penguin%20%28Aptenodytes%20patagonicus%29%2002.jpg
+- **Místo:** Salisbury Plain, Jižní Georgie (54°03'05"S, 37°21'12"W)
+- **Datum pořízení:** 2016-01-09
+- **Staženo:** 2026-04-20
+- **Použití:** gallery-1 druhu patagonský (Run 007b); Quality image; staženo jako 2000px thumbnail (vráceno 3840×5759)
+
+## patagonsky/gallery-2.jpg
+
+- **Druh:** Tučňák patagonský (*Aptenodytes patagonicus*) — skupina hnědě ochmýřených mláďat
+- **Autor:** Butterfly austral
+- **Licence:** CC BY-SA 3.0
+- **Zdroj:** [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:King_Penguins_(Youngs).jpg)
+- **Originál:** https://upload.wikimedia.org/wikipedia/commons/0/0e/King_Penguins_%28Youngs%29.jpg
+- **Místo:** Gold Harbour, Jižní Georgie (54°37'0"S, 35°56'0"W)
+- **Datum pořízení:** 2009-11-15
+- **Staženo:** 2026-04-20
+- **Použití:** gallery-2 druhu patagonský (Run 007b); původní rozlišení (4284×989)
+
+## patagonsky/gallery-3.jpg
+
+- **Druh:** Tučňák patagonský (*Aptenodytes patagonicus*) — mladý pták během pelichání
+- **Autor:** Andrew Shiva (User:Godot13)
+- **Licence:** CC BY-SA 4.0
+- **Zdroj:** [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:SGI-2016-South_Georgia_(Fortuna_Bay)%E2%80%93King_penguin_(Aptenodytes_patagonicus)_03.jpg)
+- **Originál:** https://upload.wikimedia.org/wikipedia/commons/f/f1/SGI-2016-South_Georgia_%28Fortuna_Bay%29%E2%80%93King_penguin_%28Aptenodytes_patagonicus%29_03.jpg
+- **Místo:** Fortuna Bay, Jižní Georgie (54°07'52"S, 36°48'09"W)
+- **Datum pořízení:** 2016-01-10
+- **Staženo:** 2026-04-20
+- **Použití:** gallery-3 druhu patagonský (Run 007b); Quality image; staženo jako 2000px thumbnail (vráceno 3367×5050)
 
 ## skalni-jizni/hero.jpg
 
