@@ -1,7 +1,7 @@
 # Plan: pingupedia
 
 **Vytvořeno:** 2026-04-19
-**Aktualizováno:** 2026-04-20 (Sprint 002 Run 007d hotový — galerie 3 zbývajících Eudyptes, rod dokončen 6/6)
+**Aktualizováno:** 2026-04-20 (Sprint 002 Run 007e1 hotový — 4 druhy galerií: zlutooky, nejmensi, brylovy, humboldtuv)
 
 ## Cíl
 
@@ -33,8 +33,8 @@ Populárně-naučná encyklopedie všech druhů tučňáků v češtině pro dě
   - [x] Run 007b — galerie patagonský + celý Pygoscelis rod (4 druhy × 3 fotky) → `docs/sprints/002-species/run-007b-aptenodytes-pygoscelis-gallery.done.md`
   - [x] Run 007c — galerie Eudyptes batch 1 (skalní jižní, zlatovlasý, royal) → `docs/sprints/002-species/run-007c-eudyptes-batch1.done.md`
   - [x] Run 007d — galerie Eudyptes batch 2 (skalní severní, snareský, Sclaterův) — rod Eudyptes 6/6 → `docs/sprints/002-species/run-007d-eudyptes-batch2.done.md`
-  - [ ] Run 007e1 — galerie Megadyptes (zlutooky) + Eudyptula (nejmensi) + 2 Spheniscus (brylovy, humboldtuv)
-  - [ ] Run 007e2 — galerie zbývajících 2 Spheniscus (magellansky, galapazsky) → sprint 002 dokončen
+  - [x] Run 007e1 — galerie Megadyptes + Eudyptula + 2 Spheniscus (zlutooky, nejmensi, brylovy, humboldtuv) → `docs/sprints/002-species/run-007e1-remaining-genera.done.md`
+  - [ ] Run 007e2 — galerie zbývajících 2 Spheniscus (magellansky, galapazsky) → **dokončení Sprintu 002**
 
 ### Sprint 003 — Mapy, historie, infografiky
 **Cíl:** Interaktivní vizualizace — mapa výskytu, časová osa, infografiky.

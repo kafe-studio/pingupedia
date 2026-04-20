@@ -114,5 +114,5 @@ Přidá se podle potřeby:
 
 ## Stav
 
-**Sprint:** 002 **probíhá** — Runy 004–006 + 007a/b/c/d hotové. Galerie funkční u **11/17 druhů**. Hotové rody: Aptenodytes (2/2), Pygoscelis (3/3), **Eudyptes (6/6 — dokončeno v 007d)**. Zbývá 6 druhů: Megadyptes (zlutooky), Eudyptula (nejmensi), Spheniscus (brylovy, humboldtuv, magellansky, galapazsky).
-**Další krok:** Run 007e1 — batch 4 druhů (Megadyptes + Eudyptula + 2 Spheniscus). Poté 007e2 s posledními 2 Spheniscus dokončí Sprint 002.
+**Sprint:** 002 **probíhá** — Runy 004–006 + 007a/b/c/d/e1 hotové. Galerie funkční u **15/17 druhů**. Hotové rody: Aptenodytes (2/2), Pygoscelis (3/3), Eudyptes (6/6), Megadyptes (1/1), Eudyptula (1/1), Spheniscus (2/4 — brylovy + humboldtuv). Zbývá **magellansky + galapazsky**.
+**Další krok:** Run 007e2 — poslední 2 Spheniscus (magellansky, galapazsky) → **Sprint 002 kompletní** 17/17 druhů s galerií.
