@@ -13,11 +13,14 @@ interface Photo {
 
 interface Props {
   photos: Photo[];
+  hero?: Photo;
   galleryId?: string;
 }
 
-const { photos, galleryId = "species-gallery" } = Astro.props;
+const { photos, hero, galleryId = "species-gallery" } = Astro.props;
 const headingId = `${galleryId}-heading`;
+const heroOffset = hero ? 1 : 0;
+const allSlides: Photo[] = hero ? [hero, ...photos] : photos;
 ---
 
 <section
@@ -33,8 +36,8 @@ const headingId = `${galleryId}-heading`;
           <button
             type="button"
             class="gallery-thumb"
-            data-gallery-index={i}
-            aria-label={`Otevřít fotku ${i + 1} z ${photos.length}: ${photo.alt}`}
+            data-gallery-index={i + heroOffset}
+            aria-label={`Otevřít fotku ${i + 1 + heroOffset} z ${allSlides.length}: ${photo.alt}`}
             aria-haspopup="dialog"
           >
             <Image
@@ -66,7 +69,7 @@ const headingId = `${galleryId}-heading`;
     <div class="lightbox-inner">
       <button type="button" class="lightbox-close" autofocus aria-label="Zavřít galerii">×</button>
       <div class="lightbox-stage">
-        {photos.map((photo, i) => (
+        {allSlides.map((photo, i) => (
           <figure class="lightbox-slide" data-slide-index={i} hidden={i !== 0}>
             <div class="lightbox-imagewrap">
               <Image
@@ -79,7 +82,7 @@ const headingId = `${galleryId}-heading`;
               />
             </div>
             <figcaption class="lightbox-caption">
-              <span class="lightbox-counter">{i + 1} / {photos.length}</span>
+              <span class="lightbox-counter">{i + 1} / {allSlides.length}</span>
               <span>Foto {photo.author}, {photo.license}.{" "}
                 <a href={photo.sourceUrl} rel="noopener" target="_blank">Zdroj</a>
               </span>

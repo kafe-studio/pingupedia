@@ -40,6 +40,17 @@ export function initGalleryLightbox(section: HTMLElement): void {
     });
   });
 
+  document
+    .querySelectorAll<HTMLButtonElement>("[data-open-lightbox]")
+    .forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const idx = Number(btn.dataset.galleryIndex ?? 0);
+        triggerButton = btn;
+        showSlide(Math.min(Math.max(idx, 0), total - 1));
+        dialog.showModal();
+      });
+    });
+
   prev.addEventListener("click", goPrev);
   next.addEventListener("click", goNext);
   close.addEventListener("click", () => dialog.close());

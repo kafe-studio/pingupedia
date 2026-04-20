@@ -20,7 +20,7 @@ export const getStaticPaths = (async () => {
 const { entry } = Astro.props;
 const { Content } = await render(entry);
 
-const { nameCs, nameLat, description, historicalNotes, gallery } = entry.data;
+const { nameCs, nameLat, description, historicalNotes, gallery, hero } = entry.data;
 
 const metadata = {
   title: `${nameCs} (${nameLat})`,
@@ -55,7 +55,7 @@ const metadata = {
     )}
 
     {gallery && gallery.length > 0 && (
-      <SpeciesGallery photos={gallery} galleryId={`gallery-${entry.id}`} />
+      <SpeciesGallery photos={gallery} hero={hero} galleryId={`gallery-${entry.id}`} />
     )}
 
     <SpeciesMedia species={entry} />
