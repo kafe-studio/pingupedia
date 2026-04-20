@@ -1,0 +1,137 @@
+---
+export const prerender = true;
+import BaseLayout from "../layouts/BaseLayout.astro";
+import PenguinMascot from "../components/theme/PenguinMascot.astro";
+
+const metadata = {
+  title: "O projektu",
+  description:
+    "O projektu pingupedia — česká encyklopedie všech druhů tučňáků pro děti i dospělé. Zdroje, licence, technologie.",
+};
+---
+
+<BaseLayout {metadata}>
+  <section class="px-4 sm:px-6 pt-28 pb-16">
+    <div class="mx-auto max-w-5xl">
+      <header class="mb-10 md:mb-14 max-w-3xl reveal">
+        <p class="text-sm uppercase tracking-[0.2em] text-primary/80 mb-4">O projektu</p>
+        <h1 class="text-5xl md:text-7xl font-black tracking-tight leading-[0.95] mb-4">
+          Proč<br />
+          <span class="text-accent">pingupedia</span>
+        </h1>
+        <p class="text-lg md:text-xl text-muted-foreground">
+          Populárně-naučná encyklopedie všech druhů tučňáků v češtině&nbsp;— pro zvědavé malé i velké.
+        </p>
+      </header>
+
+      <div class="grid grid-cols-12 auto-rows-[minmax(160px,auto)] gap-4 md:gap-5">
+        <article class="bento-card bento-surface-aurora col-span-12 md:col-span-8 p-6 md:p-8 text-white reveal">
+          <p class="text-xs uppercase tracking-widest text-accent font-semibold mb-3">Záměr</p>
+          <h2 class="text-2xl md:text-3xl font-black leading-tight mb-4">
+            Všech 18 druhů, česky, z ověřených zdrojů.
+          </h2>
+          <p class="text-white/85 leading-relaxed">
+            Každé tvrzení na tomhle webu má oporu v konkrétním zdroji. Nekopíruju texty z Wikipedie&nbsp;— píšu je sám tak, aby byly srozumitelné pro děti, ale neurážely čtenáře nepřesnostmi. Každá fotka má autora, licenci a odkaz na originál.
+          </p>
+        </article>
+
+        <div class="bento-card col-span-12 md:col-span-4 p-6 flex flex-col items-center justify-center text-center reveal">
+          <div class="anim-float mb-3">
+            <PenguinMascot size={100} />
+          </div>
+          <p class="text-xs uppercase tracking-widest text-primary font-semibold">Cílová skupina</p>
+          <p class="mt-1 text-lg font-bold">děti i dospělí</p>
+          <p class="mt-2 text-sm text-muted-foreground">populárně-naučný tón</p>
+        </div>
+
+        <div class="bento-card bento-surface-ocean col-span-12 md:col-span-6 p-6 md:p-8 text-white reveal">
+          <p class="text-xs uppercase tracking-widest text-accent font-semibold mb-3">Zdroje obsahu</p>
+          <ul class="grid grid-cols-1 gap-2 text-sm">
+            <li class="flex items-start gap-2"><span class="text-accent">✓</span> Wikipedia (CS + EN) — základní popis, taxonomie</li>
+            <li class="flex items-start gap-2"><span class="text-accent">✓</span> IUCN Red List — status ohrožení, populace</li>
+            <li class="flex items-start gap-2"><span class="text-accent">✓</span> BirdLife International — distribuce, kolonie</li>
+            <li class="flex items-start gap-2"><span class="text-accent">✓</span> Wikimedia Commons — fotky, videa, audio (CC-BY / PD)</li>
+            <li class="flex items-start gap-2"><span class="text-accent">✓</span> Vědecké publikace přes Wikipedii</li>
+          </ul>
+        </div>
+
+        <div class="bento-card bento-surface-ice col-span-12 md:col-span-6 p-6 md:p-8 text-white reveal">
+          <p class="text-xs uppercase tracking-widest text-accent font-semibold mb-3">Pravidla obrázků</p>
+          <ul class="space-y-2 text-sm text-white/85">
+            <li>
+              <strong class="text-white">Žádné ořezávání.</strong> Každá fotka má aspect-ratio kontejner a&nbsp;<code class="text-xs bg-white/10 px-1 rounded">object-contain</code>&nbsp;— vidíš celou kompozici autora.
+            </li>
+            <li>
+              <strong class="text-white">Atribuce u každé fotky.</strong> Autor, licence, odkaz na Commons. Licence povoleny: CC&nbsp;BY, CC&nbsp;BY-SA, Public Domain.
+            </li>
+            <li>
+              <strong class="text-white">~67 fotek</strong> v aktuální verzi (17 hero + ~50 gallery).
+            </li>
+          </ul>
+        </div>
+
+        <article class="bento-card col-span-12 md:col-span-4 p-6 reveal">
+          <p class="text-xs uppercase tracking-widest text-primary font-semibold mb-2">Statistiky</p>
+          <div class="grid grid-cols-2 gap-4 mt-3">
+            <div>
+              <p class="text-3xl font-black text-foreground">17</p>
+              <p class="text-xs text-muted-foreground">druhů</p>
+            </div>
+            <div>
+              <p class="text-3xl font-black text-foreground">6</p>
+              <p class="text-xs text-muted-foreground">rodů</p>
+            </div>
+            <div>
+              <p class="text-3xl font-black text-foreground">~67</p>
+              <p class="text-xs text-muted-foreground">fotek</p>
+            </div>
+            <div>
+              <p class="text-3xl font-black text-foreground">4</p>
+              <p class="text-xs text-muted-foreground">mini-hry</p>
+            </div>
+          </div>
+        </article>
+
+        <div class="bento-card col-span-12 md:col-span-8 p-6 md:p-8 reveal">
+          <p class="text-xs uppercase tracking-widest text-primary font-semibold mb-3">Technicky</p>
+          <p class="text-sm text-muted-foreground leading-relaxed mb-3">
+            Astro 6 + Tailwind&nbsp;CSS&nbsp;4 + TypeScript, nasazeno na Cloudflare Workers. Obrázky optimalizovány do&nbsp;WebP v několika rozlišeních. Přepínatelných 5 designů (Arctic / Sunny / Ocean / Candy / Midnight) přes CSS proměnné. Všechny hry v&nbsp;čistém vanilla TS&nbsp;— bez runtime knihovny.
+          </p>
+          <div class="flex flex-wrap gap-2 text-[11px] font-semibold">
+            <span class="rounded-full border border-border px-3 py-1">Astro 6</span>
+            <span class="rounded-full border border-border px-3 py-1">Tailwind CSS 4</span>
+            <span class="rounded-full border border-border px-3 py-1">TypeScript</span>
+            <span class="rounded-full border border-border px-3 py-1">Cloudflare Workers</span>
+            <span class="rounded-full border border-border px-3 py-1">Canvas 2D</span>
+          </div>
+        </div>
+
+        <a
+          href="/druhy/"
+          class="bento-card is-link bento-surface-sun col-span-12 md:col-span-6 p-6 md:p-8 flex items-center justify-between gap-4 reveal"
+          data-astro-prefetch
+        >
+          <div>
+            <p class="text-xs uppercase tracking-widest font-bold opacity-80">Katalog</p>
+            <h3 class="mt-2 text-2xl md:text-3xl font-black leading-tight">
+              Prozkoumat všechny druhy →
+            </h3>
+          </div>
+        </a>
+
+        <a
+          href="/hry/"
+          class="bento-card is-link bento-surface-aurora col-span-12 md:col-span-6 p-6 md:p-8 flex items-center justify-between gap-4 text-white reveal"
+          data-astro-prefetch
+        >
+          <div>
+            <p class="text-xs uppercase tracking-widest font-bold text-accent">Herna</p>
+            <h3 class="mt-2 text-2xl md:text-3xl font-black leading-tight">
+              4 mini-hry s tučňáky →
+            </h3>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

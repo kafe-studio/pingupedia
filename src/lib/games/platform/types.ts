@@ -5,7 +5,7 @@ export interface Rect {
   h: number;
 }
 
-export interface Platform extends Rect {}
+export type Platform = Rect;
 
 export interface Ladder {
   x: number;

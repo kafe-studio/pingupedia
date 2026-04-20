@@ -11,8 +11,8 @@ const CLIMB_SPEED = 1.5;
 export type GameStatus = "playing" | "win" | "gameover" | "levelDone";
 
 export interface GameHooks {
-  onStatus(status: GameStatus): void;
-  onHud(hud: { level: number; lives: number; score: number }): void;
+  onStatus(_status: GameStatus): void;
+  onHud(_hud: { level: number; lives: number; score: number }): void;
 }
 
 export class Game {

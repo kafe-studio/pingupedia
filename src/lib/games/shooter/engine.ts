@@ -24,8 +24,8 @@ export interface GameHud {
 }
 
 export interface GameHooks {
-  onStatus(s: GameStatus, options?: UpgradeOption[]): void;
-  onHud(h: GameHud): void;
+  onStatus(_s: GameStatus, _options?: UpgradeOption[]): void;
+  onHud(_h: GameHud): void;
 }
 
 export class Game {

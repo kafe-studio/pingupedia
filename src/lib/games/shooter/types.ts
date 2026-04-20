@@ -46,7 +46,7 @@ export interface UpgradeOption {
   icon: string;
   title: string;
   description: string;
-  apply(h: Hero): void;
+  apply(_h: Hero): void;
 }
 
 export interface WaveSpec {
