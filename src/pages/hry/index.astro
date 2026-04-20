@@ -22,6 +22,15 @@ const games = [
     surface: "bento-surface-ocean",
     emoji: "🎴",
   },
+  {
+    slug: "platformovka",
+    title: "Ledová výprava",
+    tag: "3 levely · plošinovka",
+    description:
+      "Plošinovka ve stylu Donkey Kong. Dostaň tučňáka po ledových krách až k opuštěnému mláděti a uhni padajícím ledovým blokům.",
+    surface: "bento-surface-ice",
+    emoji: "🧗",
+  },
 ];
 
 const metadata = {
@@ -46,7 +55,7 @@ const metadata = {
 
       <div class="grid grid-cols-12 auto-rows-[minmax(220px,auto)] gap-4 md:gap-5">
         {games.map((g) => (
-          <article class={`bento-card ${g.surface} col-span-12 md:col-span-6 p-6 md:p-8 flex flex-col justify-between text-white min-h-[280px] reveal`}>
+          <article class={`bento-card ${g.surface} col-span-12 md:col-span-4 p-6 flex flex-col justify-between text-white min-h-[280px] reveal`}>
             <div>
               <div class="flex items-center gap-3 mb-4">
                 <span class="text-4xl" aria-hidden="true">{g.emoji}</span>
