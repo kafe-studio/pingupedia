@@ -402,6 +402,42 @@ Tento seznam sleduje licenční údaje pro všechny fotografie tučňáků v pro
 - **Staženo:** 2026-04-19
 - **Použití:** hero druhu skalní severní (Run 006b2); staženo jako 2000px thumbnail
 
+## skalni-severni/gallery-1.jpg
+
+- **Druh:** Tučňák skalní severní (*Eudyptes moseleyi*) — pod Entrecasteauxskými skalami
+- **Autor:** Antoine Lamielle
+- **Licence:** CC BY-SA 4.0
+- **Zdroj:** [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:2020-12_Amsterdam_Island_-_Northern_rockhopper_penguin_15.jpg)
+- **Originál:** https://commons.wikimedia.org/wiki/Special:FilePath/2020-12%20Amsterdam%20Island%20-%20Northern%20rockhopper%20penguin%2015.jpg
+- **Místo:** ostrov Amsterdam, TAAF (francouzská Indo-Antarktika)
+- **Datum pořízení:** 2020-12-03
+- **Staženo:** 2026-04-20
+- **Použití:** gallery-1 druhu skalní severní (Run 007d); staženo jako 2000px thumbnail (3840×2160)
+
+## skalni-severni/gallery-2.jpg
+
+- **Druh:** Tučňák skalní severní (*Eudyptes moseleyi*) — dva ptáci na severním pobřeží
+- **Autor:** Antoine Lamielle
+- **Licence:** CC BY-SA 4.0
+- **Zdroj:** [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:2021-09_Amsterdam_Island_-_Northern_rockhopper_penguin_03.jpg)
+- **Originál:** https://commons.wikimedia.org/wiki/Special:FilePath/2021-09%20Amsterdam%20Island%20-%20Northern%20rockhopper%20penguin%2003.jpg
+- **Místo:** severní pobřeží ostrova Amsterdam, TAAF
+- **Datum pořízení:** 2021-09-29
+- **Staženo:** 2026-04-20
+- **Použití:** gallery-2 druhu skalní severní (Run 007d); staženo jako 2000px thumbnail (3840×2560)
+
+## skalni-severni/gallery-3.jpg
+
+- **Druh:** Tučňák skalní severní (*Eudyptes moseleyi*) — skupina na skalách (portrét)
+- **Autor:** Antoine Lamielle
+- **Licence:** CC BY-SA 4.0
+- **Zdroj:** [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:2021-09_Amsterdam_Island_-_Northern_rockhopper_penguin_02.jpg)
+- **Originál:** https://commons.wikimedia.org/wiki/Special:FilePath/2021-09%20Amsterdam%20Island%20-%20Northern%20rockhopper%20penguin%2002.jpg
+- **Místo:** severní pobřeží ostrova Amsterdam, TAAF
+- **Datum pořízení:** 2021-09-29
+- **Staženo:** 2026-04-20
+- **Použití:** gallery-3 druhu skalní severní (Run 007d); staženo 11 MB (scaler neresizoval, 3712×5568)
+
 ## snaresky/hero.jpg
 
 - **Druh:** Tučňák snareský (*Eudyptes robustus*)
@@ -414,6 +450,42 @@ Tento seznam sleduje licenční údaje pro všechny fotografie tučňáků v pro
 - **Staženo:** 2026-04-19
 - **Použití:** hero druhu snareský (Run 006b2); původní rozlišení (680×1024)
 
+## snaresky/gallery-1.jpg
+
+- **Druh:** Tučňák snareský (*Eudyptes robustus*) — skupina
+- **Autor:** Lin Padgham
+- **Licence:** CC BY 2.0
+- **Zdroj:** [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Snares_Penguin_(Eudyptes_robustus)_-group.jpg)
+- **Originál:** https://commons.wikimedia.org/wiki/Special:FilePath/Snares%20Penguin%20%28Eudyptes%20robustus%29%20-group.jpg
+- **Místo:** souostroví Snares, Nový Zéland
+- **Datum pořízení:** 2007-01-13
+- **Staženo:** 2026-04-20
+- **Použití:** gallery-1 druhu snareský (Run 007d); původní rozlišení (2272×1704)
+
+## snaresky/gallery-2.jpg
+
+- **Druh:** Tučňák snareský (*Eudyptes robustus*) — při potápění
+- **Autor:** Brocken Inaglory
+- **Licence:** CC BY-SA 3.0 (dual-licensed s GFDL a staršími CC verzemi)
+- **Zdroj:** [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Diving_Snares_Penguin.jpg)
+- **Originál:** https://commons.wikimedia.org/wiki/Special:FilePath/Diving%20Snares%20Penguin.jpg
+- **Místo:** (neuvedeno na Commons; pravděpodobně souostroví Snares)
+- **Datum pořízení:** před 2007-10-28 (datum nahrání)
+- **Staženo:** 2026-04-20
+- **Použití:** gallery-2 druhu snareský (Run 007d); původní rozlišení (1536×1041)
+
+## snaresky/gallery-3.jpg
+
+- **Druh:** Tučňák snareský (*Eudyptes robustus*) — na skalách
+- **Autor:** Christopher Stephens
+- **Licence:** CC BY-SA 4.0
+- **Zdroj:** [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Snares_Penguin,_Southland,_NZ_imported_from_iNaturalist_photo_355810804.jpg)
+- **Originál:** https://commons.wikimedia.org/wiki/Special:FilePath/Snares%20Penguin%2C%20Southland%2C%20NZ%20imported%20from%20iNaturalist%20photo%20355810804.jpg
+- **Místo:** Southland, Nový Zéland (48°01'19"S, 166°36'41"E — souostroví Snares)
+- **Datum pořízení:** 2023-11-26
+- **Staženo:** 2026-04-20
+- **Použití:** gallery-3 druhu snareský (Run 007d); původní rozlišení (2048×1367); původně iNaturalist (photo 355810804)
+
 ## sclateruv/hero.jpg
 
 - **Druh:** Tučňák Sclaterův (*Eudyptes sclateri*)
@@ -425,6 +497,42 @@ Tento seznam sleduje licenční údaje pro všechny fotografie tučňáků v pro
 - **Datum pořízení:** 2019-10-25
 - **Staženo:** 2026-04-19
 - **Použití:** hero druhu Sclaterův (Run 006b2); původní rozlišení (970×1500)
+
+## sclateruv/gallery-1.jpg
+
+- **Druh:** Tučňák Sclaterův (*Eudyptes sclateri*) — hnízdní pár
+- **Autor:** C00ch
+- **Licence:** CC BY-SA 4.0
+- **Zdroj:** [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Breeding_pair_of_Erect-crested_penguins_at_their_nest.jpg)
+- **Originál:** https://commons.wikimedia.org/wiki/Special:FilePath/Breeding%20pair%20of%20Erect-crested%20penguins%20at%20their%20nest.jpg
+- **Místo:** Proclamation Island, Bounty Islands, Nový Zéland
+- **Datum pořízení:** 2019-10-26
+- **Staženo:** 2026-04-20
+- **Použití:** gallery-1 druhu Sclaterův (Run 007d); původní rozlišení (1500×1000); stejný autor jako hero
+
+## sclateruv/gallery-2.jpg
+
+- **Druh:** Tučňák Sclaterův (*Eudyptes sclateri*) — jedinec v moři
+- **Autor:** Christopher Stephens
+- **Licence:** CC BY-SA 4.0
+- **Zdroj:** [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Eudyptes_sclateri_129036208.jpg)
+- **Originál:** https://commons.wikimedia.org/wiki/Special:FilePath/Eudyptes%20sclateri%20129036208.jpg
+- **Místo:** subantarktické vody u Nového Zélandu (49°42'54"S, 178°38'50"E)
+- **Datum pořízení:** 2021-03-15
+- **Staženo:** 2026-04-20
+- **Použití:** gallery-2 druhu Sclaterův (Run 007d); původní rozlišení (2048×1365); původně iNaturalist
+
+## sclateruv/gallery-3.jpg
+
+- **Druh:** Tučňák Sclaterův (*Eudyptes sclateri*) — kolonie
+- **Autor:** LawrieM (Wikimedia user)
+- **Licence:** public domain (uvolněno autorem)
+- **Zdroj:** [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Antipodes_Penguin.JPG)
+- **Originál:** https://commons.wikimedia.org/wiki/Special:FilePath/Antipodes%20Penguin.JPG
+- **Místo:** Anchorage Bay, Antipodes Island, Nový Zéland
+- **Datum pořízení:** 2009-01-24
+- **Staženo:** 2026-04-20
+- **Použití:** gallery-3 druhu Sclaterův (Run 007d); původní rozlišení (3072×2304)
 
 ## zlutooky/hero.jpg
 
