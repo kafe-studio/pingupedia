@@ -33,34 +33,34 @@ const data = JSON.stringify(cards);
 ---
 
 <GameLayout title="Pexeso" description="Pexeso s fotkami tučňáků.">
-  <div class="mx-auto max-w-4xl px-6 py-20">
-    <header class="mb-6 text-center">
-      <p class="text-xs uppercase tracking-[0.2em] text-primary mb-3">Mini-hra</p>
-      <h1 class="text-4xl md:text-5xl font-black mb-3">Pexeso s tučňáky</h1>
-      <p class="text-muted-foreground">8 druhů, 16 karet. Najdi všechny páry a porovnej si čas.</p>
+  <div class="mx-auto max-w-5xl px-4 sm:px-6 pt-14 pb-8">
+    <header class="mb-4 text-center">
+      <p class="text-[11px] uppercase tracking-[0.2em] text-primary mb-1.5">Mini-hra</p>
+      <h1 class="text-2xl md:text-3xl font-black mb-1.5">Pexeso s tučňáky</h1>
+      <p class="text-sm text-muted-foreground">8 druhů, 16 karet. Najdi všechny páry.</p>
     </header>
 
-    <div class="bento-card p-5 md:p-6" id="pexeso-root" data-cards={data}>
-      <div class="mb-4 flex flex-wrap items-center justify-between gap-3 text-sm text-muted-foreground">
+    <div class="bento-card p-3 md:p-4" id="pexeso-root" data-cards={data}>
+      <div class="mb-3 flex flex-wrap items-center justify-between gap-3 text-xs text-muted-foreground">
         <div class="flex items-center gap-4">
           <span>Tahy: <strong data-moves class="text-foreground font-bold">0</strong></span>
           <span>Páry: <strong data-pairs class="text-foreground font-bold">0 / 8</strong></span>
         </div>
         <div class="flex items-center gap-3">
           <span>Čas: <strong data-time class="text-foreground font-bold">0:00</strong></span>
-          <button data-reset type="button" class="rounded-full border border-border px-3 py-1.5 text-xs font-medium hover:border-border-interactive">Začít znovu</button>
+          <button data-reset type="button" class="rounded-full border border-border px-3 py-1.5 text-[11px] font-medium hover:border-border-interactive">Začít znovu</button>
         </div>
       </div>
-      <ul data-grid class="grid grid-cols-4 gap-3" role="list"></ul>
+      <ul data-grid class="pexeso-grid grid grid-cols-4 md:grid-cols-8 gap-2 md:gap-3" role="list"></ul>
     </div>
 
     <div
       id="pexeso-finish"
-      class="bento-card bento-surface-aurora p-8 text-center text-white hidden mt-8"
+      class="bento-card bento-surface-aurora p-6 text-center text-white hidden mt-6"
     >
-      <p class="text-xs uppercase tracking-widest text-accent font-semibold mb-3">Gratulujeme!</p>
-      <h2 class="text-3xl font-black mb-2">Všechny páry nalezeny</h2>
-      <p class="text-white/85 mb-6">
+      <p class="text-xs uppercase tracking-widest text-accent font-semibold mb-2">Gratulujeme!</p>
+      <h2 class="text-2xl font-black mb-1">Všechny páry nalezeny</h2>
+      <p class="text-sm text-white/85 mb-4">
         Dokončeno za <strong data-final-time>0:00</strong> a <strong data-final-moves>0</strong> tahů.
       </p>
       <button data-finish-reset type="button" class="btn-primary">Hrát znovu</button>
@@ -206,10 +206,12 @@ const data = JSON.stringify(cards);
       btn.setAttribute("aria-label", `Karta ${i + 1}: skrytá`);
       btn.setAttribute("aria-pressed", "false");
       btn.innerHTML = `
-        <span class="pexeso-face pexeso-back">🐧</span>
-        <span class="pexeso-face pexeso-front">
-          <img src="${card.url}" alt="Tučňák ${card.label}" loading="lazy" />
-          <span class="pexeso-label">${card.label}</span>
+        <span class="pexeso-inner">
+          <span class="pexeso-face pexeso-back">🐧</span>
+          <span class="pexeso-face pexeso-front">
+            <img src="${card.url}" alt="Tučňák ${card.label}" loading="lazy" />
+            <span class="pexeso-label">${card.label}</span>
+          </span>
         </span>
       `;
       btn.addEventListener("click", () => onFlip(btn));
@@ -223,7 +225,8 @@ const data = JSON.stringify(cards);
   render();
 </script>
 
-<style>
+<style is:global>
+  .pexeso-grid { perspective: 1200px; }
   .pexeso-card {
     position: relative;
     width: 100%;
@@ -232,55 +235,60 @@ const data = JSON.stringify(cards);
     padding: 0;
     background: transparent;
     cursor: pointer;
-    perspective: 1000px;
+  }
+  .pexeso-inner {
+    display: block;
+    position: absolute;
+    inset: 0;
+    transform-style: preserve-3d;
+    transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .pexeso-card.is-flipped .pexeso-inner {
+    transform: rotateY(180deg);
   }
   .pexeso-face {
     position: absolute;
     inset: 0;
-    border-radius: 1rem;
+    border-radius: 0.75rem;
     display: flex;
     align-items: center;
     justify-content: center;
     overflow: hidden;
     backface-visibility: hidden;
     -webkit-backface-visibility: hidden;
-    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-    transform-style: preserve-3d;
   }
   .pexeso-back {
     background: linear-gradient(135deg, var(--bento-aurora-1) 0%, var(--bento-aurora-2) 100%);
-    font-size: 2.5rem;
+    font-size: 2rem;
     border: 2px solid var(--border-interactive);
   }
   .pexeso-front {
-    background: var(--muted);
+    background: #ffffff;
     border: 2px solid var(--border);
     transform: rotateY(180deg);
     flex-direction: column;
+    padding: 0.25rem;
   }
   .pexeso-front img {
     width: 100%;
-    height: 70%;
+    flex: 1 1 auto;
+    min-height: 0;
     object-fit: contain;
-    background: var(--muted);
   }
   .pexeso-label {
-    font-size: 0.75rem;
+    flex: 0 0 auto;
+    font-size: 0.65rem;
     font-weight: 700;
-    padding: 0.25rem 0.5rem;
+    padding: 0.25rem 0.25rem 0;
     text-align: center;
-    color: var(--foreground);
+    color: #0c1929;
+    line-height: 1.2;
   }
-  .pexeso-card.is-flipped .pexeso-back { transform: rotateY(180deg); }
-  .pexeso-card.is-flipped .pexeso-front { transform: rotateY(360deg); }
-  .pexeso-card:hover:not(.is-flipped):not(.is-matched) .pexeso-back {
+  .pexeso-card:hover:not(.is-flipped):not(.is-matched) .pexeso-inner {
     transform: scale(1.04);
   }
   .pexeso-card.is-matched .pexeso-front {
     border-color: #10b981;
     box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.5);
-  }
-  .pexeso-card.is-matched {
-    animation: bob 2s ease-in-out infinite;
   }
 </style>
