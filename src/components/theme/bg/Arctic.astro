@@ -1,0 +1,61 @@
+---
+const stars = Array.from({ length: 24 }, () => ({
+  top: Math.random() * 70,
+  left: Math.random() * 100,
+  size: 1.5 + Math.random() * 2.5,
+  delay: Math.random() * 3,
+}));
+const flakes = Array.from({ length: 30 }, () => ({
+  left: Math.random() * 100,
+  size: 3 + Math.random() * 5,
+  duration: 12 + Math.random() * 14,
+  delay: -Math.random() * 20,
+}));
+---
+
+<div class="themed-bg" data-bg="arctic" aria-hidden="true">
+  <svg class="bg-layer anim-aurora" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice">
+    <defs>
+      <radialGradient id="arc-a1" cx="50%" cy="40%" r="60%">
+        <stop offset="0%" stop-color="#22d3ee" stop-opacity="0.55" />
+        <stop offset="100%" stop-color="#22d3ee" stop-opacity="0" />
+      </radialGradient>
+      <radialGradient id="arc-a2" cx="30%" cy="25%" r="55%">
+        <stop offset="0%" stop-color="#8b5cf6" stop-opacity="0.4" />
+        <stop offset="100%" stop-color="#8b5cf6" stop-opacity="0" />
+      </radialGradient>
+      <radialGradient id="arc-a3" cx="75%" cy="30%" r="50%">
+        <stop offset="0%" stop-color="#10b981" stop-opacity="0.35" />
+        <stop offset="100%" stop-color="#10b981" stop-opacity="0" />
+      </radialGradient>
+    </defs>
+    <rect width="1440" height="900" fill="url(#arc-a2)" />
+    <rect width="1440" height="900" fill="url(#arc-a1)" />
+    <rect width="1440" height="900" fill="url(#arc-a3)" />
+  </svg>
+  <svg class="bg-layer" viewBox="0 0 1440 900" preserveAspectRatio="none">
+    {stars.map((s) => (
+      <circle cx={s.left * 14.4} cy={s.top * 9} r={s.size} fill="#ffffff" class="anim-sparkle" style={`animation-delay: ${s.delay}s;`} />
+    ))}
+  </svg>
+  <svg class="bg-bergs" viewBox="0 0 1440 300" preserveAspectRatio="xMidYMax slice">
+    <defs>
+      <linearGradient id="arc-b1" x1="0%" y1="0%" x2="0%" y2="100%">
+        <stop offset="0%" stop-color="#e0f2fe" />
+        <stop offset="100%" stop-color="#7dd3fc" />
+      </linearGradient>
+    </defs>
+    <path d="M-50 300 L-50 220 L150 170 L320 230 L480 160 L640 220 L800 170 L960 230 L1120 180 L1280 230 L1490 190 L1490 300 Z" fill="url(#arc-b1)" opacity="0.35" />
+  </svg>
+  <div class="bg-particles">
+    {flakes.map((f) => (
+      <span class="snow-dot" style={`left: ${f.left}%; width: ${f.size}px; height: ${f.size}px; animation: snowfall ${f.duration}s linear ${f.delay}s infinite;`} />
+    ))}
+  </div>
+</div>
+
+<style>
+  .bg-layer { position: absolute; inset: 0; width: 100%; height: 100%; }
+  .bg-bergs { position: absolute; left: 0; right: 0; bottom: 0; width: 100%; height: 28vh; min-height: 180px; }
+  .bg-particles { position: absolute; inset: 0; }
+</style>

@@ -1,0 +1,69 @@
+---
+const themes = [
+  { id: "arctic", label: "Arctic — polární záře" },
+  { id: "sunny", label: "Sunny — slunečné ráno" },
+  { id: "ocean", label: "Ocean — pod hladinou" },
+  { id: "candy", label: "Candy — duha a srdíčka" },
+  { id: "midnight", label: "Midnight — hvězdopád" },
+];
+---
+
+<div
+  class="theme-switcher"
+  role="group"
+  aria-label="Přepínač designu"
+  data-theme-switcher
+>
+  {themes.map((t) => (
+    <button
+      type="button"
+      class="theme-switcher__btn"
+      data-theme={t.id}
+      aria-label={t.label}
+      aria-pressed={t.id === "arctic" ? "true" : "false"}
+      title={t.label}
+    />
+  ))}
+</div>
+
+<script>
+  const STORAGE_KEY = "pingupedia-theme";
+  const VALID = ["arctic", "sunny", "ocean", "candy", "midnight"] as const;
+  type Theme = (typeof VALID)[number];
+
+  function isTheme(value: string): value is Theme {
+    return (VALID as readonly string[]).includes(value);
+  }
+
+  function apply(theme: Theme): void {
+    document.documentElement.setAttribute("data-variant", theme);
+    document.querySelectorAll<HTMLButtonElement>("[data-theme]").forEach((btn) => {
+      btn.setAttribute("aria-pressed", btn.dataset.theme === theme ? "true" : "false");
+    });
+    try {
+      localStorage.setItem(STORAGE_KEY, theme);
+    } catch {
+      /* localStorage disabled — proceed in-memory */
+    }
+  }
+
+  function wire(): void {
+    document.querySelectorAll<HTMLButtonElement>("[data-theme-switcher] [data-theme]").forEach((btn) => {
+      if (btn.dataset.wired) return;
+      btn.dataset.wired = "1";
+      btn.addEventListener("click", () => {
+        const next = btn.dataset.theme;
+        if (next && isTheme(next)) apply(next);
+      });
+    });
+    const current = document.documentElement.getAttribute("data-variant");
+    if (current && isTheme(current)) {
+      document.querySelectorAll<HTMLButtonElement>("[data-theme]").forEach((btn) => {
+        btn.setAttribute("aria-pressed", btn.dataset.theme === current ? "true" : "false");
+      });
+    }
+  }
+
+  wire();
+  document.addEventListener("astro:page-load", wire);
+</script>

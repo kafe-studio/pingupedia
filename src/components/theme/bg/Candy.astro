@@ -1,0 +1,88 @@
+---
+const hearts = Array.from({ length: 14 }, () => ({
+  left: Math.random() * 100,
+  size: 12 + Math.random() * 14,
+  duration: 14 + Math.random() * 10,
+  delay: -Math.random() * 16,
+  color: ["#ec4899", "#a78bfa", "#fbbf24", "#34d399"][Math.floor(Math.random() * 4)],
+}));
+const sparkles = Array.from({ length: 20 }, () => ({
+  top: Math.random() * 80,
+  left: Math.random() * 100,
+  size: 2 + Math.random() * 3,
+  delay: Math.random() * 3,
+}));
+---
+
+<div class="themed-bg" data-bg="candy" aria-hidden="true">
+  <div class="candy-sky"></div>
+
+  <svg class="bg-rainbow" viewBox="0 0 400 200">
+    <path d="M20 200 A180 180 0 0 1 380 200" fill="none" stroke="#f43f5e" stroke-width="14" stroke-linecap="round" />
+    <path d="M40 200 A160 160 0 0 1 360 200" fill="none" stroke="#fb923c" stroke-width="14" stroke-linecap="round" />
+    <path d="M60 200 A140 140 0 0 1 340 200" fill="none" stroke="#fbbf24" stroke-width="14" stroke-linecap="round" />
+    <path d="M80 200 A120 120 0 0 1 320 200" fill="none" stroke="#34d399" stroke-width="14" stroke-linecap="round" />
+    <path d="M100 200 A100 100 0 0 1 300 200" fill="none" stroke="#38bdf8" stroke-width="14" stroke-linecap="round" />
+    <path d="M120 200 A80 80 0 0 1 280 200" fill="none" stroke="#a78bfa" stroke-width="14" stroke-linecap="round" />
+  </svg>
+
+  <svg class="bg-cloud-candy anim-bob" viewBox="0 0 200 100" style="left: 10%; top: 18%;">
+    <ellipse cx="60" cy="55" rx="50" ry="28" fill="#ffffff" opacity="0.95" />
+    <ellipse cx="110" cy="60" rx="40" ry="22" fill="#ffffff" opacity="0.95" />
+    <ellipse cx="30" cy="62" rx="30" ry="18" fill="#ffffff" opacity="0.95" />
+  </svg>
+
+  <svg class="bg-cloud-candy anim-bob" viewBox="0 0 200 100" style="left: 70%; top: 8%; animation-delay: 1.5s;">
+    <ellipse cx="60" cy="55" rx="50" ry="28" fill="#ffffff" opacity="0.85" />
+    <ellipse cx="110" cy="60" rx="40" ry="22" fill="#ffffff" opacity="0.85" />
+  </svg>
+
+  <svg class="bg-sparkle-layer" viewBox="0 0 1440 900" preserveAspectRatio="none">
+    {sparkles.map((s) => (
+      <g transform={`translate(${s.left * 14.4}, ${s.top * 9})`} class="anim-sparkle" style={`animation-delay: ${s.delay}s;`}>
+        <path d={`M0 -${s.size} L${s.size * 0.3} -${s.size * 0.3} L${s.size} 0 L${s.size * 0.3} ${s.size * 0.3} L0 ${s.size} L-${s.size * 0.3} ${s.size * 0.3} L-${s.size} 0 L-${s.size * 0.3} -${s.size * 0.3} Z`} fill="#db2777" />
+      </g>
+    ))}
+  </svg>
+
+  <div class="bg-particles">
+    {hearts.map((h) => (
+      <svg
+        class="confetti-dot"
+        style={`left: ${h.left}%; width: ${h.size}px; height: ${h.size}px; color: ${h.color}; animation: confetti-fall ${h.duration}s linear ${h.delay}s infinite;`}
+        viewBox="0 0 24 24"
+      >
+        <path
+          d="M12 21s-8-5.5-8-11.5A5.5 5.5 0 0 1 12 5a5.5 5.5 0 0 1 8 4.5C20 15.5 12 21 12 21z"
+          fill="currentColor"
+        />
+      </svg>
+    ))}
+  </div>
+</div>
+
+<style>
+  .candy-sky {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, #fbcfe8 0%, #fce7f3 40%, #fef3c7 100%);
+  }
+  .bg-rainbow {
+    position: absolute;
+    top: -2%;
+    right: -5%;
+    width: 40%;
+    max-width: 420px;
+    opacity: 0.7;
+  }
+  .bg-cloud-candy { position: absolute; width: 200px; height: 100px; }
+  .bg-sparkle-layer { position: absolute; inset: 0; opacity: 0.55; }
+  .bg-particles { position: absolute; inset: 0; }
+  .confetti-dot {
+    position: absolute;
+    top: 0;
+    pointer-events: none;
+    will-change: transform, opacity;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+  }
+</style>

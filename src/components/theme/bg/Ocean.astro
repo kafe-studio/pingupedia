@@ -1,0 +1,78 @@
+---
+const bubbles = Array.from({ length: 22 }, () => ({
+  left: Math.random() * 100,
+  size: 6 + Math.random() * 18,
+  duration: 10 + Math.random() * 14,
+  delay: -Math.random() * 18,
+}));
+const rays = Array.from({ length: 5 }, (_, i) => ({
+  offset: 12 + i * 18 + Math.random() * 6,
+  rotation: -15 + Math.random() * 30,
+}));
+---
+
+<div class="themed-bg" data-bg="ocean" aria-hidden="true">
+  <div class="ocean-depth"></div>
+
+  <svg class="bg-rays" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice">
+    {rays.map((r) => (
+      <polygon
+        points={`${r.offset * 14.4},0 ${r.offset * 14.4 + 40},0 ${r.offset * 14.4 - 80},900 ${r.offset * 14.4 - 160},900`}
+        fill="rgba(186, 230, 253, 0.12)"
+        transform={`rotate(${r.rotation} 720 450)`}
+      />
+    ))}
+  </svg>
+
+  <svg class="bg-fish anim-float" viewBox="0 0 100 50">
+    <path d="M10 25 C20 10 60 10 75 25 C60 40 20 40 10 25 Z" fill="#5eead4" opacity="0.4" />
+    <path d="M75 25 L95 12 L95 38 Z" fill="#5eead4" opacity="0.4" />
+    <circle cx="25" cy="22" r="2" fill="#022c43" />
+  </svg>
+
+  <svg class="bg-seabed" viewBox="0 0 1440 300" preserveAspectRatio="xMidYMax slice">
+    <defs>
+      <linearGradient id="seabed" x1="0%" y1="0%" x2="0%" y2="100%">
+        <stop offset="0%" stop-color="#0f766e" stop-opacity="0.6" />
+        <stop offset="100%" stop-color="#064e3b" />
+      </linearGradient>
+    </defs>
+    <path d="M-50 300 L-50 240 C150 200 320 260 520 220 C720 180 920 260 1120 210 C1280 180 1440 240 1490 220 L1490 300 Z" fill="url(#seabed)" />
+  </svg>
+
+  <div class="bg-particles">
+    {bubbles.map((b) => (
+      <span
+        class="bubble-dot"
+        style={`left: ${b.left}%; width: ${b.size}px; height: ${b.size}px; animation: bubble-rise ${b.duration}s ease-in ${b.delay}s infinite;`}
+      />
+    ))}
+  </div>
+</div>
+
+<style>
+  .ocean-depth {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, #0e7490 0%, #022c43 45%, #083344 100%);
+  }
+  .bg-rays { position: absolute; inset: 0; mix-blend-mode: screen; }
+  .bg-fish {
+    position: absolute;
+    top: 35%;
+    left: 8%;
+    width: 80px;
+    height: 40px;
+  }
+  .bg-seabed { position: absolute; left: 0; right: 0; bottom: 0; width: 100%; height: 24vh; min-height: 140px; }
+  .bg-particles { position: absolute; inset: 0; }
+  .bubble-dot {
+    position: absolute;
+    bottom: 0;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.5), rgba(94, 234, 212, 0.1));
+    pointer-events: none;
+    will-change: transform, opacity;
+  }
+</style>
