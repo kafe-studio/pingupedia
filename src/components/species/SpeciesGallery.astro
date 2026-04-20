@@ -1,0 +1,104 @@
+---
+import { Image } from "astro:assets";
+import type { ImageMetadata } from "astro";
+import "../../styles/lightbox.css";
+
+interface Photo {
+  src: ImageMetadata;
+  alt: string;
+  author: string;
+  license: string;
+  sourceUrl: string;
+}
+
+interface Props {
+  photos: Photo[];
+  galleryId?: string;
+}
+
+const { photos, galleryId = "species-gallery" } = Astro.props;
+const headingId = `${galleryId}-heading`;
+---
+
+<section
+  class="px-6 py-12 bg-muted/50"
+  aria-labelledby={headingId}
+  data-gallery-id={galleryId}
+>
+  <div class="mx-auto max-w-6xl">
+    <h2 id={headingId} class="text-2xl md:text-3xl font-bold mb-6 reveal">Galerie</h2>
+    <ul class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3" role="list">
+      {photos.map((photo, i) => (
+        <li class="reveal">
+          <button
+            type="button"
+            class="gallery-thumb"
+            data-gallery-index={i}
+            aria-label={`Otevřít fotku ${i + 1} z ${photos.length}: ${photo.alt}`}
+            aria-haspopup="dialog"
+          >
+            <Image
+              src={photo.src}
+              alt={photo.alt}
+              sizes="(min-width: 1024px) 400px, (min-width: 640px) 50vw, 100vw"
+              widths={[400, 800]}
+              class="img-nocrop"
+              loading="lazy"
+            />
+          </button>
+          <p class="mt-2 text-xs text-muted-foreground">
+            Foto {photo.author}, {photo.license}.{" "}
+            <a
+              href={photo.sourceUrl}
+              rel="noopener"
+              target="_blank"
+              class="underline decoration-dotted hover:text-primary"
+            >
+              Zdroj
+            </a>
+          </p>
+        </li>
+      ))}
+    </ul>
+  </div>
+
+  <dialog class="lightbox-dialog" aria-label="Galerie fotek">
+    <div class="lightbox-inner">
+      <button type="button" class="lightbox-close" autofocus aria-label="Zavřít galerii">×</button>
+      <div class="lightbox-stage">
+        {photos.map((photo, i) => (
+          <figure class="lightbox-slide" data-slide-index={i} hidden={i !== 0}>
+            <div class="lightbox-imagewrap">
+              <Image
+                src={photo.src}
+                alt={photo.alt}
+                sizes="(min-width: 1024px) 1200px, 90vw"
+                widths={[800, 1200, 1600]}
+                class="lightbox-image"
+                loading="lazy"
+              />
+            </div>
+            <figcaption class="lightbox-caption">
+              <span class="lightbox-counter">{i + 1} / {photos.length}</span>
+              <span>Foto {photo.author}, {photo.license}.{" "}
+                <a href={photo.sourceUrl} rel="noopener" target="_blank">Zdroj</a>
+              </span>
+            </figcaption>
+          </figure>
+        ))}
+      </div>
+      <div class="lightbox-nav">
+        <button type="button" class="lightbox-prev" aria-label="Předchozí fotka">←</button>
+        <button type="button" class="lightbox-next" aria-label="Další fotka">→</button>
+      </div>
+      <div class="sr-only" role="status" aria-live="polite" data-lightbox-status></div>
+    </div>
+  </dialog>
+</section>
+
+<script>
+  import { initGalleryLightbox } from "../../lib/lightbox";
+  document
+    .querySelectorAll<HTMLElement>("[data-gallery-id]")
+    .forEach((section) => initGalleryLightbox(section));
+</script>

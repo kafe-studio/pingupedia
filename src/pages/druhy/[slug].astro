@@ -3,10 +3,10 @@ export const prerender = true;
 import { getCollection, render } from "astro:content";
 import type { GetStaticPaths } from "astro";
 import BaseLayout from "../../layouts/BaseLayout.astro";
-import NoCropImage from "../../components/media/NoCropImage.astro";
 import SpeciesHero from "../../components/species/SpeciesHero.astro";
 import SpeciesFacts from "../../components/species/SpeciesFacts.astro";
 import SpeciesSources from "../../components/species/SpeciesSources.astro";
+import SpeciesGallery from "../../components/species/SpeciesGallery.astro";
 
 export const getStaticPaths = (async () => {
   const species = await getCollection("species");
@@ -54,38 +54,7 @@ const metadata = {
     )}
 
     {gallery && gallery.length > 0 && (
-      <section class="px-6 py-12 bg-muted/50" aria-labelledby="gallery-heading">
-        <div class="mx-auto max-w-6xl">
-          <h2 id="gallery-heading" class="text-2xl md:text-3xl font-bold mb-6 reveal">Galerie</h2>
-          <ul class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3" role="list">
-            {gallery.map((photo) => (
-              <li class="reveal">
-                <figure>
-                  <NoCropImage
-                    src={photo.src}
-                    alt={photo.alt}
-                    ratio="4/3"
-                    sizes="(min-width: 1024px) 400px, (min-width: 640px) 50vw, 100vw"
-                    class="bg-muted rounded-xl overflow-hidden"
-                  />
-                  <figcaption class="mt-2 text-xs text-muted-foreground">
-                    Foto {photo.author}, {photo.license}.
-                    {" "}
-                    <a
-                      href={photo.sourceUrl}
-                      rel="noopener"
-                      target="_blank"
-                      class="underline decoration-dotted hover:text-primary"
-                    >
-                      Zdroj
-                    </a>
-                  </figcaption>
-                </figure>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </section>
+      <SpeciesGallery photos={gallery} galleryId={`gallery-${entry.id}`} />
     )}
 
     <SpeciesSources species={entry} />

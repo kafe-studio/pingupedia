@@ -18,6 +18,42 @@ Tento seznam sleduje licenční údaje pro všechny fotografie tučňáků v pro
 - **Staženo:** 2026-04-19
 - **Použití:** hero druhu císařský, homepage hero (Run 002)
 
+## cisarsky/gallery-1.jpg
+
+- **Druh:** Tučňák císařský (*Aptenodytes forsteri*) — dva dospělí ptáci
+- **Autor:** Ian Duffy
+- **Licence:** CC BY 2.0
+- **Zdroj:** [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Aptenodytes_forsteri_-Snow_Hill_Island,_Antarctica_-two-8.jpg)
+- **Originál:** https://upload.wikimedia.org/wikipedia/commons/f/ff/Aptenodytes_forsteri_-Snow_Hill_Island%2C_Antarctica_-two-8.jpg
+- **Místo:** Snow Hill Island, Antarktida
+- **Datum pořízení:** 2009-11-17
+- **Staženo:** 2026-04-20
+- **Použití:** gallery-1 druhu císařský (Run 007a); původní rozlišení (933×1400)
+
+## cisarsky/gallery-2.jpg
+
+- **Druh:** Tučňák císařský (*Aptenodytes forsteri*) — mláďata v průběhu pelichání
+- **Autor:** François Guerraz
+- **Licence:** CC BY-SA 3.0
+- **Zdroj:** [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Emperor_Penguin_chicks_moulting.jpg)
+- **Originál:** https://upload.wikimedia.org/wikipedia/commons/6/6b/Emperor_Penguin_chicks_moulting.jpg
+- **Místo:** Brunt Ice Shelf, Antarktida (75°30'S, 26°36'W)
+- **Datum pořízení:** 2012-12-31
+- **Staženo:** 2026-04-20
+- **Použití:** gallery-2 druhu císařský (Run 007a); staženo jako 2000px thumbnail (originál 3000×2000)
+
+## cisarsky/gallery-3.jpg
+
+- **Druh:** Tučňák císařský (*Aptenodytes forsteri*) — jesle ("crèche") mláďat
+- **Autor:** Matthieu Weber
+- **Licence:** public domain (uvolněno autorem)
+- **Zdroj:** [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Cr%C3%A8che_de_poussins_manchot_empereur.jpg)
+- **Originál:** https://upload.wikimedia.org/wikipedia/commons/d/d3/Cr%C3%A8che_de_poussins_manchot_empereur.jpg
+- **Místo:** okolí francouzské antarktické stanice Dumont d'Urville, Antarktida
+- **Datum pořízení:** 2004-01-03
+- **Staženo:** 2026-04-20
+- **Použití:** gallery-3 druhu císařský (Run 007a); původní rozlišení (1242×1656)
+
 ## krouzkovy/hero.jpg
 
 - **Druh:** Tučňák kroužkový (*Pygoscelis adeliae*)
