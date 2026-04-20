@@ -2,56 +2,138 @@
 export const prerender = true;
 import { getCollection } from "astro:content";
 import BaseLayout from "../../layouts/BaseLayout.astro";
-import SpeciesCard from "../../components/species/SpeciesCard.astro";
+import NoCropImage from "../../components/media/NoCropImage.astro";
+import IucnBadge from "../../components/species/IucnBadge.astro";
+import PenguinMascot from "../../components/theme/PenguinMascot.astro";
 
 const species = await getCollection("species");
 species.sort((a, b) => a.data.nameCs.localeCompare(b.data.nameCs, "cs"));
 
+const spanPattern = [
+  "col-span-12 md:col-span-8",
+  "col-span-12 md:col-span-4",
+  "col-span-6 md:col-span-4",
+  "col-span-6 md:col-span-4",
+  "col-span-12 md:col-span-4",
+  "col-span-6 md:col-span-3",
+  "col-span-6 md:col-span-3",
+  "col-span-12 md:col-span-6",
+  "col-span-6 md:col-span-4",
+  "col-span-6 md:col-span-4",
+  "col-span-12 md:col-span-4",
+  "col-span-6 md:col-span-3",
+  "col-span-6 md:col-span-3",
+  "col-span-12 md:col-span-6",
+  "col-span-6 md:col-span-4",
+  "col-span-6 md:col-span-4",
+  "col-span-12 md:col-span-4",
+];
+
 const metadata = {
   title: "Druhy tučňáků",
   description:
-    "Přehled všech druhů tučňáků — česky, s ověřenými zdroji a fotkami bez ořezu.",
+    "Přehled všech druhů tučňáků — česky, s ověřenými zdroji, galeriemi a fotkami bez ořezu.",
 };
+
+const genusCount = species.reduce<Record<string, number>>((acc, s) => {
+  acc[s.data.genus] = (acc[s.data.genus] || 0) + 1;
+  return acc;
+}, {});
 ---
 
 <BaseLayout {metadata}>
-  <section class="px-6 pt-32 pb-20">
-    <div class="mx-auto max-w-6xl">
-      <header class="mb-10 max-w-3xl">
-        <p class="text-sm uppercase tracking-wide text-primary mb-3 reveal">Encyklopedie</p>
-        <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight mb-4 reveal">
-          Druhy tučňáků
+  <section class="px-4 sm:px-6 pt-28 pb-16">
+    <div class="mx-auto max-w-7xl">
+      <header class="mb-8 md:mb-12 max-w-4xl reveal">
+        <p class="text-sm uppercase tracking-[0.2em] text-primary/80 mb-4">
+          Encyklopedie
+        </p>
+        <h1 class="text-5xl md:text-7xl font-black tracking-tight leading-[0.95] mb-5">
+          <span class="text-foreground">Všechny</span>
+          <span class="text-primary">druhy</span>
+          <br />
+          <span class="text-foreground">tučňáků</span>
+          <span class="text-accent">.</span>
         </h1>
-        <p class="text-lg text-muted-foreground reveal">
-          Na planetě žije kolem <strong>18 druhů tučňáků</strong>. Postupně je tu všechny najdete — s ověřenými zdroji, fotkami bez ořezu a historickými souvislostmi.
+        <p class="text-lg md:text-xl text-muted-foreground">
+          Na Zemi žije <strong class="text-foreground">{species.length}</strong> druhů tučňáků ve <strong class="text-foreground">{Object.keys(genusCount).length}</strong> rodech&nbsp;— všechny najdeš tady.
         </p>
       </header>
 
-      {species.length === 0 ? (
-        <div class="rounded-2xl border border-dashed border-border bg-card p-10 text-center reveal">
-          <p class="text-lg text-muted-foreground">
-            Zatím tu žádný druh není. Vracíme se brzy.
-          </p>
+      <div class="mb-6 flex flex-wrap items-center gap-3 reveal">
+        {Object.entries(genusCount)
+          .sort((a, b) => b[1] - a[1])
+          .map(([genus, count]) => (
+            <span class="inline-flex items-center gap-2 rounded-full border border-border bg-card px-3 py-1.5 text-xs font-medium">
+              <em class="text-primary not-italic font-semibold">{genus}</em>
+              <span class="text-muted-foreground">·</span>
+              <span class="text-muted-foreground">{count === 1 ? "1 druh" : count < 5 ? `${count} druhy` : `${count} druhů`}</span>
+            </span>
+          ))}
+      </div>
+
+      <ul
+        class="grid grid-cols-12 auto-rows-[minmax(200px,auto)] gap-4 md:gap-5"
+        role="list"
+      >
+        {species.map((entry, i) => {
+          const span = spanPattern[i % spanPattern.length];
+          const isWide = span.includes("col-span-8") || span.includes("col-span-6");
+          const surface = i % 4 === 0 ? "bento-surface-aurora" : i % 4 === 2 ? "bento-surface-ice" : "";
+          const isSurfaced = surface.length > 0;
+          return (
+            <li class={`${span} reveal`}>
+              <a
+                href={`/druhy/${entry.id}/`}
+                data-astro-prefetch
+                class={`bento-card is-link ${surface} group block h-full overflow-hidden`}
+              >
+                <div class="relative h-full flex flex-col">
+                  <div class={`relative ${isWide ? "aspect-[16/10]" : "aspect-[4/3]"} bg-muted overflow-hidden hover-wiggle`}>
+                    <NoCropImage
+                      src={entry.data.hero.src}
+                      alt={entry.data.hero.alt}
+                      ratio={isWide ? "16/10" : "4/3"}
+                      sizes={isWide ? "(min-width: 1024px) 600px, 100vw" : "(min-width: 1024px) 300px, 50vw"}
+                    />
+                    <span class="absolute top-3 right-3">
+                      <IucnBadge status={entry.data.iucnStatus} />
+                    </span>
+                  </div>
+                  <div class={`flex-1 p-5 ${isSurfaced ? "text-white" : ""}`}>
+                    <p class={`text-[10px] uppercase tracking-[0.15em] font-semibold ${isSurfaced ? "text-white/70" : "text-muted-foreground"}`}>
+                      {entry.data.genus}
+                    </p>
+                    <h2 class={`mt-1.5 text-xl md:text-2xl font-black leading-tight ${isSurfaced ? "text-white" : ""}`}>
+                      {entry.data.nameCs}
+                    </h2>
+                    <p class={`text-sm italic mt-0.5 ${isSurfaced ? "text-white/70" : "text-muted-foreground"}`}>
+                      {entry.data.nameLat}
+                    </p>
+                    <p class={`mt-3 text-sm line-clamp-3 ${isSurfaced ? "text-white/85" : "text-muted-foreground"}`}>
+                      {entry.data.description}
+                    </p>
+                  </div>
+                  <span class={`absolute top-3 left-3 inline-flex h-8 w-8 items-center justify-center rounded-full text-xs font-bold transition-transform group-hover:rotate-12 ${isSurfaced ? "bg-white/15 text-white backdrop-blur-sm" : "bg-primary/15 text-primary"}`}>→</span>
+                </div>
+              </a>
+            </li>
+          );
+        })}
+      </ul>
+
+      <div class="mt-8 md:mt-12 bento-card bento-surface-aurora p-6 md:p-10 flex flex-col md:flex-row items-center justify-between gap-6 reveal">
+        <div class="max-w-xl">
+          <p class="text-xs uppercase tracking-widest text-accent font-semibold">Pokračuj</p>
+          <h3 class="mt-2 text-2xl md:text-4xl font-black text-white leading-tight">
+            Klikni na libovolnou kartu a otevři detail druhu.
+          </h3>
+          <p class="mt-3 text-white/80">Každý detail má hero fotku, fakta, historii, galerii a ověřené zdroje.</p>
         </div>
-      ) : (
-        <>
-          <p class="text-sm text-muted-foreground mb-6 reveal" aria-live="polite">
-            {species.length === 1
-              ? "Zatím 1 druh — další přibývají."
-              : `Zobrazeno ${species.length} druhů.`}
-          </p>
-          <ul
-            class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3"
-            role="list"
-          >
-            {species.map((entry) => (
-              <li class="reveal">
-                <SpeciesCard species={entry} />
-              </li>
-            ))}
-          </ul>
-        </>
-      )}
+        <div class="shrink-0 anim-float">
+          <PenguinMascot size={150} />
+        </div>
+      </div>
     </div>
   </section>
 </BaseLayout>

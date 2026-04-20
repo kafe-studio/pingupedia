@@ -1,0 +1,58 @@
+---
+interface Props {
+  size?: number;
+  class?: string;
+}
+const { size = 140, class: className = "" } = Astro.props;
+---
+
+<svg
+  width={size}
+  height={size}
+  viewBox="0 0 120 140"
+  xmlns="http://www.w3.org/2000/svg"
+  class={className}
+  aria-hidden="true"
+>
+  <defs>
+    <linearGradient id="peng-body" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b" />
+      <stop offset="100%" stop-color="#0f172a" />
+    </linearGradient>
+    <linearGradient id="peng-belly" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" />
+      <stop offset="100%" stop-color="#e2e8f0" />
+    </linearGradient>
+    <radialGradient id="peng-cheek" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#fca5a5" stop-opacity="0.9" />
+      <stop offset="100%" stop-color="#fca5a5" stop-opacity="0" />
+    </radialGradient>
+  </defs>
+
+  <ellipse cx="60" cy="128" rx="30" ry="5" fill="#000" opacity="0.15" />
+
+  <path
+    d="M30 65 C30 35 42 18 60 18 C78 18 90 35 90 65 L90 110 C90 120 80 124 60 124 C40 124 30 120 30 110 Z"
+    fill="url(#peng-body)"
+  />
+
+  <ellipse cx="60" cy="85" rx="22" ry="36" fill="url(#peng-belly)" />
+
+  <path d="M25 70 L15 110 L25 115 Z" fill="url(#peng-body)" />
+  <path d="M95 70 L105 110 L95 115 Z" fill="url(#peng-body)" />
+
+  <path d="M48 120 L42 130 L54 128 Z" fill="#fbbf24" />
+  <path d="M72 120 L78 130 L66 128 Z" fill="#fbbf24" />
+
+  <circle cx="52" cy="52" r="4.5" fill="#ffffff" />
+  <circle cx="68" cy="52" r="4.5" fill="#ffffff" />
+  <circle cx="52.5" cy="53" r="2.5" fill="#0f172a" />
+  <circle cx="68.5" cy="53" r="2.5" fill="#0f172a" />
+  <circle cx="53.2" cy="52.2" r="0.8" fill="#ffffff" />
+  <circle cx="69.2" cy="52.2" r="0.8" fill="#ffffff" />
+
+  <path d="M54 62 L60 68 L66 62 L60 66 Z" fill="#fbbf24" stroke="#f59e0b" stroke-width="1" stroke-linejoin="round" />
+
+  <circle cx="46" cy="64" r="4" fill="url(#peng-cheek)" />
+  <circle cx="74" cy="64" r="4" fill="url(#peng-cheek)" />
+</svg>

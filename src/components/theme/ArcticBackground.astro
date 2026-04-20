@@ -1,0 +1,121 @@
+---
+const stars = Array.from({ length: 24 }, (_, i) => ({
+  id: i,
+  top: Math.random() * 70,
+  left: Math.random() * 100,
+  size: 1.5 + Math.random() * 2.5,
+  delay: Math.random() * 3,
+}));
+const flakes = Array.from({ length: 30 }, (_, i) => ({
+  id: i,
+  left: Math.random() * 100,
+  size: 3 + Math.random() * 5,
+  duration: 12 + Math.random() * 14,
+  delay: -Math.random() * 20,
+}));
+---
+
+<div class="arctic-bg" aria-hidden="true">
+  <svg
+    class="arctic-bg__aurora anim-aurora"
+    viewBox="0 0 1440 900"
+    preserveAspectRatio="xMidYMid slice"
+  >
+    <defs>
+      <radialGradient id="aurora-1" cx="50%" cy="40%" r="60%">
+        <stop offset="0%" stop-color="var(--bento-aurora-1)" stop-opacity="0.55" />
+        <stop offset="100%" stop-color="var(--bento-aurora-1)" stop-opacity="0" />
+      </radialGradient>
+      <radialGradient id="aurora-2" cx="30%" cy="25%" r="55%">
+        <stop offset="0%" stop-color="var(--bento-aurora-2)" stop-opacity="0.4" />
+        <stop offset="100%" stop-color="var(--bento-aurora-2)" stop-opacity="0" />
+      </radialGradient>
+      <radialGradient id="aurora-3" cx="75%" cy="30%" r="50%">
+        <stop offset="0%" stop-color="var(--bento-aurora-3)" stop-opacity="0.35" />
+        <stop offset="100%" stop-color="var(--bento-aurora-3)" stop-opacity="0" />
+      </radialGradient>
+    </defs>
+    <rect width="1440" height="900" fill="url(#aurora-2)" />
+    <rect width="1440" height="900" fill="url(#aurora-1)" />
+    <rect width="1440" height="900" fill="url(#aurora-3)" />
+  </svg>
+
+  <svg class="arctic-bg__stars" viewBox="0 0 1440 900" preserveAspectRatio="none">
+    {stars.map((s) => (
+      <circle
+        cx={s.left * 14.4}
+        cy={s.top * 9}
+        r={s.size}
+        fill="#ffffff"
+        class="anim-sparkle"
+        style={`animation-delay: ${s.delay}s;`}
+      />
+    ))}
+  </svg>
+
+  <svg
+    class="arctic-bg__bergs"
+    viewBox="0 0 1440 300"
+    preserveAspectRatio="xMidYMax slice"
+  >
+    <defs>
+      <linearGradient id="berg-1" x1="0%" y1="0%" x2="0%" y2="100%">
+        <stop offset="0%" stop-color="#e0f2fe" />
+        <stop offset="100%" stop-color="#7dd3fc" />
+      </linearGradient>
+      <linearGradient id="berg-2" x1="0%" y1="0%" x2="0%" y2="100%">
+        <stop offset="0%" stop-color="#cffafe" />
+        <stop offset="100%" stop-color="#22d3ee" />
+      </linearGradient>
+    </defs>
+    <path
+      d="M-50 300 L-50 180 L120 100 L260 160 L380 80 L520 170 L650 110 L780 180 L920 90 L1060 160 L1200 110 L1340 180 L1490 120 L1490 300 Z"
+      fill="url(#berg-1)"
+      opacity="0.25"
+    />
+    <path
+      d="M-50 300 L-50 220 L150 170 L320 230 L480 160 L640 220 L800 170 L960 230 L1120 180 L1280 230 L1490 190 L1490 300 Z"
+      fill="url(#berg-2)"
+      opacity="0.35"
+    />
+  </svg>
+
+  <div class="arctic-bg__snow">
+    {flakes.map((f) => (
+      <span
+        class="snow-dot"
+        style={`left: ${f.left}%; width: ${f.size}px; height: ${f.size}px; animation: snowfall ${f.duration}s linear ${f.delay}s infinite;`}
+      />
+    ))}
+  </div>
+</div>
+
+<style>
+  .arctic-bg {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+  }
+  .arctic-bg__aurora,
+  .arctic-bg__stars {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
+  .arctic-bg__bergs {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 28vh;
+    min-height: 180px;
+  }
+  .arctic-bg__snow {
+    position: absolute;
+    inset: 0;
+  }
+</style>

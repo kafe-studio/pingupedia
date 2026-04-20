@@ -7,6 +7,7 @@ import Seo from "../components/seo/Seo.astro";
 import Schema from "../components/seo/Schema.astro";
 import Navbar from "../components/layout/Navbar.astro";
 import Footer from "../components/layout/Footer.astro";
+import ArcticBackground from "../components/theme/ArcticBackground.astro";
 import { ClientRouter } from "astro:transitions";
 import { Font } from "astro:assets";
 import "../styles/global.css";
@@ -31,7 +32,8 @@ const finalIgnoreTitleTemplate = metadata?.ignoreTitleTemplate || false;
   </head>
   <body class="bg-background text-foreground antialiased tracking-tight">
     <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 z-50 rounded-md bg-primary px-4 py-2 text-white">Preskocit</a>
-    <div class="relative flex min-h-screen flex-col overflow-x-hidden">
+    <ArcticBackground />
+    <div class="relative flex min-h-screen flex-col overflow-x-hidden z-10">
       <Navbar />
       <main id="main-content" class="relative grow"><slot /></main>
       <Footer />

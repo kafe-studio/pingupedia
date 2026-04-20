@@ -26,6 +26,13 @@
   --muted: rgba(240, 249, 255, 0.04);
   --muted-foreground: rgba(240, 249, 255, 0.60);
   --card: rgba(240, 249, 255, 0.04);
+  --bento-ice: #0c2843;
+  --bento-ocean: #0a3d5f;
+  --bento-polar: #124a6c;
+  --bento-aurora-1: #22d3ee;
+  --bento-aurora-2: #8b5cf6;
+  --bento-aurora-3: #10b981;
+  --bento-sun: #fbbf24;
 }
 
 :root[data-theme="light"] {
@@ -102,4 +109,79 @@ html.reveal-ready .reveal.active {
 @media (prefers-reduced-motion: reduce) {
   .reveal { transition: none; }
   html.reveal-ready .reveal:not(.active) { opacity: 1; transform: none; }
+}
+
+@keyframes float-slow {
+  0%, 100% { transform: translateY(0) rotate(-2deg); }
+  50% { transform: translateY(-14px) rotate(2deg); }
+}
+@keyframes waddle {
+  0%, 100% { transform: rotate(-4deg); }
+  50% { transform: rotate(4deg); }
+}
+@keyframes bob {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+@keyframes aurora-shift {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1); opacity: 0.55; }
+  33% { transform: translate3d(4%, -2%, 0) scale(1.1); opacity: 0.8; }
+  66% { transform: translate3d(-3%, 3%, 0) scale(0.95); opacity: 0.6; }
+}
+@keyframes sparkle {
+  0%, 100% { opacity: 0.2; transform: scale(0.9); }
+  50% { opacity: 1; transform: scale(1.25); }
+}
+@keyframes snowfall {
+  0% { transform: translateY(-10vh) translateX(0); opacity: 0; }
+  10% { opacity: 0.8; }
+  90% { opacity: 0.8; }
+  100% { transform: translateY(110vh) translateX(40px); opacity: 0; }
+}
+@keyframes wiggle-on-hover {
+  0%, 100% { transform: rotate(0); }
+  25% { transform: rotate(-8deg); }
+  75% { transform: rotate(8deg); }
+}
+
+.anim-float { animation: float-slow 7s ease-in-out infinite; }
+.anim-waddle { animation: waddle 3s ease-in-out infinite; transform-origin: 50% 90%; }
+.anim-bob { animation: bob 4s ease-in-out infinite; }
+.anim-aurora { animation: aurora-shift 14s ease-in-out infinite; }
+.anim-sparkle { animation: sparkle 2.6s ease-in-out infinite; }
+
+.hover-wiggle { transition: transform 0.3s; transform-origin: 50% 90%; }
+.hover-wiggle:hover { animation: wiggle-on-hover 0.6s ease-in-out; }
+.hover-lift { transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s; }
+.hover-lift:hover { transform: translateY(-6px) rotate(-0.5deg); }
+
+.bento-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 2rem;
+  border: 1px solid var(--border);
+  background: var(--card);
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s;
+}
+.bento-card:hover { border-color: var(--border-interactive); }
+.bento-card.is-link:hover { transform: translateY(-4px); }
+.bento-surface-ice { background: linear-gradient(135deg, var(--bento-ice) 0%, var(--bento-polar) 100%); }
+.bento-surface-ocean { background: linear-gradient(135deg, var(--bento-ocean) 0%, #1e6091 100%); }
+.bento-surface-aurora { background: linear-gradient(135deg, #1e1b4b 0%, #0f172a 50%, #064e3b 100%); }
+.bento-surface-sun { background: linear-gradient(135deg, #fbbf24 0%, #f97316 100%); color: #1f2937; }
+
+.snow-dot {
+  position: absolute;
+  top: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.9);
+  pointer-events: none;
+  will-change: transform, opacity;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .anim-float, .anim-waddle, .anim-bob, .anim-aurora, .anim-sparkle { animation: none; }
+  .snow-dot { display: none; }
+  .hover-wiggle:hover { animation: none; }
+  .bento-card.is-link:hover { transform: none; }
 }
