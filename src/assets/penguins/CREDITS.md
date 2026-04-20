@@ -546,6 +546,42 @@ Tento seznam sleduje licenční údaje pro všechny fotografie tučňáků v pro
 - **Staženo:** 2026-04-19
 - **Použití:** hero druhu žlutooký (Run 006c1); původní rozlišení (1467×2200)
 
+## zlutooky/gallery-1.jpg
+
+- **Druh:** Tučňák žlutooký (*Megadyptes antipodes*) — rodina (dospělec + mláďata)
+- **Autor:** Steve (Flickr, Bangkok)
+- **Licence:** CC BY-SA 2.0
+- **Zdroj:** [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Megadyptes_antipodes_-Otago_Peninsula,_Dunedin,_New_Zealand_-family-8.jpg)
+- **Originál:** https://commons.wikimedia.org/wiki/Special:FilePath/Megadyptes%20antipodes%20-Otago%20Peninsula%2C%20Dunedin%2C%20New%20Zealand%20-family-8.jpg
+- **Místo:** Penguin Place Lodge, Otago Peninsula, Nový Zéland (45°49'14"S, 170°43'39"E)
+- **Datum pořízení:** 2010-11-29
+- **Staženo:** 2026-04-20
+- **Použití:** gallery-1 druhu žlutooký (Run 007e1); staženo jako 2000px thumbnail (2593×1843)
+
+## zlutooky/gallery-2.jpg
+
+- **Druh:** Tučňák žlutooký (*Megadyptes antipodes*) — skupina na pláži
+- **Autor:** Bartux (Wikimedia Commons)
+- **Licence:** CC BY-SA 3.0 (dual-licensed s GFDL 1.2+)
+- **Zdroj:** [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Yellow_eyed_penguins_on_the_beach.jpg)
+- **Originál:** https://commons.wikimedia.org/wiki/Special:FilePath/Yellow%20eyed%20penguins%20on%20the%20beach.jpg
+- **Místo:** Otago Peninsula, Nový Zéland
+- **Datum pořízení:** 2005-05-02
+- **Staženo:** 2026-04-20
+- **Použití:** gallery-2 druhu žlutooký (Run 007e1); původní rozlišení (2272×1704)
+
+## zlutooky/gallery-3.jpg
+
+- **Druh:** Tučňák žlutooký (*Megadyptes antipodes*) — v umělé hnízdní boudě
+- **Autor:** Pseudopanax
+- **Licence:** public domain (uvolněno autorem)
+- **Zdroj:** [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Yellow-eyed_Penguin_lying_in_nesting_hut.jpg)
+- **Originál:** https://commons.wikimedia.org/wiki/Special:FilePath/Yellow-eyed%20Penguin%20lying%20in%20nesting%20hut.jpg
+- **Místo:** Penguin Place Conservation Reserve, Otago Peninsula, Nový Zéland (45°48'05"S, 170°44'20"E)
+- **Datum pořízení:** 2013-10-01
+- **Staženo:** 2026-04-20
+- **Použití:** gallery-3 druhu žlutooký (Run 007e1); staženo jako 2000px thumbnail (3840×2160)
+
 ## nejmensi/hero.jpg
 
 - **Druh:** Tučňák nejmenší (*Eudyptula minor*)
@@ -557,6 +593,42 @@ Tento seznam sleduje licenční údaje pro všechny fotografie tučňáků v pro
 - **Datum pořízení:** 2024-01-17
 - **Staženo:** 2026-04-19
 - **Použití:** hero druhu nejmenší (Run 006c1); staženo jako 2000px thumbnail
+
+## nejmensi/gallery-1.jpg
+
+- **Druh:** Tučňák nejmenší (*Eudyptula minor*) — na pláži míří k moři
+- **Autor:** Avenue (Wikimedia Commons)
+- **Licence:** CC BY-SA 3.0 (dual-licensed s GFDL 1.2+)
+- **Zdroj:** [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Little_Blue_Penguin_(Eudyptula_minor)_released_on_a_beach,_heading_for_the_sea.jpg)
+- **Originál:** https://commons.wikimedia.org/wiki/Special:FilePath/Little%20Blue%20Penguin%20%28Eudyptula%20minor%29%20released%20on%20a%20beach%2C%20heading%20for%20the%20sea.jpg
+- **Místo:** pláž u Oamaru, Nový Zéland
+- **Datum pořízení:** 2010-10-04
+- **Staženo:** 2026-04-20
+- **Použití:** gallery-1 druhu nejmenší (Run 007e1); staženo jako 2000px thumbnail (2520×1640)
+
+## nejmensi/gallery-2.jpg
+
+- **Druh:** Tučňák nejmenší (*Eudyptula minor*) — portrét v přírodě
+- **Autor:** JJ Harrison
+- **Licence:** CC BY-SA 3.0
+- **Zdroj:** [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Eudyptula_minor_Bruny_2.jpg)
+- **Originál:** https://commons.wikimedia.org/wiki/Special:FilePath/Eudyptula%20minor%20Bruny%202.jpg
+- **Místo:** Bruny Island, Tasmánie, Austrálie (43°16'12"S, 147°20'54"E)
+- **Datum pořízení:** 2010-12-01
+- **Staženo:** 2026-04-20
+- **Použití:** gallery-2 druhu nejmenší (Run 007e1); staženo jako 2000px thumbnail (1678×2300)
+
+## nejmensi/gallery-3.jpg
+
+- **Druh:** Tučňák nejmenší (*Eudyptula minor*) — při pelichání v hnízdní boudě
+- **Autor:** Kimberley Collins (User:Kimbirdley)
+- **Licence:** CC BY-SA 4.0
+- **Zdroj:** [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Moutling_Little_Penguin.jpg)
+- **Originál:** https://commons.wikimedia.org/wiki/Special:FilePath/Moutling%20Little%20Penguin.jpg
+- **Místo:** Taputeranga Island, Nový Zéland
+- **Datum pořízení:** 2016-02-08
+- **Staženo:** 2026-04-20
+- **Použití:** gallery-3 druhu nejmenší (Run 007e1); staženo jako 2000px thumbnail (3840×2560)
 
 ## galapazsky/hero.jpg
 
@@ -582,6 +654,42 @@ Tento seznam sleduje licenční údaje pro všechny fotografie tučňáků v pro
 - **Staženo:** 2026-04-19
 - **Použití:** hero druhu brýlový (Run 006c2); staženo jako 2000px thumbnail
 
+## brylovy/gallery-1.jpg
+
+- **Druh:** Tučňák brýlový (*Spheniscus demersus*) — detail na Boulders Beach (Quality image)
+- **Autor:** Diego Delso (Poco a poco)
+- **Licence:** CC BY-SA 4.0
+- **Zdroj:** [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Pingüino_de_El_Cabo_(Spheniscus_demersus),_Playa_de_Boulders,_Simon%27s_Town,_Sudáfrica,_2018-07-23,_DD_11.jpg)
+- **Originál:** https://commons.wikimedia.org/wiki/Special:FilePath/Ping%C3%BCino%20de%20El%20Cabo%20%28Spheniscus%20demersus%29%2C%20Playa%20de%20Boulders%2C%20Simon%27s%20Town%2C%20Sud%C3%A1frica%2C%202018-07-23%2C%20DD%2011.jpg
+- **Místo:** Boulders Beach, Simon's Town, JAR
+- **Datum pořízení:** 2018-07-23
+- **Staženo:** 2026-04-20
+- **Použití:** gallery-1 druhu brýlový (Run 007e1); Quality image; scaler neresizoval (3840×5258)
+
+## brylovy/gallery-2.jpg
+
+- **Druh:** Tučňák brýlový (*Spheniscus demersus*) — dvojice při páření
+- **Autor:** Votpuske
+- **Licence:** CC BY 4.0
+- **Zdroj:** [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:African_penguins_mating.jpg)
+- **Originál:** https://commons.wikimedia.org/wiki/Special:FilePath/African%20penguins%20mating.jpg
+- **Místo:** (neuvedeno; pravděpodobně některá z jihoafrických kolonií)
+- **Datum pořízení:** 2023-12-27
+- **Staženo:** 2026-04-20
+- **Použití:** gallery-2 druhu brýlový (Run 007e1); původní rozlišení (2936×2306)
+
+## brylovy/gallery-3.jpg
+
+- **Druh:** Tučňák brýlový (*Spheniscus demersus*) — portrét
+- **Autor:** Dr. P. Dee Boersma, University of Washington (via US Fish and Wildlife Service)
+- **Licence:** public domain (US federal government work)
+- **Zdroj:** [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:African_penguin_(Spheniscus_demersus)_FWS_14209.jpg)
+- **Originál:** https://commons.wikimedia.org/wiki/Special:FilePath/African%20penguin%20%28Spheniscus%20demersus%29%20FWS%2014209.jpg
+- **Místo:** (neuvedeno v metadatech)
+- **Datum pořízení:** 2008-12-22
+- **Staženo:** 2026-04-20
+- **Použití:** gallery-3 druhu brýlový (Run 007e1); původní rozlišení (1917×2464)
+
 ## humboldtuv/hero.jpg
 
 - **Druh:** Tučňák Humboldtův (*Spheniscus humboldti*)
@@ -593,6 +701,42 @@ Tento seznam sleduje licenční údaje pro všechny fotografie tučňáků v pro
 - **Datum pořízení:** 2013-09-20
 - **Staženo:** 2026-04-19
 - **Použití:** hero druhu Humboldtův (Run 006c2); původní rozlišení (3264×2448)
+
+## humboldtuv/gallery-1.jpg
+
+- **Druh:** Tučňák Humboldtův (*Spheniscus humboldti*) — skupina na skalách
+- **Autor:** Dennis G. Jarvis (archer10)
+- **Licence:** CC BY-SA 2.0
+- **Zdroj:** [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Spheniscus_humboldti,_Islas_Ballestas_13.jpg)
+- **Originál:** https://commons.wikimedia.org/wiki/Special:FilePath/Spheniscus%20humboldti%2C%20Islas%20Ballestas%2013.jpg
+- **Místo:** Islas Ballestas, Paracas, Peru (13°57'39"S, 76°26'05"W)
+- **Datum pořízení:** 2007-04-24
+- **Staženo:** 2026-04-20
+- **Použití:** gallery-1 druhu Humboldtův (Run 007e1); staženo jako 2000px thumbnail (3840×2578)
+
+## humboldtuv/gallery-2.jpg
+
+- **Druh:** Tučňák Humboldtův (*Spheniscus humboldti*) — kolonie na ostrůvku
+- **Autor:** Carlos Teixidor Cadenas
+- **Licence:** CC BY-SA 4.0
+- **Zdroj:** [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Colonia_de_pingüinos_de_Humboldt_(Spheniscus_humboldti)._Caldera_(Chile).jpg)
+- **Originál:** https://commons.wikimedia.org/wiki/Special:FilePath/Colonia%20de%20ping%C3%BCinos%20de%20Humboldt%20%28Spheniscus%20humboldti%29.%20Caldera%20%28Chile%29.jpg
+- **Místo:** ostrůvek u majáku Punta Caldera, region Atacama, Chile
+- **Datum pořízení:** 2022-01-29
+- **Staženo:** 2026-04-20
+- **Použití:** gallery-2 druhu Humboldtův (Run 007e1); staženo jako 2000px thumbnail (3840×2880)
+
+## humboldtuv/gallery-3.jpg
+
+- **Druh:** Tučňák Humboldtův (*Spheniscus humboldti*) — dvojice na skále
+- **Autor:** Lisa Weichel
+- **Licence:** CC BY 2.0
+- **Zdroj:** [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Spheniscus_humboldti,_Islas_Ballestas_6.jpg)
+- **Originál:** https://commons.wikimedia.org/wiki/Special:FilePath/Spheniscus%20humboldti%2C%20Islas%20Ballestas%206.jpg
+- **Místo:** Islas Ballestas, Paracas, Peru (13°43'52"S, 76°23'23"W)
+- **Datum pořízení:** 2011-11-17
+- **Staženo:** 2026-04-20
+- **Použití:** gallery-3 druhu Humboldtův (Run 007e1); původní rozlišení (1598×1126)
 
 ## magellansky/hero.jpg
 
