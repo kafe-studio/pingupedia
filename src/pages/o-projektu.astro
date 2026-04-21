@@ -1,7 +1,7 @@
 ---
 export const prerender = true;
 import BaseLayout from "../layouts/BaseLayout.astro";
-import PenguinMascot from "../components/theme/PenguinMascot.astro";
+import Mascot from "../components/mascot/Mascot.astro";
 
 const metadata = {
   title: "O projektu",
@@ -37,7 +37,7 @@ const metadata = {
 
         <div class="bento-card col-span-12 md:col-span-4 p-6 flex flex-col items-center justify-center text-center reveal">
           <div class="anim-float mb-3">
-            <PenguinMascot size={100} />
+            <Mascot pose="cte" size={100} />
           </div>
           <p class="text-xs uppercase tracking-widest text-primary font-semibold">Cílová skupina</p>
           <p class="mt-1 text-lg font-bold">děti i dospělí</p>

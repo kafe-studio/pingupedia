@@ -1,0 +1,84 @@
+---
+import { Image } from "astro:assets";
+import type { ImageMetadata } from "astro";
+
+import ahoj from "../../assets/mascot/ahoj.png";
+import plave from "../../assets/mascot/plave.png";
+import detektiv from "../../assets/mascot/detektiv.png";
+import cte from "../../assets/mascot/cte.png";
+import radost from "../../assets/mascot/radost.png";
+import otazka from "../../assets/mascot/otazka.png";
+import palec from "../../assets/mascot/palec.png";
+import wow from "../../assets/mascot/wow.png";
+import srdce from "../../assets/mascot/srdce.png";
+import vajicko from "../../assets/mascot/vajicko.png";
+
+type MascotPose =
+  | "ahoj"
+  | "plave"
+  | "detektiv"
+  | "cte"
+  | "radost"
+  | "otazka"
+  | "palec"
+  | "wow"
+  | "srdce"
+  | "vajicko";
+
+interface Props {
+  pose: MascotPose;
+  size?: number;
+  class?: string;
+  loading?: "eager" | "lazy";
+  alt?: string;
+}
+
+const sources: Record<MascotPose, ImageMetadata> = {
+  ahoj, plave, detektiv, cte, radost,
+  otazka, palec, wow, srdce, vajicko,
+};
+
+const defaultAlts: Record<string, string> = {
+  ahoj: "Tučňák Pingu mává na pozdrav",
+  plave: "Tučňák Pingu plave ve vodě",
+  detektiv: "Tučňák Pingu zkoumá s lupou",
+  cte: "Tučňák Pingu čte knihu",
+  radost: "Tučňák Pingu se raduje",
+  otazka: "Zmatený tučňák Pingu s otazníkem",
+  palec: "Tučňák Pingu ukazuje palec nahoru",
+  wow: "Překvapený tučňák Pingu",
+  srdce: "Tučňák Pingu drží modré srdce",
+  vajicko: "Tučňák Pingu se vyklubává z vajíčka",
+};
+
+const {
+  pose,
+  size = 180,
+  class: className = "",
+  loading = "lazy",
+  alt,
+} = Astro.props;
+
+const src = sources[pose];
+const altText = alt ?? defaultAlts[pose];
+---
+
+<Image
+  src={src}
+  alt={altText}
+  width={size}
+  height={size}
+  loading={loading}
+  densities={[1, 2]}
+  class:list={["mascot-image", className]}
+/>
+
+<style>
+  .mascot-image {
+    display: inline-block;
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    object-fit: contain;
+  }
+</style>

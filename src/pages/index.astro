@@ -2,7 +2,7 @@
 export const prerender = true;
 import BaseLayout from "../layouts/BaseLayout.astro";
 import NoCropImage from "../components/media/NoCropImage.astro";
-import PenguinMascot from "../components/theme/PenguinMascot.astro";
+import Mascot from "../components/mascot/Mascot.astro";
 import { siteConfig } from "../config/site";
 import { getCollection } from "astro:content";
 import emperorPenguin from "../assets/penguins/cisarsky/hero.jpg";
@@ -79,7 +79,7 @@ const metadata = {
               <p class="mt-1 text-sm text-white/70">kompletní taxonomie</p>
             </div>
             <div class="shrink-0 anim-float">
-              <PenguinMascot size={96} />
+              <Mascot pose="detektiv" size={96} />
             </div>
           </div>
         </div>
@@ -160,7 +160,7 @@ const metadata = {
             <p class="mt-2 text-sm text-muted-foreground">Populárně-naučně, ale věcně. Pro zvědavé malé i velké.</p>
           </div>
           <div class="shrink-0 anim-bob">
-            <PenguinMascot size={110} />
+            <Mascot pose="srdce" size={110} />
           </div>
         </a>
       </div>

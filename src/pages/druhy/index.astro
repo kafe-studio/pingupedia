@@ -4,7 +4,7 @@ import { getCollection } from "astro:content";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import NoCropImage from "../../components/media/NoCropImage.astro";
 import IucnBadge from "../../components/species/IucnBadge.astro";
-import PenguinMascot from "../../components/theme/PenguinMascot.astro";
+import Mascot from "../../components/mascot/Mascot.astro";
 
 const species = await getCollection("species");
 species.sort((a, b) => a.data.nameCs.localeCompare(b.data.nameCs, "cs"));
@@ -128,7 +128,7 @@ const genusCount = species.reduce<Record<string, number>>((acc, s) => {
           <p class="mt-3 text-white/80">Každý detail má hero fotku, fakta, historii, galerii a ověřené zdroje.</p>
         </div>
         <div class="shrink-0 anim-float">
-          <PenguinMascot size={150} />
+          <Mascot pose="palec" size={150} />
         </div>
       </div>
     </div>
