@@ -70,14 +70,13 @@ const altText = alt ?? defaultAlts[pose];
   height={size}
   loading={loading}
   densities={[1, 2]}
+  style={`width:${size}px;height:${size}px;`}
   class:list={["mascot-image", className]}
 />
 
 <style>
   .mascot-image {
     display: inline-block;
-    width: auto;
-    height: auto;
     max-width: 100%;
     object-fit: contain;
   }
