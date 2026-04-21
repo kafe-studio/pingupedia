@@ -22,17 +22,22 @@ const metadata = {
 <BaseLayout {metadata}>
   <section class="relative px-4 sm:px-6 pt-28 pb-16">
     <div class="mx-auto max-w-7xl">
-      <header class="mb-8 md:mb-12 max-w-3xl reveal">
-        <p class="text-sm uppercase tracking-[0.2em] text-primary/80 mb-4">
-          Česká encyklopedie tučňáků
-        </p>
-        <h1 class="text-5xl md:text-7xl font-black tracking-tight leading-[0.95] mb-4">
-          Pozná<span class="text-primary">š</span> všech<br />
-          <span class="text-accent">18 druhů</span> tučňáků?
-        </h1>
-        <p class="text-lg md:text-xl text-muted-foreground">
-          Fotky bez ořezu, mapy, historie a ověřené zdroje&nbsp;— pro děti i dospělé.
-        </p>
+      <header class="mb-8 md:mb-12 flex items-end gap-6 md:gap-10">
+        <div class="flex-1 min-w-0">
+          <p class="text-sm uppercase tracking-[0.2em] text-primary/80 mb-4">
+            Česká encyklopedie tučňáků
+          </p>
+          <h1 class="text-5xl md:text-7xl font-black tracking-tight leading-[0.95] mb-4">
+            Pozná<span class="text-primary">š</span> všech<br />
+            <span class="text-accent">18 druhů</span> tučňáků?
+          </h1>
+          <p class="text-lg md:text-xl text-muted-foreground max-w-2xl">
+            Fotky bez ořezu, mapy, historie a ověřené zdroje&nbsp;— pro děti i dospělé.
+          </p>
+        </div>
+        <div class="shrink-0 anim-float hidden sm:block">
+          <Mascot pose="ahoj" size={220} loading="eager" />
+        </div>
       </header>
 
       <div class="grid grid-cols-12 auto-rows-[minmax(160px,auto)] gap-4 md:gap-5">
@@ -71,7 +76,7 @@ const metadata = {
           </span>
         </a>
 
-        <div class="bento-card bento-surface-ice col-span-6 md:col-span-4 p-6 flex flex-col justify-between min-h-[200px] reveal">
+        <div class="bento-card bento-surface-ice col-span-6 md:col-span-4 p-6 flex flex-col justify-between min-h-[200px]">
           <div class="flex items-start justify-between gap-3">
             <div>
               <p class="text-xs uppercase tracking-widest text-accent/90 font-semibold">Druhů celkem</p>
@@ -79,7 +84,7 @@ const metadata = {
               <p class="mt-1 text-sm text-white/70">kompletní taxonomie</p>
             </div>
             <div class="shrink-0 anim-float">
-              <Mascot pose="detektiv" size={96} />
+              <Mascot pose="detektiv" size={140} />
             </div>
           </div>
         </div>
@@ -149,7 +154,7 @@ const metadata = {
 
         <a
           href="/o-projektu/"
-          class="bento-card is-link col-span-12 md:col-span-6 p-6 md:p-8 flex items-center justify-between gap-4 min-h-[180px] reveal"
+          class="bento-card is-link col-span-12 md:col-span-6 p-6 md:p-8 flex items-center justify-between gap-4 min-h-[180px]"
           data-astro-prefetch
         >
           <div>
@@ -160,7 +165,7 @@ const metadata = {
             <p class="mt-2 text-sm text-muted-foreground">Populárně-naučně, ale věcně. Pro zvědavé malé i velké.</p>
           </div>
           <div class="shrink-0 anim-bob">
-            <Mascot pose="srdce" size={110} />
+            <Mascot pose="srdce" size={140} />
           </div>
         </a>
       </div>
