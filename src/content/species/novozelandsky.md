@@ -1,0 +1,49 @@
+---
+nameCs: "Tučňák novozélandský"
+nameLat: "Eudyptes pachyrhynchus"
+nameEn: "Fiordland penguin"
+genus: "Eudyptes"
+iucnStatus: "NT"
+description: "Lesní tučňák jihozápadního Nového Zélandu s výrazným žlutým chocholem. Maorsky „tawaki“."
+size:
+  heightCm: [50, 60]
+  weightKg: [2, 5]
+distribution:
+  - "Jihozápadní pobřeží Jižního ostrova Nového Zélandu (Fiordland)"
+  - "Stewartův ostrov / Rakiura"
+  - "Přilehlé ostrůvky Snares, Solander, Codfish"
+habitat: "Chladné mírné deštné lesy na strmých pobřežních svazích. Hnízdí mezi kořeny stromů a balvany, často desítky metrů od moře. Jediný tučňák, který pravidelně hnízdí uvnitř hustého lesa."
+diet:
+  - "Hlavonožci, zejména kalmár Nototodarus sloanii (asi 85 % stravy)"
+  - "Korýši — krill a další drobní (13 %)"
+  - "Ryby — treska červená a modroploutvý hoki (2 %)"
+lifespan:
+  wildYears: 20
+population: "Přibližně 2 500 hnízdících párů podle průzkumů z 90. let; odhady jsou pravděpodobně podhodnocené, ale trend je klesající. V roce 2013 překlasifikovalo Novozélandské ministerstvo ochrany přírody stav na „ohrožený“ (endangered)."
+historicalNotes: "Popsal ho v roce 1845 anglický zoolog George Robert Gray. Maorové mu říkají „tawaki“ nebo „pokotiwha“ a v mytologii ho ztotožňují s bohem hromu a blesku — podle legendy přinesl právě tawaki oheň z podsvětí. Historicky se areál táhl dále na sever, ale byl výrazně zúžen lovem v polynéské éře a pozdějším kontaktem s koloniálními osadníky."
+hero:
+  src: "../../assets/penguins/novozelandsky/hero.jpg"
+  alt: "Dospělý tučňák novozélandský na pobřeží Munro Beach na Novém Zélandu"
+  author: "travelwayoflife"
+  license: "CC BY-SA 2.0"
+  sourceUrl: "https://commons.wikimedia.org/wiki/File:Fiordland_Crested_Penguin.jpg"
+sources:
+  - url: "https://cs.wikipedia.org/wiki/Tu%C4%8D%C5%88%C3%A1k_novoz%C3%A9landsk%C3%BD"
+    title: "Tučňák novozélandský — Wikipedia (CS)"
+    type: "Wikipedia"
+  - url: "https://en.wikipedia.org/wiki/Fiordland_penguin"
+    title: "Fiordland penguin — Wikipedia (EN)"
+    type: "Wikipedia"
+  - url: "https://www.iucnredlist.org/species/22697776/182279725"
+    title: "Eudyptes pachyrhynchus — IUCN Red List"
+    type: "IUCN"
+    note: "Status Near Threatened, populace klesající"
+  - url: "https://datazone.birdlife.org/species/factsheet/fiordland-penguin-eudyptes-pachyrhynchus"
+    title: "Fiordland Penguin — BirdLife International factsheet"
+    type: "BirdLife"
+updatedAt: "2026-04-21"
+---
+
+Tučňák novozélandský je jediný tučňák, který hnízdí hluboko v deštném pralese. Žije jen na jihozápadních pobřežích Nového Zélandu a Stewartova ostrova, kde si páry vyhrabávají hnízdo pod kořeny stromů, mezi mechem nebo ve skalních puklinách — často stovky metrů od pobřeží. Dospělec měří kolem 55 centimetrů a váží něco přes tři kilogramy. Od ostatních druhů rodu Eudyptes se pozná po výrazném žlutém chocholu nad okem, který připomíná podlouhlé peří svěšené dozadu, a po bílých pruzích na tvářích, které se u ostatních chocholatých tučňáků nevyskytují.
+
+Maorům byl dobře znám už před příchodem Evropanů — říkali mu **tawaki** a ztotožňovali ho s bohem hromu a blesku. Jedna z legend říká, že tawaki přinesl lidem oheň z podsvětí. Vědecky druh popsal v roce 1845 anglický zoolog George Robert Gray. Dnes je to jeden z nejvzácnějších tučňáků světa — odhady mluví o přibližně 2 500 hnízdících párech a populace stále klesá. Novozélandské úřady ho v roce 2013 přeřadily do kategorie „ohrožený", zatímco IUCN ho stále vede jako „téměř ohrožený".

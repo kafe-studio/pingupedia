@@ -821,3 +821,15 @@ Tento seznam sleduje licenční údaje pro všechny fotografie tučňáků v pro
 - **Datum pořízení:** 2024-01-29
 - **Staženo:** 2026-04-20
 - **Použití:** gallery-3 druhu magellanský (Run 007e2); staženo jako 2000px thumbnail (3840×5120); Wiki Science Competition 2025
+
+## novozelandsky/hero.jpg
+
+- **Druh:** Tučňák novozélandský (*Eudyptes pachyrhynchus*)
+- **Autor:** travelwayoflife
+- **Licence:** CC BY-SA 2.0
+- **Zdroj:** [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Fiordland_Crested_Penguin.jpg)
+- **Originál:** https://upload.wikimedia.org/wikipedia/commons/3/30/Fiordland_Crested_Penguin.jpg
+- **Místo:** Munro Beach, Nový Zéland
+- **Datum pořízení:** 2011-11-25
+- **Staženo:** 2026-04-21
+- **Použití:** hero druhu novozélandský (doplnění chybějícího 18. druhu)
