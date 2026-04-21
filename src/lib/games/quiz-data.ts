@@ -27,10 +27,10 @@ export const quizQuestions: QuizQuestion[] = [
   },
   {
     question: "Kolik druhů tučňáků žije dnes na Zemi?",
-    options: ["5 druhů", "12 druhů", "17–18 druhů", "30 druhů"],
+    options: ["5 druhů", "12 druhů", "18 druhů", "30 druhů"],
     correct: 2,
     explanation:
-      "Podle aktuální taxonomie žije 17 až 18 druhů, rozdělených do 6 rodů.",
+      "Podle aktuální taxonomie žije 18 druhů tučňáků, rozdělených do 6 rodů.",
   },
   {
     question: "Co dělá samec tučňáka císařského během zimy?",

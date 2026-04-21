@@ -1,7 +1,12 @@
 ---
 export const prerender = true;
+import { getCollection } from "astro:content";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Mascot from "../components/mascot/Mascot.astro";
+
+const species = await getCollection("species");
+const speciesCount = species.length;
+const genusCount = new Set(species.map((s) => s.data.genus)).size;
 
 const metadata = {
   title: "O projektu",
@@ -65,7 +70,7 @@ const metadata = {
               <strong class="text-white">Atribuce u každé fotky.</strong> Autor, licence, odkaz na Commons. Licence povoleny: CC&nbsp;BY, CC&nbsp;BY-SA, Public Domain.
             </li>
             <li>
-              <strong class="text-white">~67 fotek</strong> v aktuální verzi (17 hero + ~50 gallery).
+              <strong class="text-white">~68 fotek</strong> v aktuální verzi ({speciesCount} hero + ~50 gallery).
             </li>
           </ul>
         </div>
@@ -74,11 +79,11 @@ const metadata = {
           <p class="text-xs uppercase tracking-widest text-primary font-semibold mb-2">Statistiky</p>
           <div class="grid grid-cols-2 gap-4 mt-3">
             <div>
-              <p class="text-3xl font-black text-foreground">17</p>
+              <p class="text-3xl font-black text-foreground">{speciesCount}</p>
               <p class="text-xs text-muted-foreground">druhů</p>
             </div>
             <div>
-              <p class="text-3xl font-black text-foreground">6</p>
+              <p class="text-3xl font-black text-foreground">{genusCount}</p>
               <p class="text-xs text-muted-foreground">rodů</p>
             </div>
             <div>
