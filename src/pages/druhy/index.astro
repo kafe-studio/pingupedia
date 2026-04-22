@@ -79,7 +79,7 @@ const genusCount = species.reduce<Record<string, number>>((acc, s) => {
           const surface = i % 4 === 0 ? "bento-surface-aurora" : i % 4 === 2 ? "bento-surface-ice" : "";
           const isSurfaced = surface.length > 0;
           return (
-            <li class={`${span} reveal`}>
+            <li class={span}>
               <a
                 href={`/druhy/${entry.id}/`}
                 data-astro-prefetch
