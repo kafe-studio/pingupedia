@@ -29,7 +29,7 @@ const next = Astro.url.searchParams.get("next") ?? "/admin/";
           </p>
         )}
 
-        <form method="POST" action="/api/admin/session" class="space-y-4">
+        <form method="POST" action="/api/admin/session/" class="space-y-4">
           <input type="hidden" name="action" value="login" />
           <input type="hidden" name="next" value={next} />
           <label class="block">

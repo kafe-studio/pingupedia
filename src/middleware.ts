@@ -4,7 +4,7 @@ import { readCookie, verifySessionCookie } from "./lib/admin/session";
 const ADMIN_PREFIX = "/admin";
 const LOGIN_PATH = "/admin/login/";
 const API_ADMIN_PREFIX = "/api/admin";
-const API_SESSION_PATH = "/api/admin/session";
+const API_SESSION_PATHS = new Set(["/api/admin/session", "/api/admin/session/"]);
 
 export const onRequest = defineMiddleware(async (context, next) => {
   const pathname = context.url.pathname;
@@ -13,7 +13,7 @@ export const onRequest = defineMiddleware(async (context, next) => {
 
   if (!isAdminPage && !isAdminApi) return next();
 
-  if (pathname === LOGIN_PATH || pathname === API_SESSION_PATH) {
+  if (pathname === LOGIN_PATH || API_SESSION_PATHS.has(pathname)) {
     return next();
   }
 
