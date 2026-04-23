@@ -4,7 +4,8 @@
 ADMIN_PASSWORD=change-me-locally
 SESSION_SECRET=at-least-32-char-random-string-please
 
-# Run 011+ (GitHub API writes):
-# GITHUB_TOKEN=github_pat_fine_grained_with_contents_write
-# GITHUB_OWNER=kafe-studio
-# GITHUB_REPO=pingupedia
+# GitHub API — fine-grained PAT with Contents: Read and write on this repo
+GITHUB_TOKEN=github_pat_placeholder
+GITHUB_OWNER=kafe-studio
+GITHUB_REPO=pingupedia
+GITHUB_BRANCH=main

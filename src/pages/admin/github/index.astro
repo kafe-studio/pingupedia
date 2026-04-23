@@ -1,0 +1,39 @@
+---
+export const prerender = false;
+import AdminLayout from "../../../layouts/AdminLayout.astro";
+---
+
+<AdminLayout title="GitHub" section="dashboard">
+  <header class="mb-8">
+    <p class="text-xs uppercase tracking-widest text-primary font-semibold mb-2">Diagnostika</p>
+    <h1 class="text-3xl md:text-4xl font-black tracking-tight">GitHub connection</h1>
+    <p class="mt-2 text-muted-foreground max-w-2xl">
+      Ověření, že admin dokáže číst repo přes GitHub API. Bez funkčního připojení editace v Run&nbsp;012+ nepojede.
+    </p>
+  </header>
+
+  <section id="status-section" class="rounded-2xl border border-border bg-card p-6">
+    <p class="text-sm text-muted-foreground" id="status-loading">Načítám stav…</p>
+    <pre
+      id="status-output"
+      class="hidden whitespace-pre-wrap break-words rounded-lg border border-border bg-background p-4 text-xs font-mono overflow-auto max-h-[500px]"
+    ></pre>
+    <div id="status-summary" class="hidden mt-4 space-y-2 text-sm"></div>
+  </section>
+
+  <details class="mt-6 rounded-2xl border border-border bg-card/50 p-6">
+    <summary class="cursor-pointer font-semibold">Jak nastavit secrets v produkci</summary>
+    <div class="mt-4 space-y-2 text-sm text-muted-foreground">
+      <p>1. Vytvoř fine-grained PAT na <a href="https://github.com/settings/personal-access-tokens" class="text-primary hover:underline" rel="noopener" target="_blank">github.com/settings/personal-access-tokens</a>. Repo: <code class="bg-muted px-1 rounded">kafe-studio/pingupedia</code>, Permissions → Contents: <strong>Read and write</strong>.</p>
+      <p>2. V terminálu z repa:</p>
+      <pre class="rounded bg-background border border-border p-3 text-xs font-mono overflow-x-auto">pnpm wrangler secret put GITHUB_TOKEN</pre>
+      <p>3. V <code class="bg-muted px-1 rounded">wrangler.jsonc</code> přidat plain vars (ne secrety):</p>
+      <pre class="rounded bg-background border border-border p-3 text-xs font-mono overflow-x-auto">{`"vars": {"GITHUB_OWNER": "kafe-studio", "GITHUB_REPO": "pingupedia", "GITHUB_BRANCH": "main"}`}</pre>
+    </div>
+  </details>
+
+  <script>
+    import { mountGithubStatus } from "../../../lib/admin/github-status-client";
+    mountGithubStatus();
+  </script>
+</AdminLayout>

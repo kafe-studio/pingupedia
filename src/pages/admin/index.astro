@@ -60,7 +60,15 @@ const sections = [
     ))}
   </section>
 
-  <section class="mt-10 rounded-2xl border border-border bg-card/50 p-6">
+  <section class="mt-8 rounded-2xl border border-border bg-card p-5 flex items-center justify-between">
+    <div>
+      <p class="text-xs uppercase tracking-widest text-primary font-semibold mb-1">Diagnostika</p>
+      <p class="text-sm text-muted-foreground">Ověř, že admin má přístup k GitHub repu — předpoklad pro edit funkci.</p>
+    </div>
+    <a href="/admin/github/" class="btn-outline px-4 py-2 text-sm">Otevřít diagnostiku</a>
+  </section>
+
+  <section class="mt-6 rounded-2xl border border-border bg-card/50 p-6">
     <h3 class="text-sm font-semibold uppercase tracking-widest text-muted-foreground mb-3">Stav nasazení</h3>
     <dl class="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm">
       <div>
