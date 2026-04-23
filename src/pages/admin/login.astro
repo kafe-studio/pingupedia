@@ -1,0 +1,55 @@
+---
+export const prerender = false;
+import "../../styles/global.css";
+import { Font } from "astro:assets";
+
+const error = Astro.url.searchParams.get("error");
+const next = Astro.url.searchParams.get("next") ?? "/admin/";
+---
+
+<!doctype html>
+<html lang="cs" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>Přihlášení · pingupedia admin</title>
+    <Font cssVariable="--font-inter" preload />
+  </head>
+  <body class="bg-background text-foreground antialiased min-h-screen flex items-center justify-center px-6">
+    <main class="w-full max-w-md">
+      <div class="rounded-2xl border border-border bg-card p-8">
+        <p class="text-xs uppercase tracking-widest text-primary font-semibold mb-2">Admin</p>
+        <h1 class="text-3xl font-black tracking-tight mb-1">Přihlášení</h1>
+        <p class="text-sm text-muted-foreground mb-6">Zadej heslo pro přístup do redakce.</p>
+
+        {error && (
+          <p class="mb-4 rounded-lg border border-red-400/40 bg-red-500/10 px-3 py-2 text-sm text-red-200">
+            {error === "bad-password" ? "Nesprávné heslo." : "Přihlášení selhalo. Zkus to znovu."}
+          </p>
+        )}
+
+        <form method="POST" action="/api/admin/session" class="space-y-4">
+          <input type="hidden" name="action" value="login" />
+          <input type="hidden" name="next" value={next} />
+          <label class="block">
+            <span class="block text-sm font-medium mb-1.5">Heslo</span>
+            <input
+              type="password"
+              name="password"
+              required
+              autocomplete="current-password"
+              autofocus
+              class="w-full rounded-lg border border-border-interactive bg-background px-3 py-2.5 text-sm focus:outline-none focus:border-primary"
+            />
+          </label>
+          <button type="submit" class="btn-primary w-full py-3">Přihlásit</button>
+        </form>
+      </div>
+
+      <p class="mt-6 text-center text-xs text-muted-foreground">
+        <a href="/" class="hover:text-primary transition-colors">← zpět na pingupedia</a>
+      </p>
+    </main>
+  </body>
+</html>

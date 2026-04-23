@@ -1,0 +1,70 @@
+---
+import "../styles/global.css";
+import { Font } from "astro:assets";
+
+interface Props {
+  title: string;
+  section?: "dashboard" | "druhy" | "texty" | "fotky";
+}
+
+const { title, section = "dashboard" } = Astro.props;
+
+const navItems = [
+  { id: "dashboard", href: "/admin/", label: "Přehled" },
+  { id: "druhy", href: "/admin/druhy/", label: "Druhy" },
+  { id: "texty", href: "/admin/texty/", label: "Texty" },
+  { id: "fotky", href: "/admin/fotky/", label: "Fotky" },
+] as const;
+---
+
+<!doctype html>
+<html lang="cs" class="scroll-smooth" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>{title} · pingupedia admin</title>
+    <Font cssVariable="--font-inter" preload />
+  </head>
+  <body class="bg-background text-foreground antialiased min-h-screen flex flex-col">
+    <header class="border-b border-border bg-card/50 backdrop-blur-xl">
+      <div class="mx-auto max-w-6xl flex items-center justify-between px-6 py-4">
+        <div class="flex items-center gap-6">
+          <a href="/" class="text-lg font-bold">pingupedia</a>
+          <span class="text-xs uppercase tracking-widest text-primary font-semibold">admin</span>
+        </div>
+        <form method="POST" action="/api/admin/session" class="flex items-center gap-3">
+          <input type="hidden" name="action" value="logout" />
+          <button type="submit" class="text-sm text-muted-foreground hover:text-primary transition-colors">
+            Odhlásit
+          </button>
+        </form>
+      </div>
+      <nav class="mx-auto max-w-6xl px-6 pb-3 flex items-center gap-1" aria-label="Admin navigace">
+        {navItems.map((item) => (
+          <a
+            href={item.href}
+            class:list={[
+              "px-3 py-2 rounded-lg text-sm font-medium transition-colors",
+              item.id === section
+                ? "bg-primary/15 text-primary"
+                : "text-muted-foreground hover:text-foreground hover:bg-muted",
+            ]}
+          >
+            {item.label}
+          </a>
+        ))}
+      </nav>
+    </header>
+
+    <main class="flex-1 px-6 py-10">
+      <div class="mx-auto max-w-6xl">
+        <slot />
+      </div>
+    </main>
+
+    <footer class="border-t border-border px-6 py-4 text-xs text-muted-foreground">
+      <div class="mx-auto max-w-6xl">Interní admin · editace přes GitHub commits</div>
+    </footer>
+  </body>
+</html>

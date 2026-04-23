@@ -35,3 +35,11 @@ export interface HeadlineProps extends Widget {
   tagline?: string;
   titleAs?: string;
 }
+
+declare global {
+  namespace App {
+    interface Locals {
+      isAdmin?: boolean;
+    }
+  }
+}

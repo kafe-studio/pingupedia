@@ -1,0 +1,17 @@
+---
+export const prerender = false;
+import AdminLayout from "../../../layouts/AdminLayout.astro";
+---
+
+<AdminLayout title="Druhy" section="druhy">
+  <header class="mb-8">
+    <h1 class="text-3xl md:text-4xl font-black tracking-tight">Druhy</h1>
+    <p class="mt-2 text-muted-foreground">Editace 18 druhů tučňáků — k dispozici v Runu&nbsp;012.</p>
+  </header>
+  <div class="rounded-2xl border border-dashed border-border bg-card/50 p-10 text-center">
+    <p class="text-lg font-semibold mb-2">Skafold připravený</p>
+    <p class="text-sm text-muted-foreground max-w-md mx-auto">
+      Auth brána + layout už běží. List druhů a formulář pro frontmatter + body text přijdou v Runu&nbsp;012 spolu s GitHub API wrapperem.
+    </p>
+  </div>
+</AdminLayout>

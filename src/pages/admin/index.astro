@@ -1,0 +1,84 @@
+---
+export const prerender = false;
+import AdminLayout from "../../layouts/AdminLayout.astro";
+import { getCollection } from "astro:content";
+
+const species = await getCollection("species");
+const speciesCount = species.length;
+
+const sections = [
+  {
+    href: "/admin/druhy/",
+    title: "Druhy",
+    description: `Edituj ${speciesCount} druhů tučňáků — fakta, body text, zdroje, galerie.`,
+    count: speciesCount,
+    status: "dostupné brzy",
+  },
+  {
+    href: "/admin/texty/",
+    title: "Texty",
+    description: "Homepage, /o-projektu/, hry, kvíz, site config — jednotlivé řetězce.",
+    count: null as number | null,
+    status: "dostupné brzy",
+  },
+  {
+    href: "/admin/fotky/",
+    title: "Fotky",
+    description: "Hero a galerie druhů — nahrávání s metadaty a kontrolou licence.",
+    count: null as number | null,
+    status: "dostupné brzy",
+  },
+];
+---
+
+<AdminLayout title="Přehled" section="dashboard">
+  <header class="mb-10">
+    <p class="text-xs uppercase tracking-widest text-primary font-semibold mb-2">Redakce</p>
+    <h1 class="text-4xl md:text-5xl font-black tracking-tight">Přehled obsahu</h1>
+    <p class="mt-3 text-muted-foreground">
+      Všechny edity vytvoří commit na <code class="text-xs bg-muted px-1.5 py-0.5 rounded">main</code>&nbsp;— CF Workers Build nasadí změny do ~2 min.
+    </p>
+  </header>
+
+  <section class="grid grid-cols-1 md:grid-cols-3 gap-4">
+    {sections.map((s) => (
+      <a
+        href={s.href}
+        class="group rounded-2xl border border-border bg-card p-6 transition-all hover:border-border-interactive hover:-translate-y-0.5"
+      >
+        <div class="flex items-start justify-between mb-3">
+          <h2 class="text-xl font-bold group-hover:text-primary transition-colors">{s.title}</h2>
+          {s.count !== null && (
+            <span class="rounded-full bg-primary/15 px-2.5 py-0.5 text-xs font-semibold text-primary">
+              {s.count}
+            </span>
+          )}
+        </div>
+        <p class="text-sm text-muted-foreground mb-4">{s.description}</p>
+        <p class="text-[10px] uppercase tracking-widest text-muted-foreground/60">{s.status}</p>
+      </a>
+    ))}
+  </section>
+
+  <section class="mt-10 rounded-2xl border border-border bg-card/50 p-6">
+    <h3 class="text-sm font-semibold uppercase tracking-widest text-muted-foreground mb-3">Stav nasazení</h3>
+    <dl class="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm">
+      <div>
+        <dt class="text-xs text-muted-foreground">Druhů v repu</dt>
+        <dd class="mt-0.5 text-lg font-bold">{speciesCount}</dd>
+      </div>
+      <div>
+        <dt class="text-xs text-muted-foreground">Větev</dt>
+        <dd class="mt-0.5 text-lg font-bold font-mono">main</dd>
+      </div>
+      <div>
+        <dt class="text-xs text-muted-foreground">Deploy</dt>
+        <dd class="mt-0.5 text-lg font-bold">CF Workers</dd>
+      </div>
+      <div>
+        <dt class="text-xs text-muted-foreground">Edit backend</dt>
+        <dd class="mt-0.5 text-lg font-bold">GitHub API</dd>
+      </div>
+    </dl>
+  </section>
+</AdminLayout>

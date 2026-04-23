@@ -31,3 +31,11 @@ worker-configuration.d.ts
 # Playwright MCP artifacts (screenshots, snapshots, console logs)
 .playwright-mcp/
 *-run*.png
+
+# Admin secrets
+.dev.vars
+
+# Debug screenshots
+druhy-*.png
+homepage-*.png
+.playwright-mcp/
