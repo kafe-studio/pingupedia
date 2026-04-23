@@ -23,8 +23,8 @@ Admin umožní editovat vše přes web UI bez přístupu ke kódu, s git histori
 
 ## Runy
 
-- [ ] Run 010 — Bootstrap: auth middleware, login, dashboard skafold (bez edit funkce)
-- [ ] Run 011 — GitHub API wrapper (read/write soubory přes Octokit-like vanilla fetch)
+- [x] Run 010 — Bootstrap: auth middleware, login, dashboard skafold → `run-010-admin-bootstrap.done.md`
+- [x] Run 011 — GitHub API wrapper + diagnostic UI → `run-011-github-api.done.md`
 - [ ] Run 012 — `/admin/druhy/` list + edit (frontmatter fields + markdown body textarea)
 - [ ] Run 013 — `/admin/texty/` flat key-value pro hardcoded stringy + refaktor homepage/o-projektu na `t('key')`
 - [ ] Run 014 — TipTap rich editor pro markdown body + R2 image upload (nové gallery fotky)
