@@ -1,17 +1,74 @@
 ---
 export const prerender = false;
 import AdminLayout from "../../../layouts/AdminLayout.astro";
+import { Image } from "astro:assets";
+import { getCollection } from "astro:content";
+
+const species = await getCollection("species");
+species.sort((a, b) => a.data.nameCs.localeCompare(b.data.nameCs, "cs"));
+
+const iucnLabels: Record<string, string> = {
+  LC: "Málo dotčený",
+  NT: "Téměř ohrožený",
+  VU: "Zranitelný",
+  EN: "Ohrožený",
+  CR: "Kriticky ohrožený",
+  DD: "Nedostatek dat",
+  EX: "Vyhynulý",
+};
 ---
 
 <AdminLayout title="Druhy" section="druhy">
-  <header class="mb-8">
-    <h1 class="text-3xl md:text-4xl font-black tracking-tight">Druhy</h1>
-    <p class="mt-2 text-muted-foreground">Editace 18 druhů tučňáků — k dispozici v Runu&nbsp;012.</p>
+  <header class="mb-8 flex items-end justify-between gap-4">
+    <div>
+      <p class="text-xs uppercase tracking-widest text-primary font-semibold mb-2">Editace obsahu</p>
+      <h1 class="text-3xl md:text-4xl font-black tracking-tight">Druhy tučňáků</h1>
+      <p class="mt-2 text-muted-foreground">Klikni na druh pro úpravu markdown souboru. Save vytvoří commit na <code class="text-xs bg-muted px-1 rounded">main</code>.</p>
+    </div>
+    <div class="shrink-0 rounded-full bg-primary/15 px-4 py-2 text-sm font-semibold text-primary">
+      {species.length} druhů
+    </div>
   </header>
-  <div class="rounded-2xl border border-dashed border-border bg-card/50 p-10 text-center">
-    <p class="text-lg font-semibold mb-2">Skafold připravený</p>
-    <p class="text-sm text-muted-foreground max-w-md mx-auto">
-      Auth brána + layout už běží. List druhů a formulář pro frontmatter + body text přijdou v Runu&nbsp;012 spolu s GitHub API wrapperem.
-    </p>
-  </div>
+
+  <ul role="list" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+    {species.map((entry) => (
+      <li>
+        <a
+          href={`/admin/druhy/${entry.id}/`}
+          class="group flex gap-4 rounded-xl border border-border bg-card p-3 transition-all hover:border-border-interactive hover:-translate-y-0.5"
+        >
+          <div class="shrink-0 h-20 w-20 rounded-lg overflow-hidden bg-muted">
+            <Image
+              src={entry.data.hero.src}
+              alt={entry.data.hero.alt}
+              width={160}
+              height={160}
+              densities={[1, 2]}
+              class="h-full w-full object-contain"
+            />
+          </div>
+          <div class="min-w-0 flex-1 flex flex-col justify-center">
+            <h2 class="text-base font-bold group-hover:text-primary transition-colors truncate">
+              {entry.data.nameCs}
+            </h2>
+            <p class="text-xs italic text-muted-foreground truncate mt-0.5">{entry.data.nameLat}</p>
+            <div class="mt-2 flex items-center gap-2 text-[10px] uppercase tracking-wide">
+              <span class="rounded-full bg-muted px-2 py-0.5 text-muted-foreground">{entry.data.genus}</span>
+              <span
+                class="rounded-full bg-primary/10 px-2 py-0.5 font-semibold text-primary"
+                title={iucnLabels[entry.data.iucnStatus] ?? entry.data.iucnStatus}
+              >
+                {entry.data.iucnStatus}
+              </span>
+            </div>
+          </div>
+          <span class="shrink-0 self-center text-muted-foreground group-hover:text-primary transition-colors">→</span>
+        </a>
+      </li>
+    ))}
+  </ul>
+
+  <p class="mt-8 text-xs text-muted-foreground">
+    Slug = název souboru bez přípony (např. <code class="bg-muted px-1 rounded">cisarsky</code>). Nové druhy lze přidat jen přes git commit přímo (feature přidávání přes admin přijde v Run 013+).
+  </p>
 </AdminLayout>

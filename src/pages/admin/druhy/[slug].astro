@@ -1,0 +1,84 @@
+---
+export const prerender = false;
+import AdminLayout from "../../../layouts/AdminLayout.astro";
+
+const { slug } = Astro.params;
+if (!slug || !/^[a-z0-9-]+$/.test(slug)) {
+  return new Response("Invalid slug", { status: 400 });
+}
+---
+
+<AdminLayout title={`Editace: ${slug}`} section="druhy">
+  <nav class="mb-4 text-sm" aria-label="Drobečková navigace">
+    <a href="/admin/druhy/" class="text-muted-foreground hover:text-primary transition-colors">← Všechny druhy</a>
+  </nav>
+
+  <header class="mb-6 flex items-end justify-between gap-4">
+    <div>
+      <p class="text-xs uppercase tracking-widest text-primary font-semibold mb-2">Markdown editor</p>
+      <h1 class="text-3xl md:text-4xl font-black tracking-tight break-all">
+        <code class="font-mono">{slug}.md</code>
+      </h1>
+    </div>
+    <div id="status-badge" class="hidden shrink-0 rounded-full px-3 py-1 text-xs font-semibold"></div>
+  </header>
+
+  <section id="loading" class="rounded-2xl border border-border bg-card p-10 text-center text-muted-foreground">
+    Načítám obsah z GitHub…
+  </section>
+
+  <section id="error" class="hidden rounded-2xl border border-red-400/40 bg-red-500/10 p-6">
+    <p class="font-semibold text-red-200">Chyba</p>
+    <p id="error-message" class="mt-1 text-sm text-red-100"></p>
+  </section>
+
+  <form id="edit-form" class="hidden space-y-4" data-slug={slug}>
+    <input type="hidden" name="sha" id="file-sha" />
+
+    <div>
+      <label for="content" class="block text-sm font-semibold mb-1.5">Obsah souboru</label>
+      <textarea
+        id="content"
+        name="content"
+        required
+        spellcheck="false"
+        class="w-full min-h-[500px] rounded-lg border border-border-interactive bg-background px-3 py-2.5 text-sm font-mono leading-relaxed focus:outline-none focus:border-primary"
+      ></textarea>
+      <p class="mt-1.5 text-xs text-muted-foreground">
+        Frontmatter (mezi <code class="bg-muted px-1 rounded">---</code>) + populárně-naučný body text. Validace proběhne při buildu — pokud selže, revert přes git.
+      </p>
+    </div>
+
+    <div>
+      <label for="message" class="block text-sm font-semibold mb-1.5">Commit message</label>
+      <input
+        id="message"
+        name="message"
+        type="text"
+        required
+        minlength="5"
+        maxlength="100"
+        value={`Edit ${slug}: `}
+        class="w-full rounded-lg border border-border-interactive bg-background px-3 py-2.5 text-sm focus:outline-none focus:border-primary"
+      />
+    </div>
+
+    <div class="flex items-center justify-between gap-4 pt-2">
+      <a href="/admin/druhy/" class="btn-outline px-4 py-2 text-sm">Zrušit</a>
+      <button type="submit" id="submit-btn" class="btn-primary px-6 py-2.5">Uložit a commit</button>
+    </div>
+
+    <div id="commit-result" class="hidden rounded-lg border border-emerald-400/40 bg-emerald-500/10 p-4 text-sm">
+      <p class="font-semibold text-emerald-200">✓ Uloženo</p>
+      <p class="mt-1 text-emerald-100">
+        Commit: <a id="commit-link" href="#" rel="noopener" target="_blank" class="underline"></a>
+      </p>
+      <p class="mt-1 text-xs text-emerald-100/70">Deploy na produkci proběhne za ~2 minuty.</p>
+    </div>
+  </form>
+
+  <script>
+    import { mountSpeciesEditor } from "../../../lib/admin/species-edit-client";
+    mountSpeciesEditor();
+  </script>
+</AdminLayout>
