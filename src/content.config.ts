@@ -115,4 +115,53 @@ const site = defineCollection({
   }),
 });
 
-export const collections = { species, site };
+const slugRe = /^[a-z0-9-]+$/;
+
+const home = defineCollection({
+  loader: glob({ pattern: "home.json", base: "./src/content/pages" }),
+  schema: z.object({
+    hero: z.object({
+      eyebrow: z.string().min(1),
+      titleHtml: z.string().min(1),
+      subtitle: z.string().min(1),
+    }),
+    featured: z.object({
+      badge: z.string().min(1),
+      slug: z.string().regex(slugRe),
+      titleHtml: z.string().min(1),
+      description: z.string().min(1),
+      imageAlt: z.string().min(1),
+    }),
+    stats: z.object({
+      eyebrow: z.string().min(1),
+      subtitle: z.string().min(1),
+    }),
+    catalogCta: z.object({
+      eyebrow: z.string().min(1),
+      titleHtml: z.string().min(1),
+      subtitle: z.string().min(1),
+    }),
+    speciesCards: z
+      .array(
+        z.object({
+          slug: z.string().regex(slugRe),
+          genus: z.string().min(1),
+          name: z.string().min(1),
+          alt: z.string().min(1),
+        }),
+      )
+      .min(1),
+    howSection: z.object({
+      eyebrow: z.string().min(1),
+      titleHtml: z.string().min(1),
+      items: z.array(z.string().min(1)).min(1),
+    }),
+    aboutCta: z.object({
+      eyebrow: z.string().min(1),
+      titleHtml: z.string().min(1),
+      description: z.string().min(1),
+    }),
+  }),
+});
+
+export const collections = { species, site, home };

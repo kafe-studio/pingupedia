@@ -1,0 +1,52 @@
+{
+  "hero": {
+    "eyebrow": "Česká encyklopedie tučňáků",
+    "titleHtml": "Pozná<span class=\"text-primary\">š</span> všech<br />\n<span class=\"text-accent\">18 druhů</span> tučňáků?",
+    "subtitle": "Fotky bez ořezu, mapy, historie a ověřené zdroje&nbsp;— pro děti i dospělé."
+  },
+  "featured": {
+    "badge": "Tučňák týdne",
+    "slug": "cisarsky",
+    "titleHtml": "Tučňák<br />císařský",
+    "description": "Největší a nejpozoruhodnější. Hnízdí v antarktické zimě na mořském ledě a samec dva měsíce inkubuje vejce na nohou.",
+    "imageAlt": "Tučňák císařský s mládětem na Snow Hill Islandu"
+  },
+  "stats": {
+    "eyebrow": "Druhů celkem",
+    "subtitle": "kompletní taxonomie"
+  },
+  "catalogCta": {
+    "eyebrow": "Katalog",
+    "titleHtml": "Všechny<br />druhy →",
+    "subtitle": "Hero fotky · fakta · zdroje · galerie"
+  },
+  "speciesCards": [
+    {
+      "slug": "krouzkovy",
+      "genus": "Rod Pygoscelis",
+      "name": "Tučňák kroužkový",
+      "alt": "Tučňák kroužkový"
+    },
+    {
+      "slug": "skalni-jizni",
+      "genus": "Rod Eudyptes",
+      "name": "Rockhopper",
+      "alt": "Tučňák skalní jižní"
+    }
+  ],
+  "howSection": {
+    "eyebrow": "Jak to děláme",
+    "titleHtml": "Žádné výmysly.<br />Jen ověřená fakta.",
+    "items": [
+      "Wikipedia CS + EN",
+      "IUCN Red List",
+      "BirdLife",
+      "Fotky s licencí"
+    ]
+  },
+  "aboutCta": {
+    "eyebrow": "O projektu",
+    "titleHtml": "Proč<br />pingupedia?",
+    "description": "Populárně-naučně, ale věcně. Pro zvědavé malé i velké."
+  }
+}
