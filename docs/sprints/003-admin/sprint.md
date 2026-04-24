@@ -26,7 +26,12 @@ Admin umožní editovat vše přes web UI bez přístupu ke kódu, s git histori
 - [x] Run 010 — Bootstrap: auth middleware, login, dashboard skafold → `run-010-admin-bootstrap.done.md`
 - [x] Run 011 — GitHub API wrapper + diagnostic UI → `run-011-github-api.done.md`
 - [x] Run 012 — `/admin/druhy/` list + raw markdown editor → `run-012-species-edit.done.md`
-- [ ] Run 013 — Strukturovaný form pro frontmatter (inputy per pole, array manipulátory) + `/admin/texty/` pro hardcoded stringy
+- [x] Run 013a — Strukturovaný form pro species frontmatter → `run-013a-structured-form.done.md`
+- [x] Run 013b — Site config jako content collection + `/admin/texty/site/` → `run-013b-site-config.done.md`
+- [x] Run 013c — Homepage texty jako content collection + `/admin/texty/home/` → `run-013c-homepage-content.done.md`
+- [x] Run 013d — O projektu jako content collection + `/admin/texty/o-projektu/` → `run-013d-o-projektu-content.done.md`
+- [x] Run 013e — Hry rozcestník + kvíz jako content collections + admin forms → `run-013e-hry-kviz-content.done.md`
+- [ ] Run 013f — Species gallery/sources add-remove UI (dynamic array manipulace) + strukturovaný quiz form s radio buttons
 - [ ] Run 014 — TipTap rich editor pro markdown body + R2 image upload (nové gallery fotky)
 
 ## Bezpečnostní poznámky
