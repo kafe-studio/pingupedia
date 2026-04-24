@@ -6,8 +6,12 @@ genus: "Aptenodytes"
 iucnStatus: "NT"
 description: "Největší a nejhlouběji se potápějící druh tučňáka. Jediný pták, který hnízdí v antarktické zimě přímo na mořském ledě."
 size:
-  heightCm: [100, 130]
-  weightKg: [22, 45]
+  heightCm:
+    - 100
+    - 130
+  weightKg:
+    - 22
+    - 45
 distribution:
   - "Antarktida (pobřeží a přilehlý mořský led)"
 habitat: "Antarktický mořský led a ledový šelf; hnízdí v koloniích na pevném ledě (fast ice) daleko od otevřeného moře."
@@ -65,9 +69,8 @@ sources:
   - url: "http://datazone.birdlife.org/species/factsheet/emperor-penguin-aptenodytes-forsteri"
     title: "Emperor Penguin — BirdLife International factsheet"
     type: "BirdLife"
-updatedAt: "2026-04-19"
+updatedAt: "2026-04-24"
 ---
-
 Tučňák císařský je největší žijící druh tučňáka a jeden z nejpozoruhodnějších ptáků světa. Dospělí samci i samice měří kolem 1,2 metru a v plné kondici před zimou váží přes 40 kilogramů — většinu této váhy tvoří tuk, který je udrží naživu během měsíců hladovění v antarktické zimě. Žijí v oblasti, která je pro jakéhokoliv jiného ptáka příliš nehostinná: na pevném mořském ledě obklopujícím Antarktidu, kde teploty klesají hluboko pod −40 °C a fouká vítr o rychlosti přes 100 km/h.
 
 Jako jediný pták hnízdí právě v zimě. Po spáření v dubnu samice snese jediné vejce a předá ho samci, který ho dva měsíce inkubuje na nohou pod kožní řasou, zatímco samice putuje i sto kilometrů zpět k otevřenému moři nakrmit se. Samci mezitím tvoří obří schoulené skupiny — „huddle" — ve kterých se střídavě posouvají z okraje do středu, aby vydrželi mráz. Když se samice vrátí právě ve chvíli líhnutí, zkušený rodičovský pár si vymění mládě a samec se poprvé za čtyři měsíce nají. Tahle evoluční choreografie je tak přesná, že pozorovatelé expedice Terra Nova, kteří ji v roce 1911 jako první systematicky zdokumentovali, ji nazvali „nejtěžší cestou světa" — a kniha stejného jména vyšla o deset let později.
