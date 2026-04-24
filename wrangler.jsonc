@@ -10,6 +10,9 @@
   },
   "workers_dev": true,
   "preview_urls": false,
+  "routes": [
+    { "pattern": "pingupedia.kafe.studio", "custom_domain": true }
+  ],
   "vars": {
     "GITHUB_OWNER": "kafe-studio",
     "GITHUB_REPO": "pingupedia",
