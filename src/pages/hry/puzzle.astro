@@ -1,0 +1,129 @@
+---
+export const prerender = true;
+import GameLayout from "../../layouts/GameLayout.astro";
+import { getImage } from "astro:assets";
+import { getCollection } from "astro:content";
+import type { PuzzleImage } from "../../lib/games/puzzle/types";
+
+const species = await getCollection("species");
+
+// Build manifest: every gallery photo across every species, optimized to webp 1280w.
+const manifest: PuzzleImage[] = [];
+for (const entry of species) {
+  const gallery = entry.data.gallery ?? [];
+  for (const g of gallery) {
+    try {
+      const opt = await getImage({ src: g.src, width: 1280, format: "webp" });
+      manifest.push({
+        src: opt.src,
+        alt: g.alt,
+        speciesName: entry.data.nameCs,
+        speciesSlug: entry.id,
+        author: g.author,
+        license: g.license,
+      });
+    } catch {
+      // skip broken image
+    }
+  }
+}
+
+const manifestJson = JSON.stringify(manifest);
+---
+
+<GameLayout title="Puzzle" description="Skládačka z náhodné fotky tučňáků. 50+ dílků, přes celou obrazovku.">
+  <div id="puzzle-hud" class="fixed top-0 inset-x-0 z-40 h-[60px] px-4 flex items-center justify-between gap-3 bg-card/80 backdrop-blur-md border-b border-border">
+    <div class="flex items-center gap-3 text-sm">
+      <span class="hidden sm:inline text-muted-foreground">Puzzle:</span>
+      <span data-hud-species class="font-bold truncate max-w-[180px] sm:max-w-[260px]">—</span>
+      <span class="text-xs text-muted-foreground truncate max-w-[140px] hidden md:inline" data-hud-credit></span>
+    </div>
+    <div class="flex items-center gap-3 text-xs">
+      <span class="hidden sm:inline text-muted-foreground">Hotovo:</span>
+      <span><strong data-hud-placed class="text-foreground">0</strong> / <strong data-hud-total>—</strong></span>
+      <button data-btn-peek type="button" class="rounded-full border border-border px-3 py-1.5 text-[11px] font-medium hover:border-border-interactive">👁 Náhled</button>
+      <button data-btn-new type="button" class="rounded-full bg-primary text-primary-foreground px-3 py-1.5 text-[11px] font-bold">🔀 Nová hra</button>
+    </div>
+  </div>
+
+  <canvas id="puzzle-canvas" class="fixed inset-0 w-full h-full touch-none" style="touch-action:none;"></canvas>
+
+  <div
+    id="puzzle-done"
+    class="fixed inset-0 z-50 hidden flex-col items-center justify-center gap-4 bg-black/70 backdrop-blur-sm p-6 text-center"
+  >
+    <h2 class="text-3xl md:text-5xl font-black text-white">🎉 Složeno!</h2>
+    <p class="text-white/80" data-done-msg></p>
+    <div class="flex gap-3 mt-2">
+      <button data-done-again type="button" class="rounded-full bg-white text-slate-900 px-5 py-2.5 text-sm font-bold">Jiný obrázek</button>
+      <a href="/hry/" class="rounded-full border border-white/40 text-white px-5 py-2.5 text-sm font-bold">Zpět do herny</a>
+    </div>
+  </div>
+
+  <script is:inline define:vars={{ manifestJson }}>
+    window.__PUZZLE_MANIFEST__ = JSON.parse(manifestJson);
+  </script>
+  <script>
+    import { PuzzleGame } from "../../lib/games/puzzle/engine";
+    import type { PuzzleImage } from "../../lib/games/puzzle/types";
+
+    const manifest: PuzzleImage[] = (window as unknown as { __PUZZLE_MANIFEST__: PuzzleImage[] }).__PUZZLE_MANIFEST__ ?? [];
+    if (manifest.length === 0) throw new Error("puzzle manifest empty");
+
+    const canvas = document.getElementById("puzzle-canvas") as HTMLCanvasElement;
+    const hudSpecies = document.querySelector<HTMLElement>("[data-hud-species]")!;
+    const hudCredit = document.querySelector<HTMLElement>("[data-hud-credit]")!;
+    const hudPlaced = document.querySelector<HTMLElement>("[data-hud-placed]")!;
+    const hudTotal = document.querySelector<HTMLElement>("[data-hud-total]")!;
+    const btnPeek = document.querySelector<HTMLButtonElement>("[data-btn-peek]")!;
+    const btnNew = document.querySelector<HTMLButtonElement>("[data-btn-new]")!;
+    const doneBox = document.getElementById("puzzle-done")!;
+    const doneMsg = doneBox.querySelector<HTMLElement>("[data-done-msg]")!;
+    const doneAgain = doneBox.querySelector<HTMLButtonElement>("[data-done-again]")!;
+
+    let game: PuzzleGame | null = null;
+
+    function showDone(show: boolean): void {
+      doneBox.classList.toggle("hidden", !show);
+      doneBox.classList.toggle("flex", show);
+    }
+
+    async function loadImage(src: string): Promise<HTMLImageElement> {
+      return new Promise((resolve, reject) => {
+        const img = new Image();
+        img.onload = () => resolve(img);
+        img.onerror = reject;
+        img.src = src;
+      });
+    }
+
+    async function start(): Promise<void> {
+      if (game) game.destroy();
+      showDone(false);
+      const meta = manifest[Math.floor(Math.random() * manifest.length)];
+      const image = await loadImage(meta.src);
+      game = new PuzzleGame(canvas, image, meta, {
+        onProgress(placed, total) {
+          hudPlaced.textContent = String(placed);
+          hudTotal.textContent = String(total);
+        },
+        onImage(m) {
+          hudSpecies.textContent = m.speciesName;
+          hudCredit.textContent = `Foto: ${m.author} · ${m.license}`;
+        },
+        onComplete(elapsed) {
+          const mm = Math.floor(elapsed / 60).toString().padStart(2, "0");
+          const ss = (elapsed % 60).toString().padStart(2, "0");
+          doneMsg.textContent = `Čas: ${mm}:${ss}  ·  ${meta.speciesName}`;
+          showDone(true);
+        },
+      });
+    }
+
+    btnPeek.addEventListener("click", () => game?.peek(1500));
+    btnNew.addEventListener("click", () => { void start(); });
+    doneAgain.addEventListener("click", () => { void start(); });
+
+    void start();
+  </script>
+</GameLayout>

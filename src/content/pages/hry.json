@@ -40,6 +40,14 @@
       "description": "Space Invaders styl: tučňák dole střílí sněhové koule na chaluny, tulně a kosatky. Každý level up = volba vylepšení — silnější koule, více střel, rychlejší tempo.",
       "surface": "sun",
       "emoji": "🎯"
+    },
+    {
+      "slug": "puzzle",
+      "title": "Puzzle s tučňáky",
+      "tag": "56 dílků · náhodná fotka",
+      "description": "Skládačka z náhodně vybrané fotky z galerie druhů. Přetahuj dílky na jejich místo, celá obrazovka je tvoje. Tlačítko Náhled krátce ukáže předlohu.",
+      "surface": "candy",
+      "emoji": "🧩"
     }
   ],
   "cta": {
