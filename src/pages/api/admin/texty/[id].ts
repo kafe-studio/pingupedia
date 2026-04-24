@@ -42,9 +42,18 @@ async function getClient(): Promise<
   };
 }
 
-function resolvePath(id: string | undefined): { ok: true; path: string } | { ok: false; error: string } {
-  if (typeof id !== "string" || !ID_RE.test(id)) {
-    return { ok: false, error: `Neplatné id: ${id ?? "(chybí)"}` };
+function resolvePath(rawId: string | undefined): { ok: true; path: string } | { ok: false; error: string } {
+  if (typeof rawId !== "string") {
+    return { ok: false, error: "Neplatné id: (chybí)" };
+  }
+  let id: string;
+  try {
+    id = decodeURIComponent(rawId);
+  } catch {
+    return { ok: false, error: `Neplatné id: ${rawId}` };
+  }
+  if (!ID_RE.test(id)) {
+    return { ok: false, error: `Neplatné id: ${id}` };
   }
   try {
     const ref = parseContentId(id);
