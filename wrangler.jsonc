@@ -1,6 +1,7 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "pingupedia",
+  "account_id": "b945870b3bb5d6a40266336cb1e88693",
   "main": "@astrojs/cloudflare/entrypoints/server",
   "compatibility_date": "2026-03-05",
   "compatibility_flags": ["nodejs_compat", "global_fetch_strictly_public"],
