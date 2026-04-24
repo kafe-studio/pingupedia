@@ -164,4 +164,59 @@ const home = defineCollection({
   }),
 });
 
-export const collections = { species, site, home };
+const statItem = z.union([
+  z.object({ label: z.string().min(1), dynamic: z.enum(["species", "genus"]) }),
+  z.object({ label: z.string().min(1), value: z.string().min(1) }),
+]);
+
+const oProjektu = defineCollection({
+  loader: glob({ pattern: "o-projektu.json", base: "./src/content/pages" }),
+  schema: z.object({
+    meta: z.object({
+      title: z.string().min(1),
+      description: z.string().min(1),
+    }),
+    hero: z.object({
+      eyebrow: z.string().min(1),
+      titleHtml: z.string().min(1),
+      subtitle: z.string().min(1),
+    }),
+    purpose: z.object({
+      eyebrow: z.string().min(1),
+      title: z.string().min(1),
+      body: z.string().min(1),
+    }),
+    audience: z.object({
+      eyebrow: z.string().min(1),
+      title: z.string().min(1),
+      subtitle: z.string().min(1),
+    }),
+    sources: z.object({
+      eyebrow: z.string().min(1),
+      items: z.array(z.string().min(1)).min(1),
+    }),
+    imageRules: z.object({
+      eyebrow: z.string().min(1),
+      itemsHtml: z.array(z.string().min(1)).min(1),
+    }),
+    stats: z.object({
+      eyebrow: z.string().min(1),
+      items: z.array(statItem).min(1),
+    }),
+    tech: z.object({
+      eyebrow: z.string().min(1),
+      body: z.string().min(1),
+      badges: z.array(z.string().min(1)).min(1),
+    }),
+    catalogCta: z.object({
+      eyebrow: z.string().min(1),
+      title: z.string().min(1),
+    }),
+    gamesCta: z.object({
+      eyebrow: z.string().min(1),
+      title: z.string().min(1),
+    }),
+  }),
+});
+
+export const collections = { species, site, home, oProjektu };

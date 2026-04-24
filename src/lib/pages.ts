@@ -7,3 +7,11 @@ export async function getHomePage() {
 }
 
 export type HomePage = Awaited<ReturnType<typeof getHomePage>>;
+
+export async function getOProjektuPage() {
+  const entry = await getEntry("oProjektu", "o-projektu");
+  if (!entry) throw new Error("src/content/pages/o-projektu.json not found");
+  return entry.data;
+}
+
+export type OProjektuPage = Awaited<ReturnType<typeof getOProjektuPage>>;

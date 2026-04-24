@@ -1,0 +1,218 @@
+---
+export const prerender = false;
+import AdminLayout from "../../../layouts/AdminLayout.astro";
+
+const inputCls =
+  "w-full rounded-lg border border-border-interactive bg-background px-3 py-2 text-sm focus:outline-none focus:border-primary";
+const labelCls = "block text-sm font-semibold mb-1.5";
+const sectionCls = "rounded-2xl border border-border bg-card p-6 space-y-4";
+const sectionTitleCls =
+  "text-xs uppercase tracking-widest text-primary font-semibold mb-3";
+const hintCls = "text-xs text-muted-foreground";
+---
+
+<AdminLayout title="O projektu" section="texty">
+  <nav class="mb-4 text-sm" aria-label="Drobečková navigace">
+    <a href="/admin/texty/" class="text-muted-foreground hover:text-primary transition-colors">← Všechny texty</a>
+  </nav>
+
+  <header class="mb-6">
+    <p class="text-xs uppercase tracking-widest text-primary font-semibold mb-2">Strukturovaný editor</p>
+    <h1 class="text-3xl md:text-4xl font-black tracking-tight">O projektu</h1>
+    <p class="mt-2 text-muted-foreground max-w-2xl">
+      Stránka <code class="text-xs bg-muted px-1 rounded">/o-projektu/</code> — 8 bento karet (záměr, cílovka, zdroje, pravidla fotek, statistiky, technicky, 2 CTA).
+    </p>
+  </header>
+
+  <section id="loading" class="rounded-2xl border border-border bg-card p-10 text-center text-muted-foreground">
+    Načítám obsah z GitHub…
+  </section>
+
+  <section id="error" class="hidden rounded-2xl border border-red-400/40 bg-red-500/10 p-6">
+    <p class="font-semibold text-red-200">Chyba</p>
+    <p id="error-message" class="mt-1 text-sm text-red-100"></p>
+  </section>
+
+  <form id="edit-form" class="hidden space-y-6" data-id="page/o-projektu">
+    <input type="hidden" id="file-sha" />
+
+    <section class={sectionCls}>
+      <p class={sectionTitleCls}>Meta (titul záložky + description)</p>
+      <div>
+        <label class={labelCls} for="metaTitle">Title</label>
+        <input id="metaTitle" type="text" required class={inputCls} />
+      </div>
+      <div>
+        <label class={labelCls} for="metaDescription">Description (meta)</label>
+        <textarea id="metaDescription" required rows="2" class={inputCls}></textarea>
+      </div>
+    </section>
+
+    <section class={sectionCls}>
+      <p class={sectionTitleCls}>Hero</p>
+      <div>
+        <label class={labelCls} for="heroEyebrow">Eyebrow</label>
+        <input id="heroEyebrow" type="text" required class={inputCls} />
+      </div>
+      <div>
+        <label class={labelCls} for="heroTitleHtml">Nadpis (HTML — <code>&lt;span&gt;</code>, <code>&lt;br /&gt;</code>)</label>
+        <textarea id="heroTitleHtml" required rows="3" class={`${inputCls} font-mono text-xs`}></textarea>
+      </div>
+      <div>
+        <label class={labelCls} for="heroSubtitle">Podnadpis (HTML entity OK — <code>&amp;nbsp;</code>)</label>
+        <textarea id="heroSubtitle" required rows="2" class={inputCls}></textarea>
+      </div>
+    </section>
+
+    <section class={sectionCls}>
+      <p class={sectionTitleCls}>Záměr (hlavní karta)</p>
+      <div>
+        <label class={labelCls} for="purposeEyebrow">Eyebrow</label>
+        <input id="purposeEyebrow" type="text" required class={inputCls} />
+      </div>
+      <div>
+        <label class={labelCls} for="purposeTitle">Nadpis</label>
+        <input id="purposeTitle" type="text" required class={inputCls} />
+      </div>
+      <div>
+        <label class={labelCls} for="purposeBody">Text (HTML entity OK)</label>
+        <textarea id="purposeBody" required rows="4" class={inputCls}></textarea>
+      </div>
+    </section>
+
+    <section class={sectionCls}>
+      <p class={sectionTitleCls}>Cílová skupina (s maskotem)</p>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div>
+          <label class={labelCls} for="audienceEyebrow">Eyebrow</label>
+          <input id="audienceEyebrow" type="text" required class={inputCls} />
+        </div>
+        <div>
+          <label class={labelCls} for="audienceTitle">Hlavní titulek</label>
+          <input id="audienceTitle" type="text" required class={inputCls} />
+        </div>
+        <div>
+          <label class={labelCls} for="audienceSubtitle">Podnadpis</label>
+          <input id="audienceSubtitle" type="text" required class={inputCls} />
+        </div>
+      </div>
+    </section>
+
+    <section class={sectionCls}>
+      <p class={sectionTitleCls}>Zdroje obsahu (bullety)</p>
+      <div>
+        <label class={labelCls} for="sourcesEyebrow">Eyebrow</label>
+        <input id="sourcesEyebrow" type="text" required class={inputCls} />
+      </div>
+      <div>
+        <label class={labelCls} for="sourcesItems">Položky (jedna na řádek)</label>
+        <textarea id="sourcesItems" required rows="5" class={inputCls}></textarea>
+      </div>
+    </section>
+
+    <section class={sectionCls}>
+      <p class={sectionTitleCls}>Pravidla obrázků (HTML bullety)</p>
+      <div>
+        <label class={labelCls} for="imageRulesEyebrow">Eyebrow</label>
+        <input id="imageRulesEyebrow" type="text" required class={inputCls} />
+      </div>
+      <div>
+        <label class={labelCls} for="imageRulesItemsHtml">Položky — HTML, jedna na řádek (oddělené <code>---</code>)</label>
+        <textarea id="imageRulesItemsHtml" required rows="6" class={`${inputCls} font-mono text-xs`}></textarea>
+        <p class={hintCls}>Každou položku oddělí řádek s <code>---</code>. Uvnitř můžeš použít <code>&lt;strong&gt;</code>, <code>&lt;code&gt;</code>, <code>&amp;nbsp;</code>.</p>
+      </div>
+    </section>
+
+    <section class={sectionCls}>
+      <p class={sectionTitleCls}>Statistiky (čísla vpravo nahoře)</p>
+      <div>
+        <label class={labelCls} for="statsEyebrow">Eyebrow</label>
+        <input id="statsEyebrow" type="text" required class={inputCls} />
+      </div>
+      <div>
+        <label class={labelCls} for="statsItems">Položky — formát <code>Label | Hodnota</code> nebo <code>Label | @species</code> / <code>Label | @genus</code> (dynamic)</label>
+        <textarea id="statsItems" required rows="5" class={`${inputCls} font-mono text-xs`}></textarea>
+        <p class={hintCls}>Jedna položka na řádek. <code>@species</code> a <code>@genus</code> vypočítá systém z collection, ostatní se zobrazí doslova.</p>
+      </div>
+    </section>
+
+    <section class={sectionCls}>
+      <p class={sectionTitleCls}>Technicky</p>
+      <div>
+        <label class={labelCls} for="techEyebrow">Eyebrow</label>
+        <input id="techEyebrow" type="text" required class={inputCls} />
+      </div>
+      <div>
+        <label class={labelCls} for="techBody">Popis (HTML entity OK)</label>
+        <textarea id="techBody" required rows="4" class={inputCls}></textarea>
+      </div>
+      <div>
+        <label class={labelCls} for="techBadges">Badges (jedna na řádek)</label>
+        <textarea id="techBadges" required rows="5" class={inputCls}></textarea>
+      </div>
+    </section>
+
+    <section class={sectionCls}>
+      <p class={sectionTitleCls}>Katalog CTA</p>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div>
+          <label class={labelCls} for="catalogEyebrow">Eyebrow</label>
+          <input id="catalogEyebrow" type="text" required class={inputCls} />
+        </div>
+        <div>
+          <label class={labelCls} for="catalogTitle">Titulek</label>
+          <input id="catalogTitle" type="text" required class={inputCls} />
+        </div>
+      </div>
+    </section>
+
+    <section class={sectionCls}>
+      <p class={sectionTitleCls}>Herna CTA</p>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div>
+          <label class={labelCls} for="gamesEyebrow">Eyebrow</label>
+          <input id="gamesEyebrow" type="text" required class={inputCls} />
+        </div>
+        <div>
+          <label class={labelCls} for="gamesTitle">Titulek</label>
+          <input id="gamesTitle" type="text" required class={inputCls} />
+        </div>
+      </div>
+    </section>
+
+    <section class={sectionCls}>
+      <p class={sectionTitleCls}>Commit</p>
+      <div>
+        <label class={labelCls} for="message">Commit message</label>
+        <input
+          id="message"
+          type="text"
+          required
+          minlength="5"
+          maxlength="100"
+          value="Edit o-projektu: "
+          class={inputCls}
+        />
+      </div>
+      <div class="flex items-center justify-between gap-4 pt-2">
+        <a href="/admin/texty/" class="btn-outline px-4 py-2 text-sm">Zrušit</a>
+        <button type="submit" id="submit-btn" class="btn-primary px-6 py-2.5">Uložit a commit</button>
+      </div>
+      <div
+        id="commit-result"
+        class="hidden rounded-lg border border-emerald-400/40 bg-emerald-500/10 p-4 text-sm"
+      >
+        <p class="font-semibold text-emerald-200">✓ Uloženo</p>
+        <p class="mt-1 text-emerald-100">
+          Commit: <a id="commit-link" href="#" rel="noopener" target="_blank" class="underline"></a>
+        </p>
+        <p class="mt-1 text-xs text-emerald-100/70">Deploy na produkci proběhne po rebuildu CF Workers.</p>
+      </div>
+    </section>
+  </form>
+
+  <script>
+    import { mountOProjektuForm } from "../../../lib/admin/o-projektu-form-client";
+    mountOProjektuForm();
+  </script>
+</AdminLayout>
