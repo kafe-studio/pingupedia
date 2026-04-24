@@ -1,3 +1,5 @@
+export type Difficulty = "easy" | "medium" | "hard";
+
 export interface PuzzleImage {
   src: string;
   alt: string;
@@ -7,19 +9,23 @@ export interface PuzzleImage {
   license: string;
 }
 
+// Edge = 0 (flat, board border), 1 (tab/knob sticks out), -1 (pocket/socket indent)
+export type Edge = 0 | 1 | -1;
+
 export interface Piece {
   idx: number;          // stable index 0..N-1
   col: number;
   row: number;
-  sx: number;           // source x in the image
+  sx: number;           // source x in the image (slice origin, no tab expansion)
   sy: number;
-  sw: number;           // source width
+  sw: number;           // source slice width (piece body, no tabs)
   sh: number;
-  targetX: number;      // target x in target region (viewport coords)
+  targetX: number;      // target x in target region (viewport coords, slice origin)
   targetY: number;
-  currentX: number;     // current position (viewport coords)
+  currentX: number;     // current position (viewport coords, slice origin)
   currentY: number;
   placed: boolean;
+  edges: { top: Edge; right: Edge; bottom: Edge; left: Edge };
 }
 
 export interface PuzzleState {
