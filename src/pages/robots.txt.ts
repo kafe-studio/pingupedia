@@ -1,16 +1,14 @@
 import type { APIRoute } from "astro";
-import { siteConfig } from "../config/site";
+import { getSiteConfig } from "../lib/site";
 
 export const prerender = true;
 
-const robotsTxt = `
-User-agent: *
+export const GET: APIRoute = async () => {
+  const siteConfig = await getSiteConfig();
+  const robotsTxt = `User-agent: *
 Allow: /
 
-Sitemap: ${new URL("sitemap-index.xml", siteConfig.url).href}
-`.trim();
-
-export const GET: APIRoute = () => {
+Sitemap: ${new URL("sitemap-index.xml", siteConfig.url).href}`;
   return new Response(robotsTxt, {
     headers: {
       "Content-Type": "text/plain; charset=utf-8",

@@ -8,8 +8,9 @@ interface Props {
   ignoreTitleTemplate?: boolean;
 }
 
-import { siteConfig } from "../../config/site";
+import { getSiteConfig } from "../../lib/site";
 
+const siteConfig = await getSiteConfig();
 const {
   title,
   description = siteConfig.description,

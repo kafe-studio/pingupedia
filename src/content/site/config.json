@@ -1,0 +1,22 @@
+{
+  "name": "pingupedia",
+  "description": "Populárně-naučná encyklopedie všech druhů tučňáků v češtině. Pro děti i dospělé. Z ověřených zdrojů.",
+  "url": "https://pingupedia.cz/",
+  "lang": "cs",
+  "locale": "cs_CZ",
+  "author": "pingupedia",
+  "twitter": "",
+  "ogImage": "/og-image.png",
+  "phone": "",
+  "email": "",
+  "address": "",
+  "socialLinks": {
+    "instagram": "",
+    "facebook": ""
+  },
+  "navLinks": [
+    { "text": "Druhy", "href": "/druhy/" },
+    { "text": "Hry", "href": "/hry/" },
+    { "text": "O projektu", "href": "/o-projektu/" }
+  ]
+}

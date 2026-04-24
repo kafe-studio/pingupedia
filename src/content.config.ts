@@ -91,4 +91,28 @@ const species = defineCollection({
     }),
 });
 
-export const collections = { species };
+const site = defineCollection({
+  loader: glob({ pattern: "config.json", base: "./src/content/site" }),
+  schema: z.object({
+    name: z.string().min(1),
+    description: z.string().min(1),
+    url: z.url(),
+    lang: z.string().min(2),
+    locale: z.string().min(2),
+    author: z.string(),
+    twitter: z.string(),
+    ogImage: z.string(),
+    phone: z.string(),
+    email: z.string(),
+    address: z.string(),
+    socialLinks: z.object({
+      instagram: z.string(),
+      facebook: z.string(),
+    }),
+    navLinks: z
+      .array(z.object({ text: z.string().min(1), href: z.string().min(1) }))
+      .min(1),
+  }),
+});
+
+export const collections = { species, site };

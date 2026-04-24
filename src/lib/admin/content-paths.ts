@@ -24,11 +24,11 @@ export function toRepoPath(ref: ContentRef): string {
     case "species":
       return `src/content/species/${ref.slug}.md`;
     case "page":
-      return `src/pages/${ref.slug}.astro`;
+      return `src/content/pages/${ref.slug}.json`;
     case "quiz":
-      return `src/lib/games/quiz-data.ts`;
+      return `src/content/quiz.json`;
     case "site":
-      return `src/config/site.ts`;
+      return `src/content/site/config.json`;
   }
 }
 

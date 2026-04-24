@@ -12,8 +12,9 @@ import ThemeSwitcher from "../components/theme/ThemeSwitcher.astro";
 import { ClientRouter } from "astro:transitions";
 import { Font } from "astro:assets";
 import "../styles/global.css";
-import { siteConfig } from "../config/site";
+import { getSiteConfig } from "../lib/site";
 
+const siteConfig = await getSiteConfig();
 const { title, description, ogImage, canonical, metadata } = Astro.props;
 const finalTitle = metadata?.title || title;
 const finalDescription = metadata?.description || description;

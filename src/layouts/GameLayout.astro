@@ -5,7 +5,8 @@ interface Props {
 }
 import { Font } from "astro:assets";
 import "../styles/global.css";
-import { siteConfig } from "../config/site";
+import { getSiteConfig } from "../lib/site";
+const siteConfig = await getSiteConfig();
 const { title, description } = Astro.props;
 ---
 

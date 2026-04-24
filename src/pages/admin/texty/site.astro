@@ -1,0 +1,157 @@
+---
+export const prerender = false;
+import AdminLayout from "../../../layouts/AdminLayout.astro";
+
+const inputCls =
+  "w-full rounded-lg border border-border-interactive bg-background px-3 py-2 text-sm focus:outline-none focus:border-primary";
+const labelCls = "block text-sm font-semibold mb-1.5";
+const sectionCls = "rounded-2xl border border-border bg-card p-6 space-y-4";
+const sectionTitleCls =
+  "text-xs uppercase tracking-widest text-primary font-semibold mb-3";
+---
+
+<AdminLayout title="Site config" section="texty">
+  <nav class="mb-4 text-sm" aria-label="Drobečková navigace">
+    <a href="/admin/texty/" class="text-muted-foreground hover:text-primary transition-colors">← Všechny texty</a>
+  </nav>
+
+  <header class="mb-6">
+    <p class="text-xs uppercase tracking-widest text-primary font-semibold mb-2">Strukturovaný editor</p>
+    <h1 class="text-3xl md:text-4xl font-black tracking-tight">Site config</h1>
+    <p class="mt-2 text-muted-foreground max-w-2xl">
+      Název, popis a odkazy, které se promítají do hlavičky, patičky, SEO meta a JSON-LD.
+    </p>
+  </header>
+
+  <section id="loading" class="rounded-2xl border border-border bg-card p-10 text-center text-muted-foreground">
+    Načítám obsah z GitHub…
+  </section>
+
+  <section id="error" class="hidden rounded-2xl border border-red-400/40 bg-red-500/10 p-6">
+    <p class="font-semibold text-red-200">Chyba</p>
+    <p id="error-message" class="mt-1 text-sm text-red-100"></p>
+  </section>
+
+  <form id="edit-form" class="hidden space-y-6" data-id="site/config">
+    <input type="hidden" id="file-sha" />
+
+    <section class={sectionCls}>
+      <p class={sectionTitleCls}>Základní info</p>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div>
+          <label class={labelCls} for="name">Název webu</label>
+          <input id="name" type="text" required class={inputCls} />
+        </div>
+        <div>
+          <label class={labelCls} for="url">URL produkce</label>
+          <input id="url" type="url" required class={inputCls} />
+        </div>
+        <div>
+          <label class={labelCls} for="lang">Jazyk (HTML lang)</label>
+          <input id="lang" type="text" required class={inputCls} />
+        </div>
+        <div>
+          <label class={labelCls} for="locale">Locale (OG meta)</label>
+          <input id="locale" type="text" required class={inputCls} />
+        </div>
+        <div>
+          <label class={labelCls} for="author">Autor</label>
+          <input id="author" type="text" class={inputCls} />
+        </div>
+        <div>
+          <label class={labelCls} for="ogImage">OG image (cesta)</label>
+          <input id="ogImage" type="text" class={`${inputCls} font-mono`} />
+        </div>
+      </div>
+      <div>
+        <label class={labelCls} for="description">Popis webu</label>
+        <textarea id="description" required rows="3" class={inputCls}></textarea>
+      </div>
+    </section>
+
+    <section class={sectionCls}>
+      <p class={sectionTitleCls}>Kontakt</p>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div>
+          <label class={labelCls} for="phone">Telefon</label>
+          <input id="phone" type="text" class={inputCls} />
+        </div>
+        <div>
+          <label class={labelCls} for="email">E-mail</label>
+          <input id="email" type="text" class={inputCls} />
+        </div>
+        <div>
+          <label class={labelCls} for="address">Adresa</label>
+          <input id="address" type="text" class={inputCls} />
+        </div>
+      </div>
+    </section>
+
+    <section class={sectionCls}>
+      <p class={sectionTitleCls}>Sociální sítě</p>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div>
+          <label class={labelCls} for="twitter">Twitter/X handle</label>
+          <input id="twitter" type="text" class={inputCls} placeholder="@pingupedia" />
+        </div>
+        <div>
+          <label class={labelCls} for="socialInstagram">Instagram URL</label>
+          <input id="socialInstagram" type="text" class={inputCls} />
+        </div>
+        <div>
+          <label class={labelCls} for="socialFacebook">Facebook URL</label>
+          <input id="socialFacebook" type="text" class={inputCls} />
+        </div>
+      </div>
+    </section>
+
+    <section class={sectionCls}>
+      <p class={sectionTitleCls}>Hlavní navigace</p>
+      <p class="text-xs text-muted-foreground -mt-2">
+        Jedna položka na řádek, formát <code class="bg-muted px-1 rounded">Název | /href/</code>. Href musí začínat a končit lomítkem.
+      </p>
+      <textarea
+        id="navLinks"
+        required
+        rows="5"
+        class={`${inputCls} font-mono`}
+        placeholder="Druhy | /druhy/&#10;Hry | /hry/&#10;O projektu | /o-projektu/"
+      ></textarea>
+    </section>
+
+    <section class={sectionCls}>
+      <p class={sectionTitleCls}>Commit</p>
+      <div>
+        <label class={labelCls} for="message">Commit message</label>
+        <input
+          id="message"
+          type="text"
+          required
+          minlength="5"
+          maxlength="100"
+          value="Edit site config: "
+          class={inputCls}
+        />
+      </div>
+      <div class="flex items-center justify-between gap-4 pt-2">
+        <a href="/admin/texty/" class="btn-outline px-4 py-2 text-sm">Zrušit</a>
+        <button type="submit" id="submit-btn" class="btn-primary px-6 py-2.5">Uložit a commit</button>
+      </div>
+      <div
+        id="commit-result"
+        class="hidden rounded-lg border border-emerald-400/40 bg-emerald-500/10 p-4 text-sm"
+      >
+        <p class="font-semibold text-emerald-200">✓ Uloženo</p>
+        <p class="mt-1 text-emerald-100">
+          Commit: <a id="commit-link" href="#" rel="noopener" target="_blank" class="underline"></a>
+        </p>
+        <p class="mt-1 text-xs text-emerald-100/70">Deploy na produkci proběhne po rebuildu CF Workers.</p>
+      </div>
+    </section>
+  </form>
+
+  <script>
+    import { mountSiteForm } from "../../../lib/admin/site-form-client";
+    mountSiteForm();
+  </script>
+</AdminLayout>

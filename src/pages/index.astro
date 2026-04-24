@@ -3,8 +3,10 @@ export const prerender = true;
 import BaseLayout from "../layouts/BaseLayout.astro";
 import NoCropImage from "../components/media/NoCropImage.astro";
 import Mascot from "../components/mascot/Mascot.astro";
-import { siteConfig } from "../config/site";
+import { getSiteConfig } from "../lib/site";
 import { getCollection } from "astro:content";
+
+const siteConfig = await getSiteConfig();
 import emperorPenguin from "../assets/penguins/cisarsky/hero.jpg";
 import adeliePenguin from "../assets/penguins/krouzkovy/hero.jpg";
 import rockhopper from "../assets/penguins/skalni-jizni/hero.jpg";

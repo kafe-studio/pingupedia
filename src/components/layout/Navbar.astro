@@ -1,5 +1,6 @@
 ---
-import { siteConfig } from "../../config/site";
+import { getSiteConfig } from "../../lib/site";
+const siteConfig = await getSiteConfig();
 ---
 
 <nav class="fixed top-0 z-50 w-full bg-background/70 backdrop-blur-xl border-b border-border" aria-label="Hlavni navigace">
