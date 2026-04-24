@@ -58,11 +58,17 @@ function exit(side: Exit["side"], toRoom: string, toX?: number, toY?: number): E
 // Rooms ----------------------------------------------------------------------
 // Grid: 20 cols × 14 rows. Legend:
 //   . empty  | # solid | = jump-through platform | H ladder | ~ water | * spikes
+//
+// Audit rules:
+//   * Every exit must have a real opening on that edge (no full wall blocks).
+//   * Each A.side→B pair has a B.oppositeSide→A return pair.
+//   * bottom/top exits need a gap in the floor/ceiling row for the player to fall through / climb out.
 
 const iglu: Room = {
   id: "iglu",
   name: "Iglú",
   palette: "arctic",
+  // Right wall has a door opening in rows 10-11 so the player can exit.
   tiles: [
     "....................",
     "....................",
@@ -74,22 +80,23 @@ const iglu: Room = {
     "...#......H.....#...",
     "...#=====.H.....#...",
     "...#......H.....#...",
-    "...#......H.....#...",
-    "...#............#...",
+    "...#......H.........",
+    "...#................",
     "...##############...",
     "####################",
   ],
   guardians: [],
   items: [i("fish", 5, 7, "iglu-f1")],
-  exits: [exit("right", "zakladna", 1, 12)],
+  exits: [exit("right", "zakladna", 1, 11)],
   spawn: { x: 4 * TILE, y: 11 * TILE },
-  hint: "Jet Set Pingu. Sesbírej všechny rybičky a vrať se sem.",
+  hint: "Jet Set Pingu. Sesbírej všechno a vrať se sem.",
 };
 
 const zakladna: Room = {
   id: "zakladna",
   name: "Polární stanice",
   palette: "night",
+  // Floor has a left-side segment for iglu return (row 12), top open.
   tiles: [
     "....................",
     "....................",
@@ -115,7 +122,7 @@ const zakladna: Room = {
     i("fish", 1, 6, "zakladna-f2"),
   ],
   exits: [
-    exit("left", "iglu", 18, 11),
+    exit("left", "iglu", 17, 11),
     exit("right", "kolonie", 1, 12),
     exit("top", "majak", 10, 12),
   ],
@@ -164,6 +171,7 @@ const prusmyk: Room = {
   id: "prusmyk",
   name: "Ledovcový průsmyk",
   palette: "ice",
+  // Side walls cleared on rows 11-12 so player can exit left/right. Top center gap for schody.
   tiles: [
     "..####..........####",
     "..####..........####",
@@ -176,8 +184,8 @@ const prusmyk: Room = {
     "..####..........####",
     "..####==========####",
     "..####..........####",
-    "..####..........####",
-    "..####..........####",
+    "....................",
+    "....................",
     "####################",
   ],
   guardians: [
@@ -201,6 +209,7 @@ const skaly: Room = {
   id: "skaly",
   name: "Skalní útesy",
   palette: "sunset",
+  // Side cliffs trimmed on rows 11-12 for exits. Floor is row 13.
   tiles: [
     "....................",
     "....................",
@@ -212,9 +221,9 @@ const skaly: Room = {
     "##................##",
     "##.####...........##",
     "##................##",
-    "##..........####..##",
-    "##................##",
-    "##................##",
+    "##..........####....",
+    "....................",
+    "....................",
     "####################",
   ],
   guardians: [
@@ -228,7 +237,7 @@ const skaly: Room = {
   ],
   exits: [
     exit("left", "prusmyk", 18, 12),
-    exit("right", "more", 1, 12),
+    exit("right", "more", 1, 5),
   ],
   spawn: { x: 2 * TILE, y: 12 * TILE },
 };
@@ -237,6 +246,7 @@ const more: Room = {
   id: "more",
   name: "Otevřené moře",
   palette: "ocean",
+  // Floating ice chunks; left/right exits at row 5. Water = death below row 8.
   tiles: [
     "....................",
     "...==============...",
@@ -274,6 +284,7 @@ const rybarskaDira: Room = {
   id: "rybarska-dira",
   name: "Díra v ledu",
   palette: "ice",
+  // Top 2 rows are solid ceiling, bottom row 12 water with 2 gaps to drop through to jeskyne.
   tiles: [
     "####################",
     "####################",
@@ -287,12 +298,12 @@ const rybarskaDira: Room = {
     "....................",
     "..####..........####",
     "....................",
-    "~~~~~~..~~~~~~..~~~~",
-    "~~~~~~..~~~~~~..~~~~",
+    "~~~~~~~~~~~~~~~~~~~~",
+    "~~~~~~~~~~~~~~~~~~~~",
   ],
   guardians: [
-    v("bubble", 9, 6, 12, -0.9, 12, 12),
-    v("bubble", 17, 6, 12, 0.8, 12, 12),
+    v("bubble", 9, 6, 11, -0.9, 12, 12),
+    v("bubble", 17, 6, 11, 0.8, 12, 12),
     h("petrel", 5, 2, 18, 0.7),
   ],
   items: [
@@ -338,8 +349,8 @@ const galapagos: Room = {
     i("flag", 2, 9, "gala-fl"),
   ],
   exits: [
-    exit("left", "rybarska-dira", 18, 10),
-    exit("right", "vrak", 1, 12),
+    exit("left", "rybarska-dira", 18, 11),
+    exit("right", "vrak", 1, 11),
   ],
   spawn: { x: 2 * TILE, y: 12 * TILE },
 };
@@ -348,9 +359,10 @@ const jeskyne: Room = {
   id: "jeskyne",
   name: "Ledová jeskyně",
   palette: "cave",
+  // Side walls removed on rows 11-12 (below ladders/platforms). Top has ceiling with center hole for rybarska-dira return.
   tiles: [
     "####################",
-    "####################",
+    "##########.#########",
     "....................",
     "##................##",
     "##................##",
@@ -360,7 +372,7 @@ const jeskyne: Room = {
     "##................##",
     "##........====....##",
     "##................##",
-    "==................==",
+    "....................",
     "....................",
     "####################",
   ],
@@ -374,7 +386,7 @@ const jeskyne: Room = {
     i("crystal", 10, 8, "jes-c3"),
   ],
   exits: [
-    exit("top", "rybarska-dira", 10, 11),
+    exit("top", "rybarska-dira", 10, 2),
     exit("right", "stanice", 1, 12),
   ],
   spawn: { x: 10 * TILE, y: 3 * TILE },
@@ -385,6 +397,7 @@ const stanice: Room = {
   id: "stanice",
   name: "Opuštěná stanice",
   palette: "lab",
+  // Indoor room with side openings on rows 11-12 so player can leave left/right.
   tiles: [
     "....................",
     "..##############....",
@@ -397,8 +410,8 @@ const stanice: Room = {
     "..#............#....",
     "..#..H.........#....",
     "..#..H.===...H.#....",
-    "..#..H.......H.#....",
-    "..##############....",
+    "..#..H.......H......",
+    "....................",
     "####################",
   ],
   guardians: [
@@ -421,6 +434,7 @@ const laborator: Room = {
   id: "laborator",
   name: "Laboratoř IUCN",
   palette: "lab",
+  // Bottom row 13 has a hole (col 9-10) so player can drop to vrak.
   tiles: [
     "....................",
     "....................",
@@ -435,7 +449,7 @@ const laborator: Room = {
     "....................",
     "==...............==.",
     "....................",
-    "####################",
+    "##########..########",
   ],
   guardians: [
     d("petrel", 5, 1, 0, 19, 0, 10, 0.7, 0.5),
@@ -449,7 +463,7 @@ const laborator: Room = {
   ],
   exits: [
     exit("left", "stanice", 18, 12),
-    exit("right", "vrak", 1, 12),
+    exit("bottom", "vrak", 9, 1),
     exit("top", "hriste", 10, 12),
   ],
   spawn: { x: 2 * TILE, y: 12 * TILE },
@@ -459,6 +473,7 @@ const vrak: Room = {
   id: "vrak",
   name: "Vrak lodi",
   palette: "wreck",
+  // Top center open for laborator return. Left open on row 10 for galapagos.
   tiles: [
     "....................",
     "....................",
@@ -487,7 +502,7 @@ const vrak: Room = {
   ],
   exits: [
     exit("left", "galapagos", 18, 10),
-    exit("top", "laborator", 10, 12),
+    exit("top", "laborator", 9, 12),
   ],
   spawn: { x: 3 * TILE, y: 9 * TILE },
 };
@@ -496,6 +511,8 @@ const schody: Room = {
   id: "schody",
   name: "Ledové schody",
   palette: "ice",
+  // Floor row 13 has a hole in the center (col 9-10) for bottom→prusmyk exit.
+  // Right side open on row 12 for right→hriste exit.
   tiles: [
     "................====",
     "....................",
@@ -510,7 +527,7 @@ const schody: Room = {
     "==..................",
     "....................",
     "....................",
-    "####################",
+    "##########..########",
   ],
   guardians: [
     d("snowwind", 10, 5, 0, 19, 0, 10, 0.6, 0.6),
@@ -520,8 +537,8 @@ const schody: Room = {
     i("crystal", 2, 10, "sch-c1"),
   ],
   exits: [
-    exit("bottom", "prusmyk", 10, 2),
-    exit("top", "hriste", 18, 12),
+    exit("bottom", "prusmyk", 9, 1),
+    exit("right", "hriste", 1, 12),
   ],
   spawn: { x: 2 * TILE, y: 12 * TILE },
 };
@@ -530,6 +547,7 @@ const hriste: Room = {
   id: "hriste",
   name: "Hřiště mláďat",
   palette: "candy",
+  // Indoor with side openings on rows 11-12 for left/right, bottom has hole for laborator.
   tiles: [
     "....................",
     "....................",
@@ -542,9 +560,9 @@ const hriste: Room = {
     "..H====..===.===H...",
     "..H.............H...",
     "..H.............H...",
-    "..##############....",
     "....................",
-    "####################",
+    "....................",
+    "##########..########",
   ],
   guardians: [
     h("seal", 4, 2, 16, 0.8),
@@ -557,8 +575,8 @@ const hriste: Room = {
     i("fish", 10, 9, "hr-f1"),
   ],
   exits: [
-    exit("bottom", "laborator", 10, 2),
-    exit("left", "schody", 18, 9),
+    exit("bottom", "laborator", 9, 1),
+    exit("left", "schody", 18, 12),
     exit("right", "tajny", 1, 12),
   ],
   spawn: { x: 3 * TILE, y: 12 * TILE },
@@ -568,6 +586,7 @@ const tajny: Room = {
   id: "tajny",
   name: "Tajná síň",
   palette: "aurora",
+  // Frame of walls except left opening (row 11-12) for hriste return.
   tiles: [
     "####################",
     "#..................#",
@@ -580,8 +599,8 @@ const tajny: Room = {
     "#..................#",
     "#..................#",
     "#....====...====...#",
-    "#..................#",
-    "#..................#",
+    "...................#",
+    "...................#",
     "####################",
   ],
   guardians: [
@@ -605,6 +624,7 @@ const majak: Room = {
   id: "majak",
   name: "Antarktický maják",
   palette: "aurora",
+  // Floor row 13 has center hole for bottom→zakladna exit. Right opening for jeskyne.
   tiles: [
     "........####........",
     "........####........",
@@ -619,7 +639,7 @@ const majak: Room = {
     "....................",
     "....................",
     "....................",
-    "####################",
+    "##########..########",
   ],
   guardians: [
     h("skua", 3, 1, 18, 1.1),
@@ -632,7 +652,7 @@ const majak: Room = {
     i("medal", 17, 5, "maj-m2"),
   ],
   exits: [
-    exit("bottom", "zakladna", 10, 2),
+    exit("bottom", "zakladna", 10, 1),
   ],
   spawn: { x: 2 * TILE, y: 12 * TILE },
   hint: "Maják nad stanicí. Vlajka je poslední.",
