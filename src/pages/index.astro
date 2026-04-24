@@ -1,12 +1,18 @@
 ---
-export const prerender = true;
+export const prerender = false;
 import type { ImageMetadata } from "astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import NoCropImage from "../components/media/NoCropImage.astro";
 import Mascot from "../components/mascot/Mascot.astro";
 import { getSiteConfig } from "../lib/site";
 import { getHomePage } from "../lib/pages";
+import { pickSpeciesOfDay } from "../lib/species-of-day";
 import { getCollection } from "astro:content";
+
+Astro.response.headers.set(
+  "Cache-Control",
+  "public, max-age=0, s-maxage=3600, stale-while-revalidate=86400",
+);
 
 const siteConfig = await getSiteConfig();
 const home = await getHomePage();
@@ -26,7 +32,16 @@ function heroBySlug(slug: string): ImageMetadata {
   return img;
 }
 
-const featuredImage = heroBySlug(home.featured.slug);
+// Tučňák dne — rotuje každý UTC den deterministicky přes všechny druhy.
+const speciesOfDay = pickSpeciesOfDay(species);
+const featuredImage = heroBySlug(speciesOfDay.id);
+const featured = {
+  slug: speciesOfDay.id,
+  name: speciesOfDay.data.nameCs,
+  genus: speciesOfDay.data.genus,
+  description: speciesOfDay.data.description,
+  imageAlt: speciesOfDay.data.hero.alt,
+};
 
 const metadata = {
   title: siteConfig.name,
@@ -55,20 +70,21 @@ const metadata = {
 
       <div class="grid grid-cols-12 auto-rows-[minmax(160px,auto)] gap-4 md:gap-5">
         <a
-          href={`/druhy/${home.featured.slug}/`}
+          href={`/druhy/${featured.slug}/`}
           class="bento-card is-link bento-surface-aurora col-span-12 md:col-span-8 md:row-span-2 p-6 md:p-8 flex flex-col md:flex-row md:items-stretch gap-6 min-h-[360px] reveal"
           data-astro-prefetch
         >
           <div class="md:w-1/2 flex flex-col justify-between">
             <div>
               <span class="inline-flex items-center gap-2 rounded-full bg-white/10 px-3 py-1 text-xs font-semibold text-white/90 backdrop-blur-sm">
-                {home.featured.badge}
+                Tučňák dne
               </span>
-              <h2 class="mt-4 text-3xl md:text-5xl font-black text-white leading-tight">
-                <Fragment set:html={home.featured.titleHtml} />
+              <p class="mt-4 text-sm uppercase tracking-widest text-white/60 font-semibold">{featured.genus}</p>
+              <h2 class="mt-1 text-3xl md:text-5xl font-black text-white leading-tight">
+                {featured.name}
               </h2>
               <p class="mt-3 text-white/80 text-base md:text-lg">
-                {home.featured.description}
+                {featured.description}
               </p>
             </div>
           </div>
@@ -76,7 +92,7 @@ const metadata = {
             <div class="w-full">
               <NoCropImage
                 src={featuredImage}
-                alt={home.featured.imageAlt}
+                alt={featured.imageAlt}
                 ratio="4/5"
                 sizes="(min-width: 768px) 400px, 100vw"
                 class="rounded-2xl overflow-hidden"

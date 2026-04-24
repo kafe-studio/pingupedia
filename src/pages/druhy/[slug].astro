@@ -8,16 +8,25 @@ import SpeciesFacts from "../../components/species/SpeciesFacts.astro";
 import SpeciesSources from "../../components/species/SpeciesSources.astro";
 import SpeciesGallery from "../../components/species/SpeciesGallery.astro";
 import SpeciesMedia from "../../components/species/SpeciesMedia.astro";
+import { sortedSpecies } from "../../lib/species-of-day";
 
 export const getStaticPaths = (async () => {
-  const species = await getCollection("species");
-  return species.map((entry) => ({
-    params: { slug: entry.id },
-    props: { entry },
-  }));
+  const species = sortedSpecies(await getCollection("species"));
+  return species.map((entry, i) => {
+    const prev = species[(i - 1 + species.length) % species.length];
+    const next = species[(i + 1) % species.length];
+    return {
+      params: { slug: entry.id },
+      props: {
+        entry,
+        prev: { slug: prev.id, name: prev.data.nameCs },
+        next: { slug: next.id, name: next.data.nameCs },
+      },
+    };
+  });
 }) satisfies GetStaticPaths;
 
-const { entry } = Astro.props;
+const { entry, prev, next } = Astro.props;
 const { Content } = await render(entry);
 
 const { nameCs, nameLat, description, historicalNotes, gallery, hero } = entry.data;
@@ -62,12 +71,79 @@ const metadata = {
 
     <SpeciesSources species={entry} />
 
-    <nav class="px-6 pb-20 reveal" aria-label="Navigace zpet">
+    <nav class="px-6 pb-20 reveal" aria-label="Navigace mezi druhy">
       <div class="mx-auto max-w-5xl">
-        <a href="/druhy/" data-astro-prefetch class="inline-flex items-center gap-2 text-sm font-medium text-muted-foreground hover:text-primary transition-colors">
-          ← Zpět na všechny druhy
+        <div class="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4">
+          <a
+            href={`/druhy/${prev.slug}/`}
+            data-astro-prefetch
+            data-nav-prev
+            class="group rounded-2xl border border-border bg-card hover:border-border-interactive transition-all p-4 md:p-5 flex items-center gap-3"
+          >
+            <span class="shrink-0 flex h-10 w-10 items-center justify-center rounded-full bg-muted group-hover:bg-primary/15 group-hover:text-primary text-lg transition-colors">←</span>
+            <span class="min-w-0">
+              <span class="block text-[10px] uppercase tracking-widest text-muted-foreground">Předchozí</span>
+              <span class="block text-sm md:text-base font-bold truncate">{prev.name}</span>
+            </span>
+          </a>
+          <a
+            href="/druhy/"
+            data-astro-prefetch
+            class="hidden md:flex rounded-2xl border border-dashed border-border hover:border-border-interactive transition-colors p-4 md:p-5 items-center justify-center text-sm font-medium text-muted-foreground hover:text-primary"
+          >
+            ⌂ Všechny druhy
+          </a>
+          <a
+            href={`/druhy/${next.slug}/`}
+            data-astro-prefetch
+            data-nav-next
+            class="group rounded-2xl border border-border bg-card hover:border-border-interactive transition-all p-4 md:p-5 flex items-center gap-3 justify-end text-right"
+          >
+            <span class="min-w-0">
+              <span class="block text-[10px] uppercase tracking-widest text-muted-foreground">Další</span>
+              <span class="block text-sm md:text-base font-bold truncate">{next.name}</span>
+            </span>
+            <span class="shrink-0 flex h-10 w-10 items-center justify-center rounded-full bg-muted group-hover:bg-primary/15 group-hover:text-primary text-lg transition-colors">→</span>
+          </a>
+        </div>
+        <a
+          href="/druhy/"
+          data-astro-prefetch
+          class="md:hidden mt-4 block text-center text-sm font-medium text-muted-foreground hover:text-primary transition-colors"
+        >
+          ⌂ Všechny druhy
         </a>
       </div>
     </nav>
   </article>
+  <script is:inline define:vars={{ prevHref: `/druhy/${prev.slug}/`, nextHref: `/druhy/${next.slug}/` }}>
+    // Klavesove sipky + swipe gesta pro navigaci mezi druhy.
+    (function () {
+      const onKey = (e) => {
+        if (e.target && ["INPUT", "TEXTAREA", "SELECT"].includes(e.target.tagName)) return;
+        if (e.metaKey || e.ctrlKey || e.altKey) return;
+        if (e.key === "ArrowLeft") { e.preventDefault(); window.location.href = prevHref; }
+        else if (e.key === "ArrowRight") { e.preventDefault(); window.location.href = nextHref; }
+      };
+      document.addEventListener("keydown", onKey);
+
+      let startX = 0, startY = 0, startT = 0;
+      const onStart = (e) => {
+        const t = e.changedTouches[0];
+        startX = t.clientX; startY = t.clientY; startT = Date.now();
+      };
+      const onEnd = (e) => {
+        const t = e.changedTouches[0];
+        const dx = t.clientX - startX;
+        const dy = t.clientY - startY;
+        const dt = Date.now() - startT;
+        if (dt > 600) return;
+        if (Math.abs(dx) < 60 || Math.abs(dx) < Math.abs(dy) * 2) return;
+        if (dx < 0) window.location.href = nextHref;
+        else window.location.href = prevHref;
+      };
+      document.addEventListener("touchstart", onStart, { passive: true });
+      document.addEventListener("touchend", onEnd, { passive: true });
+    })();
+  </script>
 </BaseLayout>
