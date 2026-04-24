@@ -147,7 +147,7 @@ export function mountSpeciesForm(): void {
       hydrateForm(parsed, file.content);
     } catch (err) {
       const msg = err instanceof FrontmatterParseError ? err.message : String(err);
-      showError(`Soubor nelze parsovat: ${msg}. Použij raw editor ve footeru.`);
+      showError(`Soubor nelze parsovat: ${msg}. Oprav frontmatter přímo v repu přes git.`);
       setVal("raw", file.content); return;
     }
     $("loading")?.classList.add("hidden"); form.classList.remove("hidden");

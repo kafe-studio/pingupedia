@@ -1,0 +1,192 @@
+---
+interface Props {
+  slug: string;
+}
+
+const { slug } = Astro.props;
+
+const iucnOptions = [
+  { value: "LC", label: "LC — Málo dotčený" },
+  { value: "NT", label: "NT — Téměř ohrožený" },
+  { value: "VU", label: "VU — Zranitelný" },
+  { value: "EN", label: "EN — Ohrožený" },
+  { value: "CR", label: "CR — Kriticky ohrožený" },
+  { value: "DD", label: "DD — Nedostatek dat" },
+  { value: "EX", label: "EX — Vyhynulý" },
+];
+
+const inputCls =
+  "w-full rounded-lg border border-border-interactive bg-background px-3 py-2 text-sm focus:outline-none focus:border-primary";
+const labelCls = "block text-sm font-semibold mb-1.5";
+const sectionCls = "rounded-2xl border border-border bg-card p-6 space-y-4";
+const sectionTitleCls =
+  "text-xs uppercase tracking-widest text-primary font-semibold mb-3";
+---
+
+<form id="edit-form" class="hidden space-y-6" data-slug={slug}>
+  <input type="hidden" id="file-sha" />
+  <textarea id="raw" class="hidden" aria-hidden="true"></textarea>
+
+  <section class={sectionCls}>
+    <p class={sectionTitleCls}>Identita</p>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div>
+        <label class={labelCls} for="nameCs">Český název</label>
+        <input id="nameCs" type="text" required class={inputCls} />
+      </div>
+      <div>
+        <label class={labelCls} for="nameLat">Latinský název</label>
+        <input id="nameLat" type="text" required class={`${inputCls} italic`} />
+      </div>
+      <div>
+        <label class={labelCls} for="nameEn">Anglický název</label>
+        <input id="nameEn" type="text" class={inputCls} />
+      </div>
+      <div>
+        <label class={labelCls} for="genus">Rod</label>
+        <input id="genus" type="text" required class={`${inputCls} italic`} />
+      </div>
+      <div>
+        <label class={labelCls} for="iucnStatus">IUCN status</label>
+        <select id="iucnStatus" required class={inputCls}>
+          {iucnOptions.map((o) => (
+            <option value={o.value}>{o.label}</option>
+          ))}
+        </select>
+      </div>
+    </div>
+    <div>
+      <label class={labelCls} for="description">Krátký popis (≤ 240 znaků)</label>
+      <textarea id="description" required maxlength="240" rows="2" class={inputCls}></textarea>
+    </div>
+  </section>
+
+  <section class={sectionCls}>
+    <p class={sectionTitleCls}>Rozměry</p>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+      <div>
+        <label class={labelCls} for="heightMin">Výška min (cm)</label>
+        <input id="heightMin" type="number" step="0.1" min="0" required class={inputCls} />
+      </div>
+      <div>
+        <label class={labelCls} for="heightMax">Výška max (cm)</label>
+        <input id="heightMax" type="number" step="0.1" min="0" required class={inputCls} />
+      </div>
+      <div>
+        <label class={labelCls} for="weightMin">Váha min (kg)</label>
+        <input id="weightMin" type="number" step="0.1" min="0" required class={inputCls} />
+      </div>
+      <div>
+        <label class={labelCls} for="weightMax">Váha max (kg)</label>
+        <input id="weightMax" type="number" step="0.1" min="0" required class={inputCls} />
+      </div>
+    </div>
+  </section>
+
+  <section class={sectionCls}>
+    <p class={sectionTitleCls}>Prostředí a strava</p>
+    <div>
+      <label class={labelCls} for="habitat">Habitat</label>
+      <textarea id="habitat" required rows="3" class={inputCls}></textarea>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div>
+        <label class={labelCls} for="distribution">Rozšíření (jedna oblast na řádek)</label>
+        <textarea id="distribution" required rows="5" class={`${inputCls} font-mono`}></textarea>
+      </div>
+      <div>
+        <label class={labelCls} for="diet">Strava (jedna položka na řádek)</label>
+        <textarea id="diet" required rows="5" class={`${inputCls} font-mono`}></textarea>
+      </div>
+    </div>
+  </section>
+
+  <section class={sectionCls}>
+    <p class={sectionTitleCls}>Životnost a populace</p>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+      <div>
+        <label class={labelCls} for="wildYears">Délka života — volná příroda (roky)</label>
+        <input id="wildYears" type="number" step="1" min="0" required class={inputCls} />
+      </div>
+      <div>
+        <label class={labelCls} for="captivityYears">V péči lidí (volitelné)</label>
+        <input id="captivityYears" type="number" step="1" min="0" class={inputCls} />
+      </div>
+    </div>
+    <div>
+      <label class={labelCls} for="population">Populace (volitelné)</label>
+      <textarea id="population" rows="2" class={inputCls}></textarea>
+    </div>
+    <div>
+      <label class={labelCls} for="historicalNotes">Historické poznámky (volitelné)</label>
+      <textarea id="historicalNotes" rows="4" class={inputCls}></textarea>
+    </div>
+  </section>
+
+  <section class={sectionCls}>
+    <p class={sectionTitleCls}>Hlavní fotka (hero)</p>
+    <p class="text-xs text-muted-foreground -mt-2">
+      Cesta k obrázku v repu (relativní od <code class="bg-muted px-1 rounded">src/content/species/&lt;slug&gt;.md</code>, obvykle <code class="bg-muted px-1 rounded">../../assets/penguins/&lt;slug&gt;/hero.jpg</code>).
+    </p>
+    <div>
+      <label class={labelCls} for="heroSrc">Cesta k souboru</label>
+      <input id="heroSrc" type="text" required class={`${inputCls} font-mono`} />
+    </div>
+    <div>
+      <label class={labelCls} for="heroAlt">Alt text</label>
+      <input id="heroAlt" type="text" required class={inputCls} />
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div>
+        <label class={labelCls} for="heroAuthor">Autor</label>
+        <input id="heroAuthor" type="text" required class={inputCls} />
+      </div>
+      <div>
+        <label class={labelCls} for="heroLicense">Licence (např. CC BY 2.0)</label>
+        <input id="heroLicense" type="text" required class={inputCls} />
+      </div>
+    </div>
+    <div>
+      <label class={labelCls} for="heroSourceUrl">URL zdroje (Wikimedia Commons)</label>
+      <input id="heroSourceUrl" type="url" required class={inputCls} />
+    </div>
+  </section>
+
+  <section class={sectionCls}>
+    <p class={sectionTitleCls}>Populárně-naučný text</p>
+    <textarea id="body" required rows="16" class={`${inputCls} leading-relaxed`}></textarea>
+    <p class="text-xs text-muted-foreground">
+      Dva až čtyři odstavce. Ostatní pole (galerie, zdroje, audio, video) zůstanou beze změny — edituj je v raw markdown editoru dole.
+    </p>
+  </section>
+
+  <section class={sectionCls}>
+    <p class={sectionTitleCls}>Commit</p>
+    <div>
+      <label class={labelCls} for="message">Commit message</label>
+      <input
+        id="message"
+        type="text"
+        required
+        minlength="5"
+        maxlength="100"
+        value={`Edit ${slug}: `}
+        class={inputCls}
+      />
+    </div>
+    <div class="flex items-center justify-between gap-4 pt-2">
+      <a href="/admin/druhy/" class="btn-outline px-4 py-2 text-sm">Zrušit</a>
+      <button type="submit" id="submit-btn" class="btn-primary px-6 py-2.5">Uložit a commit</button>
+    </div>
+    <div
+      id="commit-result"
+      class="hidden rounded-lg border border-emerald-400/40 bg-emerald-500/10 p-4 text-sm"
+    >
+      <p class="font-semibold text-emerald-200">✓ Uloženo</p>
+      <p class="mt-1 text-emerald-100">
+        Commit: <a id="commit-link" href="#" rel="noopener" target="_blank" class="underline"></a>
+      </p>
+      <p class="mt-1 text-xs text-emerald-100/70">Deploy na produkci proběhne za ~2 minuty.</p>
+    </div>
+  </section>
+</form>
