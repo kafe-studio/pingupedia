@@ -26,6 +26,7 @@ pnpm-debug.log*
 worker-configuration.d.ts
 
 .claude/settings.json
+.claude/scheduled_tasks.lock
 .vscode/settings.json
 
 # Playwright MCP artifacts (screenshots, snapshots, console logs)

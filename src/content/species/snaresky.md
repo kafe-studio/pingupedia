@@ -6,8 +6,12 @@ genus: "Eudyptes"
 iucnStatus: "VU"
 description: "Endemit maličkého souostroví Snares jihozápadně od Nového Zélandu. Jediný tučňák, který hnízdí pod stromovým porostem — pod korunami starých stromů Olearia — a zároveň jeden z nejpočetnějších druhů s extrémně malým areálem."
 size:
-  heightCm: [50, 70]
-  weightKg: [2.5, 4.0]
+  heightCm:
+    - 50
+    - 70
+  weightKg:
+    - 2.5
+    - 4
 distribution:
   - "Souostroví Snares jihozápadně od Jižního ostrova Nového Zélandu (endemit)"
   - "Hlavní kolonie na North East Island; menší na Broughton Island a Western Chain"
@@ -43,6 +47,46 @@ gallery:
     author: "Christopher Stephens"
     license: "CC BY-SA 4.0"
     sourceUrl: "https://commons.wikimedia.org/wiki/File:Snares_Penguin,_Southland,_NZ_imported_from_iNaturalist_photo_355810804.jpg"
+  - src: "../../assets/penguins/snaresky/gallery-4.jpg"
+    alt: "Tučňák snareský — fotografie z Wikimedia Commons"
+    author: "(c) Christopher Stephens, some rights reserved (CC BY-SA)"
+    license: "CC BY-SA 4.0"
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Snares_Penguin,_Southland,_NZ_imported_from_iNaturalist_photo_347215306.jpg"
+  - src: "../../assets/penguins/snaresky/gallery-5.jpg"
+    alt: "Tučňák snareský — fotografie z Wikimedia Commons"
+    author: "(c) Christopher Stephens, some rights reserved (CC BY-SA)"
+    license: "CC BY-SA 4.0"
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Snares_Penguin,_Southland,_NZ_imported_from_iNaturalist_photo_347215361.jpg"
+  - src: "../../assets/penguins/snaresky/gallery-6.jpg"
+    alt: "Tučňák snareský — fotografie z Wikimedia Commons"
+    author: "(c) Christopher Stephens, some rights reserved (CC BY-SA)"
+    license: "CC BY-SA 4.0"
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Snares_Penguin,_Southland,_NZ_imported_from_iNaturalist_photo_355810907.jpg"
+  - src: "../../assets/penguins/snaresky/gallery-7.jpg"
+    alt: "Tučňák snareský — fotografie z Wikimedia Commons"
+    author: "(c) Julia Palmer, some rights reserved (CC BY)"
+    license: "CC BY 4.0"
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Snares_Penguin,_Southland,_NZ-SO,_NZ_imported_from_iNaturalist_photo_462233637.jpg"
+  - src: "../../assets/penguins/snaresky/gallery-8.jpg"
+    alt: "Tučňák snareský — fotografie z Wikimedia Commons"
+    author: "(c) Genevieve Early, some rights reserved (CC BY)"
+    license: "CC BY 4.0"
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Snares_Penguin,_Southland,_NZ-SO,_NZ_imported_from_iNaturalist_photo_462871455.jpg"
+  - src: "../../assets/penguins/snaresky/gallery-9.jpg"
+    alt: "Tučňák snareský — fotografie z Wikimedia Commons"
+    author: "Post of Soviet Union"
+    license: "Public domain"
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:1978_CPA_4846.jpg"
+  - src: "../../assets/penguins/snaresky/gallery-10.jpg"
+    alt: "Tučňák snareský — fotografie z Wikimedia Commons"
+    author: "Museum of New Zealand Te Papa Tongarewa"
+    license: "CC BY 4.0"
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Eudyptes_robustus_Snares_1947.jpg"
+  - src: "../../assets/penguins/snaresky/gallery-11.jpg"
+    alt: "Tučňák snareský — fotografie z Wikimedia Commons"
+    author: "Thomas Quine"
+    license: "CC BY 2.0"
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Stuffed_penguins_(21640194810).jpg"
 sources:
   - url: "https://en.wikipedia.org/wiki/Snares_penguin"
     title: "Snares penguin — Wikipedia (EN)"

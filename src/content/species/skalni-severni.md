@@ -6,8 +6,12 @@ genus: "Eudyptes"
 iucnStatus: "EN"
 description: "Severní bratranec tučňáka skalního jižního — o něco větší, s delší žlutou chocholkou. Hnízdí na několika odlehlých ostrovech Atlantiku a Indického oceánu a od 50. let populace klesla o víc než devadesát procent."
 size:
-  heightCm: [55, 65]
-  weightKg: [2.5, 4.5]
+  heightCm:
+    - 55
+    - 65
+  weightKg:
+    - 2.5
+    - 4.5
 distribution:
   - "Tristan da Cunha, Gough, Inaccessible a Nightingale (jižní Atlantik)"
   - "Ostrov Amsterdam a ostrov St Paul (Indický oceán)"
@@ -43,6 +47,36 @@ gallery:
     author: "Antoine Lamielle"
     license: "CC BY-SA 4.0"
     sourceUrl: "https://commons.wikimedia.org/wiki/File:2021-09_Amsterdam_Island_-_Northern_rockhopper_penguin_02.jpg"
+  - src: "../../assets/penguins/skalni-severni/gallery-4.jpg"
+    alt: "Tučňák skalní severní — fotografie z Wikimedia Commons"
+    author: "Antoine Lamielle"
+    license: "CC BY-SA 4.0"
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:2020-12_Amsterdam_Island_-_Northern_rockhopper_penguin_16.jpg"
+  - src: "../../assets/penguins/skalni-severni/gallery-5.jpg"
+    alt: "Tučňák skalní severní — fotografie z Wikimedia Commons"
+    author: "Antoine Lamielle"
+    license: "CC BY-SA 4.0"
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:2020-12_Amsterdam_Island_-_Northern_rockhopper_penguin_17.jpg"
+  - src: "../../assets/penguins/skalni-severni/gallery-6.jpg"
+    alt: "Tučňák skalní severní — fotografie z Wikimedia Commons"
+    author: "Flavien Saboureau"
+    license: "CC BY 4.0"
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Eudyptes_moseleyi_371640408.jpg"
+  - src: "../../assets/penguins/skalni-severni/gallery-7.jpg"
+    alt: "Tučňák skalní severní — fotografie z Wikimedia Commons"
+    author: "Jean-Mowak"
+    license: "CC BY-SA 4.0"
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Gorfou_Sauteur_le_manchot_rasta_des_TAAF_%C2%A9_Lauren_Ransan_2014.jpg"
+  - src: "../../assets/penguins/skalni-severni/gallery-8.jpg"
+    alt: "Tučňák skalní severní — fotografie z Wikimedia Commons"
+    author: "franek2"
+    license: "CC BY-SA 3.0"
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Gorfou_sauteur_%5E_otaries_-_panoramio.jpg"
+  - src: "../../assets/penguins/skalni-severni/gallery-9.jpg"
+    alt: "Tučňák skalní severní — fotografie z Wikimedia Commons"
+    author: "Brian Gratwicke"
+    license: "CC BY 2.0"
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Northern_Rockhopper_Penguin_on_Inaccessible_Island_(portrait).jpg"
 sources:
   - url: "https://en.wikipedia.org/wiki/Northern_rockhopper_penguin"
     title: "Northern rockhopper penguin — Wikipedia (EN)"
