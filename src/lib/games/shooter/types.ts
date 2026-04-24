@@ -1,4 +1,6 @@
-export type EnemyKind = "skua" | "seal" | "orca";
+export type EnemyKind = "skua" | "seal" | "leopard" | "petrel" | "orca" | "boss";
+
+export type PowerUpKind = "damage" | "multi" | "rate" | "speed" | "heal";
 
 export interface Enemy {
   kind: EnemyKind;
@@ -13,6 +15,10 @@ export interface Enemy {
   scoreValue: number;
   xpValue: number;
   zigPhase: number;
+  fireTimer: number;
+  // For boss: attack phase timer + shooter pattern
+  phase: number;
+  phaseTimer: number;
 }
 
 export interface Bullet {
@@ -24,6 +30,27 @@ export interface Bullet {
   damage: number;
   pierce: number;
   hit: Set<Enemy>;
+}
+
+export interface EnemyProjectile {
+  x: number;
+  y: number;
+  w: number;
+  h: number;
+  vx: number;
+  vy: number;
+  damage: number;
+  kind: "ice" | "water";
+}
+
+export interface PowerUp {
+  kind: PowerUpKind;
+  x: number;
+  y: number;
+  w: number;
+  h: number;
+  vy: number;
+  bobPhase: number;
 }
 
 export interface Hero {
@@ -39,27 +66,30 @@ export interface Hero {
   fireIntervalMs: number;
   fireTimer: number;
   invulnerableMs: number;
+  pickupFlashMs: number;
 }
 
-export interface UpgradeOption {
-  id: string;
+export interface UpgradeSpec {
+  kind: PowerUpKind;
   icon: string;
   title: string;
-  description: string;
   apply(_h: Hero): void;
 }
 
 export interface WaveSpec {
   skua: number;
   seal: number;
+  leopard: number;
+  petrel: number;
   orca: number;
+  boss: number;
   spawnRateMs: number;
   baseSpeed: number;
 }
 
-export type GameStatus = "playing" | "levelUp" | "waveDone" | "win" | "gameover";
+export type GameStatus = "playing" | "win" | "gameover";
 
 export const CANVAS_W = 400;
 export const CANVAS_H = 600;
-export const HERO_W = 30;
-export const HERO_H = 34;
+export const HERO_W = 44;
+export const HERO_H = 52;

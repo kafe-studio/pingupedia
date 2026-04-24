@@ -9,14 +9,14 @@ import GameLayout from "../../layouts/GameLayout.astro";
       <p class="text-[11px] uppercase tracking-[0.2em] text-primary mb-1.5">Mini-hra</p>
       <h1 class="text-2xl md:text-3xl font-black mb-1.5">Ledová obrana</h1>
       <p class="text-sm text-muted-foreground">
-        Chraň kolonii před chalunami, tuleni a kosatkami. Za zabité nepřátele získáváš XP a vylepšení.
+        Chraň kolonii. Sbírej barevné kontejnery — vylepší zbraně. Po 5 vlnách přijde boss.
       </p>
     </header>
 
     <div class="bento-card p-3 md:p-4">
       <div class="mb-2 flex items-center justify-between gap-3 text-xs">
         <div class="flex flex-wrap gap-3 text-muted-foreground">
-          <span>Vlna <strong data-hud-wave class="text-foreground">1</strong>/<strong data-hud-max>5</strong></span>
+          <span>Vlna <strong data-hud-wave class="text-foreground">1</strong>/<strong data-hud-max>6</strong></span>
           <span>Level <strong data-hud-level class="text-foreground">1</strong></span>
           <span>Skóre <strong data-hud-score class="text-foreground">0</strong></span>
         </div>
@@ -40,6 +40,13 @@ import GameLayout from "../../layouts/GameLayout.astro";
         </div>
       </div>
 
+      <div id="boss-hud" class="mb-2 hidden">
+        <p class="text-[10px] uppercase tracking-widest text-red-400 font-bold mb-1">👹 BOSS — Kolosální kosatka</p>
+        <div class="h-3 rounded-full bg-muted overflow-hidden border border-red-500/40">
+          <div data-hud-boss class="h-full bg-red-500 transition-[width]" style="width:100%"></div>
+        </div>
+      </div>
+
       <div class="relative mx-auto" style="width: 400px; max-width: 100%;">
         <canvas
           id="shooter-canvas"
@@ -56,8 +63,7 @@ import GameLayout from "../../layouts/GameLayout.astro";
         >
           <h2 data-ov-title class="text-2xl font-black"></h2>
           <p data-ov-msg class="text-sm text-white/80"></p>
-          <div data-ov-options class="grid gap-2 w-full max-w-sm"></div>
-          <button data-ov-btn type="button" class="hidden rounded-full bg-white text-slate-900 px-5 py-2 text-sm font-bold">
+          <button data-ov-btn type="button" class="rounded-full bg-white text-slate-900 px-5 py-2 text-sm font-bold">
             Pokračovat
           </button>
         </div>
@@ -66,6 +72,29 @@ import GameLayout from "../../layouts/GameLayout.astro";
       <div class="mt-3 grid grid-cols-2 gap-2 text-[11px] text-muted-foreground">
         <div>← → pohyb</div>
         <div>mezera = střelba (držet)</div>
+      </div>
+
+      <div class="mt-3 grid grid-cols-5 gap-1.5 text-[10px]">
+        <div class="rounded-md bg-orange-500/20 border border-orange-500/40 p-1.5 text-center">
+          <div class="font-bold">💪</div>
+          <div class="text-muted-foreground">Síla</div>
+        </div>
+        <div class="rounded-md bg-sky-500/20 border border-sky-500/40 p-1.5 text-center">
+          <div class="font-bold">❄</div>
+          <div class="text-muted-foreground">Vějíř</div>
+        </div>
+        <div class="rounded-md bg-amber-500/20 border border-amber-500/40 p-1.5 text-center">
+          <div class="font-bold">⚡</div>
+          <div class="text-muted-foreground">Rychlost střelby</div>
+        </div>
+        <div class="rounded-md bg-emerald-500/20 border border-emerald-500/40 p-1.5 text-center">
+          <div class="font-bold">🏃</div>
+          <div class="text-muted-foreground">Rychlost</div>
+        </div>
+        <div class="rounded-md bg-red-500/20 border border-red-500/40 p-1.5 text-center">
+          <div class="font-bold">❤</div>
+          <div class="text-muted-foreground">Život</div>
+        </div>
       </div>
 
       <div class="mt-4 grid grid-cols-3 gap-2 md:hidden">
@@ -79,7 +108,7 @@ import GameLayout from "../../layouts/GameLayout.astro";
 
 <script>
   import { Game, type GameHud } from "../../lib/games/shooter/engine";
-  import type { GameStatus, UpgradeOption } from "../../lib/games/shooter/types";
+  import type { GameStatus } from "../../lib/games/shooter/types";
 
   const canvas = document.getElementById("shooter-canvas") as HTMLCanvasElement | null;
   if (!canvas) throw new Error("canvas missing");
@@ -87,7 +116,6 @@ import GameLayout from "../../layouts/GameLayout.astro";
   const overlay = document.getElementById("shooter-overlay")!;
   const ovTitle = overlay.querySelector<HTMLElement>("[data-ov-title]")!;
   const ovMsg = overlay.querySelector<HTMLElement>("[data-ov-msg]")!;
-  const ovOptions = overlay.querySelector<HTMLElement>("[data-ov-options]")!;
   const ovBtn = overlay.querySelector<HTMLButtonElement>("[data-ov-btn]")!;
 
   const hudWave = document.querySelector<HTMLElement>("[data-hud-wave]")!;
@@ -96,6 +124,8 @@ import GameLayout from "../../layouts/GameLayout.astro";
   const hudScore = document.querySelector<HTMLElement>("[data-hud-score]")!;
   const hudHp = document.querySelector<HTMLElement>("[data-hud-hp]")!;
   const hudXp = document.querySelector<HTMLElement>("[data-hud-xp]")!;
+  const hudBoss = document.querySelector<HTMLElement>("[data-hud-boss]")!;
+  const bossHudBox = document.getElementById("boss-hud")!;
 
   function showOverlay(): void {
     overlay.classList.remove("hidden");
@@ -104,35 +134,12 @@ import GameLayout from "../../layouts/GameLayout.astro";
   function hideOverlay(): void {
     overlay.classList.add("hidden");
     overlay.classList.remove("flex");
-    ovOptions.innerHTML = "";
-    ovBtn.classList.add("hidden");
   }
 
-  function showUpgrades(options: UpgradeOption[]): void {
-    ovTitle.textContent = "Level up! Vyber si vylepšení";
-    ovMsg.textContent = "Jedno zvolené upgrade zůstává po celou hru.";
-    ovOptions.innerHTML = "";
-    options.forEach((opt) => {
-      const btn = document.createElement("button");
-      btn.type = "button";
-      btn.className =
-        "rounded-xl border border-white/30 bg-white/5 hover:bg-white/15 p-3 text-left text-sm transition-colors";
-      btn.innerHTML = `<div class="text-lg mb-0.5">${opt.icon} <strong class="font-bold">${opt.title}</strong></div><div class="text-white/75 text-xs">${opt.description}</div>`;
-      btn.addEventListener("click", () => {
-        game?.applyUpgrade(opt);
-        hideOverlay();
-      });
-      ovOptions.appendChild(btn);
-    });
-    showOverlay();
-  }
-
-  function showSimple(title: string, msg: string, btnLabel: string, onClick: () => void): void {
+  function showEnd(title: string, msg: string, btnLabel: string, onClick: () => void): void {
     ovTitle.textContent = title;
     ovMsg.textContent = msg;
-    ovOptions.innerHTML = "";
     ovBtn.textContent = btnLabel;
-    ovBtn.classList.remove("hidden");
     ovBtn.onclick = () => {
       onClick();
       hideOverlay();
@@ -140,15 +147,12 @@ import GameLayout from "../../layouts/GameLayout.astro";
     showOverlay();
   }
 
-  function handleStatus(status: GameStatus, options?: UpgradeOption[]): void {
+  function handleStatus(status: GameStatus): void {
     if (status === "playing") hideOverlay();
-    else if (status === "levelUp" && options) showUpgrades(options);
-    else if (status === "waveDone")
-      showSimple("Vlna odražena 🎉", "Další vlna bude větší a rychlejší.", "Další vlna →", () => game?.startNextWave());
     else if (status === "win")
-      showSimple("Kolonie zachráněna!", "Všech 5 vln poraženo. Jsi legenda.", "Hrát znovu", () => game?.restart());
+      showEnd("Kolonie zachráněna!", "Porazil jsi boss kosatky. Jsi legenda.", "Hrát znovu", () => game?.restart());
     else if (status === "gameover")
-      showSimple("Game over", "Ledovce padly. Zkusíš to znovu?", "Znovu", () => game?.restart());
+      showEnd("Game over", "Ledovce padly. Zkusíš to znovu?", "Znovu", () => game?.restart());
   }
 
   function renderHud(h: GameHud): void {
@@ -160,6 +164,12 @@ import GameLayout from "../../layouts/GameLayout.astro";
     (hudHp as HTMLElement).style.background =
       h.hp / h.maxHp > 0.5 ? "#10b981" : h.hp / h.maxHp > 0.25 ? "#fbbf24" : "#ef4444";
     (hudXp as HTMLElement).style.width = `${(h.xp / h.xpToLevel) * 100}%`;
+    if (h.isBossWave && h.bossHpRatio > 0) {
+      bossHudBox.classList.remove("hidden");
+      (hudBoss as HTMLElement).style.width = `${h.bossHpRatio * 100}%`;
+    } else {
+      bossHudBox.classList.add("hidden");
+    }
   }
 
   document.querySelector<HTMLButtonElement>("[data-restart]")!.addEventListener("click", () => game?.restart());
