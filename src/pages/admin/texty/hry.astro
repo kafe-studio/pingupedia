@@ -1,0 +1,131 @@
+---
+export const prerender = false;
+import AdminLayout from "../../../layouts/AdminLayout.astro";
+
+const inputCls =
+  "w-full rounded-lg border border-border-interactive bg-background px-3 py-2 text-sm focus:outline-none focus:border-primary";
+const labelCls = "block text-sm font-semibold mb-1.5";
+const sectionCls = "rounded-2xl border border-border bg-card p-6 space-y-4";
+const sectionTitleCls =
+  "text-xs uppercase tracking-widest text-primary font-semibold mb-3";
+const hintCls = "text-xs text-muted-foreground";
+---
+
+<AdminLayout title="Hry rozcestník" section="texty">
+  <nav class="mb-4 text-sm" aria-label="Drobečková navigace">
+    <a href="/admin/texty/" class="text-muted-foreground hover:text-primary transition-colors">← Všechny texty</a>
+  </nav>
+
+  <header class="mb-6">
+    <p class="text-xs uppercase tracking-widest text-primary font-semibold mb-2">Strukturovaný editor</p>
+    <h1 class="text-3xl md:text-4xl font-black tracking-tight">Hry rozcestník</h1>
+    <p class="mt-2 text-muted-foreground max-w-2xl">
+      Stránka <code class="text-xs bg-muted px-1 rounded">/hry/</code> — hero + 4 karty mini-her + CTA.
+    </p>
+  </header>
+
+  <section id="loading" class="rounded-2xl border border-border bg-card p-10 text-center text-muted-foreground">
+    Načítám obsah z GitHub…
+  </section>
+
+  <section id="error" class="hidden rounded-2xl border border-red-400/40 bg-red-500/10 p-6">
+    <p class="font-semibold text-red-200">Chyba</p>
+    <p id="error-message" class="mt-1 text-sm text-red-100"></p>
+  </section>
+
+  <form id="edit-form" class="hidden space-y-6" data-id="page/hry">
+    <input type="hidden" id="file-sha" />
+
+    <section class={sectionCls}>
+      <p class={sectionTitleCls}>Meta</p>
+      <div>
+        <label class={labelCls} for="metaTitle">Title</label>
+        <input id="metaTitle" type="text" required class={inputCls} />
+      </div>
+      <div>
+        <label class={labelCls} for="metaDescription">Description (meta)</label>
+        <textarea id="metaDescription" required rows="2" class={inputCls}></textarea>
+      </div>
+    </section>
+
+    <section class={sectionCls}>
+      <p class={sectionTitleCls}>Hero</p>
+      <div>
+        <label class={labelCls} for="heroEyebrow">Eyebrow</label>
+        <input id="heroEyebrow" type="text" required class={inputCls} />
+      </div>
+      <div>
+        <label class={labelCls} for="heroTitleHtml">Nadpis (HTML — <code>&lt;span&gt;</code>, <code>&lt;br /&gt;</code>)</label>
+        <textarea id="heroTitleHtml" required rows="3" class={`${inputCls} font-mono text-xs`}></textarea>
+      </div>
+      <div>
+        <label class={labelCls} for="heroSubtitle">Podnadpis</label>
+        <textarea id="heroSubtitle" required rows="3" class={inputCls}></textarea>
+      </div>
+    </section>
+
+    <section class={sectionCls}>
+      <p class={sectionTitleCls}>Herní karty</p>
+      <p class={hintCls}>
+        Jedna karta na blok. Bloky oddělené řádkem <code>---</code>. Uvnitř bloku řádky ve formátu <code>klíč: hodnota</code>. Povinné klíče: <code>slug</code>, <code>title</code>, <code>tag</code>, <code>description</code>, <code>surface</code> (<em>aurora/ocean/ice/sun/candy/midnight</em>), <code>emoji</code>. Slug je readonly — odpovídá souboru <code>src/pages/hry/&lt;slug&gt;.astro</code>.
+      </p>
+      <textarea
+        id="games"
+        required
+        rows="28"
+        class={`${inputCls} font-mono text-xs leading-relaxed`}
+      ></textarea>
+    </section>
+
+    <section class={sectionCls}>
+      <p class={sectionTitleCls}>CTA (nápad na hru)</p>
+      <div>
+        <label class={labelCls} for="ctaEyebrow">Eyebrow</label>
+        <input id="ctaEyebrow" type="text" required class={inputCls} />
+      </div>
+      <div>
+        <label class={labelCls} for="ctaTitle">Nadpis</label>
+        <input id="ctaTitle" type="text" required class={inputCls} />
+      </div>
+      <div>
+        <label class={labelCls} for="ctaDescription">Popis</label>
+        <textarea id="ctaDescription" required rows="3" class={inputCls}></textarea>
+      </div>
+    </section>
+
+    <section class={sectionCls}>
+      <p class={sectionTitleCls}>Commit</p>
+      <div>
+        <label class={labelCls} for="message">Commit message</label>
+        <input
+          id="message"
+          type="text"
+          required
+          minlength="5"
+          maxlength="100"
+          value="Edit hry: "
+          class={inputCls}
+        />
+      </div>
+      <div class="flex items-center justify-between gap-4 pt-2">
+        <a href="/admin/texty/" class="btn-outline px-4 py-2 text-sm">Zrušit</a>
+        <button type="submit" id="submit-btn" class="btn-primary px-6 py-2.5">Uložit a commit</button>
+      </div>
+      <div
+        id="commit-result"
+        class="hidden rounded-lg border border-emerald-400/40 bg-emerald-500/10 p-4 text-sm"
+      >
+        <p class="font-semibold text-emerald-200">✓ Uloženo</p>
+        <p class="mt-1 text-emerald-100">
+          Commit: <a id="commit-link" href="#" rel="noopener" target="_blank" class="underline"></a>
+        </p>
+        <p class="mt-1 text-xs text-emerald-100/70">Deploy na produkci proběhne po rebuildu CF Workers.</p>
+      </div>
+    </section>
+  </form>
+
+  <script>
+    import { mountHryForm } from "../../../lib/admin/hry-form-client";
+    mountHryForm();
+  </script>
+</AdminLayout>

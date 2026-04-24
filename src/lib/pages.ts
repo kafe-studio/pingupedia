@@ -15,3 +15,19 @@ export async function getOProjektuPage() {
 }
 
 export type OProjektuPage = Awaited<ReturnType<typeof getOProjektuPage>>;
+
+export async function getHryPage() {
+  const entry = await getEntry("hry", "hry");
+  if (!entry) throw new Error("src/content/pages/hry.json not found");
+  return entry.data;
+}
+
+export type HryPage = Awaited<ReturnType<typeof getHryPage>>;
+
+export async function getQuiz() {
+  const entry = await getEntry("quiz", "quiz");
+  if (!entry) throw new Error("src/content/quiz.json not found");
+  return entry.data;
+}
+
+export type Quiz = Awaited<ReturnType<typeof getQuiz>>;

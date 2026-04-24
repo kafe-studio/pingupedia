@@ -1,9 +1,10 @@
 ---
 export const prerender = true;
 import GameLayout from "../../layouts/GameLayout.astro";
-import { quizQuestions } from "../../lib/games/quiz-data";
+import { getQuiz } from "../../lib/pages";
 
-const data = JSON.stringify(quizQuestions);
+const quiz = await getQuiz();
+const data = JSON.stringify(quiz.questions);
 ---
 
 <GameLayout title="Kvíz" description="Otestuj si, co víš o tučňácích.">

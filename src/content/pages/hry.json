@@ -1,0 +1,50 @@
+{
+  "meta": {
+    "title": "Hry s tučňáky",
+    "description": "Herna pingupedia — mini-hry o tučňácích. Kvíz, pexeso a další přibývají."
+  },
+  "hero": {
+    "eyebrow": "Herna",
+    "titleHtml": "Hry<br />s <span class=\"text-accent\">tučňáky</span>",
+    "subtitle": "Malé on-line hry, které si můžeš pustit rovnou v okně na stránce nebo v novém panelu. Žádné stahování, žádné reklamy."
+  },
+  "games": [
+    {
+      "slug": "kviz",
+      "title": "Kvíz o tučňácích",
+      "tag": "5 otázek · 2 min",
+      "description": "Otestuj si, kolik toho víš — od největšího druhu po tajemství císařských samců. Nic nebudeš potřebovat, jen zvědavost.",
+      "surface": "aurora",
+      "emoji": "🧠"
+    },
+    {
+      "slug": "pexeso",
+      "title": "Pexeso s tučňáky",
+      "tag": "8 párů · 16 karet",
+      "description": "Klasické pexeso, ale s fotkami druhů. Přiřaď páry, sleduj čas a tahové skóre. Čím méně tahů, tím lepší paměť.",
+      "surface": "ocean",
+      "emoji": "🎴"
+    },
+    {
+      "slug": "platformovka",
+      "title": "Ledová výprava",
+      "tag": "3 levely · plošinovka",
+      "description": "Plošinovka ve stylu Donkey Kong. Dostaň tučňáka po ledových krách až k opuštěnému mláděti a uhni padajícím ledovým blokům.",
+      "surface": "ice",
+      "emoji": "🧗"
+    },
+    {
+      "slug": "obrana",
+      "title": "Ledová obrana",
+      "tag": "5 vln · upgrady",
+      "description": "Space Invaders styl: tučňák dole střílí sněhové koule na chaluny, tulně a kosatky. Každý level up = volba vylepšení — silnější koule, více střel, rychlejší tempo.",
+      "surface": "sun",
+      "emoji": "🎯"
+    }
+  ],
+  "cta": {
+    "eyebrow": "Další hry v přípravě",
+    "title": "Máš nápad na hru s tučňáky?",
+    "description": "Omalovánky, puzzle s mapou kolonií nebo uhodni druh podle siluety — přidávají se postupně."
+  }
+}

@@ -219,4 +219,55 @@ const oProjektu = defineCollection({
   }),
 });
 
-export const collections = { species, site, home, oProjektu };
+const hrySlugRe = /^[a-z0-9-]+$/;
+const surfaceEnum = z.enum(["aurora", "ocean", "ice", "sun", "candy", "midnight"]);
+
+const hry = defineCollection({
+  loader: glob({ pattern: "hry.json", base: "./src/content/pages" }),
+  schema: z.object({
+    meta: z.object({
+      title: z.string().min(1),
+      description: z.string().min(1),
+    }),
+    hero: z.object({
+      eyebrow: z.string().min(1),
+      titleHtml: z.string().min(1),
+      subtitle: z.string().min(1),
+    }),
+    games: z
+      .array(
+        z.object({
+          slug: z.string().regex(hrySlugRe),
+          title: z.string().min(1),
+          tag: z.string().min(1),
+          description: z.string().min(1),
+          surface: surfaceEnum,
+          emoji: z.string().min(1),
+        }),
+      )
+      .min(1),
+    cta: z.object({
+      eyebrow: z.string().min(1),
+      title: z.string().min(1),
+      description: z.string().min(1),
+    }),
+  }),
+});
+
+const quiz = defineCollection({
+  loader: glob({ pattern: "quiz.json", base: "./src/content" }),
+  schema: z.object({
+    questions: z
+      .array(
+        z.object({
+          question: z.string().min(1),
+          options: z.array(z.string().min(1)).length(4),
+          correct: z.number().int().min(0).max(3),
+          explanation: z.string().min(1),
+        }),
+      )
+      .min(1),
+  }),
+});
+
+export const collections = { species, site, home, oProjektu, hry, quiz };

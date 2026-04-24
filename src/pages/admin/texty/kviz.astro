@@ -1,0 +1,87 @@
+---
+export const prerender = false;
+import AdminLayout from "../../../layouts/AdminLayout.astro";
+
+const inputCls =
+  "w-full rounded-lg border border-border-interactive bg-background px-3 py-2 text-sm focus:outline-none focus:border-primary";
+const labelCls = "block text-sm font-semibold mb-1.5";
+const sectionCls = "rounded-2xl border border-border bg-card p-6 space-y-4";
+const sectionTitleCls =
+  "text-xs uppercase tracking-widest text-primary font-semibold mb-3";
+---
+
+<AdminLayout title="Kvíz" section="texty">
+  <nav class="mb-4 text-sm" aria-label="Drobečková navigace">
+    <a href="/admin/texty/" class="text-muted-foreground hover:text-primary transition-colors">← Všechny texty</a>
+  </nav>
+
+  <header class="mb-6">
+    <p class="text-xs uppercase tracking-widest text-primary font-semibold mb-2">JSON editor (MVP)</p>
+    <h1 class="text-3xl md:text-4xl font-black tracking-tight">Kvíz</h1>
+    <p class="mt-2 text-muted-foreground max-w-2xl">
+      Soubor <code class="text-xs bg-muted px-1 rounded">src/content/quiz.json</code> — pole otázek. Každá otázka má <code>question</code>, <code>options</code> (přesně 4), <code>correct</code> (index 0–3) a <code>explanation</code>. Strukturovaný form s radio buttons přijde v Runu&nbsp;013f.
+    </p>
+  </header>
+
+  <section id="loading" class="rounded-2xl border border-border bg-card p-10 text-center text-muted-foreground">
+    Načítám obsah z GitHub…
+  </section>
+
+  <section id="error" class="hidden rounded-2xl border border-red-400/40 bg-red-500/10 p-6">
+    <p class="font-semibold text-red-200">Chyba</p>
+    <p id="error-message" class="mt-1 text-sm text-red-100"></p>
+  </section>
+
+  <form id="edit-form" class="hidden space-y-6" data-id="quiz/quiz">
+    <input type="hidden" id="file-sha" />
+
+    <section class={sectionCls}>
+      <p class={sectionTitleCls}>JSON obsahu</p>
+      <p class="text-xs text-muted-foreground -mt-2">
+        Přímá editace JSON. Při uložení se validuje: musí to být objekt <code>{`{"questions": [...] }`}</code>, každá otázka má 4 options a correct index 0–3.
+      </p>
+      <textarea
+        id="json"
+        required
+        rows="32"
+        spellcheck="false"
+        class={`${inputCls} font-mono text-xs leading-relaxed`}
+      ></textarea>
+    </section>
+
+    <section class={sectionCls}>
+      <p class={sectionTitleCls}>Commit</p>
+      <div>
+        <label class={labelCls} for="message">Commit message</label>
+        <input
+          id="message"
+          type="text"
+          required
+          minlength="5"
+          maxlength="100"
+          value="Edit kvíz: "
+          class={inputCls}
+        />
+      </div>
+      <div class="flex items-center justify-between gap-4 pt-2">
+        <a href="/admin/texty/" class="btn-outline px-4 py-2 text-sm">Zrušit</a>
+        <button type="submit" id="submit-btn" class="btn-primary px-6 py-2.5">Uložit a commit</button>
+      </div>
+      <div
+        id="commit-result"
+        class="hidden rounded-lg border border-emerald-400/40 bg-emerald-500/10 p-4 text-sm"
+      >
+        <p class="font-semibold text-emerald-200">✓ Uloženo</p>
+        <p class="mt-1 text-emerald-100">
+          Commit: <a id="commit-link" href="#" rel="noopener" target="_blank" class="underline"></a>
+        </p>
+        <p class="mt-1 text-xs text-emerald-100/70">Deploy na produkci proběhne po rebuildu CF Workers.</p>
+      </div>
+    </section>
+  </form>
+
+  <script>
+    import { mountKvizForm } from "../../../lib/admin/kviz-form-client";
+    mountKvizForm();
+  </script>
+</AdminLayout>
