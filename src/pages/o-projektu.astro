@@ -1,21 +1,10 @@
 ---
 export const prerender = true;
-import { getCollection } from "astro:content";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Mascot from "../components/mascot/Mascot.astro";
 import { getOProjektuPage } from "../lib/pages";
 
 const page = await getOProjektuPage();
-const species = await getCollection("species");
-const speciesCount = species.length;
-const genusCount = new Set(species.map((s) => s.data.genus)).size;
-
-function statValue(item: (typeof page.stats.items)[number]): string | number {
-  if ("dynamic" in item) {
-    return item.dynamic === "species" ? speciesCount : genusCount;
-  }
-  return item.value;
-}
 
 const metadata = {
   title: page.meta.title,
@@ -24,94 +13,56 @@ const metadata = {
 ---
 
 <BaseLayout {metadata}>
-  <section class="px-4 sm:px-6 pt-28 pb-16">
-    <div class="mx-auto max-w-5xl">
-      <header class="mb-10 md:mb-14 max-w-3xl reveal">
-        <p class="text-sm uppercase tracking-[0.2em] text-primary/80 mb-4">{page.hero.eyebrow}</p>
-        <h1 class="text-5xl md:text-7xl font-black tracking-tight leading-[0.95] mb-4">
+  <section class="px-4 sm:px-6 pt-28 pb-24">
+    <div class="mx-auto max-w-3xl">
+      <header class="mb-10 md:mb-14 text-center reveal">
+        <h1 class="text-5xl md:text-7xl font-black tracking-tight leading-[0.95] mb-5">
           <Fragment set:html={page.hero.titleHtml} />
         </h1>
-        <p class="text-lg md:text-xl text-muted-foreground" set:html={page.hero.subtitle} />
+        <p class="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto" set:html={page.hero.subtitle} />
       </header>
 
-      <div class="grid grid-cols-12 auto-rows-[minmax(160px,auto)] gap-4 md:gap-5">
-        <article class="bento-card bento-surface-aurora col-span-12 md:col-span-8 p-6 md:p-8 text-white reveal">
-          <p class="text-xs uppercase tracking-widest text-accent font-semibold mb-3">{page.purpose.eyebrow}</p>
-          <h2 class="text-2xl md:text-3xl font-black leading-tight mb-4">{page.purpose.title}</h2>
-          <p class="text-white/85 leading-relaxed" set:html={page.purpose.body} />
-        </article>
-
-        <div class="bento-card col-span-12 md:col-span-4 p-6 flex flex-col items-center justify-center text-center reveal">
-          <div class="anim-float mb-3">
-            <Mascot pose="cte" size={100} />
-          </div>
-          <p class="text-xs uppercase tracking-widest text-primary font-semibold">{page.audience.eyebrow}</p>
-          <p class="mt-1 text-lg font-bold">{page.audience.title}</p>
-          <p class="mt-2 text-sm text-muted-foreground">{page.audience.subtitle}</p>
+      <div class="bento-card bento-surface-aurora p-6 md:p-8 text-white reveal mb-6 flex items-center gap-5">
+        <div class="shrink-0 anim-float">
+          <Mascot pose="srdce" size={72} />
         </div>
-
-        <div class="bento-card bento-surface-ocean col-span-12 md:col-span-6 p-6 md:p-8 text-white reveal">
-          <p class="text-xs uppercase tracking-widest text-accent font-semibold mb-3">{page.sources.eyebrow}</p>
-          <ul class="grid grid-cols-1 gap-2 text-sm">
-            {page.sources.items.map((item) => (
-              <li class="flex items-start gap-2"><span class="text-accent">✓</span> {item}</li>
-            ))}
-          </ul>
-        </div>
-
-        <div class="bento-card bento-surface-ice col-span-12 md:col-span-6 p-6 md:p-8 text-white reveal">
-          <p class="text-xs uppercase tracking-widest text-accent font-semibold mb-3">{page.imageRules.eyebrow}</p>
-          <ul class="space-y-2 text-sm text-white/85">
-            {page.imageRules.itemsHtml.map((html) => (
-              <li set:html={html} />
-            ))}
-          </ul>
-        </div>
-
-        <article class="bento-card col-span-12 md:col-span-4 p-6 reveal">
-          <p class="text-xs uppercase tracking-widest text-primary font-semibold mb-2">{page.stats.eyebrow}</p>
-          <div class="grid grid-cols-2 gap-4 mt-3">
-            {page.stats.items.map((item) => (
-              <div>
-                <p class="text-3xl font-black text-foreground">{statValue(item)}</p>
-                <p class="text-xs text-muted-foreground">{item.label}</p>
-              </div>
-            ))}
-          </div>
-        </article>
-
-        <div class="bento-card col-span-12 md:col-span-8 p-6 md:p-8 reveal">
-          <p class="text-xs uppercase tracking-widest text-primary font-semibold mb-3">{page.tech.eyebrow}</p>
-          <p class="text-sm text-muted-foreground leading-relaxed mb-3" set:html={page.tech.body} />
-          <div class="flex flex-wrap gap-2 text-[11px] font-semibold">
-            {page.tech.badges.map((badge) => (
-              <span class="rounded-full border border-border px-3 py-1">{badge}</span>
-            ))}
-          </div>
-        </div>
-
-        <a
-          href="/druhy/"
-          class="bento-card is-link bento-surface-sun col-span-12 md:col-span-6 p-6 md:p-8 flex items-center justify-between gap-4 reveal"
-          data-astro-prefetch
-        >
-          <div>
-            <p class="text-xs uppercase tracking-widest font-bold opacity-80">{page.catalogCta.eyebrow}</p>
-            <h3 class="mt-2 text-2xl md:text-3xl font-black leading-tight">{page.catalogCta.title}</h3>
-          </div>
-        </a>
-
-        <a
-          href="/hry/"
-          class="bento-card is-link bento-surface-aurora col-span-12 md:col-span-6 p-6 md:p-8 flex items-center justify-between gap-4 text-white reveal"
-          data-astro-prefetch
-        >
-          <div>
-            <p class="text-xs uppercase tracking-widest font-bold text-accent">{page.gamesCta.eyebrow}</p>
-            <h3 class="mt-2 text-2xl md:text-3xl font-black leading-tight">{page.gamesCta.title}</h3>
-          </div>
-        </a>
+        <p class="text-base md:text-lg leading-relaxed italic text-white/90">
+          {page.personalNote.body}
+        </p>
       </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-5 mb-6">
+        <div class="bento-card bento-surface-ocean p-6 md:p-7 text-white reveal">
+          <p class="text-xs uppercase tracking-widest text-accent font-semibold mb-3">{page.sources.eyebrow}</p>
+          <ul class="space-y-2 text-sm">
+            {page.sources.items.map((item) => (
+              <li class="flex items-start gap-2"><span class="text-accent mt-0.5">✓</span><span>{item}</span></li>
+            ))}
+          </ul>
+        </div>
+
+        <article class="bento-card p-6 md:p-7 reveal">
+          <p class="text-xs uppercase tracking-widest text-primary font-semibold mb-3">{page.purpose.eyebrow}</p>
+          <h2 class="text-xl md:text-2xl font-black leading-tight mb-3">{page.purpose.title}</h2>
+          <p class="text-sm text-muted-foreground leading-relaxed" set:html={page.purpose.body} />
+        </article>
+      </div>
+
+      <footer class="bento-card p-6 md:p-8 reveal flex flex-col sm:flex-row items-center sm:items-start gap-5 sm:gap-6">
+        <div class="shrink-0 flex items-center gap-2.5">
+          <span class="w-12 h-12 rounded-2xl bg-gradient-to-br from-amber-500 via-rose-500 to-fuchsia-500 text-white font-black text-xl flex items-center justify-center shadow-lg">K</span>
+          <span class="text-xl font-black tracking-tight">{page.credits.studio}</span>
+        </div>
+        <div class="flex-1 text-center sm:text-left">
+          <p class="text-sm text-muted-foreground mb-2">
+            Vytvořeno <span class="font-semibold text-foreground">{page.credits.author}</span> ve studiu <span class="font-semibold text-foreground">{page.credits.studio}</span>.
+          </p>
+          <p class="text-sm flex flex-wrap gap-x-4 gap-y-1 justify-center sm:justify-start">
+            <a href={`mailto:${page.credits.email}`} class="text-primary hover:underline">{page.credits.email}</a>
+            <a href={page.credits.portfolioUrl} rel="noopener" target="_blank" class="text-primary hover:underline">{page.credits.portfolioLabel}</a>
+          </p>
+        </div>
+      </footer>
     </div>
   </section>
 </BaseLayout>

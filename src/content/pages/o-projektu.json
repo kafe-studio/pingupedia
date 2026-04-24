@@ -1,22 +1,14 @@
 {
   "meta": {
     "title": "O projektu",
-    "description": "O projektu pingupedia — česká encyklopedie všech druhů tučňáků pro děti i dospělé. Zdroje, licence, technologie."
+    "description": "Česká encyklopedie všech druhů tučňáků pro děti i dospělé. Z ověřených zdrojů."
   },
   "hero": {
-    "eyebrow": "O projektu",
     "titleHtml": "Proč<br />\n<span class=\"text-accent\">pingupedia</span>",
     "subtitle": "Populárně-naučná encyklopedie všech druhů tučňáků v češtině&nbsp;— pro zvědavé malé i velké."
   },
-  "purpose": {
-    "eyebrow": "Záměr",
-    "title": "Všech 18 druhů, česky, z ověřených zdrojů.",
-    "body": "Každé tvrzení na tomhle webu má oporu v konkrétním zdroji. Nekopíruju texty z Wikipedie&nbsp;— píšu je sám tak, aby byly srozumitelné pro děti, ale neurážely čtenáře nepřesnostmi. Každá fotka má autora, licenci a odkaz na originál."
-  },
-  "audience": {
-    "eyebrow": "Cílová skupina",
-    "title": "děti i dospělí",
-    "subtitle": "populárně-naučný tón"
+  "personalNote": {
+    "body": "Encyklopedie pro Jáchyma a jeho kamarády tučňáky. Veškeré informace jsou z ověřených volně dostupných zdrojů."
   },
   "sources": {
     "eyebrow": "Zdroje obsahu",
@@ -28,40 +20,16 @@
       "Vědecké publikace přes Wikipedii"
     ]
   },
-  "imageRules": {
-    "eyebrow": "Pravidla obrázků",
-    "itemsHtml": [
-      "<strong class=\"text-white\">Žádné ořezávání.</strong> Každá fotka má aspect-ratio kontejner a&nbsp;<code class=\"text-xs bg-white/10 px-1 rounded\">object-contain</code>&nbsp;— vidíš celou kompozici autora.",
-      "<strong class=\"text-white\">Atribuce u každé fotky.</strong> Autor, licence, odkaz na Commons. Licence povoleny: CC&nbsp;BY, CC&nbsp;BY-SA, Public Domain.",
-      "<strong class=\"text-white\">~68 fotek</strong> v aktuální verzi (18 hero + ~50 gallery)."
-    ]
+  "purpose": {
+    "eyebrow": "Záměr",
+    "title": "Všech 18 druhů, česky, z ověřených zdrojů.",
+    "body": "Každé tvrzení na tomhle webu má oporu v konkrétním zdroji. Nekopíruju texty z Wikipedie&nbsp;— píšu je sám tak, aby byly srozumitelné pro děti, ale neurážely čtenáře nepřesnostmi. Každá fotka má autora, licenci a odkaz na originál."
   },
-  "stats": {
-    "eyebrow": "Statistiky",
-    "items": [
-      { "label": "druhů", "dynamic": "species" },
-      { "label": "rodů", "dynamic": "genus" },
-      { "label": "fotek", "value": "~67" },
-      { "label": "mini-hry", "value": "4" }
-    ]
-  },
-  "tech": {
-    "eyebrow": "Technicky",
-    "body": "Astro 6 + Tailwind&nbsp;CSS&nbsp;4 + TypeScript, nasazeno na Cloudflare Workers. Obrázky optimalizovány do&nbsp;WebP v několika rozlišeních. Přepínatelných 5 designů (Arctic / Sunny / Ocean / Candy / Midnight) přes CSS proměnné. Všechny hry v&nbsp;čistém vanilla TS&nbsp;— bez runtime knihovny.",
-    "badges": [
-      "Astro 6",
-      "Tailwind CSS 4",
-      "TypeScript",
-      "Cloudflare Workers",
-      "Canvas 2D"
-    ]
-  },
-  "catalogCta": {
-    "eyebrow": "Katalog",
-    "title": "Prozkoumat všechny druhy →"
-  },
-  "gamesCta": {
-    "eyebrow": "Herna",
-    "title": "4 mini-hry s tučňáky →"
+  "credits": {
+    "author": "Jiří Kačírek",
+    "studio": "KaFe",
+    "email": "kacirek.jiri@gmail.com",
+    "portfolioUrl": "https://sosfotograf.cz",
+    "portfolioLabel": "sosfotograf.cz"
   }
 }
