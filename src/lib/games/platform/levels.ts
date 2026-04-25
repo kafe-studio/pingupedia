@@ -68,7 +68,7 @@ const iglu: Room = {
   id: "iglu",
   name: "Iglú",
   palette: "arctic",
-  // Right wall has a door opening in rows 10-11 so the player can exit.
+  // Right wall removed in rows 10-11; floor extended to the right edge so the player walks out smoothly.
   tiles: [
     "....................",
     "....................",
@@ -82,14 +82,14 @@ const iglu: Room = {
     "...#......H.....#...",
     "...#......H.........",
     "...#................",
-    "...##############...",
+    "...#################",
     "####################",
   ],
   guardians: [],
   items: [i("fish", 5, 7, "iglu-f1")],
   exits: [exit("right", "zakladna", 1, 11)],
   spawn: { x: 4 * TILE, y: 11 * TILE },
-  hint: "Jet Set Pingu. Sesbírej všechno a vrať se sem.",
+  hint: "Jet Set Pingu. Sesbírej všechno a vrať se sem. Dveře vpravo →",
 };
 
 const zakladna: Room = {
