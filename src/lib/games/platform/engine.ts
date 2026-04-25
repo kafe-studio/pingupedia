@@ -11,10 +11,10 @@ import { ROOMS, START_ROOM_ID } from "./levels";
 import { drawScene } from "./render";
 
 // Physics constants tuned for 320×224 pixel world.
-// Jump apex ≈ JUMP_V² / (2·GRAVITY) — needs to clear 3 tiles (≈48 px).
-const GRAVITY = 0.32;
+// Jump apex ≈ JUMP_V² / (2·GRAVITY) — needs to clear 4 tiles (≈64 px).
+const GRAVITY = 0.30;
 const WALK_SPEED = 1.4;
-const JUMP_V = -6.0;
+const JUMP_V = -7.0;
 const MAX_FALL = 6;
 const CLIMB_SPEED = 1.1;
 const INVULN_MS = 900;
@@ -125,8 +125,12 @@ export class PlatformGame {
   private emitHud(): void {
     const room = this.state.rooms.get(this.state.currentRoomId)!;
     const hintActive = performance.now() < this.state.hintUntil;
+    const ids = [...this.state.rooms.keys()];
+    const idx = ids.indexOf(this.state.currentRoomId);
     this.hooks.onHud({
       roomName: room.name,
+      roomIndex: idx + 1,
+      totalRooms: ids.length,
       hint: hintActive ? (room.hint ?? null) : null,
       lives: this.state.lives,
       collected: this.state.collected.size,

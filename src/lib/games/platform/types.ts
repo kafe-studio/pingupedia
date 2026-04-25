@@ -118,6 +118,8 @@ export interface GameState {
 
 export interface GameHud {
   roomName: string;
+  roomIndex: number;     // 1-based
+  totalRooms: number;
   hint: string | null;
   lives: number;
   collected: number;

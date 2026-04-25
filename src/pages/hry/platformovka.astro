@@ -115,7 +115,7 @@ import GameLayout from "../../layouts/GameLayout.astro";
   }
 
   function renderHud(h: GameHud): void {
-    hudRoom.textContent = h.roomName;
+    hudRoom.textContent = `${h.roomIndex}/${h.totalRooms} · ${h.roomName}`;
     hudLives.textContent = "♥".repeat(Math.max(0, h.lives)) || "—";
     hudItems.textContent = `${h.collected} / ${h.total}`;
     if (h.hint) {
