@@ -31,3 +31,11 @@ export async function getQuiz() {
 }
 
 export type Quiz = Awaited<ReturnType<typeof getQuiz>>;
+
+export async function getFilmyPage() {
+  const entry = await getEntry("filmy", "filmy");
+  if (!entry) throw new Error("src/content/pages/filmy.json not found");
+  return entry.data;
+}
+
+export type FilmyPage = Awaited<ReturnType<typeof getFilmyPage>>;

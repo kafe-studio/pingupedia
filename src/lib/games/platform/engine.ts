@@ -17,8 +17,8 @@ const JUMP_V = -4.8;
 const MAX_FALL = 6;
 const CLIMB_SPEED = 1.1;
 const INVULN_MS = 900;
-const PLAYER_W = 12;
-const PLAYER_H = 14;
+const PLAYER_W = 16;
+const PLAYER_H = 20;
 
 export class PlatformGame {
   private ctx: CanvasRenderingContext2D;
@@ -255,8 +255,9 @@ export class PlatformGame {
       return;
     }
 
-    // Update animation.
-    p.animPhase += Math.abs(p.vx) * 0.2 + (p.onLadder ? Math.abs(p.vy) * 0.2 : 0);
+    // Walk-cycle phase: increments while moving on ground (or climbing on ladder).
+    const movingScalar = p.onLadder ? Math.abs(p.vy) : Math.abs(p.vx);
+    p.animPhase = (p.animPhase + movingScalar * 0.12) % 1000;
     p.invulnerableMs = Math.max(0, p.invulnerableMs - dt);
 
     // Deadly tile at feet?

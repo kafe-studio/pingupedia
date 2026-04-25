@@ -448,34 +448,84 @@ function drawGuardian(ctx: CanvasRenderingContext2D, g: Guardian, _t: number): v
   }
 }
 
-// --- Player ---
+// --- Player (16×20 pixel-art penguin) ---
 
 function drawPlayer(ctx: CanvasRenderingContext2D, p: GameState["player"]): void {
   const flicker = p.invulnerableMs > 0 && Math.floor(p.invulnerableMs / 80) % 2 === 0;
-  if (flicker) { ctx.globalAlpha = 0.4; }
+  if (flicker) ctx.globalAlpha = 0.4;
   const x = p.x;
   const y = p.y;
+  const cx = x + PLAYER_W / 2;
+  const isMoving = Math.abs(p.vx) > 0.05;
+  // 4-frame walk cycle.
+  const walkFrame = isMoving ? Math.floor(p.animPhase * 2) % 4 : 0;
+  // Slight body bob during movement.
+  const bob = isMoving && p.onGround ? (walkFrame === 1 || walkFrame === 3 ? -1 : 0) : 0;
+  const yb = y + bob;
+
+  // Body (black ellipse)
   ctx.fillStyle = "#0f172a";
   ctx.beginPath();
-  ctx.ellipse(x + PLAYER_W / 2, y + PLAYER_H / 2, PLAYER_W / 2, PLAYER_H / 2, 0, 0, Math.PI * 2);
+  ctx.ellipse(cx, yb + PLAYER_H / 2, PLAYER_W / 2, PLAYER_H / 2, 0, 0, Math.PI * 2);
   ctx.fill();
+
+  // Belly (white) — slightly offset
   ctx.fillStyle = "#ffffff";
   ctx.beginPath();
-  ctx.ellipse(x + PLAYER_W / 2, y + PLAYER_H / 2 + 1, PLAYER_W / 2 - 2, PLAYER_H / 2 - 3, 0, 0, Math.PI * 2);
+  ctx.ellipse(cx, yb + PLAYER_H / 2 + 2, PLAYER_W / 2 - 3, PLAYER_H / 2 - 4, 0, 0, Math.PI * 2);
   ctx.fill();
+
+  // Wings (flap a bit while jumping/falling).
+  const wingFlap = !p.onGround ? 1 : (walkFrame === 1 || walkFrame === 3 ? 1 : 0);
   ctx.fillStyle = "#0f172a";
-  const eyeX = p.facing === 1 ? x + PLAYER_W / 2 + 1 : x + PLAYER_W / 2 - 3;
-  ctx.fillRect(eyeX, y + 3, 2, 2);
+  ctx.beginPath();
+  ctx.ellipse(x + 1, yb + 9 - wingFlap, 2, 5, 0, 0, Math.PI * 2);
+  ctx.ellipse(x + PLAYER_W - 1, yb + 9 - wingFlap, 2, 5, 0, 0, Math.PI * 2);
+  ctx.fill();
+
+  // Eyes (white surrounds)
+  ctx.fillStyle = "#ffffff";
+  ctx.fillRect(cx - 5, yb + 4, 4, 4);
+  ctx.fillRect(cx + 1, yb + 4, 4, 4);
+
+  // Pupils — track facing
+  ctx.fillStyle = "#0f172a";
+  const pupX = p.facing === 1 ? 2 : 0;
+  ctx.fillRect(cx - 5 + pupX, yb + 5, 2, 2);
+  ctx.fillRect(cx + 1 + pupX, yb + 5, 2, 2);
+
+  // Beak (orange triangle, points forward)
   ctx.fillStyle = "#fbbf24";
-  if (p.facing === 1) ctx.fillRect(x + PLAYER_W - 1, y + 5, 3, 2);
-  else ctx.fillRect(x - 2, y + 5, 3, 2);
-  const step = Math.floor(p.animPhase) % 2;
-  if (p.onGround) {
-    ctx.fillRect(x + 2 + step, y + PLAYER_H - 2, 3, 2);
-    ctx.fillRect(x + PLAYER_W - 5 - step, y + PLAYER_H - 2, 3, 2);
+  if (p.facing === 1) {
+    ctx.fillRect(cx - 1, yb + 9, 4, 2);
+    ctx.fillRect(cx, yb + 11, 2, 1);
   } else {
-    ctx.fillRect(x + 2, y + PLAYER_H - 1, 3, 2);
-    ctx.fillRect(x + PLAYER_W - 5, y + PLAYER_H - 1, 3, 2);
+    ctx.fillRect(cx - 3, yb + 9, 4, 2);
+    ctx.fillRect(cx - 2, yb + 11, 2, 1);
+  }
+
+  // Feet (orange) — animated walk cycle.
+  ctx.fillStyle = "#f59e0b";
+  if (p.onGround) {
+    const ly = y + PLAYER_H - 2;
+    if (walkFrame === 0) {
+      ctx.fillRect(x + 3, ly, 4, 2);
+      ctx.fillRect(x + PLAYER_W - 7, ly, 4, 2);
+    } else if (walkFrame === 1) {
+      ctx.fillRect(x + 1, ly, 4, 2);
+      ctx.fillRect(x + PLAYER_W - 5, ly, 4, 2);
+    } else if (walkFrame === 2) {
+      ctx.fillRect(x + 3, ly, 4, 2);
+      ctx.fillRect(x + PLAYER_W - 7, ly, 4, 2);
+    } else {
+      ctx.fillRect(x + 5, ly, 4, 2);
+      ctx.fillRect(x + PLAYER_W - 9, ly, 4, 2);
+    }
+  } else {
+    // Mid-air: feet tucked.
+    const ly = y + PLAYER_H - 1;
+    ctx.fillRect(x + 4, ly, 3, 1);
+    ctx.fillRect(x + PLAYER_W - 7, ly, 3, 1);
   }
   ctx.globalAlpha = 1;
 }

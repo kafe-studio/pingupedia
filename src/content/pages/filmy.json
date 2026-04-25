@@ -1,0 +1,177 @@
+{
+  "meta": {
+    "title": "Filmy a pohádky o tučňácích",
+    "description": "Přehled animovaných i hraných filmů, dokumentů a pohádek pro děti, ve kterých hrají tučňáci hlavní roli. S odkazy na ČSFD, Wikipedii a YouTube."
+  },
+  "hero": {
+    "eyebrow": "Tučňáci na plátně",
+    "titleHtml": "Filmy a <span class=\"text-accent\">pohádky</span><br />o tučňácích",
+    "subtitle": "Od oscarových dokumentů přes stepujícího tučňáka Mumblea až po jíloví seriál Pingu. Výběr toho nejlepšího, co o tučňácích vzniklo — s odkazy, kde se na to podívat."
+  },
+  "sections": [
+    {
+      "slug": "animovane",
+      "title": "Animované filmy",
+      "subtitle": "Velké hollywoodské animáky, ve kterých tučňáci tančí, surfují i přepadávají zoologické zahrady.",
+      "surface": "aurora",
+      "emoji": "🎬",
+      "items": [
+        {
+          "title": "Happy Feet",
+          "titleOrig": "Happy Feet",
+          "year": 2006,
+          "type": "animovany",
+          "director": "George Miller",
+          "description": "Tučňák císařský Mumble se narodí bez schopnosti zpívat — místo toho ale úžasně stepuje. Muzikálová pocta tučňákům císařským, která získala Oscara za nejlepší animovaný film.",
+          "badge": "Oscar 2007",
+          "links": [
+            { "label": "ČSFD", "url": "https://www.csfd.cz/film/135439-happy-feet/prehled/", "type": "csfd" },
+            { "label": "Wikipedie", "url": "https://en.wikipedia.org/wiki/Happy_Feet", "type": "wikipedia" }
+          ]
+        },
+        {
+          "title": "Happy Feet 2",
+          "titleOrig": "Happy Feet Two",
+          "year": 2011,
+          "type": "animovany",
+          "director": "George Miller",
+          "description": "Pokračování o Mumbleově synovi Erikovi, který nechce stepovat a hledá si vlastní cestu. Vrací se i létající tučňák Lovelace a celá kolonie.",
+          "links": [
+            { "label": "ČSFD", "url": "https://www.csfd.cz/film/270739-happy-feet-2/prehled/", "type": "csfd" },
+            { "label": "Wikipedie", "url": "https://en.wikipedia.org/wiki/Happy_Feet_Two", "type": "wikipedia" }
+          ]
+        },
+        {
+          "title": "Tučňáci z Madagaskaru",
+          "titleOrig": "Penguins of Madagascar",
+          "year": 2014,
+          "type": "animovany",
+          "director": "Eric Darnell, Simon J. Smith",
+          "description": "Skipper, Kowalski, Rico a Vojín dostanou vlastní film. Špiónská komedie, ve které čtveřice tučňáků zachraňuje svět před šíleným chobotnicovým doktorem Octaviem Brinem.",
+          "links": [
+            { "label": "ČSFD", "url": "https://www.csfd.cz/film/333793-tucnaci-z-madagaskaru/prehled/", "type": "csfd" },
+            { "label": "Wikipedie", "url": "https://cs.wikipedia.org/wiki/Tu%C4%8D%C5%88%C3%A1ci_z_Madagaskaru", "type": "wikipedia" }
+          ]
+        },
+        {
+          "title": "Divoké vlny",
+          "titleOrig": "Surf's Up",
+          "year": 2007,
+          "type": "animovany",
+          "director": "Ash Brannon, Chris Buck",
+          "description": "Mladý tučňák skalní Cody Maverick sní o tom, že bude profesionálním surfařem. Animovaná mockumentární komedie ze světa surfařských závodů, natočená jako dokument se štábem v zádech.",
+          "links": [
+            { "label": "ČSFD", "url": "https://www.csfd.cz/film/229833-divoke-vlny/prehled/", "type": "csfd" },
+            { "label": "Wikipedie", "url": "https://cs.wikipedia.org/wiki/Divok%C3%A9_vlny", "type": "wikipedia" }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "hrane",
+      "title": "Hrané filmy",
+      "subtitle": "Tučňáci po boku slavných herců — komedie, kde hlavní roli hrají skuteční opeřenci.",
+      "surface": "ocean",
+      "emoji": "🎥",
+      "items": [
+        {
+          "title": "Pan Popper a jeho tučňáci",
+          "titleOrig": "Mr. Popper's Penguins",
+          "year": 2011,
+          "type": "hrany",
+          "director": "Mark Waters",
+          "description": "Newyorský byznysmen pan Popper (Jim Carrey) zdědí šest tučňáků, kteří mu zaberou byt i život. Rodinná komedie podle stejnojmenné dětské knížky z roku 1938.",
+          "links": [
+            { "label": "ČSFD", "url": "https://www.csfd.cz/film/285725-pan-popper-a-jeho-tucnaci/prehled/", "type": "csfd" },
+            { "label": "Wikipedie", "url": "https://cs.wikipedia.org/wiki/Pan_Popper_a_jeho_tu%C4%8D%C5%88%C3%A1ci", "type": "wikipedia" }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "dokumenty",
+      "title": "Dokumenty",
+      "subtitle": "Skutečný život tučňáků v Antarktidě i jinde — natočený s respektem a často i s Oscarem.",
+      "surface": "ice",
+      "emoji": "📽️",
+      "items": [
+        {
+          "title": "Putování tučňáků",
+          "titleOrig": "La Marche de l'empereur",
+          "year": 2005,
+          "type": "dokument",
+          "director": "Luc Jacquet",
+          "description": "Francouzský dokument o jedné sezóně v životě kolonie tučňáků císařských. Nejúspěšnější dokumentární film své doby a držitel Oscara za nejlepší dokumentární film roku 2006.",
+          "badge": "Oscar 2006",
+          "links": [
+            { "label": "ČSFD", "url": "https://www.csfd.cz/film/192658-putovani-tucnaku/prehled/", "type": "csfd" },
+            { "label": "Wikipedie", "url": "https://cs.wikipedia.org/wiki/Putov%C3%A1n%C3%AD_tu%C4%8D%C5%88%C3%A1k%C5%AF", "type": "wikipedia" }
+          ]
+        },
+        {
+          "title": "Putování tučňáků: Volání oceánu",
+          "titleOrig": "L'Empereur",
+          "year": 2017,
+          "type": "dokument",
+          "director": "Luc Jacquet",
+          "description": "Pokračování oscarového dokumentu, tentokrát s důrazem na první rok života mláděte a na to, jak se mladý tučňák poprvé vydá do oceánu. Natočeno ve 4K, s ponorkami a drony.",
+          "links": [
+            { "label": "Aerofilms", "url": "https://www.aerofilms.cz/putovani-tucnaku/", "type": "official" },
+            { "label": "Národní filmový archiv", "url": "https://nfa.cz/cz/o-nas/dokumenty/zahranicni-filmy-v-ceske-kinodistribuci/zahranicni-tituly-v-ceske-kinodistribuci-2017/p-r/putovani-tucnaku-volani-oceanu/", "type": "other" }
+          ]
+        },
+        {
+          "title": "David Attenborough: Příběh tučňáka",
+          "titleOrig": "Penguins: Spy in the Huddle",
+          "year": 2013,
+          "type": "dokument",
+          "director": "John Downer",
+          "description": "BBC minisérie s komentářem Davida Attenborougha. Filmaři použili padesát skrytých kamer v podobě robotických tučňáků a vajec — díky tomu kolonie přestaly štáb vnímat a kamery zachytily intimní scény, které by jinak nebylo možné natočit.",
+          "links": [
+            { "label": "ČSFD", "url": "https://www.csfd.cz/film/311322-david-attenborough-pribeh-tucnaka/prehled/", "type": "csfd" },
+            { "label": "Wikipedie", "url": "https://en.wikipedia.org/wiki/Penguins:_Spy_in_the_Huddle", "type": "wikipedia" }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "pohadky",
+      "title": "Pohádky a seriály pro děti",
+      "subtitle": "Klasiky, na kterých vyrostly celé generace dětí. Krátké díly, žádné stahování — odkazy vedou rovnou na video.",
+      "surface": "candy",
+      "emoji": "🧸",
+      "items": [
+        {
+          "title": "Pingu",
+          "titleOrig": "Pingu",
+          "yearLabel": "1986–2006",
+          "type": "serial",
+          "director": "Otmar Gutmann",
+          "description": "Švýcarsko-britský animovaný seriál o malém tučňákovi Pingu, jeho sestře Pinze a životě v iglú. Charakteristická plastelínová animace a hláška „Noot noot!“ — bez slov, srozumitelné v každém věku.",
+          "links": [
+            { "label": "Díly na YouTube", "url": "https://www.jenpohadky.cz/tucnak-pingu", "type": "youtube" },
+            { "label": "Wikipedie", "url": "https://cs.wikipedia.org/wiki/Pingu", "type": "wikipedia" }
+          ]
+        },
+        {
+          "title": "Malý tučňák Pororo",
+          "titleOrig": "Pororo the Little Penguin",
+          "yearLabel": "od 2003",
+          "type": "serial",
+          "director": "Iconix Entertainment",
+          "description": "Jihokorejský 3D animovaný seriál o tučňákovi Pororovi a jeho přátelích, kteří žijí v zasněžené vesničce Porong Porong. Každý díl končí drobným ponaučením. Vysíláno ve více než 140 zemích.",
+          "links": [
+            { "label": "Wikipedie (cs)", "url": "https://cs.wikipedia.org/wiki/Mal%C3%BD_tu%C4%8D%C5%88%C3%A1k_Pororo", "type": "wikipedia" },
+            { "label": "Oficiální YouTube", "url": "https://www.youtube.com/playlist?list=PLrkKzgyiKOS89K1qJgSn81LlO5JKEN3e6", "type": "youtube" },
+            { "label": "Netflix", "url": "https://www.netflix.com/title/80036747", "type": "netflix" }
+          ]
+        }
+      ]
+    }
+  ],
+  "note": {
+    "eyebrow": "Něco chybí?",
+    "title": "Znáš film o tučňácích, který tu není?",
+    "body": "Seznam průběžně doplňujeme. Pokud znáš pohádku, dokument nebo film s tučňáky, který by sem patřil, napiš nám — rádi ho přidáme."
+  }
+}

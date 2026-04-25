@@ -248,4 +248,70 @@ const quiz = defineCollection({
   }),
 });
 
-export const collections = { species, site, home, oProjektu, hry, quiz };
+const filmTypeEnum = z.enum(["animovany", "hrany", "dokument", "serial"]);
+const filmLinkTypeEnum = z.enum([
+  "csfd",
+  "wikipedia",
+  "imdb",
+  "youtube",
+  "netflix",
+  "disneyplus",
+  "official",
+  "other",
+]);
+
+const filmy = defineCollection({
+  loader: glob({ pattern: "filmy.json", base: "./src/content/pages" }),
+  schema: z.object({
+    meta: z.object({
+      title: z.string().min(1),
+      description: z.string().min(1),
+    }),
+    hero: z.object({
+      eyebrow: z.string().min(1),
+      titleHtml: z.string().min(1),
+      subtitle: z.string().min(1),
+    }),
+    sections: z
+      .array(
+        z.object({
+          slug: z.string().regex(slugRe),
+          title: z.string().min(1),
+          subtitle: z.string().min(1),
+          surface: surfaceEnum,
+          emoji: z.string().min(1),
+          items: z
+            .array(
+              z.object({
+                title: z.string().min(1),
+                titleOrig: z.string().optional(),
+                year: z.number().int().min(1900).max(2100).optional(),
+                yearLabel: z.string().optional(),
+                type: filmTypeEnum,
+                director: z.string().optional(),
+                description: z.string().min(1),
+                badge: z.string().optional(),
+                links: z
+                  .array(
+                    z.object({
+                      label: z.string().min(1),
+                      url: z.url(),
+                      type: filmLinkTypeEnum,
+                    }),
+                  )
+                  .min(1),
+              }),
+            )
+            .min(1),
+        }),
+      )
+      .min(1),
+    note: z.object({
+      eyebrow: z.string().min(1),
+      title: z.string().min(1),
+      body: z.string().min(1),
+    }),
+  }),
+});
+
+export const collections = { species, site, home, oProjektu, hry, quiz, filmy };
