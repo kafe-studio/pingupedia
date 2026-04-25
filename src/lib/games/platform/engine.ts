@@ -11,9 +11,10 @@ import { ROOMS, START_ROOM_ID } from "./levels";
 import { drawScene } from "./render";
 
 // Physics constants tuned for 320×224 pixel world.
-const GRAVITY = 0.35;
+// Jump apex ≈ JUMP_V² / (2·GRAVITY) — needs to clear 3 tiles (≈48 px).
+const GRAVITY = 0.32;
 const WALK_SPEED = 1.4;
-const JUMP_V = -4.8;
+const JUMP_V = -6.0;
 const MAX_FALL = 6;
 const CLIMB_SPEED = 1.1;
 const INVULN_MS = 900;
