@@ -247,10 +247,8 @@ export class PlatformGame {
     // Move + collide — X first then Y (per-axis solid collision).
     this.moveAndCollide(p, room);
 
-    // Bounds clamp (do not clamp on exits side — that's checked in checkRoomExit).
-    if (p.x < -4) p.x = -4;
-    if (p.x > VIEW_W - PLAYER_W + 4) p.x = VIEW_W - PLAYER_W + 4;
-    if (p.y < -4) p.y = -4;
+    // Don't clamp X / top-Y here — checkRoomExit needs the player to actually cross
+    // the edge to fire a transition, and bounces him back if that edge has no exit.
     if (p.y > VIEW_H + 8) {
       // Fell off the bottom.
       this.handleDeath();
