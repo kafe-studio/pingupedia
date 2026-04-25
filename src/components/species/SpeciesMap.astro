@@ -1,0 +1,117 @@
+---
+import { getRegionsForSpecies, project } from "../../lib/species-distribution";
+
+interface Props {
+  slug: string;
+  speciesName: string;
+}
+const { slug, speciesName } = Astro.props as Props;
+const regions = getRegionsForSpecies(slug);
+---
+
+<section class="px-6 py-12" aria-labelledby="map-heading">
+  <div class="mx-auto max-w-3xl">
+    <h2 id="map-heading" class="text-2xl md:text-3xl font-bold mb-4 reveal">Mapa výskytu</h2>
+    <p class="text-sm text-muted-foreground mb-4 reveal">
+      {regions.length === 0 ? `${speciesName}: data o výskytu chybí.` : `${speciesName} hnízdí v ${regions.length === 1 ? "této oblasti" : "těchto oblastech"}: ${regions.map((r) => r.name).join(", ")}.`}
+    </p>
+
+    <div class="rounded-2xl border border-border bg-card overflow-hidden reveal">
+      <svg
+        viewBox="0 0 360 110"
+        class="w-full h-auto block"
+        role="img"
+        aria-label={`Mapa výskytu druhu ${speciesName}`}
+        preserveAspectRatio="xMidYMid meet"
+        style="background:linear-gradient(180deg,#0c2d53 0%,#0b4575 100%);"
+      >
+        <!-- Grid latitudes -->
+        <g stroke="rgba(255,255,255,0.08)" stroke-width="0.3" fill="none">
+          <line x1="0" y1="20" x2="360" y2="20" />  <!-- 0° rovník -->
+          <line x1="0" y1="50" x2="360" y2="50" />  <!-- -30° -->
+          <line x1="0" y1="80" x2="360" y2="80" />  <!-- -60° -->
+        </g>
+
+        <!-- Antarctica (simplified outline) -->
+        <path
+          d="M 0 95 L 25 92 L 55 95 L 85 90 L 115 93 L 145 88 L 175 92 L 205 89 L 235 93 L 265 88 L 295 92 L 325 95 L 360 92 L 360 110 L 0 110 Z"
+          fill="#e2e8f0" stroke="#94a3b8" stroke-width="0.4"
+        />
+
+        <!-- South America (south of equator) -->
+        <path
+          d="M 100 14 L 110 18 L 115 30 L 122 42 L 124 55 L 116 68 L 105 76 L 100 70 L 95 58 L 92 45 L 95 30 L 100 14 Z"
+          fill="#cbd5e1" stroke="#94a3b8" stroke-width="0.4"
+        />
+
+        <!-- Africa (south of equator approx) -->
+        <path
+          d="M 188 14 L 220 12 L 232 22 L 238 38 L 226 52 L 210 56 L 196 50 L 190 38 L 188 14 Z"
+          fill="#cbd5e1" stroke="#94a3b8" stroke-width="0.4"
+        />
+
+        <!-- Madagascar -->
+        <path d="M 240 36 L 246 34 L 248 46 L 244 50 L 240 46 Z" fill="#cbd5e1" stroke="#94a3b8" stroke-width="0.4"/>
+
+        <!-- Australia -->
+        <path
+          d="M 290 28 L 333 28 L 335 42 L 322 55 L 305 56 L 293 50 L 290 38 Z"
+          fill="#cbd5e1" stroke="#94a3b8" stroke-width="0.4"
+        />
+
+        <!-- New Zealand North -->
+        <path d="M 351 56 L 358 54 L 358 65 L 351 65 Z" fill="#cbd5e1" stroke="#94a3b8" stroke-width="0.4"/>
+        <!-- New Zealand South -->
+        <path d="M 346 64 L 354 62 L 355 72 L 348 73 Z" fill="#cbd5e1" stroke="#94a3b8" stroke-width="0.4"/>
+
+        <!-- Galapagos sub-marker (always visible as dot) -->
+        <circle cx={project(-91, 0).x} cy={project(-91, 0).y} r="0.6" fill="#94a3b8" />
+
+        <!-- Sub-Antarctic island markers (always visible as small dots so map looks populated) -->
+        {Object.values({
+          sg: project(-36, -54),
+          fk: project(-59, -52),
+          pe: project(38, -47),
+          cz: project(51, -46),
+          kg: project(70, -49),
+          hd: project(73, -53),
+          mq: project(159, -54),
+          sn: project(166, -48),
+          ak: project(166, -50),
+          ap: project(178, -50),
+          bn: project(179, -47),
+          tr: project(-12, -37),
+          gh: project(-10, -41),
+        }).map((p) => (
+          <circle cx={p.x} cy={p.y} r="0.7" fill="rgba(203, 213, 225, 0.6)" />
+        ))}
+
+        <!-- Highlighted regions for current species -->
+        {regions.map((r) => {
+          const p = project(r.lng, r.lat);
+          return (
+            <g>
+              <circle cx={p.x} cy={p.y} r="5" fill="rgba(251, 191, 36, 0.25)">
+                <animate attributeName="r" values="3;7;3" dur="2.4s" repeatCount="indefinite" />
+                <animate attributeName="opacity" values="0.6;0.1;0.6" dur="2.4s" repeatCount="indefinite" />
+              </circle>
+              <circle cx={p.x} cy={p.y} r="2" fill="#fbbf24" stroke="#fff" stroke-width="0.4">
+                <title>{r.name}</title>
+              </circle>
+            </g>
+          );
+        })}
+      </svg>
+    </div>
+
+    {regions.length > 0 && (
+      <ul class="mt-3 flex flex-wrap gap-2 text-xs reveal">
+        {regions.map((r) => (
+          <li class="rounded-full bg-amber-500/15 border border-amber-500/30 px-2.5 py-0.5 text-amber-300 font-medium">
+            {r.name}
+          </li>
+        ))}
+      </ul>
+    )}
+  </div>
+</section>
