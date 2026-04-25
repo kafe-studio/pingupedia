@@ -46,7 +46,18 @@ export interface Guardian {
   phase?: number;
 }
 
-export type ItemKind = "fish" | "egg" | "medal" | "flag" | "crystal";
+export type ItemKind = "fish" | "egg" | "medal" | "flag" | "crystal" | "heart";
+
+export type SfxKind =
+  | "mlask"   // sběr ryby
+  | "pop"     // sběr vejce
+  | "ding"    // sběr medaile / vlajky / krystalu
+  | "gulp"    // sběr srdíčka (život)
+  | "zbunk"   // přechod mezi místnostmi
+  | "boing"   // skok
+  | "ouch"    // ztráta života
+  | "bzzt"    // game over
+  | "tada";   // výhra
 
 export interface Item {
   kind: ItemKind;
@@ -117,4 +128,5 @@ export interface GameHooks {
   onHud(_h: GameHud): void;
   onWin(_timeSec: number): void;
   onGameover(): void;
+  onSfx(_kind: SfxKind): void;
 }

@@ -332,6 +332,29 @@ function drawItem(ctx: CanvasRenderingContext2D, it: Item, t: number): void {
     ctx.lineTo(cx, cy + 2);
     ctx.closePath();
     ctx.fill();
+  } else if (it.kind === "heart") {
+    // Pulsing red heart (two top circles + bottom triangle).
+    const beat = 1 + Math.sin(t / 120) * 0.08;
+    ctx.save();
+    ctx.translate(cx, cy);
+    ctx.scale(beat, beat);
+    ctx.fillStyle = "#ef4444";
+    ctx.beginPath();
+    ctx.arc(-2.5, -1, 3, 0, Math.PI * 2);
+    ctx.arc(2.5, -1, 3, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.beginPath();
+    ctx.moveTo(-5, 0);
+    ctx.lineTo(0, 5);
+    ctx.lineTo(5, 0);
+    ctx.closePath();
+    ctx.fill();
+    // Highlight.
+    ctx.fillStyle = "#fecaca";
+    ctx.beginPath();
+    ctx.arc(-2.5, -1.5, 1, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.restore();
   }
 }
 

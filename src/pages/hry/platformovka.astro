@@ -83,6 +83,7 @@ import GameLayout from "../../layouts/GameLayout.astro";
 <script>
   import { PlatformGame } from "../../lib/games/platform/engine";
   import { ChiptuneMusic } from "../../lib/games/platform/music";
+  import { SfxPlayer } from "../../lib/games/platform/sfx";
   import type { GameHud } from "../../lib/games/platform/types";
 
   const canvas = document.getElementById("platform-canvas") as HTMLCanvasElement | null;
@@ -166,8 +167,11 @@ import GameLayout from "../../layouts/GameLayout.astro";
     if (e.key === "r" || e.key === "R") game?.restart();
   });
 
+  const sfx = new SfxPlayer();
+
   game = new PlatformGame(canvas, {
     onHud: renderHud,
+    onSfx: (kind) => sfx.play(kind),
     onWin(timeSec) {
       const mm = Math.floor(timeSec / 60).toString().padStart(2, "0");
       const ss = (timeSec % 60).toString().padStart(2, "0");

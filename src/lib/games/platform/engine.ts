@@ -20,6 +20,9 @@ const CLIMB_SPEED = 1.1;
 const INVULN_MS = 900;
 const PLAYER_W = 16;
 const PLAYER_H = 20;
+const MAX_LIVES = 5;
+const HEART_SPAWN_INTERVAL_MS = 12_000; // try to spawn a new heart every 12s
+const HEART_MAX_ALIVE = 5;              // never more than this many on the map at once
 
 export class PlatformGame {
   private ctx: CanvasRenderingContext2D;
@@ -28,6 +31,7 @@ export class PlatformGame {
   private keys = { left: false, right: false, up: false, down: false, jump: false };
   private lastTime = 0;
   private rafId = 0;
+  private heartSpawnTimer = HEART_SPAWN_INTERVAL_MS / 2;
 
   constructor(canvas: HTMLCanvasElement, hooks: GameHooks) {
     const ctx = canvas.getContext("2d");
@@ -194,6 +198,7 @@ export class PlatformGame {
       this.updateGuardians(dt);
       this.checkCollectibles();
       this.checkRoomExit();
+      this.maybeSpawnHeart(dt);
     }
     drawScene(this.ctx, this.state);
     this.emitHud();
@@ -240,6 +245,7 @@ export class PlatformGame {
       if (this.keys.jump && p.onGround) {
         p.vy = JUMP_V;
         p.onGround = false;
+        this.hooks.onSfx("boing");
       }
       // Skip gravity while resting on ground — otherwise sub-pixel fall + re-snap
       // produces a constant jitter at every frame.
@@ -399,22 +405,56 @@ export class PlatformGame {
     for (const it of room.items) {
       const px = it.x * TILE + 4;
       const py = it.y * TILE + 4;
-      if (
+      const hit =
         p.x + PLAYER_W > px &&
         p.x < px + 10 &&
         p.y + PLAYER_H > py &&
-        p.y < py + 10
-      ) {
-        this.state.collected.add(it.id);
-        if (this.state.collected.size >= this.state.totalItems) {
-          // Need to return to iglu to win.
-          // We'll mark completion when the player returns with everything.
-        }
-      } else {
+        p.y < py + 10;
+      if (!hit) {
         remaining.push(it);
+        continue;
       }
+      // Heart = okamžité +1 život, NE je počítán do totalItems.
+      if (it.kind === "heart") {
+        if (this.state.lives < MAX_LIVES) this.state.lives++;
+        this.hooks.onSfx("gulp");
+        continue;
+      }
+      this.state.collected.add(it.id);
+      if (it.kind === "fish") this.hooks.onSfx("mlask");
+      else if (it.kind === "egg") this.hooks.onSfx("pop");
+      else this.hooks.onSfx("ding"); // medal / flag / crystal
     }
     room.items = remaining;
+  }
+
+  /** Periodicky spawne srdíčko v náhodné místnosti (max HEART_MAX_ALIVE). */
+  private maybeSpawnHeart(dt: number): void {
+    this.heartSpawnTimer -= dt;
+    if (this.heartSpawnTimer > 0) return;
+    this.heartSpawnTimer = HEART_SPAWN_INTERVAL_MS;
+    let alive = 0;
+    for (const r of this.state.rooms.values()) {
+      for (const it of r.items) if (it.kind === "heart") alive++;
+    }
+    if (alive >= HEART_MAX_ALIVE) return;
+    const ids = [...this.state.rooms.keys()];
+    // Pick a non-iglu room so the start location isn't littered.
+    const target = ids[Math.floor(Math.random() * ids.length)];
+    if (target === "iglu") return;
+    const room = this.state.rooms.get(target)!;
+    // Find an empty tile that has a solid/platform tile directly below — heart sits on a surface.
+    for (let attempt = 0; attempt < 25; attempt++) {
+      const x = 1 + Math.floor(Math.random() * (COLS - 2));
+      const y = 1 + Math.floor(Math.random() * (ROWS - 3));
+      if (room.tiles[y][x] !== ".") continue;
+      const below = room.tiles[y + 1][x];
+      if (below !== "#" && below !== "=") continue;
+      // Avoid stacking on top of an existing item.
+      if (room.items.some((it) => it.x === x && it.y === y)) continue;
+      room.items.push({ kind: "heart", x, y, id: `heart-${Date.now()}-${Math.random().toString(36).slice(2, 8)}` });
+      break;
+    }
   }
 
   // --- Room transitions ---
@@ -458,11 +498,13 @@ export class PlatformGame {
     p.vx = 0;
     p.vy = 0;
 
+    this.hooks.onSfx("zbunk");
     this.showHintIfNew(nextRoom);
 
     // Returning to iglu with everything → win.
     if (nextRoom.id === "iglu" && this.state.collected.size >= this.state.totalItems) {
       this.state.completed = true;
+      this.hooks.onSfx("tada");
       this.hooks.onWin(Math.round(this.state.time / 1000));
     }
   }
@@ -473,9 +515,11 @@ export class PlatformGame {
     this.state.lives -= 1;
     if (this.state.lives <= 0) {
       this.state.gameover = true;
+      this.hooks.onSfx("bzzt");
       this.hooks.onGameover();
       return;
     }
+    this.hooks.onSfx("ouch");
     const room = this.state.rooms.get(this.state.currentRoomId)!;
     this.state.player = this.freshPlayer(room);
     this.state.player.invulnerableMs = INVULN_MS;

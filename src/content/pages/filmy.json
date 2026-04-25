@@ -1,7 +1,7 @@
 {
   "meta": {
     "title": "Filmy a pohádky o tučňácích",
-    "description": "Přehled animovaných i hraných filmů, dokumentů a pohádek pro děti, ve kterých hrají tučňáci hlavní roli. S odkazy na ČSFD, Wikipedii a YouTube."
+    "description": "Velký přehled animovaných i hraných filmů, dokumentů, anime a pohádek pro děti, ve kterých hrají tučňáci. S odkazy na ČSFD, Wikipedii a kde se na to dá podívat (YouTube, Netflix, Disney+, ČT iVysílání)."
   },
   "hero": {
     "eyebrow": "Tučňáci na plátně",
@@ -37,8 +37,20 @@
           "director": "George Miller",
           "description": "Pokračování o Mumbleově synovi Erikovi, který nechce stepovat a hledá si vlastní cestu. Vrací se i létající tučňák Lovelace a celá kolonie.",
           "links": [
-            { "label": "ČSFD", "url": "https://www.csfd.cz/film/270739-happy-feet-2/prehled/", "type": "csfd" },
+            { "label": "ČSFD", "url": "https://www.csfd.cz/film/266141-happy-feet-2/prehled/", "type": "csfd" },
             { "label": "Wikipedie", "url": "https://en.wikipedia.org/wiki/Happy_Feet_Two", "type": "wikipedia" }
+          ]
+        },
+        {
+          "title": "Madagaskar",
+          "titleOrig": "Madagascar",
+          "year": 2005,
+          "type": "animovany",
+          "director": "Eric Darnell, Tom McGrath",
+          "description": "První díl franšízy o zvířatech ze zoo, ve kterém se v roli ironické vojenské jednotky poprvé objevují čtyři tučňáci uzdičkoví — Skipper, Kowalski, Rico a Vojín. Ukradnou loď a chtějí se dostat zpátky na Antarktidu.",
+          "links": [
+            { "label": "ČSFD", "url": "https://www.csfd.cz/film/117282-madagaskar/prehled/", "type": "csfd" },
+            { "label": "Wikipedie", "url": "https://en.wikipedia.org/wiki/Madagascar_(2005_film)", "type": "wikipedia" }
           ]
         },
         {
@@ -49,8 +61,9 @@
           "director": "Eric Darnell, Simon J. Smith",
           "description": "Skipper, Kowalski, Rico a Vojín dostanou vlastní film. Špiónská komedie, ve které čtveřice tučňáků zachraňuje svět před šíleným chobotnicovým doktorem Octaviem Brinem.",
           "links": [
-            { "label": "ČSFD", "url": "https://www.csfd.cz/film/333793-tucnaci-z-madagaskaru/prehled/", "type": "csfd" },
-            { "label": "Wikipedie", "url": "https://cs.wikipedia.org/wiki/Tu%C4%8D%C5%88%C3%A1ci_z_Madagaskaru", "type": "wikipedia" }
+            { "label": "ČSFD", "url": "https://www.csfd.cz/film/342457-tucnaci-z-madagaskaru/prehled/", "type": "csfd" },
+            { "label": "Wikipedie", "url": "https://cs.wikipedia.org/wiki/Tu%C4%8D%C5%88%C3%A1ci_z_Madagaskaru", "type": "wikipedia" },
+            { "label": "Netflix", "url": "https://www.netflix.com/title/80013941", "type": "netflix" }
           ]
         },
         {
@@ -61,8 +74,21 @@
           "director": "Ash Brannon, Chris Buck",
           "description": "Mladý tučňák skalní Cody Maverick sní o tom, že bude profesionálním surfařem. Animovaná mockumentární komedie ze světa surfařských závodů, natočená jako dokument se štábem v zádech.",
           "links": [
-            { "label": "ČSFD", "url": "https://www.csfd.cz/film/229833-divoke-vlny/prehled/", "type": "csfd" },
+            { "label": "ČSFD", "url": "https://www.csfd.cz/film/218925-divoke-vlny/prehled/", "type": "csfd" },
             { "label": "Wikipedie", "url": "https://cs.wikipedia.org/wiki/Divok%C3%A9_vlny", "type": "wikipedia" }
+          ]
+        },
+        {
+          "title": "Penguin Highway",
+          "titleOrig": "Pengin Haiwei",
+          "year": 2018,
+          "type": "animovany",
+          "director": "Hiroyasu Ishida",
+          "description": "Japonské anime podle stejnojmenného románu Tomihika Morimiho. Chytrý čtvrťák Aoyama jednoho dne zjistí, že se v jejich městě v horách začínají záhadně objevovat tučňáci. Podivuhodná letní záhada o dospívání, vědě a kamarádství.",
+          "links": [
+            { "label": "ČSFD", "url": "https://www.csfd.cz/film/635486-penguin-highway/prehled/", "type": "csfd" },
+            { "label": "Crunchyroll", "url": "https://www.crunchyroll.com/series/G79H235NJ/penguin-highway", "type": "crunchyroll" },
+            { "label": "Apple TV", "url": "https://tv.apple.com/us/movie/penguin-highway/umc.cmc.68n9vb49d4l15rfv6juf345pe", "type": "appletv" }
           ]
         }
       ]
@@ -83,7 +109,8 @@
           "description": "Newyorský byznysmen pan Popper (Jim Carrey) zdědí šest tučňáků, kteří mu zaberou byt i život. Rodinná komedie podle stejnojmenné dětské knížky z roku 1938.",
           "links": [
             { "label": "ČSFD", "url": "https://www.csfd.cz/film/285725-pan-popper-a-jeho-tucnaci/prehled/", "type": "csfd" },
-            { "label": "Wikipedie", "url": "https://cs.wikipedia.org/wiki/Pan_Popper_a_jeho_tu%C4%8D%C5%88%C3%A1ci", "type": "wikipedia" }
+            { "label": "Wikipedie", "url": "https://cs.wikipedia.org/wiki/Pan_Popper_a_jeho_tu%C4%8D%C5%88%C3%A1ci", "type": "wikipedia" },
+            { "label": "Disney+", "url": "https://www.disneyplus.com/cs-cz/browse/entity-7f2519ff-ba1a-47f8-becc-b4748d072cf0", "type": "disneyplus" }
           ]
         }
       ]
@@ -105,7 +132,8 @@
           "badge": "Oscar 2006",
           "links": [
             { "label": "ČSFD", "url": "https://www.csfd.cz/film/192658-putovani-tucnaku/prehled/", "type": "csfd" },
-            { "label": "Wikipedie", "url": "https://cs.wikipedia.org/wiki/Putov%C3%A1n%C3%AD_tu%C4%8D%C5%88%C3%A1k%C5%AF", "type": "wikipedia" }
+            { "label": "Wikipedie", "url": "https://cs.wikipedia.org/wiki/Putov%C3%A1n%C3%AD_tu%C4%8D%C5%88%C3%A1k%C5%AF", "type": "wikipedia" },
+            { "label": "Oneplay", "url": "https://www.oneplay.cz/film/15994-putovani-tucnaku", "type": "official" }
           ]
         },
         {
@@ -121,6 +149,19 @@
           ]
         },
         {
+          "title": "Tučňáci",
+          "titleOrig": "Penguins",
+          "year": 2019,
+          "type": "dokument",
+          "director": "Alastair Fothergill, Jeff Wilson",
+          "description": "Disneynature dokument o tučňákovi Adélině jménem Steve a jeho první cestě za partnerkou v ledové antarktické jaře. Sleduje, jak Steve staví hnízdo, hledá lásku a brání své mládě před predátory.",
+          "links": [
+            { "label": "ČSFD", "url": "https://www.csfd.cz/film/662083-tucnaci/prehled/", "type": "csfd" },
+            { "label": "Wikipedie", "url": "https://en.wikipedia.org/wiki/Penguins_(film)", "type": "wikipedia" },
+            { "label": "Disney+", "url": "https://www.disneyplus.com/browse/entity-3388007d-2ca3-4b05-9555-266e651921c8", "type": "disneyplus" }
+          ]
+        },
+        {
           "title": "David Attenborough: Příběh tučňáka",
           "titleOrig": "Penguins: Spy in the Huddle",
           "year": 2013,
@@ -131,12 +172,47 @@
             { "label": "ČSFD", "url": "https://www.csfd.cz/film/311322-david-attenborough-pribeh-tucnaka/prehled/", "type": "csfd" },
             { "label": "Wikipedie", "url": "https://en.wikipedia.org/wiki/Penguins:_Spy_in_the_Huddle", "type": "wikipedia" }
           ]
+        },
+        {
+          "title": "Encounters at the End of the World",
+          "titleOrig": "Encounters at the End of the World",
+          "year": 2007,
+          "type": "dokument",
+          "director": "Werner Herzog",
+          "description": "Herzogův dokument o Antarktidě a o lidech, kteří se rozhodli na kraji světa žít. Sám režisér v úvodu říká, že tohle nebude další film o „roztomilých tučňácích“ — a přesto natočí jednu z nejsmutnějších a nejneobvyklejších scén s osamělým tučňákem v historii dokumentu. Nominace na Oscara.",
+          "badge": "Nominace na Oscara",
+          "links": [
+            { "label": "ČSFD", "url": "https://www.csfd.cz/film/234237-setkani-na-konci-sveta/prehled/", "type": "csfd" },
+            { "label": "Wikipedie", "url": "https://en.wikipedia.org/wiki/Encounters_at_the_End_of_the_World", "type": "wikipedia" }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "serialy",
+      "title": "Animované seriály",
+      "subtitle": "Pravidelné dávky tučňáčího humoru — od špionážních misí po vědecké pokusy.",
+      "surface": "sun",
+      "emoji": "📺",
+      "items": [
+        {
+          "title": "Tučňáci z Madagaskaru (seriál)",
+          "titleOrig": "The Penguins of Madagascar",
+          "yearLabel": "2008–2015",
+          "type": "serial",
+          "director": "Nickelodeon / DreamWorks",
+          "description": "Spin-off seriál o čtveřici tučňáků z newyorské zoo v Central Parku, kteří provádějí tajné mise. Skipperovo „Nikdy nedávejte najevo strach!“ se stalo hláškou několika generací. 149 epizod.",
+          "links": [
+            { "label": "ČT iVysílání", "url": "https://www.ceskatelevize.cz/porady/14958796429-tucnaci-z-madagaskaru/", "type": "ivysilani" },
+            { "label": "Déčko", "url": "https://decko.ceskatelevize.cz/tucnaci-z-madagaskaru", "type": "decko" },
+            { "label": "ČSFD", "url": "https://www.csfd.cz/film/254111-tucnaci-z-madagaskaru/prehled/", "type": "csfd" }
+          ]
         }
       ]
     },
     {
       "slug": "pohadky",
-      "title": "Pohádky a seriály pro děti",
+      "title": "Pohádky a seriály pro nejmenší",
       "subtitle": "Klasiky, na kterých vyrostly celé generace dětí. Krátké díly, žádné stahování — odkazy vedou rovnou na video.",
       "surface": "candy",
       "emoji": "🧸",
@@ -149,7 +225,8 @@
           "director": "Otmar Gutmann",
           "description": "Švýcarsko-britský animovaný seriál o malém tučňákovi Pingu, jeho sestře Pinze a životě v iglú. Charakteristická plastelínová animace a hláška „Noot noot!“ — bez slov, srozumitelné v každém věku.",
           "links": [
-            { "label": "Díly na YouTube", "url": "https://www.jenpohadky.cz/tucnak-pingu", "type": "youtube" },
+            { "label": "Oficiální YouTube kanál", "url": "https://www.youtube.com/channel/UCM88mtSE0zRTn5ae4EbYcuw", "type": "youtube" },
+            { "label": "Celé díly (playlist)", "url": "https://www.youtube.com/playlist?list=PLLhOnau-tupSV_oaUUxD3_Bud2VLQOIEc", "type": "youtube" },
             { "label": "Wikipedie", "url": "https://cs.wikipedia.org/wiki/Pingu", "type": "wikipedia" }
           ]
         },
@@ -161,9 +238,21 @@
           "director": "Iconix Entertainment",
           "description": "Jihokorejský 3D animovaný seriál o tučňákovi Pororovi a jeho přátelích, kteří žijí v zasněžené vesničce Porong Porong. Každý díl končí drobným ponaučením. Vysíláno ve více než 140 zemích.",
           "links": [
-            { "label": "Wikipedie (cs)", "url": "https://cs.wikipedia.org/wiki/Mal%C3%BD_tu%C4%8D%C5%88%C3%A1k_Pororo", "type": "wikipedia" },
+            { "label": "Wikipedie", "url": "https://cs.wikipedia.org/wiki/Mal%C3%BD_tu%C4%8D%C5%88%C3%A1k_Pororo", "type": "wikipedia" },
             { "label": "Oficiální YouTube", "url": "https://www.youtube.com/playlist?list=PLrkKzgyiKOS89K1qJgSn81LlO5JKEN3e6", "type": "youtube" },
             { "label": "Netflix", "url": "https://www.netflix.com/title/80036747", "type": "netflix" }
+          ]
+        },
+        {
+          "title": "Dobrodružství tučňáků",
+          "titleOrig": "Penguin's Memory",
+          "year": 1988,
+          "type": "animovany",
+          "director": "Takashi Anno",
+          "description": "Sovětsko-japonský animovaný film z osmdesátek o tučňákovi Mikem, který se vrací z války a hledá svoji ztracenou lásku. Nezvyklá kombinace dětského designu a vážného příběhu — kultovní záležitost.",
+          "links": [
+            { "label": "ČSFD", "url": "https://www.csfd.cz/film/233591-dobrodruzstvi-tucnaku/prehled/", "type": "csfd" },
+            { "label": "Wikipedie", "url": "https://en.wikipedia.org/wiki/Penguin%27s_Memory", "type": "wikipedia" }
           ]
         }
       ]
@@ -172,6 +261,6 @@
   "note": {
     "eyebrow": "Něco chybí?",
     "title": "Znáš film o tučňácích, který tu není?",
-    "body": "Seznam průběžně doplňujeme. Pokud znáš pohádku, dokument nebo film s tučňáky, který by sem patřil, napiš nám — rádi ho přidáme."
+    "body": "Seznam průběžně doplňujeme. Pokud znáš pohádku, dokument nebo film s tučňáky, který by sem patřil, napiš nám — rádi ho přidáme. Také prosíme: pokud některý z odkazů přestane fungovat, dejte nám vědět."
   }
 }

@@ -256,6 +256,12 @@ const filmLinkTypeEnum = z.enum([
   "youtube",
   "netflix",
   "disneyplus",
+  "primevideo",
+  "skyshowtime",
+  "ivysilani",
+  "decko",
+  "crunchyroll",
+  "appletv",
   "official",
   "other",
 ]);
