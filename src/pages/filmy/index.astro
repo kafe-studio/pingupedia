@@ -41,7 +41,7 @@ const metadata = {
 
       {page.sections.map((section) => (
         <div class="mb-10 md:mb-14">
-          <header class={`bento-card ${surfaceClass[section.surface]} p-6 md:p-7 mb-5 text-white reveal flex items-center gap-4`}>
+          <header class={`bento-card ${surfaceClass[section.surface]} p-6 md:p-7 mb-5 text-white flex items-center gap-4`}>
             <span class="text-4xl shrink-0" aria-hidden="true">{section.emoji}</span>
             <div class="flex-1 min-w-0">
               <h2 class="text-2xl md:text-3xl font-black leading-tight">{section.title}</h2>
@@ -51,7 +51,7 @@ const metadata = {
 
           <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-5">
             {section.items.map((item) => (
-              <article class="bento-card p-6 md:p-7 reveal flex flex-col">
+              <article class="bento-card p-6 md:p-7 flex flex-col">
                 <div class="flex items-start justify-between gap-3 mb-3">
                   <div class="flex-1 min-w-0">
                     <p class="text-xs uppercase tracking-widest text-muted-foreground font-semibold">
@@ -92,7 +92,7 @@ const metadata = {
         </div>
       ))}
 
-      <div class="bento-card p-6 md:p-8 flex flex-col md:flex-row items-center justify-between gap-6 reveal">
+      <div class="bento-card p-6 md:p-8 flex flex-col md:flex-row items-center justify-between gap-6">
         <div class="max-w-xl">
           <p class="text-xs uppercase tracking-widest text-primary font-semibold">{page.note.eyebrow}</p>
           <h3 class="mt-2 text-2xl md:text-3xl font-black leading-tight">{page.note.title}</h3>

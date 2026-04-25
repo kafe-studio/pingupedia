@@ -241,8 +241,14 @@ export class PlatformGame {
         p.vy = JUMP_V;
         p.onGround = false;
       }
-      p.vy += GRAVITY;
-      if (p.vy > MAX_FALL) p.vy = MAX_FALL;
+      // Skip gravity while resting on ground — otherwise sub-pixel fall + re-snap
+      // produces a constant jitter at every frame.
+      if (!p.onGround) {
+        p.vy += GRAVITY;
+        if (p.vy > MAX_FALL) p.vy = MAX_FALL;
+      } else {
+        p.vy = 0;
+      }
     }
 
     // Move + collide — X first then Y (per-axis solid collision).
@@ -294,7 +300,9 @@ export class PlatformGame {
     p.onGround = false;
     if (p.vy !== 0) {
       const dir = p.vy > 0 ? 1 : -1;
-      const probeY = dir > 0 ? nextY + PLAYER_H - 1 : nextY;
+      // For falling, probe at the feet line (right at the top of the tile below) so
+      // even sub-pixel descents detect the floor on the same frame.
+      const probeY = dir > 0 ? nextY + PLAYER_H : nextY;
       const leftCol = Math.floor(p.x / TILE);
       const rightCol = Math.floor((p.x + PLAYER_W - 1) / TILE);
       const row = Math.floor(probeY / TILE);
