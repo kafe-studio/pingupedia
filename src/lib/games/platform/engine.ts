@@ -129,7 +129,7 @@ export class PlatformGame {
     if (targetRow >= ROWS - 1) return;       // protect outer ground row
     if (targetCol < 1 || targetCol >= COLS - 1) return; // protect outer side cols
     const tile = room.tiles[targetRow]?.[targetCol];
-    if (tile !== "#" && tile !== "b") return;
+    if (tile !== "#" && tile !== "b" && tile !== "=") return;
     // Mutate tile string → empty.
     const row = room.tiles[targetRow];
     room.tiles[targetRow] = row.slice(0, targetCol) + "." + row.slice(targetCol + 1);
@@ -277,6 +277,16 @@ export class PlatformGame {
       else if (this.keys.down) p.vy = CLIMB_SPEED;
       else p.vy = 0;
     } else {
+      // Down-press drop through jump-through platform: pokud stojím na "=" a držím dolů, propadnu.
+      if (this.keys.down && p.onGround) {
+        const cxNow = p.x + PLAYER_W / 2;
+        const feetRow = Math.floor((p.y + PLAYER_H) / TILE);
+        const tileBelow = this.roomTileAt(room, Math.floor(cxNow / TILE), feetRow);
+        if (tileBelow === "=") {
+          p.y += 2;
+          p.onGround = false;
+        }
+      }
       if (this.keys.jump && p.onGround) {
         p.vy = JUMP_V;
         p.onGround = false;
