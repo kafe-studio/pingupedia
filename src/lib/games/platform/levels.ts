@@ -119,6 +119,7 @@ const zakladna: Room = {
   guardians: [
     h("skua", 3, 0, 19, 0.8),
     d("petrel", 2, 1, 0, 19, 0, 11, 0.7, 0.4),
+    h("polarbear", 12, 8, 18, 0.6, 22, 18),
   ],
   items: [
     i("fish", 10, 1, "zakladna-f1"),
@@ -156,6 +157,7 @@ const kolonie: Room = {
   guardians: [
     h("skua", 4, 2, 18, 1.0),
     h("skua", 10, 0, 14, -0.8),
+    h("seal", 12, 3, 16, 0.6),
     s("snowwind", 9, 6),
   ],
   items: [
@@ -169,7 +171,7 @@ const kolonie: Room = {
     exit("top", "vejcohnizdo", 10, 12),
   ],
   spawn: { x: 2 * TILE, y: 12 * TILE },
-  hint: "Pozor na chaluny, kradou vejce.",
+  hint: "Pozor na chaluny a tuleně.",
 };
 
 const prusmyk: Room = {
@@ -197,6 +199,7 @@ const prusmyk: Room = {
     v("icicle", 8, 0, 12, 1.2),
     v("icicle", 13, 0, 12, -1.1),
     v("icicle", 10, 0, 12, 0.9),
+    h("walrus", 12, 6, 13, 0.5, 28, 18),
   ],
   items: [
     i("fish", 6, 3, "prusmyk-f1"),
