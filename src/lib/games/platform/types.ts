@@ -20,6 +20,32 @@ export type TileChar =
   | "c" // conveyor (auto-push left)
   ;
 
+// Locked doors: 4 colors, each unlocks a different mini-game.
+export type KeyColor = "blue" | "red" | "yellow" | "green";
+
+export type MinigameKind = "ski" | "hockey" | "jump" | "dive";
+
+export const KEY_TO_MINIGAME: Record<KeyColor, MinigameKind> = {
+  blue:   "ski",      // modrý klíč → lyžování
+  red:    "hockey",   // červený klíč → hokej
+  yellow: "jump",     // žlutý klíč → skok do dálky
+  green:  "dive",     // zelený klíč → potápění
+};
+
+export const MINIGAME_TITLE: Record<MinigameKind, string> = {
+  ski:    "Lyžování",
+  hockey: "Hokej",
+  jump:   "Skok do dálky",
+  dive:   "Potápění",
+};
+
+export interface Door {
+  id: string;       // unique persistent id
+  col: number;
+  row: number;
+  color: KeyColor;
+}
+
 export type GuardianKind =
   | "horiz"     // horizontal patrol
   | "vert"      // vertical patrol
@@ -47,7 +73,7 @@ export interface Guardian {
   phase?: number;
 }
 
-export type ItemKind = "fish" | "egg" | "medal" | "flag" | "crystal" | "heart";
+export type ItemKind = "fish" | "egg" | "medal" | "flag" | "crystal" | "heart" | "key";
 
 export type SfxKind =
   | "mlask"   // sběr ryby
@@ -65,6 +91,7 @@ export interface Item {
   x: number;  // tile col
   y: number;  // tile row
   id: string; // unique (room + index) for tracking
+  keyColor?: KeyColor;  // only for kind === "key"
 }
 
 export interface Exit {
@@ -89,6 +116,7 @@ export interface Room {
   exits: Exit[];
   spawn: { x: number; y: number };   // pixel start position (first entry)
   hint?: string;
+  doors?: Door[];                    // locked doors that trigger a minigame
 }
 
 export interface PlayerState {
@@ -115,6 +143,9 @@ export interface GameState {
   gameover: boolean;
   lastHintRoom: string | null;
   hintUntil: number;
+  keys: Set<KeyColor>;            // collected keys
+  openedDoors: Set<string>;       // door ids that have been unlocked
+  paused: boolean;                // true while a minigame is active
 }
 
 export interface GameHud {
@@ -125,6 +156,7 @@ export interface GameHud {
   lives: number;
   collected: number;
   total: number;
+  keys: KeyColor[];      // colors of keys currently held
 }
 
 export interface GameHooks {
@@ -132,4 +164,5 @@ export interface GameHooks {
   onWin(_timeSec: number): void;
   onGameover(): void;
   onSfx(_kind: SfxKind): void;
+  onMinigame(_kind: MinigameKind, _doorId: string): void;
 }

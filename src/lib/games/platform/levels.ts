@@ -1,4 +1,4 @@
-import type { Exit, Guardian, Item, Room } from "./types";
+import type { Door, Exit, Guardian, Item, KeyColor, Room } from "./types";
 import { TILE } from "./types";
 
 // Helper builders ------------------------------------------------------------
@@ -50,6 +50,12 @@ function s(sprite: Guardian["sprite"], x: number, y: number, w = 16, hSize = 16)
 }
 function i(kind: Item["kind"], x: number, y: number, id: string): Item {
   return { kind, x, y, id };
+}
+function key(color: KeyColor, x: number, y: number, id: string): Item {
+  return { kind: "key", x, y, id, keyColor: color };
+}
+function door(id: string, col: number, row: number, color: KeyColor): Door {
+  return { id, col, row, color };
 }
 function exit(side: Exit["side"], toRoom: string, toX?: number, toY?: number): Exit {
   return { side, toRoom, toX, toY };
@@ -132,6 +138,7 @@ const zakladna: Room = {
     exit("bottom", "tunelky", 8, 1),
   ],
   spawn: { x: 2 * TILE, y: 12 * TILE },
+  doors: [door("zakladna-blue", 4, 12, "blue")],
 };
 
 const kolonie: Room = {
@@ -164,6 +171,7 @@ const kolonie: Room = {
     i("egg", 9, 1, "kolonie-e1"),
     i("egg", 2, 4, "kolonie-e2"),
     i("fish", 17, 7, "kolonie-f1"),
+    key("blue", 11, 7, "kolonie-key-blue"),
   ],
   exits: [
     exit("left", "zakladna", 18, 12),
@@ -171,7 +179,7 @@ const kolonie: Room = {
     exit("top", "vejcohnizdo", 10, 12),
   ],
   spawn: { x: 2 * TILE, y: 12 * TILE },
-  hint: "Pozor na chaluny a tuleně.",
+  hint: "Modrý klíč otevírá lyže.",
 };
 
 const prusmyk: Room = {
@@ -319,6 +327,7 @@ const rybarskaDira: Room = {
     i("fish", 3, 3, "dira-f1"),
     i("fish", 10, 6, "dira-f2"),
     i("fish", 15, 9, "dira-f3"),
+    key("green", 9, 3, "dira-key-green"),
   ],
   exits: [
     exit("left", "more", 18, 5),
@@ -326,6 +335,7 @@ const rybarskaDira: Room = {
     exit("bottom", "jeskyne", 10, 2),
   ],
   spawn: { x: 2 * TILE, y: 3 * TILE },
+  hint: "Zelený klíč k potápění.",
 };
 
 const galapagos: Room = {
@@ -363,6 +373,7 @@ const galapagos: Room = {
     exit("top", "sopka", 10, 12),
   ],
   spawn: { x: 2 * TILE, y: 12 * TILE },
+  doors: [door("galapagos-green", 11, 12, "green")],
 };
 
 const jeskyne: Room = {
@@ -478,6 +489,7 @@ const laborator: Room = {
     exit("top", "hriste", 10, 12),
   ],
   spawn: { x: 2 * TILE, y: 12 * TILE },
+  doors: [door("laborator-red", 6, 12, "red")],
 };
 
 const vrak: Room = {
@@ -517,6 +529,7 @@ const vrak: Room = {
     exit("right", "kostra", 1, 11),
   ],
   spawn: { x: 3 * TILE, y: 9 * TILE },
+  doors: [door("vrak-yellow", 14, 9, "yellow")],
 };
 
 const schody: Room = {
@@ -585,6 +598,7 @@ const hriste: Room = {
     i("egg", 6, 4, "hr-e1"),
     i("egg", 14, 7, "hr-e2"),
     i("fish", 10, 9, "hr-f1"),
+    key("red", 10, 7, "hr-key-red"),
   ],
   exits: [
     exit("bottom", "laborator", 9, 1),
@@ -593,6 +607,7 @@ const hriste: Room = {
     exit("top", "klubovna", 10, 12),
   ],
   spawn: { x: 3 * TILE, y: 12 * TILE },
+  hint: "Červený klíč pustí na hokejové hřiště.",
 };
 
 const tajny: Room = {
@@ -956,7 +971,7 @@ const hreben: Room = {
     "######......########",
   ],
   guardians: [d("skua", 6, 1, 0, 19, 1, 9, 0.8, 0.5), h("polarbear", 12, 4, 16, 1.0)],
-  items: [i("medal", 9, 4, "hr-m1"), i("fish", 14, 7, "hr-f1"), i("crystal", 3, 8, "hr-c1")],
+  items: [i("medal", 9, 4, "hr-m1"), i("fish", 14, 7, "hr-f1"), i("crystal", 3, 8, "hr-c1"), key("yellow", 10, 4, "hreben-key-yellow")],
   exits: [
     exit("bottom", "skaly", 8, 1),
     exit("right", "arch", 1, 12),

@@ -62,6 +62,13 @@ export function drawScene(ctx: CanvasRenderingContext2D, state: GameState): void
   }
 
   drawExitHints(ctx, pal, room);
+  // Doors (locked = solid wall, unlocked = open archway)
+  if (room.doors) {
+    for (const door of room.doors) {
+      const opened = state.openedDoors.has(door.id);
+      drawDoor(ctx, door.col * TILE, door.row * TILE, door.color, opened, state.time);
+    }
+  }
   for (const it of room.items) drawItem(ctx, it, state.time);
   for (const gu of room.guardians) drawGuardian(ctx, gu, state.time);
   drawPlayer(ctx, state.player, state.time);
@@ -743,6 +750,36 @@ function drawItem(ctx: CanvasRenderingContext2D, it: Item, t: number): void {
     // Glint
     ctx.fillStyle = "#ffffff";
     ctx.fillRect(cx - 1, cy - 4, 1, 2);
+  } else if (it.kind === "key") {
+    // Colored key — bow + shaft + teeth, gently rotating glint
+    const colorMap: Record<string, string> = {
+      blue: "#3b82f6", red: "#ef4444", yellow: "#fde047", green: "#22c55e",
+    };
+    const color = colorMap[it.keyColor ?? "blue"] ?? "#fbbf24";
+    const dim = colorMap[it.keyColor ?? "blue"] ? color.replace(/^#/, "") : "fbbf24";
+    void dim;
+    ctx.save();
+    ctx.translate(cx, cy);
+    ctx.rotate(Math.sin(t / 400) * 0.1);
+    // Bow (round handle)
+    ctx.fillStyle = color;
+    ctx.beginPath();
+    ctx.arc(-3, 0, 3, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.fillStyle = "rgba(0,0,0,0.3)";
+    ctx.beginPath();
+    ctx.arc(-3, 0, 1.4, 0, Math.PI * 2);
+    ctx.fill();
+    // Shaft
+    ctx.fillStyle = color;
+    ctx.fillRect(0, -0.7, 5, 1.4);
+    // Teeth
+    ctx.fillRect(3, -0.7, 1, 2.2);
+    ctx.fillRect(4.5, -0.7, 1, 1.6);
+    // Highlight
+    ctx.fillStyle = "rgba(255,255,255,0.6)";
+    ctx.fillRect(-4, -1.5, 1, 1);
+    ctx.restore();
   } else if (it.kind === "heart") {
     const beat = 1 + Math.sin(t / 120) * 0.12;
     ctx.save();
@@ -1287,6 +1324,48 @@ function drawPlayer(ctx: CanvasRenderingContext2D, p: GameState["player"], t: nu
   }
 
   ctx.globalAlpha = 1;
+}
+
+function drawDoor(ctx: CanvasRenderingContext2D, x: number, y: number, color: string, opened: boolean, t: number): void {
+  if (opened) {
+    // Open archway
+    ctx.fillStyle = "rgba(0,0,0,0.5)";
+    ctx.fillRect(x + 2, y + 2, TILE - 4, TILE - 2);
+    return;
+  }
+  const map: Record<string, [string, string]> = {
+    blue:   ["#1d4ed8", "#3b82f6"],
+    red:    ["#b91c1c", "#ef4444"],
+    yellow: ["#ca8a04", "#fde047"],
+    green:  ["#15803d", "#22c55e"],
+  };
+  const [dark, light] = map[color] ?? ["#475569", "#94a3b8"];
+  // Frame
+  ctx.fillStyle = "#3f3f46";
+  ctx.fillRect(x, y, TILE, TILE);
+  // Door slab
+  const grad = ctx.createLinearGradient(x, y, x + TILE, y);
+  grad.addColorStop(0, dark);
+  grad.addColorStop(0.5, light);
+  grad.addColorStop(1, dark);
+  ctx.fillStyle = grad;
+  ctx.fillRect(x + 1, y + 1, TILE - 2, TILE - 1);
+  // Cross panels
+  ctx.strokeStyle = "rgba(0,0,0,0.45)";
+  ctx.lineWidth = 0.7;
+  ctx.beginPath();
+  ctx.moveTo(x + 1, y + TILE / 2); ctx.lineTo(x + TILE - 1, y + TILE / 2);
+  ctx.moveTo(x + TILE / 2, y + 1); ctx.lineTo(x + TILE / 2, y + TILE - 1);
+  ctx.stroke();
+  // Lock plate (gold)
+  const pulse = 0.7 + 0.3 * Math.sin(t / 250);
+  ctx.fillStyle = `rgba(251, 191, 36, ${pulse})`;
+  ctx.beginPath();
+  ctx.arc(x + TILE / 2, y + TILE / 2, 2.5, 0, Math.PI * 2);
+  ctx.fill();
+  ctx.fillStyle = "#0a0f1f";
+  ctx.fillRect(x + TILE / 2 - 0.5, y + TILE / 2 - 0.3, 1, 1.5);
+  ctx.fillRect(x + TILE / 2 - 0.7, y + TILE / 2 + 0.5, 1.4, 0.6);
 }
 
 function drawPinguFoot(ctx: CanvasRenderingContext2D, x: number, y: number, raised: boolean): void {

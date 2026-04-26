@@ -57,6 +57,30 @@ import GameLayout from "../../layouts/GameLayout.astro";
             Pokračovat
           </button>
         </div>
+
+        <!-- Mini-game overlay (ski / hockey / jump / dive) -->
+        <div
+          id="minigame-overlay"
+          class="absolute inset-0 hidden flex-col items-stretch bg-slate-950/95 rounded-xl"
+        >
+          <div class="flex items-center justify-between gap-3 px-3 py-2 bg-slate-900/80 border-b border-white/10">
+            <h3 data-mg-title class="text-sm md:text-base font-black text-white">Mini-hra</h3>
+            <button data-mg-close type="button" class="rounded-full border border-white/30 text-white px-3 py-1 text-[11px] font-medium hover:bg-white/10">
+              Ukončit
+            </button>
+          </div>
+          <div class="flex-1 relative">
+            <canvas id="minigame-canvas" class="absolute inset-0 w-full h-full block" tabindex="0"></canvas>
+          </div>
+          <div data-mg-result class="hidden flex-col items-center justify-center gap-2 absolute inset-0 bg-black/70 backdrop-blur-sm p-4 text-center text-white">
+            <p data-mg-result-icon class="text-4xl">🏆</p>
+            <p data-mg-result-text class="text-base md:text-lg font-bold"></p>
+            <p data-mg-result-reward class="text-sm text-amber-300"></p>
+            <button data-mg-result-btn type="button" class="mt-2 rounded-full bg-white text-slate-900 px-5 py-2 text-sm font-bold">
+              Vrátit se do hry
+            </button>
+          </div>
+        </div>
       </div>
 
       <div class="mt-3 grid grid-cols-2 gap-2 text-[11px] text-muted-foreground">
@@ -84,7 +108,8 @@ import GameLayout from "../../layouts/GameLayout.astro";
   import { PlatformGame } from "../../lib/games/platform/engine";
   import { ChiptuneMusic } from "../../lib/games/platform/music";
   import { SfxPlayer } from "../../lib/games/platform/sfx";
-  import type { GameHud } from "../../lib/games/platform/types";
+  import { startMinigame, type MinigameInstance } from "../../lib/games/platform/minigames";
+  import { MINIGAME_TITLE, type GameHud, type MinigameKind } from "../../lib/games/platform/types";
 
   const canvas = document.getElementById("platform-canvas") as HTMLCanvasElement | null;
   if (!canvas) throw new Error("platform canvas missing");
@@ -115,7 +140,9 @@ import GameLayout from "../../layouts/GameLayout.astro";
   }
 
   function renderHud(h: GameHud): void {
-    hudRoom.textContent = `${h.roomIndex}/${h.totalRooms} · ${h.roomName}`;
+    const keyChar: Record<string, string> = { blue: "🔵", red: "🔴", yellow: "🟡", green: "🟢" };
+    const keys = h.keys.map((k) => keyChar[k] ?? "🔑").join("");
+    hudRoom.textContent = `${h.roomIndex}/${h.totalRooms} · ${h.roomName}${keys ? "  " + keys : ""}`;
     hudLives.textContent = "♥".repeat(Math.max(0, h.lives)) || "—";
     hudItems.textContent = `${h.collected} / ${h.total}`;
     if (h.hint) {
@@ -176,9 +203,58 @@ import GameLayout from "../../layouts/GameLayout.astro";
 
   const sfx = new SfxPlayer();
 
+  // Mini-game overlay
+  const mgOverlay = document.getElementById("minigame-overlay")!;
+  const mgCanvas = document.getElementById("minigame-canvas") as HTMLCanvasElement;
+  const mgTitle = mgOverlay.querySelector<HTMLElement>("[data-mg-title]")!;
+  const mgClose = mgOverlay.querySelector<HTMLButtonElement>("[data-mg-close]")!;
+  const mgResult = mgOverlay.querySelector<HTMLElement>("[data-mg-result]")!;
+  const mgResultIcon = mgOverlay.querySelector<HTMLElement>("[data-mg-result-icon]")!;
+  const mgResultText = mgOverlay.querySelector<HTMLElement>("[data-mg-result-text]")!;
+  const mgResultReward = mgOverlay.querySelector<HTMLElement>("[data-mg-result-reward]")!;
+  const mgResultBtn = mgOverlay.querySelector<HTMLButtonElement>("[data-mg-result-btn]")!;
+  let mgInstance: MinigameInstance | null = null;
+  let mgDoorId: string | null = null;
+
+  function endMinigame(): void {
+    if (mgInstance) { mgInstance.destroy(); mgInstance = null; }
+    mgOverlay.classList.add("hidden");
+    mgOverlay.classList.remove("flex");
+    mgResult.classList.add("hidden");
+    mgResult.classList.remove("flex");
+    if (game && mgDoorId) game.resumeAfterMinigame(mgDoorId);
+    mgDoorId = null;
+  }
+
+  function startMinigameOverlay(kind: MinigameKind, doorId: string): void {
+    mgDoorId = doorId;
+    mgOverlay.classList.remove("hidden");
+    mgOverlay.classList.add("flex");
+    mgTitle.textContent = MINIGAME_TITLE[kind];
+    mgResult.classList.add("hidden");
+    mgResult.classList.remove("flex");
+    mgInstance = startMinigame({
+      canvas: mgCanvas,
+      kind,
+      onFinish(score, label) {
+        mgResultIcon.textContent = score > 0 ? "🏆" : "🎯";
+        mgResultText.textContent = label;
+        mgResultReward.textContent = `+${score} bodů (a klíč otevřel dveře)`;
+        mgResult.classList.remove("hidden");
+        mgResult.classList.add("flex");
+      },
+      onClose() { endMinigame(); },
+    });
+    mgCanvas.focus();
+  }
+
+  mgClose.addEventListener("click", () => endMinigame());
+  mgResultBtn.addEventListener("click", () => endMinigame());
+
   game = new PlatformGame(canvas, {
     onHud: renderHud,
     onSfx: (kind) => sfx.play(kind),
+    onMinigame: (kind, doorId) => startMinigameOverlay(kind, doorId),
     onWin(timeSec) {
       const mm = Math.floor(timeSec / 60).toString().padStart(2, "0");
       const ss = (timeSec % 60).toString().padStart(2, "0");

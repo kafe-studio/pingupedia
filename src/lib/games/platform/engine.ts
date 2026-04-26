@@ -6,7 +6,7 @@ import type {
   PlayerState,
   Room,
 } from "./types";
-import { COLS, ROWS, TILE, VIEW_H, VIEW_W } from "./types";
+import { COLS, ROWS, TILE, VIEW_H, VIEW_W, KEY_TO_MINIGAME } from "./types";
 import { ROOMS, START_ROOM_ID } from "./levels";
 import { drawScene } from "./render";
 
@@ -77,6 +77,9 @@ export class PlatformGame {
       gameover: false,
       lastHintRoom: null,
       hintUntil: 0,
+      keys: new Set(),
+      openedDoors: new Set(),
+      paused: false,
     };
     this.bindKeys();
     this.showHintIfNew(start);
@@ -110,9 +113,21 @@ export class PlatformGame {
     this.state.gameover = false;
     this.state.lastHintRoom = null;
     this.state.hintUntil = 0;
+    this.state.keys = new Set();
+    this.state.openedDoors = new Set();
+    this.state.paused = false;
     this.peckCooldown = 0;
     this.heartSpawnTimer = HEART_SPAWN_INTERVAL_MS / 2;
     this.showHintIfNew(start);
+    this.emitHud();
+  }
+
+  /** Resume after a minigame closes. Optionally unlock the door that triggered it. */
+  resumeAfterMinigame(doorId: string | null): void {
+    if (doorId) this.state.openedDoors.add(doorId);
+    this.state.paused = false;
+    // Push the player slightly away from the door so they don't immediately re-trigger.
+    this.state.player.invulnerableMs = TRANSITION_INVULN_MS;
     this.emitHud();
   }
 
@@ -174,6 +189,7 @@ export class PlatformGame {
       lives: this.state.lives,
       collected: this.state.collected.size,
       total: this.state.totalItems,
+      keys: [...this.state.keys],
     });
   }
 
@@ -214,6 +230,13 @@ export class PlatformGame {
 
   private roomTileAt(room: Room, col: number, row: number): string {
     if (col < 0 || col >= COLS || row < 0 || row >= ROWS) return ".";
+    // Locked doors render as solid blocks; once unlocked, the cell is empty.
+    const door = room.doors?.find((d) => d.col === col && d.row === row);
+    if (door) {
+      // Guard: state may not exist yet during constructor's freshPlayer call.
+      const opened = this.state?.openedDoors ?? new Set<string>();
+      return opened.has(door.id) ? "." : "#";
+    }
     return room.tiles[row][col];
   }
 
@@ -237,11 +260,12 @@ export class PlatformGame {
     this.lastTime = time;
     this.state.time += dt;
 
-    if (!this.state.completed && !this.state.gameover) {
+    if (!this.state.completed && !this.state.gameover && !this.state.paused) {
       this.peckCooldown = Math.max(0, this.peckCooldown - dt);
       this.updatePlayer(dt);
       this.updateGuardians(dt);
       this.checkCollectibles();
+      this.checkDoors();
       this.checkRoomExit();
       this.maybeSpawnHeart(dt);
     }
@@ -475,12 +499,43 @@ export class PlatformGame {
         this.hooks.onSfx("gulp");
         continue;
       }
+      // Key = uložit barvu, NE je počítán do totalItems.
+      if (it.kind === "key" && it.keyColor) {
+        this.state.keys.add(it.keyColor);
+        this.hooks.onSfx("ding");
+        continue;
+      }
       this.state.collected.add(it.id);
       if (it.kind === "fish") this.hooks.onSfx("mlask");
       else if (it.kind === "egg") this.hooks.onSfx("pop");
       else this.hooks.onSfx("ding"); // medal / flag / crystal
     }
     room.items = remaining;
+  }
+
+  /** Pokud hráč přiléhá k zamčeným dveřím a má odpovídající klíč, spustí mini-hru. */
+  private checkDoors(): void {
+    const room = this.state.rooms.get(this.state.currentRoomId)!;
+    if (!room.doors || room.doors.length === 0) return;
+    const p = this.state.player;
+    const leftCol = Math.floor(p.x / TILE);
+    const rightCol = Math.floor((p.x + PLAYER_W - 1) / TILE);
+    const topRow = Math.floor(p.y / TILE);
+    const botRow = Math.floor((p.y + PLAYER_H - 1) / TILE);
+    for (const door of room.doors) {
+      if (this.state.openedDoors.has(door.id)) continue;
+      if (
+        door.col >= leftCol && door.col <= rightCol &&
+        door.row >= topRow && door.row <= botRow
+      ) {
+        // Touching a locked door — does the player have the matching key?
+        if (this.state.keys.has(door.color)) {
+          this.state.paused = true;
+          this.hooks.onMinigame(KEY_TO_MINIGAME[door.color], door.id);
+          return;
+        }
+      }
+    }
   }
 
   /** Periodicky spawne srdíčko v náhodné místnosti (max HEART_MAX_ALIVE). */
