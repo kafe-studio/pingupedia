@@ -288,13 +288,15 @@ const more: Room = {
     i("fish", 10, 2, "more-f1"),
     i("fish", 16, 4, "more-f2"),
     i("fish", 2, 6, "more-f3"),
+    i("fish", 5, 10, "more-f-deep1"),
+    i("fish", 14, 11, "more-f-deep2"),
   ],
   exits: [
     exit("left", "skaly", 18, 5),
     exit("right", "rybarska-dira", 1, 5),
   ],
   spawn: { x: 2 * TILE, y: 4 * TILE },
-  hint: "Voda dole zabíjí. Skákej mezi krami.",
+  hint: "Skoč do vody — tučňák plave a může lovit ryby.",
 };
 
 const rybarskaDira: Room = {
@@ -522,6 +524,8 @@ const vrak: Room = {
     i("medal", 17, 1, "vrak-m1"),
     i("fish", 10, 5, "vrak-f1"),
     i("flag", 2, 9, "vrak-fl"),
+    i("fish", 6, 12, "vrak-f-deep1"),
+    i("fish", 16, 13, "vrak-f-deep2"),
   ],
   exits: [
     exit("left", "galapagos", 18, 10),
@@ -1172,7 +1176,7 @@ const propast: Room = {
     "~~~~~~~~~~~~~~~~~~~~",
   ],
   guardians: [h("walrus", 8, 0, 19, 1.5, 36, 20), v("bubble", 10, 5, 10, -0.9, 12, 12)],
-  items: [i("fish", 9, 2, "pr-f1"), i("medal", 16, 7, "pr-m1")],
+  items: [i("fish", 9, 2, "pr-f1"), i("medal", 16, 7, "pr-m1"), i("fish", 4, 12, "pr-f-deep1"), i("fish", 12, 13, "pr-f-deep2")],
   exits: [
     exit("left", "kostra", 18, 9),
     exit("bottom", "poklad", 9, 1),

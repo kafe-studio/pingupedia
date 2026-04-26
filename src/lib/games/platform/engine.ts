@@ -250,7 +250,11 @@ export class PlatformGame {
     return t === "H";
   }
   private isDeadly(t: string): boolean {
-    return t === "~" || t === "*";
+    // Voda už nezabíjí — tučňák v ní plave. Jen ostny / krystaly zabíjejí.
+    return t === "*";
+  }
+  private isWater(t: string): boolean {
+    return t === "~";
   }
 
   // --- Physics ---
@@ -306,10 +310,24 @@ export class PlatformGame {
       else if (t === "c") p.vx -= 0.8;
     }
 
+    // Detect swim — center tile is water.
+    const inWater = this.isWater(this.roomTileAt(room, Math.floor(cx / TILE), Math.floor(cy / TILE)));
+
     if (p.onLadder) {
       if (this.keys.up) p.vy = -CLIMB_SPEED;
       else if (this.keys.down) p.vy = CLIMB_SPEED;
       else p.vy = 0;
+    } else if (inWater) {
+      // Swim mode: 4-directional control, water resistance, slight upward buoyancy.
+      const SWIM = 1.4;
+      if (this.keys.up || this.keys.jump) p.vy = -SWIM;
+      else if (this.keys.down) p.vy = SWIM;
+      else p.vy = (p.vy * 0.85) - 0.04;   // damping + tiny buoyancy
+      if (p.vy < -SWIM) p.vy = -SWIM;
+      if (p.vy > SWIM) p.vy = SWIM;
+      // Horizontal slightly slower in water
+      p.vx *= 0.85;
+      p.onGround = false;
     } else {
       // Down-press drop through jump-through platform: pokud stojím na "=" a držím dolů, propadnu.
       if (this.keys.down && p.onGround) {
@@ -513,7 +531,7 @@ export class PlatformGame {
     room.items = remaining;
   }
 
-  /** Pokud hráč přiléhá k zamčeným dveřím a má odpovídající klíč, spustí mini-hru. */
+  /** Pokud hráč stojí těsně vedle zamčených dveří a má klíč, spustí mini-hru. */
   private checkDoors(): void {
     const room = this.state.rooms.get(this.state.currentRoomId)!;
     if (!room.doors || room.doors.length === 0) return;
@@ -524,11 +542,11 @@ export class PlatformGame {
     const botRow = Math.floor((p.y + PLAYER_H - 1) / TILE);
     for (const door of room.doors) {
       if (this.state.openedDoors.has(door.id)) continue;
-      if (
-        door.col >= leftCol && door.col <= rightCol &&
-        door.row >= topRow && door.row <= botRow
-      ) {
-        // Touching a locked door — does the player have the matching key?
+      // Adjacency check: player needs to stand next to the door (±1 column) at the same row.
+      // Locked doors are solid walls so the player can never *overlap* them — adjacent triggers.
+      const colAdjacent = door.col >= leftCol - 1 && door.col <= rightCol + 1;
+      const rowOverlap = door.row >= topRow && door.row <= botRow + 1;
+      if (colAdjacent && rowOverlap) {
         if (this.state.keys.has(door.color)) {
           this.state.paused = true;
           this.hooks.onMinigame(KEY_TO_MINIGAME[door.color], door.id);

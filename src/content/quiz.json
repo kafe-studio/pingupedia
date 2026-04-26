@@ -2,9 +2,14 @@
   "questions": [
     {
       "question": "Který druh tučňáka je největší?",
-      "options": ["Tučňák kroužkový", "Tučňák císařský", "Tučňák patagonský", "Tučňák oslí"],
+      "options": [
+        "Tučňák kroužkový",
+        "Tučňák císařský",
+        "Tučňák patagonský",
+        "Tučňák oslí"
+      ],
       "correct": 1,
-      "explanation": "Tučňák císařský měří kolem 120 cm a váží přes 40 kg — je to největší druh ze všech."
+      "explanation": "Tučňák císařský měří 100–130 cm a váží 22–45 kg — je to největší druh ze všech."
     },
     {
       "question": "Kde hnízdí tučňák galapážský?",
@@ -15,16 +20,32 @@
         "Na Novém Zélandu"
       ],
       "correct": 2,
-      "explanation": "Tučňák galapážský je jediný tučňák hnízdící na rovníku. Přežívá díky studenému Humboldtovu proudu."
+      "explanation": "Tučňák galapážský je jediný tučňák hnízdící na rovníku — některé kolonie leží dokonce severně od něj. Přežívá díky studenému Humboldtovu a Cromwellovu proudu."
     },
     {
       "question": "Kolik druhů tučňáků žije dnes na Zemi?",
-      "options": ["5 druhů", "12 druhů", "18 druhů", "30 druhů"],
+      "options": [
+        "5 druhů",
+        "12 druhů",
+        "18 druhů",
+        "30 druhů"
+      ],
       "correct": 2,
       "explanation": "Podle aktuální taxonomie žije 18 druhů tučňáků, rozdělených do 6 rodů."
     },
     {
-      "question": "Co dělá samec tučňáka císařského během zimy?",
+      "question": "Do kolika rodů jsou současní tučňáci děleni?",
+      "options": [
+        "3 rody",
+        "6 rodů",
+        "9 rodů",
+        "12 rodů"
+      ],
+      "correct": 1,
+      "explanation": "Šest rodů: Aptenodytes, Pygoscelis, Spheniscus, Eudyptes, Eudyptula a Megadyptes."
+    },
+    {
+      "question": "Co dělá samec tučňáka císařského během antarktické zimy?",
       "options": [
         "Loví ryby v moři",
         "Dva měsíce zahřívá vejce na nohou",
@@ -35,15 +56,1599 @@
       "explanation": "Samec dva měsíce inkubuje vejce na nohou pod kožní řasou, zatímco samice se krmí v moři."
     },
     {
-      "question": "Proč se rockhopper (skalní tučňák) jmenuje tak, jak se jmenuje?",
+      "question": "Proč se rockhopper (tučňák skalní) jmenuje, jak se jmenuje?",
       "options": [
-        "Protože zpívá jako rock kapela",
+        "Protože zpívá jako rocková kapela",
         "Protože šplhá a skáče po strmých skalách",
         "Protože žije na mořském dně",
         "Protože má kámen v žaludku"
       ],
       "correct": 1,
-      "explanation": "Rockhoppeři šplhají ke svým koloniím po strmých skalách a skalních útesech — skáčou z kamene na kámen."
+      "explanation": "Rockhoppeři šplhají ke svým koloniím po strmých skalách a oblázkových plážích — skáčou z kamene na kámen."
+    },
+    {
+      "question": "Který druh tučňáka je nejmenší?",
+      "options": [
+        "Tučňák galapážský",
+        "Tučňák brýlový",
+        "Tučňák nejmenší (Eudyptula minor)",
+        "Tučňák uzdičkový"
+      ],
+      "correct": 2,
+      "explanation": "Tučňák nejmenší měří jen 30–33 cm a váží kolem jednoho kilogramu — je to nejmenší tučňák světa."
+    },
+    {
+      "question": "Který tučňák je jediným druhem hnízdícím v Africe?",
+      "options": [
+        "Tučňák magellanský",
+        "Tučňák brýlový",
+        "Tučňák Humboldtův",
+        "Tučňák galapážský"
+      ],
+      "correct": 1,
+      "explanation": "Tučňák brýlový (Spheniscus demersus) hnízdí na pobřeží Jihoafrické republiky a Namibie."
+    },
+    {
+      "question": "Po kom je pojmenován tučňák Humboldtův?",
+      "options": [
+        "Po objeviteli Antarktidy",
+        "Po pruském přírodovědci Alexandru von Humboldtovi",
+        "Po britské královně",
+        "Po lodi, která ho přivezla do Evropy"
+      ],
+      "correct": 1,
+      "explanation": "Druh popsal Franz Meyen v roce 1834 a pojmenoval ho po Alexandru von Humboldtovi, jenž popsal studený mořský proud u peruánského pobřeží."
+    },
+    {
+      "question": "Po kom je pojmenován tučňák magellanský?",
+      "options": [
+        "Po Kryštofu Kolumbovi",
+        "Po Vasco da Gamovi",
+        "Po Ferdinandu Magellanovi",
+        "Po Jamesi Cookovi"
+      ],
+      "correct": 2,
+      "explanation": "Magellanovi námořníci jako první z Evropanů spatřili tyto tučňáky v roce 1520 u dnešního Magellanova průlivu."
+    },
+    {
+      "question": "Který tučňák hnízdí jako jediný uvnitř hustého lesa?",
+      "options": [
+        "Tučňák oslí",
+        "Tučňák novozélandský (tawaki)",
+        "Tučňák císařský",
+        "Tučňák uzdičkový"
+      ],
+      "correct": 1,
+      "explanation": "Tučňák novozélandský pravidelně hnízdí pod kořeny stromů v chladných deštných lesích Fiordlandu."
+    },
+    {
+      "question": "Jak zní maorské jméno tučňáka novozélandského?",
+      "options": [
+        "hoiho",
+        "tawaki",
+        "kiwi",
+        "kakapo"
+      ],
+      "correct": 1,
+      "explanation": "Maorové mu říkají tawaki (nebo pokotiwha) a v mytologii ho ztotožňují s bohem hromu a blesku."
+    },
+    {
+      "question": "Jak zní maorské jméno tučňáka žlutookého?",
+      "options": [
+        "tawaki",
+        "hoiho",
+        "manu",
+        "moa"
+      ],
+      "correct": 1,
+      "explanation": "Hoiho znamená v maorštině doslova „křičící pták“ podle jeho pronikavých volání."
+    },
+    {
+      "question": "Který tučňák jako jediný nehnízdí v koloniích?",
+      "options": [
+        "Tučňák kroužkový",
+        "Tučňák žlutooký",
+        "Tučňák císařský",
+        "Tučňák oslí"
+      ],
+      "correct": 1,
+      "explanation": "Páry tučňáka žlutookého si staví hnízda ukrytá v lese tak, aby na sebe sousedé neviděli."
+    },
+    {
+      "question": "Který tučňák je endemitem ostrova Macquarie?",
+      "options": [
+        "Tučňák zlatovlasý",
+        "Tučňák královský",
+        "Tučňák Sclaterův",
+        "Tučňák snareský"
+      ],
+      "correct": 1,
+      "explanation": "Tučňák královský (Eudyptes schlegeli) hnízdí výhradně na ostrově Macquarie — jediném místě na světě."
+    },
+    {
+      "question": "Jaká je zvláštnost tučňáka Sclaterova mezi chocholatými druhy?",
+      "options": [
+        "Žlutou chocholku zatahuje pod peří",
+        "Umí ji vztyčit kolmo vzhůru jako štětky",
+        "Mění její barvu podle ročního období",
+        "Chocholku ztrácí v dospělosti"
+      ],
+      "correct": 1,
+      "explanation": "Tučňák Sclaterův je jediným tučňákem, který dokáže své žluté ozdobné peří postavit zcela kolmo vzhůru."
+    },
+    {
+      "question": "Který tučňák má nápadnou černou linku pod bradou jako řemínek helmy?",
+      "options": [
+        "Tučňák oslí",
+        "Tučňák uzdičkový",
+        "Tučňák císařský",
+        "Tučňák kroužkový"
+      ],
+      "correct": 1,
+      "explanation": "Tučňák uzdičkový (anglicky chinstrap) má charakteristický černý proužek přes bílou bradu."
+    },
+    {
+      "question": "Po kom je tučňák kroužkový (Adélie) pojmenován?",
+      "options": [
+        "Po francouzské zpěvačce",
+        "Po manželce Julese Dumonta d'Urvilla",
+        "Po dceři Charlese Darwina",
+        "Po francouzské královně"
+      ],
+      "correct": 1,
+      "explanation": "Adélie Land na pobřeží Antarktidy pojmenoval kapitán Dumont d'Urville po své manželce Adéle v roce 1840 — a tučňák nese její jméno."
+    },
+    {
+      "question": "Který tučňák má bílý kroužek kolem oka?",
+      "options": [
+        "Tučňák oslí",
+        "Tučňák kroužkový (Adélie)",
+        "Tučňák patagonský",
+        "Tučňák magellanský"
+      ],
+      "correct": 1,
+      "explanation": "Tučňák kroužkový dostal český název podle nápadného bílého kroužku kolem oka."
+    },
+    {
+      "question": "Který je druhý největší tučňák hned po císařském?",
+      "options": [
+        "Tučňák oslí",
+        "Tučňák patagonský",
+        "Tučňák kroužkový",
+        "Tučňák magellanský"
+      ],
+      "correct": 1,
+      "explanation": "Tučňák patagonský měří 85–95 cm a váží 9–18 kg — je druhý největší."
+    },
+    {
+      "question": "Který tučňák je třetí největší a je nejrychlejším plavcem ze všech?",
+      "options": [
+        "Tučňák kroužkový",
+        "Tučňák oslí",
+        "Tučňák uzdičkový",
+        "Tučňák zlatovlasý"
+      ],
+      "correct": 1,
+      "explanation": "Tučňák oslí měří 75–90 cm a v plavání patří mezi nejrychlejší tučňáky vůbec."
+    },
+    {
+      "question": "Který tučňák hnízdí výhradně na ostrovech Snares?",
+      "options": [
+        "Tučňák Sclaterův",
+        "Tučňák snareský",
+        "Tučňák novozélandský",
+        "Tučňák skalní jižní"
+      ],
+      "correct": 1,
+      "explanation": "Tučňák snareský (Eudyptes robustus) je endemit malého souostroví Snares jihozápadně od Nového Zélandu."
+    },
+    {
+      "question": "Který tučňák hnízdí pod stromy rodu Olearia?",
+      "options": [
+        "Tučňák žlutooký",
+        "Tučňák snareský",
+        "Tučňák Sclaterův",
+        "Tučňák skalní severní"
+      ],
+      "correct": 1,
+      "explanation": "Tučňák snareský je jediný tučňák, který hnízdí ve stínu korun stromů (Olearia) na ostrovech Snares."
+    },
+    {
+      "question": "Jaký je IUCN status tučňáka brýlového od roku 2024?",
+      "options": [
+        "Least Concern (LC)",
+        "Vulnerable (VU)",
+        "Endangered (EN)",
+        "Critically Endangered (CR)"
+      ],
+      "correct": 3,
+      "explanation": "V roce 2024 IUCN přeřadil tučňáka brýlového z Endangered na Critically Endangered — populace klesla pod 20 tisíc dospělých."
+    },
+    {
+      "question": "Jaký je IUCN status tučňáka kroužkového (Adélie)?",
+      "options": [
+        "Least Concern (LC)",
+        "Vulnerable (VU)",
+        "Endangered (EN)",
+        "Critically Endangered (CR)"
+      ],
+      "correct": 0,
+      "explanation": "Tučňák kroužkový má statut Least Concern — je jedním z nejpočetnějších druhů, přes 10 milionů jedinců."
+    },
+    {
+      "question": "Jaký je IUCN status tučňáka galapážského?",
+      "options": [
+        "Least Concern (LC)",
+        "Near Threatened (NT)",
+        "Vulnerable (VU)",
+        "Endangered (EN)"
+      ],
+      "correct": 3,
+      "explanation": "Tučňák galapážský je Endangered — populace asi 1 200 dospělých, silně zranitelná vůči El Niño."
+    },
+    {
+      "question": "Jaký je IUCN status tučňáka žlutookého?",
+      "options": [
+        "Least Concern (LC)",
+        "Vulnerable (VU)",
+        "Endangered (EN)",
+        "Critically Endangered (CR)"
+      ],
+      "correct": 2,
+      "explanation": "Tučňák žlutooký má statut Endangered — celosvětově zhruba 1 000 hnízdních párů."
+    },
+    {
+      "question": "Co tvoří přes 90 % stravy tučňáka kroužkového?",
+      "options": [
+        "Olihně",
+        "Ryby",
+        "Antarktický krill",
+        "Medúzy"
+      ],
+      "correct": 2,
+      "explanation": "Více než 90 % stravy tučňáka kroužkového tvoří antarktický krill (Euphausia superba)."
+    },
+    {
+      "question": "Co tvoří hlavní stravu tučňáka uzdičkového?",
+      "options": [
+        "Krill",
+        "Olihně",
+        "Tresky",
+        "Ústřice"
+      ],
+      "correct": 0,
+      "explanation": "Tučňák uzdičkový se z 90–100 % živí antarktickým krillem."
+    },
+    {
+      "question": "Co je hlavní složkou stravy tučňáka novozélandského (tawaki)?",
+      "options": [
+        "Sardinky",
+        "Kalmáři Nototodarus sloanii",
+        "Krill",
+        "Sépie"
+      ],
+      "correct": 1,
+      "explanation": "Asi 85 % stravy tučňáka novozélandského tvoří kalmáři druhu Nototodarus sloanii."
+    },
+    {
+      "question": "Která ryba je hlavní kořistí tučňáka císařského?",
+      "options": [
+        "Tuňák žlutoploutvý",
+        "Stříbrnoočko antarktické (Pleuragramma antarctica)",
+        "Sleď severní",
+        "Treska obecná"
+      ],
+      "correct": 1,
+      "explanation": "Hlavní kořistí tučňáka císařského je stříbrnoočko antarktické (Pleuragramma antarctica)."
+    },
+    {
+      "question": "Který tučňák hnízdí jako jediný v zimě přímo na mořském ledě Antarktidy?",
+      "options": [
+        "Tučňák kroužkový",
+        "Tučňák císařský",
+        "Tučňák uzdičkový",
+        "Tučňák oslí"
+      ],
+      "correct": 1,
+      "explanation": "Tučňák císařský je jediný pták, který hnízdí v antarktické zimě na pevném mořském ledě (fast ice)."
+    },
+    {
+      "question": "Která je největší kolonie tučňáka magellanského?",
+      "options": [
+        "Boulders Beach (JAR)",
+        "Punta Tombo (Argentina)",
+        "Phillip Island (Austrálie)",
+        "Snow Hill Island (Antarktida)"
+      ],
+      "correct": 1,
+      "explanation": "Punta Tombo v argentinské Patagonii čítala v roce 2014 přes 200 000 hnízdních párů."
+    },
+    {
+      "question": "Kde leží Boulders Beach, pevninská kolonie tučňáka brýlového?",
+      "options": [
+        "U Sydney v Austrálii",
+        "U Simon's Town poblíž Kapského Města",
+        "Na Falklandách",
+        "Na Galapágách"
+      ],
+      "correct": 1,
+      "explanation": "Boulders Beach v Simon's Town se stal jednou z prvních pevninských kolonií tučňáka brýlového v 80. letech 20. století."
+    },
+    {
+      "question": "Které ostrovy hostí největší kolonii tučňáka oslího (asi 40 % světové populace)?",
+      "options": [
+        "Falklandy",
+        "Kerguelovy ostrovy",
+        "Crozetovy ostrovy",
+        "Macquarie"
+      ],
+      "correct": 0,
+      "explanation": "Asi 40 % světové populace tučňáka oslího hnízdí na Falklandách."
+    },
+    {
+      "question": "Kolik vážil rekordmen tučňáka císařského?",
+      "options": [
+        "Do 15 kg",
+        "Kolem 20 kg",
+        "Přes 40 kg",
+        "Přes 70 kg"
+      ],
+      "correct": 2,
+      "explanation": "Tučňák císařský dosahuje hmotnosti až přes 40 kg (rozpětí 22–45 kg)."
+    },
+    {
+      "question": "Jak vysoký je tučňák císařský?",
+      "options": [
+        "50–70 cm",
+        "75–95 cm",
+        "100–130 cm",
+        "150–170 cm"
+      ],
+      "correct": 2,
+      "explanation": "Tučňák císařský dorůstá 100 až 130 cm — největší druh tučňáka."
+    },
+    {
+      "question": "Jak vysoký je tučňák patagonský?",
+      "options": [
+        "50–60 cm",
+        "65–75 cm",
+        "85–95 cm",
+        "100–130 cm"
+      ],
+      "correct": 2,
+      "explanation": "Tučňák patagonský měří 85–95 cm — druhý největší druh hned po císařském."
+    },
+    {
+      "question": "Kolik váží tučňák nejmenší?",
+      "options": [
+        "1–1,5 kg",
+        "3–4 kg",
+        "5–7 kg",
+        "10 kg"
+      ],
+      "correct": 0,
+      "explanation": "Tučňák nejmenší (Eudyptula minor) váží jen 1–1,5 kg."
+    },
+    {
+      "question": "Které barvy je peří na hřbetě tučňáka nejmenšího?",
+      "options": [
+        "Černé",
+        "Modravě šedé",
+        "Hnědé",
+        "Stříbrné s pruhy"
+      ],
+      "correct": 1,
+      "explanation": "Tučňák nejmenší má charakteristické modravě šedé peří — anglicky se mu proto říká „little blue penguin“."
+    },
+    {
+      "question": "Který tučňák vychází na pevninu pouze za tmy?",
+      "options": [
+        "Tučňák oslí",
+        "Tučňák žlutooký",
+        "Tučňák nejmenší",
+        "Tučňák císařský"
+      ],
+      "correct": 2,
+      "explanation": "Tučňák nejmenší jako jediný vychází na pláž až po setmění, aby se vyhnul predátorům."
+    },
+    {
+      "question": "Jak se v Peru lidově přezdívá tučňáku Humboldtovu?",
+      "options": [
+        "el caballero",
+        "pájaro-niño (pták-dítě)",
+        "pingüino loco",
+        "marinero"
+      ],
+      "correct": 1,
+      "explanation": "V Peru se mu říká pájaro-niño (pták-dítě) kvůli jeho kolébavé chůzi."
+    },
+    {
+      "question": "Kdo popsal tučňáka galapážského?",
+      "options": [
+        "Charles Darwin v roce 1839",
+        "Carl Jakob Sundevall v roce 1871",
+        "Carl Linné v roce 1758",
+        "Johann Forster v roce 1781"
+      ],
+      "correct": 1,
+      "explanation": "Druh popsal v roce 1871 švédský ornitolog Carl Jakob Sundevall."
+    },
+    {
+      "question": "Kdo popsal tučňáka Humboldtova?",
+      "options": [
+        "Alexander von Humboldt sám",
+        "Franz Julius Ferdinand Meyen v roce 1834",
+        "James Cook v roce 1772",
+        "Carolus Linnaeus v roce 1758"
+      ],
+      "correct": 1,
+      "explanation": "Druh popsal v roce 1834 německý lékař Franz Meyen a pojmenoval ho po Humboldtovi."
+    },
+    {
+      "question": "V jakém roce byl rockhopper rozdělen na druh jižní a severní?",
+      "options": [
+        "1781",
+        "1888",
+        "1953",
+        "2006"
+      ],
+      "correct": 3,
+      "explanation": "V roce 2006 vědci rozdělili rockhoppery na Eudyptes chrysocome (jižní) a E. moseleyi (severní) podle hlasu, vzhledu a genetiky."
+    },
+    {
+      "question": "Hlavní rozdíl mezi tučňákem skalním severním a jižním je především v…",
+      "options": [
+        "barvě nohou",
+        "délce a hustotě žluté chocholky",
+        "tvaru zobáku",
+        "počtu prstů"
+      ],
+      "correct": 1,
+      "explanation": "Severní rockhopper je o něco větší a jeho chocholka dorůstá výrazně delších nití."
+    },
+    {
+      "question": "Kde hnízdí tučňák skalní severní?",
+      "options": [
+        "Antarktický poloostrov",
+        "Tristan da Cunha, Gough a ostrov Amsterdam",
+        "Galapágy",
+        "Pobřeží Peru"
+      ],
+      "correct": 1,
+      "explanation": "Severní rockhopper hnízdí na Tristan da Cunha, Goughu a v Indickém oceánu na ostrovech Amsterdam a St Paul."
+    },
+    {
+      "question": "Pod jakým jménem byl tučňák zlatovlasý pojmenován v 18. století?",
+      "options": [
+        "Goldcrest",
+        "Macaroni",
+        "Royal",
+        "Crested"
+      ],
+      "correct": 1,
+      "explanation": "Macaroni v 18. století označoval mladíky s nápadnými módními doplňky — námořníci tak přirovnali ptáka s oranžovou chocholkou."
+    },
+    {
+      "question": "V jakém roce popsal Johann Friedrich von Brandt tučňáka zlatovlasého?",
+      "options": [
+        "1781",
+        "1837",
+        "1888",
+        "1921"
+      ],
+      "correct": 1,
+      "explanation": "Druh popsal německý přírodovědec Johann Friedrich von Brandt v roce 1837."
+    },
+    {
+      "question": "Kdo popsal tučňáka Sclaterova v roce 1888?",
+      "options": [
+        "Charles Darwin",
+        "Walter Lawry Buller",
+        "Philip Lutley Sclater",
+        "Johann Forster"
+      ],
+      "correct": 1,
+      "explanation": "Druh popsal novozélandský přírodovědec Walter Lawry Buller a pojmenoval ho po britském zoologovi Sclaterovi."
+    },
+    {
+      "question": "Po kom je pojmenován tučňák královský (Eudyptes schlegeli)?",
+      "options": [
+        "Po nizozemském zoologovi Hermannu Schlegelovi",
+        "Po rakouském skladateli",
+        "Po britském mořeplavci",
+        "Po objeviteli ostrova Macquarie"
+      ],
+      "correct": 0,
+      "explanation": "Druh popsal Otto Finsch v roce 1876 a pojmenoval ho po nizozemském zoologovi Hermannu Schlegelovi."
+    },
+    {
+      "question": "Které unikátní chování má tučňák žlutooký při cestě k hnízdu?",
+      "options": [
+        "Hnízdí ve stejné dutině jako jeho rodiče",
+        "Putuje až kilometr do vnitrozemí po vlastních pěšinkách",
+        "Lézt po stromech jako papoušek",
+        "Skáče přes oheň"
+      ],
+      "correct": 1,
+      "explanation": "Tučňák žlutooký si vyšlapává vlastní pěšiny do nitra pobřežních lesů — putuje k hnízdu i přes kilometr."
+    },
+    {
+      "question": "Jaký český název nese druh Pygoscelis adeliae?",
+      "options": [
+        "Tučňák kroužkový",
+        "Tučňák oslí",
+        "Tučňák uzdičkový",
+        "Tučňák císařský"
+      ],
+      "correct": 0,
+      "explanation": "Pygoscelis adeliae je tučňák kroužkový — pojmenovaný po Adélii Land na Antarktidě."
+    },
+    {
+      "question": "Jaký český název nese druh Pygoscelis papua?",
+      "options": [
+        "Tučňák uzdičkový",
+        "Tučňák kroužkový",
+        "Tučňák oslí",
+        "Tučňák patagonský"
+      ],
+      "correct": 2,
+      "explanation": "Pygoscelis papua je tučňák oslí — latinské papua je zavádějící, druh nemá s Papuou-Novou Guineou nic společného."
+    },
+    {
+      "question": "Jaký český název nese druh Pygoscelis antarcticus?",
+      "options": [
+        "Tučňák uzdičkový",
+        "Tučňák kroužkový",
+        "Tučňák oslí",
+        "Tučňák císařský"
+      ],
+      "correct": 0,
+      "explanation": "Pygoscelis antarcticus je tučňák uzdičkový (chinstrap)."
+    },
+    {
+      "question": "Jaký český název nese druh Aptenodytes forsteri?",
+      "options": [
+        "Tučňák patagonský",
+        "Tučňák císařský",
+        "Tučňák kroužkový",
+        "Tučňák oslí"
+      ],
+      "correct": 1,
+      "explanation": "Aptenodytes forsteri je tučňák císařský — pojmenovaný po Johannu Reinholdu Forsterovi."
+    },
+    {
+      "question": "Jaký český název nese druh Aptenodytes patagonicus?",
+      "options": [
+        "Tučňák magellanský",
+        "Tučňák patagonský",
+        "Tučňák Humboldtův",
+        "Tučňák brýlový"
+      ],
+      "correct": 1,
+      "explanation": "Aptenodytes patagonicus je tučňák patagonský (King penguin)."
+    },
+    {
+      "question": "Jaký český název nese druh Spheniscus demersus?",
+      "options": [
+        "Tučňák galapážský",
+        "Tučňák brýlový",
+        "Tučňák magellanský",
+        "Tučňák Humboldtův"
+      ],
+      "correct": 1,
+      "explanation": "Spheniscus demersus je tučňák brýlový — africký druh s růžovými skvrnami nad očima."
+    },
+    {
+      "question": "Jaký český název nese druh Spheniscus mendiculus?",
+      "options": [
+        "Tučňák brýlový",
+        "Tučňák magellanský",
+        "Tučňák galapážský",
+        "Tučňák Humboldtův"
+      ],
+      "correct": 2,
+      "explanation": "Spheniscus mendiculus je tučňák galapážský — jediný hnízdící na rovníku."
+    },
+    {
+      "question": "Jaký český název nese druh Spheniscus humboldti?",
+      "options": [
+        "Tučňák galapážský",
+        "Tučňák magellanský",
+        "Tučňák Humboldtův",
+        "Tučňák brýlový"
+      ],
+      "correct": 2,
+      "explanation": "Spheniscus humboldti je tučňák Humboldtův — žije podél Humboldtova proudu v Peru a Chile."
+    },
+    {
+      "question": "Jaký český název nese druh Spheniscus magellanicus?",
+      "options": [
+        "Tučňák brýlový",
+        "Tučňák magellanský",
+        "Tučňák Humboldtův",
+        "Tučňák galapážský"
+      ],
+      "correct": 1,
+      "explanation": "Spheniscus magellanicus je tučňák magellanský — největší druh rodu Spheniscus."
+    },
+    {
+      "question": "Jaký český název nese druh Eudyptes chrysolophus?",
+      "options": [
+        "Tučňák zlatovlasý (macaroni)",
+        "Tučňák skalní jižní",
+        "Tučňák Sclaterův",
+        "Tučňák královský"
+      ],
+      "correct": 0,
+      "explanation": "Eudyptes chrysolophus je tučňák zlatovlasý — největší a nejpočetnější chocholatý druh."
+    },
+    {
+      "question": "Jaký český název nese druh Eudyptes chrysocome?",
+      "options": [
+        "Tučňák skalní severní",
+        "Tučňák skalní jižní",
+        "Tučňák Sclaterův",
+        "Tučňák snareský"
+      ],
+      "correct": 1,
+      "explanation": "Eudyptes chrysocome je tučňák skalní jižní (southern rockhopper)."
+    },
+    {
+      "question": "Jaký český název nese druh Eudyptes moseleyi?",
+      "options": [
+        "Tučňák skalní jižní",
+        "Tučňák skalní severní",
+        "Tučňák zlatovlasý",
+        "Tučňák Sclaterův"
+      ],
+      "correct": 1,
+      "explanation": "Eudyptes moseleyi je tučňák skalní severní (northern rockhopper) — popsán jako samostatný druh roku 2006."
+    },
+    {
+      "question": "Jaký český název nese druh Eudyptes sclateri?",
+      "options": [
+        "Tučňák Sclaterův",
+        "Tučňák snareský",
+        "Tučňák novozélandský",
+        "Tučňák královský"
+      ],
+      "correct": 0,
+      "explanation": "Eudyptes sclateri je tučňák Sclaterův — druh s kolmo vztyčenou chocholkou."
+    },
+    {
+      "question": "Jaký český název nese druh Eudyptes robustus?",
+      "options": [
+        "Tučňák snareský",
+        "Tučňák Sclaterův",
+        "Tučňák novozélandský",
+        "Tučňák skalní jižní"
+      ],
+      "correct": 0,
+      "explanation": "Eudyptes robustus je tučňák snareský — endemit ostrovů Snares."
+    },
+    {
+      "question": "Jaký český název nese druh Eudyptes pachyrhynchus?",
+      "options": [
+        "Tučňák Sclaterův",
+        "Tučňák novozélandský (tawaki)",
+        "Tučňák žlutooký",
+        "Tučňák snareský"
+      ],
+      "correct": 1,
+      "explanation": "Eudyptes pachyrhynchus je tučňák novozélandský — maorsky tawaki."
+    },
+    {
+      "question": "Jaký český název nese druh Eudyptes schlegeli?",
+      "options": [
+        "Tučňák zlatovlasý",
+        "Tučňák Sclaterův",
+        "Tučňák královský",
+        "Tučňák patagonský"
+      ],
+      "correct": 2,
+      "explanation": "Eudyptes schlegeli je tučňák královský — endemit ostrova Macquarie."
+    },
+    {
+      "question": "Jaký český název nese druh Megadyptes antipodes?",
+      "options": [
+        "Tučňák žlutooký",
+        "Tučňák skalní severní",
+        "Tučňák oslí",
+        "Tučňák snareský"
+      ],
+      "correct": 0,
+      "explanation": "Megadyptes antipodes je tučňák žlutooký (hoiho) — endemit Nového Zélandu."
+    },
+    {
+      "question": "Jaký český název nese druh Eudyptula minor?",
+      "options": [
+        "Tučňák oslí",
+        "Tučňák nejmenší",
+        "Tučňák kroužkový",
+        "Tučňák galapážský"
+      ],
+      "correct": 1,
+      "explanation": "Eudyptula minor je tučňák nejmenší — druh dlouhý jen 30–33 cm."
+    },
+    {
+      "question": "Které druhy patří do rodu Pygoscelis?",
+      "options": [
+        "Kroužkový, oslí, uzdičkový",
+        "Císařský a patagonský",
+        "Brýlový a galapážský",
+        "Zlatovlasý a Sclaterův"
+      ],
+      "correct": 0,
+      "explanation": "Rod Pygoscelis tvoří tři druhy: tučňák kroužkový, oslí a uzdičkový."
+    },
+    {
+      "question": "Které druhy patří do rodu Aptenodytes?",
+      "options": [
+        "Brýlový a galapážský",
+        "Císařský a patagonský",
+        "Skalní jižní a severní",
+        "Oslí a uzdičkový"
+      ],
+      "correct": 1,
+      "explanation": "Rod Aptenodytes obsahuje dva největší druhy: tučňáka císařského a patagonského."
+    },
+    {
+      "question": "Kolik druhů má rod Spheniscus?",
+      "options": [
+        "2",
+        "3",
+        "4",
+        "6"
+      ],
+      "correct": 2,
+      "explanation": "Čtyři: brýlový, galapážský, Humboldtův a magellanský."
+    },
+    {
+      "question": "Co spojuje druhy rodu Eudyptes?",
+      "options": [
+        "Mají žluté ozdobné chocholky",
+        "Žijí pouze na rovníku",
+        "Hnízdí výhradně v noře",
+        "Migrují na sever"
+      ],
+      "correct": 0,
+      "explanation": "Všechny druhy rodu Eudyptes mají typické žluté chocholky nad očima."
+    },
+    {
+      "question": "Který tučňák je jediným zástupcem rodu Megadyptes?",
+      "options": [
+        "Tučňák skalní jižní",
+        "Tučňák žlutooký",
+        "Tučňák Sclaterův",
+        "Tučňák nejmenší"
+      ],
+      "correct": 1,
+      "explanation": "Tučňák žlutooký (Megadyptes antipodes) je jediný žijící zástupce svého rodu."
+    },
+    {
+      "question": "Co znamená v řečtině rodové jméno Megadyptes?",
+      "options": [
+        "Velký potápěč",
+        "Žlutý pták",
+        "Mořský klín",
+        "Tučný plavec"
+      ],
+      "correct": 0,
+      "explanation": "Megadyptes znamená „velký potápěč“ — odkazuje k tomu, že žlutooký je největším tučňákem Nového Zélandu."
+    },
+    {
+      "question": "Který tučňák hnízdí ve velkých koloniích na ostrově Macquarie a má až 850 000 párů?",
+      "options": [
+        "Tučňák zlatovlasý",
+        "Tučňák královský",
+        "Tučňák Sclaterův",
+        "Tučňák snareský"
+      ],
+      "correct": 1,
+      "explanation": "Tučňák královský má na Macquarie kolem 850 000 hnízdních párů."
+    },
+    {
+      "question": "Která země chrání ostrov Macquarie jako světové dědictví?",
+      "options": [
+        "Nový Zéland",
+        "Austrálie (UNESCO)",
+        "Velká Británie",
+        "Argentina"
+      ],
+      "correct": 1,
+      "explanation": "Ostrov Macquarie spravuje Austrálie a celé území je zapsáno na seznamu UNESCO."
+    },
+    {
+      "question": "Mezi roky 1870 a 1919 byl tučňák královský na Macquarie loven kvůli…",
+      "options": [
+        "peří na klobouky",
+        "oleji",
+        "vejcím",
+        "nárazníkům lodí"
+      ],
+      "correct": 1,
+      "explanation": "Tučňáci královští byli v té době zabíjeni asi 150 000 ročně pro tuk a olej."
+    },
+    {
+      "question": "Která populace tučňáka galapážského žije v největším množství?",
+      "options": [
+        "Na Floreaně",
+        "Na Santa Cruz",
+        "Na Fernandině a západě Isabely",
+        "Na Bartolomé"
+      ],
+      "correct": 2,
+      "explanation": "Asi 90 % populace tučňáka galapážského žije na Fernandině a západě Isabely."
+    },
+    {
+      "question": "Co srazilo populaci tučňáka Humboldtova v letech 1982–83 o 65 %?",
+      "options": [
+        "Velký El Niño",
+        "Sopka",
+        "Ropná havárie",
+        "Lov pro maso"
+      ],
+      "correct": 0,
+      "explanation": "Velké El Niño 1982–83 výrazně snížilo dostupnost ryb a populace klesla o 65 %."
+    },
+    {
+      "question": "Které mořské ryby tvoří hlavní stravu tučňáka brýlového?",
+      "options": [
+        "Tresky a platýsi",
+        "Sardinky, sardele a ančovičky",
+        "Tuňáci",
+        "Lososi"
+      ],
+      "correct": 1,
+      "explanation": "Tučňák brýlový loví drobné hejnové ryby — sardinky, sardele a ančovičky."
+    },
+    {
+      "question": "Kdo poprvé vyobrazil a popsal tučňáka brýlového v roce 1747?",
+      "options": [
+        "Carl Linné",
+        "George Edwards",
+        "Mathurin Brisson",
+        "Charles Darwin"
+      ],
+      "correct": 1,
+      "explanation": "Anglický přírodovědec George Edwards druh popsal v díle A Natural History of Uncommon Birds (1747)."
+    },
+    {
+      "question": "Který přírodovědec popsal v roce 1781 tučňáka císařského, oslího, uzdičkového i magellanského?",
+      "options": [
+        "Carl Linné",
+        "Johann Reinhold Forster",
+        "James Cook",
+        "John Frederick Miller"
+      ],
+      "correct": 1,
+      "explanation": "Forster doprovázel Cookovu druhou plavbu a v roce 1781 popsal hned několik druhů tučňáků."
+    },
+    {
+      "question": "Kdo popsal tučňáka patagonského v roce 1778?",
+      "options": [
+        "Johann Forster",
+        "John Frederick Miller",
+        "Charles Darwin",
+        "Otto Finsch"
+      ],
+      "correct": 1,
+      "explanation": "Anglický přírodovědec John Frederick Miller druh popsal v roce 1778."
+    },
+    {
+      "question": "V kterých letech vznikly pevninské kolonie tučňáka brýlového (Boulders Beach, Stony Point)?",
+      "options": [
+        "70. léta 19. století",
+        "20. léta 20. století",
+        "80. léta 20. století",
+        "Po roce 2010"
+      ],
+      "correct": 2,
+      "explanation": "Pevninské kolonie tučňáka brýlového vznikly v 80. letech 20. století."
+    },
+    {
+      "question": "Z jakého stavu populace propadl tučňák brýlový od 19. století do roku 2024?",
+      "options": [
+        "Z 1 milionu na 500 tisíc",
+        "Z 4 milionů na ~20 tisíc dospělých",
+        "Z 200 tisíc na 100 tisíc",
+        "Zůstal stabilní"
+      ],
+      "correct": 1,
+      "explanation": "Populace propadla z odhadovaných 4 milionů na začátku 19. století na ~19 800 dospělých v roce 2024."
+    },
+    {
+      "question": "Která kniha Apsleyho Cherry-Garrarda popsala pochod Britů za vejci tučňáka císařského?",
+      "options": [
+        "Endurance",
+        "The Worst Journey in the World",
+        "South",
+        "Antarctic Adventure"
+      ],
+      "correct": 1,
+      "explanation": "Cherry-Garrard popsal cestu během expedice Terra Nova 1910–1913 v knize The Worst Journey in the World."
+    },
+    {
+      "question": "Kde leží Punta Tombo?",
+      "options": [
+        "V Chile",
+        "V argentinské Patagonii (Chubut)",
+        "Na Falklandách",
+        "V Uruguayi"
+      ],
+      "correct": 1,
+      "explanation": "Punta Tombo je provinční rezervace v argentinské provincii Chubut."
+    },
+    {
+      "question": "Kdy byla Punta Tombo vyhlášena chráněnou rezervací?",
+      "options": [
+        "1959",
+        "1979",
+        "1992",
+        "2005"
+      ],
+      "correct": 1,
+      "explanation": "Punta Tombo je chráněna jako provinční rezervace od roku 1979."
+    },
+    {
+      "question": "Která kolonie je hlavní chráněnou kolonií tučňáka Humboldtova v Peru?",
+      "options": [
+        "Punta San Juan",
+        "Punta Tombo",
+        "Robben Island",
+        "Punta Espinosa"
+      ],
+      "correct": 0,
+      "explanation": "Punta San Juan je hlavní chráněnou kolonií tučňáka Humboldtova v Peru."
+    },
+    {
+      "question": "Které studené proudy umožňují tučňákovi galapážskému žít na rovníku?",
+      "options": [
+        "Golfský a Labradorský",
+        "Humboldtův a Cromwellův",
+        "Severopacifický a Aljašský",
+        "Benguelský a Agulhas"
+      ],
+      "correct": 1,
+      "explanation": "Humboldtův a Cromwellův proud chladí pobřežní vody Galapág a přinášejí ryby."
+    },
+    {
+      "question": "Který proud určuje ekologii pobřeží Peru a Chile, podél nějž žije tučňák Humboldtův?",
+      "options": [
+        "Brazilský proud",
+        "Humboldtův proud",
+        "Kalifornský proud",
+        "Antarktický cirkumpolární proud"
+      ],
+      "correct": 1,
+      "explanation": "Humboldtův proud chladí pobřeží na 15 °C i v tropech a přináší tučňákům potravu."
+    },
+    {
+      "question": "Který oceánský proud ovlivňuje populaci tučňáka brýlového v JAR?",
+      "options": [
+        "Agulhas",
+        "Benguelský",
+        "Humboldtův",
+        "Brazilský"
+      ],
+      "correct": 1,
+      "explanation": "Benguelský proud chladí západní pobřeží jižní Afriky — jeho oteplování přispívá ke kolapsu populace tučňáka brýlového."
+    },
+    {
+      "question": "Co znamenají růžové skvrny nad očima tučňáka brýlového?",
+      "options": [
+        "Známka stresu",
+        "Termoregulační orgány — žlázy odvádějící teplo",
+        "Pohlavní rozdíl",
+        "Známka stáří"
+      ],
+      "correct": 1,
+      "explanation": "Růžové skvrny jsou žlázy, které pomáhají odvádět přebytečné teplo (chlazení nadočnicových cév)."
+    },
+    {
+      "question": "Jak se přizpůsobil tučňák Humboldtův horku tropického vzduchu?",
+      "options": [
+        "Pelichá v zimě",
+        "Pouští teplo skrz neopeřené plošky na obličeji a nohou",
+        "Migruje na Antarktidu",
+        "Spí pod skálou"
+      ],
+      "correct": 1,
+      "explanation": "Vzduch v tropech může přesáhnout 30 °C, takže tučňák odvádí teplo neopeřenými ploškami."
+    },
+    {
+      "question": "Kolik let se v zajetí dožil rekordní tučňák oslí?",
+      "options": [
+        "20 let",
+        "30 let",
+        "Přes 41 let",
+        "Přes 60 let"
+      ],
+      "correct": 2,
+      "explanation": "Rekord drží tučňák oslí ze zoo Odense v Dánsku, který žil přes 41 let."
+    },
+    {
+      "question": "Kolika let se ve volné přírodě dožívá tučňák magellanský?",
+      "options": [
+        "8 let",
+        "15 let",
+        "25 let",
+        "40 let"
+      ],
+      "correct": 2,
+      "explanation": "Tučňák magellanský se ve volné přírodě dožívá kolem 25 let."
+    },
+    {
+      "question": "V jakém pásmu hnízdí tučňák skalní severní?",
+      "options": [
+        "Polární kruh",
+        "Kolem 37° jižní šířky (subtropy)",
+        "Rovník",
+        "60° jižní šířky"
+      ],
+      "correct": 1,
+      "explanation": "Severní rockhopper hnízdí v subtropickém pásmu kolem 37° jižní šířky."
+    },
+    {
+      "question": "O kolik klesla populace tučňáka skalního severního od 50. let 20. století?",
+      "options": [
+        "O 10 %",
+        "O 30 %",
+        "O 50 %",
+        "O více než 90 %"
+      ],
+      "correct": 3,
+      "explanation": "Severní rockhopper od 50. let ztratil přes 90 % populace."
+    },
+    {
+      "question": "Jaký je odhadovaný počet hnízdních párů tučňáka snareského?",
+      "options": [
+        "1 000 párů",
+        "10 000 párů",
+        "Asi 25 000 párů",
+        "1 milion párů"
+      ],
+      "correct": 2,
+      "explanation": "Tučňák snareský má kolem 25 000 hnízdních párů, populace je dlouhodobě stabilní."
+    },
+    {
+      "question": "Od kterého roku jsou Snares Islands přísně chráněné?",
+      "options": [
+        "1936",
+        "1965",
+        "1986",
+        "2010"
+      ],
+      "correct": 2,
+      "explanation": "Snares Islands jsou od roku 1986 přísně chráněnou rezervací bez invazních predátorů."
+    },
+    {
+      "question": "Kolik dospělých jedinců tučňáka skalního jižního dnes žije?",
+      "options": [
+        "0,5 milionu",
+        "Asi 2,5 milionu",
+        "10 milionů",
+        "20 milionů"
+      ],
+      "correct": 1,
+      "explanation": "Globální populace tučňáka skalního jižního je asi 2,5 milionu dospělých."
+    },
+    {
+      "question": "Kolik dospělých jedinců tučňáka uzdičkového globálně žije?",
+      "options": [
+        "0,5 milionu",
+        "2 miliony",
+        "12–15 milionů",
+        "50 milionů"
+      ],
+      "correct": 2,
+      "explanation": "Tučňák uzdičkový má globální populaci 12–15 milionů jedinců — patří k nejpočetnějším druhům."
+    },
+    {
+      "question": "Kolik dospělých jedinců tučňáka kroužkového dnes žije?",
+      "options": [
+        "Asi 100 tisíc",
+        "1 milion",
+        "Přes 10 milionů",
+        "100 milionů"
+      ],
+      "correct": 2,
+      "explanation": "Tučňák kroužkový má populaci přes 10 milionů dospělých (IUCN 2020)."
+    },
+    {
+      "question": "Kolik dospělých jedinců odhaduje IUCN u tučňáka Humboldtova?",
+      "options": [
+        "Kolem 1 000",
+        "Asi 23 800",
+        "Asi 200 000",
+        "Přes milion"
+      ],
+      "correct": 1,
+      "explanation": "IUCN v roce 2020 odhadl populaci tučňáka Humboldtova na asi 23 800 dospělých."
+    },
+    {
+      "question": "Kolik hnízdních párů tučňáka magellanského žije globálně?",
+      "options": [
+        "100 tisíc",
+        "Přes 1,3 milionu",
+        "10 tisíc",
+        "Přes 5 milionů"
+      ],
+      "correct": 1,
+      "explanation": "Tučňák magellanský má více než 1,3 milionu hnízdních párů — nejpočetnější druh rodu Spheniscus."
+    },
+    {
+      "question": "Kolik hnízdních párů tučňáka královského žije na ostrově Macquarie?",
+      "options": [
+        "10 tisíc",
+        "100 tisíc",
+        "Asi 850 tisíc",
+        "5 milionů"
+      ],
+      "correct": 2,
+      "explanation": "Populace tučňáka královského je asi 850 000 hnízdních párů, všechny na Macquarie."
+    },
+    {
+      "question": "Který tučňák se vyznačuje výraznými oranžovými skvrnami po stranách hlavy?",
+      "options": [
+        "Tučňák zlatovlasý",
+        "Tučňák patagonský",
+        "Tučňák kroužkový",
+        "Tučňák skalní severní"
+      ],
+      "correct": 1,
+      "explanation": "Tučňák patagonský má charakteristické oranžové skvrny po stranách hlavy."
+    },
+    {
+      "question": "Který tučňák má nápadný oranžovo-červený zobák a bílou skvrnu nad okem?",
+      "options": [
+        "Tučňák kroužkový",
+        "Tučňák uzdičkový",
+        "Tučňák oslí",
+        "Tučňák magellanský"
+      ],
+      "correct": 2,
+      "explanation": "Tučňák oslí má jasně oranžovo-červený zobák a bílou skvrnu nad okem."
+    },
+    {
+      "question": "Hlavní složkou stravy tučňáka zlatovlasého je…",
+      "options": [
+        "Antarktický krill",
+        "Tuňáci",
+        "Sardinky",
+        "Mušle"
+      ],
+      "correct": 0,
+      "explanation": "Antarktický krill tvoří v hnízdním období přes 90 % stravy tučňáka zlatovlasého."
+    },
+    {
+      "question": "Kolik dospělých tučňáků zlatovlasých dnes žije?",
+      "options": [
+        "Asi 100 tisíc",
+        "Asi 1 milion",
+        "Asi 18 milionů",
+        "Přes 100 milionů"
+      ],
+      "correct": 2,
+      "explanation": "Tučňák zlatovlasý má globální populaci asi 18 milionů dospělých — nejpočetnější chocholatý druh."
+    },
+    {
+      "question": "Kolik kolonií tučňáka zlatovlasého je popsáno?",
+      "options": [
+        "12",
+        "78",
+        "216",
+        "500+"
+      ],
+      "correct": 2,
+      "explanation": "Tučňák zlatovlasý hnízdí v 216 koloniích po světě."
+    },
+    {
+      "question": "Co je hlavní příčinou poklesu tučňáka kroužkového na západním Antarktickém poloostrově?",
+      "options": [
+        "Lov",
+        "Úbytek mořského ledu",
+        "Sopečná činnost",
+        "Choroby"
+      ],
+      "correct": 1,
+      "explanation": "Lokální kolonie tučňáka kroužkového ubývají kvůli úbytku mořského ledu způsobenému oteplováním."
+    },
+    {
+      "question": "Co řadí tučňáka brýlového v roce 2024 do kategorie Critically Endangered?",
+      "options": [
+        "Zemětřesení",
+        "Kolaps populací sardinek a ančoviček",
+        "Sopka",
+        "Tropické bouře"
+      ],
+      "correct": 1,
+      "explanation": "Za rychlým propadem stojí kolaps populací sardinek a ančoviček způsobený přerybařením a oteplováním Benguelského proudu."
+    },
+    {
+      "question": "Kolik dospělých jedinců tučňáka galapážského dnes žije?",
+      "options": [
+        "Asi 100 párů",
+        "Asi 1 200 dospělých",
+        "Asi 25 000 dospělých",
+        "Přes 100 tisíc dospělých"
+      ],
+      "correct": 1,
+      "explanation": "IUCN v roce 2018 odhadl populaci tučňáka galapážského na asi 1 200 dospělých — patří k nejvzácnějším druhům."
+    },
+    {
+      "question": "Která kolonie tučňáka brýlového klesla v roce 2023 pod 10 000 hnízdních párů?",
+      "options": [
+        "Boulders Beach",
+        "Robben Island",
+        "Punta Tombo",
+        "Celá populace v JAR"
+      ],
+      "correct": 3,
+      "explanation": "V roce 2023 klesl celkový počet hnízdních párů v JAR poprvé pod 10 000."
+    },
+    {
+      "question": "Kolik hnízdních párů tučňáka žlutookého žilo na pevnině Jižního ostrova v roce 2025?",
+      "options": [
+        "143",
+        "739",
+        "2 500",
+        "10 000"
+      ],
+      "correct": 0,
+      "explanation": "V roce 2025 zbývalo na pevnině pouhých 143 hnízdních párů — propad o 80 % od roku 2008."
+    },
+    {
+      "question": "Kolik hnízdních párů tučňáka žlutookého je celkem (pevnina + subantarktické ostrovy)?",
+      "options": [
+        "Kolem 100",
+        "Kolem 1 000",
+        "Kolem 10 000",
+        "Kolem 100 000"
+      ],
+      "correct": 1,
+      "explanation": "Celosvětově asi 1 000 hnízdních párů (143 na pevnině + ~577 na subantarktických ostrovech)."
+    },
+    {
+      "question": "Kolik dospělých tučňáků Sclaterových dnes žije?",
+      "options": [
+        "Asi 1 000",
+        "Asi 10 000",
+        "Asi 150 000",
+        "Přes milion"
+      ],
+      "correct": 2,
+      "explanation": "Asi 150 000 dospělých jedinců (IUCN 2020) — pokles z 230 000 párů v 70. letech 20. století."
+    },
+    {
+      "question": "Která největší kolonie tučňáka skalního severního existuje?",
+      "options": [
+        "Tristan da Cunha",
+        "Gough Island",
+        "Inaccessible Island",
+        "Macquarie"
+      ],
+      "correct": 1,
+      "explanation": "Gough Island hostí 100 000–500 000 hnízdních párů — největší kolonii severního rockhoppera."
+    },
+    {
+      "question": "Které ryby loví tučňák žlutooký především?",
+      "options": [
+        "Sardinky a ančovičky",
+        "Stříbřenky, modrá treska, červená treska a opálka",
+        "Tuňák a žralok",
+        "Lampovníci a olihně"
+      ],
+      "correct": 1,
+      "explanation": "Asi 90 % stravy tučňáka žlutookého tvoří mořské demersální ryby — stříbřenky, modrá treska, červená treska a opálka."
+    },
+    {
+      "question": "Co tvoří 60 % hmotnosti potravy tučňáka snareského?",
+      "options": [
+        "Olihně",
+        "Krill Nyctiphanes australis",
+        "Sardinky",
+        "Tresky"
+      ],
+      "correct": 1,
+      "explanation": "Hlavní kořistí tučňáka snareského je kril druhu Nyctiphanes australis — asi 60 % stravy."
+    },
+    {
+      "question": "Která ryba je hlavní složkou stravy tučňáka patagonského?",
+      "options": [
+        "Sardele peruánské",
+        "Mezopelagické lampovníky (Myctophidae)",
+        "Treska polární",
+        "Sleď"
+      ],
+      "correct": 1,
+      "explanation": "Tučňák patagonský loví zejména malé mezopelagické ryby z čeledi Myctophidae (lampovníci)."
+    },
+    {
+      "question": "Která ryba (kromě krilu) tvoří doplňkovou stravu tučňáka uzdičkového?",
+      "options": [
+        "Tuňák žlutoploutvý",
+        "Světélkující ryby (Electrona antarctica)",
+        "Pstruh",
+        "Sumec"
+      ],
+      "correct": 1,
+      "explanation": "Tučňák uzdičkový doplňuje krilovou stravu světélkujícími rybami Electrona antarctica a Krefftichthys anderssoni."
+    },
+    {
+      "question": "Která hlavní strava tvoří 76 % stravy tučňáka nejmenšího?",
+      "options": [
+        "Krill",
+        "Drobné hejnové ryby — sardinky, sardele a ančovičky",
+        "Olihně",
+        "Mušle"
+      ],
+      "correct": 1,
+      "explanation": "Asi 76 % stravy tučňáka nejmenšího tvoří drobné hejnové ryby — sardinky, sardele a ančovičky."
+    },
+    {
+      "question": "Kterou stravou jsou v doplňku známi tučňáci magellanští?",
+      "options": [
+        "Olihně a sépie",
+        "Tuňák",
+        "Krevety obří",
+        "Žraloci"
+      ],
+      "correct": 0,
+      "explanation": "Tučňák magellanský doplňuje rybí stravu olihněmi a sépiemi."
+    },
+    {
+      "question": "Do jaké hloubky se běžně potápí tučňák Humboldtův?",
+      "options": [
+        "Maximálně 5 m",
+        "Do 30 m, zaznamenáno až 54 m",
+        "Do 200 m",
+        "Nad 500 m"
+      ],
+      "correct": 1,
+      "explanation": "Tučňák Humboldtův loví obvykle do 30 m, zaznamenáno bylo až 54 m."
+    },
+    {
+      "question": "Do jaké hloubky se běžně potápí tučňák magellanský?",
+      "options": [
+        "Do 5 m",
+        "Do 20–50 m, dokumentováno až přes 90 m",
+        "Do 500 m",
+        "Do 1 km"
+      ],
+      "correct": 1,
+      "explanation": "Tučňák magellanský loví obvykle v hloubce 20–50 m, někdy až přes 90 m."
+    },
+    {
+      "question": "Která metoda hnízdění je typická pro tučňáka magellanského?",
+      "options": [
+        "Hnízdo na ledu",
+        "Hnízdní nory v písku či hlíně mezi keři calafate",
+        "Hnízdo na stromě",
+        "Plovoucí hnízdo"
+      ],
+      "correct": 1,
+      "explanation": "Tučňák magellanský hloubí hnízdní nory s metr dlouhou chodbou mezi trsy travin a keři calafate."
+    },
+    {
+      "question": "Která metoda hnízdění je typická pro tučňáka brýlového?",
+      "options": [
+        "Hnízda v norách vyhloubených do guana, pukliny, pod keři",
+        "Hnízdí v korunách stromů",
+        "Hnízdo na otevřené pláži",
+        "Hnízdí pouze v zoologických zahradách"
+      ],
+      "correct": 0,
+      "explanation": "Tučňák brýlový hnízdí v norách v guánu, ve skalních puklinách nebo pod keři."
+    },
+    {
+      "question": "Která metoda hnízdění je typická pro tučňáka kroužkového?",
+      "options": [
+        "Stavba kruhových hnízd z malých kamínků",
+        "Hloubení nory v písku",
+        "Hnízda na stromech",
+        "Hnízdo bez podestýlky"
+      ],
+      "correct": 0,
+      "explanation": "Tučňák kroužkový staví v koloniích kruhová hnízda z drobných kamínků."
+    },
+    {
+      "question": "Kde si nejmenší tučňák hloubí nory?",
+      "options": [
+        "Ve sněhu",
+        "V písku, hlíně, pod domy či v zahradních kolnách",
+        "Ve skále",
+        "V močálech"
+      ],
+      "correct": 1,
+      "explanation": "Tučňák nejmenší si hloubí nory v písku či hlíně, v městech často hnízdí pod domy a v kolnách."
+    },
+    {
+      "question": "Které ostrovy tvoří hlavní hnízdní areál tučňáka Sclaterova?",
+      "options": [
+        "Galapágy",
+        "Bounty a Antipodes Islands",
+        "Falklandy",
+        "Macquarie"
+      ],
+      "correct": 1,
+      "explanation": "Tučňák Sclaterův hnízdí na souostrovích Bounty a Antipodes mezi Novým Zélandem a Antarktidou."
+    },
+    {
+      "question": "Které ostrovy hostí tučňáka skalního severního v Indickém oceánu?",
+      "options": [
+        "Madagaskar a Mauritius",
+        "Amsterdam a St Paul",
+        "Reunion a Komory",
+        "Maledivy"
+      ],
+      "correct": 1,
+      "explanation": "Severní rockhopper hnízdí v Indickém oceánu na ostrovech Amsterdam a St Paul."
+    },
+    {
+      "question": "Která maorská legenda o tučňákovi tawaki říká, že přinesl…",
+      "options": [
+        "Vodu",
+        "Oheň z podsvětí",
+        "Hvězdy",
+        "První kámen"
+      ],
+      "correct": 1,
+      "explanation": "Maorská legenda spojuje tawaki s bohem hromu a blesku — podle ní přinesl oheň z podsvětí."
+    },
+    {
+      "question": "Které pobřeží objevila výprava Julese Dumonta d'Urvilla v roce 1840?",
+      "options": [
+        "Marie Byrd Land",
+        "Pobřeží Adélie",
+        "Antarktický poloostrov",
+        "Rossův šelfový ledovec"
+      ],
+      "correct": 1,
+      "explanation": "Francouzská expedice 21. ledna 1840 objevila pobřeží, které kapitán pojmenoval Adélie po své manželce."
+    },
+    {
+      "question": "Které severní Chile chrání 80 % světové populace tučňáka Humboldtova?",
+      "options": [
+        "Patagonie",
+        "Atacama a Coquimbo",
+        "Tierra del Fuego",
+        "Magallanes"
+      ],
+      "correct": 1,
+      "explanation": "Asi 80 % populace tučňáka Humboldtova žije v chráněných oblastech regionů Atacama a Coquimbo."
+    },
+    {
+      "question": "Která záliv u Port Elizabeth (Gqeberha) je severní hranicí areálu tučňáka brýlového?",
+      "options": [
+        "Záliv Algoa",
+        "Walvis Bay",
+        "False Bay",
+        "Záliv St. Helena"
+      ],
+      "correct": 0,
+      "explanation": "Severní hranice areálu tučňáka brýlového leží u zálivu Algoa poblíž Port Elizabeth (Gqeberha)."
+    },
+    {
+      "question": "Kterými ostrovy začíná jižní hranice areálu tučňáka magellanského v Chile?",
+      "options": [
+        "Ostrov Chiloé",
+        "Galapágy",
+        "Falklandy",
+        "Robben Island"
+      ],
+      "correct": 0,
+      "explanation": "Jižní hranice tučňáka magellanského sahá až k ostrovu Chiloé v jižním Chile."
+    },
+    {
+      "question": "Která země má největší populaci tučňáka Humboldtova mimo Peru?",
+      "options": [
+        "Argentina",
+        "Chile (Atacama, Coquimbo)",
+        "Bolívie",
+        "Ekvádor"
+      ],
+      "correct": 1,
+      "explanation": "Většina populace tučňáka Humboldtova žije v severním Chile (Atacama, Coquimbo)."
+    },
+    {
+      "question": "Kde leží severní hranice areálu tučňáka Humboldtova?",
+      "options": [
+        "U mysu Hoorn",
+        "U mysu Parinas v Peru (~4° j. š.)",
+        "U Galapág",
+        "U Antofagasty"
+      ],
+      "correct": 1,
+      "explanation": "Severní hranice je u mysu Parinas v Peru, asi na 4° jižní šířky."
+    },
+    {
+      "question": "Mimo hnízdní sezónu migruje tučňák magellanský severně až k pobřeží…",
+      "options": [
+        "Brazílie a Uruguaye",
+        "Karibiku",
+        "Mexika",
+        "USA"
+      ],
+      "correct": 0,
+      "explanation": "Mimo hnízdění tučňák magellanský migruje severně k pobřeží Uruguaye a jižní Brazílie."
+    },
+    {
+      "question": "Která vlastnost peří dělá z tučňáka tak dobrého plavce?",
+      "options": [
+        "Lehká dutá pera",
+        "Husté, vodotěsné peří promazané tukem",
+        "Pera barevně proměnlivá",
+        "Pera tvarovaná do hřebenů"
+      ],
+      "correct": 1,
+      "explanation": "Tučňáci mají husté vodotěsné peří promazávané tukem ze speciální žlázy — izoluje a chrání před vodou."
+    },
+    {
+      "question": "Co je krill?",
+      "options": [
+        "Druh ryby",
+        "Drobný korýš podobný garnátu",
+        "Mořská řasa",
+        "Druh sépie"
+      ],
+      "correct": 1,
+      "explanation": "Krill je drobný korýš (Euphausia superba a další) — základ potravního řetězce jižních moří."
+    },
+    {
+      "question": "Co znamená „pelichání“ u tučňáků?",
+      "options": [
+        "Změna pohlaví",
+        "Hromadná výměna peří, kterou tučňák tráví na souši",
+        "Stěhování",
+        "Páření"
+      ],
+      "correct": 1,
+      "explanation": "Tučňáci jednou ročně vymění peří — pelichání trvá několik týdnů, během nichž se na souši nesmí dostat do vody."
+    },
+    {
+      "question": "Co je „crèche“ (jesle) u tučňáka císařského?",
+      "options": [
+        "Hnízdo z kamínků",
+        "Skupina mláďat hlídaných několika dospělci",
+        "Loviště v moři",
+        "Migrační stezka"
+      ],
+      "correct": 1,
+      "explanation": "Crèche je skupina mláďat tučňáka císařského, která se shlukují kvůli teplu a ochraně."
+    },
+    {
+      "question": "Která tříslova patří mezi přirozené nepřátele tučňáků v moři?",
+      "options": [
+        "Lev mořský a leopard tulení",
+        "Žirafa",
+        "Polární medvěd",
+        "Kondor andský"
+      ],
+      "correct": 0,
+      "explanation": "Hlavními predátory v moři jsou lachtani, leopard tulení a kosatka."
+    },
+    {
+      "question": "Kde žije polární medvěd vůči tučňákům?",
+      "options": [
+        "Společně s nimi v Antarktidě",
+        "Na opačném pólu — v Arktidě, takže se s tučňáky v přírodě nesetká",
+        "Na Galapágách",
+        "V tropech"
+      ],
+      "correct": 1,
+      "explanation": "Polární medvědi žijí v Arktidě, tučňáci na jižní polokouli — v přírodě se nikdy nepotkají."
+    },
+    {
+      "question": "Na které polokouli žijí všichni divocí tučňáci?",
+      "options": [
+        "Severní",
+        "Jižní (a okraje rovníku)",
+        "Obou rovnoměrně",
+        "Pouze v Arktidě"
+      ],
+      "correct": 1,
+      "explanation": "Tučňáci jsou výhradně ptáci jižní polokoule — jen tučňák galapážský zasahuje k rovníku a kousek nad něj."
     }
   ]
 }
