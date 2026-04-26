@@ -18,6 +18,7 @@ const JUMP_V = -7.0;
 const MAX_FALL = 6;
 const CLIMB_SPEED = 1.1;
 const INVULN_MS = 900;
+const TRANSITION_INVULN_MS = 1500;  // longer grace period after entering a new room
 const PLAYER_W = 16;
 const PLAYER_H = 20;
 const MAX_LIVES = 5;
@@ -542,6 +543,9 @@ export class PlatformGame {
     }
     p.vx = 0;
     p.vy = 0;
+    // Daj hráčovi chvíli reagovat — jinak guardian patrolující blízko landing pozice
+    // může způsobit okamžitou smrt bez šance se uhnout.
+    p.invulnerableMs = TRANSITION_INVULN_MS;
 
     this.hooks.onSfx("zbunk");
     this.showHintIfNew(nextRoom);
