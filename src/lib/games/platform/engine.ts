@@ -10,7 +10,7 @@ import { COLS, ROWS, TILE, VIEW_H, VIEW_W } from "./types";
 import { ROOMS, START_ROOM_ID } from "./levels";
 import { drawScene } from "./render";
 
-// Physics constants tuned for 320×224 pixel world.
+// Physics constants tuned for 320×224 logical world.
 // Jump apex ≈ JUMP_V² / (2·GRAVITY) — needs to clear 4 tiles (≈64 px).
 const GRAVITY = 0.30;
 const WALK_SPEED = 1.4;
@@ -18,7 +18,7 @@ const JUMP_V = -7.0;
 const MAX_FALL = 6;
 const CLIMB_SPEED = 1.1;
 const INVULN_MS = 900;
-const TRANSITION_INVULN_MS = 1500;  // longer grace period after entering a new room
+const TRANSITION_INVULN_MS = 1500;
 const PLAYER_W = 16;
 const PLAYER_H = 20;
 const MAX_LIVES = 5;
@@ -41,8 +41,7 @@ export class PlatformGame {
     if (!ctx) throw new Error("canvas 2d missing");
     this.ctx = ctx;
     this.hooks = hooks;
-    // Render at 2× internal resolution for crisp anti-aliased graphics.
-    // ctx.scale is sticky — render code below uses logical (VIEW_W × VIEW_H) coords.
+    // 2× internal resolution for crisp anti-aliased graphics.
     const SCALE = 2;
     canvas.width = VIEW_W * SCALE;
     canvas.height = VIEW_H * SCALE;
