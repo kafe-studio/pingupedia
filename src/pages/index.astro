@@ -56,7 +56,7 @@ const metadata = {
   <section class="relative px-4 sm:px-6 pt-28 pb-16">
     <div class="mx-auto max-w-7xl">
       <header class="mb-8 md:mb-12 flex items-end gap-6 md:gap-10">
-        <div class="flex-1 min-w-0">
+        <div class="flex-1 min-w-0 max-w-3xl">
           <p class="text-sm uppercase tracking-[0.2em] text-primary/80 mb-4">
             {home.hero.eyebrow}
           </p>
@@ -65,7 +65,7 @@ const metadata = {
           </h1>
           <p class="text-lg md:text-xl text-muted-foreground max-w-2xl" set:html={home.hero.subtitle} />
         </div>
-        <div class="shrink-0 anim-float hidden sm:block">
+        <div class="shrink-0 hidden sm:block">
           <Image
             src={pinguHero}
             alt="Tučňák kroužkový"
