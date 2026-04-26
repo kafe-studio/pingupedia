@@ -139,17 +139,22 @@ export class PlatformGame {
   }
 
   private freshPlayer(room: Room): PlayerState {
-    return {
-      x: room.spawn.x,
-      y: room.spawn.y,
-      vx: 0,
-      vy: 0,
-      onGround: false,
-      onLadder: false,
-      facing: 1,
-      animPhase: 0,
-      invulnerableMs: 0,
-    };
+    let { x, y } = room.spawn;
+    // Snap up if spawn intersects solid floor.
+    const topRow = Math.floor(y / TILE);
+    const botRow = Math.floor((y + PLAYER_H - 1) / TILE);
+    const leftCol = Math.floor(x / TILE);
+    const rightCol = Math.floor((x + PLAYER_W - 1) / TILE);
+    for (let r = topRow; r <= botRow; r++) {
+      for (let c = leftCol; c <= rightCol; c++) {
+        if (this.isSolid(this.roomTileAt(room, c, r))) {
+          y = r * TILE - PLAYER_H;
+          r = botRow + 1;
+          break;
+        }
+      }
+    }
+    return { x, y, vx: 0, vy: 0, onGround: false, onLadder: false, facing: 1, animPhase: 0, invulnerableMs: 0 };
   }
 
   private emitHud(): void {
@@ -543,6 +548,21 @@ export class PlatformGame {
     }
     p.vx = 0;
     p.vy = 0;
+    // Snap player up if landing position overlaps a solid tile below — jinak by první
+    // frame X-axis collision viděl solid podlahu a zablokoval pohyb (= "neprůchozí").
+    {
+      const topRow = Math.floor(p.y / TILE);
+      const botRow = Math.floor((p.y + PLAYER_H - 1) / TILE);
+      const leftCol = Math.floor(p.x / TILE);
+      const rightCol = Math.floor((p.x + PLAYER_W - 1) / TILE);
+      let snapRow = -1;
+      for (let r = topRow; r <= botRow && snapRow < 0; r++) {
+        for (let c = leftCol; c <= rightCol; c++) {
+          if (this.isSolid(this.roomTileAt(nextRoom, c, r))) { snapRow = r; break; }
+        }
+      }
+      if (snapRow >= 0) p.y = snapRow * TILE - PLAYER_H;
+    }
     // Daj hráčovi chvíli reagovat — jinak guardian patrolující blízko landing pozice
     // může způsobit okamžitou smrt bez šance se uhnout.
     p.invulnerableMs = TRANSITION_INVULN_MS;
