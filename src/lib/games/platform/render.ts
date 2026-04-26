@@ -1126,6 +1126,7 @@ function drawBubble(ctx: CanvasRenderingContext2D, g: Guardian, cx: number, cy: 
 // =====================  PLAYER  =====================
 
 function drawPlayer(ctx: CanvasRenderingContext2D, p: GameState["player"], t: number): void {
+  // Pingu-style penguin: pointed cone-head + round body + classic black/white look.
   const flicker = p.invulnerableMs > 0 && Math.floor(p.invulnerableMs / 80) % 2 === 0;
   if (flicker) ctx.globalAlpha = 0.4;
   const x = p.x;
@@ -1137,125 +1138,155 @@ function drawPlayer(ctx: CanvasRenderingContext2D, p: GameState["player"], t: nu
   const yb = y + bob;
   const blink = Math.sin(t / 800) > 0.97;
 
-  // Cute body shadow
+  // Ground shadow
   ctx.fillStyle = "rgba(0,0,0,0.3)";
   ctx.beginPath();
   ctx.ellipse(cx, y + PLAYER_H + 1, PLAYER_W / 2 - 1, 1.5, 0, 0, Math.PI * 2);
   ctx.fill();
 
-  // Body — black with subtle gradient
-  const grad = ctx.createLinearGradient(cx, yb, cx, yb + PLAYER_H);
-  grad.addColorStop(0, "#1e293b");
-  grad.addColorStop(1, "#0f172a");
-  ctx.fillStyle = grad;
+  // ---- BODY: cone-shaped head merging into round body ----
+  // Outer black silhouette: cone (head) + circle (body)
+  ctx.fillStyle = "#0f172a";
   ctx.beginPath();
-  ctx.ellipse(cx, yb + PLAYER_H / 2, PLAYER_W / 2, PLAYER_H / 2, 0, 0, Math.PI * 2);
+  // Start at left base of cone, go up to peak, down to right base
+  ctx.moveTo(cx - 5, yb + 6);
+  ctx.quadraticCurveTo(cx, yb - 1, cx + 5, yb + 6);
+  // Right side of body — round down
+  ctx.quadraticCurveTo(cx + PLAYER_W / 2, yb + 10, cx + 6, yb + PLAYER_H - 3);
+  ctx.quadraticCurveTo(cx, yb + PLAYER_H, cx - 6, yb + PLAYER_H - 3);
+  // Left side back up
+  ctx.quadraticCurveTo(cx - PLAYER_W / 2, yb + 10, cx - 5, yb + 6);
+  ctx.closePath();
   ctx.fill();
 
-  // Belly (white, big oval)
+  // Body subtle gradient highlight on left
+  ctx.fillStyle = "rgba(255,255,255,0.08)";
+  ctx.beginPath();
+  ctx.ellipse(cx - 4, yb + 12, 2, 5, 0, 0, Math.PI * 2);
+  ctx.fill();
+
+  // ---- WHITE BELLY (oval) ----
   ctx.fillStyle = "#ffffff";
   ctx.beginPath();
-  ctx.ellipse(cx, yb + PLAYER_H / 2 + 3, PLAYER_W / 2 - 3, PLAYER_H / 2 - 5, 0, 0, Math.PI * 2);
+  ctx.ellipse(cx, yb + 13, PLAYER_W / 2 - 4, PLAYER_H / 2 - 5, 0, 0, Math.PI * 2);
   ctx.fill();
   // Belly highlight
   ctx.fillStyle = "#f1f5f9";
   ctx.beginPath();
-  ctx.ellipse(cx - 2, yb + PLAYER_H / 2 + 1, 2, 4, 0, 0, Math.PI * 2);
+  ctx.ellipse(cx - 1, yb + 11, 1.5, 3, 0, 0, Math.PI * 2);
   ctx.fill();
 
-  // Wings (dark) — flap during jump/fall
-  const wingFlap = !p.onGround ? 1 : (walkFrame === 1 || walkFrame === 3 ? 1 : 0);
+  // ---- WINGS (small paddles on sides) ----
+  const wingDown = !p.onGround ? 2 : (walkFrame === 1 || walkFrame === 3 ? 1 : 0);
   ctx.fillStyle = "#0f172a";
+  // Left wing
   ctx.beginPath();
-  ctx.ellipse(x + 1, yb + 10 - wingFlap, 2.5, 5, 0, 0, Math.PI * 2);
+  ctx.ellipse(x + 1, yb + 12 + wingDown, 2, 4, -0.2, 0, Math.PI * 2);
   ctx.fill();
+  // Right wing
   ctx.beginPath();
-  ctx.ellipse(x + PLAYER_W - 1, yb + 10 - wingFlap, 2.5, 5, 0, 0, Math.PI * 2);
+  ctx.ellipse(x + PLAYER_W - 1, yb + 12 + wingDown, 2, 4, 0.2, 0, Math.PI * 2);
   ctx.fill();
 
-  // Big eye whites
+  // ---- EYES (big white ovals near top of cone) ----
   ctx.fillStyle = "#ffffff";
   ctx.beginPath();
-  ctx.arc(cx - 3, yb + 6, 2.6, 0, Math.PI * 2);
-  ctx.arc(cx + 3, yb + 6, 2.6, 0, Math.PI * 2);
+  ctx.ellipse(cx - 2.5, yb + 5, 2, 2.5, 0, 0, Math.PI * 2);
+  ctx.fill();
+  ctx.beginPath();
+  ctx.ellipse(cx + 2.5, yb + 5, 2, 2.5, 0, 0, Math.PI * 2);
   ctx.fill();
 
-  // Pupils (track facing) + blink
+  // ---- PUPILS (track facing) or BLINK ----
   if (!blink) {
     ctx.fillStyle = "#0f172a";
-    const pupX = p.facing === 1 ? 0.6 : -0.6;
+    const pupX = p.facing === 1 ? 0.5 : -0.5;
     ctx.beginPath();
-    ctx.arc(cx - 3 + pupX, yb + 6, 1.4, 0, Math.PI * 2);
-    ctx.arc(cx + 3 + pupX, yb + 6, 1.4, 0, Math.PI * 2);
+    ctx.arc(cx - 2.5 + pupX, yb + 5.5, 1.1, 0, Math.PI * 2);
+    ctx.arc(cx + 2.5 + pupX, yb + 5.5, 1.1, 0, Math.PI * 2);
     ctx.fill();
     // Pupil shine
     ctx.fillStyle = "#ffffff";
-    ctx.fillRect(cx - 3 + pupX - 0.5, yb + 5, 1, 1);
-    ctx.fillRect(cx + 3 + pupX - 0.5, yb + 5, 1, 1);
+    ctx.fillRect(cx - 2.5 + pupX - 0.5, yb + 4.5, 0.7, 0.7);
+    ctx.fillRect(cx + 2.5 + pupX - 0.5, yb + 4.5, 0.7, 0.7);
   } else {
-    // Blink line
     ctx.strokeStyle = "#0f172a";
-    ctx.lineWidth = 1;
+    ctx.lineWidth = 0.8;
     ctx.beginPath();
-    ctx.moveTo(cx - 5, yb + 6); ctx.lineTo(cx - 1, yb + 6);
-    ctx.moveTo(cx + 1, yb + 6); ctx.lineTo(cx + 5, yb + 6);
+    ctx.moveTo(cx - 4, yb + 5); ctx.lineTo(cx - 1, yb + 5);
+    ctx.moveTo(cx + 1, yb + 5); ctx.lineTo(cx + 4, yb + 5);
     ctx.stroke();
   }
 
-  // Beak (orange triangle, follows facing)
-  ctx.fillStyle = "#f59e0b";
+  // ---- BEAK (large orange diamond, classic Pingu) ----
+  // Two layers: upper + lower beak
+  ctx.fillStyle = "#f97316";
   if (p.facing === 1) {
+    // Upper beak
+    ctx.beginPath();
+    ctx.moveTo(cx - 1, yb + 8);
+    ctx.lineTo(cx + 5, yb + 9);
+    ctx.lineTo(cx - 1, yb + 10);
+    ctx.closePath();
+    ctx.fill();
+    // Lower beak (slightly darker)
+    ctx.fillStyle = "#ea580c";
     ctx.beginPath();
     ctx.moveTo(cx - 1, yb + 10);
-    ctx.lineTo(cx + 4, yb + 11);
-    ctx.lineTo(cx - 1, yb + 12);
+    ctx.lineTo(cx + 5, yb + 9.5);
+    ctx.lineTo(cx - 1, yb + 11);
     ctx.closePath();
     ctx.fill();
+    // Beak highlight
     ctx.fillStyle = "#fbbf24";
-    ctx.fillRect(cx, yb + 10.5, 2, 1);
+    ctx.fillRect(cx, yb + 8.5, 2, 0.7);
   } else {
     ctx.beginPath();
+    ctx.moveTo(cx + 1, yb + 8);
+    ctx.lineTo(cx - 5, yb + 9);
+    ctx.lineTo(cx + 1, yb + 10);
+    ctx.closePath();
+    ctx.fill();
+    ctx.fillStyle = "#ea580c";
+    ctx.beginPath();
     ctx.moveTo(cx + 1, yb + 10);
-    ctx.lineTo(cx - 4, yb + 11);
-    ctx.lineTo(cx + 1, yb + 12);
+    ctx.lineTo(cx - 5, yb + 9.5);
+    ctx.lineTo(cx + 1, yb + 11);
     ctx.closePath();
     ctx.fill();
     ctx.fillStyle = "#fbbf24";
-    ctx.fillRect(cx - 2, yb + 10.5, 2, 1);
+    ctx.fillRect(cx - 2, yb + 8.5, 2, 0.7);
   }
 
-  // Cheek blush
-  ctx.fillStyle = "rgba(251, 113, 133, 0.5)";
-  ctx.beginPath();
-  ctx.arc(cx - 5, yb + 9, 1.2, 0, Math.PI * 2);
-  ctx.arc(cx + 5, yb + 9, 1.2, 0, Math.PI * 2);
-  ctx.fill();
-
-  // Feet (orange)
+  // ---- FEET (large orange flippers) ----
   ctx.fillStyle = "#f97316";
   if (p.onGround) {
     const ly = y + PLAYER_H - 2;
-    if (walkFrame === 0) {
-      ctx.fillRect(x + 3, ly, 4, 2);
-      ctx.fillRect(x + PLAYER_W - 7, ly, 4, 2);
+    if (walkFrame === 0 || walkFrame === 2) {
+      // Stand: feet symmetric
+      ctx.beginPath(); ctx.ellipse(x + 4, ly + 1, 3, 1.5, 0, 0, Math.PI * 2); ctx.fill();
+      ctx.beginPath(); ctx.ellipse(x + PLAYER_W - 4, ly + 1, 3, 1.5, 0, 0, Math.PI * 2); ctx.fill();
     } else if (walkFrame === 1) {
-      ctx.fillRect(x + 1, ly, 4, 2);
-      ctx.fillRect(x + PLAYER_W - 5, ly - 1, 4, 2);
-    } else if (walkFrame === 2) {
-      ctx.fillRect(x + 3, ly, 4, 2);
-      ctx.fillRect(x + PLAYER_W - 7, ly, 4, 2);
+      // Step left foot up
+      ctx.beginPath(); ctx.ellipse(x + 3, ly, 3, 1.5, 0, 0, Math.PI * 2); ctx.fill();
+      ctx.beginPath(); ctx.ellipse(x + PLAYER_W - 4, ly + 1, 3, 1.5, 0, 0, Math.PI * 2); ctx.fill();
     } else {
-      ctx.fillRect(x + 5, ly - 1, 4, 2);
-      ctx.fillRect(x + PLAYER_W - 9, ly, 4, 2);
+      // Step right foot up
+      ctx.beginPath(); ctx.ellipse(x + 4, ly + 1, 3, 1.5, 0, 0, Math.PI * 2); ctx.fill();
+      ctx.beginPath(); ctx.ellipse(x + PLAYER_W - 3, ly, 3, 1.5, 0, 0, Math.PI * 2); ctx.fill();
     }
-    // Foot toes
-    ctx.fillStyle = "#fb923c";
-    ctx.fillRect(x + 3, y + PLAYER_H - 1, 1, 1);
-    ctx.fillRect(x + PLAYER_W - 4, y + PLAYER_H - 1, 1, 1);
+    // Toe lines
+    ctx.strokeStyle = "#ea580c";
+    ctx.lineWidth = 0.5;
+    ctx.beginPath();
+    ctx.moveTo(x + 4, y + PLAYER_H - 0.5); ctx.lineTo(x + 6, y + PLAYER_H - 0.5);
+    ctx.moveTo(x + PLAYER_W - 6, y + PLAYER_H - 0.5); ctx.lineTo(x + PLAYER_W - 4, y + PLAYER_H - 0.5);
+    ctx.stroke();
   } else {
+    // Mid-air: feet tucked together
     const ly = y + PLAYER_H - 1;
-    ctx.fillRect(x + 4, ly, 3, 1);
-    ctx.fillRect(x + PLAYER_W - 7, ly, 3, 1);
+    ctx.beginPath(); ctx.ellipse(x + 5, ly, 2, 1, 0, 0, Math.PI * 2); ctx.fill();
+    ctx.beginPath(); ctx.ellipse(x + PLAYER_W - 5, ly, 2, 1, 0, 0, Math.PI * 2); ctx.fill();
   }
 
   ctx.globalAlpha = 1;
