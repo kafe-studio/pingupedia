@@ -836,13 +836,16 @@ const sklad: Room = {
     "..#............#....",
     "....................",
     "....................",
-    "####################",
+    "######......########",
   ],
   guardians: [h("seal", 4, 3, 14, 0.7), v("snowwind", 13, 4, 10, 0.6)],
   items: [i("flag", 5, 2, "sk-fl"), i("medal", 12, 6, "sk-m1"), i("crystal", 8, 9, "sk-c1")],
-  exits: [exit("left", "dilna", 18, 12)],
+  exits: [
+    exit("left", "dilna", 18, 12),
+    exit("bottom", "klubovna", 9, 1),
+  ],
   spawn: { x: 17 * TILE, y: 12 * TILE },
-  hint: "Sklad — dead-end. Trofeje sebrané?",
+  hint: "Sklad — trofeje + tajný tunel dolů.",
 };
 
 // Tree C: kolonie.top → vejcohnizdo → mladata → skolka
@@ -1302,6 +1305,7 @@ const klubovna: Room = {
   exits: [
     exit("bottom", "hriste", 8, 1),
     exit("left", "divadlo", 18, 12),
+    exit("top", "sklad", 3, 11),
   ],
   spawn: { x: 8 * TILE, y: 2 * TILE },
 };
