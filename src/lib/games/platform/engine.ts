@@ -23,6 +23,7 @@ const PLAYER_H = 20;
 const MAX_LIVES = 5;
 const HEART_SPAWN_INTERVAL_MS = 12_000; // try to spawn a new heart every 12s
 const HEART_MAX_ALIVE = 5;              // never more than this many on the map at once
+const PECK_COOLDOWN_MS = 500;           // delay between successive pecks
 
 export class PlatformGame {
   private ctx: CanvasRenderingContext2D;
@@ -32,6 +33,7 @@ export class PlatformGame {
   private lastTime = 0;
   private rafId = 0;
   private heartSpawnTimer = HEART_SPAWN_INTERVAL_MS / 2;
+  private peckCooldown = 0;
 
   constructor(canvas: HTMLCanvasElement, hooks: GameHooks) {
     const ctx = canvas.getContext("2d");
@@ -48,6 +50,8 @@ export class PlatformGame {
       // Deep-clone guardians/items so restart resets their state.
       const cloned: Room = {
         ...r,
+        // Tiles are mutated by peck; clone the array (strings inside are immutable, no deeper clone needed).
+        tiles: [...r.tiles],
         guardians: r.guardians.map((g) => ({ ...g, phase: 0 })),
         items: r.items.map((it) => ({ ...it })),
       };
@@ -86,6 +90,7 @@ export class PlatformGame {
     for (const r of ROOMS) {
       this.state.rooms.set(r.id, {
         ...r,
+        tiles: [...r.tiles],
         guardians: r.guardians.map((g) => ({ ...g, phase: 0 })),
         items: r.items.map((it) => ({ ...it })),
       });
@@ -99,6 +104,9 @@ export class PlatformGame {
     this.state.completed = false;
     this.state.gameover = false;
     this.state.lastHintRoom = null;
+    this.state.hintUntil = 0;
+    this.peckCooldown = 0;
+    this.heartSpawnTimer = HEART_SPAWN_INTERVAL_MS / 2;
     this.showHintIfNew(start);
     this.emitHud();
   }
@@ -106,6 +114,27 @@ export class PlatformGame {
   // Virtual controls for mobile buttons.
   setKey(k: "left" | "right" | "up" | "down" | "jump", down: boolean): void {
     this.keys[k] = down;
+  }
+
+  /** Peck request from keyboard or mobile button. Cooldown-gated. */
+  peck(): void {
+    if (this.peckCooldown > 0) return;
+    if (this.state.completed || this.state.gameover) return;
+    const p = this.state.player;
+    const room = this.state.rooms.get(this.state.currentRoomId)!;
+    // Target tile is right under the player's feet (center column).
+    const cx = p.x + PLAYER_W / 2;
+    const targetCol = Math.floor(cx / TILE);
+    const targetRow = Math.floor((p.y + PLAYER_H) / TILE);
+    if (targetRow >= ROWS - 1) return;       // protect outer ground row
+    if (targetCol < 1 || targetCol >= COLS - 1) return; // protect outer side cols
+    const tile = room.tiles[targetRow]?.[targetCol];
+    if (tile !== "#" && tile !== "b") return;
+    // Mutate tile string → empty.
+    const row = room.tiles[targetRow];
+    room.tiles[targetRow] = row.slice(0, targetCol) + "." + row.slice(targetCol + 1);
+    this.peckCooldown = PECK_COOLDOWN_MS;
+    this.hooks.onSfx("ding");
   }
 
   private freshPlayer(room: Room): PlayerState {
@@ -152,6 +181,7 @@ export class PlatformGame {
     else if (k === "ArrowUp" || k === "w" || k === "W") this.keys.up = true;
     else if (k === "ArrowDown" || k === "s" || k === "S") this.keys.down = true;
     else if (k === " " || k === "Enter") this.keys.jump = true;
+    else if (k === "x" || k === "X") this.peck();
     else return;
     e.preventDefault();
   };
@@ -198,6 +228,7 @@ export class PlatformGame {
     this.state.time += dt;
 
     if (!this.state.completed && !this.state.gameover) {
+      this.peckCooldown = Math.max(0, this.peckCooldown - dt);
       this.updatePlayer(dt);
       this.updateGuardians(dt);
       this.checkCollectibles();

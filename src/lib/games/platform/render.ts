@@ -141,6 +141,7 @@ export function drawScene(ctx: CanvasRenderingContext2D, state: GameState): void
       else if (t === "~") drawWater(ctx, pal, x, y, state.time);
       else if (t === "*") drawSpikes(ctx, pal, x, y);
       else if (t === "C" || t === "c") drawConveyor(ctx, pal, x, y, t === "C");
+      else if (t === "b") drawBreakable(ctx, pal, x, y);
     }
   }
 
@@ -248,6 +249,27 @@ function drawSpikes(ctx: CanvasRenderingContext2D, pal: PaletteColors, x: number
     ctx.closePath();
     ctx.fill();
   }
+}
+
+function drawBreakable(ctx: CanvasRenderingContext2D, pal: PaletteColors, x: number, y: number): void {
+  // Ledový blok s prasklinami — vizuální cue, že lze proklovat.
+  ctx.fillStyle = pal.block;
+  ctx.fillRect(x, y, TILE, TILE);
+  ctx.fillStyle = pal.blockHi;
+  ctx.fillRect(x, y, TILE, 2);
+  ctx.fillStyle = "rgba(0,0,0,0.25)";
+  ctx.fillRect(x, y + TILE - 2, TILE, 2);
+  // Praskliny — diagonal cracks
+  ctx.strokeStyle = "rgba(15,23,42,0.5)";
+  ctx.lineWidth = 0.6;
+  ctx.beginPath();
+  ctx.moveTo(x + 3, y + 2);
+  ctx.lineTo(x + 7, y + 7);
+  ctx.lineTo(x + 5, y + 11);
+  ctx.lineTo(x + 10, y + 14);
+  ctx.moveTo(x + 11, y + 3);
+  ctx.lineTo(x + 13, y + 8);
+  ctx.stroke();
 }
 
 function drawConveyor(ctx: CanvasRenderingContext2D, pal: PaletteColors, x: number, y: number, right: boolean): void {
@@ -393,27 +415,70 @@ function drawGuardian(ctx: CanvasRenderingContext2D, g: Guardian, _t: number): v
     ctx.arc(cx - 3, cy - 2, 1, 0, Math.PI * 2);
     ctx.arc(cx + 3, cy - 2, 1, 0, Math.PI * 2);
     ctx.fill();
-  } else if (g.sprite === "leopard") {
-    ctx.fillStyle = "#1e293b";
+  } else if (g.sprite === "polarbear") {
+    // Bílý lední medvěd: tělo + uši + černý nos + oči.
+    ctx.fillStyle = "#f8fafc";
     ctx.beginPath();
     ctx.ellipse(cx, cy, g.w / 2, g.h / 2, 0, 0, Math.PI * 2);
     ctx.fill();
+    // Stín pod tělem
+    ctx.fillStyle = "#cbd5e1";
+    ctx.beginPath();
+    ctx.ellipse(cx, cy + 3, g.w / 2 - 2, g.h / 4, 0, 0, Math.PI * 2);
+    ctx.fill();
+    // Uši
+    ctx.fillStyle = "#f8fafc";
+    ctx.beginPath();
+    ctx.arc(cx - g.w / 2 + 3, cy - g.h / 2 + 1, 2, 0, Math.PI * 2);
+    ctx.arc(cx + g.w / 2 - 3, cy - g.h / 2 + 1, 2, 0, Math.PI * 2);
+    ctx.fill();
+    // Vnitřek uší
+    ctx.fillStyle = "#fda4af";
+    ctx.beginPath();
+    ctx.arc(cx - g.w / 2 + 3, cy - g.h / 2 + 1, 1, 0, Math.PI * 2);
+    ctx.arc(cx + g.w / 2 - 3, cy - g.h / 2 + 1, 1, 0, Math.PI * 2);
+    ctx.fill();
+    // Oči
     ctx.fillStyle = "#0f172a";
-    for (let i = -1; i <= 1; i++) ctx.fillRect(cx + i * 4 - 1, cy - 2, 2, 1);
-    ctx.fillStyle = "#fbbf24";
-    ctx.fillRect(cx - 4, cy - 4, 2, 1);
-    ctx.fillRect(cx + 2, cy - 4, 2, 1);
-  } else if (g.sprite === "orca") {
+    ctx.fillRect(cx - 4, cy - 2, 2, 2);
+    ctx.fillRect(cx + 2, cy - 2, 2, 2);
+    // Nos
     ctx.fillStyle = "#0f172a";
+    ctx.fillRect(cx - 1, cy + 2, 3, 2);
+  } else if (g.sprite === "walrus") {
+    // Mrož: tmavě hnědé tělo, dva bílé tesáky, vousy.
+    ctx.fillStyle = "#78716c";
     ctx.beginPath();
     ctx.ellipse(cx, cy, g.w / 2, g.h / 2, 0, 0, Math.PI * 2);
     ctx.fill();
-    ctx.fillStyle = "#ffffff";
+    // Světlejší břicho
+    ctx.fillStyle = "#a8a29e";
     ctx.beginPath();
-    ctx.ellipse(cx, cy + 2, g.w / 2 - 4, g.h / 2 - 4, 0, 0, Math.PI * 2);
+    ctx.ellipse(cx, cy + 3, g.w / 2 - 4, g.h / 3, 0, 0, Math.PI * 2);
     ctx.fill();
-    ctx.fillRect(cx - 6, cy - 3, 2, 2);
-    ctx.fillRect(cx + 4, cy - 3, 2, 2);
+    // Tesáky (bílé, dolů)
+    ctx.fillStyle = "#fafaf9";
+    ctx.beginPath();
+    ctx.moveTo(cx - 4, cy + 3);
+    ctx.lineTo(cx - 3, cy + 8);
+    ctx.lineTo(cx - 2, cy + 3);
+    ctx.closePath();
+    ctx.moveTo(cx + 2, cy + 3);
+    ctx.lineTo(cx + 3, cy + 8);
+    ctx.lineTo(cx + 4, cy + 3);
+    ctx.closePath();
+    ctx.fill();
+    // Knír (vodorovné čárky)
+    ctx.strokeStyle = "#44403c";
+    ctx.lineWidth = 0.5;
+    ctx.beginPath();
+    ctx.moveTo(cx - 5, cy + 2); ctx.lineTo(cx - 1, cy + 2);
+    ctx.moveTo(cx + 1, cy + 2); ctx.lineTo(cx + 5, cy + 2);
+    ctx.stroke();
+    // Oči
+    ctx.fillStyle = "#0f172a";
+    ctx.fillRect(cx - 4, cy - 3, 2, 2);
+    ctx.fillRect(cx + 2, cy - 3, 2, 2);
   } else if (g.sprite === "petrel") {
     const flap = Math.sin(phase * 8) * 4;
     ctx.fillStyle = "#334155";

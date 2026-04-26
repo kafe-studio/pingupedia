@@ -10,7 +10,8 @@ export const VIEW_H = ROWS * TILE;   // 224
 
 export type TileChar =
   | "." // empty
-  | "#" // solid block
+  | "#" // solid block (un-breakable wall / ground)
+  | "b" // breakable ice block — solid until pecked, then becomes "."
   | "=" // platform / jumpthrough top
   | "H" // ladder
   | "~" // water / death zone
@@ -27,7 +28,7 @@ export type GuardianKind =
   ;
 
 export type GuardianSprite =
-  | "skua" | "seal" | "orca" | "leopard" | "petrel"
+  | "skua" | "seal" | "polarbear" | "petrel" | "walrus"
   | "crystal" | "snowwind" | "icicle" | "bubble";
 
 export interface Guardian {

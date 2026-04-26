@@ -65,6 +65,7 @@ import GameLayout from "../../layouts/GameLayout.astro";
         <div>← → pohyb</div>
         <div>↑ ↓ žebřík</div>
         <div>mezera = skok</div>
+        <div>X = klovnout pod sebou</div>
         <div>R = restart</div>
       </div>
 
@@ -73,7 +74,7 @@ import GameLayout from "../../layouts/GameLayout.astro";
         <button data-mobile="jump" type="button" class="rounded-lg border border-border bg-muted/30 py-3 font-bold">↑ skok</button>
         <button data-mobile="right" type="button" class="rounded-lg border border-border bg-muted/30 py-3 font-bold">→</button>
         <button data-mobile="up" type="button" class="rounded-lg border border-border bg-muted/30 py-3 font-bold">↑ žebřík</button>
-        <span></span>
+        <button data-mobile-peck type="button" class="rounded-lg border border-border bg-muted/30 py-3 font-bold">⛏ klovnout</button>
         <button data-mobile="down" type="button" class="rounded-lg border border-border bg-muted/30 py-3 font-bold">↓ žebřík</button>
       </div>
     </div>
@@ -143,6 +144,13 @@ import GameLayout from "../../layouts/GameLayout.astro";
       }
     }
   });
+
+  const peckBtn = document.querySelector<HTMLButtonElement>("[data-mobile-peck]");
+  if (peckBtn) {
+    const fire = (e: Event) => { e.preventDefault(); game?.peck(); };
+    peckBtn.addEventListener("touchstart", fire, { passive: false });
+    peckBtn.addEventListener("mousedown", fire);
+  }
 
   document.querySelectorAll<HTMLButtonElement>("[data-mobile]").forEach((btn) => {
     const dir = btn.dataset.mobile;

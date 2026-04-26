@@ -232,7 +232,7 @@ const skaly: Room = {
     "####################",
   ],
   guardians: [
-    h("leopard", 12, 3, 17, 1.2),
+    h("polarbear", 12, 3, 17, 1.2),
     d("skua", 10, 1, 5, 19, 1, 7, 0.6, 0.5),
   ],
   items: [
@@ -270,7 +270,7 @@ const more: Room = {
     "~~~~~~~~~~~~~~~~~~~~",
   ],
   guardians: [
-    h("orca", 10, 0, 19, 1.6, 36, 20),
+    h("walrus", 10, 0, 19, 1.6, 36, 20),
     h("bubble", 11, 0, 19, 0.8, 12, 12),
   ],
   items: [
@@ -384,8 +384,8 @@ const jeskyne: Room = {
     "######......########",
   ],
   guardians: [
-    h("leopard", 6, 4, 10, 1.0),
-    h("leopard", 8, 8, 15, -0.9),
+    h("polarbear", 6, 4, 10, 1.0),
+    h("polarbear", 8, 8, 15, -0.9),
   ],
   items: [
     i("crystal", 4, 4, "jes-c1"),
@@ -499,7 +499,7 @@ const vrak: Room = {
     "~~~~~~~~~~~~~~~~~~~~",
   ],
   guardians: [
-    h("orca", 11, 0, 19, 1.4, 36, 20),
+    h("walrus", 11, 0, 19, 1.4, 36, 20),
     v("bubble", 6, 7, 11, -0.8, 12, 12),
     v("bubble", 13, 7, 11, 0.9, 12, 12),
   ],
@@ -777,7 +777,7 @@ const tunelky: Room = {
     "....................",
     "####################",
   ],
-  guardians: [h("leopard", 5, 2, 10, 0.8), d("bubble", 14, 5, 0, 19, 1, 10, 0.5, 0.4, 12, 12)],
+  guardians: [h("polarbear", 5, 2, 10, 0.8), d("bubble", 14, 5, 0, 19, 1, 10, 0.5, 0.4, 12, 12)],
   items: [i("crystal", 9, 2, "tu-c1"), i("fish", 14, 5, "tu-f1")],
   exits: [
     exit("top", "zakladna", 8, 12),
@@ -949,7 +949,7 @@ const hreben: Room = {
     "....................",
     "######......########",
   ],
-  guardians: [d("skua", 6, 1, 0, 19, 1, 9, 0.8, 0.5), h("leopard", 12, 4, 16, 1.0)],
+  guardians: [d("skua", 6, 1, 0, 19, 1, 9, 0.8, 0.5), h("polarbear", 12, 4, 16, 1.0)],
   items: [i("medal", 9, 4, "hr-m1"), i("fish", 14, 7, "hr-f1"), i("crystal", 3, 8, "hr-c1")],
   exits: [
     exit("bottom", "skaly", 8, 1),
@@ -1121,7 +1121,7 @@ const kostra: Room = {
     "~~~~~~~~~~~~~~~~~~~~",
     "~~~~~~~~~~~~~~~~~~~~",
   ],
-  guardians: [h("orca", 11, 0, 19, 1.4, 36, 20), v("bubble", 6, 7, 11, -0.8, 12, 12)],
+  guardians: [h("walrus", 11, 0, 19, 1.4, 36, 20), v("bubble", 6, 7, 11, -0.8, 12, 12)],
   items: [i("medal", 9, 1, "ko-m1"), i("fish", 5, 5, "ko-f1"), i("flag", 14, 9, "ko-fl")],
   exits: [
     exit("left", "vrak", 18, 11),
@@ -1150,7 +1150,7 @@ const propast: Room = {
     "~~~~~~~~~~~~~~~~~~~~",
     "~~~~~~~~~~~~~~~~~~~~",
   ],
-  guardians: [h("orca", 8, 0, 19, 1.5, 36, 20), v("bubble", 10, 5, 10, -0.9, 12, 12)],
+  guardians: [h("walrus", 8, 0, 19, 1.5, 36, 20), v("bubble", 10, 5, 10, -0.9, 12, 12)],
   items: [i("fish", 9, 2, "pr-f1"), i("medal", 16, 7, "pr-m1")],
   exits: [
     exit("left", "kostra", 18, 9),
@@ -1208,7 +1208,7 @@ const ruda: Room = {
     "....................",
     "####################",
   ],
-  guardians: [h("leopard", 4, 3, 8, 0.9), d("crystal", 14, 5, 1, 18, 1, 10, 0.6, 0.5)],
+  guardians: [h("polarbear", 4, 3, 8, 0.9), d("crystal", 14, 5, 1, 18, 1, 10, 0.6, 0.5)],
   items: [i("crystal", 5, 2, "ru-c1"), i("crystal", 16, 4, "ru-c2"), i("crystal", 8, 6, "ru-c3")],
   exits: [
     exit("top", "jeskyne", 8, 12),
@@ -1237,7 +1237,7 @@ const labyrinth: Room = {
     "....................",
     "####################",
   ],
-  guardians: [h("leopard", 4, 6, 18, 1.0), v("snowwind", 9, 1, 11, 0.7)],
+  guardians: [h("polarbear", 4, 6, 18, 1.0), v("snowwind", 9, 1, 11, 0.7)],
   items: [i("crystal", 7, 1, "la-c1"), i("medal", 15, 9, "la-m1"), i("fish", 1, 11, "la-f1")],
   exits: [
     exit("left", "ruda", 18, 12),
