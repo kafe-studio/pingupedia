@@ -41,9 +41,14 @@ export class PlatformGame {
     if (!ctx) throw new Error("canvas 2d missing");
     this.ctx = ctx;
     this.hooks = hooks;
-    ctx.imageSmoothingEnabled = false;
-    canvas.width = VIEW_W;
-    canvas.height = VIEW_H;
+    // Render at 2× internal resolution for crisp anti-aliased graphics.
+    // ctx.scale is sticky — render code below uses logical (VIEW_W × VIEW_H) coords.
+    const SCALE = 2;
+    canvas.width = VIEW_W * SCALE;
+    canvas.height = VIEW_H * SCALE;
+    ctx.imageSmoothingEnabled = true;
+    ctx.imageSmoothingQuality = "high";
+    ctx.scale(SCALE, SCALE);
 
     const rooms = new Map<string, Room>();
     let totalItems = 0;
