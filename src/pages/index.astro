@@ -1,9 +1,11 @@
 ---
 export const prerender = false;
 import type { ImageMetadata } from "astro";
+import { Image } from "astro:assets";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import NoCropImage from "../components/media/NoCropImage.astro";
 import Mascot from "../components/mascot/Mascot.astro";
+import pinguHero from "../assets/mascot/pingu-hero.png";
 import { getSiteConfig } from "../lib/site";
 import { getHomePage } from "../lib/pages";
 import { pickSpeciesOfDay } from "../lib/species-of-day";
@@ -64,7 +66,14 @@ const metadata = {
           <p class="text-lg md:text-xl text-muted-foreground max-w-2xl" set:html={home.hero.subtitle} />
         </div>
         <div class="shrink-0 anim-float hidden sm:block">
-          <Mascot pose="ahoj" size={220} loading="eager" />
+          <Image
+            src={pinguHero}
+            alt="Tučňák kroužkový"
+            widths={[280, 360, 520]}
+            sizes="(min-width: 1024px) 360px, 280px"
+            loading="eager"
+            class="h-auto w-[280px] md:w-[360px] drop-shadow-2xl"
+          />
         </div>
       </header>
 
