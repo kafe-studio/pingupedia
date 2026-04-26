@@ -207,10 +207,10 @@ const prusmyk: Room = {
   ],
   exits: [
     exit("left", "kolonie", 18, 12),
-    exit("right", "skaly", 1, 12),
+    exit("right", "skaly", 3, 12),
     exit("top", "schody", 10, 12),
   ],
-  spawn: { x: 3 * TILE, y: 12 * TILE },
+  spawn: { x: 8 * TILE, y: 12 * TILE },
 };
 
 const skaly: Room = {
@@ -244,7 +244,7 @@ const skaly: Room = {
     i("medal", 6, 7, "skaly-m1"),
   ],
   exits: [
-    exit("left", "prusmyk", 18, 12),
+    exit("left", "prusmyk", 13, 12),
     exit("right", "more", 1, 5),
     exit("top", "hreben", 10, 12),
   ],
@@ -358,8 +358,8 @@ const galapagos: Room = {
     i("flag", 2, 9, "gala-fl"),
   ],
   exits: [
-    exit("left", "rybarska-dira", 18, 11),
-    exit("right", "vrak", 1, 11),
+    exit("left", "rybarska-dira", 15, 11),
+    exit("right", "vrak", 5, 11),
     exit("top", "sopka", 10, 12),
   ],
   spawn: { x: 2 * TILE, y: 12 * TILE },
@@ -435,7 +435,7 @@ const stanice: Room = {
     i("medal", 8, 10, "stan-m1"),
   ],
   exits: [
-    exit("left", "jeskyne", 18, 12),
+    exit("left", "jeskyne", 17, 12),
     exit("right", "laborator", 1, 12),
   ],
   spawn: { x: 4 * TILE, y: 12 * TILE },
@@ -727,7 +727,7 @@ const spizirna: Room = {
   items: [i("fish", 9, 2, "sp-f1"), i("egg", 16, 6, "sp-e1"), i("medal", 2, 8, "sp-m1")],
   exits: [
     exit("right", "kuchyne", 1, 12),
-    exit("left", "komin", 18, 12),
+    exit("left", "komin", 13, 12),
   ],
   spawn: { x: 17 * TILE, y: 12 * TILE },
 };
@@ -755,7 +755,7 @@ const komin: Room = {
   guardians: [v("snowwind", 9, 1, 11, 0.7), v("icicle", 12, 0, 11, 0.9)],
   items: [i("crystal", 9, 7, "ko-c1"), i("medal", 6, 4, "ko-m1")],
   exits: [exit("right", "spizirna", 1, 12)],
-  spawn: { x: 17 * TILE, y: 12 * TILE },
+  spawn: { x: 13 * TILE, y: 12 * TILE },
   hint: "Komín — dead-end. Vyber a vrať se.",
 };
 
@@ -1246,7 +1246,7 @@ const labyrinth: Room = {
     exit("left", "ruda", 18, 12),
     exit("right", "planety", 1, 12),
   ],
-  spawn: { x: 2 * TILE, y: 12 * TILE },
+  spawn: { x: 10 * TILE, y: 12 * TILE },
 };
 
 const planety: Room = {
@@ -1330,7 +1330,7 @@ const divadlo: Room = {
   items: [i("medal", 9, 0, "dv-m1"), i("flag", 14, 4, "dv-fl"), i("fish", 4, 7, "dv-f1")],
   exits: [
     exit("right", "klubovna", 1, 12),
-    exit("left", "kino", 18, 12),
+    exit("left", "kino", 13, 12),
   ],
   spawn: { x: 17 * TILE, y: 12 * TILE },
 };
@@ -1358,7 +1358,7 @@ const kino: Room = {
   guardians: [v("snowwind", 9, 4, 11, 0.7), h("petrel", 7, 1, 18, 0.7)],
   items: [i("medal", 9, 1, "ki-m1"), i("flag", 5, 6, "ki-fl"), i("crystal", 14, 9, "ki-c1")],
   exits: [exit("right", "divadlo", 1, 12)],
-  spawn: { x: 17 * TILE, y: 12 * TILE },
+  spawn: { x: 13 * TILE, y: 12 * TILE },
   hint: "Kino — promítací sál, dead-end.",
 };
 
