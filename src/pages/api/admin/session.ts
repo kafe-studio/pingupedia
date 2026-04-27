@@ -2,7 +2,9 @@ import type { APIRoute } from "astro";
 import {
   buildClearCookie,
   buildSetCookie,
+  constantTimeEqualString,
   createSessionCookie,
+  isSameOriginRequest,
 } from "../../../lib/admin/session";
 
 export const prerender = false;
@@ -21,6 +23,10 @@ function loginRedirect(url: URL, error: string, next: string): Response {
 }
 
 export const POST: APIRoute = async ({ request, url }) => {
+  if (!isSameOriginRequest(request, url)) {
+    return new Response("Forbidden", { status: 403 });
+  }
+
   const form = await request.formData();
   const action = form.get("action");
   const secure = url.protocol === "https:";
@@ -52,7 +58,7 @@ export const POST: APIRoute = async ({ request, url }) => {
     );
   }
 
-  if (typeof password !== "string" || password !== adminEnv.ADMIN_PASSWORD) {
+  if (typeof password !== "string" || !(await constantTimeEqualString(password, adminEnv.ADMIN_PASSWORD))) {
     return loginRedirect(url, "bad-password", next);
   }
 

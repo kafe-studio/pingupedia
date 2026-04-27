@@ -68,6 +68,7 @@ export class Game {
   private status: GameStatus = "playing";
   private lastTime = 0;
   private rafId = 0;
+  private disposed = false;
   private hooks: GameHooks;
 
   constructor(canvas: HTMLCanvasElement, hooks: GameHooks) {
@@ -83,6 +84,7 @@ export class Game {
   }
 
   destroy(): void {
+    this.disposed = true;
     cancelAnimationFrame(this.rafId);
     window.removeEventListener("keydown", this.onKeyDown);
     window.removeEventListener("keyup", this.onKeyUp);
@@ -163,6 +165,7 @@ export class Game {
   }
 
   private tick(time: number): void {
+    if (this.disposed) return;
     const dt = this.lastTime === 0 ? 16 : Math.min(40, time - this.lastTime);
     this.lastTime = time;
     if (this.status === "playing") this.update(dt);

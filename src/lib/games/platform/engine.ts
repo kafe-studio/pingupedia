@@ -33,6 +33,7 @@ export class PlatformGame {
   private keys = { left: false, right: false, up: false, down: false, jump: false };
   private lastTime = 0;
   private rafId = 0;
+  private disposed = false;
   private heartSpawnTimer = HEART_SPAWN_INTERVAL_MS / 2;
   private peckCooldown = 0;
 
@@ -88,6 +89,7 @@ export class PlatformGame {
   }
 
   destroy(): void {
+    this.disposed = true;
     cancelAnimationFrame(this.rafId);
     window.removeEventListener("keydown", this.onKeyDown);
     window.removeEventListener("keyup", this.onKeyUp);
@@ -260,6 +262,7 @@ export class PlatformGame {
   // --- Physics ---
 
   private tick(time: number): void {
+    if (this.disposed) return;
     const dt = this.lastTime === 0 ? 16 : Math.min(40, time - this.lastTime);
     this.lastTime = time;
     this.state.time += dt;

@@ -146,6 +146,7 @@ export class PuzzleGame {
   private state: PuzzleState;
   private hooks: PuzzleHooks;
   private rafId = 0;
+  private disposed = false;
 
   constructor(
     canvas: HTMLCanvasElement,
@@ -183,6 +184,7 @@ export class PuzzleGame {
   }
 
   destroy(): void {
+    this.disposed = true;
     cancelAnimationFrame(this.rafId);
     window.removeEventListener("resize", this.onResize);
     this.canvas.removeEventListener("pointerdown", this.onPointerDown);
@@ -442,6 +444,7 @@ export class PuzzleGame {
   };
 
   private tick(): void {
+    if (this.disposed) return;
     this.draw();
     this.rafId = requestAnimationFrame(() => this.tick());
   }

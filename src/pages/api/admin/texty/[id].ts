@@ -1,6 +1,7 @@
 import type { APIRoute } from "astro";
 import { createGitHubClient, GitHubError } from "../../../../lib/admin/github";
 import { parseContentId, toRepoPath } from "../../../../lib/admin/content-paths";
+import { isSameOriginRequest } from "../../../../lib/admin/session";
 
 export const prerender = false;
 
@@ -83,7 +84,8 @@ export const GET: APIRoute = async ({ params }) => {
   }
 };
 
-export const PUT: APIRoute = async ({ params, request }) => {
+export const PUT: APIRoute = async ({ params, request, url }) => {
+  if (!isSameOriginRequest(request, url)) return json({ error: "Forbidden" }, 403);
   const resolved = resolvePath(params.id);
   if (!resolved.ok) return json({ error: resolved.error }, 400);
 

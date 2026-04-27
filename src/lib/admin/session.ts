@@ -44,6 +44,14 @@ function constantTimeEqual(a: Uint8Array, b: Uint8Array): boolean {
   return diff === 0;
 }
 
+export async function constantTimeEqualString(a: string, b: string): Promise<boolean> {
+  const [da, db] = await Promise.all([
+    crypto.subtle.digest("SHA-256", encoder.encode(a)),
+    crypto.subtle.digest("SHA-256", encoder.encode(b)),
+  ]);
+  return constantTimeEqual(new Uint8Array(da), new Uint8Array(db));
+}
+
 export async function createSessionCookie(
   secret: string,
   ttlMs: number = DEFAULT_TTL_MS,
@@ -62,10 +70,9 @@ export async function verifySessionCookie(
   const [encoded, sig] = cookieValue.split(".");
   if (!encoded || !sig) return false;
 
-  const expectedSig = b64urlEncode(await hmacSha256(secret, encoded));
-  if (!constantTimeEqual(b64urlDecode(sig), b64urlDecode(expectedSig))) return false;
-
   try {
+    const expectedSig = b64urlEncode(await hmacSha256(secret, encoded));
+    if (!constantTimeEqual(b64urlDecode(sig), b64urlDecode(expectedSig))) return false;
     const payload = JSON.parse(new TextDecoder().decode(b64urlDecode(encoded))) as SessionPayload;
     return typeof payload.exp === "number" && payload.exp > Date.now();
   } catch {
@@ -78,7 +85,7 @@ export function buildSetCookie(value: string, maxAgeSec: number, secure: boolean
     `${COOKIE_NAME}=${value}`,
     "Path=/",
     "HttpOnly",
-    "SameSite=Lax",
+    "SameSite=Strict",
     `Max-Age=${maxAgeSec}`,
   ];
   if (secure) parts.push("Secure");
@@ -90,11 +97,25 @@ export function buildClearCookie(secure: boolean): string {
     `${COOKIE_NAME}=`,
     "Path=/",
     "HttpOnly",
-    "SameSite=Lax",
+    "SameSite=Strict",
     "Max-Age=0",
   ];
   if (secure) parts.push("Secure");
   return parts.join("; ");
+}
+
+export function isSameOriginRequest(request: Request, requestUrl: URL): boolean {
+  const origin = request.headers.get("origin");
+  if (origin) return origin === requestUrl.origin;
+  const referer = request.headers.get("referer");
+  if (referer) {
+    try {
+      return new URL(referer).origin === requestUrl.origin;
+    } catch {
+      return false;
+    }
+  }
+  return false;
 }
 
 export function readCookie(header: string | null | undefined): string | undefined {
