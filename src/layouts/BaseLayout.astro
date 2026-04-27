@@ -56,6 +56,11 @@ const finalIgnoreTitleTemplate = metadata?.ignoreTitleTemplate || false;
     </div>
     <ThemeSwitcher />
     <script>
+      import { bootstrap } from "../i18n/client";
+      bootstrap();
+      document.addEventListener("astro:page-load", bootstrap);
+    </script>
+    <script>
       function setupReveal() {
         const vh = window.innerHeight;
         document.querySelectorAll(".reveal:not(.active)").forEach(el => {
