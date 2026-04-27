@@ -38,8 +38,8 @@ Cílové jazyky napříč Sprint 006/007: **cs (primary), en (Sprint 006), de/fr
 
 Run 017 byl rozdělen na 017a + 017b kvůli scope (6 itemů > 5 limit per `/work`):
 
-- [ ] Run 017a — i18n základy: config, schema, helper modul → docs/sprints/006-i18n-foundation/run-017a-foundations.md
-- [ ] Run 017b — page routing: per-locale getStaticPaths, LangSwitcher URL, 404 fallback (TBD soubor)
+- [x] Run 017a — i18n základy: config, schema, helper modul → docs/sprints/006-i18n-foundation/run-017a-foundations.done.md
+- [ ] Run 017b — page routing: per-locale getStaticPaths, LangSwitcher URL, 404 fallback → docs/sprints/006-i18n-foundation/run-017b-page-routing.md
 - [ ] Run 018 — EN pilot: 4 druhy (cisarsky, brylovy, krouzkovy, osli) frontmatter + body, ověření E2E
 - [ ] Run 019 — EN: zbývajících 14 druhů (frontmatter + body)
 - [ ] Run 020 — EN: page JSONs (home, hry, filmy, o-projektu, quiz) + site config + Sprint 006 audit

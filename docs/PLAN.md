@@ -1,7 +1,7 @@
 # Plan: pingupedia
 
 **Vytvořeno:** 2026-04-19
-**Aktualizováno:** 2026-04-27 (přidán Sprint 006/007/008 — i18n full content translation do 7 jazyků; mezitím proběhly ad-hoc runy: hry, security hardening, JSON API, fact-check, diving data, i18n MVP)
+**Aktualizováno:** 2026-04-27 (Run 017a hotov — i18n základy: config + content collections per-locale + helpery)
 
 ## Cíl
 
@@ -62,8 +62,8 @@ Populárně-naučná encyklopedie všech druhů tučňáků v češtině pro dě
 **Stav:** in progress (Run 017a hotov 2026-04-27)
 **Cíl:** Architektura per-locale content + plný překlad do EN (pilot, ověří pipeline). Cílové jazyky napříč Sprint 006/007: **cs (primary), en, de, fr, es, it, pl, uk**.
 
-- [x] Run 017a — i18n základy: Astro i18n config + page collections per-locale glob patterns + species-i18n helper (mcp) → `docs/sprints/006-i18n-foundation/run-017a-foundations.md`
-- [ ] Run 017b — page routing: per-locale getStaticPaths, LangSwitcher URL refactor, 404 fallback (mcp)
+- [x] Run 017a — i18n základy: Astro i18n config + page collections per-locale glob patterns + species-i18n helper (mcp) → `docs/sprints/006-i18n-foundation/run-017a-foundations.done.md`
+- [ ] Run 017b — page routing: per-locale getStaticPaths, LangSwitcher URL refactor, 404 fallback (mcp) → `docs/sprints/006-i18n-foundation/run-017b-page-routing.md`
 - [ ] Run 018 — EN pilot: 4 druhy (cisarsky, brylovy, krouzkovy, osli) × frontmatter + body, ověřit E2E pipeline
 - [ ] Run 019 — EN: zbývajících 14 druhů × frontmatter + body
 - [ ] Run 020 — EN: page JSONs (home, hry, filmy, o-projektu, quiz) + site config + Sprint 006 audit
