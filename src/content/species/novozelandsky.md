@@ -29,7 +29,7 @@ diving:
   typicalDurationSec: 60
   maxDurationSec: 120
   note: "Loví v pobřežních vodách Fiordlandu a u Stewartova ostrova; hlavní kořistí jsou kalmary (Nototodarus sloanii), doplňkově krill a drobné ryby."
-population: "Přibližně 2 500 hnízdících párů podle průzkumů z 90. let; odhady jsou pravděpodobně podhodnocené, ale trend je klesající. V roce 2013 překlasifikovalo Novozélandské ministerstvo ochrany přírody stav na „ohrožený“ (endangered)."
+population: "Nejistá: starší pozemní průzkumy z 90. let mluvily o ~2 500–3 000 hnízdících párech, novější extrapolace BirdLife uvádí 12 500–50 000 dospělých jedinců. Trend je klesající. V roce 2013 překlasifikovalo Novozélandské ministerstvo ochrany přírody stav na „ohrožený“ (endangered)."
 historicalNotes: "Popsal ho v roce 1845 anglický zoolog George Robert Gray. Maorové mu říkají „tawaki“ nebo „pokotiwha“ a v mytologii ho ztotožňují s bohem hromu a blesku — podle legendy přinesl právě tawaki oheň z podsvětí. Historicky se areál táhl dále na sever, ale byl výrazně zúžen lovem v polynéské éře a pozdějším kontaktem s koloniálními osadníky."
 hero:
   src: "../../assets/penguins/novozelandsky/hero.jpg"
@@ -51,7 +51,7 @@ sources:
   - url: "https://datazone.birdlife.org/species/factsheet/fiordland-penguin-eudyptes-pachyrhynchus"
     title: "Fiordland Penguin — BirdLife International factsheet"
     type: "BirdLife"
-updatedAt: "2026-04-21"
+updatedAt: "2026-04-27"
 gallery:
   - src: "../../assets/penguins/novozelandsky/gallery-1.jpg"
     alt: "Eudyptes pachyrhynchus"
@@ -122,4 +122,4 @@ gallery:
 
 Tučňák novozélandský je jediný tučňák, který hnízdí hluboko v deštném pralese. Žije jen na jihozápadních pobřežích Nového Zélandu a Stewartova ostrova, kde si páry vyhrabávají hnízdo pod kořeny stromů, mezi mechem nebo ve skalních puklinách — často stovky metrů od pobřeží. Dospělec měří kolem 55 centimetrů a váží něco přes tři kilogramy. Od ostatních druhů rodu Eudyptes se pozná po výrazném žlutém chocholu nad okem, který připomíná podlouhlé peří svěšené dozadu, a po bílých pruzích na tvářích, které se u ostatních chocholatých tučňáků nevyskytují.
 
-Maorům byl dobře znám už před příchodem Evropanů — říkali mu **tawaki** a ztotožňovali ho s bohem hromu a blesku. Jedna z legend říká, že tawaki přinesl lidem oheň z podsvětí. Vědecky druh popsal v roce 1845 anglický zoolog George Robert Gray. Dnes je to jeden z nejvzácnějších tučňáků světa — odhady mluví o přibližně 2 500 hnízdících párech a populace stále klesá. Novozélandské úřady ho v roce 2013 přeřadily do kategorie „ohrožený", zatímco IUCN ho stále vede jako „téměř ohrožený".
+Maorům byl dobře znám už před příchodem Evropanů — říkali mu **tawaki** a ztotožňovali ho s bohem hromu a blesku. Jedna z legend říká, že tawaki přinesl lidem oheň z podsvětí. Vědecky druh popsal v roce 1845 anglický zoolog George Robert Gray. Dnes je to jeden z nejvzácnějších tučňáků světa, ale jeho přesný stav je nejistý: starší pozemní průzkumy z 90. let mluvily zhruba o 2 500–3 000 hnízdících párech, novější extrapolace BirdLife přitom odhadují 12 500–50 000 dospělých jedinců. Populace klesá. Novozélandské úřady druh v roce 2013 přeřadily do kategorie „ohrožený", IUCN ho stále vede jako „téměř ohrožený".

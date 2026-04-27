@@ -4,7 +4,7 @@ nameLat: "Eudyptula minor"
 nameEn: "Little penguin"
 genus: "Eudyptula"
 iucnStatus: "LC"
-description: "Nejmenší tučňák světa — sotva metr od špičky zobáku po špičku ploutve, váží kolem kilogramu. Typické je modravě šedé peří na hřbetě. Jediný druh tučňáka, který na pevninu vylézá pouze za tmy."
+description: "Nejmenší tučňák světa — vysoký přibližně 30–33 cm a vážící kolem kilogramu. Typické je modravě šedé peří na hřbetě. Jediný druh tučňáka, který na pevninu vylézá pouze za tmy."
 size:
   heightCm:
     - 30
@@ -139,7 +139,7 @@ sources:
   - url: "https://datazone.birdlife.org/species/factsheet/little-penguin-eudyptula-minor"
     title: "Little Penguin — BirdLife International factsheet"
     type: "BirdLife"
-updatedAt: "2026-04-19"
+updatedAt: "2026-04-27"
 ---
 
 Tučňák nejmenší si své jméno zaslouží doslova — dospělý jedinec měří sotva třiatřicet centimetrů a váží okolo kilogramu. Je tedy o dvacet centimetrů menší než kočka a skoro pětkrát lehčí než jeho nejbližší novozélandský příbuzný, tučňák žlutooký. Jeho nejcharakterističtějším znakem je ale barva peří — místo černé má na hřbetě tmavě **modravě šedé** peří, které v australské a novozélandské angličtině dalo vzniknout také přezdívce *blue penguin*. Další unikát: tučňák nejmenší je jediný druh tučňáka, který se po celý rok vrací na pevninu **pouze za tmy**. Přes den jsou ptáci buď na moři, nebo zalezlí v norách, a teprve po západu slunce se v dlouhé procesi vrací k hnízdu. Na australských a novozélandských pobřežích je toto noční defilé turistickou atrakcí — například na ostrově Phillip Island ve Victorii jihovýchodně od Melbourne se průchod „modrých tučňáků" pláží sleduje z tribun každý večer.
