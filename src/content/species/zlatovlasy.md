@@ -25,6 +25,12 @@ diet:
   - "Ryby z čeledi Myctophidae (lampovníci) a mramorovec (Notothenia rossii)"
 lifespan:
   wildYears: 11
+diving:
+  typicalDepthM: 60
+  maxDepthM: 100
+  typicalDurationSec: 90
+  maxDurationSec: 120
+  note: "Loví krill v hlubších vodách než ostatní rod Eudyptes — typický ponor 15–70 m, maximum kolem 100 m. Většina ponorů je kratší než 2 minuty."
 population: "Globální populace přibližně 18 milionů dospělých jedinců v 216 hnízdních koloniích. Přestože jde o nejpočetnějšího tučňáka vůbec, od 70. let 20. století je zaznamenáván plošný pokles — na Jižní Georgii populace klesla o polovinu."
 historicalNotes: "Druh popsal v roce 1837 německý přírodovědec Johann Friedrich von Brandt. Jméno **macaroni** pochází z 18. století — takhle Angličané posměšně označovali kontinentálně oblečené mladíky s nápadnými módními doplňky, a když námořníci poprvé uviděli ptáka s oranžovou chocholkou, přirovnali ho právě k nim."
 hero:

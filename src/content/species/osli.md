@@ -7,11 +7,11 @@ iucnStatus: "LC"
 description: "Třetí největší druh tučňáka s nápadným oranžově-červeným zobákem a bílou skvrnou nad okem. Nejrychlejší plavec ze všech tučňáků."
 size:
   heightCm:
-    - 75
+    - 70
     - 90
   weightKg:
-    - 5
-    - 9
+    - 4.5
+    - 8.5
 distribution:
   - "Antarktický poloostrov"
   - "Falklandy (asi 40 % světové populace)"
@@ -26,7 +26,13 @@ diet:
 lifespan:
   wildYears: 13
   captivityYears: 41
-population: "Odhad kolem 774 000 dospělých jedinců (IUCN 2020), přes 300 000 hnízdících párů. Populace celkově rostoucí — druh se šíří jižněji pravděpodobně v reakci na oteplování."
+diving:
+  typicalDepthM: 80
+  maxDepthM: 200
+  typicalDurationSec: 90
+  maxDurationSec: 420
+  note: "Nejvšestrannější lovec — typicky kolem 80 m, nejhlubší zaznamenaný ponor 200 m, nejdelší 7 minut."
+population: "Odhad kolem 774 000 dospělých jedinců (IUCN 2020), přes 300 000 hnízdících párů. Globální trend je stabilní, ale s rychlými poklesy v některých klíčových koloniích — druh se postupně šíří jižněji pravděpodobně v reakci na oteplování."
 historicalNotes: "Druh poprvé popsal německo-skotský přírodovědec Johann Reinhold Forster v roce 1781, když cestoval na Falklandy. Latinské jméno papua je zavádějící — druh nemá s Papuou-Novou Guineou nic společného, Forster ho pravděpodobně odvodil z nepřesné lokalitní poznámky. V péči lidí se dožívá výjimečně dlouho: rekord drží tučňák ze zoologické zahrady Odense v Dánsku, který žil přes 41 let."
 hero:
   src: "../../assets/penguins/osli/hero.jpg"

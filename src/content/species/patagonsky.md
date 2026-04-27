@@ -26,7 +26,13 @@ diet:
 lifespan:
   wildYears: 20
   captivityYears: 26
-population: "Globální populace přes 1 milion rozmnožujících se párů (IUCN). Trend dlouhodobě stabilní nebo mírně rostoucí, místně se projevuje tlak teplotních anomálií v oceánu na dostupnost kořisti."
+diving:
+  typicalDepthM: 150
+  maxDepthM: 343
+  typicalDurationSec: 300
+  maxDurationSec: 552
+  note: "Druhý nejhlubší potápěč mezi tučňáky. Běžně loví v hloubkách 100–300 m, rekordní ponor dosáhl 343 m a 9,2 minuty (souostroví Crozet)."
+population: "Globální populace přes 2,2 milionu hnízdních párů (IUCN/BirdLife). Trend dlouhodobě stabilní nebo mírně rostoucí, místně se projevuje tlak teplotních anomálií v oceánu na dostupnost kořisti."
 historicalNotes: "Druh popsal v roce 1778 anglický přírodovědec John Frederick Miller. Jméno patagonicus se historicky odvozovalo od jižních břehů Jižní Ameriky, přestože těžiště populace leží na subantarktických ostrovech. V 19. století byl druh intenzivně lovený pro olej, dnes patří mezi ikony sub-Antarktidy."
 hero:
   src: "../../assets/penguins/patagonsky/hero.jpg"
@@ -127,4 +133,4 @@ updatedAt: "2026-04-19"
 
 Tučňák patagonský je po císařském druhý největší žijící tučňák — dospělí samci váží kolem 15 kilogramů a měří téměř metr. Od svého bližšího příbuzného se liší štíhlejší postavou a nápadnými oranžovými skvrnami po stranách hlavy, které plynule přecházejí do žluté náprsenky. Rozdíl je i v životním stylu: císařský hnízdí na antarktickém mořském ledu, zatímco patagonský vyhledává mírnější pobřeží subantarktických ostrovů, kde si kolonie staví přímo na pláních bez sněhu. Hnízdění se neobejde bez dvou zim — cyklus rozmnožování trvá čtrnáct až šestnáct měsíců a rodiče se v péči o jediné mládě pravidelně střídají.
 
-Druh popsal roku 1778 anglický přírodovědec John Frederick Miller a v 19. století se stal obětí intenzivního lovu — z jejich podkožního tuku se získával olej pro osvětlení. Populace se od té doby výrazně zotavila a dnes IUCN odhaduje přes milion rozmnožujících se párů. Největší kolonie na ostrově Jižní Georgie čítají stovky tisíc ptáků a patří mezi nejpůsobivější přírodní podívané planety. Do budoucna se vědci obávají dopadů oteplování oceánu na populace lampovníků, které tvoří hlavní složku stravy — posun jejich výskytu totiž tučňáka nutí plavat při hledání potravy dál od hnízda.
+Druh popsal roku 1778 anglický přírodovědec John Frederick Miller a v 19. století se stal obětí intenzivního lovu — z jejich podkožního tuku se získával olej pro osvětlení. Populace se od té doby výrazně zotavila a dnes IUCN odhaduje přes 2,2 milionu hnízdních párů. Největší kolonie na ostrově Jižní Georgie čítají stovky tisíc ptáků a patří mezi nejpůsobivější přírodní podívané planety. Do budoucna se vědci obávají dopadů oteplování oceánu na populace lampovníků, které tvoří hlavní složku stravy — posun jejich výskytu totiž tučňáka nutí plavat při hledání potravy dál od hnízda.

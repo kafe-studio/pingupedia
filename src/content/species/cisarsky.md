@@ -3,7 +3,7 @@ nameCs: "Tučňák císařský"
 nameLat: "Aptenodytes forsteri"
 nameEn: "Emperor penguin"
 genus: "Aptenodytes"
-iucnStatus: "NT"
+iucnStatus: "EN"
 description: "Největší a nejhlouběji se potápějící druh tučňáka. Jediný pták, který hnízdí v antarktické zimě přímo na mořském ledě."
 size:
   heightCm:
@@ -22,8 +22,14 @@ diet:
 lifespan:
   wildYears: 20
   captivityYears: 40
-population: "Odhad ~250 000–600 000 hnízdících párů (IUCN, 2020). Populace klesá kvůli úbytku mořského ledu."
-historicalNotes: "Poprvé vědecky popsán v 19. století během britských antarktických expedic. Hnízdní chování v zimě bylo detailně zdokumentováno až expedicí Terra Nova (1910–1913); Apsley Cherry-Garrard popsal pochod za vejci v knize The Worst Journey in the World."
+diving:
+  typicalDepthM: 150
+  maxDepthM: 564
+  typicalDurationSec: 360
+  maxDurationSec: 1932
+  note: "Nejhlubší ponor zaznamenaný u tučňáka císařského dosáhl 564 m, nejdelší 32,2 minuty (Wienecke et al. 2007, Atka Bay); starší rekord 535 m / 21,8 min (Kooyman 1990, McMurdo Sound). Běžné lovecké ponory jsou kolem 150 m a trvají 3–6 minut."
+population: "Odhad ~256 500 hnízdních párů, tj. zhruba 595 000 dospělých jedinců (Fretwell & Trathan 2020, satelitní sčítání 61 kolonií). Populace klesá kvůli úbytku mořského ledu — IUCN v roce 2026 změnil status z Near Threatened na Endangered."
+historicalNotes: "Druh formálně popsal anglický zoolog George Robert Gray v roce 1844 a pojmenoval ho po německém přírodovědci Johannu Reinholdu Forsterovi. Hnízdní chování v zimě bylo detailně zdokumentováno až expedicí Terra Nova (1910–1913); Apsley Cherry-Garrard popsal pochod za vejci v knize *The Worst Journey in the World*."
 hero:
   src: "../../assets/penguins/cisarsky/hero.jpg"
   alt: "Dva dospělí tučňáci císařští s mládětem na sněhu na Snow Hill Islandu, Antarktida"
@@ -165,7 +171,7 @@ sources:
   - url: "https://www.iucnredlist.org/species/22697752/157658053"
     title: "Aptenodytes forsteri — IUCN Red List"
     type: "IUCN"
-    note: "Status Near Threatened, trend populace klesající"
+    note: "Status Endangered (od 2026, předtím Near Threatened), trend populace klesající"
   - url: "http://datazone.birdlife.org/species/factsheet/emperor-penguin-aptenodytes-forsteri"
     title: "Emperor Penguin — BirdLife International factsheet"
     type: "BirdLife"

@@ -7,11 +7,11 @@ iucnStatus: "CR"
 description: "Jediný tučňák hnízdící v Africe — pobřeží JAR a Namibie. Charakteristické růžové skvrny nad očima a černý hrudní pás. V roce 2024 přeřazen z EN na kriticky ohrožený, populace pod 20 tisíc dospělých."
 size:
   heightCm:
-    - 45
+    - 60
     - 70
   weightKg:
     - 2.2
-    - 4.5
+    - 3.5
 distribution:
   - "Pobřeží Jihoafrické republiky a Namibie — přibližně 24 ostrovů a několik pevninských kolonií"
   - "Boulders Beach (Simon's Town) a Stony Point (Betty's Bay) — pevninské kolonie vzniklé v 80. letech 20. století"
@@ -25,6 +25,12 @@ diet:
 lifespan:
   wildYears: 15
   captivityYears: 30
+diving:
+  typicalDepthM: 25
+  maxDepthM: 130
+  typicalDurationSec: 69
+  maxDurationSec: 275
+  note: "Lov sardelí a sardinek v pobřežních vodách Benguelského proudu — průměrná hloubka kolem 25 m, výjimečně až 130 m. Typický ponor trvá kolem 70 s, nejdelší zaznamenaný 275 s (cca 4,5 minuty)."
 population: "Populace propadla z odhadovaných **4 milionů ptáků na počátku 19. století** na přibližně **19 800 dospělých jedinců v roce 2024**. V roce 2023 klesl počet hnízdních párů v JAR pod 10 000. IUCN proto druh v roce 2024 přeřadil z *Endangered* na **Critically Endangered** — za rychlým propadem stojí především kolaps populací sardinek a ančoviček způsobený přerybařením a oteplováním Benguelského proudu."
 historicalNotes: "Druh poprvé vyobrazil a popsal anglický přírodovědec George Edwards v roce 1747 v díle *A Natural History of Uncommon Birds*. Vědecky jej pojmenoval Carl Linné v 10. vydání *Systema Naturae* v roce 1758 jako *Diomedea demersa*; do rodu Spheniscus jej o dva roky později (1760) zařadil francouzský zoolog Mathurin Jacques Brisson. V 19. a první polovině 20. století byly ostrovní kolonie intenzivně drancovány pro vejce a guáno, což druh prakticky nikdy plně nezotavil."
 hero:

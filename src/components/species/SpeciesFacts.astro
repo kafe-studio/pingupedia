@@ -6,7 +6,7 @@ interface Props {
 }
 
 const { species } = Astro.props;
-const { genus, size, distribution, habitat, diet, lifespan, population } = species.data;
+const { genus, size, distribution, habitat, diet, lifespan, diving, population } = species.data;
 
 const fmtRange = ([min, max]: readonly [number, number], unit: string) =>
   min === max ? `${min} ${unit}` : `${min}–${max} ${unit}`;
@@ -14,12 +14,39 @@ const fmtRange = ([min, max]: readonly [number, number], unit: string) =>
 const fmtYears = (years: number) =>
   `${years} ${years === 1 ? "rok" : years >= 2 && years <= 4 ? "roky" : "let"}`;
 
+const fmtDuration = (sec: number) => {
+  if (sec < 60) return `${sec} s`;
+  const m = Math.floor(sec / 60);
+  const s = sec % 60;
+  return s === 0 ? `${m} min` : `${m} min ${s} s`;
+};
+
 const heightLabel = fmtRange(size.heightCm, "cm");
 const weightLabel = fmtRange(size.weightKg, "kg");
 const wildLabel = fmtYears(lifespan.wildYears);
 const captivityLabel = lifespan.captivityYears !== undefined
   ? fmtYears(lifespan.captivityYears)
   : null;
+
+const depthTypical = diving?.typicalDepthM;
+const depthMax = diving?.maxDepthM;
+const depthLabel = depthTypical && depthMax
+  ? `obvykle ${depthTypical} m, max ${depthMax} m`
+  : depthMax
+    ? `až ${depthMax} m`
+    : depthTypical
+      ? `obvykle ${depthTypical} m`
+      : null;
+
+const durTypical = diving?.typicalDurationSec;
+const durMax = diving?.maxDurationSec;
+const durationLabel = durTypical && durMax
+  ? `obvykle ${fmtDuration(durTypical)}, max ${fmtDuration(durMax)}`
+  : durMax
+    ? `až ${fmtDuration(durMax)}`
+    : durTypical
+      ? `obvykle ${fmtDuration(durTypical)}`
+      : null;
 ---
 
 <section class="px-6 py-12 bg-muted/50" aria-labelledby="facts-heading">
@@ -72,6 +99,30 @@ const captivityLabel = lifespan.captivityYears !== undefined
           </ul>
         </dd>
       </div>
+      {(depthLabel || durationLabel) && (
+        <div class="reveal sm:col-span-2 lg:col-span-3">
+          <dt class="text-xs uppercase tracking-wide text-muted-foreground mb-1">Potápění</dt>
+          <dd class="text-base text-foreground/90">
+            {depthLabel && (
+              <>
+                <span class="font-semibold">Hloubka:</span> <span>{depthLabel}</span>
+              </>
+            )}
+            {depthLabel && durationLabel && <span class="mx-2 text-muted-foreground">·</span>}
+            {durationLabel && (
+              <>
+                <span class="font-semibold">Délka ponoru:</span> <span>{durationLabel}</span>
+              </>
+            )}
+            {diving?.note && (
+              <>
+                <br />
+                <span class="text-sm text-muted-foreground">{diving.note}</span>
+              </>
+            )}
+          </dd>
+        </div>
+      )}
       {population && (
         <div class="reveal sm:col-span-2 lg:col-span-3">
           <dt class="text-xs uppercase tracking-wide text-muted-foreground mb-1">Populace</dt>

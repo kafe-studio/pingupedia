@@ -24,6 +24,12 @@ diet:
   - "Drobné ryby zachycované při ponorech"
 lifespan:
   wildYears: 10
+diving:
+  typicalDepthM: 30
+  maxDepthM: 110
+  typicalDurationSec: 90
+  maxDurationSec: 120
+  note: "Málo prozkoumaný druh, dostupné údaje pocházejí z ojedinělých studií u ostrovů Antipodes a Bounty."
 population: "Přibližně 150 000 dospělých jedinců v současnosti (IUCN 2020). Ještě v 70. letech 20. století se populace odhadovala na 230 000 hnízdních párů, od té doby tedy klesla zhruba o polovinu. V posledních dvou desetiletích se pokles podle pozorování zpomalil, celkový trend ale zůstává sestupný."
 historicalNotes: "Druh popsal v roce 1888 novozélandský právník a přírodovědec Walter Lawry Buller a pojmenoval ho po britském zoologovi **Philipu Lutleym Sclaterovi**, tehdejším sekretáři Zoologické společnosti v Londýně. V maorštině nese druh jméno *tawaki nana hī*. Schopnost postavit žluté chocholky kolmo vzhůru je naprosto unikátní — žádný jiný tučňák své ozdobné peří takto neovládá."
 hero:

@@ -24,8 +24,14 @@ diet:
 lifespan:
   wildYears: 15
   captivityYears: 20
+diving:
+  typicalDepthM: 6
+  maxDepthM: 50
+  typicalDurationSec: 60
+  maxDurationSec: 90
+  note: "Mělké ponory do chladného Cromwellova proudu, kde loví drobné rybky. Většina ponorů je krátká, do 1 minuty."
 population: "Přibližně **1 200 dospělých jedinců** (IUCN 2018), průměr za poslední roky kolem 1 500. Populace silně osciluje s cyklem **ENSO** (El Niño – Southern Oscillation) — velké El Niño dokážou populaci srazit až o 77 % během jediné sezóny. Druh patří mezi nejohroženější tučňáky světa."
-historicalNotes: "Druh popsal v roce 1871 švédský ornitolog Carl Jakob Sundevall. Předpokládá se, že předci druhu doputovali na Galapágy podél **Humboldtova proudu** z chladných vod jižního Pacifiku a v izolaci rovníkového souostroví se zmenšili i zesvětlili ve srovnání se svými kontinentálními příbuznými (*Spheniscus humboldti* a *S. magellanicus*). Je to jediný druh tučňáka, který hnízdí severně od rovníku — některé kolonie na severním cípu Isabely leží na 0°41'N."
+historicalNotes: "Druh popsal v roce 1871 švédský ornitolog Carl Jakob Sundevall. Předpokládá se, že předci druhu doputovali na Galapágy podél **Humboldtova proudu** z chladných vod jižního Pacifiku a v izolaci rovníkového souostroví se zmenšili i zesvětlili ve srovnání se svými kontinentálními příbuznými (*Spheniscus humboldti* a *S. magellanicus*). Je to jediný druh tučňáka, který hnízdí severně od rovníku — severní cíp Isabely (sopky Volcán Wolf a Volcán Ecuador) leží přímo na rovníku a několik kilometrů na sever, takže nejsevernější kolonie se nacházejí těsně v severní polokouli."
 hero:
   src: "../../assets/penguins/galapazsky/hero.jpg"
   alt: "Tučňák galapážský stojící na lávové skále v Elizabeth Bay na ostrově Isabela, Galapágy"

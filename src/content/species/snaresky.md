@@ -23,6 +23,12 @@ diet:
   - "Hlavonožci a drobní korýši doplňkově (~10 %)"
 lifespan:
   wildYears: 11
+diving:
+  typicalDepthM: 30
+  maxDepthM: 120
+  typicalDurationSec: 90
+  maxDurationSec: 180
+  note: "Loví krill a olihně v okolí ostrovů Snares. Většina ponorů je do 30 m."
 population: "Přibližně 25 000 hnízdních párů, tedy kolem 50 000 dospělců. Populace je považovaná za dlouhodobě stabilní, protože Snares Islands jsou od roku 1986 přísně chráněnou přírodní rezervací bez invazních predátorů a bez stálé lidské přítomnosti."
 historicalNotes: "První exempláře byly na ostrovech Snares sebrané už v roce 1874 a pojmenované Frederickem Huttonem jako *Catarrhactes atratus*, ale holotyp se bohužel ztratil při převozu do Velké Británie v moři. Současné platné vědecké jméno *Eudyptes robustus* navrhl až v roce 1953 novozélandský ornitolog Walter Reginald Brook Oliver na základě nového srovnání s ostatními druhy rodu."
 hero:

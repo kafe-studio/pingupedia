@@ -25,8 +25,14 @@ diet:
 lifespan:
   wildYears: 7
   captivityYears: 25
+diving:
+  typicalDepthM: 15
+  maxDepthM: 67
+  typicalDurationSec: 21
+  maxDurationSec: 90
+  note: "Krátké, mělké ponory blízko hladiny — průměrný ponor jen 21 sekund. Maximální zaznamenaná hloubka 66,7 m."
 population: "Globálně odhadem přes 500 000 hnízdních párů. Největší populace žije v Tasmánii (110 000–190 000 párů) a kolem australské pevniny. Celkově druh zůstává hojný a IUCN ho vede jako *Least Concern*, místní populace v urbanizovaných oblastech ale ubývají kvůli predátorům (psi, kočky) a srážkám s auty."
-historicalNotes: "Druh popsal v roce 1781 německý přírodovědec Johann Reinhold Forster během druhé Cookovy plavby — téhož roku popsal i tučňáka císařského a tučňáka skalního jižního. Dlouho trval taxonomický spor, zda je *Eudyptula minor* jediný druh nebo dva: australské populace se geneticky liší od novozélandských a někteří autoři je oddělují jako *Eudyptula novaehollandiae*. IUCN i BirdLife v roce 2026 pracují s pojetím **jednoho druhu** s několika poddruhy."
+historicalNotes: "Druh popsal v roce 1781 německý přírodovědec Johann Reinhold Forster během druhé Cookovy plavby — téhož roku popsal i tučňáka magellanského, oslího a skalního jižního. Dlouho trval taxonomický spor, zda je *Eudyptula minor* jediný druh nebo dva: australské populace se geneticky liší od novozélandských a někteří autoři je oddělují jako *Eudyptula novaehollandiae*. IUCN i BirdLife v roce 2026 pracují s pojetím **jednoho druhu** s několika poddruhy."
 hero:
   src: "../../assets/penguins/nejmensi/hero.jpg"
   alt: "Tučňák nejmenší s modravě šedým peřím na hřbetě na pláži Waipatiko Beach na Novém Zélandu"

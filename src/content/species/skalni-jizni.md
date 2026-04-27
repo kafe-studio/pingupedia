@@ -25,8 +25,14 @@ diet:
   - "Korýši amfipodi a drobné mezopelagické ryby"
 lifespan:
   wildYears: 10
+diving:
+  typicalDepthM: 30
+  maxDepthM: 100
+  typicalDurationSec: 90
+  maxDurationSec: 180
+  note: "Loví krill, krevety a malé ryby. Většina ponorů je mělká, do 30 m a kratší než 1 minuta."
 population: "Přibližně 2,5 milionu dospělých jedinců (IUCN 2020). Populace za posledních 30 let klesla asi o 30 %, hlavně kvůli změnám dostupnosti potravy ve vodách kolem Falkland a Patagonie."
-historicalNotes: "Druh vědecky popsal v roce 1781 německý přírodovědec Johann Reinhold Forster, který doprovázel Jamese Cooka při jeho druhé plavbě kolem světa. Dříve byli všichni rockhoppeři považováni za jeden druh, v roce 2006 se ale skupina rozdělila na jižního (E. chrysocome) a severního (E. moseleyi) na základě rozdílů v hlasovém projevu, vzhledu a genetice."
+historicalNotes: "Druh vědecky popsal v roce 1781 německý přírodovědec Johann Reinhold Forster, který doprovázel Jamese Cooka při jeho druhé plavbě kolem světa. Dříve byli všichni rockhoppeři považováni za jeden druh, v roce 2006 navrhli Banks et al. rozdělit skupinu na jižního (E. chrysocome) a severního (E. moseleyi) na základě rozdílů v hlasovém projevu, vzhledu a genetice; toto rozdělení postupně přijaly hlavní taxonomické autority."
 hero:
   src: "../../assets/penguins/skalni-jizni/hero.jpg"
   alt: "Tučňák skalní jižní stojící na skále s dobře viditelnou žlutou chocholkou"
@@ -118,4 +124,4 @@ updatedAt: "2026-04-19"
 
 Tučňák skalní jižní patří mezi nejmenší a zároveň nejcharakterističtější tučňáky vůbec. Dospělec má sotva přes padesát centimetrů a váží okolo dvou a půl kilogramu, přesto je v koloniích neuvěřitelně hlasitý a velmi odolný. Nápadnou vizitkou jsou divoké žluté chocholky nad očima a jasně červené duhovky, které ho odlišují od ostatních chocholatých tučňáků. Díky silným nohám a velké hbitosti dokáže šplhat po skalách do kolonií položených desítky metrů nad mořem — místo kolébání mezi kameny prostě skáče snožmo, odtud i anglický název **rockhopper**.
 
-Druh vědecky popsal v roce 1781 Johann Reinhold Forster během druhé Cookovy expedice. Ještě na začátku 21. století byli všichni rockhoppeři považováni za jeden druh, teprve v roce 2006 se severní populace z ostrovů kolem Tristan da Cunha a St. Paul oddělila jako samostatný druh *Eudyptes moseleyi* — na základě rozdílů v hlase, velikosti chocholky a genetice. Globální populace jižního rockhoppera se za posledních třicet let snížila zhruba o třetinu a IUCN ho proto vede jako **zranitelný**. Hlavními hrozbami jsou změny oceánských proudů ovlivňující dostupnost krilu a historicky také introdukovaní predátoři na některých ostrovech.
+Druh vědecky popsal v roce 1781 Johann Reinhold Forster během druhé Cookovy expedice. Ještě na začátku 21. století byli všichni rockhoppeři považováni za jeden druh, v roce 2006 navrhli Banks et al. severní populaci z ostrovů kolem Tristan da Cunha a St. Paul vyčlenit jako samostatný druh *Eudyptes moseleyi* — na základě rozdílů v hlase, velikosti chocholky a genetice. Globální populace jižního rockhoppera se za posledních třicet let snížila zhruba o třetinu a IUCN ho proto vede jako **zranitelný**. Hlavními hrozbami jsou změny oceánských proudů ovlivňující dostupnost krilu a historicky také introdukovaní predátoři na některých ostrovech.

@@ -8,16 +8,15 @@ description: "Středně velký tučňák s nápadnou černou linkou pod bradou, 
 size:
   heightCm:
     - 68
-    - 78
+    - 76
   weightKg:
     - 3.2
-    - 5.5
+    - 5.3
 distribution:
   - "Jižní Georgie, Jižní Sandwichovy ostrovy"
   - "Jižní Orkneje, Jižní Shetlandy"
   - "Bouvetův ostrov, Balleny, Falklandy"
-  - "Crozetovy a Kerguelovy ostrovy"
-  - "Pobřeží Antarktidy"
+  - "Pobřeží Antarktidy a Antarktický poloostrov"
 habitat: "Hnízdí v obřích koloniích na skalnatých svazích subantarktických ostrovů a Antarktického poloostrova. Loví v pelagické i benthické zóně, při hnízdění se obvykle drží do 30–60 km od pobřeží."
 diet:
   - "Krill antarktický (Euphausia superba) — až 90–100 % stravy"
@@ -25,8 +24,14 @@ diet:
   - "Malé kořisti 1,5–6 cm velké"
 lifespan:
   wildYears: 20
-population: "Odhad 12–15 milionů jedinců globálně. Jeden z nejpočetnějších tučňáků, ale recenzní studie z roku 2020 ukazuje v některých oblastech pokles až o 57 % za posledních 25 let — pravděpodobně důsledek úbytku krillu kvůli klimatické změně."
-historicalNotes: "Druh popsal v roce 1781 stejný přírodovědec, který popsal i tučňáka oslího — Johann Reinhold Forster. Původně ho zařadil do rodu Aptenodytes (společně s tučňákem císařským), do rodu Pygoscelis byl přeřazen až v roce 1990 na základě srovnání DNA. Český název „uzdičkový“ i anglický „chinstrap“ odkazují na tenkou černou linku, která přechází přes bílou bradu — připomíná řemínek od helmy."
+diving:
+  typicalDepthM: 45
+  maxDepthM: 121
+  typicalDurationSec: 50
+  maxDurationSec: 108
+  note: "Specialista na antarktický krill v povrchových vodách. Většina ponorů je velmi krátká — průměr 30 sekund."
+population: "Globální populace se podle studie Strycker et al. (2020) odhaduje na zhruba **3,42 milionu hnízdních párů**, tj. cca 8 milionů dospělých jedinců (BirdLife/IUCN 2018). Patří mezi nejpočetnější tučňáky, ale recenzní studie z roku 2020 ukazuje v některých oblastech pokles až o 57 % za posledních 25 let — pravděpodobně důsledek úbytku krillu kvůli klimatické změně."
+historicalNotes: "Druh popsal v roce 1781 stejný přírodovědec, který popsal i tučňáka oslího — Johann Reinhold Forster. Původně ho zařadil pod jméno *Aptenodytes antarctica*; do rodu *Pygoscelis*, který v roce 1832 zavedl německý zoolog Johann Georg Wagler, byl chinstrap formálně přesunut v pozdějším taxonomickém přepracování (G. Turbott, 1990). Český název „uzdičkový“ i anglický „chinstrap“ odkazují na tenkou černou linku, která přechází přes bílou bradu — připomíná řemínek od helmy."
 hero:
   src: "../../assets/penguins/uzdickovy/hero.jpg"
   alt: "Dospělý tučňák uzdičkový na ostrově Deception v Antarktidě"
@@ -118,4 +123,4 @@ updatedAt: "2026-04-19"
 
 Tučňák uzdičkový je snadno rozpoznatelný podle tenké černé linky pod bradou, která se táhne od ucha k uchu a vypadá jako řemínek od helmy — odtud české jméno „uzdičkový" i anglické „chinstrap". Měří kolem 70 centimetrů a váží do pěti kilogramů. Žije v obřích koloniích na skalnatých svazích subantarktických ostrovů, kde páry hnízdí v nápadně hustých skupinách — hnízdo od hnízda bývá vzdálené jen o délku natažené hlavy.
 
-Druh popsal v roce 1781 Johann Reinhold Forster, stejný přírodovědec, který popsal i tučňáka oslího. Zajímavé je, že původně ho zařadil do jiného rodu, a teprve srovnání DNA v roce 1990 ukázalo, že patří mezi *Pygoscelis* společně s kroužkovým a oslím. I když je stále jedním z nejpočetnějších druhů — odhady mluví o 12 až 15 milionech jedinců — v posledních letech se počty v některých koloniích dramaticky propadly. Důvodem je pravděpodobně úbytek krillu, základu jeho stravy, v důsledku oteplování Antarktického poloostrova.
+Druh popsal v roce 1781 Johann Reinhold Forster, stejný přírodovědec, který popsal i tučňáka oslího. Zajímavé je, že původně ho zařadil do jiného rodu — *Aptenodytes* — a teprve pozdější taxonomická revize ho přesunula do rodu *Pygoscelis*, kam patří i tučňák kroužkový a oslí. Globální populace se podle nejnovějších odhadů (Strycker et al. 2020) pohybuje kolem 3,4 milionu hnízdních párů, tedy zhruba 8 milionů dospělých — chinstrap tak zůstává jedním z nejpočetnějších tučňáků, v posledních letech se ovšem počty v některých koloniích dramaticky propadly. Důvodem je pravděpodobně úbytek krillu, základu jeho stravy, v důsledku oteplování Antarktického poloostrova.

@@ -8,7 +8,7 @@ description: "Druh žijící podél Humboldtova proudu na pobřeží Peru a Chil
 size:
   heightCm:
     - 56
-    - 73
+    - 70
   weightKg:
     - 2.9
     - 6
@@ -21,12 +21,18 @@ distribution:
 habitat: "Skalnaté pobřežní ostrovy a útesy chlazené Humboldtovým proudem. Tučňáci hnízdí v norách vyhloubených do silných vrstev guana, ve skalních puklinách nebo pod balvany. Upwelling studené vody udržuje teplotu moře kolem 15 °C i v tropech, zatímco vzduch může přes den překročit 30 °C — tučňáci proto pouštějí přebytečné teplo skrz neopeřené plošky na obličeji a nohou."
 diet:
   - "Drobné hejnové ryby — sardele peruánské a sardinky"
-  - "Severnější kolonie konzumují makrelku severoatlantskou (Scomberesox saurus) a jehlici mořskou (Belone)"
+  - "Severnější kolonie konzumují saury (Scomberesox saurus) a jehlici mořskou (Belone)"
   - "Doplňkově olihně a drobní korýši"
   - "Kořist velikosti 3-27 cm, běžný lov do hloubky 30 m, zaznamenáno až 54 m"
 lifespan:
   wildYears: 15
   captivityYears: 30
+diving:
+  typicalDepthM: 30
+  maxDepthM: 54
+  typicalDurationSec: 90
+  maxDurationSec: 150
+  note: "Loví v chladném Humboldtově proudu při pobřeží Chile a Peru. Většina ponorů je do 30 m a trvá kolem 1,5 minuty; nejhlubší zaznamenaný ponor 54 m."
 population: "IUCN v roce 2020 odhaduje přibližně **23 800 dospělých jedinců** a populační trend klesající. Zhruba 80 % světové populace žije v chráněných oblastech severního Chile (regiony Atacama a Coquimbo). Před velkým El Niño 1982-1983 populace čítala odhadem 20 000 dospělých jedinců; po roce 1984 klesla na 2 100-3 000 ptáků, což je propad zhruba o 65 %. Od té doby se stavy zčásti vrátily, ale každé silné El Niño je znovu srazí."
 historicalNotes: "Druh popsal v roce 1834 německý lékař a přírodovědec Franz Julius Ferdinand Meyen během plavby kolem světa na pruské obchodní lodi *Princess Louise*. Jméno dal druhu na počest pruského přírodovědce **Alexandra von Humboldta**, který v letech 1802-1804 mapoval peruánské pobřeží a popsal studený mořský proud, jenž dnes nese jeho jméno a určuje ekologii celého druhu. V Peru se tučňákovi lidově přezdívá *pájaro-niño* (*pták-dítě*) kvůli kolébavé chůzi."
 hero:

@@ -23,6 +23,12 @@ diet:
   - "Drobné mezopelagické ryby z čeledi Myctophidae"
 lifespan:
   wildYears: 10
+diving:
+  typicalDepthM: 40
+  maxDepthM: 168
+  typicalDurationSec: 90
+  maxDurationSec: 180
+  note: "Hlubší lov než u jižních příbuzných — průměrný ponor kolem 40 m. Maximální zaznamenaná hloubka 168 m (Tristan da Cunha)."
 population: "Odhadem 480 000 dospělých jedinců celkově — největší kolonie na Goughu (100 000–500 000 párů), dále Inaccessible (18 000–27 000 párů) a Tristan da Cunha (3 200–4 500 párů). Od 50. let 20. století populace poklesla o 90 % a v atlantické části klesá dál tempem kolem 2,7 % ročně."
 historicalNotes: "Druh poprvé popsali v roce 1921 Gregory Mathews a Tom Iredale, ale dlouho platil jen jako poddruh tučňáka skalního jižního. Jako samostatný druh byl vymezen v roce 2006 na základě rozdílů v hlase, genetice a v délce žlutých ozdobných per. Severní rockhopper je o něco větší a jeho chocholka dorůstá výrazně delších nití než u jižního druhu."
 hero:
@@ -91,6 +97,6 @@ sources:
 updatedAt: "2026-04-19"
 ---
 
-Tučňák skalní severní je nejmenší a zároveň nejohroženější zástupce „rockhopperů" — skupiny drobných skalolezeckých tučňáků, která ještě do roku 2006 platila za jediný druh. Severní forma dorůstá v průměru o tři až pět centimetrů víc než její jižní bratranec a nápadně se odlišuje delšími a hustějšími žlutými ozdobnými péry vyrůstajícími nad očima. Ve volné přírodě se dožívá přibližně deseti let, hnízdí v hustých, extrémně hlučných koloniích na skalnatých svazích a do moře se spouští po strmých útesech, po kterých doslova skáče — odtud i anglické pojmenování **rockhopper**.
+Tučňák skalní severní je největší a zároveň nejohroženější zástupce „rockhopperů" — skupiny drobných skalolezeckých tučňáků, která ještě do roku 2006 platila za jediný druh. Severní forma dorůstá v průměru o tři až pět centimetrů víc než její jižní bratranec a nápadně se odlišuje delšími a hustějšími žlutými ozdobnými péry vyrůstajícími nad očima. Ve volné přírodě se dožívá přibližně deseti let, hnízdí v hustých, extrémně hlučných koloniích na skalnatých svazích a do moře se spouští po strmých útesech, po kterých doslova skáče — odtud i anglické pojmenování **rockhopper**.
 
 Druh popsali Gregory Mathews a Tom Iredale v roce 1921, ale až ucelená studie z roku 2006 prokázala na základě rozdílů v hlasu, morfologii a genetice, že jde o samostatný druh oddělený od tučňáka skalního jižního. Bohužel dobrá zpráva o nově uznaném druhu šla ruku v ruce se zprávou špatnou — populace severních rockhopperů se od padesátých let dvacátého století propadla o více než devadesát procent. Na atlantických ostrovech kolem Tristan da Cunha klesá dál tempem blížícím se třem procentům ročně a IUCN druh vede jako **ohrožený**. Za hlavní příčiny jsou pokládané změny mořských proudů ovlivňující dostupnost krilu, historické pytláctví a v poslední dekádě také lokální katastrofy — například havárie lodi MS Oliva v roce 2011, která u Nightingale Island zasáhla tisíce jedinců ropnou skvrnou.

@@ -4,7 +4,7 @@ nameLat: "Megadyptes antipodes"
 nameEn: "Yellow-eyed penguin"
 genus: "Megadyptes"
 iucnStatus: "EN"
-description: "Endemit Nového Zélandu se zářivě žlutým proužkem kolem očí a stejnobarevnou korunkou. V maorštině hoiho. Jediný tučňák, který nehnízdí v koloniích — páry si staví hnízda ukryté v pobřežních lesích."
+description: "Endemit Nového Zélandu se zářivě žlutým proužkem kolem očí. V maorštině hoiho. Mezi tučňáky výjimečný tím, že nehnízdí v hustých koloniích — páry si staví hnízda ukrytá v pobřežních lesích, často mimo dohled sousedů."
 size:
   heightCm:
     - 62
@@ -13,20 +13,25 @@ size:
     - 3
     - 8.5
 distribution:
-  - "Jižní ostrov Nového Zélandu (Banksův poloostrov, Otago, Catlins)"
+  - "Jihovýchodní pobřeží Jižního ostrova Nového Zélandu (Otago, Catlins)"
   - "Stewart Island a Codfish Island"
   - "Subantarktické ostrovy Auckland a Campbell"
   - "Ojediněle zatoulanci na severním pobřeží Jižního ostrova"
-habitat: "Hustý pobřežní les nebo zarostlé svahy poblíž skalnatých zálivů. Na rozdíl od všech ostatních tučňáků hnízdí **nekoloniálně** — jednotlivé páry si staví hnízda v takovém skrytu, aby na sebe neviděly, a putují za nimi až kilometr do vnitrozemí po vlastních pěšinkách."
+habitat: "Hustý pobřežní les nebo zarostlé svahy poblíž skalnatých zálivů. Mezi tučňáky výjimečný tím, že hnízdí spíše solitérně než v hustých koloniích — jednotlivé páry si staví hnízda v takovém skrytu, aby na sebe neviděly, a putují za nimi až kilometr do vnitrozemí po vlastních pěšinkách."
 diet:
   - "Mořské demersální ryby — stříbřenky, modrá treska, červená treska a opálka (celkem ~90 % stravy)"
   - "Olihně a sepiolky"
   - "Doplňkově kril a drobní korýši"
 lifespan:
-  wildYears: 12
-  captivityYears: 20
+  wildYears: 20
+diving:
+  typicalDepthM: 60
+  maxDepthM: 240
+  typicalDurationSec: 90
+  maxDurationSec: 240
+  note: "Loví hlavně bentické ryby u dna kontinentálního šelfu kolem Nového Zélandu, často v hloubkách 30–100 m. Maximální zaznamenaná hloubka 240 m."
 population: "V roce 2025 pouhých **143 hnízdních párů** na pevnině Jižního ostrova (propad o 80 % od roku 2008, kdy bylo 739 párů) plus zhruba 577 párů na subantarktických ostrovech. Celosvětově tedy kolem 1 000 hnízdních párů — druh patří mezi jedny z vůbec nejvzácnějších tučňáků na planetě."
-historicalNotes: "Druh popsali v roce 1841 francouzští přírodovědci Jacques Bernard Hombron a Honoré Jacquinot během expedice korvet Astrolabe a Zélée pod velením Julese Dumonta d'Urvilla do Antarktidy. Rodové jméno Megadyptes znamená v řečtině velký potápěč a odkazuje k tomu, že jde o největšího tučňáka na Novém Zélandu. Maorské jméno hoiho znamená doslova křičící pták podle jeho vysokých, pronikavých volání v koloniích."
+historicalNotes: "Druh popsali v roce 1841 francouzští přírodovědci Jacques Bernard Hombron a Honoré Jacquinot během expedice korvet Astrolabe a Zélée pod velením Julese Dumonta d'Urvilla do Antarktidy. Rodové jméno Megadyptes znamená v řečtině velký potápěč a odkazuje k tomu, že jde o největšího tučňáka na Novém Zélandu. Maorské jméno hoiho znamená přibližně 'křiklavý' či 'řvoucí' — podle vysokých, pronikavých volání, kterými se páry dorozumívají u hnízd."
 hero:
   src: "../../assets/penguins/zlutooky/hero.jpg"
   alt: "Tučňák žlutooký s charakteristickým žlutým proužkem kolem očí, na břehu Curio Bay na Jižním ostrově Nového Zélandu"

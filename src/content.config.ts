@@ -43,6 +43,15 @@ const species = defineCollection({
         wildYears: z.number().positive(),
         captivityYears: z.number().positive().optional(),
       }),
+      diving: z
+        .object({
+          typicalDepthM: z.number().positive().optional(),
+          maxDepthM: z.number().positive().optional(),
+          typicalDurationSec: z.number().positive().optional(),
+          maxDurationSec: z.number().positive().optional(),
+          note: z.string().optional(),
+        })
+        .optional(),
       population: z.string().optional(),
       historicalNotes: z.string().optional(),
       hero: z.object({

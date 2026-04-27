@@ -7,23 +7,28 @@ iucnStatus: "LC"
 description: "Menší antarktický tučňák s charakteristickým bílým kroužkem kolem oka. Jeden z nejpočetnějších druhů, žije jen na pobřeží Antarktidy."
 size:
   heightCm:
-    - 65
-    - 75
+    - 70
+    - 73
   weightKg:
-    - 3.6
-    - 6.5
+    - 3.8
+    - 8.2
 distribution:
   - "Pobřeží Antarktidy (celé)"
   - "Antarktický poloostrov a přilehlé ostrovy"
   - "Jižní Shetlandy, Jižní Orkneje, Jižní Sandwichovy ostrovy"
-  - "Jižní Georgie"
 habitat: "Antarktické pobřeží s dostupným mořem. Hnízdí v obrovských koloniích na pevné zemi nebo skalách, kde si staví kruhová hnízda z malých kamínků."
 diet:
-  - "Krill antarktický (Euphausia superba) — přes 90 % stravy"
-  - "Menší antarktické ryby (Pagothenia borchgrevinki)"
+  - "Krill antarktický (Euphausia superba) — hlavní složka stravy"
+  - "Menší antarktické ryby (zejména stříbrnoočko antarktické Pleuragramma antarctica a Pagothenia borchgrevinki)"
   - "Medúzy a salpy příležitostně"
 lifespan:
   wildYears: 16
+diving:
+  typicalDepthM: 40
+  maxDepthM: 175
+  typicalDurationSec: 90
+  maxDurationSec: 360
+  note: "Hlavní lov stříbrnoočka antarktického a krillu probíhá v hloubkách 20–50 m. Maximální zaznamenaný ponor 175 m."
 population: "Odhad přes 10 milionů dospělých jedinců (IUCN 2020). Populace stabilní až mírně rostoucí, ale místní kolonie na západním Antarktickém poloostrově klesají kvůli úbytku mořského ledu."
 historicalNotes: "Druh objevila francouzská expedice Julese Dumonta d'Urvilla 21. ledna 1840. Kapitán pojmenoval pobřeží Adélie Land po své manželce Adéle — a tučňák nese její jméno. Vědecky popsán v roce 1841 přírodovědci Hombronem a Jacquinotem z téže expedice."
 hero:
@@ -118,6 +123,6 @@ sources:
 updatedAt: "2026-04-19"
 ---
 
-Tučňák kroužkový je středně velký druh a jeden z pouhých tří tučňáků, kteří žijí trvale na Antarktidě. Měří kolem 70 centimetrů a váží od čtyř do šesti kilogramů — tedy výrazně méně než jeho obrovský příbuzný císařský. Od ostatních druhů ho snadno poznáte podle bílého kroužku kolem oka, který dal druhu český název, a podle zcela černé hlavy a hrdla. Žije v obrovských koloniích čítajících tisíce až stovky tisíc párů, kde si páry staví kruhová hnízda z pečlivě vybíraných kamínků. O ty si navzájem kradou — pokud se sousedovi na chvíli nedívá, kamínek zmizí.
+Tučňák kroužkový je středně velký druh a jeden z pouhých tří tučňáků, kteří žijí trvale na Antarktidě. Měří kolem 70 centimetrů a váží zhruba od čtyř do osmi kilogramů — tedy výrazně méně než jeho obrovský příbuzný císařský. Od ostatních druhů ho snadno poznáte podle bílého kroužku kolem oka, který dal druhu český název, a podle zcela černé hlavy a hrdla. Žije v obrovských koloniích čítajících tisíce až stovky tisíc párů, kde si páry staví kruhová hnízda z pečlivě vybíraných kamínků. O ty si navzájem kradou — pokud se sousedovi na chvíli nedívá, kamínek zmizí.
 
 Druh objevila v lednu 1840 francouzská expedice Julese Dumonta d'Urvilla a kapitán pojmenoval celé pobřeží Antarktidy **Adélie Land** po své manželce. Tučňák zdědil její jméno a nese ho dodnes. Přestože v západní Antarktidě místní kolonie ubývají, globálně je druh stále jedním z nejpočetnějších — IUCN odhaduje přes deset milionů dospělých jedinců. Hlavní hrozbou do budoucna zůstává ubývání mořského ledu, který tučňáci kroužkoví potřebují jako odpočinkovou plochu při lovu krillu.

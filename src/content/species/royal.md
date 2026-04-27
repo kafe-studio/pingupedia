@@ -23,8 +23,14 @@ diet:
   - "Malé hlavonožce v menší míře"
 lifespan:
   wildYears: 15
+diving:
+  typicalDepthM: 30
+  maxDepthM: 80
+  typicalDurationSec: 120
+  maxDurationSec: 180
+  note: "Loví krill, ryby a drobné olihně v okolí Macquariova ostrova. Většina ponorů je mělčí než 50 m."
 population: "Populace asi 850 000 hnízdních párů (IUCN 2020), všechny soustředěné na ostrově Macquarie. Druh patří mezi jedny z nejrestrikčněji rozšířených tučňáků vůbec — drží se ale stabilně poté, co byl v roce 1919 ukončen masivní lov."
-historicalNotes: "Druh popsal v roce 1876 německý ornitolog Otto Finsch a pojmenoval ho po nizozemském zoologovi Hermannu Schlegelovi. Mezi lety 1870 a 1919 byli tučňáci královští na Macquarie masově zabíjeni pro olej — odhadem 150 000 ročně. Dnes patří celý ostrov do světového dědictví UNESCO. Taxonomické postavení druhu je dodnes předmětem debat — někteří vědci ho považují za poddruh tučňáka zlatovlasého (E. chrysolophus schlegeli), protože se oba druhy vzácně kříží."
+historicalNotes: "Druh popsal v roce 1876 německý ornitolog Otto Finsch a pojmenoval ho po německém zoologovi Hermannu Schlegelovi (působil ovšem celý život v nizozemském muzeu v Leidenu). Mezi lety 1870 a 1919 byli tučňáci královští (a tučňáci patagonští) na Macquarie masově zabíjeni pro olej v provozu Josepha Hatche — celkem padlo odhadem přes dva miliony ptáků, v některých letech kombinovaný roční úlovek obou druhů přesahoval 150 000. Dnes patří celý ostrov do světového dědictví UNESCO. Taxonomické postavení druhu je dodnes předmětem debat — někteří vědci ho považují za poddruh tučňáka zlatovlasého (E. chrysolophus schlegeli), protože se oba druhy vzácně kříží."
 hero:
   src: "../../assets/penguins/royal/hero.jpg"
   alt: "Tučňák královský na ostrově Macquarie se svou charakteristickou bílou tváří a oranžovou chocholkou"
@@ -138,4 +144,4 @@ updatedAt: "2026-04-19"
 
 Tučňák královský je endemický obyvatel jediného místa na světě — subantarktického ostrova Macquarie, který leží na půli cesty mezi Tasmánií a Antarktidou. Dospělec dorůstá kolem sedmdesáti centimetrů a váží pět až šest kilogramů, takže je po zlatovlasém druhým největším ze skupiny chocholatých tučňáků rodu Eudyptes. Od svého bližšího příbuzného se liší nápadně bílou tváří a hrdlem, zatímco zlatovlasý má hlavu celou černou. Taxonomický status druhu je dodnes otevřená otázka — někteří ornitologové ho kvůli občasným hybridizacím a velmi úzké genetické vzdálenosti považují za pouhý poddruh zlatovlasého, IUCN a BirdLife ho ale vedou jako samostatný druh.
 
-Druh popsal v roce 1876 německý ornitolog Otto Finsch a pojmenoval ho po nizozemském zoologovi Hermannu Schlegelovi. Mezi lety 1870 a 1919 prošli tučňáci královští na ostrově Macquarie temnou kapitolou — kvůli výrobě oleje z jejich tuku byli zabíjeni ve velkém, podle dobových záznamů přes 150 000 kusů ročně. Teprve zásah australské vlády a prohlášení ostrova přírodní rezervací lov zastavilo. Dnes populace čítá kolem 850 000 hnízdních párů, je stabilní a celý ostrov Macquarie patří od roku 1997 do světového dědictví UNESCO. Kvůli extrémně malému areálu rozšíření ale druh zůstává zranitelný — jakákoli lokální pohroma, například zavlečení invazního predátora, by mohla ohrozit celou globální populaci najednou.
+Druh popsal v roce 1876 německý ornitolog Otto Finsch a pojmenoval ho po německém zoologovi Hermannu Schlegelovi, který stál v čele nizozemského přírodovědného muzea v Leidenu. Mezi lety 1870 a 1919 prošli tučňáci královští (společně s tučňáky patagonskými) na ostrově Macquarie temnou kapitolou — kvůli výrobě oleje z jejich tuku byli v komerční stanici Josepha Hatche zabíjeni ve velkém. Roční úlovek obou druhů dohromady místy přesahoval 150 000 ptáků a za celé období padly zhruba dva miliony jedinců. Teprve zásah australské vlády a prohlášení ostrova přírodní rezervací lov zastavilo. Dnes populace čítá kolem 850 000 hnízdních párů, je stabilní a celý ostrov Macquarie patří od roku 1997 do světového dědictví UNESCO. Kvůli extrémně malému areálu rozšíření ale druh zůstává zranitelný — jakákoli lokální pohroma, například zavlečení invazního predátora, by mohla ohrozit celou globální populaci najednou.
