@@ -59,9 +59,11 @@ Populárně-naučná encyklopedie všech druhů tučňáků v češtině pro dě
 - [ ] Run 016 — CF Workers deploy + doména + 404 polish
 
 ### Sprint 006 — i18n Foundation + EN pilot
+**Stav:** in progress (Run 017a hotov 2026-04-27)
 **Cíl:** Architektura per-locale content + plný překlad do EN (pilot, ověří pipeline). Cílové jazyky napříč Sprint 006/007: **cs (primary), en, de, fr, es, it, pl, uk**.
 
-- [ ] Run 017 — i18n architektura: Astro 6 routing config, content collection refactor, language switcher refactor (mcp) → `docs/sprints/006-i18n-foundation/run-017-i18n-architecture.md`
+- [x] Run 017a — i18n základy: Astro i18n config + page collections per-locale glob patterns + species-i18n helper (mcp) → `docs/sprints/006-i18n-foundation/run-017a-foundations.md`
+- [ ] Run 017b — page routing: per-locale getStaticPaths, LangSwitcher URL refactor, 404 fallback (mcp)
 - [ ] Run 018 — EN pilot: 4 druhy (cisarsky, brylovy, krouzkovy, osli) × frontmatter + body, ověřit E2E pipeline
 - [ ] Run 019 — EN: zbývajících 14 druhů × frontmatter + body
 - [ ] Run 020 — EN: page JSONs (home, hry, filmy, o-projektu, quiz) + site config + Sprint 006 audit

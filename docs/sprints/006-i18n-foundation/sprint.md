@@ -1,8 +1,9 @@
 # Sprint 006: i18n Foundation + EN pilot
 
-**Status:** TODO
+**Status:** IN PROGRESS
+**Dashboard Sprint:** 56
 **Cíl:** Architektura per-locale content + plný překlad do EN jako pilot, který ověří pipeline před masovým rozšířením do dalších jazyků.
-**Runy:** 017–020
+**Runy:** 017a–020
 
 ## Scope
 
@@ -35,10 +36,15 @@ Cílové jazyky napříč Sprint 006/007: **cs (primary), en (Sprint 006), de/fr
 
 ## Runy
 
-- [ ] Run 017 — i18n architektura: routing config, content collection refactor, language switcher refactor → URL → docs/sprints/006-i18n-foundation/run-017-i18n-architecture.md
+Run 017 byl rozdělen na 017a + 017b kvůli scope (6 itemů > 5 limit per `/work`):
+
+- [ ] Run 017a — i18n základy: config, schema, helper modul → docs/sprints/006-i18n-foundation/run-017a-foundations.md
+- [ ] Run 017b — page routing: per-locale getStaticPaths, LangSwitcher URL, 404 fallback (TBD soubor)
 - [ ] Run 018 — EN pilot: 4 druhy (cisarsky, brylovy, krouzkovy, osli) frontmatter + body, ověření E2E
 - [ ] Run 019 — EN: zbývajících 14 druhů (frontmatter + body)
 - [ ] Run 020 — EN: page JSONs (home, hry, filmy, o-projektu, quiz) + site config + Sprint 006 audit
+
+Původní zadání všech 6 itemů zůstává v `run-017-i18n-architecture.md` jako kompletní reference.
 
 ## Závislosti
 
