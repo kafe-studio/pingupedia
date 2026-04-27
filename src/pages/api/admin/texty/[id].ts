@@ -1,7 +1,31 @@
 import type { APIRoute } from "astro";
+import type { z } from "astro/zod";
 import { createGitHubClient, GitHubError } from "../../../../lib/admin/github";
-import { parseContentId, toRepoPath } from "../../../../lib/admin/content-paths";
+import { parseContentId, toRepoPath, type ContentRef } from "../../../../lib/admin/content-paths";
 import { isSameOriginRequest } from "../../../../lib/admin/session";
+import { sanitizeJsonHtmlFields } from "../../../../lib/admin/sanitize";
+import {
+  siteSchema,
+  homeSchema,
+  oProjektuSchema,
+  hrySchema,
+  quizSchema,
+  filmySchema,
+} from "../../../../lib/content-schemas";
+
+type ContentSchema = z.ZodType<unknown>;
+
+function schemaForRef(ref: ContentRef): ContentSchema | null {
+  if (ref.kind === "site" && ref.slug === "config") return siteSchema;
+  if (ref.kind === "quiz") return quizSchema;
+  if (ref.kind === "page") {
+    if (ref.slug === "home") return homeSchema;
+    if (ref.slug === "o-projektu") return oProjektuSchema;
+    if (ref.slug === "hry") return hrySchema;
+    if (ref.slug === "filmy") return filmySchema;
+  }
+  return null;
+}
 
 export const prerender = false;
 
@@ -43,7 +67,7 @@ async function getClient(): Promise<
   };
 }
 
-function resolvePath(rawId: string | undefined): { ok: true; path: string } | { ok: false; error: string } {
+function resolvePath(rawId: string | undefined): { ok: true; path: string; ref: ContentRef } | { ok: false; error: string } {
   if (typeof rawId !== "string") {
     return { ok: false, error: "Neplatné id: (chybí)" };
   }
@@ -61,7 +85,7 @@ function resolvePath(rawId: string | undefined): { ok: true; path: string } | { 
     if (ref.kind === "species") {
       return { ok: false, error: "Species se edituje přes /api/admin/species/[slug]." };
     }
-    return { ok: true, path: toRepoPath(ref) };
+    return { ok: true, path: toRepoPath(ref), ref };
   } catch (err) {
     return { ok: false, error: err instanceof Error ? err.message : String(err) };
   }
@@ -107,12 +131,26 @@ export const PUT: APIRoute = async ({ params, request, url }) => {
     return json({ error: "Obsah přesahuje 200 kB." }, 413);
   }
 
-  // Sanity check for JSON entries — parse must succeed.
+  // Schema validate + HTML sanitize JSON contentu před commitem.
+  let finalContent = content;
   if (resolved.path.endsWith(".json")) {
+    let parsed: unknown;
     try {
-      JSON.parse(content);
+      parsed = JSON.parse(content);
     } catch {
       return json({ error: "Obsah není validní JSON." }, 400);
+    }
+    const schema = schemaForRef(resolved.ref);
+    if (schema) {
+      const result = schema.safeParse(parsed);
+      if (!result.success) {
+        return json(
+          { error: "Obsah neodpovídá schématu kolekce.", issues: result.error.issues },
+          400,
+        );
+      }
+      const sanitized = sanitizeJsonHtmlFields(result.data);
+      finalContent = JSON.stringify(sanitized, null, 2) + "\n";
     }
   }
 
@@ -120,7 +158,7 @@ export const PUT: APIRoute = async ({ params, request, url }) => {
   if (!c.ok) return json({ error: c.error }, c.status);
 
   try {
-    const result = await c.client.putFile(resolved.path, content, message.trim(), sha);
+    const result = await c.client.putFile(resolved.path, finalContent, message.trim(), sha);
     return json(
       { commitSha: result.commitSha, commitUrl: result.commitUrl, newSha: result.sha },
       200,

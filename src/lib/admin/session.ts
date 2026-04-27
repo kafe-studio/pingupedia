@@ -5,8 +5,18 @@
 export const COOKIE_NAME = "pingupedia_admin";
 const DEFAULT_TTL_MS = 8 * 60 * 60 * 1000; // 8 h
 
+// kid je krátký otisk SESSION_SECRET — když adminem otočený secret, staré cookies
+// (jiné kid) okamžitě selžou ve verify, aniž by se musel TTL doexpirovat.
 interface SessionPayload {
   exp: number;
+  iat: number;
+  kid: string;
+}
+
+async function deriveKid(secret: string): Promise<string> {
+  const digest = await crypto.subtle.digest("SHA-256", encoder.encode(secret));
+  const bytes = new Uint8Array(digest).slice(0, 6);
+  return b64urlEncode(bytes);
 }
 
 const encoder = new TextEncoder();
@@ -56,7 +66,12 @@ export async function createSessionCookie(
   secret: string,
   ttlMs: number = DEFAULT_TTL_MS,
 ): Promise<{ value: string; maxAgeSec: number }> {
-  const payload: SessionPayload = { exp: Date.now() + ttlMs };
+  const now = Date.now();
+  const payload: SessionPayload = {
+    iat: now,
+    exp: now + ttlMs,
+    kid: await deriveKid(secret),
+  };
   const encoded = b64urlEncode(encoder.encode(JSON.stringify(payload)));
   const sig = b64urlEncode(await hmacSha256(secret, encoded));
   return { value: `${encoded}.${sig}`, maxAgeSec: Math.floor(ttlMs / 1000) };
@@ -73,8 +88,11 @@ export async function verifySessionCookie(
   try {
     const expectedSig = b64urlEncode(await hmacSha256(secret, encoded));
     if (!constantTimeEqual(b64urlDecode(sig), b64urlDecode(expectedSig))) return false;
-    const payload = JSON.parse(new TextDecoder().decode(b64urlDecode(encoded))) as SessionPayload;
-    return typeof payload.exp === "number" && payload.exp > Date.now();
+    const payload = JSON.parse(new TextDecoder().decode(b64urlDecode(encoded))) as Partial<SessionPayload>;
+    if (typeof payload.exp !== "number" || payload.exp <= Date.now()) return false;
+    if (typeof payload.iat !== "number" || payload.iat > Date.now()) return false;
+    if (typeof payload.kid !== "string" || payload.kid !== (await deriveKid(secret))) return false;
+    return true;
   } catch {
     return false;
   }

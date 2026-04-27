@@ -172,7 +172,7 @@ sources:
     title: "Aptenodytes forsteri — IUCN Red List (assessment 2026)"
     type: "IUCN"
     note: "Status Endangered (přeřazeno 9. dubna 2026, předtím Near Threatened), trend populace klesající"
-  - url: "http://datazone.birdlife.org/species/factsheet/emperor-penguin-aptenodytes-forsteri"
+  - url: "https://datazone.birdlife.org/species/factsheet/emperor-penguin-aptenodytes-forsteri"
     title: "Emperor Penguin — BirdLife International factsheet"
     type: "BirdLife"
 updatedAt: "2026-04-24"
