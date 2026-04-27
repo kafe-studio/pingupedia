@@ -1,13 +1,15 @@
 ---
+import { mulberry32, seedFromString } from "../../../lib/seeded-rng";
+const rand = mulberry32(seedFromString("ocean"));
 const bubbles = Array.from({ length: 22 }, () => ({
-  left: Math.random() * 100,
-  size: 6 + Math.random() * 18,
-  duration: 10 + Math.random() * 14,
-  delay: -Math.random() * 18,
+  left: rand() * 100,
+  size: 6 + rand() * 18,
+  duration: 10 + rand() * 14,
+  delay: -rand() * 18,
 }));
 const rays = Array.from({ length: 5 }, (_, i) => ({
-  offset: 12 + i * 18 + Math.random() * 6,
-  rotation: -15 + Math.random() * 30,
+  offset: 12 + i * 18 + rand() * 6,
+  rotation: -15 + rand() * 30,
 }));
 ---
 

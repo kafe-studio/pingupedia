@@ -1,6 +1,8 @@
 export function initGalleryLightbox(section: HTMLElement): void {
+  if (section.dataset.lightboxWired === "1") return;
   const dialog = section.querySelector<HTMLDialogElement>("dialog.lightbox-dialog");
   if (!dialog) return;
+  section.dataset.lightboxWired = "1";
 
   const thumbs = section.querySelectorAll<HTMLButtonElement>("[data-gallery-index]");
   const slides = dialog.querySelectorAll<HTMLElement>("[data-slide-index]");

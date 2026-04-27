@@ -1,16 +1,18 @@
 ---
+import { mulberry32, seedFromString } from "../../../lib/seeded-rng";
+const rand = mulberry32(seedFromString("candy"));
 const hearts = Array.from({ length: 14 }, () => ({
-  left: Math.random() * 100,
-  size: 12 + Math.random() * 14,
-  duration: 14 + Math.random() * 10,
-  delay: -Math.random() * 16,
-  color: ["#ec4899", "#a78bfa", "#fbbf24", "#34d399"][Math.floor(Math.random() * 4)],
+  left: rand() * 100,
+  size: 12 + rand() * 14,
+  duration: 14 + rand() * 10,
+  delay: -rand() * 16,
+  color: ["#ec4899", "#a78bfa", "#fbbf24", "#34d399"][Math.floor(rand() * 4)],
 }));
 const sparkles = Array.from({ length: 20 }, () => ({
-  top: Math.random() * 80,
-  left: Math.random() * 100,
-  size: 2 + Math.random() * 3,
-  delay: Math.random() * 3,
+  top: rand() * 80,
+  left: rand() * 100,
+  size: 2 + rand() * 3,
+  delay: rand() * 3,
 }));
 ---
 

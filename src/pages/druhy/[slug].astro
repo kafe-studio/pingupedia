@@ -27,7 +27,14 @@ export const getStaticPaths = (async () => {
 }) satisfies GetStaticPaths;
 
 const { entry, prev, next } = Astro.props;
-const { Content } = await render(entry);
+
+let Content: Awaited<ReturnType<typeof render>>["Content"] | null = null;
+try {
+  ({ Content } = await render(entry));
+} catch (err) {
+  // Markdown body se nepodařilo zrenderovat — místo crashe stránku necháme s fallbackem.
+  console.error(`render() failed for species ${entry.id}:`, err);
+}
 
 const { nameCs, nameLat, description, historicalNotes, gallery, hero } = entry.data;
 
@@ -45,7 +52,7 @@ const metadata = {
       <div class="mx-auto max-w-3xl">
         <h2 id="about-heading" class="sr-only">O druhu</h2>
         <div class="prose prose-invert prose-lg max-w-none reveal prose-headings:font-bold prose-a:text-primary prose-strong:text-foreground">
-          <Content />
+          {Content ? <Content /> : <p>{description}</p>}
         </div>
       </div>
     </section>

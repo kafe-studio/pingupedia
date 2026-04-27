@@ -27,16 +27,19 @@ const heroImages = import.meta.glob("../assets/penguins/*/hero.jpg", {
   import: "default",
 }) as Record<string, ImageMetadata>;
 
-function heroBySlug(slug: string): ImageMetadata {
-  const key = `../assets/penguins/${slug}/hero.jpg`;
-  const img = heroImages[key];
-  if (!img) throw new Error(`Hero image missing for slug: ${slug}`);
-  return img;
+function heroBySlug(slug: string): ImageMetadata | undefined {
+  return heroImages[`../assets/penguins/${slug}/hero.jpg`];
 }
 
 // Tučňák dne — rotuje každý UTC den deterministicky přes všechny druhy.
-const speciesOfDay = pickSpeciesOfDay(species);
-const featuredImage = heroBySlug(speciesOfDay.id);
+// Pokud hero pro vybraný druh chybí, najdeme první druh, který hero má.
+const speciesWithHero = species.filter((s) => heroBySlug(s.id) !== undefined);
+const speciesOfDay = pickSpeciesOfDay(speciesWithHero.length ? speciesWithHero : species);
+const featuredImage = heroBySlug(speciesOfDay.id) ?? heroImages[Object.keys(heroImages)[0]];
+
+const speciesCards = home.speciesCards
+  .map((card) => ({ card, img: heroBySlug(card.slug) }))
+  .filter((entry): entry is { card: typeof entry.card; img: ImageMetadata } => entry.img !== undefined);
 const featured = {
   slug: speciesOfDay.id,
   name: speciesOfDay.data.nameCs,
@@ -141,27 +144,24 @@ const metadata = {
           <p class="text-sm font-medium opacity-85">{home.catalogCta.subtitle}</p>
         </a>
 
-        {home.speciesCards.map((card) => {
-          const img = heroBySlug(card.slug);
-          return (
-            <a
-              href={`/druhy/${card.slug}/`}
-              class="bento-card is-link col-span-6 md:col-span-3 p-5 reveal overflow-hidden"
-              data-astro-prefetch
-            >
-              <div class="mb-3 aspect-[4/3] rounded-xl overflow-hidden bg-muted hover-wiggle">
-                <NoCropImage
-                  src={img}
-                  alt={card.alt}
-                  ratio="4/3"
-                  sizes="(min-width: 768px) 280px, 45vw"
-                />
-              </div>
-              <p class="text-xs text-muted-foreground">{card.genus}</p>
-              <h3 class="text-lg font-bold mt-0.5">{card.name}</h3>
-            </a>
-          );
-        })}
+        {speciesCards.map(({ card, img }) => (
+          <a
+            href={`/druhy/${card.slug}/`}
+            class="bento-card is-link col-span-6 md:col-span-3 p-5 reveal overflow-hidden"
+            data-astro-prefetch
+          >
+            <div class="mb-3 aspect-[4/3] rounded-xl overflow-hidden bg-muted hover-wiggle">
+              <NoCropImage
+                src={img}
+                alt={card.alt}
+                ratio="4/3"
+                sizes="(min-width: 768px) 280px, 45vw"
+              />
+            </div>
+            <p class="text-xs text-muted-foreground">{card.genus}</p>
+            <h3 class="text-lg font-bold mt-0.5">{card.name}</h3>
+          </a>
+        ))}
 
         <div class="bento-card bento-surface-ocean col-span-12 md:col-span-6 p-6 md:p-8 flex flex-col justify-between min-h-[220px] reveal">
           <div>

@@ -101,7 +101,11 @@ const allSlides: Photo[] = hero ? [hero, ...photos] : photos;
 
 <script>
   import { initGalleryLightbox } from "../../lib/lightbox";
-  document
-    .querySelectorAll<HTMLElement>("[data-gallery-id]")
-    .forEach((section) => initGalleryLightbox(section));
+  function wire(): void {
+    document
+      .querySelectorAll<HTMLElement>("[data-gallery-id]")
+      .forEach((section) => initGalleryLightbox(section));
+  }
+  wire();
+  document.addEventListener("astro:page-load", wire);
 </script>

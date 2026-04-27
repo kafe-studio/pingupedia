@@ -282,6 +282,7 @@ export class PlatformGame {
   }
 
   private updatePlayer(dt: number): void {
+    const step = dt / 16; // 1.0 at 60 Hz; konstanty fyziky byly tunované na 60 Hz frame
     const p = this.state.player;
     const room = this.state.rooms.get(this.state.currentRoomId)!;
 
@@ -350,7 +351,7 @@ export class PlatformGame {
       // Skip gravity while resting on ground — otherwise sub-pixel fall + re-snap
       // produces a constant jitter at every frame.
       if (!p.onGround) {
-        p.vy += GRAVITY;
+        p.vy += GRAVITY * step;
         if (p.vy > MAX_FALL) p.vy = MAX_FALL;
       } else {
         p.vy = 0;
@@ -358,7 +359,7 @@ export class PlatformGame {
     }
 
     // Move + collide — X first then Y (per-axis solid collision).
-    this.moveAndCollide(p, room);
+    this.moveAndCollide(p, room, step);
 
     // Don't clamp X / top-Y here — checkRoomExit needs the player to actually cross
     // the edge to fire a transition, and bounces him back if that edge has no exit.
@@ -381,9 +382,9 @@ export class PlatformGame {
     }
   }
 
-  private moveAndCollide(p: PlayerState, room: Room): void {
+  private moveAndCollide(p: PlayerState, room: Room, step: number): void {
     // X axis
-    const nextX = p.x + p.vx;
+    const nextX = p.x + p.vx * step;
     if (p.vx !== 0) {
       const dir = p.vx > 0 ? 1 : -1;
       const probeX = dir > 0 ? nextX + PLAYER_W - 1 : nextX;
@@ -402,7 +403,7 @@ export class PlatformGame {
     }
 
     // Y axis
-    const nextY = p.y + p.vy;
+    const nextY = p.y + p.vy * step;
     p.onGround = false;
     if (p.vy !== 0) {
       const dir = p.vy > 0 ? 1 : -1;

@@ -1,15 +1,17 @@
 ---
+import { mulberry32, seedFromString } from "../../../lib/seeded-rng";
+const rand = mulberry32(seedFromString("midnight"));
 const stars = Array.from({ length: 60 }, () => ({
-  top: Math.random() * 100,
-  left: Math.random() * 100,
-  size: 0.8 + Math.random() * 2,
-  delay: Math.random() * 4,
+  top: rand() * 100,
+  left: rand() * 100,
+  size: 0.8 + rand() * 2,
+  delay: rand() * 4,
 }));
 const shooters = Array.from({ length: 4 }, (_, i) => ({
-  top: 5 + Math.random() * 30,
-  left: 50 + Math.random() * 50,
-  duration: 3 + Math.random() * 2,
-  delay: i * 6 + Math.random() * 2,
+  top: 5 + rand() * 30,
+  left: 50 + rand() * 50,
+  duration: 3 + rand() * 2,
+  delay: i * 6 + rand() * 2,
 }));
 ---
 
