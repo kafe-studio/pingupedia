@@ -68,7 +68,16 @@ export type UiKey =
   | "species.depth"
   | "species.duration"
   | "species.population"
-  | "species.sources";
+  | "species.sources"
+  | "species.updated"
+  | "druhy.eyebrow"
+  | "druhy.cta.continue"
+  | "hry.eyebrow"
+  | "hry.cta.eyebrow"
+  | "filmy.eyebrow"
+  | "filmy.note.eyebrow"
+  | "about.sources.eyebrow"
+  | "about.purpose.eyebrow";
 
 export const ui: Record<Locale, Record<UiKey, string>> = {
   cs: {
@@ -85,7 +94,11 @@ export const ui: Record<Locale, Record<UiKey, string>> = {
     "species.distribution": "Rozšíření", "species.diet": "Strava",
     "species.diving": "Potápění", "species.depth": "Hloubka",
     "species.duration": "Délka ponoru", "species.population": "Populace",
-    "species.sources": "Zdroje",
+    "species.sources": "Zdroje", "species.updated": "Aktualizováno",
+    "druhy.eyebrow": "Encyklopedie", "druhy.cta.continue": "Pokračuj",
+    "hry.eyebrow": "Herna", "hry.cta.eyebrow": "Další hry v přípravě",
+    "filmy.eyebrow": "Tučňáci na plátně", "filmy.note.eyebrow": "Něco chybí?",
+    "about.sources.eyebrow": "Zdroje obsahu", "about.purpose.eyebrow": "Záměr",
   },
   en: {
     "nav.species": "Species", "nav.games": "Games", "nav.films": "Films", "nav.about": "About",
@@ -101,7 +114,11 @@ export const ui: Record<Locale, Record<UiKey, string>> = {
     "species.distribution": "Distribution", "species.diet": "Diet",
     "species.diving": "Diving", "species.depth": "Depth",
     "species.duration": "Dive duration", "species.population": "Population",
-    "species.sources": "Sources",
+    "species.sources": "Sources", "species.updated": "Updated",
+    "druhy.eyebrow": "Encyclopedia", "druhy.cta.continue": "Keep exploring",
+    "hry.eyebrow": "Arcade", "hry.cta.eyebrow": "More games coming",
+    "filmy.eyebrow": "Penguins on screen", "filmy.note.eyebrow": "Missing something?",
+    "about.sources.eyebrow": "Content sources", "about.purpose.eyebrow": "Purpose",
   },
   de: {
     "nav.species": "Arten", "nav.games": "Spiele", "nav.films": "Filme", "nav.about": "Über",
@@ -117,7 +134,11 @@ export const ui: Record<Locale, Record<UiKey, string>> = {
     "species.distribution": "Verbreitung", "species.diet": "Ernährung",
     "species.diving": "Tauchen", "species.depth": "Tiefe",
     "species.duration": "Tauchdauer", "species.population": "Population",
-    "species.sources": "Quellen",
+    "species.sources": "Quellen", "species.updated": "Aktualisiert",
+    "druhy.eyebrow": "Enzyklopädie", "druhy.cta.continue": "Weiter erkunden",
+    "hry.eyebrow": "Spielhalle", "hry.cta.eyebrow": "Weitere Spiele in Vorbereitung",
+    "filmy.eyebrow": "Pinguine auf der Leinwand", "filmy.note.eyebrow": "Fehlt etwas?",
+    "about.sources.eyebrow": "Inhaltsquellen", "about.purpose.eyebrow": "Zweck",
   },
   fr: {
     "nav.species": "Espèces", "nav.games": "Jeux", "nav.films": "Films", "nav.about": "À propos",
@@ -133,7 +154,11 @@ export const ui: Record<Locale, Record<UiKey, string>> = {
     "species.distribution": "Répartition", "species.diet": "Alimentation",
     "species.diving": "Plongée", "species.depth": "Profondeur",
     "species.duration": "Durée de plongée", "species.population": "Population",
-    "species.sources": "Sources",
+    "species.sources": "Sources", "species.updated": "Mis à jour",
+    "druhy.eyebrow": "Encyclopédie", "druhy.cta.continue": "Continuer",
+    "hry.eyebrow": "Salle de jeux", "hry.cta.eyebrow": "Plus de jeux en préparation",
+    "filmy.eyebrow": "Manchots à l'écran", "filmy.note.eyebrow": "Quelque chose manque ?",
+    "about.sources.eyebrow": "Sources du contenu", "about.purpose.eyebrow": "Objectif",
   },
   es: {
     "nav.species": "Especies", "nav.games": "Juegos", "nav.films": "Películas", "nav.about": "Acerca de",
@@ -149,7 +174,11 @@ export const ui: Record<Locale, Record<UiKey, string>> = {
     "species.distribution": "Distribución", "species.diet": "Dieta",
     "species.diving": "Buceo", "species.depth": "Profundidad",
     "species.duration": "Duración de buceo", "species.population": "Población",
-    "species.sources": "Fuentes",
+    "species.sources": "Fuentes", "species.updated": "Actualizado",
+    "druhy.eyebrow": "Enciclopedia", "druhy.cta.continue": "Continuar",
+    "hry.eyebrow": "Sala de juegos", "hry.cta.eyebrow": "Más juegos en preparación",
+    "filmy.eyebrow": "Pingüinos en pantalla", "filmy.note.eyebrow": "¿Falta algo?",
+    "about.sources.eyebrow": "Fuentes del contenido", "about.purpose.eyebrow": "Propósito",
   },
   it: {
     "nav.species": "Specie", "nav.games": "Giochi", "nav.films": "Film", "nav.about": "Informazioni",
@@ -165,7 +194,11 @@ export const ui: Record<Locale, Record<UiKey, string>> = {
     "species.distribution": "Distribuzione", "species.diet": "Dieta",
     "species.diving": "Immersione", "species.depth": "Profondità",
     "species.duration": "Durata d'immersione", "species.population": "Popolazione",
-    "species.sources": "Fonti",
+    "species.sources": "Fonti", "species.updated": "Aggiornato",
+    "druhy.eyebrow": "Enciclopedia", "druhy.cta.continue": "Continua",
+    "hry.eyebrow": "Sala giochi", "hry.cta.eyebrow": "Altri giochi in arrivo",
+    "filmy.eyebrow": "Pinguini sullo schermo", "filmy.note.eyebrow": "Manca qualcosa?",
+    "about.sources.eyebrow": "Fonti del contenuto", "about.purpose.eyebrow": "Scopo",
   },
   da: {
     "nav.species": "Arter", "nav.games": "Spil", "nav.films": "Film", "nav.about": "Om",
@@ -181,7 +214,11 @@ export const ui: Record<Locale, Record<UiKey, string>> = {
     "species.distribution": "Udbredelse", "species.diet": "Føde",
     "species.diving": "Dykning", "species.depth": "Dybde",
     "species.duration": "Dykkevarighed", "species.population": "Bestand",
-    "species.sources": "Kilder",
+    "species.sources": "Kilder", "species.updated": "Opdateret",
+    "druhy.eyebrow": "Encyklopædi", "druhy.cta.continue": "Fortsæt",
+    "hry.eyebrow": "Spillehal", "hry.cta.eyebrow": "Flere spil på vej",
+    "filmy.eyebrow": "Pingviner på skærmen", "filmy.note.eyebrow": "Mangler der noget?",
+    "about.sources.eyebrow": "Indholdskilder", "about.purpose.eyebrow": "Formål",
   },
   sv: {
     "nav.species": "Arter", "nav.games": "Spel", "nav.films": "Filmer", "nav.about": "Om",
@@ -197,7 +234,11 @@ export const ui: Record<Locale, Record<UiKey, string>> = {
     "species.distribution": "Utbredning", "species.diet": "Föda",
     "species.diving": "Dykning", "species.depth": "Djup",
     "species.duration": "Dyklängd", "species.population": "Population",
-    "species.sources": "Källor",
+    "species.sources": "Källor", "species.updated": "Uppdaterat",
+    "druhy.eyebrow": "Encyklopedi", "druhy.cta.continue": "Fortsätt",
+    "hry.eyebrow": "Spelhall", "hry.cta.eyebrow": "Fler spel på gång",
+    "filmy.eyebrow": "Pingviner på duken", "filmy.note.eyebrow": "Saknas något?",
+    "about.sources.eyebrow": "Innehållskällor", "about.purpose.eyebrow": "Syfte",
   },
   pl: {
     "nav.species": "Gatunki", "nav.games": "Gry", "nav.films": "Filmy", "nav.about": "O projekcie",
@@ -213,7 +254,11 @@ export const ui: Record<Locale, Record<UiKey, string>> = {
     "species.distribution": "Występowanie", "species.diet": "Pożywienie",
     "species.diving": "Nurkowanie", "species.depth": "Głębokość",
     "species.duration": "Czas nurkowania", "species.population": "Populacja",
-    "species.sources": "Źródła",
+    "species.sources": "Źródła", "species.updated": "Zaktualizowano",
+    "druhy.eyebrow": "Encyklopedia", "druhy.cta.continue": "Kontynuuj",
+    "hry.eyebrow": "Salon gier", "hry.cta.eyebrow": "Więcej gier w przygotowaniu",
+    "filmy.eyebrow": "Pingwiny na ekranie", "filmy.note.eyebrow": "Czegoś brakuje?",
+    "about.sources.eyebrow": "Źródła treści", "about.purpose.eyebrow": "Cel",
   },
   kl: {
     "nav.species": "Suussusiit", "nav.games": "Pinnguartitsiviit", "nav.films": "Filmit", "nav.about": "Pillugu",
@@ -229,7 +274,11 @@ export const ui: Record<Locale, Record<UiKey, string>> = {
     "species.distribution": "Najugaqarfii", "species.diet": "Nerisartagai",
     "species.diving": "Aappuneq", "species.depth": "Itissusaa",
     "species.duration": "Aappunerup sivisussusaa", "species.population": "Amerlassusaa",
-    "species.sources": "Tunngaviit",
+    "species.sources": "Tunngaviit", "species.updated": "Nutartereersimasoq",
+    "druhy.eyebrow": "Encyclopedia", "druhy.cta.continue": "Ingerlaqqigit",
+    "hry.eyebrow": "Pinnguarfik", "hry.cta.eyebrow": "Allatqavittut pinnguartitsiviit",
+    "filmy.eyebrow": "Pingvinit filminiittut", "filmy.note.eyebrow": "Suna amigaateqarpa?",
+    "about.sources.eyebrow": "Atugassat tunngaviat", "about.purpose.eyebrow": "Siunertaq",
   },
   pt: {
     "nav.species": "Espécies", "nav.games": "Jogos", "nav.films": "Filmes", "nav.about": "Sobre",
@@ -245,7 +294,11 @@ export const ui: Record<Locale, Record<UiKey, string>> = {
     "species.distribution": "Distribuição", "species.diet": "Dieta",
     "species.diving": "Mergulho", "species.depth": "Profundidade",
     "species.duration": "Duração do mergulho", "species.population": "População",
-    "species.sources": "Fontes",
+    "species.sources": "Fontes", "species.updated": "Atualizado",
+    "druhy.eyebrow": "Enciclopédia", "druhy.cta.continue": "Continuar",
+    "hry.eyebrow": "Sala de jogos", "hry.cta.eyebrow": "Mais jogos a caminho",
+    "filmy.eyebrow": "Pinguins no ecrã", "filmy.note.eyebrow": "Falta alguma coisa?",
+    "about.sources.eyebrow": "Fontes do conteúdo", "about.purpose.eyebrow": "Propósito",
   },
   hu: {
     "nav.species": "Fajok", "nav.games": "Játékok", "nav.films": "Filmek", "nav.about": "A projektről",
@@ -261,7 +314,11 @@ export const ui: Record<Locale, Record<UiKey, string>> = {
     "species.distribution": "Elterjedés", "species.diet": "Táplálkozás",
     "species.diving": "Búvárkodás", "species.depth": "Mélység",
     "species.duration": "Merülési idő", "species.population": "Populáció",
-    "species.sources": "Források",
+    "species.sources": "Források", "species.updated": "Frissítve",
+    "druhy.eyebrow": "Enciklopédia", "druhy.cta.continue": "Folytatás",
+    "hry.eyebrow": "Játékterem", "hry.cta.eyebrow": "További játékok készülnek",
+    "filmy.eyebrow": "Pingvinek a vásznon", "filmy.note.eyebrow": "Hiányzik valami?",
+    "about.sources.eyebrow": "Tartalmi források", "about.purpose.eyebrow": "Cél",
   },
   uk: {
     "nav.species": "Види", "nav.games": "Ігри", "nav.films": "Фільми", "nav.about": "Про проєкт",
@@ -277,7 +334,11 @@ export const ui: Record<Locale, Record<UiKey, string>> = {
     "species.distribution": "Поширення", "species.diet": "Раціон",
     "species.diving": "Пірнання", "species.depth": "Глибина",
     "species.duration": "Тривалість пірнання", "species.population": "Популяція",
-    "species.sources": "Джерела",
+    "species.sources": "Джерела", "species.updated": "Оновлено",
+    "druhy.eyebrow": "Енциклопедія", "druhy.cta.continue": "Продовжити",
+    "hry.eyebrow": "Ігротека", "hry.cta.eyebrow": "Інші ігри готуються",
+    "filmy.eyebrow": "Пінгвіни на екрані", "filmy.note.eyebrow": "Чогось не вистачає?",
+    "about.sources.eyebrow": "Джерела вмісту", "about.purpose.eyebrow": "Мета",
   },
   ja: {
     "nav.species": "種", "nav.games": "ゲーム", "nav.films": "映画", "nav.about": "プロジェクトについて",
@@ -293,7 +354,11 @@ export const ui: Record<Locale, Record<UiKey, string>> = {
     "species.distribution": "分布", "species.diet": "食性",
     "species.diving": "潜水", "species.depth": "深度",
     "species.duration": "潜水時間", "species.population": "個体数",
-    "species.sources": "出典",
+    "species.sources": "出典", "species.updated": "更新日",
+    "druhy.eyebrow": "百科事典", "druhy.cta.continue": "続ける",
+    "hry.eyebrow": "ゲームコーナー", "hry.cta.eyebrow": "他のゲームも準備中",
+    "filmy.eyebrow": "スクリーンのペンギン", "filmy.note.eyebrow": "何か足りないですか？",
+    "about.sources.eyebrow": "コンテンツの出典", "about.purpose.eyebrow": "目的",
   },
   ko: {
     "nav.species": "종", "nav.games": "게임", "nav.films": "영화", "nav.about": "프로젝트 소개",
@@ -309,7 +374,11 @@ export const ui: Record<Locale, Record<UiKey, string>> = {
     "species.distribution": "분포", "species.diet": "먹이",
     "species.diving": "잠수", "species.depth": "깊이",
     "species.duration": "잠수 시간", "species.population": "개체수",
-    "species.sources": "출처",
+    "species.sources": "출처", "species.updated": "업데이트",
+    "druhy.eyebrow": "백과사전", "druhy.cta.continue": "계속하기",
+    "hry.eyebrow": "게임존", "hry.cta.eyebrow": "더 많은 게임 준비 중",
+    "filmy.eyebrow": "화면 속 펭귄", "filmy.note.eyebrow": "빠진 게 있나요?",
+    "about.sources.eyebrow": "콘텐츠 출처", "about.purpose.eyebrow": "목적",
   },
   zh: {
     "nav.species": "物种", "nav.games": "游戏", "nav.films": "电影", "nav.about": "关于",
@@ -325,7 +394,11 @@ export const ui: Record<Locale, Record<UiKey, string>> = {
     "species.distribution": "分布", "species.diet": "食性",
     "species.diving": "潜水", "species.depth": "深度",
     "species.duration": "潜水时长", "species.population": "数量",
-    "species.sources": "来源",
+    "species.sources": "来源", "species.updated": "更新于",
+    "druhy.eyebrow": "百科全书", "druhy.cta.continue": "继续浏览",
+    "hry.eyebrow": "游戏厅", "hry.cta.eyebrow": "更多游戏即将推出",
+    "filmy.eyebrow": "银幕上的企鹅", "filmy.note.eyebrow": "缺少什么吗？",
+    "about.sources.eyebrow": "内容来源", "about.purpose.eyebrow": "目的",
   },
 };
 

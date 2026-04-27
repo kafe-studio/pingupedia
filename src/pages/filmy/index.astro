@@ -32,7 +32,7 @@ const metadata = {
   <section class="px-4 sm:px-6 pt-28 pb-16">
     <div class="mx-auto max-w-6xl">
       <header class="mb-10 md:mb-14 max-w-3xl reveal">
-        <p class="text-sm uppercase tracking-[0.2em] text-primary/80 mb-4">{page.hero.eyebrow}</p>
+        <p class="text-sm uppercase tracking-[0.2em] text-primary/80 mb-4" data-i18n="filmy.eyebrow">{page.hero.eyebrow}</p>
         <h1 class="text-5xl md:text-7xl font-black tracking-tight leading-[0.95] mb-4">
           <Fragment set:html={page.hero.titleHtml} />
         </h1>
@@ -94,7 +94,7 @@ const metadata = {
 
       <div class="bento-card p-6 md:p-8 flex flex-col md:flex-row items-center justify-between gap-6">
         <div class="max-w-xl">
-          <p class="text-xs uppercase tracking-widest text-primary font-semibold">{page.note.eyebrow}</p>
+          <p class="text-xs uppercase tracking-widest text-primary font-semibold" data-i18n="filmy.note.eyebrow">{page.note.eyebrow}</p>
           <h3 class="mt-2 text-2xl md:text-3xl font-black leading-tight">{page.note.title}</h3>
           <p class="mt-3 text-muted-foreground">{page.note.body}</p>
         </div>
