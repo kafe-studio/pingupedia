@@ -33,7 +33,7 @@ const metadata = {
 
       <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-5 mb-6">
         <div class="bento-card bento-surface-ocean p-6 md:p-7 text-white reveal">
-          <p class="text-xs uppercase tracking-widest text-accent font-semibold mb-3" data-i18n="about.sources.eyebrow">{page.sources.eyebrow}</p>
+          <p class="text-xs uppercase tracking-widest text-accent font-semibold mb-3">{page.sources.eyebrow}</p>
           <ul class="space-y-2 text-sm">
             {page.sources.items.map((item) => (
               <li class="flex items-start gap-2"><span class="text-accent mt-0.5">✓</span><span>{item}</span></li>
@@ -42,7 +42,7 @@ const metadata = {
         </div>
 
         <article class="bento-card p-6 md:p-7 reveal">
-          <p class="text-xs uppercase tracking-widest text-primary font-semibold mb-3" data-i18n="about.purpose.eyebrow">{page.purpose.eyebrow}</p>
+          <p class="text-xs uppercase tracking-widest text-primary font-semibold mb-3">{page.purpose.eyebrow}</p>
           <h2 class="text-xl md:text-2xl font-black leading-tight mb-3">{page.purpose.title}</h2>
           <p class="text-sm text-muted-foreground leading-relaxed" set:html={page.purpose.body} />
         </article>

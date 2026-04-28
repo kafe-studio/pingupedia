@@ -1,8 +1,6 @@
 ---
 import { getSiteConfig } from "../../lib/site";
-import { NAV_KEY_BY_HREF, ui } from "../../i18n/ui";
 const siteConfig = await getSiteConfig();
-const cs = ui.cs;
 ---
 
 <footer class="border-t border-border mt-32">
@@ -12,22 +10,12 @@ const cs = ui.cs;
         <p class="text-lg font-bold mb-4">{siteConfig.name}</p>
         <p class="text-sm text-muted-foreground max-w-sm leading-relaxed">{siteConfig.description}</p>
       </div>
-      <nav aria-label={cs["footer.navigation"]} data-i18n-aria="footer.navigation">
-        <h3 class="text-xs font-bold uppercase tracking-widest text-muted-foreground mb-4" data-i18n="footer.navigation">{cs["footer.navigation"]}</h3>
+      <nav aria-label="Navigace v paticce">
+        <h3 class="text-xs font-bold uppercase tracking-widest text-muted-foreground mb-4">Navigace</h3>
         <ul class="space-y-3">
-          {siteConfig.navLinks.map((link) => {
-            const key = NAV_KEY_BY_HREF[link.href];
-            return (
-              <li>
-                <a
-                  href={link.href}
-                  data-astro-prefetch="false"
-                  class="text-sm text-foreground/70 hover:text-primary transition-colors"
-                  data-i18n={key}
-                >{key ? cs[key] : link.text}</a>
-              </li>
-            );
-          })}
+          {siteConfig.navLinks.map((link) => (
+            <li><a href={link.href} data-astro-prefetch="false" class="text-sm text-foreground/70 hover:text-primary transition-colors">{link.text}</a></li>
+          ))}
         </ul>
       </nav>
     </div>

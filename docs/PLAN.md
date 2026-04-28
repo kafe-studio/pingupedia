@@ -1,7 +1,7 @@
 # Plan: pingupedia
 
 **Vytvořeno:** 2026-04-19
-**Aktualizováno:** 2026-04-27 (Run 017a hotov — i18n základy: config + content collections per-locale + helpery)
+**Aktualizováno:** 2026-04-20 (**Sprint 002 KOMPLETNÍ** — 17/17 druhů s hero + galerií, celkem ~67 fotek z Commons)
 
 ## Cíl
 
@@ -58,31 +58,6 @@ Populárně-naučná encyklopedie všech druhů tučňáků v češtině pro dě
 - [ ] Run 015 — a11y, OG images, SEO, performance
 - [ ] Run 016 — CF Workers deploy + doména + 404 polish
 
-### Sprint 006 — i18n Foundation + EN pilot
-**Stav:** in progress (Run 017a hotov 2026-04-27)
-**Cíl:** Architektura per-locale content + plný překlad do EN (pilot, ověří pipeline). Cílové jazyky napříč Sprint 006/007: **cs (primary), en, de, fr, es, it, pl, uk**.
-
-- [x] Run 017a — i18n základy: Astro i18n config + page collections per-locale glob patterns + species-i18n helper (mcp) → `docs/sprints/006-i18n-foundation/run-017a-foundations.done.md`
-- [ ] Run 017b — page routing: per-locale getStaticPaths, LangSwitcher URL refactor, 404 fallback (mcp) → `docs/sprints/006-i18n-foundation/run-017b-page-routing.md`
-- [ ] Run 018 — EN pilot: 4 druhy (cisarsky, brylovy, krouzkovy, osli) × frontmatter + body, ověřit E2E pipeline
-- [ ] Run 019 — EN: zbývajících 14 druhů × frontmatter + body
-- [ ] Run 020 — EN: page JSONs (home, hry, filmy, o-projektu, quiz) + site config + Sprint 006 audit
-
-### Sprint 007 — Další jazyky (DE/FR/ES/IT/PL/UK)
-**Cíl:** Replikovat EN pipeline pro zbývajících 6 jazyků.
-
-- [ ] Run 021 — DE: 18 druhů + page JSONs + quiz
-- [ ] Run 022 — FR: 18 druhů + page JSONs + quiz
-- [ ] Run 023 — ES: 18 druhů + page JSONs + quiz
-- [ ] Run 024 — IT: 18 druhů + page JSONs + quiz
-- [ ] Run 025 — PL: 18 druhů + page JSONs + quiz
-- [ ] Run 026 — UK: 18 druhů + page JSONs + quiz
-
-### Sprint 008 — i18n polish
-**Cíl:** Závěrečný audit všech 7 jazyků + cleanup.
-
-- [ ] Run 027 — sprint audit všech 7 jazyků (build × 7 = 7× více stránek), broken links, fallback chování, hreflang, sitemap per-locale, finální UX cleanup
-
 ## Poznámky
 
 ### Vizuální pravidla (napříč projektem)
@@ -106,23 +81,3 @@ Populárně-naučná encyklopedie všech druhů tučňáků v češtině pro dě
 - Sprint 002 závisí na Sprint 001 (schema + layout).
 - Sprint 003 (mapa) závisí na Sprint 002 (seed data s distribucí).
 - Sprint 004 (search) závisí na Sprint 002 (obsah k indexaci).
-- Sprint 006 (i18n) závisí na Sprint 002 (obsah druhů k překladu) + na současném i18n MVP (UI dictionary).
-- Sprint 007 závisí na Sprint 006 (architektura + EN pilot ověřuje pipeline).
-- Sprint 008 závisí na Sprint 007 (audit po dokončení všech jazyků).
-
-### i18n architektonické rozhodnutí (Sprint 006)
-- **URL routing**: subpath (`/en/druhy/cisarsky/`), Astro 6 nativní `i18n.routing` config s `prefixDefaultLocale: false` (cs zůstává na `/druhy/cisarsky/`).
-- **Content storage**: `{slug}.{locale}.md` pattern v `src/content/species/`, glob loader matchuje per locale. Pages podobně přes `home.{locale}.json`.
-- **Hero titleHtml**: per-locale field v JSON (např. `hero.titleHtml.en`, `hero.titleHtml.de`) — vyžaduje schema rozšíření.
-- **Drop**: 8 jazyků (kl, pt, hu, da, sv, ja, ko, zh) odstraněno z UI dictionary (commit 9543bfa, 2026-04-27).
-- **Kvalita překladu**: strojová (LLM, žádný human review pass v plánu). Pro encyklopedický tón v UK/PL je riziko viditelných chyb — flag pro pozdější iteraci.
-- **Build cost**: ~7× více prerendrovaných stránek; CF Workers build ~1 minuta → ~5 minut očekáváno.
-- **Maintenance**: každá fact-check oprava v cs musí být replikována do 6 dalších jazyků.
-
-### Ad-hoc runy mimo plán (2026-04-21 až 2026-04-27)
-PLAN.md neobsahuje práci, která proběhla ad-hoc:
-- **Hry**: platformovka (s 4 mini-hrami: ski/hockey/jump/dive), obrana (shooter), puzzle, pexeso, kviz — `/hry/*`
-- **Diving data + fact-check**: schema `diving` + překlad fact-checked dat všech 18 druhů
-- **JSON API**: `/api/druhy.json`, `/api/druhy/[slug].json` (CORS public)
-- **Full audit + 3 hardening runy**: CSRF, constant-time login, RAF leak, JSON-LD escape, admin Cache-Control, render guards, theme seed, lightbox view-transition, roundRect polyfill, dt-scale physics, session iat+kid revocation, sanitize, schema validate, https-only URL
-- **i18n MVP + 2 rozšíření**: 16→8 locales, ~34 UI klíčů, client-side overlay (předchází Sprint 006)

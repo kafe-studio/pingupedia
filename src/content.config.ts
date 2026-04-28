@@ -114,58 +114,33 @@ const species = defineCollection({
     }),
 });
 
-// Per-locale page collections: každý collection matchuje cs default soubor
-// (např. `home.json`) PLUS per-locale variants `home.{locale}.json`. Schema
-// zůstává plný (každý jazyk má kompletní strukturu — DRY zajistí build pipeline,
-// ne schema). Default cs je naseedovaný; per-locale soubory budou doplněny v Run 018+.
-// Glob pattern `home.*.json` matchuje 2+ segmenty (`home.en.json`), ne 1-segmentový
-// `home.json` — proto je nutný array of patterns.
-
 const site = defineCollection({
-  loader: glob({
-    pattern: ["config.json", "config.*.json"],
-    base: "./src/content/site",
-  }),
+  loader: glob({ pattern: "config.json", base: "./src/content/site" }),
   schema: siteSchema,
 });
 
 const home = defineCollection({
-  loader: glob({
-    pattern: ["home.json", "home.*.json"],
-    base: "./src/content/pages",
-  }),
+  loader: glob({ pattern: "home.json", base: "./src/content/pages" }),
   schema: homeSchema,
 });
 
 const oProjektu = defineCollection({
-  loader: glob({
-    pattern: ["o-projektu.json", "o-projektu.*.json"],
-    base: "./src/content/pages",
-  }),
+  loader: glob({ pattern: "o-projektu.json", base: "./src/content/pages" }),
   schema: oProjektuSchema,
 });
 
 const hry = defineCollection({
-  loader: glob({
-    pattern: ["hry.json", "hry.*.json"],
-    base: "./src/content/pages",
-  }),
+  loader: glob({ pattern: "hry.json", base: "./src/content/pages" }),
   schema: hrySchema,
 });
 
 const quiz = defineCollection({
-  loader: glob({
-    pattern: ["quiz.json", "quiz.*.json"],
-    base: "./src/content",
-  }),
+  loader: glob({ pattern: "quiz.json", base: "./src/content" }),
   schema: quizSchema,
 });
 
 const filmy = defineCollection({
-  loader: glob({
-    pattern: ["filmy.json", "filmy.*.json"],
-    base: "./src/content/pages",
-  }),
+  loader: glob({ pattern: "filmy.json", base: "./src/content/pages" }),
   schema: filmySchema,
 });
 

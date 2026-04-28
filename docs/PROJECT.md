@@ -115,5 +115,5 @@ Přidá se podle potřeby:
 
 ## Stav
 
-**Sprint:** 006 i18n Foundation — Run 017a hotov (2026-04-27): Astro i18n config (8 locales), page collections per-locale glob patterns, species i18n helper modul. Žádný překlad obsahu zatím; URL routing je v 017b.
-**Další krok:** Run 017b — per-locale getStaticPaths, LangSwitcher URL refactor, 404 fallback → poté Run 018 (EN pilot 4 druhy).
+**Sprint:** 002 **HOTOVO** (2026-04-20) — **17/17 druhů s hero + galerií**. Všechny rody kompletně pokryté: Aptenodytes (2/2), Pygoscelis (3/3), Eudyptes (6/6), Megadyptes (1/1), Eudyptula (1/1), Spheniscus (4/4). Celkem ~67 fotografií z Wikimedia Commons se správně vyplněnými licenčními údaji. Deploy na https://pingupedia.ukazka.workers.dev aktivní.
+**Další krok:** `/audit` Sprintu 002 (faktická přesnost všech 17 druhů, IUCN URLs, celkový polish) → poté Sprint 003 (mapy/historie/infografiky).

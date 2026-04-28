@@ -51,40 +51,40 @@ const durationLabel = durTypical && durMax
 
 <section class="px-6 py-12 bg-muted/50" aria-labelledby="facts-heading">
   <div class="mx-auto max-w-5xl">
-    <h2 id="facts-heading" class="text-2xl md:text-3xl font-bold mb-8 reveal" data-i18n="species.facts">Fakta</h2>
+    <h2 id="facts-heading" class="text-2xl md:text-3xl font-bold mb-8 reveal">Fakta</h2>
     <dl class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
       <div class="reveal">
-        <dt class="text-xs uppercase tracking-wide text-muted-foreground mb-1" data-i18n="species.genus">Rod</dt>
+        <dt class="text-xs uppercase tracking-wide text-muted-foreground mb-1">Rod</dt>
         <dd class="text-lg font-semibold italic">{genus}</dd>
       </div>
       <div class="reveal">
-        <dt class="text-xs uppercase tracking-wide text-muted-foreground mb-1" data-i18n="species.height">Výška</dt>
+        <dt class="text-xs uppercase tracking-wide text-muted-foreground mb-1">Výška</dt>
         <dd class="text-lg font-semibold">{heightLabel}</dd>
       </div>
       <div class="reveal">
-        <dt class="text-xs uppercase tracking-wide text-muted-foreground mb-1" data-i18n="species.weight">Váha</dt>
+        <dt class="text-xs uppercase tracking-wide text-muted-foreground mb-1">Váha</dt>
         <dd class="text-lg font-semibold">{weightLabel}</dd>
       </div>
       <div class="reveal sm:col-span-2">
-        <dt class="text-xs uppercase tracking-wide text-muted-foreground mb-1" data-i18n="species.habitat">Habitat</dt>
+        <dt class="text-xs uppercase tracking-wide text-muted-foreground mb-1">Habitat</dt>
         <dd class="text-base text-foreground/90">{habitat}</dd>
       </div>
       <div class="reveal">
-        <dt class="text-xs uppercase tracking-wide text-muted-foreground mb-1" data-i18n="species.lifespan">Délka života</dt>
+        <dt class="text-xs uppercase tracking-wide text-muted-foreground mb-1">Délka života</dt>
         <dd class="text-base">
           <span class="font-semibold">{wildLabel}</span>
-          {" "}<span class="text-muted-foreground" data-i18n="species.lifespan.wild">ve volné přírodě</span>
+          <span class="text-muted-foreground"> ve volné přírodě</span>
           {captivityLabel && (
             <>
               <br />
               <span class="font-semibold">{captivityLabel}</span>
-              {" "}<span class="text-muted-foreground" data-i18n="species.lifespan.captivity">v péči lidí</span>
+              <span class="text-muted-foreground"> v péči lidí</span>
             </>
           )}
         </dd>
       </div>
       <div class="reveal sm:col-span-2 lg:col-span-1">
-        <dt class="text-xs uppercase tracking-wide text-muted-foreground mb-1" data-i18n="species.distribution">Rozšíření</dt>
+        <dt class="text-xs uppercase tracking-wide text-muted-foreground mb-1">Rozšíření</dt>
         <dd class="text-base">
           <ul class="list-disc list-inside space-y-0.5 marker:text-primary/60">
             {distribution.map((area) => <li>{area}</li>)}
@@ -92,7 +92,7 @@ const durationLabel = durTypical && durMax
         </dd>
       </div>
       <div class="reveal sm:col-span-2">
-        <dt class="text-xs uppercase tracking-wide text-muted-foreground mb-1" data-i18n="species.diet">Strava</dt>
+        <dt class="text-xs uppercase tracking-wide text-muted-foreground mb-1">Strava</dt>
         <dd class="text-base">
           <ul class="list-disc list-inside space-y-0.5 marker:text-primary/60">
             {diet.map((item) => <li>{item}</li>)}
@@ -101,17 +101,17 @@ const durationLabel = durTypical && durMax
       </div>
       {(depthLabel || durationLabel) && (
         <div class="reveal sm:col-span-2 lg:col-span-3">
-          <dt class="text-xs uppercase tracking-wide text-muted-foreground mb-1" data-i18n="species.diving">Potápění</dt>
+          <dt class="text-xs uppercase tracking-wide text-muted-foreground mb-1">Potápění</dt>
           <dd class="text-base text-foreground/90">
             {depthLabel && (
               <>
-                <span class="font-semibold"><span data-i18n="species.depth">Hloubka</span>:</span> <span>{depthLabel}</span>
+                <span class="font-semibold">Hloubka:</span> <span>{depthLabel}</span>
               </>
             )}
             {depthLabel && durationLabel && <span class="mx-2 text-muted-foreground">·</span>}
             {durationLabel && (
               <>
-                <span class="font-semibold"><span data-i18n="species.duration">Délka ponoru</span>:</span> <span>{durationLabel}</span>
+                <span class="font-semibold">Délka ponoru:</span> <span>{durationLabel}</span>
               </>
             )}
             {diving?.note && (
@@ -125,7 +125,7 @@ const durationLabel = durTypical && durMax
       )}
       {population && (
         <div class="reveal sm:col-span-2 lg:col-span-3">
-          <dt class="text-xs uppercase tracking-wide text-muted-foreground mb-1" data-i18n="species.population">Populace</dt>
+          <dt class="text-xs uppercase tracking-wide text-muted-foreground mb-1">Populace</dt>
           <dd class="text-base text-foreground/90">{population}</dd>
         </div>
       )}
