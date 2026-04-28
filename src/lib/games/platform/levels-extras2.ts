@@ -316,6 +316,9 @@ const rezavyKormidlnik: Room = {
   ],
   spawn: { x: 9 * TILE, y: 1 * TILE },
   hint: "Rezavé kormidlo — propad k moři.",
+  movers: [
+    { kind: "slide", x: 8 * 16, y: 4 * 16, w: 32, h: 6, minY: 3 * 16, maxY: 10 * 16, vy: 0.4 },
+  ],
 };
 
 const pokladVraku: Room = {
@@ -839,7 +842,7 @@ const magArchipelag: Room = {
     "..==..==..==..==....",
     "....................",
     "....................",
-    "..==..==..==..==....",
+    "..==..======..==....",
     "....................",
     "....................",
     "..H..............H..",

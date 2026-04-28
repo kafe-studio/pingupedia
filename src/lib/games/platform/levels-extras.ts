@@ -158,6 +158,9 @@ const sparna: Room = {
   ],
   spawn: { x: 18 * TILE, y: 12 * TILE },
   hint: "Spárna — police plné zásob, vlevo kryostat.",
+  movers: [
+    { kind: "swing", x: 1 * 16, y: 7 * 16, w: 32, h: 6, minX: 1 * 16, maxX: 17 * 16, vx: 0.8 },
+  ],
 };
 
 // observatorium — dalekohledy a hvězdy. Vpravo od stanice2.
@@ -198,6 +201,9 @@ const observatorium: Room = {
   ],
   spawn: { x: 1 * TILE, y: 12 * TILE },
   hint: "Hvězdná obloha. Pozor na padající krystaly.",
+  movers: [
+    { kind: "slide", x: 9 * 16, y: 2 * 16, w: 32, h: 6, minY: 1 * 16, maxY: 8 * 16, vy: 0.6 },
+  ],
 };
 
 // kryostat — kryogenní lab, žlutý klíč. Pod stanice2.
@@ -318,6 +324,9 @@ const knihovna: Room = {
   ],
   spawn: { x: 1 * TILE, y: 11 * TILE },
   hint: "Knihovna — slalom mezi policemi, dolů do tělocvičny.",
+  movers: [
+    { kind: "swing", x: 1 * 16, y: 9 * 16, w: 48, h: 6, minX: 1 * 16, maxX: 16 * 16, vx: 0.9 },
+  ],
 };
 
 const telocvicna: Room = {
@@ -466,6 +475,9 @@ const prepad: Room = {
   ],
   spawn: { x: 9 * TILE, y: 1 * TILE },
   hint: "Propad — křižovatka jeskyně. Klíč najdeš dole v rybníce.",
+  movers: [
+    { kind: "slide", x: 14 * 16, y: 4 * 16, w: 32, h: 6, minY: 3 * 16, maxY: 11 * 16, vy: 0.5 },
+  ],
 };
 
 const stalaktity: Room = {
@@ -501,6 +513,9 @@ const stalaktity: Room = {
   ],
   spawn: { x: 18 * TILE, y: 12 * TILE },
   hint: "Stalaktity — bodce ze stropu, plošiny mezi.",
+  movers: [
+    { kind: "swing", x: 2 * 16, y: 9 * 16, w: 64, h: 6, minX: 1 * 16, maxX: 13 * 16, vx: 1.0 },
+  ],
 };
 
 const temnaChodba: Room = {
@@ -537,6 +552,9 @@ const temnaChodba: Room = {
   ],
   spawn: { x: 1 * TILE, y: 12 * TILE },
   hint: "Temná chodba — dlouhý žebřík, sběr ryb.",
+  movers: [
+    { kind: "slide", x: 16 * 16, y: 2 * 16, w: 32, h: 6, minY: 2 * 16, maxY: 11 * 16, vy: 0.7 },
+  ],
 };
 
 const podzemniRybnik: Room = {
@@ -609,6 +627,9 @@ const pokladnice: Room = {
   ],
   spawn: { x: 1 * TILE, y: 12 * TILE },
   hint: "Pokladnice — bohatství i past medvěda.",
+  movers: [
+    { kind: "swing", x: 1 * 16, y: 6 * 16, w: 48, h: 6, minX: 1 * 16, maxX: 16 * 16, vx: 0.6 },
+  ],
 };
 
 // =============================================================================
