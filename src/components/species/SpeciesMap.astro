@@ -47,10 +47,11 @@ const markers = colonies.map((c) => ({
         class="w-full h-auto block"
         role="img"
         aria-label={`Mapa kolonií druhu ${speciesName}`}
+        data-species-map
       >
         <image href={worldUrl} x="0" y="0" width={MAP_WIDTH} height={MAP_HEIGHT} preserveAspectRatio="xMidYMid meet" />
-        {markers.map((m) => (
-          <g class="map-marker">
+        {markers.map((m, i) => (
+          <g class="map-marker" data-marker={i}>
             <circle cx={m.x} cy={m.y} r="14" fill={m.color} fill-opacity="0.18" />
             <circle cx={m.x} cy={m.y} r="6" fill={m.color} stroke="#ffffff" stroke-width="1.5">
               <title>{m.name}{m.description ? ` — ${m.description}` : ""}</title>
@@ -60,18 +61,24 @@ const markers = colonies.map((c) => ({
       </svg>
     </div>
 
-    <ul class="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-2 text-sm reveal">
+    <ul class="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-2 text-sm reveal" data-colony-list>
       {colonies.map((c, i) => (
-        <li class="flex items-start gap-2 rounded-lg border border-border bg-card px-3 py-2">
-          <span
-            class="shrink-0 w-3 h-3 rounded-full mt-1"
-            style={`background:${COLOR[c.type ?? "default"]}`}
-            aria-hidden="true"
-          />
-          <span class="min-w-0">
-            <span class="font-semibold">{i + 1}. {c.name}</span>
-            {c.description && <span class="text-muted-foreground"> · {c.description}</span>}
-          </span>
+        <li>
+          <button
+            type="button"
+            data-colony-target={i}
+            class="w-full text-left flex items-start gap-2 rounded-lg border border-border bg-card px-3 py-2 transition-colors hover:border-primary focus:outline-none focus:ring-2 focus:ring-primary"
+          >
+            <span
+              class="shrink-0 w-3 h-3 rounded-full mt-1"
+              style={`background:${COLOR[c.type ?? "default"]}`}
+              aria-hidden="true"
+            />
+            <span class="min-w-0">
+              <span class="font-semibold">{i + 1}. {c.name}</span>
+              {c.description && <span class="text-muted-foreground"> · {c.description}</span>}
+            </span>
+          </button>
         </li>
       ))}
     </ul>
@@ -87,4 +94,39 @@ const markers = colonies.map((c) => ({
 <style>
   .map-marker { transition: transform 0.2s ease; transform-origin: center; transform-box: fill-box; }
   .map-marker:hover { transform: scale(1.4); }
+  .map-marker.flash { animation: marker-flash 1.4s ease-out; transform-origin: center; transform-box: fill-box; }
+  @keyframes marker-flash {
+    0%   { transform: scale(1);   filter: drop-shadow(0 0 0 #facc15); }
+    25%  { transform: scale(2.4); filter: drop-shadow(0 0 12px #facc15); }
+    50%  { transform: scale(1);   filter: drop-shadow(0 0 4px #facc15); }
+    75%  { transform: scale(2.4); filter: drop-shadow(0 0 12px #facc15); }
+    100% { transform: scale(1);   filter: drop-shadow(0 0 0 transparent); }
+  }
 </style>
+
+<script>
+  function wireSpeciesMap(): void {
+    document.querySelectorAll<SVGSVGElement>("[data-species-map]").forEach((svg) => {
+      const section = svg.closest("section");
+      const list = section?.querySelector<HTMLElement>("[data-colony-list]");
+      if (!list || list.dataset.wired === "1") return;
+      list.dataset.wired = "1";
+      list.querySelectorAll<HTMLButtonElement>("button[data-colony-target]").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const idx = btn.dataset.colonyTarget;
+          if (!idx) return;
+          const marker = svg.querySelector<SVGGElement>(`g[data-marker="${idx}"]`);
+          if (!marker) return;
+          // Restart animace: odstranit class, force reflow, znovu přidat.
+          marker.classList.remove("flash");
+          void marker.getBoundingClientRect();
+          marker.classList.add("flash");
+          // Plynulý scroll k mapě, ať uživatel marker uvidí.
+          svg.scrollIntoView({ behavior: "smooth", block: "center" });
+        });
+      });
+    });
+  }
+  wireSpeciesMap();
+  document.addEventListener("astro:page-load", wireSpeciesMap);
+</script>
