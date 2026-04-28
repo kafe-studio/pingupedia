@@ -58,6 +58,7 @@ export function drawScene(ctx: CanvasRenderingContext2D, state: GameState): void
       else if (t === "*") drawSpikes(ctx, pal, x, y);
       else if (t === "C" || t === "c") drawConveyor(ctx, pal, x, y, t === "C");
       else if (t === "b") drawBreakable(ctx, pal, x, y);
+      else if (t === "T") drawTrampoline(ctx, x, y, state.time);
     }
   }
 
@@ -113,6 +114,37 @@ function drawMover(ctx: CanvasRenderingContext2D, m: { kind: "swing" | "slide"; 
     ctx.lineTo(m.x + m.w - 4 + sway, m.y - 8);
     ctx.stroke();
   }
+}
+
+// =====================  TRAMPOLINE TILE  =====================
+
+function drawTrampoline(ctx: CanvasRenderingContext2D, x: number, y: number, t: number): void {
+  // Pružinovitá trampolína — orange canvas + 2 black springs.
+  const wobble = Math.sin(t * 0.008) * 1.2;
+  // Frame (legs)
+  ctx.fillStyle = "#3a2a1a";
+  ctx.fillRect(x + 1, y + 12, 2, 4);
+  ctx.fillRect(x + 13, y + 12, 2, 4);
+  // Springs (black diagonal lines)
+  ctx.strokeStyle = "#222";
+  ctx.lineWidth = 1;
+  ctx.beginPath();
+  ctx.moveTo(x + 2, y + 12);
+  ctx.lineTo(x + 4, y + 7 + wobble);
+  ctx.lineTo(x + 2, y + 4 + wobble);
+  ctx.moveTo(x + 14, y + 12);
+  ctx.lineTo(x + 12, y + 7 + wobble);
+  ctx.lineTo(x + 14, y + 4 + wobble);
+  ctx.stroke();
+  // Canvas top — orange/red curved
+  ctx.fillStyle = "#e85d3a";
+  ctx.fillRect(x, y + 4 + wobble, 16, 4);
+  // Canvas highlight
+  ctx.fillStyle = "#ff8a5c";
+  ctx.fillRect(x, y + 4 + wobble, 16, 1);
+  // Canvas shadow
+  ctx.fillStyle = "#a83e22";
+  ctx.fillRect(x, y + 7 + wobble, 16, 1);
 }
 
 // =====================  BACKDROPS  =====================

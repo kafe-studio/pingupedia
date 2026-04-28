@@ -266,6 +266,9 @@ export class PlatformGame {
   private isWater(t: string): boolean {
     return t === "~";
   }
+  private isTrampoline(t: string): boolean {
+    return t === "T";
+  }
 
   // --- Physics ---
 
@@ -424,10 +427,17 @@ export class PlatformGame {
       const rightCol = Math.floor((p.x + PLAYER_W - 1) / TILE);
       const row = Math.floor(probeY / TILE);
       let landed = false;
+      let bounce = false;
       for (let c = leftCol; c <= rightCol; c++) {
         const t = this.roomTileAt(room, c, row);
         if (this.isSolid(t)) {
           landed = true;
+          break;
+        }
+        // Trampoline — bounces player upward, only when falling.
+        if (this.isTrampoline(t) && dir > 0) {
+          landed = true;
+          bounce = true;
           break;
         }
         // Jump-through platform: only land when falling and previous tile wasn't already inside.
@@ -443,8 +453,13 @@ export class PlatformGame {
       else {
         if (dir > 0) {
           p.y = row * TILE - PLAYER_H;
-          p.vy = 0;
-          p.onGround = true;
+          if (bounce) {
+            p.vy = JUMP_V * 1.6;  // double-jump kick
+            this.hooks.onSfx("boing");
+          } else {
+            p.vy = 0;
+            p.onGround = true;
+          }
         } else {
           p.y = (row + 1) * TILE;
           p.vy = 0;

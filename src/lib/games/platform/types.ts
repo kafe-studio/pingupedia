@@ -18,6 +18,7 @@ export type TileChar =
   | "*" // spikes / crystals — death on touch
   | "C" // conveyor (auto-push right)
   | "c" // conveyor (auto-push left)
+  | "T" // trampoline — bounces player upward on landing
   ;
 
 // Locked doors: 4 colors, each unlocks a different mini-game.
