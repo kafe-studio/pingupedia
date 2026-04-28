@@ -9,6 +9,10 @@ const httpsUrl = z.url().refine((u) => u.startsWith("https://"), {
   message: "URL musí začínat https://",
 });
 const surfaceEnum = z.enum(["aurora", "ocean", "ice", "sun", "candy", "midnight"]);
+const mascotPoseEnum = z.enum([
+  "ahoj", "plave", "detektiv", "cte", "radost",
+  "otazka", "palec", "wow", "srdce", "vajicko",
+]);
 const filmTypeEnum = z.enum(["animovany", "hrany", "dokument", "serial"]);
 const filmLinkTypeEnum = z.enum([
   "csfd",
@@ -140,7 +144,7 @@ export const hrySchema = z.object({
         tag: z.string().min(1),
         description: z.string().min(1),
         surface: surfaceEnum,
-        emoji: z.string().min(1),
+        mascotPose: mascotPoseEnum,
       }),
     )
     .min(1),

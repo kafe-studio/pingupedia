@@ -37,7 +37,7 @@ const metadata = {
           <article class={`bento-card ${surfaceClass[g.surface]} col-span-12 md:col-span-4 p-6 flex flex-col justify-between text-white min-h-[280px] reveal`}>
             <div>
               <div class="flex items-center gap-3 mb-4">
-                <span class="text-4xl" aria-hidden="true">{g.emoji}</span>
+                <Mascot pose={g.mascotPose} size={56} class="shrink-0" />
                 <span class="rounded-full bg-white/10 px-3 py-1 text-xs font-semibold text-white/90 backdrop-blur-sm">
                   {g.tag}
                 </span>
