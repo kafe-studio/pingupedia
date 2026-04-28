@@ -971,9 +971,12 @@ const skolka: Room = {
     i("chick", 4, 12, "sko-c1"),
     i("chick", 14, 12, "sko-c2"),
   ],
-  exits: [exit("bottom", "mladata", 8, 1)],
+  exits: [
+    exit("bottom", "mladata", 8, 1),
+    exit("right", "trida", 1, 11),
+  ],
   spawn: { x: 8 * TILE, y: 2 * TILE },
-  hint: "Školka pro mláďata — sebrat všechna vejce a chyť mláďata pro doprovod do iglu!",
+  hint: "Školka pro mláďata — sebrat všechna vejce a chyť mláďata pro doprovod do iglu! Vpravo je akademie.",
 };
 
 // Tree D: skaly.top → hreben → arch → vrchol
@@ -1088,6 +1091,7 @@ const sopka: Room = {
   exits: [
     exit("bottom", "galapagos", 8, 1),
     exit("left", "terasy", 18, 12),
+    exit("right", "kraterUst", 1, 12),
   ],
   spawn: { x: 8 * TILE, y: 2 * TILE },
 };
@@ -1283,13 +1287,14 @@ const labyrinth: Room = {
     "..####..............",
     "....................",
     "....................",
-    "####################",
+    "########..##########",
   ],
   guardians: [h("polarbear", 4, 6, 18, 1.0), v("snowwind", 9, 1, 11, 0.7)],
   items: [i("crystal", 7, 1, "la-c1"), i("medal", 15, 9, "la-m1"), i("fish", 1, 11, "la-f1")],
   exits: [
     exit("left", "ruda", 18, 12),
     exit("right", "planety", 1, 12),
+    exit("bottom", "prepad", 9, 1),
   ],
   spawn: { x: 10 * TILE, y: 12 * TILE },
 };

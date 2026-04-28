@@ -235,6 +235,549 @@ const kryostat: Room = {
   hint: "Mrazicí komora. Žlutý klíč otevírá Skok do dálky.",
 };
 
+// =============================================================================
+// Cluster: Pingvíní akademie (5 místností, palette candy)
+// Vstup zleva ze skolka.right → trida → knihovna/telocvicna → drilovaciRampa → reditelna (red key)
+// =============================================================================
+
+const trida: Room = {
+  id: "trida",
+  name: "Třída",
+  palette: "candy",
+  tiles: [
+    "....................",
+    "....................",
+    "..==============....",
+    "....................",
+    "....................",
+    ".===.....====.......",
+    "....................",
+    "..H.................",
+    "..H..====..====.....",
+    "..H.................",
+    "..H.................",
+    "..H.................",
+    "....................",
+    "##########..########",
+  ],
+  guardians: [h("seal", 5, 4, 14, 0.7), v("snowwind", 11, 5, 12, 0.6)],
+  items: [
+    i("egg", 3, 1, "tri-e1"),
+    i("fish", 12, 4, "tri-f1"),
+    i("medal", 15, 7, "tri-m1"),
+    i("chick", 17, 12, "tri-c1"),
+  ],
+  exits: [
+    exit("left", "skolka", 18, 11),
+    exit("right", "knihovna", 1, 11),
+    exit("bottom", "telocvicna", 10, 1),
+  ],
+  spawn: { x: 1 * TILE, y: 12 * TILE },
+  hint: "Třída — sběr vajec a první mládě. Doprava do knihovny, dolů do tělocvičny.",
+};
+
+const knihovna: Room = {
+  id: "knihovna",
+  name: "Knihovna",
+  palette: "candy",
+  tiles: [
+    "....................",
+    "....................",
+    "..####..####..####..",
+    "....................",
+    "..####..####..####..",
+    "....................",
+    "..####..####..####..",
+    "....................",
+    "..####..####..####..",
+    "....................",
+    "..####..####..####..",
+    "....................",
+    "....................",
+    "####################",
+  ],
+  guardians: [h("petrel", 9, 1, 18, 0.9), h("petrel", 11, 1, 18, 0.7)],
+  items: [
+    i("medal", 1, 1, "kn-m1"),
+    i("medal", 18, 1, "kn-m2"),
+    i("crystal", 9, 5, "kn-c1"),
+    i("flag", 9, 11, "kn-fl"),
+    i("fish", 1, 11, "kn-f1"),
+  ],
+  exits: [
+    exit("left", "trida", 18, 11),
+    exit("right", "drilovaciRampa", 1, 11),
+  ],
+  spawn: { x: 1 * TILE, y: 11 * TILE },
+  hint: "Knihovna — slalom mezi policemi.",
+};
+
+const telocvicna: Room = {
+  id: "telocvicna",
+  name: "Tělocvična",
+  palette: "candy",
+  tiles: [
+    "....................",
+    "....................",
+    "....================",
+    "....................",
+    "....................",
+    "================....",
+    "....................",
+    "....................",
+    "..H..............H..",
+    "..H..............H..",
+    "..H..============H..",
+    "..H..............H..",
+    "..H..............H..",
+    "####################",
+  ],
+  guardians: [h("seal", 4, 5, 17, 1.0), h("skua", 7, 1, 18, 0.8)],
+  items: [
+    i("fish", 18, 1, "te-f1"),
+    i("fish", 1, 4, "te-f2"),
+    i("medal", 9, 9, "te-m1"),
+    i("heart", 10, 12, "te-h1"),
+  ],
+  exits: [
+    exit("top", "trida", 10, 12),
+  ],
+  spawn: { x: 10 * TILE, y: 12 * TILE },
+  hint: "Tělocvična — žebříky vedou nahoru. Sebrat srdce.",
+};
+
+const drilovaciRampa: Room = {
+  id: "drilovaciRampa",
+  name: "Drilovací rampa",
+  palette: "candy",
+  tiles: [
+    "....................",
+    "....................",
+    "..==................",
+    "...*................",
+    "....==..............",
+    ".....*..............",
+    "......==............",
+    ".......*............",
+    "........==..........",
+    ".........*..........",
+    "..........====......",
+    "....................",
+    "....................",
+    "####################",
+  ],
+  guardians: [h("polarbear", 12, 11, 17, 0.6)],
+  items: [
+    i("fish", 4, 1, "dr-f1"),
+    i("fish", 14, 9, "dr-f2"),
+    i("crystal", 17, 12, "dr-c1"),
+  ],
+  exits: [
+    exit("left", "knihovna", 18, 11),
+    exit("right", "reditelna", 1, 12),
+  ],
+  spawn: { x: 1 * TILE, y: 12 * TILE },
+  hint: "Drilovací rampa — pozor na bodce pod každou plošinou.",
+};
+
+const reditelna: Room = {
+  id: "reditelna",
+  name: "Ředitelna",
+  palette: "candy",
+  tiles: [
+    "....................",
+    "....................",
+    "..==============....",
+    "....................",
+    "....................",
+    "..####........####..",
+    "....................",
+    "....................",
+    "....================",
+    "....................",
+    "....................",
+    "..==============....",
+    "....................",
+    "####################",
+  ],
+  guardians: [v("walrus", 9, 6, 10, 0.5), h("petrel", 4, 2, 17, 0.9)],
+  items: [
+    i("heart", 1, 4, "re-h1"),
+    key("red", 9, 1, "re-key"),
+    i("medal", 17, 6, "re-m1"),
+    i("crystal", 9, 10, "re-c1"),
+  ],
+  exits: [
+    exit("left", "drilovaciRampa", 18, 12),
+  ],
+  spawn: { x: 1 * TILE, y: 12 * TILE },
+  hint: "Ředitelna — červený klíč otevírá Hokej.",
+};
+
+// =============================================================================
+// Cluster: Hluboká jeskyně (5 místností, palette cave)
+// Vstup shora z labyrinth.bottom → prepad → 4 vedlejší (stalaktity, rybnik, chodba, pokladnice)
+// =============================================================================
+
+const prepad: Room = {
+  id: "prepad",
+  name: "Propad",
+  palette: "cave",
+  tiles: [
+    "....................",
+    "....................",
+    "....................",
+    ".......======.......",
+    "....................",
+    "....................",
+    ".==..............==.",
+    "....................",
+    "....................",
+    "..H..............H..",
+    "..H...========...H..",
+    "..H..............H..",
+    "..H..............H..",
+    "########..##########",
+  ],
+  guardians: [v("icicle", 7, 0, 5, 0.8), v("icicle", 13, 0, 5, 0.8)],
+  items: [
+    i("crystal", 9, 2, "pre-c1"),
+    i("fish", 2, 5, "pre-f1"),
+    i("fish", 17, 5, "pre-f2"),
+    i("medal", 9, 9, "pre-m1"),
+  ],
+  exits: [
+    exit("top", "labyrinth", 9, 12),
+    exit("left", "stalaktity", 18, 12),
+    exit("right", "temnaChodba", 1, 12),
+    exit("bottom", "podzemniRybnik", 9, 1),
+  ],
+  spawn: { x: 9 * TILE, y: 1 * TILE },
+  hint: "Propad — křižovatka jeskyně. Klíč najdeš dole v rybníce.",
+};
+
+const stalaktity: Room = {
+  id: "stalaktity",
+  name: "Stalaktity",
+  palette: "cave",
+  tiles: [
+    "....................",
+    ".*..*..*..*..*..*..*",
+    "....................",
+    "....................",
+    "..====..====..====..",
+    "....................",
+    "....................",
+    "..====..====..====..",
+    "....................",
+    "....................",
+    "..====..====..====..",
+    "....................",
+    "....................",
+    "####################",
+  ],
+  guardians: [v("icicle", 9, 1, 11, 1.0), h("petrel", 6, 1, 18, 0.9)],
+  items: [
+    i("crystal", 4, 3, "st-c1"),
+    i("crystal", 14, 6, "st-c2"),
+    i("medal", 9, 9, "st-m1"),
+    i("fish", 1, 12, "st-f1"),
+  ],
+  exits: [
+    exit("right", "prepad", 1, 12),
+  ],
+  spawn: { x: 18 * TILE, y: 12 * TILE },
+  hint: "Stalaktity — bodce ze stropu, plošiny mezi.",
+};
+
+const temnaChodba: Room = {
+  id: "temnaChodba",
+  name: "Temná chodba",
+  palette: "cave",
+  tiles: [
+    "....................",
+    "..H.................",
+    "..H.................",
+    "..H..============...",
+    "..H.................",
+    "..H.................",
+    "..H..============...",
+    "..H.................",
+    "..H.................",
+    "..H..============...",
+    "..H.................",
+    "..H.................",
+    "..H.................",
+    "####################",
+  ],
+  guardians: [h("polarbear", 5, 4, 17, 0.9), h("polarbear", 11, 4, 17, 0.7)],
+  items: [
+    i("fish", 18, 2, "tch-f1"),
+    i("fish", 18, 5, "tch-f2"),
+    i("fish", 18, 8, "tch-f3"),
+    i("crystal", 18, 12, "tch-c1"),
+    i("medal", 1, 0, "tch-m1"),
+  ],
+  exits: [
+    exit("left", "prepad", 18, 12),
+  ],
+  spawn: { x: 1 * TILE, y: 12 * TILE },
+  hint: "Temná chodba — dlouhý žebřík, sběr ryb.",
+};
+
+const podzemniRybnik: Room = {
+  id: "podzemniRybnik",
+  name: "Podzemní rybník",
+  palette: "ocean",
+  tiles: [
+    "....................",
+    "....................",
+    "....................",
+    "..====........====..",
+    "....................",
+    "....................",
+    "....................",
+    "..~~~~~~~~~~~~~~~~..",
+    "..~~~~~~~~~~~~~~~~..",
+    "..~~~~~~~~~~~~~~~~..",
+    "..~~~~~~~~~~~~~~~~..",
+    "..~~~~~~~~~~~~~~~~..",
+    "....................",
+    "####################",
+  ],
+  guardians: [h("bubble", 8, 2, 18, 0.8), v("bubble", 5, 7, 11, 0.6)],
+  items: [
+    i("fish", 3, 2, "ryb-f1"),
+    i("fish", 16, 2, "ryb-f2"),
+    key("green", 9, 5, "ryb-key"),
+    i("heart", 9, 12, "ryb-h1"),
+  ],
+  exits: [
+    exit("top", "prepad", 9, 12),
+  ],
+  spawn: { x: 9 * TILE, y: 12 * TILE },
+  hint: "Rybník — zelený klíč otevírá Potápění.",
+};
+
+const pokladnice: Room = {
+  id: "pokladnice",
+  name: "Pokladnice",
+  palette: "cave",
+  tiles: [
+    "....................",
+    "....................",
+    "..==============....",
+    "....................",
+    "...####....####.....",
+    "....................",
+    "....................",
+    "....================",
+    "....................",
+    "....####....####....",
+    "....................",
+    "....................",
+    "....................",
+    "####################",
+  ],
+  guardians: [h("polarbear", 1, 1, 13, 0.6), s("crystal", 9, 12)],
+  items: [
+    i("medal", 4, 1, "pkl-m1"),
+    i("medal", 14, 1, "pkl-m2"),
+    i("flag", 9, 6, "pkl-fl"),
+    i("heart", 4, 8, "pkl-h1"),
+    i("crystal", 14, 8, "pkl-c1"),
+  ],
+  exits: [
+    exit("left", "podzemniRybnik", 18, 12),
+  ],
+  spawn: { x: 1 * TILE, y: 12 * TILE },
+  hint: "Pokladnice — bohatství i past medvěda.",
+};
+
+// =============================================================================
+// Cluster: Ostrov ohně (5 místností, palette sunset)
+// Vstup zprava ze sopka.right → kraterUst → 4 vedlejší (lavoveJezirko, popelinka, horkyKamen, cervenyKamen)
+// =============================================================================
+
+const kraterUst: Room = {
+  id: "kraterUst",
+  name: "Ústí kráteru",
+  palette: "sunset",
+  tiles: [
+    "....................",
+    "....................",
+    "....................",
+    "....................",
+    "....================",
+    "....................",
+    "....................",
+    "================....",
+    "....................",
+    "..H..............H..",
+    "..H..............H..",
+    "..H..====....====H..",
+    "..H..............H..",
+    "########..##########",
+  ],
+  guardians: [v("crystal", 5, 0, 7, 0), h("petrel", 6, 1, 17, 0.9)],
+  items: [
+    i("fish", 18, 3, "krat-f1"),
+    i("fish", 1, 6, "krat-f2"),
+    i("medal", 9, 11, "krat-m1"),
+  ],
+  exits: [
+    exit("left", "sopka", 18, 12),
+    exit("right", "horkyKamen", 1, 11),
+    exit("bottom", "lavoveJezirko", 9, 1),
+    exit("top", "popelinka", 9, 12),
+  ],
+  spawn: { x: 1 * TILE, y: 12 * TILE },
+  hint: "Ústí kráteru — křižovatka, vede do tří dalších částí ostrova.",
+};
+
+const lavoveJezirko: Room = {
+  id: "lavoveJezirko",
+  name: "Lávové jezírko",
+  palette: "sunset",
+  tiles: [
+    "....................",
+    "....................",
+    "....================",
+    "....................",
+    "..======............",
+    "....................",
+    "................====",
+    "....................",
+    "..======............",
+    "....................",
+    "..~~~~~~~~~~~~~~~~..",
+    "..~~~~~~~~~~~~~~~~..",
+    "....................",
+    "####################",
+  ],
+  guardians: [h("petrel", 1, 4, 17, 1.0), v("bubble", 18, 10, 11, 0.5)],
+  items: [
+    i("fish", 9, 1, "lj-f1"),
+    i("crystal", 17, 5, "lj-c1"),
+    i("medal", 1, 7, "lj-m1"),
+    i("heart", 9, 12, "lj-h1"),
+  ],
+  exits: [
+    exit("top", "kraterUst", 9, 12),
+  ],
+  spawn: { x: 9 * TILE, y: 12 * TILE },
+  hint: "Lávové jezírko — voda hoří, neskákej dolů.",
+};
+
+const popelinka: Room = {
+  id: "popelinka",
+  name: "Popelínka",
+  palette: "sunset",
+  tiles: [
+    "....................",
+    "....................",
+    "..**..**..**..**....",
+    "....................",
+    "..==..==..==..==....",
+    "....................",
+    "....................",
+    "..==..==..==..==....",
+    "....................",
+    "....................",
+    "..==..==..==..==....",
+    "....................",
+    "....................",
+    "########..##########",
+  ],
+  guardians: [h("seal", 6, 1, 18, 0.9)],
+  items: [
+    i("flag", 1, 1, "po-fl"),
+    i("crystal", 18, 1, "po-c1"),
+    i("fish", 9, 6, "po-f1"),
+    i("medal", 9, 9, "po-m1"),
+  ],
+  exits: [
+    exit("bottom", "kraterUst", 9, 1),
+  ],
+  spawn: { x: 9 * TILE, y: 1 * TILE },
+  hint: "Popelínka — bodce vychází z popelu, skoč přesně.",
+};
+
+const horkyKamen: Room = {
+  id: "horkyKamen",
+  name: "Horký kámen",
+  palette: "sunset",
+  tiles: [
+    "....................",
+    "....................",
+    "....................",
+    "..==..............==",
+    "....................",
+    "..======......======",
+    "....................",
+    "....................",
+    "..==..====..====..==",
+    "....................",
+    "....................",
+    "..======......======",
+    "....................",
+    "####################",
+  ],
+  guardians: [h("polarbear", 1, 1, 18, 1.0), v("crystal", 9, 4, 11, 0)],
+  items: [
+    i("fish", 9, 2, "hk-f1"),
+    i("crystal", 9, 7, "hk-c1"),
+    i("medal", 1, 12, "hk-m1"),
+  ],
+  exits: [
+    exit("left", "kraterUst", 18, 11),
+    exit("right", "cervenyKamen", 1, 11),
+  ],
+  spawn: { x: 1 * TILE, y: 12 * TILE },
+  hint: "Horký kámen — průchod doprava ke krvavému kameni.",
+};
+
+const cervenyKamen: Room = {
+  id: "cervenyKamen",
+  name: "Červený kámen",
+  palette: "sunset",
+  tiles: [
+    "....................",
+    "....................",
+    "..==============....",
+    "....................",
+    "....................",
+    "..####........####..",
+    "....................",
+    "....................",
+    "....================",
+    "....................",
+    "....................",
+    "..==============....",
+    "....................",
+    "####################",
+  ],
+  guardians: [v("walrus", 10, 6, 10, 0.6), h("skua", 1, 1, 17, 0.9)],
+  items: [
+    i("heart", 17, 4, "ck-h1"),
+    key("blue", 9, 1, "ck-key"),
+    i("medal", 1, 6, "ck-m1"),
+    i("crystal", 9, 10, "ck-c1"),
+  ],
+  exits: [
+    exit("left", "horkyKamen", 18, 12),
+  ],
+  spawn: { x: 1 * TILE, y: 12 * TILE },
+  hint: "Červený kámen — modrý klíč otevírá Lyžování.",
+};
+
 export const EXTRA_ROOMS: Room[] = [
+  // Sprint 006 Run 017: Antarktická základna
   stanice2, kantyna, sparna, observatorium, kryostat,
+  // Sprint 006 Run 018: Pingvíní akademie
+  trida, knihovna, telocvicna, drilovaciRampa, reditelna,
+  // Sprint 006 Run 018: Hluboká jeskyně
+  prepad, stalaktity, temnaChodba, podzemniRybnik, pokladnice,
+  // Sprint 006 Run 018: Ostrov ohně
+  kraterUst, lavoveJezirko, popelinka, horkyKamen, cervenyKamen,
 ];
