@@ -17,12 +17,19 @@ interface Props {
 
 const { colonies, speciesName } = Astro.props;
 
-// Klasifikace barev podle typu kolonie.
+// Klasifikace barev podle typu kolonie. "breeding" je default, ostatní typy
+// pouze pokud jsou explicitně uvedené v colony datech.
 const COLOR: Record<NonNullable<Colony["type"]> | "default", string> = {
   breeding: "#ef4444",   // červená — hnízdiště
   wintering: "#3b82f6",  // modrá — zimoviště
-  vagrant: "#a855f7",    // fialová — zatoulanci
+  vagrant: "#a855f7",    // fialová — náhodný výskyt (zatoulanci)
   default: "#ef4444",
+};
+
+const TYPE_LABEL: Record<NonNullable<Colony["type"]>, string> = {
+  breeding: "hnízdiště",
+  wintering: "zimoviště",
+  vagrant: "náhodný výskyt",
 };
 
 const markers = colonies.map((c) => ({
@@ -30,6 +37,9 @@ const markers = colonies.map((c) => ({
   ...project(c.lat, c.lon),
   color: COLOR[c.type ?? "default"],
 }));
+
+// Legenda jen pro typy reálně použité v datech druhu — ne fixní 3 položky.
+const usedTypes = Array.from(new Set(colonies.map((c) => c.type ?? "breeding"))) as NonNullable<Colony["type"]>[];
 ---
 
 <section class="px-6 py-12" aria-labelledby="map-heading">
@@ -37,7 +47,7 @@ const markers = colonies.map((c) => ({
     <h2 id="map-heading" class="text-2xl md:text-3xl font-bold mb-3 reveal">Mapa výskytu</h2>
     <p class="text-sm text-muted-foreground mb-6 reveal">
       {colonies.length} {colonies.length === 1 ? "kolonie" : colonies.length < 5 ? "kolonie" : "kolonií"} druhu {speciesName}.
-      Najeď myší na bod pro detail.
+      Klikni na bod nebo na položku seznamu pro zvýraznění lokality.
     </p>
 
     <div class="reveal rounded-xl border border-border bg-card p-2 md:p-4 overflow-hidden">
@@ -84,9 +94,12 @@ const markers = colonies.map((c) => ({
     </ul>
 
     <div class="mt-4 flex flex-wrap gap-4 text-xs text-muted-foreground reveal">
-      <span class="inline-flex items-center gap-2"><span class="w-3 h-3 rounded-full" style="background:#ef4444"></span> hnízdiště</span>
-      <span class="inline-flex items-center gap-2"><span class="w-3 h-3 rounded-full" style="background:#3b82f6"></span> zimoviště</span>
-      <span class="inline-flex items-center gap-2"><span class="w-3 h-3 rounded-full" style="background:#a855f7"></span> zatoulanci</span>
+      {usedTypes.map((t) => (
+        <span class="inline-flex items-center gap-2">
+          <span class="w-3 h-3 rounded-full" style={`background:${COLOR[t]}`}></span>
+          {TYPE_LABEL[t]}
+        </span>
+      ))}
     </div>
   </div>
 </section>
@@ -95,24 +108,19 @@ const markers = colonies.map((c) => ({
   .map-marker { transition: transform 0.2s ease; transform-origin: center; transform-box: fill-box; cursor: pointer; }
   .map-marker:hover { transform: scale(1.4); }
   .map-marker:focus { outline: none; }
-  .map-marker:focus-visible > circle:last-of-type { stroke: #facc15; stroke-width: 3; }
-  .map-marker.flash { animation: marker-flash 1.4s ease-out; transform-origin: center; transform-box: fill-box; }
-  @keyframes marker-flash {
-    0%   { transform: scale(1);   filter: drop-shadow(0 0 0 #facc15); }
-    25%  { transform: scale(2.4); filter: drop-shadow(0 0 12px #facc15); }
-    50%  { transform: scale(1);   filter: drop-shadow(0 0 4px #facc15); }
-    75%  { transform: scale(2.4); filter: drop-shadow(0 0 12px #facc15); }
-    100% { transform: scale(1);   filter: drop-shadow(0 0 0 transparent); }
+  .map-marker:focus-visible > circle:last-of-type { stroke: #facc15; stroke-width: 1; }
+  /* Vybraný marker — kontinuální puls dokud není deselected nebo zvolen jiný. */
+  .map-marker.selected { animation: marker-pulse 1.6s ease-in-out infinite; transform-origin: center; transform-box: fill-box; }
+  .map-marker.selected > circle:last-of-type { stroke: #facc15; stroke-width: 1.5; }
+  @keyframes marker-pulse {
+    0%, 100% { transform: scale(1);   filter: drop-shadow(0 0 0 transparent); }
+    50%      { transform: scale(1.6); filter: drop-shadow(0 0 6px #facc15); }
   }
-  button[data-colony-target].flash {
-    animation: colony-flash 1.4s ease-out;
-  }
-  @keyframes colony-flash {
-    0%   { background: var(--card); box-shadow: 0 0 0 0 rgba(250,204,21,0); }
-    25%  { background: rgba(250,204,21,0.35); box-shadow: 0 0 0 4px rgba(250,204,21,0.6); }
-    50%  { background: var(--card); box-shadow: 0 0 0 0 rgba(250,204,21,0); }
-    75%  { background: rgba(250,204,21,0.35); box-shadow: 0 0 0 4px rgba(250,204,21,0.6); }
-    100% { background: var(--card); box-shadow: 0 0 0 0 rgba(250,204,21,0); }
+  /* Vybraná položka v seznamu — žluté zvýraznění. */
+  button[data-colony-target].selected {
+    border-color: #facc15;
+    background: rgba(250, 204, 21, 0.12);
+    box-shadow: 0 0 0 2px rgba(250, 204, 21, 0.35);
   }
 </style>
 
@@ -124,43 +132,52 @@ const markers = colonies.map((c) => ({
       if (!list || list.dataset.wired === "1") return;
       list.dataset.wired = "1";
 
-      const flashMarker = (idx: string): void => {
+      // Single-active selection state per mapa.
+      let selectedIdx: string | null = null;
+
+      const select = (idx: string | null): void => {
+        // Clear previous selection (markery i list buttony).
+        svg.querySelectorAll<SVGGElement>("g[data-marker].selected").forEach((m) => m.classList.remove("selected"));
+        list.querySelectorAll<HTMLButtonElement>("button[data-colony-target].selected").forEach((b) => b.classList.remove("selected"));
+        selectedIdx = idx;
+        if (idx === null) return;
         const marker = svg.querySelector<SVGGElement>(`g[data-marker="${idx}"]`);
-        if (!marker) return;
-        marker.classList.remove("flash");
-        void marker.getBoundingClientRect();
-        marker.classList.add("flash");
-      };
-
-      const flashColony = (idx: string): void => {
         const btn = list.querySelector<HTMLButtonElement>(`button[data-colony-target="${idx}"]`);
-        if (!btn) return;
-        btn.classList.remove("flash");
-        void btn.getBoundingClientRect();
-        btn.classList.add("flash");
+        marker?.classList.add("selected");
+        btn?.classList.add("selected");
       };
 
-      // Klik na položku seznamu → blikne marker, scroll k mapě.
+      const toggle = (idx: string, scrollTo: "marker" | "btn"): void => {
+        if (selectedIdx === idx) {
+          select(null); // Re-klik na vybraný = deselect.
+          return;
+        }
+        select(idx);
+        if (scrollTo === "marker") {
+          svg.scrollIntoView({ behavior: "smooth", block: "center" });
+        } else {
+          const btn = list.querySelector<HTMLButtonElement>(`button[data-colony-target="${idx}"]`);
+          btn?.scrollIntoView({ behavior: "smooth", block: "center" });
+        }
+      };
+
+      // Klik na položku seznamu → vybere marker, scroll k mapě.
       list.querySelectorAll<HTMLButtonElement>("button[data-colony-target]").forEach((btn) => {
         btn.addEventListener("click", () => {
           const idx = btn.dataset.colonyTarget;
           if (!idx) return;
-          flashMarker(idx);
-          svg.scrollIntoView({ behavior: "smooth", block: "center" });
+          toggle(idx, "marker");
         });
       });
 
-      // Klik na marker na mapě → blikne odpovídající položka v seznamu, scroll k seznamu.
+      // Klik / Enter / Space na marker → vybere položku v seznamu, scroll k seznamu.
       svg.querySelectorAll<SVGGElement>("g[data-marker]").forEach((marker) => {
         const handle = (e: Event): void => {
           if (e instanceof KeyboardEvent && e.key !== "Enter" && e.key !== " ") return;
           if (e.type === "keydown") e.preventDefault();
           const idx = marker.getAttribute("data-marker");
           if (!idx) return;
-          flashColony(idx);
-          // Scroll k položce, aby user viděl, na co kliknul.
-          const btn = list.querySelector<HTMLButtonElement>(`button[data-colony-target="${idx}"]`);
-          btn?.scrollIntoView({ behavior: "smooth", block: "center" });
+          toggle(idx, "btn");
         };
         marker.addEventListener("click", handle);
         marker.addEventListener("keydown", handle);
