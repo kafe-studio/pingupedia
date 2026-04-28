@@ -10,17 +10,40 @@ const metadata = {
 ---
 
 <BaseLayout {metadata}>
-  <section class="min-h-[70vh] flex items-center justify-center text-center px-6">
-    <div class="max-w-xl">
+  <section class="min-h-[70vh] flex items-center justify-center text-center px-6 pt-28 pb-12">
+    <div class="max-w-3xl">
       <div class="anim-float mb-4 inline-block">
         <Mascot pose="otazka" size={160} loading="eager" />
       </div>
       <p class="text-7xl md:text-8xl font-extrabold text-primary mb-6">404</p>
       <p class="text-2xl md:text-3xl font-bold mb-3">Tučňáci odplouli jinam</p>
-      <p class="text-muted-foreground mb-10">
+      <p class="text-muted-foreground mb-8 max-w-xl mx-auto">
         Tuhle stránku jsme nenašli. Možná ji odnesl proud, možná nikdy neexistovala.
       </p>
-      <a href="/" class="btn-primary py-3 px-8">Zpět na pevninu</a>
+
+      <a href="/" class="btn-primary py-3 px-8 inline-block">Zpět na pevninu</a>
+
+      <div class="mt-12 reveal">
+        <p class="text-xs uppercase tracking-widest text-muted-foreground mb-4">Nebo zkuste</p>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
+          <a href="/druhy/" class="group rounded-2xl border border-border bg-card hover:border-border-interactive transition-all p-4 flex flex-col items-center gap-2">
+            <span class="block text-[10px] uppercase tracking-widest text-muted-foreground">18 druhů</span>
+            <span class="text-sm font-bold group-hover:text-primary transition-colors">Druhy</span>
+          </a>
+          <a href="/hledat/" class="group rounded-2xl border border-border bg-card hover:border-border-interactive transition-all p-4 flex flex-col items-center gap-2">
+            <span class="block text-[10px] uppercase tracking-widest text-muted-foreground">fulltext</span>
+            <span class="text-sm font-bold group-hover:text-primary transition-colors">Hledat</span>
+          </a>
+          <a href="/historie/" class="group rounded-2xl border border-border bg-card hover:border-border-interactive transition-all p-4 flex flex-col items-center gap-2">
+            <span class="block text-[10px] uppercase tracking-widest text-muted-foreground">časová osa</span>
+            <span class="text-sm font-bold group-hover:text-primary transition-colors">Historie</span>
+          </a>
+          <a href="/hry/" class="group rounded-2xl border border-border bg-card hover:border-border-interactive transition-all p-4 flex flex-col items-center gap-2">
+            <span class="block text-[10px] uppercase tracking-widest text-muted-foreground">5 her</span>
+            <span class="text-sm font-bold group-hover:text-primary transition-colors">Hry</span>
+          </a>
+        </div>
+      </div>
     </div>
   </section>
 </BaseLayout>

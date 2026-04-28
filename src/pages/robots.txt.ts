@@ -7,6 +7,8 @@ export const GET: APIRoute = async () => {
   const siteConfig = await getSiteConfig();
   const robotsTxt = `User-agent: *
 Allow: /
+Disallow: /admin/
+Disallow: /api/
 
 Sitemap: ${new URL("sitemap-index.xml", siteConfig.url).href}`;
   return new Response(robotsTxt, {

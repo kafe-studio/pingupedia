@@ -14,7 +14,12 @@ export default defineConfig({
     persistState: true,
     prerenderEnvironment: "node",
   }),
-  integrations: [sitemap(), icon()],
+  integrations: [
+    sitemap({
+      filter: (page) => !/\/admin(\/|$)/.test(page),
+    }),
+    icon(),
+  ],
   markdown: {
     remarkPlugins: [
       remarkReadingTime,
