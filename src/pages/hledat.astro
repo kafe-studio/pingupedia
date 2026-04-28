@@ -1,0 +1,101 @@
+---
+export const prerender = true;
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Mascot from "../components/mascot/Mascot.astro";
+
+const metadata = {
+  title: "Hledat v pingupedii",
+  description:
+    "Fulltext vyhledávání napříč všemi druhy tučňáků — jména latinská i česká, popisy, kolonie, fakta, historie. Filtrovatelné podle rodu a IUCN statusu.",
+};
+---
+
+<BaseLayout {metadata}>
+  <section class="px-4 sm:px-6 pt-28 pb-16">
+    <div class="mx-auto max-w-4xl">
+      <header class="mb-8 md:mb-12 flex flex-col md:flex-row md:items-end md:justify-between gap-6 reveal">
+        <div class="max-w-2xl">
+          <p class="text-sm uppercase tracking-[0.2em] text-primary/80 mb-4">Hledat</p>
+          <h1 class="text-5xl md:text-7xl font-black tracking-tight leading-[0.95] mb-4">
+            Najdi <span class="text-accent">druh</span><br />
+            podle čehokoli.
+          </h1>
+          <p class="text-lg md:text-xl text-muted-foreground">
+            Latinské jméno, region, hloubka ponoru, ostrov kolonie — search prohledá veškerý obsah druhových stránek.
+          </p>
+        </div>
+        <div class="shrink-0 anim-float hidden md:block">
+          <Mascot pose="detektiv" size={140} />
+        </div>
+      </header>
+
+      <div class="reveal bento-card p-4 md:p-6">
+        <div id="search" data-pagefind-ignore></div>
+        <noscript>
+          <p class="text-sm text-muted-foreground">
+            Vyhledávání vyžaduje JavaScript. Zkuste otevřít přehled druhů přes <a href="/druhy/" class="text-primary hover:underline">/druhy/</a> nebo časovou osu přes <a href="/historie/" class="text-primary hover:underline">/historie/</a>.
+          </p>
+        </noscript>
+      </div>
+
+      <p class="mt-4 text-xs text-muted-foreground reveal">
+        Search index generovaný přes <a href="https://pagefind.app" target="_blank" rel="noopener" class="hover:text-primary transition-colors">Pagefind</a> — běží 100% v prohlížeči, žádný server.
+      </p>
+    </div>
+  </section>
+</BaseLayout>
+
+<link rel="stylesheet" href="/_pagefind/pagefind-ui.css" />
+<script is:inline src="/_pagefind/pagefind-ui.js"></script>
+<script is:inline>
+  function initPagefind() {
+    const el = document.getElementById("search");
+    if (!el || el.dataset.wired === "1") return;
+    if (typeof window.PagefindUI !== "function") return;
+    el.dataset.wired = "1";
+    new window.PagefindUI({
+      element: "#search",
+      bundlePath: "/_pagefind/",
+      showImages: false,
+      showSubResults: true,
+      excerptLength: 28,
+      resetStyles: false,
+      translations: {
+        placeholder: "Hledat druh tučňáka…",
+        clear_search: "Vymazat",
+        load_more: "Další výsledky",
+        search_label: "Hledat",
+        filters_label: "Filtry",
+        zero_results: "Pro [SEARCH_TERM] se nic nenašlo.",
+        many_results: "[COUNT] výsledků pro [SEARCH_TERM]",
+        one_result: "1 výsledek pro [SEARCH_TERM]",
+        alt_search: "Pro [SEARCH_TERM] se nic nenašlo. Zobrazujeme výsledky pro [DIFFERENT_TERM].",
+        search_suggestion: "Pro [SEARCH_TERM] se nic nenašlo. Zkuste jiný výraz:",
+        searching: "Hledám [SEARCH_TERM]…",
+      },
+    });
+  }
+  if (document.readyState !== "loading") initPagefind();
+  else document.addEventListener("DOMContentLoaded", initPagefind);
+  document.addEventListener("astro:page-load", initPagefind);
+</script>
+
+<style is:global>
+  /* Sjednocení Pagefind UI s pingupedia tématem */
+  :root {
+    --pagefind-ui-scale: 0.95;
+    --pagefind-ui-primary: hsl(var(--primary));
+    --pagefind-ui-text: hsl(var(--foreground));
+    --pagefind-ui-background: hsl(var(--card));
+    --pagefind-ui-border: hsl(var(--border));
+    --pagefind-ui-tag: hsl(var(--muted));
+    --pagefind-ui-border-width: 1px;
+    --pagefind-ui-border-radius: 0.75rem;
+    --pagefind-ui-image-border-radius: 0.5rem;
+    --pagefind-ui-font: inherit;
+  }
+  .pagefind-ui__search-input { background: hsl(var(--background)); }
+  .pagefind-ui__result { border-color: hsl(var(--border)); }
+  .pagefind-ui__result-link { color: hsl(var(--foreground)); }
+  .pagefind-ui__result-link:hover { color: hsl(var(--primary)); }
+</style>

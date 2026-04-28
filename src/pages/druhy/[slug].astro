@@ -51,7 +51,11 @@ const metadata = {
 ---
 
 <BaseLayout {metadata}>
-  <article>
+  <article
+    data-pagefind-body
+    data-pagefind-meta={`title:${nameCs}, lat:${nameLat}, image[content]:${entry.data.hero.alt}`}
+    data-pagefind-filter={`Rod:${entry.data.genus}, IUCN:${entry.data.iucnStatus}`}
+  >
     <SpeciesHero species={entry} />
 
     <section class="px-6 py-12" aria-labelledby="about-heading">
