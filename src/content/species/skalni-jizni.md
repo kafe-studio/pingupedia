@@ -105,6 +105,14 @@ gallery:
     author: "Eva bindhi"
     license: "CC BY-SA 4.0"
     sourceUrl: "https://commons.wikimedia.org/wiki/File:Eudyptes_chrysocome-Ping%C3%BCino_Penacho_amarillo.png"
+audio:
+  mediaUrl: "https://xeno-canto.org/sounds/uploaded/FPAGKPAQYO/XC553679-Rockhopper%20Penguin_NewIsland_Fk_22dec2017_FSchmitt.mp3"
+  mimeType: "audio/mpeg"
+  caption: "Tokání tučňáků skalních jižních v kolonii na ostrově New Island (Falklandy)"
+  author: "Fabrice Schmitt"
+  license: "CC BY-NC-SA 4.0"
+  sourceUrl: "https://xeno-canto.org/553679"
+  durationSec: 104
 sources:
   - url: "https://cs.wikipedia.org/wiki/Tu%C4%8D%C5%88%C3%A1k_skaln%C3%AD"
     title: "Tučňák skalní — Wikipedia (CS)"

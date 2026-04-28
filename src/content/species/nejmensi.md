@@ -125,6 +125,14 @@ gallery:
     author: "Kaela Wilbur"
     license: "CC BY 4.0"
     sourceUrl: "https://commons.wikimedia.org/wiki/File:Eudyptula_minor_iredalei_243414179.jpg"
+audio:
+  mediaUrl: "https://upload.wikimedia.org/wikipedia/commons/5/5a/20091121_Little_Penguin_calls_at_St_Kilda_Breakwater.ogg"
+  mimeType: "audio/ogg"
+  caption: "Volání tučňáků nejmenších u vlnolamu St Kilda v Melbourne v Austrálii"
+  author: "Mikeybear (Wikimedia Commons)"
+  license: "CC BY 3.0"
+  sourceUrl: "https://commons.wikimedia.org/wiki/File:20091121_Little_Penguin_calls_at_St_Kilda_Breakwater.ogg"
+  durationSec: 85
 sources:
   - url: "https://cs.wikipedia.org/wiki/Tu%C4%8D%C5%88%C3%A1k_nejmen%C5%A1%C3%AD"
     title: "Tučňák nejmenší — Wikipedia (CS)"

@@ -160,6 +160,14 @@ video:
   license: "CC BY 3.0"
   sourceUrl: "https://commons.wikimedia.org/wiki/File:Emperor_penguins_%E2%80%93_the_biggest_of_all.webm"
   durationSec: 47
+audio:
+  mediaUrl: "https://xeno-canto.org/sounds/uploaded/HKBZXSHAHB/XC399041-Penguiin%2C%20Emperor1.mp3"
+  mimeType: "audio/mpeg"
+  caption: "Volání tučňáka císařského v kolonii"
+  author: "George Wagner"
+  license: "CC BY-NC-SA 4.0"
+  sourceUrl: "https://xeno-canto.org/399041"
+  durationSec: 19
 sources:
   - url: "https://cs.wikipedia.org/wiki/Tu%C4%8D%C5%88%C3%A1k_c%C3%ADsa%C5%99sk%C3%BD"
     title: "Tučňák císařský — Wikipedia (CS)"

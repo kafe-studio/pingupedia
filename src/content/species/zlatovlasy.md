@@ -105,6 +105,14 @@ gallery:
     author: "Credit: NOAA NMFS SWFSC Antarctic Marine Living Resources (AMLR) Program."
     license: "Public domain"
     sourceUrl: "https://commons.wikimedia.org/wiki/File:Fish8557_-_Flickr_-_NOAA_Photo_Library.jpg"
+audio:
+  mediaUrl: "https://xeno-canto.org/sounds/uploaded/RDBQTCTEUE/XC863991-Macaroni_KERGUELEN_CanonDesSourcilsNoirs_2022.mp3"
+  mimeType: "audio/mpeg"
+  caption: "Volání v kolonii tučňáků zlatovlasých (Kerguelen, Canyon des Sourcils Noirs)"
+  author: "Kevin Guille"
+  license: "CC BY-NC-SA 4.0"
+  sourceUrl: "https://xeno-canto.org/863991"
+  durationSec: 50
 sources:
   - url: "https://en.wikipedia.org/wiki/Macaroni_penguin"
     title: "Macaroni penguin — Wikipedia (EN)"

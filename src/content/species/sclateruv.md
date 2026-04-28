@@ -104,6 +104,14 @@ gallery:
     author: "Auckland Museum"
     license: "CC BY 4.0"
     sourceUrl: "https://commons.wikimedia.org/wiki/File:Eudyptes_sclateri_(AM_LB13705-2).jpg"
+audio:
+  mediaUrl: "https://xeno-canto.org/sounds/uploaded/HNAIPBCNSD/XC973961-Erect-crested-Penguin-Antipodes-Island-NZ-RAPHAEL-SANE.mp3"
+  mimeType: "audio/mpeg"
+  caption: "Hlasy tučňáků Sclaterových (chocholatých) na Antipodes Island, Nový Zéland"
+  author: "Raphaël Sané"
+  license: "CC BY-NC-SA 4.0"
+  sourceUrl: "https://xeno-canto.org/973961"
+  durationSec: 39
 sources:
   - url: "https://en.wikipedia.org/wiki/Erect-crested_penguin"
     title: "Erect-crested penguin — Wikipedia (EN)"

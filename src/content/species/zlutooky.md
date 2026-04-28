@@ -104,6 +104,14 @@ gallery:
     author: "Richard Giddins from London, UK"
     license: "CC BY 2.0"
     sourceUrl: "https://commons.wikimedia.org/wiki/File:Megadyptes_antipodes_-Oamaru,_New_Zealand-8_(2).jpg"
+audio:
+  mediaUrl: "https://xeno-canto.org/sounds/uploaded/HNAIPBCNSD/XC973956-Yellow-eyed-Penguin-1-Enderby-Island-NZ-RAPHAEL-SANE.mp3"
+  mimeType: "audio/mpeg"
+  caption: "Volání tučňáka žlutookého (hoiho) v rata pralese na ostrově Enderby (Aucklandské ostrovy, Nový Zéland)"
+  author: "Raphaël Sané"
+  license: "CC BY-NC-SA 4.0"
+  sourceUrl: "https://xeno-canto.org/973956"
+  durationSec: 19
 sources:
   - url: "https://cs.wikipedia.org/wiki/Tu%C4%8D%C5%88%C3%A1k_%C5%BElutook%C3%BD"
     title: "Tučňák žlutooký — Wikipedia (CS)"

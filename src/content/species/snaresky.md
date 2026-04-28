@@ -93,6 +93,14 @@ gallery:
     author: "Thomas Quine"
     license: "CC BY 2.0"
     sourceUrl: "https://commons.wikimedia.org/wiki/File:Stuffed_penguins_(21640194810).jpg"
+audio:
+  mediaUrl: "https://xeno-canto.org/sounds/uploaded/PENMPUKONZ/XC396184-1156_SnaresPenguin_15-11-2017_Snares.mp3"
+  mimeType: "audio/mpeg"
+  caption: "Volání tučňáka snareského na ostrovech Snares"
+  author: "Sander Lagerveld"
+  license: "CC BY-NC-SA 4.0"
+  sourceUrl: "https://xeno-canto.org/396184"
+  durationSec: 10
 sources:
   - url: "https://en.wikipedia.org/wiki/Snares_penguin"
     title: "Snares penguin — Wikipedia (EN)"

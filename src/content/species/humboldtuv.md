@@ -107,6 +107,14 @@ gallery:
     author: "Francesco Veronesi from Italy"
     license: "CC BY-SA 2.0"
     sourceUrl: "https://commons.wikimedia.org/wiki/File:Humboldt_Penguin_-_Paracas_-_Per%C3%B9149_(15358564226).jpg"
+audio:
+  mediaUrl: "https://xeno-canto.org/sounds/uploaded/SEVIQQAKWM/XC520046-ZOOM0005%20-%20Pinguino%20de%20Humboldt%20-%20Llamado%20Adulto.mp3"
+  mimeType: "audio/mpeg"
+  caption: "Volání dospělého tučňáka Humboldtova"
+  author: "Cristian Pinto"
+  license: "CC BY-NC-SA 4.0"
+  sourceUrl: "https://xeno-canto.org/520046"
+  durationSec: 30
 sources:
   - url: "https://cs.wikipedia.org/wiki/Tu%C4%8D%C5%88%C3%A1k_Humboldt%C5%AFv"
     title: "Tučňák Humboldtův — Wikipedia (CS)"

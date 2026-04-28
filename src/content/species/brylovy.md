@@ -105,6 +105,14 @@ gallery:
     author: "Unknown authorUnknown author"
     license: "CC BY-SA 4.0"
     sourceUrl: "https://commons.wikimedia.org/wiki/File:Photo_Penguins_1953_-_Touring_Club_Italiano_2_5805.jpg"
+audio:
+  mediaUrl: "https://upload.wikimedia.org/wikipedia/commons/2/29/Vocal-individuality-cues-in-the-African-penguin-%28Spheniscus-demersus%29-a-source-filter-theory-srep17255-s2.oga"
+  mimeType: "audio/ogg"
+  caption: "Krátký kontaktní zvuk dospělého tučňáka brýlového — ukázka z vědecké studie o individuálních hlasových znacích."
+  author: "Favaro L, Gamba M, Alfieri C, Pessani D, McElligott A"
+  license: "CC BY 4.0"
+  sourceUrl: "https://commons.wikimedia.org/wiki/File:Vocal-individuality-cues-in-the-African-penguin-(Spheniscus-demersus)-a-source-filter-theory-srep17255-s2.oga"
+  durationSec: 2
 sources:
   - url: "https://cs.wikipedia.org/wiki/Tu%C4%8D%C5%88%C3%A1k_br%C3%BDlov%C3%BD"
     title: "Tučňák brýlový — Wikipedia (CS)"

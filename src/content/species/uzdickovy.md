@@ -104,6 +104,14 @@ gallery:
     author: "Linar Khalitov"
     license: "CC BY-SA 2.0"
     sourceUrl: "https://commons.wikimedia.org/wiki/File:Pygoscelis_antarcticus_on_the_Half_Moon_Island_01.jpg"
+audio:
+  mediaUrl: "https://static.inaturalist.org/sounds/364487.wav?1646261063"
+  mimeType: "audio/wav"
+  caption: "Volání tučňáka uzdičkového, Half Moon Island, Antarktida"
+  author: "steve b (stevestevens)"
+  license: "CC0"
+  sourceUrl: "https://www.inaturalist.org/observations/107789594"
+  durationSec: 6
 sources:
   - url: "https://cs.wikipedia.org/wiki/Tu%C4%8D%C5%88%C3%A1k_uzdi%C4%8Dkov%C3%BD"
     title: "Tučňák uzdičkový — Wikipedia (CS)"

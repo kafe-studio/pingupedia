@@ -127,6 +127,14 @@ gallery:
     author: "Murray Foubister"
     license: "CC BY-SA 2.0"
     sourceUrl: "https://commons.wikimedia.org/wiki/File:Day_trip_from_Puerto_Varas_to_Isla_Grande_de_Chiloe_-_a_visit_and_boat_trip_to_Pinguinera_Isloto_de_Punihuil_on_the_open_Ocean_-_mostly_Magellanic_Penguins_(Spheniscus_magellanicus)_-_(24889614060).jpg"
+audio:
+  mediaUrl: "https://xeno-canto.org/sounds/uploaded/DBTNCQXFFB/XC187711-Magellan%20Pinguin%20Abendkonzert.mp3"
+  mimeType: "audio/mpeg"
+  caption: "Večerní koncert kolonie tučňáků magellanských"
+  author: "Michele Peron"
+  license: "CC BY-NC-SA 4.0"
+  sourceUrl: "https://xeno-canto.org/187711"
+  durationSec: 97
 sources:
   - url: "https://cs.wikipedia.org/wiki/Tu%C4%8D%C5%88%C3%A1k_magellansk%C3%BD"
     title: "Tučňák magellanský — Wikipedia (CS)"

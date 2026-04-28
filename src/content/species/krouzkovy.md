@@ -106,6 +106,14 @@ video:
   license: "CC BY 3.0"
   sourceUrl: "https://commons.wikimedia.org/wiki/File:Ad%C3%A9lie_penguin_(Pygoscelis_adeliae)_in_Antarctica.webm"
   durationSec: 11
+audio:
+  mediaUrl: "https://static.inaturalist.org/sounds/364474.wav?1646259866"
+  mimeType: "audio/wav"
+  caption: "Volání tučňáků kroužkových v antarktické kolonii (terénní nahrávka)"
+  author: "steve b (stevestevens)"
+  license: "CC0"
+  sourceUrl: "https://www.inaturalist.org/observations/107788518"
+  durationSec: 13
 sources:
   - url: "https://cs.wikipedia.org/wiki/Tu%C4%8D%C5%88%C3%A1k_krou%C5%BEkov%C3%BD"
     title: "Tučňák kroužkový — Wikipedia (CS)"

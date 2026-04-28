@@ -37,6 +37,14 @@ hero:
   author: "travelwayoflife"
   license: "CC BY-SA 2.0"
   sourceUrl: "https://commons.wikimedia.org/wiki/File:Fiordland_Crested_Penguin.jpg"
+audio:
+  mediaUrl: "https://static.inaturalist.org/sounds/322538.mp3?1635489525"
+  mimeType: "audio/mpeg"
+  caption: "Volání mláděte tučňáka novozélandského (tawaki) v Southlandu na Novém Zélandu"
+  author: "Beth Wishart"
+  license: "CC BY-NC 4.0"
+  sourceUrl: "https://www.inaturalist.org/observations/99686582"
+  durationSec: 75
 sources:
   - url: "https://cs.wikipedia.org/wiki/Tu%C4%8D%C5%88%C3%A1k_novoz%C3%A9landsk%C3%BD"
     title: "Tučňák novozélandský — Wikipedia (CS)"

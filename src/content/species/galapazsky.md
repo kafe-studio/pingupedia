@@ -104,6 +104,14 @@ gallery:
     author: "Lip Kee"
     license: "CC BY-SA 2.0"
     sourceUrl: "https://commons.wikimedia.org/wiki/File:Galapagos_Penguin_(Spheniscus_mendiculus)_(19436056066).jpg"
+audio:
+  mediaUrl: "https://xeno-canto.org/sounds/uploaded/MKUJNSTVEZ/XC383122-Penguin_Galapagos%20%28call%29_JF_Black%20Beach_Isabelal_%2013%20Jun%202017.mp3"
+  mimeType: "audio/mpeg"
+  caption: "Volání tučňáka galapážského (Black Beach, Isabela)"
+  author: "Jesse Fagan"
+  license: "CC BY-NC-SA 4.0"
+  sourceUrl: "https://xeno-canto.org/383122"
+  durationSec: 18
 sources:
   - url: "https://cs.wikipedia.org/wiki/Tu%C4%8D%C5%88%C3%A1k_galap%C3%A1%C5%BEsk%C3%BD"
     title: "Tučňák galapážský — Wikipedia (CS)"

@@ -128,6 +128,14 @@ gallery:
     author: "Edelseider"
     license: "CC BY-SA 4.0"
     sourceUrl: "https://commons.wikimedia.org/wiki/File:Strasbourg_Mus%C3%A9e_zoologique_(35).JPG"
+audio:
+  mediaUrl: "https://upload.wikimedia.org/wikipedia/commons/f/f2/AudioRoyalPenguins.oga"
+  mimeType: "audio/ogg"
+  caption: "Volání tučňáků královských v kolonii Hurd Point Rookery na ostrově Macquarie"
+  author: "Hullwarren"
+  license: "CC BY-SA 3.0"
+  sourceUrl: "https://commons.wikimedia.org/wiki/File:AudioRoyalPenguins.oga"
+  durationSec: 18
 sources:
   - url: "https://en.wikipedia.org/wiki/Royal_penguin"
     title: "Royal penguin — Wikipedia (EN)"

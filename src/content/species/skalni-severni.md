@@ -83,6 +83,14 @@ gallery:
     author: "Brian Gratwicke"
     license: "CC BY 2.0"
     sourceUrl: "https://commons.wikimedia.org/wiki/File:Northern_Rockhopper_Penguin_on_Inaccessible_Island_(portrait).jpg"
+audio:
+  mediaUrl: "https://xeno-canto.org/sounds/uploaded/TMKVIVLZFE/XC332460-NOrthern.rockhopper.penguin_mixdown.mp3"
+  mimeType: "audio/mpeg"
+  caption: "Hašteření dospělých tučňáků skalních severních v kolonii na ostrově Gough na začátku hnízdní sezony"
+  author: "Chris Taylor"
+  license: "CC BY-NC-SA 4.0"
+  sourceUrl: "https://xeno-canto.org/332460"
+  durationSec: 81
 sources:
   - url: "https://en.wikipedia.org/wiki/Northern_rockhopper_penguin"
     title: "Northern rockhopper penguin — Wikipedia (EN)"

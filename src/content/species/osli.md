@@ -114,6 +114,14 @@ video:
   license: "CC BY 3.0"
   sourceUrl: "https://commons.wikimedia.org/wiki/File:Gentoo_penguins_(Pygoscelis_papua)_in_Antarctica.webm"
   durationSec: 53
+audio:
+  mediaUrl: "https://static.inaturalist.org/sounds/1260488.wav?1733071607"
+  mimeType: "audio/wav"
+  caption: "Hlasový projev tučňáka oslího v antarktické kolonii"
+  author: "steve b (stevestevens)"
+  license: "CC0"
+  sourceUrl: "https://www.inaturalist.org/observations/253768249"
+  durationSec: 13
 sources:
   - url: "https://cs.wikipedia.org/wiki/Tu%C4%8D%C5%88%C3%A1k_osl%C3%AD"
     title: "Tučňák oslí — Wikipedia (CS)"
