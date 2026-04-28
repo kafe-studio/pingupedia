@@ -1,0 +1,58 @@
+---
+export const prerender = true;
+import { getCollection } from "astro:content";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Mascot from "../components/mascot/Mascot.astro";
+import SizeChart from "../components/infographics/SizeChart.astro";
+import DivingChart from "../components/infographics/DivingChart.astro";
+import IucnStatusChart from "../components/infographics/IucnStatusChart.astro";
+
+const species = await getCollection("species");
+
+const metadata = {
+  title: "Infografiky tučňáků",
+  description:
+    "Vizuální přehled — velikosti druhů, hloubky potápění, status ohrožení podle IUCN Red List. Pro 18 druhů tučňáků na jednom místě.",
+};
+---
+
+<BaseLayout {metadata}>
+  <section class="px-4 sm:px-6 pt-28 pb-8">
+    <div class="mx-auto max-w-5xl">
+      <header class="mb-8 md:mb-12 flex flex-col md:flex-row md:items-end md:justify-between gap-6 reveal">
+        <div class="max-w-2xl">
+          <p class="text-sm uppercase tracking-[0.2em] text-primary/80 mb-4">Infografiky</p>
+          <h1 class="text-5xl md:text-7xl font-black tracking-tight leading-[0.95] mb-4">
+            Tučňáci<br />v <span class="text-accent">číslech</span>
+          </h1>
+          <p class="text-lg md:text-xl text-muted-foreground">
+            Velikosti, hloubky ponoru a stupně ohrožení napříč 18 druhy. Data z {species.length} stránek druhů + ověřených zdrojů.
+          </p>
+        </div>
+        <div class="shrink-0 anim-float hidden md:block">
+          <Mascot pose="palec" size={140} />
+        </div>
+      </header>
+    </div>
+  </section>
+
+  <SizeChart species={species} />
+  <DivingChart species={species} />
+  <IucnStatusChart species={species} />
+
+  <section class="px-4 sm:px-6 py-12 reveal">
+    <div class="mx-auto max-w-3xl text-center">
+      <p class="text-sm text-muted-foreground">
+        Všechny grafy se generují automaticky z dat ve schematu druhů. Když opravím fakta v markdown souboru,
+        infografika se aktualizuje při dalším buildu.
+      </p>
+      <a
+        href="/druhy/"
+        class="mt-6 inline-flex items-center gap-2 rounded-full border border-border px-5 py-2.5 text-sm font-semibold hover:border-primary hover:text-primary transition-colors"
+        data-astro-prefetch
+      >
+        Otevřít přehled druhů →
+      </a>
+    </div>
+  </section>
+</BaseLayout>

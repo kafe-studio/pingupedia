@@ -1,0 +1,72 @@
+---
+import type { CollectionEntry } from "astro:content";
+
+interface Props {
+  species: CollectionEntry<"species">[];
+}
+
+const { species } = Astro.props;
+
+// Setříděno sestupně podle max výšky — císařský největší nahoře.
+const sorted = [...species].sort((a, b) => b.data.size.heightCm[1] - a.data.size.heightCm[1]);
+
+const maxHeight = Math.max(...sorted.map((s) => s.data.size.heightCm[1]));
+const maxWeight = Math.max(...sorted.map((s) => s.data.size.weightKg[1]));
+---
+
+<section class="px-4 sm:px-6 py-12 reveal" aria-labelledby="size-heading">
+  <div class="mx-auto max-w-5xl">
+    <header class="mb-8">
+      <h2 id="size-heading" class="text-2xl md:text-3xl font-bold mb-2">Velikost druhů</h2>
+      <p class="text-sm text-muted-foreground">
+        Maximální výška ({maxHeight} cm) a váha ({maxWeight} kg) nejtěžších jedinců. Setříděno sestupně.
+      </p>
+    </header>
+
+    <div class="bento-card p-4 md:p-6">
+      <ul class="space-y-3" role="list">
+        {sorted.map((s) => {
+          const hMin = s.data.size.heightCm[0];
+          const hMax = s.data.size.heightCm[1];
+          const wMin = s.data.size.weightKg[0];
+          const wMax = s.data.size.weightKg[1];
+          const heightPct = (hMax / maxHeight) * 100;
+          const weightPct = (wMax / maxWeight) * 100;
+          return (
+            <li class="grid grid-cols-12 items-center gap-3 text-sm">
+              <a
+                href={`/druhy/${s.id}/`}
+                data-astro-prefetch="false"
+                class="col-span-12 sm:col-span-3 font-semibold hover:text-primary transition-colors truncate"
+              >{s.data.nameCs}</a>
+              <div class="col-span-12 sm:col-span-9 grid grid-cols-2 gap-3">
+                <div>
+                  <div class="flex justify-between text-[11px] text-muted-foreground mb-1">
+                    <span>Výška</span>
+                    <span class="font-mono">{hMin === hMax ? `${hMin}` : `${hMin}–${hMax}`} cm</span>
+                  </div>
+                  <div class="h-2 rounded-full bg-muted overflow-hidden">
+                    <div class="h-full rounded-full bg-gradient-to-r from-blue-400 to-blue-600" style={`width:${heightPct}%`}></div>
+                  </div>
+                </div>
+                <div>
+                  <div class="flex justify-between text-[11px] text-muted-foreground mb-1">
+                    <span>Váha</span>
+                    <span class="font-mono">{wMin === wMax ? `${wMin}` : `${wMin}–${wMax}`} kg</span>
+                  </div>
+                  <div class="h-2 rounded-full bg-muted overflow-hidden">
+                    <div class="h-full rounded-full bg-gradient-to-r from-amber-400 to-rose-500" style={`width:${weightPct}%`}></div>
+                  </div>
+                </div>
+              </div>
+            </li>
+          );
+        })}
+      </ul>
+    </div>
+
+    <p class="mt-3 text-xs text-muted-foreground">
+      Zdroj: schema species, hodnoty z Wikipedia EN cross-checked se Sprintem 002 fact-checkem.
+    </p>
+  </div>
+</section>

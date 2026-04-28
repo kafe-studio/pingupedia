@@ -16,6 +16,7 @@
   },
   "navLinks": [
     { "text": "Druhy", "href": "/druhy/" },
+    { "text": "Infografiky", "href": "/infografiky/" },
     { "text": "Historie", "href": "/historie/" },
     { "text": "Hry", "href": "/hry/" },
     { "text": "Filmy", "href": "/filmy/" },
