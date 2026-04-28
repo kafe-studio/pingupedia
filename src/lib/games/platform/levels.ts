@@ -1,5 +1,6 @@
 import type { Door, Exit, Guardian, Item, KeyColor, Room } from "./types";
 import { TILE } from "./types";
+import { EXTRA_ROOMS } from "./levels-extras";
 
 // Helper builders ------------------------------------------------------------
 
@@ -422,6 +423,7 @@ const stanice: Room = {
   name: "Opuštěná stanice",
   palette: "lab",
   // Indoor room with side openings on rows 11-12 so player can leave left/right.
+  // Bottom hole cols 9-10 leads down to stanice2 (Antarktická základna).
   tiles: [
     "....................",
     "..##############....",
@@ -436,7 +438,7 @@ const stanice: Room = {
     "..#..H.===...H.#....",
     "..#..H.......H......",
     "....................",
-    "####################",
+    "#########..#########",
   ],
   guardians: [
     v("snowwind", 7, 3, 11, 0.9),
@@ -450,6 +452,7 @@ const stanice: Room = {
   exits: [
     exit("left", "jeskyne", 17, 12),
     exit("right", "laborator", 1, 12),
+    exit("bottom", "stanice2", 9, 1),
   ],
   spawn: { x: 4 * TILE, y: 12 * TILE },
 };
@@ -1417,6 +1420,8 @@ export const ROOMS: Room[] = [
   kostra, propast, poklad,
   ruda, labyrinth, planety,
   klubovna, divadlo, kino,
+  // Sprint 006 expansion: Antarktická základna (1. várka)
+  ...EXTRA_ROOMS,
 ];
 
 export const START_ROOM_ID = "iglu";
