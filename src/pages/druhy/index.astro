@@ -4,6 +4,7 @@ import { getCollection } from "astro:content";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import NoCropImage from "../../components/media/NoCropImage.astro";
 import IucnBadge from "../../components/species/IucnBadge.astro";
+import SpeciesFilter from "../../components/species/SpeciesFilter.astro";
 import Mascot from "../../components/mascot/Mascot.astro";
 
 const species = await getCollection("species");
@@ -57,16 +58,8 @@ const genusCount = species.reduce<Record<string, number>>((acc, s) => {
         </p>
       </header>
 
-      <div class="mb-6 flex flex-wrap items-center gap-3 reveal">
-        {Object.entries(genusCount)
-          .sort((a, b) => b[1] - a[1])
-          .map(([genus, count]) => (
-            <span class="inline-flex items-center gap-2 rounded-full border border-border bg-card px-3 py-1.5 text-xs font-medium">
-              <em class="text-primary not-italic font-semibold">{genus}</em>
-              <span class="text-muted-foreground">·</span>
-              <span class="text-muted-foreground">{count === 1 ? "1 druh" : count < 5 ? `${count} druhy` : `${count} druhů`}</span>
-            </span>
-          ))}
+      <div class="mb-8">
+        <SpeciesFilter species={species} />
       </div>
 
       <ul
@@ -79,7 +72,12 @@ const genusCount = species.reduce<Record<string, number>>((acc, s) => {
           const surface = i % 4 === 0 ? "bento-surface-aurora" : i % 4 === 2 ? "bento-surface-ice" : "";
           const isSurfaced = surface.length > 0;
           return (
-            <li class={span}>
+            <li
+              class={span}
+              data-species-card
+              data-genus={entry.data.genus}
+              data-iucn={entry.data.iucnStatus}
+            >
               <a
                 href={`/druhy/${entry.id}/`}
                 data-astro-prefetch

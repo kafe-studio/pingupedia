@@ -1,0 +1,178 @@
+---
+import type { CollectionEntry } from "astro:content";
+
+interface Props {
+  species: CollectionEntry<"species">[];
+}
+
+const { species } = Astro.props;
+
+// Spočítej genusy + IUCN statusy + jejich počty.
+const genusCount = species.reduce<Record<string, number>>((acc, s) => {
+  acc[s.data.genus] = (acc[s.data.genus] || 0) + 1;
+  return acc;
+}, {});
+
+const iucnCount = species.reduce<Record<string, number>>((acc, s) => {
+  acc[s.data.iucnStatus] = (acc[s.data.iucnStatus] || 0) + 1;
+  return acc;
+}, {});
+
+const sortedGenuses = Object.entries(genusCount).sort((a, b) => b[1] - a[1]);
+const IUCN_ORDER = ["LC", "NT", "VU", "EN", "CR", "DD", "EX"] as const;
+const sortedIucn = IUCN_ORDER.filter((k) => iucnCount[k]).map((k) => [k, iucnCount[k]] as const);
+
+const IUCN_LABEL: Record<string, string> = {
+  LC: "Least Concern",
+  NT: "Near Threatened",
+  VU: "Vulnerable",
+  EN: "Endangered",
+  CR: "Critically Endangered",
+  DD: "Data Deficient",
+  EX: "Extinct",
+};
+---
+
+<div class="reveal" data-species-filter>
+  <div class="flex items-baseline justify-between gap-3 mb-3 flex-wrap">
+    <h3 class="text-xs uppercase tracking-widest text-muted-foreground font-semibold">Filtr podle rodu</h3>
+    <button
+      type="button"
+      class="text-xs text-muted-foreground hover:text-primary transition-colors hidden"
+      data-filter-reset
+    >× Zrušit filtr</button>
+  </div>
+  <div class="flex flex-wrap gap-2 mb-4" role="group" aria-label="Filtr podle rodu">
+    {sortedGenuses.map(([genus, count]) => (
+      <button
+        type="button"
+        data-filter="genus"
+        data-value={genus}
+        class="filter-pill inline-flex items-center gap-1.5 rounded-full border border-border bg-card px-3 py-1.5 text-xs font-medium transition-colors hover:border-primary"
+        aria-pressed="false"
+      >
+        <em class="text-primary not-italic font-semibold">{genus}</em>
+        <span class="text-muted-foreground">·</span>
+        <span class="text-muted-foreground">{count}</span>
+      </button>
+    ))}
+  </div>
+
+  <h3 class="text-xs uppercase tracking-widest text-muted-foreground font-semibold mb-3">Filtr podle IUCN statusu</h3>
+  <div class="flex flex-wrap gap-2 mb-4" role="group" aria-label="Filtr podle IUCN statusu">
+    {sortedIucn.map(([status, count]) => (
+      <button
+        type="button"
+        data-filter="iucn"
+        data-value={status}
+        class="filter-pill inline-flex items-center gap-1.5 rounded-full border border-border bg-card px-3 py-1.5 text-xs font-medium transition-colors hover:border-primary"
+        aria-pressed="false"
+        title={IUCN_LABEL[status]}
+      >
+        <span class="font-bold">{status}</span>
+        <span class="text-muted-foreground">·</span>
+        <span class="text-muted-foreground">{count}</span>
+      </button>
+    ))}
+  </div>
+
+  <p class="text-xs text-muted-foreground" data-filter-count>Zobrazeno všech {species.length} druhů</p>
+</div>
+
+<style>
+  .filter-pill[aria-pressed="true"] {
+    border-color: hsl(var(--primary));
+    background: hsl(var(--primary) / 0.1);
+    color: hsl(var(--primary));
+  }
+  /* Card hidden via CSS, ne display:none, aby šlo plynule animovat */
+  [data-species-card][data-hidden="true"] {
+    display: none;
+  }
+</style>
+
+<script>
+  type FilterKind = "genus" | "iucn";
+  type ActiveFilters = Record<FilterKind, Set<string>>;
+
+  function wireFilter(): void {
+    document.querySelectorAll<HTMLElement>("[data-species-filter]").forEach((root) => {
+      if (root.dataset.wired === "1") return;
+      root.dataset.wired = "1";
+
+      const active: ActiveFilters = { genus: new Set(), iucn: new Set() };
+      const pills = root.querySelectorAll<HTMLButtonElement>("button[data-filter]");
+      const resetBtn = root.querySelector<HTMLButtonElement>("[data-filter-reset]");
+      const countEl = root.querySelector<HTMLElement>("[data-filter-count]");
+      const cards = document.querySelectorAll<HTMLElement>("[data-species-card]");
+      const total = cards.length;
+
+      function apply(): void {
+        let visible = 0;
+        cards.forEach((card) => {
+          const cGenus = card.dataset.genus ?? "";
+          const cIucn = card.dataset.iucn ?? "";
+          const matchGenus = active.genus.size === 0 || active.genus.has(cGenus);
+          const matchIucn = active.iucn.size === 0 || active.iucn.has(cIucn);
+          const show = matchGenus && matchIucn;
+          card.dataset.hidden = show ? "false" : "true";
+          if (show) visible++;
+        });
+        if (countEl) {
+          countEl.textContent = visible === total
+            ? `Zobrazeno všech ${total} druhů`
+            : `Zobrazeno ${visible} z ${total} druhů`;
+        }
+        const anyActive = active.genus.size > 0 || active.iucn.size > 0;
+        if (resetBtn) resetBtn.classList.toggle("hidden", !anyActive);
+        // Update URL hash, ať se filtr zachová mezi navigations.
+        const params = new URLSearchParams();
+        if (active.genus.size) params.set("genus", [...active.genus].join(","));
+        if (active.iucn.size) params.set("iucn", [...active.iucn].join(","));
+        const hash = params.toString();
+        history.replaceState(null, "", hash ? `#${hash}` : window.location.pathname);
+      }
+
+      pills.forEach((pill) => {
+        pill.addEventListener("click", () => {
+          const kind = pill.dataset.filter as FilterKind;
+          const value = pill.dataset.value;
+          if (!kind || !value) return;
+          if (active[kind].has(value)) {
+            active[kind].delete(value);
+            pill.setAttribute("aria-pressed", "false");
+          } else {
+            active[kind].add(value);
+            pill.setAttribute("aria-pressed", "true");
+          }
+          apply();
+        });
+      });
+
+      resetBtn?.addEventListener("click", () => {
+        active.genus.clear();
+        active.iucn.clear();
+        pills.forEach((p) => p.setAttribute("aria-pressed", "false"));
+        apply();
+      });
+
+      // Restore z URL hash
+      if (window.location.hash) {
+        const params = new URLSearchParams(window.location.hash.slice(1));
+        params.get("genus")?.split(",").filter(Boolean).forEach((v) => active.genus.add(v));
+        params.get("iucn")?.split(",").filter(Boolean).forEach((v) => active.iucn.add(v));
+        pills.forEach((pill) => {
+          const kind = pill.dataset.filter as FilterKind;
+          const value = pill.dataset.value;
+          if (kind && value && active[kind].has(value)) {
+            pill.setAttribute("aria-pressed", "true");
+          }
+        });
+        apply();
+      }
+    });
+  }
+
+  wireFilter();
+  document.addEventListener("astro:page-load", wireFilter);
+</script>
