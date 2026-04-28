@@ -1,0 +1,141 @@
+{
+  "meta": {
+    "title": "Časová osa — historie tučňáků a lidé",
+    "description": "Pět set let setkávání lidí s tučňáky — od Magellanovy plavby až po současnou ochranu druhu. Klíčové expedice, vědecké objevy, přeřazení statusů ohrožení."
+  },
+  "hero": {
+    "eyebrow": "Časová osa",
+    "titleHtml": "Pět set let<br />s <span class=\"text-accent\">tučňáky</span>",
+    "subtitle": "Od první spatřené ploutve evropským námořníkem po dnešní satelitní sledování kolonií. Patnáct milníků, které tvoří současnou znalost čeledi Spheniscidae."
+  },
+  "events": [
+    {
+      "year": 1520,
+      "title": "Magellanova posádka spatřuje první tučňáky",
+      "category": "discovery",
+      "description": "Při první obeplouvce Země pozoruje Magellanova výprava v dnešním Magellanově průlivu skupinu \"podivných hus\" — vůbec první písemný záznam o tučňácích, jak ho znamenal Antonio Pigafetta. Jedná se o tučňáky magellanské.",
+      "speciesSlug": "magellansky",
+      "location": "Magellanův průliv",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Magellanic_penguin"
+    },
+    {
+      "year": 1758,
+      "title": "Linné formálně popisuje tučňáka brýlového",
+      "category": "discovery",
+      "description": "V 10. vydání Systema Naturae Carl Linné pojmenovává tučňáka brýlového jako Diomedea demersa — první vědecky popsaný druh tučňáka. Do rodu Spheniscus jej v roce 1760 zařadil Brisson.",
+      "speciesSlug": "brylovy",
+      "sourceUrl": "https://en.wikipedia.org/wiki/African_penguin"
+    },
+    {
+      "year": 1781,
+      "title": "Forster popisuje čtyři nové druhy v Cookově plavbě",
+      "category": "discovery",
+      "description": "Johann Reinhold Forster během druhé Cookovy plavby vědecky popisuje tučňáky magellanského, oslího, nejmenšího a skalního jižního. Jeho práce položila základy moderní taxonomie čeledi.",
+      "location": "jižní Atlantik a Tichomoří",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Johann_Reinhold_Forster"
+    },
+    {
+      "year": 1840,
+      "title": "Francouzská expedice objevuje tučňáka kroužkového",
+      "category": "expedition",
+      "description": "21. ledna kapitán Jules Dumont d'Urville pojmenovává objevenou Adélie Land po své manželce Adéle. Vědecky druh popsali Hombron a Jacquinot z téže expedice o rok později. Tučňák tak nese jméno francouzské manželky kapitána.",
+      "speciesSlug": "krouzkovy",
+      "location": "Adélie Land, východní Antarktida",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Ad%C3%A9lie_penguin"
+    },
+    {
+      "year": 1844,
+      "title": "Gray popisuje tučňáka císařského",
+      "category": "discovery",
+      "description": "Anglický zoolog George Robert Gray formálně popsal tučňáka císařského a pojmenoval ho po Johannu Reinholdu Forsterovi. Druh získal vědecké jméno Aptenodytes forsteri.",
+      "speciesSlug": "cisarsky",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Emperor_penguin"
+    },
+    {
+      "year": 1870,
+      "title": "Začátek komerčního lovu na Macquarie",
+      "category": "tragedy",
+      "description": "Joseph Hatch zakládá zpracovatelskou stanici na ostrově Macquarie. Mezi lety 1870 a 1919 bude pro výrobu oleje zabito přes dva miliony tučňáků královských a patagonských — v některých letech přesahuje roční úlovek 150 tisíc kusů.",
+      "speciesSlug": "royal",
+      "location": "Macquarie Island",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Joseph_Hatch"
+    },
+    {
+      "year": 1898,
+      "title": "Belgická expedice — první přezimování v Antarktidě",
+      "category": "expedition",
+      "description": "Loď Belgica pod velením Adriena de Gerlache zamrzla v ledu Bellingshausenova moře a stala se první expedicí, která přezimovala jižně od antarktického kruhu. Vědci na palubě (mj. Roald Amundsen, Frederick Cook) studovali tučňáky kroužkové a uzdičkové.",
+      "location": "Bellingshausenovo moře",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Belgian_Antarctic_Expedition"
+    },
+    {
+      "year": 1911,
+      "title": "Worst Journey in the World — pochod za vejci",
+      "category": "expedition",
+      "description": "V červenci, uprostřed antarktické zimy, vyrazili Apsley Cherry-Garrard, Edward Wilson a Henry Bowers ze Scottovy expedice Terra Nova k Cape Crozier sebrat vejce tučňáků císařských. Pět týdnů pochodu při −60 °C ve tmě se stalo legendou polárního cestování.",
+      "speciesSlug": "cisarsky",
+      "location": "Cape Crozier, Rossův ostrov",
+      "sourceUrl": "https://en.wikipedia.org/wiki/The_Worst_Journey_in_the_World"
+    },
+    {
+      "year": 1959,
+      "title": "Smlouva o Antarktidě",
+      "category": "conservation",
+      "description": "12 zemí podepisuje Antarctic Treaty — kontinent jižně od 60. rovnoběžky se stává neutrálním prostorem věnovaným vědě a ochraně přírody. Komerční lov tučňáků v Antarktidě tím končí.",
+      "location": "Washington, USA",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Antarctic_Treaty_System"
+    },
+    {
+      "year": 1990,
+      "title": "Kooyman měří rekordní ponor císařského",
+      "category": "science",
+      "description": "Gerald Kooyman s pomocí miniaturních time-depth recorderů zaznamenává ponor tučňáka císařského do hloubky 535 metrů, trvající 21,8 minuty — tehdy nejhlubší a nejdelší ponor zaznamenaný u jakéhokoli ptáka.",
+      "speciesSlug": "cisarsky",
+      "location": "McMurdo Sound, Antarktida",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Emperor_penguin"
+    },
+    {
+      "year": 2005,
+      "title": "Pochod tučňáků (Luc Jacquet) získává Oscara",
+      "category": "milestone",
+      "description": "Francouzský dokumentární film La Marche de l'empereur natočený u Pointe Géologie získává Oscara za nejlepší dokumentární film. Globálně proslavuje životní cyklus tučňáků císařských a obrací pozornost veřejnosti k antarktické zoologii.",
+      "speciesSlug": "cisarsky",
+      "location": "Pointe Géologie, Antarktida",
+      "sourceUrl": "https://en.wikipedia.org/wiki/March_of_the_Penguins"
+    },
+    {
+      "year": 2007,
+      "title": "Wienecke aktualizuje rekord ponoru",
+      "category": "science",
+      "description": "Tým Barbary Wienecke u Atka Bay měří ponor tučňáka císařského do hloubky 564 metrů, trvající 32,2 minuty — překonává Kooymanův rekord. Bioenergetická limitace ponoru je tak posunuta dále.",
+      "speciesSlug": "cisarsky",
+      "location": "Atka Bay, Antarktida",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Emperor_penguin"
+    },
+    {
+      "year": 2016,
+      "title": "Halley Bay — kolaps druhé největší kolonie",
+      "category": "tragedy",
+      "description": "Druhá největší kolonie tučňáků císařských ve světě (Halley Bay, Brunt Ice Shelf) ztratila kvůli rozpadu mořského ledu téměř všechna mláďata tří po sobě jdoucích sezón. Z původních ~14 tisíc párů zbývá jen několik stovek. Klimatická změna přepisuje mapu druhu.",
+      "speciesSlug": "cisarsky",
+      "location": "Halley Bay, Brunt Ice Shelf",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Emperor_penguin"
+    },
+    {
+      "year": 2024,
+      "title": "Tučňák brýlový kriticky ohrožen",
+      "category": "conservation",
+      "description": "IUCN přeřazuje tučňáka brýlového z kategorie Endangered na Critically Endangered. Globální populace klesla z ~4 milionů na začátku 19. století na pouhých ~19 800 dospělých jedinců. Hlavní příčinou je kolaps populací sardinek a ančoviček v Benguelském proudu.",
+      "speciesSlug": "brylovy",
+      "sourceUrl": "https://www.iucnredlist.org/species/22697810/214888601"
+    },
+    {
+      "year": 2026,
+      "title": "Tučňák císařský přeřazen na ohrožený",
+      "category": "conservation",
+      "description": "9. dubna IUCN mění status tučňáka císařského z Near Threatened na Endangered. Modely projektují, že při současné trajektorii ztráty mořského ledu zmizí do roku 2100 přes 90 % světové populace. Druh se stává symbolem klimatické krize.",
+      "speciesSlug": "cisarsky",
+      "sourceUrl": "https://www.iucnredlist.org/species/22697752/197622453"
+    }
+  ]
+}

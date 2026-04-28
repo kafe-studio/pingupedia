@@ -8,6 +8,7 @@ import {
   hrySchema,
   quizSchema,
   filmySchema,
+  timelineSchema,
 } from "./lib/content-schemas";
 
 const iucnStatus = z.enum(["LC", "NT", "VU", "EN", "CR", "DD", "EX"]);
@@ -155,4 +156,9 @@ const filmy = defineCollection({
   schema: filmySchema,
 });
 
-export const collections = { species, site, home, oProjektu, hry, quiz, filmy };
+const timeline = defineCollection({
+  loader: glob({ pattern: "timeline.json", base: "./src/content/pages" }),
+  schema: timelineSchema,
+});
+
+export const collections = { species, site, home, oProjektu, hry, quiz, filmy, timeline };

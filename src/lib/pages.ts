@@ -39,3 +39,11 @@ export async function getFilmyPage() {
 }
 
 export type FilmyPage = Awaited<ReturnType<typeof getFilmyPage>>;
+
+export async function getTimelinePage() {
+  const entry = await getEntry("timeline", "timeline");
+  if (!entry) throw new Error("src/content/pages/timeline.json not found");
+  return entry.data;
+}
+
+export type TimelinePage = Awaited<ReturnType<typeof getTimelinePage>>;

@@ -30,6 +30,14 @@ const filmLinkTypeEnum = z.enum([
   "official",
   "other",
 ]);
+const timelineCategoryEnum = z.enum([
+  "discovery",   // objevení / popis druhu
+  "expedition",  // expedice
+  "science",     // vědecký objev / měření
+  "conservation", // ochrana / IUCN status
+  "tragedy",     // úmrtí druhu / kolapsy populací
+  "milestone",   // jiný milník
+]);
 
 export const siteSchema = z.object({
   name: z.string().min(1),
@@ -217,4 +225,30 @@ export const filmySchema = z.object({
     title: z.string().min(1),
     body: z.string().min(1),
   }),
+});
+
+export const timelineSchema = z.object({
+  meta: z.object({
+    title: z.string().min(1),
+    description: z.string().min(1),
+  }),
+  hero: z.object({
+    eyebrow: z.string().min(1),
+    titleHtml: z.string().min(1),
+    subtitle: z.string().min(1),
+  }),
+  events: z
+    .array(
+      z.object({
+        year: z.number().int().min(1400).max(2100),
+        yearLabel: z.string().optional(),
+        title: z.string().min(1),
+        category: timelineCategoryEnum,
+        description: z.string().min(1),
+        speciesSlug: z.string().regex(slugRe).optional(),
+        location: z.string().optional(),
+        sourceUrl: httpsUrl.optional(),
+      }),
+    )
+    .min(1),
 });

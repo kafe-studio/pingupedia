@@ -16,6 +16,7 @@
   },
   "navLinks": [
     { "text": "Druhy", "href": "/druhy/" },
+    { "text": "Historie", "href": "/historie/" },
     { "text": "Hry", "href": "/hry/" },
     { "text": "Filmy", "href": "/filmy/" },
     { "text": "O projektu", "href": "/o-projektu/" }

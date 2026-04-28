@@ -1,0 +1,61 @@
+---
+export const prerender = true;
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Mascot from "../components/mascot/Mascot.astro";
+import Timeline from "../components/timeline/Timeline.astro";
+import { getTimelinePage } from "../lib/pages";
+
+const page = await getTimelinePage();
+
+const metadata = {
+  title: page.meta.title,
+  description: page.meta.description,
+};
+
+// Stručná statistika pro hero — kategorie zastoupené v ose.
+const categoryCounts = page.events.reduce<Record<string, number>>((acc, e) => {
+  acc[e.category] = (acc[e.category] || 0) + 1;
+  return acc;
+}, {});
+const totalYears = Math.max(...page.events.map((e) => e.year)) - Math.min(...page.events.map((e) => e.year));
+---
+
+<BaseLayout {metadata}>
+  <section class="px-4 sm:px-6 pt-28 pb-16">
+    <div class="mx-auto max-w-5xl">
+      <header class="mb-10 md:mb-14 flex flex-col md:flex-row md:items-end md:justify-between gap-6 reveal">
+        <div class="max-w-2xl">
+          <p class="text-sm uppercase tracking-[0.2em] text-primary/80 mb-4">{page.hero.eyebrow}</p>
+          <h1 class="text-5xl md:text-7xl font-black tracking-tight leading-[0.95] mb-4">
+            <Fragment set:html={page.hero.titleHtml} />
+          </h1>
+          <p class="text-lg md:text-xl text-muted-foreground">{page.hero.subtitle}</p>
+        </div>
+        <div class="shrink-0 anim-float hidden md:block">
+          <Mascot pose="cte" size={140} />
+        </div>
+      </header>
+
+      <div class="mb-8 grid grid-cols-2 sm:grid-cols-4 gap-3 reveal">
+        <div class="bento-card p-4 text-center">
+          <p class="text-3xl font-black text-primary">{page.events.length}</p>
+          <p class="text-xs text-muted-foreground mt-1">milníků</p>
+        </div>
+        <div class="bento-card p-4 text-center">
+          <p class="text-3xl font-black text-accent">{totalYears}</p>
+          <p class="text-xs text-muted-foreground mt-1">let historie</p>
+        </div>
+        <div class="bento-card p-4 text-center">
+          <p class="text-3xl font-black text-emerald-500">{categoryCounts.science ?? 0}</p>
+          <p class="text-xs text-muted-foreground mt-1">vědeckých objevů</p>
+        </div>
+        <div class="bento-card p-4 text-center">
+          <p class="text-3xl font-black text-violet-500">{categoryCounts.conservation ?? 0}</p>
+          <p class="text-xs text-muted-foreground mt-1">ochranářských kroků</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <Timeline events={page.events} />
+</BaseLayout>
