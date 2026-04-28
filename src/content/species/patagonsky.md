@@ -18,6 +18,17 @@ distribution:
   - "Crozetovy ostrovy a Kergueleny"
   - "Ostrovy prince Edwarda a Marion"
   - "Macquarie a Bouvetův ostrov"
+colonies:
+  - { name: "Jižní Georgie — Salisbury Plain", lat: -54.05, lon: -37.35, type: "breeding", description: "Přes 30 tisíc párů na severním pobřeží" }
+  - { name: "Jižní Georgie — St Andrews Bay", lat: -54.43, lon: -36.18, type: "breeding", description: "Přes 150 tisíc párů, jedna z největších kolonií" }
+  - { name: "Jižní Georgie — Gold Harbour", lat: -54.63, lon: -35.94, type: "breeding", description: "Velká kolonie na jihovýchodním pobřeží" }
+  - { name: "Crozetovy ostrovy — Île aux Cochons", lat: -46.10, lon: 50.23, type: "breeding", description: "Historicky obří kolonie, dramatický pokles z 500 tisíc na 60 tisíc párů" }
+  - { name: "Crozetovy ostrovy — Île de la Possession", lat: -46.41, lon: 51.76, type: "breeding", description: "Součást crozetské populace přes 450 tisíc párů" }
+  - { name: "Kerguelenovy ostrovy", lat: -49.25, lon: 69.17, type: "breeding", description: "240 až 280 tisíc hnízdících párů" }
+  - { name: "Marion Island (Princ Edvard)", lat: -46.91, lon: 37.74, type: "breeding", description: "Asi 228 tisíc párů, hlavní kolonie souostroví" }
+  - { name: "Macquarie Island", lat: -54.63, lon: 158.86, type: "breeding", description: "Kolem 70 tisíc párů na australském subantarktickém ostrově" }
+  - { name: "Heardův ostrov", lat: -53.10, lon: 73.52, type: "breeding", description: "Menší kolonie v jižním Indickém oceánu" }
+  - { name: "Falklandy — Volunteer Point", lat: -51.47, lon: -57.85, type: "breeding", description: "Nejdostupnější kolonie pro turisty" }
 habitat: "Subantarktické ostrovy s plážemi, nízkou vegetací a dostupným mořem. Hnízdí v obrovských, hustě osídlených koloniích na otevřených pláních bez sněhu."
 diet:
   - "Malé mezopelagické ryby rodu Myctophidae (lampovníci)"

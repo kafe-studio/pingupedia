@@ -18,6 +18,17 @@ distribution:
   - "Jižní Georgie, Jižní Shetlandy, Jižní Orkneje"
   - "Kerguelovy ostrovy, Crozetovy ostrovy, Heardův a McDonaldovy ostrovy"
   - "Macquarie, Marion a Prince Edward Islands"
+colonies:
+  - { name: "Falklandy", lat: -51.73, lon: -59.22, type: "breeding", description: "Největší světová populace ~120 tisíc párů" }
+  - { name: "Jižní Georgie", lat: -54.40, lon: -36.70, type: "breeding", description: "Subantarktický ostrov, klíčová kolonie ~100 tisíc párů" }
+  - { name: "Kerguelenovy ostrovy", lat: -49.25, lon: 69.17, type: "breeding", description: "Francouzské subantarktické území" }
+  - { name: "Crozetovy ostrovy", lat: -46.38, lon: 51.67, type: "breeding", description: "Francouzské souostroví v jižním Indickém oceánu" }
+  - { name: "Heardův ostrov", lat: -53.10, lon: 73.52, type: "breeding", description: "Australský sopečný ostrov, izolovaná populace" }
+  - { name: "Macquarie", lat: -54.63, lon: 158.86, type: "breeding", description: "Australský ostrov, světové dědictví UNESCO" }
+  - { name: "Jižní Shetlandy", lat: -62.00, lon: -58.00, type: "breeding", description: "Souostroví u Antarktického poloostrova, rostoucí kolonie" }
+  - { name: "Cuverville Island", lat: -64.68, lon: -62.63, type: "breeding", description: "Největší kolonie u Antarktického poloostrova" }
+  - { name: "Port Lockroy", lat: -64.83, lon: -63.49, type: "breeding", description: "Britská základna na Wienckeho ostrově" }
+  - { name: "Petermann Island", lat: -65.17, lon: -64.17, type: "breeding", description: "Nejjižnější známá kolonie tučňáka oslího" }
 habitat: "Chladná jižní moře od subantarktických ostrovů po pobřeží Antarktického poloostrova. Hnízdí v koloniích na travnatých nebo skalnatých pobřežích, méně často na ledu."
 diet:
   - "Ryby z čeledi Nototheniidae (antarktické ryby)"

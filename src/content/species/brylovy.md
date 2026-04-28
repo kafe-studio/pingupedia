@@ -17,6 +17,18 @@ distribution:
   - "Boulders Beach (Simon's Town) a Stony Point (Betty's Bay) — pevninské kolonie vzniklé v 80. letech 20. století"
   - "Robben Island, Dassen Island, Dyer Island — historicky nejpočetnější ostrovní kolonie"
   - "Severní hranice u zálivu Algoa poblíž Port Elizabeth (dnes Gqeberha)"
+colonies:
+  - { name: "Boulders Beach", lat: -34.20, lon: 18.45, type: "breeding", description: "Pevninská kolonie u Simon's Town, JAR — turisticky známá" }
+  - { name: "Robben Island", lat: -33.81, lon: 18.37, type: "breeding", description: "Ostrov u Kapského Města, druhá největší kolonie v JAR" }
+  - { name: "Dyer Island", lat: -34.68, lon: 19.42, type: "breeding", description: "Ostrov u Gansbaai, JAR — kdysi domov stovek tisíc párů" }
+  - { name: "Dassen Island", lat: -33.42, lon: 18.09, type: "breeding", description: "Historicky největší kolonie světa, dnes výrazně menší" }
+  - { name: "St Croix Island", lat: -33.79, lon: 25.77, type: "breeding", description: "Algoa Bay, JAR — donedávna největší aktivní kolonie" }
+  - { name: "Bird Island (Algoa Bay)", lat: -33.83, lon: 26.28, type: "breeding", description: "Algoa Bay, JAR — aktuálně největší aktivní kolonie" }
+  - { name: "Stony Point", lat: -34.37, lon: 18.89, type: "breeding", description: "Pevninská kolonie u Betty's Bay, JAR" }
+  - { name: "Mercury Island", lat: -25.72, lon: 14.83, type: "breeding", description: "Skalnatý ostrůvek u namibijského pobřeží" }
+  - { name: "Ichaboe Island", lat: -26.29, lon: 14.94, type: "breeding", description: "Namibijský ostrov, hnízdiště a chráněné území" }
+  - { name: "Halifax Island", lat: -26.65, lon: 15.08, type: "breeding", description: "Ostrov u Lüderitzu, Namibie — významné hnízdiště" }
+  - { name: "Possession Island", lat: -27.01, lon: 15.19, type: "breeding", description: "Pobřežní ostrov v jižní Namibii" }
 habitat: "Odlehlé ostrovy a pobřežní zátoky s velkými balvany a nízkými skalními útesy, kde druh hnízdí v norách vyhloubených do silných vrstev guana, v přirozených skalních puklinách nebo pod keři. Od 80. let 20. století kolonizuje i pevninské pláže Kapského regionu, kde si pro stín vybírá porosty a zahradní zákoutí."
 diet:
   - "Drobné hejnové ryby — sardinky, sardele a ančovičky (50 až 300 mm)"

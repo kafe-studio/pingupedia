@@ -17,6 +17,15 @@ distribution:
   - "Stewart Island a Codfish Island"
   - "Subantarktické ostrovy Auckland a Campbell"
   - "Ojediněle zatoulanci na severním pobřeží Jižního ostrova"
+colonies:
+  - { name: "Otago Peninsula", lat: -45.86, lon: 170.65, type: "breeding", description: "Hlavní pevninská kolonie u Dunedinu, populace klesá" }
+  - { name: "The Catlins (Long Point)", lat: -46.50, lon: 169.50, type: "breeding", description: "Rezervace Long Point chrání přes 10 % pevninských párů" }
+  - { name: "Banks Peninsula", lat: -43.75, lon: 172.85, type: "breeding", description: "Severní okraj pevninského areálu druhu" }
+  - { name: "Stewart Island / Rakiura", lat: -47.00, lon: 167.84, type: "breeding", description: "Hnízdění na ostrově jižně od Jižního ostrova" }
+  - { name: "Codfish Island / Whenua Hou", lat: -46.78, lon: 167.63, type: "breeding", description: "Chráněné hnízdiště u Stewart Island" }
+  - { name: "Auckland Islands — Enderby Island", lat: -50.50, lon: 166.30, type: "breeding", description: "Cca 577 párů ročně, 37 až 49 % světové populace" }
+  - { name: "Auckland Islands (souostroví)", lat: -50.70, lon: 166.10, type: "breeding", description: "Hlavní subantarktická bašta druhu" }
+  - { name: "Campbell Island / Motu Ihupuku", lat: -52.54, lon: 169.15, type: "breeding", description: "Nejjižnější kolonie hoiho" }
 habitat: "Hustý pobřežní les nebo zarostlé svahy poblíž skalnatých zálivů. Mezi tučňáky výjimečný tím, že hnízdí spíše solitérně než v hustých koloniích — jednotlivé páry si staví hnízda v takovém skrytu, aby na sebe neviděly, a putují za nimi až kilometr do vnitrozemí po vlastních pěšinkách."
 diet:
   - "Mořské demersální ryby — stříbřenky, modrá treska, červená treska a opálka (celkem ~90 % stravy)"

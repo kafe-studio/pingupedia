@@ -18,6 +18,15 @@ distribution:
   - "Falklandy/Malvíny — významné hnízdní populace"
   - "Mimo hnízdění migrace severně k pobřeží Uruguaye a jižní Brazílie (Rio Grande do Sul, Santa Catarina)"
   - "Punta Tombo (Argentina, Chubut) — největší kolonie, v roce 2014 přes 200 000 hnízdních párů"
+colonies:
+  - { name: "Punta Tombo", lat: -44.04, lon: -65.20, type: "breeding", description: "Argentina, Chubut, ~200 tisíc párů, jedna z největších kolonií druhu" }
+  - { name: "Isla Magdalena", lat: -52.92, lon: -70.58, type: "breeding", description: "Magellanův průliv, Chile, ~60 tisíc párů" }
+  - { name: "Cabo Vírgenes", lat: -52.33, lon: -68.35, type: "breeding", description: "Argentina, Santa Cruz, ústí Magellanova průlivu" }
+  - { name: "Isla Martillo", lat: -54.89, lon: -67.38, type: "breeding", description: "Beaglův průliv, Tierra del Fuego — turisticky známá" }
+  - { name: "Monte León", lat: -50.23, lon: -69.00, type: "breeding", description: "Argentinský národní park, Patagonie" }
+  - { name: "Falklandy (Malvíny)", lat: -51.75, lon: -59.00, type: "breeding", description: "Souostroví v jižním Atlantiku, hnízda v norách" }
+  - { name: "Isla de los Estados", lat: -54.78, lon: -64.25, type: "breeding", description: "Argentina, ostrov východně od Tierra del Fuego" }
+  - { name: "Isla Pingüino", lat: -47.90, lon: -65.72, type: "breeding", description: "Argentina, Santa Cruz, u Puerto Deseado" }
 habitat: "Patagonské pobřežní stepi, duny, keřové porosty a skalnatá pobřeží, kde druh hloubí hnízdní nory do písku nebo hlíny mezi trsy travin a pichlavých keřů calafate. Typická nora má chodbu okolo metr dlouhou a hnízdní komůrku 40-50 cm pod povrchem. Ptáci se ke stejné noře vracejí i přes deset sezón po sobě."
 diet:
   - "Drobné pelagické ryby — zejména ančovičky, sardinky a menší druhy Patagonie"

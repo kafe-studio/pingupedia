@@ -16,6 +16,11 @@ distribution:
   - "Souostroví Snares jihozápadně od Jižního ostrova Nového Zélandu (endemit)"
   - "Hlavní kolonie na North East Island; menší na Broughton Island a Western Chain"
   - "Mimo hnízdní sezónu pelagický v jižním Pacifiku a kolem subantarktických ostrovů"
+colonies:
+  - { name: "North East Island", lat: -48.02, lon: 166.55, type: "breeding", description: "Hlavní ostrov Snares, většina populace, kolonie pod Olearia lesem" }
+  - { name: "Broughton Island", lat: -48.04, lon: 166.61, type: "breeding", description: "Druhý největší ostrov Snares, samostatné kolonie" }
+  - { name: "Western Chain", lat: -48.07, lon: 166.30, type: "breeding", description: "Skalnaté ostrůvky západně, malé izolované kolonie" }
+  - { name: "Snares Islands (souostroví)", lat: -48.02, lon: 166.53, type: "breeding", description: "Souostroví u Jižního ostrova NZ, ~25 tisíc párů, jediný areál druhu" }
 habitat: "Hustý prales subantarktických stromů rodu Olearia pokrývající ostrovy Snares — jeden z mála tučňáků, kteří hnízdí ve stínu korun stromů. Kolonie se tvoří i na skalnatých pobřežních plošinách, kde pod stromy není místo."
 diet:
   - "Kril Nyctiphanes australis (asi 60 % hmotnosti potravy)"

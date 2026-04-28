@@ -16,6 +16,14 @@ distribution:
   - "Tristan da Cunha, Gough, Inaccessible a Nightingale (jižní Atlantik)"
   - "Ostrov Amsterdam a ostrov St Paul (Indický oceán)"
   - "Mimo hnízdní sezónu pelagický v subtropických a subantarktických vodách"
+colonies:
+  - { name: "Tristan da Cunha — hlavní ostrov", lat: -37.12, lon: -12.29, type: "breeding", description: "3 200 až 7 000 párů, hnízdění blízko vesnice Edinburgh" }
+  - { name: "Inaccessible Island (Tristan)", lat: -37.30, lon: -12.68, type: "breeding", description: "18 až 27 tisíc párů na neobydleném ostrově" }
+  - { name: "Nightingale Island (Tristan)", lat: -37.42, lon: -12.48, type: "breeding", description: "19 až 25 tisíc párů, klíčové hnízdiště" }
+  - { name: "Middle Island (Tristan)", lat: -37.40, lon: -12.49, type: "breeding", description: "Historicky až 100 tisíc párů (odhad 1973)" }
+  - { name: "Gough Island", lat: -40.32, lon: -9.94, type: "breeding", description: "32 až 65 tisíc párů, největší kolonie druhu" }
+  - { name: "Amsterdamův ostrov", lat: -37.83, lon: 77.55, type: "breeding", description: "Asi 25 500 párů, izolovaná indickooceánská populace" }
+  - { name: "Île Saint-Paul", lat: -38.72, lon: 77.52, type: "breeding", description: "Asi 9 000 párů jižně od Amsterdamu" }
 habitat: "Subtropické a chladné oceánské ostrovy s tussock travou a skalnatými svahy. Do kolonií šplhá po skalách podobně jako jižní rockhopper, ale hnízdí v teplejším pásmu zhruba na 37° jižní šířky."
 diet:
   - "Krill a další drobní korýši, především subtropické druhy"

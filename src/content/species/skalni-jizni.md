@@ -18,6 +18,17 @@ distribution:
   - "Crozetovy ostrovy a Kergueleny"
   - "Ostrovy Tristan da Cunha a Gough"
   - "Subantarktické ostrovy jižně od Nového Zélandu (Auckland, Campbell, Antipody)"
+colonies:
+  - { name: "Falklandy — Saunders Island", lat: -51.34, lon: -60.18, type: "breeding", description: "Jedna z hlavních falklandských kolonií" }
+  - { name: "Falklandy — New Island", lat: -51.72, lon: -61.30, type: "breeding", description: "Smíšené hnízdiště s albatrosy a kormorány" }
+  - { name: "Isla de los Estados (Argentina)", lat: -54.78, lon: -64.25, type: "breeding", description: "Hlavní jihoamerická kolonie u Ohňové země" }
+  - { name: "Diego Ramírezovy ostrovy (Chile)", lat: -56.48, lon: -68.73, type: "breeding", description: "Nejjižnější chilská kolonie, jih od Hornova mysu" }
+  - { name: "Kerguelenovy ostrovy", lat: -49.25, lon: 69.17, type: "breeding", description: "Velké francouzské subantarktické hnízdiště" }
+  - { name: "Crozetovy ostrovy", lat: -46.41, lon: 51.76, type: "breeding", description: "Hnízdění napříč souostrovím" }
+  - { name: "Marion Island (Princ Edvard)", lat: -46.91, lon: 37.74, type: "breeding", description: "Kolonie s občasnou hybridizací s macaroni" }
+  - { name: "Heard Island", lat: -53.10, lon: 73.52, type: "breeding", description: "Malá populace v Indickém oceánu" }
+  - { name: "Macquarie Island", lat: -54.63, lon: 158.86, type: "breeding", description: "Australská subantarktická kolonie" }
+  - { name: "Campbell Island (Nový Zéland)", lat: -52.54, lon: 169.15, type: "breeding", description: "Novozélandské subantarktické hnízdiště" }
 habitat: "Strmé skalnaté pobřeží, morénové svahy a lávové útesy. Hnízdí v hustých koloniích vysoko nad mořem, kam se dostává skákáním po skalách a oblázkových plážích."
 diet:
   - "Antarktický a subantarktický kril"

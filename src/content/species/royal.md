@@ -16,6 +16,12 @@ distribution:
   - "Ostrov Macquarie (endemit) — jediné hnízdní místo na světě"
   - "Okolní subantarktické ostrovy Austrálie"
   - "Během nehnízdní sezóny pelagický v subantarktických vodách"
+colonies:
+  - { name: "Hurd Point Rookery", lat: -54.75, lon: 158.94, type: "breeding", description: "Největší kolonie světa, jižní cíp Macquarie, ~500 tisíc párů" }
+  - { name: "Lusitania Bay", lat: -54.70, lon: 158.95, type: "breeding", description: "Druhá největší kolonie, kde se těžil tuk pro olej" }
+  - { name: "Sandy Bay", lat: -54.62, lon: 158.85, type: "breeding", description: "Severovýchodní pobřeží Macquarie, smíšená kolonie s king penguiny" }
+  - { name: "The Nuggets", lat: -54.50, lon: 158.94, type: "breeding", description: "Severní cíp Macquarie, menší kolonie" }
+  - { name: "Macquarie Island", lat: -54.63, lon: 158.86, type: "breeding", description: "Australský subantarktický ostrov, jediný areál druhu" }
 habitat: "Hnízdí výhradně na ostrově Macquarie na svazích s tussock travou a oblázkových pláních. Mimo hnízdní sezónu je výhradně pelagický — žije daleko na otevřeném moři."
 diet:
   - "Antarktický kril a další drobní korýši"

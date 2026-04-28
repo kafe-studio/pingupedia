@@ -16,6 +16,12 @@ distribution:
   - "Ostrov Fernandina a západ Isabely (≈ 90 % populace)"
   - "Menší kolonie na Santiagu, Bartolomé, severní Santa Cruz a Floreaně"
   - "Endemit Galapág — nevyskytuje se nikde jinde"
+colonies:
+  - { name: "Fernandina", lat: -0.37, lon: -91.55, type: "breeding", description: "Nejzápadnější Galapágy, Punta Espinosa — hlavní kolonie druhu" }
+  - { name: "Isabela", lat: -0.50, lon: -91.07, type: "breeding", description: "Největší ostrov, většina populace, severní část přesahuje rovník" }
+  - { name: "Bartolomé", lat: -0.285, lon: -90.549, type: "breeding", description: "Malý ostrov u Santiago, menší populace tučňáků" }
+  - { name: "Santiago", lat: -0.23, lon: -90.71, type: "breeding", description: "Centrální Galapágy, James Bay — rozptýlená hnízda" }
+  - { name: "Floreana", lat: -1.30, lon: -90.43, type: "breeding", description: "Jižní Galapágy, malá populace na okraji areálu" }
 habitat: "Skalnaté pobřežní útesy s jeskyněmi, trhlinami a ztuhlými lávovými tunely, kde druh hnízdí. Loví výhradně v pobřežních vodách chlazených Humboldtovým a Cromwellovým proudem — teplota moře kolem ostrovů se díky nim drží často pod 25 °C, což je na rovník neobvyklé."
 diet:
   - "Drobné hejnové ryby — sardinky, ančovičky, sardele a parmovité ryby"

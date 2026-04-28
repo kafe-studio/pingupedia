@@ -17,6 +17,16 @@ distribution:
   - "Západní Austrálie a Jervis Bay"
   - "Většina pobřeží Nového Zélandu (oba hlavní ostrovy + Stewart Island)"
   - "Občasné zálety podél pobřeží Chile"
+colonies:
+  - { name: "Phillip Island", lat: -38.50, lon: 145.23, type: "breeding", description: "Austrálie, ~32 tisíc párů, slavná Penguin Parade" }
+  - { name: "St Kilda Breakwater", lat: -37.87, lon: 144.97, type: "breeding", description: "Vlnolam u Melbourne, městská kolonie ~1 400 ptáků" }
+  - { name: "Penguin Place", lat: -45.78, lon: 170.73, type: "breeding", description: "Otago Peninsula, NZ — soukromá rezervace" }
+  - { name: "Oamaru Blue Penguin Colony", lat: -45.10, lon: 170.97, type: "breeding", description: "Nový Zéland, lov u kamenolomu, večerní pochod" }
+  - { name: "Bicheno", lat: -41.87, lon: 148.30, type: "breeding", description: "Východní Tasmánie, několik desítek nor" }
+  - { name: "Bruny Island", lat: -43.30, lon: 147.30, type: "breeding", description: "Tasmánie, ostrov u jižního pobřeží" }
+  - { name: "Granite Island", lat: -35.55, lon: 138.62, type: "breeding", description: "Jižní Austrálie, Victor Harbor — populace dramaticky klesá" }
+  - { name: "Kangaroo Island", lat: -35.83, lon: 137.20, type: "breeding", description: "Jižní Austrálie, několik kolonií podél pobřeží" }
+  - { name: "Bowen Island", lat: -35.13, lon: 150.77, type: "breeding", description: "Nový Jižní Wales, Jervis Bay — ~5 000 párů" }
 habitat: "Pobřeží s písečnými pláními, kamenitými útesy, dunami i lidskými stavbami. Nory si druh hloubí v písku nebo hlíně, případně využívá skalní štěrbiny a opuštěné králičí doupata. Často hnízdí přímo pod domy nebo v zahradních kolnách v městském pobřeží Austrálie a Nového Zélandu."
 diet:
   - "Drobné hejnové ryby — sardinky, sardele a ančovičky (~76 % stravy)"

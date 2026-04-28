@@ -17,6 +17,17 @@ distribution:
   - "Jižní Orkneje, Jižní Shetlandy"
   - "Bouvetův ostrov, Balleny, Falklandy"
   - "Pobřeží Antarktidy a Antarktický poloostrov"
+colonies:
+  - { name: "Zavodovski Island", lat: -56.30, lon: -27.58, type: "breeding", description: "Sopečný ostrov v Jižních Sandwichových — největší kolonie světa, ~1 milion párů" }
+  - { name: "Saunders Island", lat: -57.80, lon: -26.49, type: "breeding", description: "Jižní Sandwichovy ostrovy, statisíce párů" }
+  - { name: "Jižní Sandwichovy ostrovy", lat: -56.60, lon: -27.72, type: "breeding", description: "Souostroví drží více než polovinu světové populace" }
+  - { name: "Deception Island", lat: -62.96, lon: -60.64, type: "breeding", description: "Sopečný ostrov v Jižních Shetlandech, ~100 tisíc párů" }
+  - { name: "Half Moon Island", lat: -62.59, lon: -59.91, type: "breeding", description: "Jižní Shetlandy, populární turistická lokalita" }
+  - { name: "Elephant Island", lat: -61.14, lon: -55.12, type: "breeding", description: "Známý z Shackletonovy expedice; pokles populace o 50 % za 50 let" }
+  - { name: "Jižní Orkneje", lat: -60.60, lon: -45.50, type: "breeding", description: "Britské souostroví, velké hnízdní kolonie" }
+  - { name: "Signy Island", lat: -60.72, lon: -45.60, type: "breeding", description: "Jižní Orkneje, dlouhodobý monitoring" }
+  - { name: "Bouvetův ostrov", lat: -54.42, lon: 3.60, type: "breeding", description: "Nejvzdálenější ostrov světa, izolovaná norská populace" }
+  - { name: "Hope Bay", lat: -63.40, lon: -57.00, type: "breeding", description: "Špička Antarktického poloostrova, smíšené kolonie" }
 habitat: "Hnízdí v obřích koloniích na skalnatých svazích subantarktických ostrovů a Antarktického poloostrova. Loví v pelagické i benthické zóně, při hnízdění se obvykle drží do 30–60 km od pobřeží."
 diet:
   - "Krill antarktický (Euphausia superba) — až 90–100 % stravy"

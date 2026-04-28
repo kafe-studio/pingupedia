@@ -17,6 +17,11 @@ distribution:
   - "Antipodes Islands"
   - "Historicky drobné kolonie na Campbell Island, Auckland Islands a Otago Peninsula (zanikly do 40. let 20. století)"
   - "Mimo hnízdní sezónu pelagický v jižních vodách kolem subantarktických ostrovů"
+colonies:
+  - { name: "Antipodes Islands", lat: -49.68, lon: 178.77, type: "breeding", description: "Hlavní hnízdiště druhu, ~70 % světové populace" }
+  - { name: "Bounty Islands", lat: -47.75, lon: 179.03, type: "breeding", description: "Sekundární hnízdiště, ~30 % populace" }
+  - { name: "Auckland Islands", lat: -50.70, lon: 166.10, type: "breeding", description: "Historicky, dnes převážně vagrant" }
+  - { name: "Campbell Island", lat: -52.54, lon: 169.15, type: "breeding", description: "Občasné hnízdění, NZ subantarktické území" }
 habitat: "Skalnaté pobřežní terasy a útesy bez vegetace — oba jeho hnízdní ostrovy jsou prakticky holé skály bez stromů. Hnízdí v rozsáhlých koloniích, někdy společně s tučňáky skalními jižními nebo s albatrosy Salvinovými."
 diet:
   - "Kril a drobní korýši (pravděpodobně hlavní složka)"

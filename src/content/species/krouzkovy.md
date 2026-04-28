@@ -16,6 +16,17 @@ distribution:
   - "Pobřeží Antarktidy (celé)"
   - "Antarktický poloostrov a přilehlé ostrovy"
   - "Jižní Shetlandy, Jižní Orkneje, Jižní Sandwichovy ostrovy"
+colonies:
+  - { name: "Cape Adare", lat: -71.28, lon: 170.23, type: "breeding", description: "Největší kolonie na světě, Rossovo moře" }
+  - { name: "Danger Islands", lat: -63.42, lon: -54.67, type: "breeding", description: "Souostroví u Antarktického poloostrova — 1,5 milionu párů" }
+  - { name: "Cape Crozier", lat: -77.52, lon: 169.40, type: "breeding", description: "Klíčová studijní kolonie na Rossově ostrově" }
+  - { name: "Cape Royds", lat: -77.55, lon: 166.15, type: "breeding", description: "Nejjižnější kolonie druhu, Rossův ostrov" }
+  - { name: "Cape Bird", lat: -77.17, lon: 166.68, type: "breeding", description: "Severní cíp Rossova ostrova, dlouhodobě sledovaná" }
+  - { name: "Cape Denison", lat: -67.00, lon: 142.67, type: "breeding", description: "Východní Antarktida, Mawsonova expedice 1912" }
+  - { name: "Pointe Géologie", lat: -66.66, lon: 140.00, type: "breeding", description: "U stanice Dumont d'Urville, Adélie Land" }
+  - { name: "Paulet Island", lat: -63.58, lon: -55.78, type: "breeding", description: "Sopečný ostrov u poloostrova, ~100 tisíc párů" }
+  - { name: "Hope Bay", lat: -63.40, lon: -57.00, type: "breeding", description: "Špička Antarktického poloostrova, u stanice Esperanza" }
+  - { name: "Petermann Island", lat: -65.17, lon: -64.17, type: "breeding", description: "Nejjižnější kolonie u Antarktického poloostrova" }
 habitat: "Antarktické pobřeží s dostupným mořem. Hnízdí v obrovských koloniích na pevné zemi nebo skalách, kde si staví kruhová hnízda z malých kamínků."
 diet:
   - "Krill antarktický (Euphausia superba) — hlavní složka stravy"

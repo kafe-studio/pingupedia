@@ -16,6 +16,15 @@ distribution:
   - "Jihozápadní pobřeží Jižního ostrova Nového Zélandu (Fiordland)"
   - "Stewartův ostrov / Rakiura"
   - "Přilehlé ostrůvky Snares, Solander, Codfish"
+colonies:
+  - { name: "Fiordland (jihozápadní pobřeží)", lat: -45.40, lon: 167.00, type: "breeding", description: "Hlavní areál druhu, Jižní ostrov NZ — chladné deštné lesy" }
+  - { name: "Stewart Island / Rakiura", lat: -47.00, lon: 167.84, type: "breeding", description: "Hnízdění na ostrově jižně od Jižního ostrova" }
+  - { name: "Codfish Island / Whenua Hou", lat: -46.78, lon: 167.63, type: "breeding", description: "Chráněné hnízdiště u Stewart Island" }
+  - { name: "Solander Island", lat: -46.57, lon: 166.90, type: "breeding", description: "Izolovaný ostrov v Foveaux Strait" }
+  - { name: "Open Bay Islands", lat: -43.87, lon: 168.88, type: "breeding", description: "Severní hranice areálu, západní pobřeží Jižního ostrova" }
+  - { name: "Dusky Sound", lat: -45.73, lon: 166.55, type: "breeding", description: "Fiordlandský sound, hnízdiště v lesích" }
+  - { name: "Milford Sound", lat: -44.67, lon: 167.92, type: "breeding", description: "Severní část Fiordlandu, malé hnízdiště" }
+  - { name: "Bruce Bay", lat: -43.60, lon: 169.57, type: "breeding", description: "Západní pobřeží, severní okraj rozšíření" }
 habitat: "Chladné mírné deštné lesy na strmých pobřežních svazích. Hnízdí mezi kořeny stromů a balvany, často desítky metrů od moře. Jediný tučňák, který pravidelně hnízdí uvnitř hustého lesa."
 diet:
   - "Hlavonožci, zejména kalmár Nototodarus sloanii (asi 85 % stravy)"

@@ -18,6 +18,15 @@ distribution:
   - "Jižní hranice u ostrova Chiloé v jižním Chile"
   - "Isla Chañaral a Isla Choros — největší chilské kolonie (Atacama, Coquimbo)"
   - "Punta San Juan v Peru — hlavní chráněná kolonie"
+colonies:
+  - { name: "Punta San Juan", lat: -15.37, lon: -75.18, type: "breeding", description: "Peru, Ica — jedna z největších kolonií, chráněná rezervace" }
+  - { name: "Isla Chañaral", lat: -29.03, lon: -71.59, type: "breeding", description: "Chile, Atacama — největší chilská kolonie druhu" }
+  - { name: "Isla Foca", lat: -5.20, lon: -81.21, type: "breeding", description: "Severní Peru, Piura — severní hranice areálu druhu" }
+  - { name: "Pan de Azúcar", lat: -26.15, lon: -70.65, type: "breeding", description: "Chilský národní park, ostrov u pobřeží Atacamy" }
+  - { name: "Ballestas", lat: -13.74, lon: -76.40, type: "breeding", description: "Peru, Paracas — ostrovy s velkou populací mořských ptáků" }
+  - { name: "Cachagua", lat: -32.58, lon: -71.46, type: "breeding", description: "Chile, středopacifické pobřeží, ~800 ptáků" }
+  - { name: "Isla Choros", lat: -29.25, lon: -71.55, type: "breeding", description: "Chile, Coquimbo — rezervace Pingüino de Humboldt" }
+  - { name: "Piñihuil (Chiloé)", lat: -41.92, lon: -74.04, type: "breeding", description: "Chile, severozápadní Chiloé — jižní hranice areálu" }
 habitat: "Skalnaté pobřežní ostrovy a útesy chlazené Humboldtovým proudem. Tučňáci hnízdí v norách vyhloubených do silných vrstev guana, ve skalních puklinách nebo pod balvany. Upwelling studené vody udržuje teplotu moře kolem 15 °C i v tropech, zatímco vzduch může přes den překročit 30 °C — tučňáci proto pouštějí přebytečné teplo skrz neopeřené plošky na obličeji a nohou."
 diet:
   - "Drobné hejnové ryby — sardele peruánské a sardinky"

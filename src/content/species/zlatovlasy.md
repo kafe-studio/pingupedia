@@ -18,6 +18,16 @@ distribution:
   - "Crozetovy ostrovy a Kergueleny"
   - "Ostrovy prince Edwarda, Marion, Heard a McDonald"
   - "Severní Antarktický poloostrov"
+colonies:
+  - { name: "Jižní Georgie — Cooper Bay", lat: -54.80, lon: -35.78, type: "breeding", description: "Hlavní kolonie macaroni na Jižní Georgii" }
+  - { name: "Heard Island", lat: -53.10, lon: 73.52, type: "breeding", description: "Velké hnízdiště v jižním Indickém oceánu, UNESCO" }
+  - { name: "Marion Island (Princ Edvard)", lat: -46.91, lon: 37.74, type: "breeding", description: "Důležitá jihoafrická subantarktická kolonie" }
+  - { name: "Crozetovy ostrovy", lat: -46.41, lon: 51.76, type: "breeding", description: "Hnízdění na všech hlavních ostrovech souostroví" }
+  - { name: "Kerguelenovy ostrovy", lat: -49.25, lon: 69.17, type: "breeding", description: "Studované kolonie ve francouzských subantarktických vodách" }
+  - { name: "Bouvetův ostrov", lat: -54.42, lon: 3.36, type: "breeding", description: "Izolovaný norský ostrov, přísně chráněná populace" }
+  - { name: "Jižní Sandwichovy ostrovy — Zavodovski", lat: -56.30, lon: -27.58, type: "breeding", description: "Sopečný ostrov s obří smíšenou kolonií tučňáků" }
+  - { name: "Jižní Orkneje — Signy Island", lat: -60.72, lon: -45.60, type: "breeding", description: "Nejjižnější hnízdiště druhu" }
+  - { name: "Falklandy — Saunders Island", lat: -51.34, lon: -60.18, type: "breeding", description: "Malé kolonie smíšené s rockhoppery" }
 habitat: "Subantarktické a antarktické ostrovy s trsy trávy Poa flabellata nebo skalnatým terénem. Hnízdí v hustých, hlučných koloniích čítajících tisíce až stovky tisíc párů."
 diet:
   - "Antarktický kril (Euphausia superba) — přes 90 % stravy v době hnízdění"
