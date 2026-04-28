@@ -1,6 +1,7 @@
 import type { Door, Exit, Guardian, Item, KeyColor, Room } from "./types";
 import { TILE } from "./types";
 import { EXTRA_ROOMS } from "./levels-extras";
+import { EXTRA_ROOMS_2 } from "./levels-extras2";
 
 // Helper builders ------------------------------------------------------------
 
@@ -160,7 +161,7 @@ const kolonie: Room = {
     "....................",
     "..===============...",
     "....................",
-    "####################",
+    "#########..#########",
   ],
   guardians: [
     h("skua", 4, 2, 18, 1.0),
@@ -178,6 +179,7 @@ const kolonie: Room = {
     exit("left", "zakladna", 18, 12),
     exit("right", "prusmyk", 1, 12),
     exit("top", "vejcohnizdo", 10, 12),
+    exit("bottom", "ledovec", 9, 1),
   ],
   spawn: { x: 2 * TILE, y: 12 * TILE },
   hint: "Modrý klíč otevírá lyže.",
@@ -688,6 +690,7 @@ const majak: Room = {
   ],
   exits: [
     exit("bottom", "zakladna", 10, 1),
+    exit("right", "vrak2", 1, 11),
   ],
   spawn: { x: 2 * TILE, y: 12 * TILE },
   hint: "Maják nad stanicí. Vlajka je poslední.",
@@ -1060,9 +1063,12 @@ const vrchol: Room = {
   ],
   guardians: [d("petrel", 6, 5, 0, 19, 1, 11, 0.7, 0.5), v("snowwind", 9, 5, 11, 0.9)],
   items: [i("flag", 9, 3, "vr-fl"), i("medal", 2, 5, "vr-m1"), i("medal", 17, 5, "vr-m2")],
-  exits: [exit("left", "arch", 18, 12)],
+  exits: [
+    exit("left", "arch", 18, 12),
+    exit("right", "katedra", 1, 11),
+  ],
   spawn: { x: 17 * TILE, y: 12 * TILE },
-  hint: "Nejvyšší bod. 3 trofeje, dead-end.",
+  hint: "Nejvyšší bod. 3 trofeje + průchod do katedrály vpravo.",
 };
 
 // Tree E: galapagos.top → sopka → terasy → kalejdoskop
@@ -1121,6 +1127,7 @@ const terasy: Room = {
   exits: [
     exit("right", "sopka", 1, 12),
     exit("left", "kalejdoskop", 18, 12),
+    exit("top", "palma", 9, 12),
   ],
   spawn: { x: 17 * TILE, y: 12 * TILE },
 };
@@ -1147,9 +1154,12 @@ const kalejdoskop: Room = {
   ],
   guardians: [h("skua", 4, 2, 17, 0.9), h("petrel", 7, 1, 18, -0.7)],
   items: [i("crystal", 5, 1, "ka-c1"), i("crystal", 14, 1, "ka-c2"), i("flag", 9, 9, "ka-fl")],
-  exits: [exit("right", "terasy", 1, 12)],
+  exits: [
+    exit("right", "terasy", 1, 12),
+    exit("left", "magArchipelag", 18, 11),
+  ],
   spawn: { x: 17 * TILE, y: 12 * TILE },
-  hint: "Kalejdoskop — barevný dead-end.",
+  hint: "Kalejdoskop — barevný průchod, vlevo Magellanův archipelag.",
 };
 
 // Tree F: vrak.right → kostra → propast → poklad
@@ -1321,9 +1331,12 @@ const planety: Room = {
   ],
   guardians: [d("petrel", 8, 5, 0, 19, 1, 10, 0.7, 0.5), s("crystal", 9, 6)],
   items: [i("crystal", 6, 1, "pl-c1"), i("crystal", 16, 1, "pl-c2"), i("medal", 9, 5, "pl-m1"), i("flag", 9, 9, "pl-fl")],
-  exits: [exit("left", "labyrinth", 18, 12)],
+  exits: [
+    exit("left", "labyrinth", 18, 12),
+    exit("top", "aurora1", 9, 12),
+  ],
   spawn: { x: 17 * TILE, y: 12 * TILE },
-  hint: "Krystalové komnaty — 4 trofeje.",
+  hint: "Krystalové komnaty — 4 trofeje. Aurora se otvírá nahoře.",
 };
 
 // Tree H: hriste.top → klubovna → divadlo → kino
@@ -1427,6 +1440,8 @@ export const ROOMS: Room[] = [
   klubovna, divadlo, kino,
   // Sprint 006 expansion: Antarktická základna (1. várka)
   ...EXTRA_ROOMS,
+  // Sprint 006 Run 019-024: Aurora, Vrak, Tropický ostrov, Severní pól, Katedrála, Magellan
+  ...EXTRA_ROOMS_2,
 ];
 
 export const START_ROOM_ID = "iglu";
