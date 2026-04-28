@@ -73,7 +73,7 @@ export interface Guardian {
   phase?: number;
 }
 
-export type ItemKind = "fish" | "egg" | "medal" | "flag" | "crystal" | "heart" | "key";
+export type ItemKind = "fish" | "egg" | "medal" | "flag" | "crystal" | "heart" | "key" | "chick";
 
 export type SfxKind =
   | "mlask"   // sběr ryby
@@ -84,7 +84,9 @@ export type SfxKind =
   | "boing"   // skok
   | "ouch"    // ztráta života
   | "bzzt"    // game over
-  | "tada";   // výhra
+  | "tada"    // výhra
+  | "peep"    // mládě se přidalo do follow-train
+  | "fanfare"; // mláďata doručena do iglu
 
 export interface Item {
   kind: ItemKind;
@@ -131,6 +133,16 @@ export interface PlayerState {
   invulnerableMs: number;
 }
 
+// Mládě následující hráče v "lemmings"-stylu — pamatuje si zpožděnou pozici
+// (delay buffer), takže prochází stejnou cestou s odstupem.
+export interface Chick {
+  id: string;          // unique (originalRoom + index) — survives follow-train
+  x: number;
+  y: number;
+  facing: 1 | -1;
+  trail: { x: number; y: number; facing: 1 | -1 }[]; // buffer pozic hráče za posledních N tiků
+}
+
 export interface GameState {
   rooms: Map<string, Room>;
   currentRoomId: string;
@@ -146,6 +158,9 @@ export interface GameState {
   keys: Set<KeyColor>;            // collected keys
   openedDoors: Set<string>;       // door ids that have been unlocked
   paused: boolean;                // true while a minigame is active
+  chicks: Chick[];                // mláďata aktuálně následující hráče
+  deliveredChicks: number;        // počet doručených mláďat do iglu (cumulative)
+  score: number;                  // body — items + bonus za chicks
 }
 
 export interface GameHud {
@@ -157,6 +172,9 @@ export interface GameHud {
   collected: number;
   total: number;
   keys: KeyColor[];      // colors of keys currently held
+  chicksFollowing: number;  // mláďata aktuálně v doprovodu
+  chicksDelivered: number;  // mláďata doručená do iglu (kumulativně)
+  score: number;
 }
 
 export interface GameHooks {

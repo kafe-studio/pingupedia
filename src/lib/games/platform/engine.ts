@@ -81,6 +81,9 @@ export class PlatformGame {
       keys: new Set(),
       openedDoors: new Set(),
       paused: false,
+      chicks: [],
+      deliveredChicks: 0,
+      score: 0,
     };
     this.bindKeys();
     this.showHintIfNew(start);
@@ -192,6 +195,9 @@ export class PlatformGame {
       collected: this.state.collected.size,
       total: this.state.totalItems,
       keys: [...this.state.keys],
+      chicksFollowing: this.state.chicks.length,
+      chicksDelivered: this.state.deliveredChicks,
+      score: this.state.score,
     });
   }
 
@@ -270,6 +276,7 @@ export class PlatformGame {
     if (!this.state.completed && !this.state.gameover && !this.state.paused) {
       this.peckCooldown = Math.max(0, this.peckCooldown - dt);
       this.updatePlayer(dt);
+      this.updateChicks();
       this.updateGuardians(dt);
       this.checkCollectibles();
       this.checkDoors();
@@ -497,6 +504,31 @@ export class PlatformGame {
     }
   }
 
+  // --- Chicks (follow-train) ---
+
+  /** Mláďata sledují hráče s odstupem — každá další pozice ze sdíleného trail bufferu.
+   *  Mládě N kopíruje pozici hráče se zpožděním N × CHICK_DELAY tiků. */
+  private updateChicks(): void {
+    if (this.state.chicks.length === 0) return;
+    const p = this.state.player;
+    const CHICK_DELAY = 8; // tiků mezi jednotlivými mláďaty (≈130 ms při 60 Hz)
+    const MAX_TRAIL = this.state.chicks.length * CHICK_DELAY + 2;
+    // Sdílený trail: hlava je nejnovější pozice hráče.
+    const trail = this.state.chicks[0].trail;
+    trail.unshift({ x: p.x, y: p.y, facing: p.facing });
+    if (trail.length > MAX_TRAIL) trail.length = MAX_TRAIL;
+    // Aplikuj zpožděnou pozici na každého chick.
+    this.state.chicks.forEach((c, i) => {
+      const idx = Math.min((i + 1) * CHICK_DELAY, trail.length - 1);
+      const t = trail[idx];
+      c.x = t.x;
+      c.y = t.y;
+      c.facing = t.facing;
+      // Sdílený trail držíme jen na c[0] (zbytek by se duplikoval).
+      if (i > 0) c.trail = [];
+    });
+  }
+
   // --- Collectibles ---
 
   private checkCollectibles(): void {
@@ -527,12 +559,35 @@ export class PlatformGame {
         this.hooks.onSfx("ding");
         continue;
       }
+      // Chick = přidat do follow-train, NE počítán do totalItems (cíl je doručit, ne sebrat).
+      if (it.kind === "chick") {
+        this.state.chicks.push({
+          id: it.id,
+          x: p.x,
+          y: p.y,
+          facing: p.facing,
+          trail: [],
+        });
+        this.hooks.onSfx("peep");
+        continue;
+      }
       this.state.collected.add(it.id);
+      this.state.score += it.kind === "fish" ? 5 : it.kind === "egg" ? 10 : 25;
       if (it.kind === "fish") this.hooks.onSfx("mlask");
       else if (it.kind === "egg") this.hooks.onSfx("pop");
       else this.hooks.onSfx("ding"); // medal / flag / crystal
     }
     room.items = remaining;
+
+    // Iglu drop-off: pokud hráč vstoupil do místnosti označené jako iglu a má chicks,
+    // doruč je všechny + bonus body (50 per chick).
+    if (room.id === "iglu" && this.state.chicks.length > 0) {
+      const delivered = this.state.chicks.length;
+      this.state.deliveredChicks += delivered;
+      this.state.score += delivered * 50;
+      this.state.chicks = [];
+      this.hooks.onSfx("fanfare");
+    }
   }
 
   /** Pokud hráč stojí těsně vedle zamčených dveří a má klíč, spustí mini-hru. */

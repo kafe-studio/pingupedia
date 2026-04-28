@@ -71,6 +71,8 @@ export function drawScene(ctx: CanvasRenderingContext2D, state: GameState): void
   }
   for (const it of room.items) drawItem(ctx, it, state.time);
   for (const gu of room.guardians) drawGuardian(ctx, gu, state.time);
+  // Chicks za hráčem (kreslíme dřív, aby hráč byl nad nimi)
+  for (const c of state.chicks) drawChick(ctx, c.x, c.y, c.facing, state.time);
   drawPlayer(ctx, state.player, state.time);
 }
 
@@ -809,7 +811,50 @@ function drawItem(ctx: CanvasRenderingContext2D, it: Item, t: number): void {
     ctx.arc(-2.5, -2, 1, 0, Math.PI * 2);
     ctx.fill();
     ctx.restore();
+  } else if (it.kind === "chick") {
+    // Mládě jako item — pípne na místě, čeká až ho hráč sebere.
+    const bob = Math.sin(t / 200) * 1.5;
+    drawChick(ctx, it.x * TILE - 4, it.y * TILE + bob, 1, t);
   }
+}
+
+// Mládě tučňáka — menší (8×10 px) verze hráče. Šedo-bílá hlava, oranžový zobák.
+function drawChick(ctx: CanvasRenderingContext2D, x: number, y: number, facing: 1 | -1, t: number): void {
+  const cx = x + 8;
+  const cy = y + 10;
+  ctx.save();
+  if (facing === -1) {
+    ctx.translate(cx * 2, 0);
+    ctx.scale(-1, 1);
+    ctx.translate(-cx, 0);
+  }
+  // Tělo (tmavě šedé)
+  ctx.fillStyle = "#475569";
+  ctx.beginPath();
+  ctx.ellipse(cx, cy, 5, 6, 0, 0, Math.PI * 2);
+  ctx.fill();
+  // Bílé bříško
+  ctx.fillStyle = "#f1f5f9";
+  ctx.beginPath();
+  ctx.ellipse(cx, cy + 1, 3, 4.5, 0, 0, Math.PI * 2);
+  ctx.fill();
+  // Oko
+  ctx.fillStyle = "#0f172a";
+  ctx.fillRect(cx + 1, cy - 3, 1.5, 1.5);
+  // Zobáček
+  ctx.fillStyle = "#f97316";
+  ctx.beginPath();
+  ctx.moveTo(cx + 4, cy - 1);
+  ctx.lineTo(cx + 6, cy);
+  ctx.lineTo(cx + 4, cy + 1);
+  ctx.closePath();
+  ctx.fill();
+  // Drobné šťourání nožkou (animace)
+  const wig = Math.sin(t / 150) * 0.5;
+  ctx.fillStyle = "#fb923c";
+  ctx.fillRect(cx - 1.5 + wig, cy + 5, 1.5, 1.5);
+  ctx.fillRect(cx + 0.5 - wig, cy + 5, 1.5, 1.5);
+  ctx.restore();
 }
 
 // =====================  GUARDIANS  =====================

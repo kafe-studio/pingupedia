@@ -78,6 +78,18 @@ export class SfxPlayer {
         this.blip(ctx, t + 0.24, 784, 784, 0.12, "square", 0.16); // G5
         this.blip(ctx, t + 0.36, 1047, 1047, 0.30, "square", 0.20); // C6
         break;
+      case "peep":
+        // Pípnutí mláděte — krátký vysoký triller, 2 noty.
+        this.blip(ctx, t,        1500, 1800, 0.06, "triangle", 0.12);
+        this.blip(ctx, t + 0.07, 1300, 1500, 0.05, "triangle", 0.10);
+        break;
+      case "fanfare":
+        // Fanfára při doručení mláďat — kratší veselé arpeggio.
+        this.blip(ctx, t,        659, 659, 0.10, "square", 0.18); // E5
+        this.blip(ctx, t + 0.10, 784, 784, 0.10, "square", 0.18); // G5
+        this.blip(ctx, t + 0.20, 1047, 1047, 0.10, "square", 0.18); // C6
+        this.blip(ctx, t + 0.30, 1319, 1319, 0.20, "square", 0.20); // E6
+        break;
     }
   }
 

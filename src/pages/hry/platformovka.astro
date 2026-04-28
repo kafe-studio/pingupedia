@@ -19,6 +19,8 @@ import GameLayout from "../../layouts/GameLayout.astro";
           <span>Místnost: <strong data-hud-room class="text-foreground">—</strong></span>
           <span>Životy: <strong data-hud-lives class="text-foreground">♥♥♥</strong></span>
           <span>Sebráno: <strong data-hud-items class="text-foreground">0 / 0</strong></span>
+          <span>Mláďata: <strong data-hud-chicks class="text-foreground">0 → 0</strong></span>
+          <span>Skóre: <strong data-hud-score class="text-foreground">0</strong></span>
         </div>
         <div class="flex gap-2">
           <button data-music type="button" class="rounded-full border border-border px-3 py-1 text-[11px] hover:border-border-interactive" aria-pressed="false" title="8-bit hudba (Korobeiniki)">
@@ -122,6 +124,8 @@ import GameLayout from "../../layouts/GameLayout.astro";
   const hudRoom = document.querySelector<HTMLElement>("[data-hud-room]")!;
   const hudLives = document.querySelector<HTMLElement>("[data-hud-lives]")!;
   const hudItems = document.querySelector<HTMLElement>("[data-hud-items]")!;
+  const hudChicks = document.querySelector<HTMLElement>("[data-hud-chicks]")!;
+  const hudScore = document.querySelector<HTMLElement>("[data-hud-score]")!;
   const restartBtn = document.querySelector<HTMLButtonElement>("[data-restart]")!;
 
   let game: PlatformGame | null = null;
@@ -145,6 +149,8 @@ import GameLayout from "../../layouts/GameLayout.astro";
     hudRoom.textContent = `${h.roomIndex}/${h.totalRooms} · ${h.roomName}${keys ? "  " + keys : ""}`;
     hudLives.textContent = "♥".repeat(Math.max(0, h.lives)) || "—";
     hudItems.textContent = `${h.collected} / ${h.total}`;
+    hudChicks.textContent = `${h.chicksFollowing} → ${h.chicksDelivered}`;
+    hudScore.textContent = String(h.score);
     if (h.hint) {
       hintBox.textContent = h.hint;
       hintBox.classList.remove("hidden");

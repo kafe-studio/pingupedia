@@ -889,7 +889,13 @@ const vejcohnizdo: Room = {
     "######......########",
   ],
   guardians: [h("skua", 5, 2, 17, 0.9), h("skua", 9, 1, 18, -0.7)],
-  items: [i("egg", 5, 3, "vh-e1"), i("egg", 14, 5, "vh-e2"), i("egg", 9, 8, "vh-e3")],
+  items: [
+    i("egg", 5, 3, "vh-e1"),
+    i("egg", 14, 5, "vh-e2"),
+    i("egg", 9, 8, "vh-e3"),
+    i("chick", 7, 12, "vh-c1"),
+    i("chick", 12, 12, "vh-c2"),
+  ],
   exits: [
     exit("bottom", "kolonie", 8, 1),
     exit("top", "mladata", 10, 12),
@@ -918,12 +924,20 @@ const mladata: Room = {
     "######......########",
   ],
   guardians: [h("seal", 4, 1, 12, 0.6), d("petrel", 12, 4, 0, 19, 1, 10, 0.6, 0.5)],
-  items: [i("egg", 8, 2, "ml-e1"), i("fish", 14, 6, "ml-f1"), i("medal", 3, 8, "ml-m1")],
+  items: [
+    i("egg", 8, 2, "ml-e1"),
+    i("fish", 14, 6, "ml-f1"),
+    i("medal", 3, 8, "ml-m1"),
+    i("chick", 3, 12, "ml-c1"),
+    i("chick", 15, 12, "ml-c2"),
+    i("chick", 10, 6, "ml-c3"),
+  ],
   exits: [
     exit("bottom", "vejcohnizdo", 8, 1),
     exit("top", "skolka", 10, 12),
   ],
   spawn: { x: 8 * TILE, y: 2 * TILE },
+  hint: "Mláďata se ti přidají do houfu — doruč je do iglú za bonus body!",
 };
 
 const skolka: Room = {
@@ -947,10 +961,16 @@ const skolka: Room = {
     "######......########",
   ],
   guardians: [h("seal", 5, 2, 16, 0.7), h("skua", 9, 2, 17, 1.0)],
-  items: [i("egg", 4, 3, "sko-e1"), i("egg", 14, 6, "sko-e2"), i("flag", 9, 9, "sko-fl")],
+  items: [
+    i("egg", 4, 3, "sko-e1"),
+    i("egg", 14, 6, "sko-e2"),
+    i("flag", 9, 9, "sko-fl"),
+    i("chick", 4, 12, "sko-c1"),
+    i("chick", 14, 12, "sko-c2"),
+  ],
   exits: [exit("bottom", "mladata", 8, 1)],
   spawn: { x: 8 * TILE, y: 2 * TILE },
-  hint: "Školka pro mláďata — sebrat všechna vejce!",
+  hint: "Školka pro mláďata — sebrat všechna vejce a chyť mláďata pro doprovod do iglu!",
 };
 
 // Tree D: skaly.top → hreben → arch → vrchol
