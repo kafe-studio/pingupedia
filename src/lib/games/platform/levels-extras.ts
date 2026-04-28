@@ -153,9 +153,10 @@ const sparna: Room = {
   ],
   exits: [
     exit("right", "kantyna", 1, 11),
+    exit("left", "kryostat", 18, 12),
   ],
   spawn: { x: 18 * TILE, y: 12 * TILE },
-  hint: "Spárna — police plné zásob. Dead-end, sbírej a vrať se.",
+  hint: "Spárna — police plné zásob, vlevo kryostat.",
 };
 
 // observatorium — dalekohledy a hvězdy. Vpravo od stanice2.
@@ -191,6 +192,7 @@ const observatorium: Room = {
   ],
   exits: [
     exit("left", "stanice2", 18, 11),
+    exit("right", "kryostat", 1, 12),
   ],
   spawn: { x: 1 * TILE, y: 12 * TILE },
   hint: "Hvězdná obloha. Pozor na padající krystaly.",
@@ -230,6 +232,8 @@ const kryostat: Room = {
   ],
   exits: [
     exit("top", "stanice2", 9, 12),
+    exit("left", "observatorium", 18, 12),
+    exit("right", "sparna", 1, 12),
   ],
   spawn: { x: 9 * TILE, y: 12 * TILE },
   hint: "Mrazicí komora. Žlutý klíč otevírá Skok do dálky.",
@@ -294,7 +298,7 @@ const knihovna: Room = {
     "..####..####..####..",
     "....................",
     "....................",
-    "####################",
+    "##########..########",
   ],
   guardians: [h("petrel", 9, 1, 18, 0.9), h("petrel", 11, 1, 18, 0.7)],
   items: [
@@ -307,9 +311,10 @@ const knihovna: Room = {
   exits: [
     exit("left", "trida", 18, 11),
     exit("right", "drilovaciRampa", 1, 11),
+    exit("bottom", "telocvicna", 10, 1),
   ],
   spawn: { x: 1 * TILE, y: 11 * TILE },
-  hint: "Knihovna — slalom mezi policemi.",
+  hint: "Knihovna — slalom mezi policemi, dolů do tělocvičny.",
 };
 
 const telocvicna: Room = {
@@ -341,9 +346,11 @@ const telocvicna: Room = {
   ],
   exits: [
     exit("top", "trida", 10, 12),
+    exit("left", "reditelna", 18, 12),
+    exit("right", "knihovna", 1, 11),
   ],
   spawn: { x: 10 * TILE, y: 12 * TILE },
-  hint: "Tělocvična — žebříky vedou nahoru. Sebrat srdce.",
+  hint: "Tělocvična — žebříky nahoru, vlevo ředitelna, vpravo knihovna.",
 };
 
 const drilovaciRampa: Room = {
@@ -409,6 +416,7 @@ const reditelna: Room = {
   ],
   exits: [
     exit("left", "drilovaciRampa", 18, 12),
+    exit("right", "telocvicna", 1, 12),
   ],
   spawn: { x: 1 * TILE, y: 12 * TILE },
   hint: "Ředitelna — červený klíč otevírá Hokej.",
@@ -485,6 +493,7 @@ const stalaktity: Room = {
   ],
   exits: [
     exit("right", "prepad", 1, 12),
+    exit("left", "pokladnice", 18, 12),
   ],
   spawn: { x: 18 * TILE, y: 12 * TILE },
   hint: "Stalaktity — bodce ze stropu, plošiny mezi.",
@@ -520,6 +529,7 @@ const temnaChodba: Room = {
   ],
   exits: [
     exit("left", "prepad", 18, 12),
+    exit("right", "podzemniRybnik", 1, 12),
   ],
   spawn: { x: 1 * TILE, y: 12 * TILE },
   hint: "Temná chodba — dlouhý žebřík, sběr ryb.",
@@ -554,6 +564,8 @@ const podzemniRybnik: Room = {
   ],
   exits: [
     exit("top", "prepad", 9, 12),
+    exit("left", "temnaChodba", 18, 12),
+    exit("right", "pokladnice", 1, 12),
   ],
   spawn: { x: 9 * TILE, y: 12 * TILE },
   hint: "Rybník — zelený klíč otevírá Potápění.",
@@ -589,6 +601,7 @@ const pokladnice: Room = {
   ],
   exits: [
     exit("left", "podzemniRybnik", 18, 12),
+    exit("right", "stalaktity", 1, 12),
   ],
   spawn: { x: 1 * TILE, y: 12 * TILE },
   hint: "Pokladnice — bohatství i past medvěda.",
@@ -664,6 +677,8 @@ const lavoveJezirko: Room = {
   ],
   exits: [
     exit("top", "kraterUst", 9, 12),
+    exit("left", "popelinka", 18, 12),
+    exit("right", "cervenyKamen", 1, 12),
   ],
   spawn: { x: 9 * TILE, y: 12 * TILE },
   hint: "Lávové jezírko — voda hoří, neskákej dolů.",
@@ -698,6 +713,8 @@ const popelinka: Room = {
   ],
   exits: [
     exit("bottom", "kraterUst", 9, 1),
+    exit("left", "cervenyKamen", 18, 12),
+    exit("right", "lavoveJezirko", 1, 12),
   ],
   spawn: { x: 9 * TILE, y: 1 * TILE },
   hint: "Popelínka — bodce vychází z popelu, skoč přesně.",
@@ -766,6 +783,7 @@ const cervenyKamen: Room = {
   ],
   exits: [
     exit("left", "horkyKamen", 18, 12),
+    exit("right", "popelinka", 1, 12),
   ],
   spawn: { x: 1 * TILE, y: 12 * TILE },
   hint: "Červený kámen — modrý klíč otevírá Lyžování.",
