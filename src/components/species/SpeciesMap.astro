@@ -51,7 +51,7 @@ const markers = colonies.map((c) => ({
       >
         <image href={worldUrl} x="0" y="0" width={MAP_WIDTH} height={MAP_HEIGHT} preserveAspectRatio="xMidYMid meet" />
         {markers.map((m, i) => (
-          <g class="map-marker" data-marker={i}>
+          <g class="map-marker" data-marker={i} role="button" tabindex="0" aria-label={`Kolonie ${m.name}`}>
             <circle cx={m.x} cy={m.y} r="14" fill={m.color} fill-opacity="0.18" />
             <circle cx={m.x} cy={m.y} r="6" fill={m.color} stroke="#ffffff" stroke-width="1.5">
               <title>{m.name}{m.description ? ` — ${m.description}` : ""}</title>
@@ -92,8 +92,10 @@ const markers = colonies.map((c) => ({
 </section>
 
 <style>
-  .map-marker { transition: transform 0.2s ease; transform-origin: center; transform-box: fill-box; }
+  .map-marker { transition: transform 0.2s ease; transform-origin: center; transform-box: fill-box; cursor: pointer; }
   .map-marker:hover { transform: scale(1.4); }
+  .map-marker:focus { outline: none; }
+  .map-marker:focus-visible > circle:last-of-type { stroke: #facc15; stroke-width: 3; }
   .map-marker.flash { animation: marker-flash 1.4s ease-out; transform-origin: center; transform-box: fill-box; }
   @keyframes marker-flash {
     0%   { transform: scale(1);   filter: drop-shadow(0 0 0 #facc15); }
@@ -101,6 +103,16 @@ const markers = colonies.map((c) => ({
     50%  { transform: scale(1);   filter: drop-shadow(0 0 4px #facc15); }
     75%  { transform: scale(2.4); filter: drop-shadow(0 0 12px #facc15); }
     100% { transform: scale(1);   filter: drop-shadow(0 0 0 transparent); }
+  }
+  button[data-colony-target].flash {
+    animation: colony-flash 1.4s ease-out;
+  }
+  @keyframes colony-flash {
+    0%   { background: var(--card); box-shadow: 0 0 0 0 rgba(250,204,21,0); }
+    25%  { background: rgba(250,204,21,0.35); box-shadow: 0 0 0 4px rgba(250,204,21,0.6); }
+    50%  { background: var(--card); box-shadow: 0 0 0 0 rgba(250,204,21,0); }
+    75%  { background: rgba(250,204,21,0.35); box-shadow: 0 0 0 4px rgba(250,204,21,0.6); }
+    100% { background: var(--card); box-shadow: 0 0 0 0 rgba(250,204,21,0); }
   }
 </style>
 
@@ -111,19 +123,47 @@ const markers = colonies.map((c) => ({
       const list = section?.querySelector<HTMLElement>("[data-colony-list]");
       if (!list || list.dataset.wired === "1") return;
       list.dataset.wired = "1";
+
+      const flashMarker = (idx: string): void => {
+        const marker = svg.querySelector<SVGGElement>(`g[data-marker="${idx}"]`);
+        if (!marker) return;
+        marker.classList.remove("flash");
+        void marker.getBoundingClientRect();
+        marker.classList.add("flash");
+      };
+
+      const flashColony = (idx: string): void => {
+        const btn = list.querySelector<HTMLButtonElement>(`button[data-colony-target="${idx}"]`);
+        if (!btn) return;
+        btn.classList.remove("flash");
+        void btn.getBoundingClientRect();
+        btn.classList.add("flash");
+      };
+
+      // Klik na položku seznamu → blikne marker, scroll k mapě.
       list.querySelectorAll<HTMLButtonElement>("button[data-colony-target]").forEach((btn) => {
         btn.addEventListener("click", () => {
           const idx = btn.dataset.colonyTarget;
           if (!idx) return;
-          const marker = svg.querySelector<SVGGElement>(`g[data-marker="${idx}"]`);
-          if (!marker) return;
-          // Restart animace: odstranit class, force reflow, znovu přidat.
-          marker.classList.remove("flash");
-          void marker.getBoundingClientRect();
-          marker.classList.add("flash");
-          // Plynulý scroll k mapě, ať uživatel marker uvidí.
+          flashMarker(idx);
           svg.scrollIntoView({ behavior: "smooth", block: "center" });
         });
+      });
+
+      // Klik na marker na mapě → blikne odpovídající položka v seznamu, scroll k seznamu.
+      svg.querySelectorAll<SVGGElement>("g[data-marker]").forEach((marker) => {
+        const handle = (e: Event): void => {
+          if (e instanceof KeyboardEvent && e.key !== "Enter" && e.key !== " ") return;
+          if (e.type === "keydown") e.preventDefault();
+          const idx = marker.getAttribute("data-marker");
+          if (!idx) return;
+          flashColony(idx);
+          // Scroll k položce, aby user viděl, na co kliknul.
+          const btn = list.querySelector<HTMLButtonElement>(`button[data-colony-target="${idx}"]`);
+          btn?.scrollIntoView({ behavior: "smooth", block: "center" });
+        };
+        marker.addEventListener("click", handle);
+        marker.addEventListener("keydown", handle);
       });
     });
   }
