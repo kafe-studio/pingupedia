@@ -10,6 +10,9 @@ import SpeciesGallery from "../../components/species/SpeciesGallery.astro";
 import SpeciesMap from "../../components/species/SpeciesMap.astro";
 import SpeciesMedia from "../../components/species/SpeciesMedia.astro";
 import SpeciesRelated from "../../components/species/SpeciesRelated.astro";
+import SpeciesNav from "../../components/species/SpeciesNav.astro";
+import Schema from "../../components/seo/Schema.astro";
+import { getImage } from "astro:assets";
 import { sortedSpecies } from "../../lib/species-of-day";
 import { getRelatedSpecies } from "../../lib/species-related";
 
@@ -42,15 +45,45 @@ try {
 const allSpecies = await getCollection("species");
 const relatedSpecies = getRelatedSpecies(entry, allSpecies, 4);
 
-const { nameCs, nameLat, description, historicalNotes, gallery, hero, colonies } = entry.data;
+const { nameCs, nameLat, description, historicalNotes, gallery, hero, colonies, audio, video } = entry.data;
+
+const heroImage = await getImage({ src: hero.src, format: "jpeg", width: 1200 });
+const heroAbsoluteUrl = new URL(heroImage.src, Astro.site ?? "https://pingupedia.kafe.studio").toString();
+const canonicalUrl = new URL(`/druhy/${entry.id}/`, Astro.site ?? "https://pingupedia.kafe.studio").toString();
 
 const metadata = {
   title: `${nameCs} (${nameLat})`,
   description,
+  ogImage: hero.src,
+  canonical: canonicalUrl,
 };
+
+const navSections = [
+  { id: "about-heading", title: "O druhu" },
+  { id: "facts-heading", title: "Fakta" },
+  ...(colonies && colonies.length > 0 ? [{ id: "map-heading", title: "Mapa výskytu" }] : []),
+  ...(historicalNotes ? [{ id: "history-heading", title: "Historie" }] : []),
+  ...(gallery && gallery.length > 0 ? [{ id: `gallery-${entry.id}-heading`, title: "Galerie" }] : []),
+  ...(audio || video ? [{ id: "media-heading", title: "Zvuk a video" }] : []),
+  { id: "related-heading", title: "Podobné druhy" },
+  { id: "sources-heading", title: "Zdroje" },
+];
 ---
 
 <BaseLayout {metadata}>
+  <Schema
+    slot="head"
+    type="BlogPosting"
+    data={{
+      title: nameCs,
+      description,
+      image: heroAbsoluteUrl,
+      pubDate: entry.data.updatedAt,
+      author: "pingupedia",
+      url: canonicalUrl,
+    }}
+  />
+  <SpeciesNav sections={navSections} />
   <article
     data-pagefind-body
     data-pagefind-meta={`title:${nameCs}, lat:${nameLat}, image[content]:${entry.data.hero.alt}`}

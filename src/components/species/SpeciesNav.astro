@@ -1,0 +1,179 @@
+---
+interface Props {
+  sections: { id: string; title: string }[];
+  backHref?: string;
+  backLabel?: string;
+  panelLabel?: string;
+}
+const {
+  sections,
+  backHref = "/druhy/",
+  backLabel = "Zpět na Druhy",
+  panelLabel = "Obsah",
+} = Astro.props;
+---
+
+<button
+  id="species-nav-toggle"
+  type="button"
+  class="group fixed right-5 top-1/2 -translate-y-1/2 z-40 w-16 h-16 rounded-full bg-primary text-primary-foreground shadow-xl shadow-primary/40 ring-2 ring-primary/70 flex items-center justify-center hover:scale-110 transition-transform"
+  aria-label={panelLabel}
+  aria-expanded="false"
+  aria-controls="species-nav-panel"
+>
+  <span class="absolute inset-0 rounded-full bg-primary/70 animate-[speciesnav-halo_3s_ease-out_infinite] group-aria-expanded:hidden" aria-hidden="true"></span>
+  <span class="absolute -inset-2 rounded-full bg-primary/40 animate-[speciesnav-halo_3s_ease-out_infinite] [animation-delay:1.2s] group-aria-expanded:hidden" aria-hidden="true"></span>
+  <svg class="relative w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+  <span class="absolute -left-2 top-1/2 -translate-y-1/2 -translate-x-full whitespace-nowrap text-xs font-bold uppercase tracking-wider text-primary bg-background/90 backdrop-blur px-2 py-1 rounded-md shadow-md hidden md:block group-aria-expanded:opacity-0 transition-opacity">{panelLabel}</span>
+</button>
+
+<div id="species-nav-panel" class="fixed right-0 top-0 bottom-0 z-50 w-72 translate-x-full transition-transform duration-300 ease-[cubic-bezier(0.16,1,0.3,1)]" aria-hidden="true">
+  <div class="h-full bg-background/95 backdrop-blur-xl border-l border-border shadow-2xl flex flex-col">
+    <div class="flex items-center justify-between px-5 py-4 border-b border-border">
+      <p class="text-xs font-bold uppercase tracking-widest text-muted-foreground">{panelLabel}</p>
+      <button id="species-nav-close" type="button" class="w-8 h-8 rounded-lg flex items-center justify-center text-muted-foreground hover:text-foreground hover:bg-foreground/5 transition-colors" aria-label="Zavřít">
+        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M18 6L6 18M6 6l12 12"/></svg>
+      </button>
+    </div>
+
+    <div class="h-0.5 bg-border">
+      <div id="species-nav-progress" class="h-full bg-primary transition-all duration-300" style="width:0%"></div>
+    </div>
+
+    <nav class="flex-1 overflow-y-auto py-4 px-3" aria-label="Sekce stránky">
+      <ol class="space-y-0.5">
+        {sections.map((s, i) => (
+          <li>
+            <a
+              href={`#${s.id}`}
+              class="species-nav-link flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-muted-foreground hover:text-foreground hover:bg-foreground/5 transition-all group"
+              data-section={s.id}
+            >
+              <span class="w-6 h-6 rounded-md bg-foreground/5 group-hover:bg-primary/10 group-hover:text-primary flex items-center justify-center text-[10px] font-bold shrink-0 transition-colors species-nav-num">{String(i + 1).padStart(2, '0')}</span>
+              <span class="leading-snug">{s.title}</span>
+            </a>
+          </li>
+        ))}
+      </ol>
+    </nav>
+
+    <div class="px-5 py-4 border-t border-border">
+      <a href={backHref} class="text-xs text-muted-foreground hover:text-primary transition-colors flex items-center gap-1">
+        ← {backLabel}
+      </a>
+    </div>
+  </div>
+</div>
+
+<div id="species-nav-backdrop" class="fixed inset-0 z-40 bg-black/30 opacity-0 pointer-events-none transition-opacity duration-300"></div>
+
+<style>
+  @keyframes speciesnav-halo {
+    0% { transform: scale(1); opacity: 0.9; }
+    100% { transform: scale(1.8); opacity: 0; }
+  }
+  #species-nav-panel.open {
+    --tw-translate-x: 0;
+    translate: var(--tw-translate-x) var(--tw-translate-y);
+  }
+  #species-nav-backdrop.open {
+    opacity: 1;
+    pointer-events: auto;
+  }
+  .species-nav-link.active {
+    color: var(--primary);
+    background: color-mix(in srgb, var(--primary) 8%, transparent);
+  }
+  .species-nav-link.active .species-nav-num {
+    background: color-mix(in srgb, var(--primary) 15%, transparent);
+    color: var(--primary);
+  }
+  .species-nav-link.visited .species-nav-num {
+    background: color-mix(in srgb, var(--primary) 10%, transparent);
+    color: var(--primary);
+  }
+</style>
+
+<script>
+  let speciesNavController: AbortController | undefined;
+
+  function setupSpeciesNav() {
+    speciesNavController?.abort();
+    speciesNavController = new AbortController();
+    const { signal } = speciesNavController;
+
+    const toggle = document.getElementById('species-nav-toggle');
+    const panel = document.getElementById('species-nav-panel');
+    const closeEl = document.getElementById('species-nav-close');
+    const backdrop = document.getElementById('species-nav-backdrop');
+    const progress = document.getElementById('species-nav-progress');
+    const links = document.querySelectorAll<HTMLElement>('.species-nav-link');
+    if (!toggle || !panel || !links.length) return;
+
+    function openPanel() {
+      panel!.classList.add('open');
+      panel!.setAttribute('aria-hidden', 'false');
+      toggle!.setAttribute('aria-expanded', 'true');
+      backdrop?.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+    function closePanel() {
+      panel!.classList.remove('open');
+      panel!.setAttribute('aria-hidden', 'true');
+      toggle!.setAttribute('aria-expanded', 'false');
+      backdrop?.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    toggle.addEventListener('click', openPanel, { signal });
+    closeEl?.addEventListener('click', closePanel, { signal });
+    backdrop?.addEventListener('click', closePanel, { signal });
+
+    links.forEach((link) => {
+      link.addEventListener('click', () => setTimeout(closePanel, 150), { signal });
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && panel!.classList.contains('open')) closePanel();
+    }, { signal });
+
+    const sectionIds: string[] = [];
+    links.forEach((l) => { if (l.dataset.section) sectionIds.push(l.dataset.section); });
+    const visited: Record<string, boolean> = {};
+
+    function updateActive() {
+      const scrollY = window.scrollY + 120;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const pct = docHeight > 0 ? Math.min(100, Math.round((window.scrollY / docHeight) * 100)) : 0;
+      if (progress) progress.style.width = pct + '%';
+
+      let current: string | null = null;
+      for (let i = sectionIds.length - 1; i >= 0; i--) {
+        const el = document.getElementById(sectionIds[i]);
+        if (el && el.offsetTop <= scrollY) {
+          current = sectionIds[i];
+          visited[current] = true;
+          break;
+        }
+      }
+
+      links.forEach((link) => {
+        const id = link.dataset.section;
+        link.classList.remove('active');
+        if (id && visited[id]) link.classList.add('visited');
+        if (id === current) link.classList.add('active');
+      });
+    }
+
+    let ticking = false;
+    window.addEventListener('scroll', () => {
+      if (!ticking) {
+        requestAnimationFrame(() => { updateActive(); ticking = false; });
+        ticking = true;
+      }
+    }, { signal });
+    updateActive();
+  }
+
+  document.addEventListener('astro:page-load', setupSpeciesNav);
+</script>

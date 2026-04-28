@@ -1,7 +1,9 @@
 ---
+import type { ImageMetadata } from "astro";
+type OgImage = string | ImageMetadata;
 interface Props {
-  title?: string; description?: string; ogImage?: string; canonical?: string;
-  metadata?: { title?: string; description?: string; ogImage?: string; canonical?: string; ignoreTitleTemplate?: boolean; };
+  title?: string; description?: string; ogImage?: OgImage; canonical?: string;
+  metadata?: { title?: string; description?: string; ogImage?: OgImage; canonical?: string; ignoreTitleTemplate?: boolean; };
 }
 import Seo from "../components/seo/Seo.astro";
 import Schema from "../components/seo/Schema.astro";

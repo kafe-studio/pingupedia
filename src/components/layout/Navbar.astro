@@ -1,17 +1,31 @@
 ---
 import { getSiteConfig } from "../../lib/site";
 const siteConfig = await getSiteConfig();
+
+const pathname = Astro.url.pathname.endsWith("/") ? Astro.url.pathname : Astro.url.pathname + "/";
+const isActive = (href: string) => href === "/" ? pathname === "/" : pathname.startsWith(href);
 ---
 
 <nav class="fixed top-0 z-50 w-full bg-background/70 backdrop-blur-xl border-b border-border" aria-label="Hlavni navigace">
   <div class="mx-auto max-w-7xl flex items-center justify-between px-6 py-4 lg:px-8">
-    <a href="/" class="text-lg font-bold text-foreground transition-opacity hover:opacity-80">
+    <a href="/" aria-current={pathname === "/" ? "page" : undefined} class="text-lg font-bold text-foreground transition-opacity hover:opacity-80">
       {siteConfig.name}
     </a>
     <div class="hidden md:flex items-center gap-8">
-      {siteConfig.navLinks.map((link) => (
-        <a href={link.href} data-astro-prefetch="false" class="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground">{link.text}</a>
-      ))}
+      {siteConfig.navLinks.map((link) => {
+        const active = isActive(link.href);
+        return (
+          <a
+            href={link.href}
+            data-astro-prefetch="false"
+            aria-current={active ? "page" : undefined}
+            class:list={[
+              "text-sm font-medium transition-colors",
+              active ? "text-foreground font-semibold" : "text-muted-foreground hover:text-foreground",
+            ]}
+          >{link.text}</a>
+        );
+      })}
     </div>
     <button id="mobile-menu-button" type="button" class="p-2 rounded-lg text-foreground md:hidden" aria-controls="mobile-menu" aria-expanded="false" aria-label="Menu">
       <svg id="menu-icon-closed" class="block h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16" /></svg>
@@ -20,9 +34,20 @@ const siteConfig = await getSiteConfig();
   </div>
   <div class="hidden md:hidden" id="mobile-menu">
     <div class="glass mx-4 mb-4 p-2 rounded-xl space-y-1">
-      {siteConfig.navLinks.map((link) => (
-        <a href={link.href} data-astro-prefetch="false" class="block rounded-lg px-4 py-3 text-base font-medium text-foreground hover:text-primary transition-colors">{link.text}</a>
-      ))}
+      {siteConfig.navLinks.map((link) => {
+        const active = isActive(link.href);
+        return (
+          <a
+            href={link.href}
+            data-astro-prefetch="false"
+            aria-current={active ? "page" : undefined}
+            class:list={[
+              "block rounded-lg px-4 py-3 text-base font-medium transition-colors",
+              active ? "text-primary bg-primary/10" : "text-foreground hover:text-primary",
+            ]}
+          >{link.text}</a>
+        );
+      })}
     </div>
   </div>
 </nav>
