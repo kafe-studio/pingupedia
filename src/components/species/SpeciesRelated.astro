@@ -1,0 +1,62 @@
+---
+import type { CollectionEntry } from "astro:content";
+import NoCropImage from "../media/NoCropImage.astro";
+import IucnBadge from "./IucnBadge.astro";
+
+interface Props {
+  species: CollectionEntry<"species">[];
+  currentGenus: string;
+}
+
+const { species, currentGenus } = Astro.props;
+---
+
+{species.length > 0 && (
+  <section class="px-6 py-12 bg-muted/30" aria-labelledby="related-heading">
+    <div class="mx-auto max-w-5xl">
+      <h2 id="related-heading" class="text-2xl md:text-3xl font-bold mb-3 reveal">Podobné druhy</h2>
+      <p class="text-sm text-muted-foreground mb-6 reveal">
+        Vybráno podle rodu, IUCN statusu a velikosti.
+      </p>
+
+      <ul class="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 reveal" role="list">
+        {species.map((s) => {
+          const sameGenus = s.data.genus === currentGenus;
+          return (
+            <li>
+              <a
+                href={`/druhy/${s.id}/`}
+                data-astro-prefetch
+                class="bento-card is-link group block h-full overflow-hidden"
+              >
+                <div class="relative aspect-[4/3] bg-muted overflow-hidden hover-wiggle">
+                  <NoCropImage
+                    src={s.data.hero.src}
+                    alt={s.data.hero.alt}
+                    ratio="4/3"
+                    sizes="(min-width: 768px) 240px, 45vw"
+                  />
+                  <span class="absolute top-2 right-2">
+                    <IucnBadge status={s.data.iucnStatus} />
+                  </span>
+                  {sameGenus && (
+                    <span class="absolute top-2 left-2 inline-flex items-center rounded-full bg-primary/90 text-white text-[10px] font-bold px-2 py-0.5 backdrop-blur-sm">
+                      stejný rod
+                    </span>
+                  )}
+                </div>
+                <div class="p-3">
+                  <p class="text-[10px] uppercase tracking-[0.15em] text-muted-foreground font-semibold">
+                    {s.data.genus}
+                  </p>
+                  <h3 class="mt-0.5 text-sm md:text-base font-bold leading-tight">{s.data.nameCs}</h3>
+                  <p class="text-xs italic text-muted-foreground mt-0.5 truncate">{s.data.nameLat}</p>
+                </div>
+              </a>
+            </li>
+          );
+        })}
+      </ul>
+    </div>
+  </section>
+)}

@@ -9,7 +9,9 @@ import SpeciesSources from "../../components/species/SpeciesSources.astro";
 import SpeciesGallery from "../../components/species/SpeciesGallery.astro";
 import SpeciesMap from "../../components/species/SpeciesMap.astro";
 import SpeciesMedia from "../../components/species/SpeciesMedia.astro";
+import SpeciesRelated from "../../components/species/SpeciesRelated.astro";
 import { sortedSpecies } from "../../lib/species-of-day";
+import { getRelatedSpecies } from "../../lib/species-related";
 
 export const getStaticPaths = (async () => {
   const species = sortedSpecies(await getCollection("species"));
@@ -36,6 +38,9 @@ try {
   // Markdown body se nepodařilo zrenderovat — místo crashe stránku necháme s fallbackem.
   console.error(`render() failed for species ${entry.id}:`, err);
 }
+
+const allSpecies = await getCollection("species");
+const relatedSpecies = getRelatedSpecies(entry, allSpecies, 4);
 
 const { nameCs, nameLat, description, historicalNotes, gallery, hero, colonies } = entry.data;
 
@@ -80,6 +85,8 @@ const metadata = {
     )}
 
     <SpeciesMedia species={entry} />
+
+    <SpeciesRelated species={relatedSpecies} currentGenus={entry.data.genus} />
 
     <SpeciesSources species={entry} />
 
