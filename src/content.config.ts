@@ -51,6 +51,17 @@ const species = defineCollection({
         weightKg: rangeTuple,
       }),
       distribution: z.array(z.string()).min(1),
+      colonies: z
+        .array(
+          z.object({
+            name: z.string().min(1),
+            lat: z.number().min(-90).max(90),
+            lon: z.number().min(-180).max(180),
+            type: z.enum(["breeding", "wintering", "vagrant"]).optional(),
+            description: z.string().optional(),
+          }),
+        )
+        .optional(),
       habitat: z.string().min(1),
       diet: z.array(z.string()).min(1),
       lifespan: z.object({

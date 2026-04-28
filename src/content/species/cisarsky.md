@@ -14,6 +14,15 @@ size:
     - 45
 distribution:
   - "Antarktida (pobřeží a přilehlý mořský led)"
+colonies:
+  - { name: "Snow Hill Island", lat: -64.45, lon: -57.0, type: "breeding", description: "Severnější kolonie, dostupná turisticky" }
+  - { name: "Halley Bay (Brunt Ice Shelf)", lat: -75.6, lon: -26.6, type: "breeding", description: "Druhá největší kolonie světa, kolaps 2016" }
+  - { name: "Atka Bay", lat: -70.6, lon: -8.1, type: "breeding", description: "Lokalita rekordních ponorů (Wienecke 2007)" }
+  - { name: "Cape Washington", lat: -74.65, lon: 165.4, type: "breeding", description: "Rossovo moře, ~20 000 párů" }
+  - { name: "Coulman Island", lat: -73.4, lon: 169.6, type: "breeding", description: "Stabilní kolonie ~25 000 párů" }
+  - { name: "Auster Rookery", lat: -67.4, lon: 64.0, type: "breeding", description: "U Mawson Station, 12 000 párů" }
+  - { name: "Pointe Géologie", lat: -66.66, lon: 140.0, type: "breeding", description: "Dumont d'Urville, kde se natáčelo 'March of the Penguins'" }
+  - { name: "Ross Ice Shelf", lat: -78.0, lon: 168.0, type: "breeding", description: "Nejjižnější známé hnízdiště" }
 habitat: "Antarktický mořský led a ledový šelf; hnízdí v koloniích na pevném ledě (fast ice) daleko od otevřeného moře."
 diet:
   - "Ryby (zejména stříbrnoočko antarktické, Pleuragramma antarctica)"

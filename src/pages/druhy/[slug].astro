@@ -7,6 +7,7 @@ import SpeciesHero from "../../components/species/SpeciesHero.astro";
 import SpeciesFacts from "../../components/species/SpeciesFacts.astro";
 import SpeciesSources from "../../components/species/SpeciesSources.astro";
 import SpeciesGallery from "../../components/species/SpeciesGallery.astro";
+import SpeciesMap from "../../components/species/SpeciesMap.astro";
 import SpeciesMedia from "../../components/species/SpeciesMedia.astro";
 import { sortedSpecies } from "../../lib/species-of-day";
 
@@ -36,7 +37,7 @@ try {
   console.error(`render() failed for species ${entry.id}:`, err);
 }
 
-const { nameCs, nameLat, description, historicalNotes, gallery, hero } = entry.data;
+const { nameCs, nameLat, description, historicalNotes, gallery, hero, colonies } = entry.data;
 
 const metadata = {
   title: `${nameCs} (${nameLat})`,
@@ -58,6 +59,10 @@ const metadata = {
     </section>
 
     <SpeciesFacts species={entry} />
+
+    {colonies && colonies.length > 0 && (
+      <SpeciesMap colonies={colonies} speciesName={nameCs} />
+    )}
 
     {historicalNotes && (
       <section class="px-6 py-12" aria-labelledby="history-heading">
