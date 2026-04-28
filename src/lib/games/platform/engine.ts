@@ -60,6 +60,7 @@ export class PlatformGame {
         tiles: [...r.tiles],
         guardians: r.guardians.map((g) => ({ ...g, phase: 0 })),
         items: r.items.map((it) => ({ ...it })),
+        movers: r.movers?.map((m) => ({ ...m })),
       };
       rooms.set(r.id, cloned);
       totalItems += r.items.length;
@@ -106,6 +107,7 @@ export class PlatformGame {
         tiles: [...r.tiles],
         guardians: r.guardians.map((g) => ({ ...g, phase: 0 })),
         items: r.items.map((it) => ({ ...it })),
+        movers: r.movers?.map((m) => ({ ...m })),
       });
     }
     this.state.currentRoomId = START_ROOM_ID;
@@ -275,6 +277,7 @@ export class PlatformGame {
 
     if (!this.state.completed && !this.state.gameover && !this.state.paused) {
       this.peckCooldown = Math.max(0, this.peckCooldown - dt);
+      this.updateMovers(dt);
       this.updatePlayer(dt);
       this.updateChicks();
       this.updateGuardians(dt);
@@ -449,6 +452,19 @@ export class PlatformGame {
       }
     }
 
+    // Mover landing — player falling onto a swing/slide platform (only when descending).
+    if (p.vy > 0 && room.movers) {
+      const feetY = p.y + PLAYER_H;
+      for (const m of room.movers) {
+        if (p.x + PLAYER_W > m.x && p.x < m.x + m.w && feetY >= m.y && feetY <= m.y + 6) {
+          p.y = m.y - PLAYER_H;
+          p.vy = 0;
+          p.onGround = true;
+          break;
+        }
+      }
+    }
+
     // Refresh onGround by probing 1px below even if we didn't collide this frame.
     if (!p.onGround && p.vy >= 0) {
       const feetY = p.y + PLAYER_H;
@@ -460,6 +476,8 @@ export class PlatformGame {
         if (this.isSolid(t)) { p.onGround = true; break; }
         if (this.isPlatform(t) && (feetY | 0) % TILE === 0) { p.onGround = true; break; }
       }
+      // onGround if standing on a mover top
+      if (!p.onGround && this.isOnMover()) p.onGround = true;
     }
   }
 
@@ -502,6 +520,54 @@ export class PlatformGame {
         return;
       }
     }
+  }
+
+  // --- Movers (houpačky / posuvníky) ---
+
+  /** Update mover positions + carry the player if standing on top.
+   *  Called BEFORE updatePlayer, so player physics this frame uses fresh positions. */
+  private updateMovers(dt: number): void {
+    const room = this.state.rooms.get(this.state.currentRoomId)!;
+    const movers = room.movers;
+    if (!movers || movers.length === 0) return;
+    const step = dt / 16;
+    const p = this.state.player;
+    for (const m of movers) {
+      const prevX = m.x;
+      const prevY = m.y;
+      if (m.kind === "swing" && m.vx !== undefined && m.minX !== undefined && m.maxX !== undefined) {
+        m.x += m.vx * step;
+        if (m.x < m.minX) { m.x = m.minX; m.vx = -m.vx; }
+        if (m.x > m.maxX) { m.x = m.maxX; m.vx = -m.vx; }
+      } else if (m.kind === "slide" && m.vy !== undefined && m.minY !== undefined && m.maxY !== undefined) {
+        m.y += m.vy * step;
+        if (m.y < m.minY) { m.y = m.minY; m.vy = -m.vy; }
+        if (m.y > m.maxY) { m.y = m.maxY; m.vy = -m.vy; }
+      }
+      // Carry the player if standing on top — player feet within 2px of mover top, x-overlap.
+      const dx = m.x - prevX;
+      const dy = m.y - prevY;
+      const feetY = p.y + PLAYER_H;
+      const xOverlap = p.x + PLAYER_W > m.x && p.x < m.x + m.w;
+      const onTop = xOverlap && Math.abs(feetY - m.y) <= 3;
+      if (onTop) {
+        p.x += dx;
+        p.y += dy;
+      }
+    }
+  }
+
+  /** Returns true if the player would land on (or already touches) a mover top this frame. */
+  private isOnMover(): boolean {
+    const room = this.state.rooms.get(this.state.currentRoomId)!;
+    const movers = room.movers;
+    if (!movers || movers.length === 0) return false;
+    const p = this.state.player;
+    const feetY = p.y + PLAYER_H;
+    for (const m of movers) {
+      if (p.x + PLAYER_W > m.x && p.x < m.x + m.w && Math.abs(feetY - m.y) <= 3) return true;
+    }
+    return false;
   }
 
   // --- Chicks (follow-train) ---

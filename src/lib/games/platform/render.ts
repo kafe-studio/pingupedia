@@ -70,10 +70,49 @@ export function drawScene(ctx: CanvasRenderingContext2D, state: GameState): void
     }
   }
   for (const it of room.items) drawItem(ctx, it, state.time);
+  if (room.movers) for (const m of room.movers) drawMover(ctx, m, state.time);
   for (const gu of room.guardians) drawGuardian(ctx, gu, state.time);
   // Chicks za hráčem (kreslíme dřív, aby hráč byl nad nimi)
   for (const c of state.chicks) drawChick(ctx, c.x, c.y, c.facing, state.time);
   drawPlayer(ctx, state.player, state.time);
+}
+
+// =====================  MOVERS (houpačky / posuvníky)  =====================
+
+function drawMover(ctx: CanvasRenderingContext2D, m: { kind: "swing" | "slide"; x: number; y: number; w: number; h: number }, t: number): void {
+  // Wood-plank look — bottom half darker, with rope/chain hint above for swing.
+  const base = m.kind === "swing" ? "#a86b3a" : "#5b7a99";
+  const top = m.kind === "swing" ? "#c98a55" : "#8aa9c4";
+  const dark = m.kind === "swing" ? "#7a4d27" : "#3f566e";
+  // Plank shadow
+  ctx.fillStyle = "rgba(0,0,0,0.25)";
+  ctx.fillRect(m.x + 1, m.y + m.h, m.w, 2);
+  // Plank body
+  ctx.fillStyle = base;
+  ctx.fillRect(m.x, m.y, m.w, m.h);
+  // Top highlight
+  ctx.fillStyle = top;
+  ctx.fillRect(m.x, m.y, m.w, 2);
+  // Bottom shadow
+  ctx.fillStyle = dark;
+  ctx.fillRect(m.x, m.y + m.h - 2, m.w, 2);
+  // Wood grain — short vertical ticks
+  ctx.fillStyle = dark;
+  for (let i = 4; i < m.w - 2; i += 6) {
+    ctx.fillRect(m.x + i, m.y + 3, 1, m.h - 5);
+  }
+  // Rope hint pro swing (nahoru ke stropu, mírně se kýve)
+  if (m.kind === "swing") {
+    const sway = Math.sin(t * 0.004) * 1.5;
+    ctx.strokeStyle = "rgba(50,30,15,0.6)";
+    ctx.lineWidth = 1;
+    ctx.beginPath();
+    ctx.moveTo(m.x + 4 + sway, m.y);
+    ctx.lineTo(m.x + 4 + sway, m.y - 8);
+    ctx.moveTo(m.x + m.w - 4 + sway, m.y);
+    ctx.lineTo(m.x + m.w - 4 + sway, m.y - 8);
+    ctx.stroke();
+  }
 }
 
 // =====================  BACKDROPS  =====================

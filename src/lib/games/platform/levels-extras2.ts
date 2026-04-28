@@ -59,7 +59,10 @@ const aurora1: Room = {
     exit("top", "auroraKomin", 9, 12),
   ],
   spawn: { x: 9 * TILE, y: 1 * TILE },
-  hint: "Polární záře — křižovatka aurory.",
+  hint: "Polární záře — houpačka mezi platformami.",
+  movers: [
+    { kind: "swing", x: 2 * TILE, y: 6 * TILE, w: 48, h: 6, minX: 1 * TILE, maxX: 16 * TILE, vx: 0.7 },
+  ],
 };
 
 const auroraZarka: Room = {
@@ -233,7 +236,7 @@ const pristav: Room = {
     "..============......",
     "....................",
     "....................",
-    "..==~~~~~~~~~~~~==..",
+    "..==~~~~~H~~~~~~==..",
     "....................",
     "....................",
     "....................",
@@ -247,7 +250,10 @@ const pristav: Room = {
     exit("right", "pokladVraku", 1, 12),
   ],
   spawn: { x: 18 * TILE, y: 12 * TILE },
-  hint: "Přístav — voda dole, plošiny nahoře.",
+  hint: "Přístav — posuvník nad vodou tě přenese.",
+  movers: [
+    { kind: "slide", x: 10 * TILE, y: 4 * TILE, w: 48, h: 6, minY: 3 * TILE, maxY: 9 * TILE, vy: 0.6 },
+  ],
 };
 
 const prazdnaSelma: Room = {
@@ -454,8 +460,8 @@ const tropPlazh: Room = {
     "....................",
     "..======......======",
     "....................",
-    "..~~~~~~~~~~~~~~~~..",
-    "..~~~~~~~~~~~~~~~~..",
+    "..~~~~~~~H~~~~~~~~..",
+    "..~~~~~~~H~~~~~~~~..",
     "....................",
     "####################",
   ],
@@ -691,7 +697,10 @@ const katedra: Room = {
     exit("top", "klenotnice", 9, 12),
   ],
   spawn: { x: 1 * TILE, y: 12 * TILE },
-  hint: "Katedrála — chór dole, věž napravo.",
+  hint: "Katedrála — houpačka v lodi přenese tě.",
+  movers: [
+    { kind: "swing", x: 4 * TILE, y: 7 * TILE, w: 48, h: 6, minX: 2 * TILE, maxX: 14 * TILE, vx: 0.8 },
+  ],
 };
 
 const chor: Room = {
@@ -897,8 +906,8 @@ const magUniky: Room = {
     ".........H..........",
     "....=====H==========",
     ".........H..........",
-    "..~~~~~~~~~~~~~~~~..",
-    "..~~~~~~~~~~~~~~~~..",
+    "..~~~~~~~H~~~~~~~~..",
+    "..~~~~~~~H~~~~~~~~..",
     ".........H..........",
     "####################",
   ],
@@ -910,7 +919,10 @@ const magUniky: Room = {
     exit("right", "magOstroh", 1, 12),
   ],
   spawn: { x: 9 * TILE, y: 12 * TILE },
-  hint: "Mořské úniky — voda dole, neskákej.",
+  hint: "Mořské úniky — posuvníky tě přenesou přes vodu.",
+  movers: [
+    { kind: "swing", x: 2 * TILE, y: 6 * TILE, w: 48, h: 6, minX: 1 * TILE, maxX: 16 * TILE, vx: 0.7 },
+  ],
 };
 
 const magOstroh: Room = {

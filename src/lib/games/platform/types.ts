@@ -108,6 +108,22 @@ export type Palette =
   | "wreck" | "tropical" | "sunset" | "night" | "candy"
   | "emperor" | "magellan" | "galapagos";
 
+// Pohyblivá plošina — houpačka (kind="swing": vodorovně) nebo posuvník (kind="slide": svisle).
+// Player může na ní stát a je přenášen. Není fatal.
+export interface Mover {
+  kind: "swing" | "slide";
+  x: number;        // pixel position (top-left)
+  y: number;
+  w: number;        // pixel width
+  h: number;        // pixel height
+  minX?: number;    // bounce bounds in pixels
+  maxX?: number;
+  minY?: number;
+  maxY?: number;
+  vx?: number;      // px per frame
+  vy?: number;
+}
+
 export interface Room {
   id: string;
   name: string;        // Czech display name
@@ -119,6 +135,7 @@ export interface Room {
   spawn: { x: number; y: number };   // pixel start position (first entry)
   hint?: string;
   doors?: Door[];                    // locked doors that trigger a minigame
+  movers?: Mover[];                  // moving platforms (houpačky/posuvníky)
 }
 
 export interface PlayerState {
