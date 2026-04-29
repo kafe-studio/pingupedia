@@ -30,14 +30,12 @@ export class PlatformGame {
   private ctx: CanvasRenderingContext2D;
   private state: GameState;
   private hooks: GameHooks;
-  private keys = { left: false, right: false, up: false, down: false, jump: false };
+  private keys = { left: false, right: false, up: false, down: false, jump: false, bigJump: false };
   private lastTime = 0;
   private rafId = 0;
   private disposed = false;
   private heartSpawnTimer = HEART_SPAWN_INTERVAL_MS / 2;
   private peckCooldown = 0;
-  private lastJumpPressMs = -10000;
-  private doubleJumpArmed = false;
 
   constructor(canvas: HTMLCanvasElement, hooks: GameHooks) {
     const ctx = canvas.getContext("2d");
@@ -218,15 +216,8 @@ export class PlatformGame {
     else if (k === "ArrowRight" || k === "d" || k === "D") this.keys.right = true;
     else if (k === "ArrowUp" || k === "w" || k === "W") this.keys.up = true;
     else if (k === "ArrowDown" || k === "s" || k === "S") this.keys.down = true;
-    else if (k === " " || k === "Enter") {
-      // Repeat events from key-hold mustn't reset the double-tap timer.
-      if (!this.keys.jump) {
-        const now = this.state?.time ?? 0;
-        if (now - this.lastJumpPressMs < 300) this.doubleJumpArmed = true;
-        this.lastJumpPressMs = now;
-      }
-      this.keys.jump = true;
-    }
+    else if (k === " " || k === "Enter") this.keys.jump = true;
+    else if (k === "Control") this.keys.bigJump = true;
     else if (k === "x" || k === "X") this.peck();
     else return;
     e.preventDefault();
@@ -239,6 +230,7 @@ export class PlatformGame {
     else if (k === "ArrowUp" || k === "w" || k === "W") this.keys.up = false;
     else if (k === "ArrowDown" || k === "s" || k === "S") this.keys.down = false;
     else if (k === " " || k === "Enter") this.keys.jump = false;
+    else if (k === "Control") this.keys.bigJump = false;
   };
 
   private bindKeys(): void {
@@ -346,11 +338,11 @@ export class PlatformGame {
       else p.vy = 0;
     } else if (inWater) {
       // Swim mode: 4-directional control, water resistance, slight upward buoyancy.
-      // Double-jump in water = big upward boost that lets player escape the surface.
+      // CTRL ve vodě = velký výskok ven nad hladinu.
       const SWIM = 1.4;
-      if (this.doubleJumpArmed && this.keys.jump) {
+      if (this.keys.bigJump) {
         p.vy = JUMP_V * 1.4;
-        this.doubleJumpArmed = false;
+        this.keys.bigJump = false;
         this.hooks.onSfx("boing");
       } else if (this.keys.up || this.keys.jump) p.vy = -SWIM;
       else if (this.keys.down) p.vy = SWIM;
@@ -371,12 +363,12 @@ export class PlatformGame {
           p.onGround = false;
         }
       }
-      if (this.keys.jump && p.onGround) {
-        // Double-tap mezerníku do 300 ms → vyšší skok
-        const big = this.doubleJumpArmed;
+      if ((this.keys.jump || this.keys.bigJump) && p.onGround) {
+        // CTRL = velký skok (1.5x), mezerník = normální skok.
+        const big = this.keys.bigJump;
         p.vy = big ? JUMP_V * 1.5 : JUMP_V;
         p.onGround = false;
-        this.doubleJumpArmed = false;
+        this.keys.bigJump = false;
         this.hooks.onSfx("boing");
       }
       // Skip gravity while resting on ground — otherwise sub-pixel fall + re-snap
