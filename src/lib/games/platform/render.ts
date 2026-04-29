@@ -80,7 +80,12 @@ export function drawScene(ctx: CanvasRenderingContext2D, state: GameState): void
 
 // =====================  MOVERS (houpačky / posuvníky)  =====================
 
-function drawMover(ctx: CanvasRenderingContext2D, m: { kind: "swing" | "slide"; x: number; y: number; w: number; h: number }, t: number): void {
+function drawMover(ctx: CanvasRenderingContext2D, m: { kind: "swing" | "slide" | "lift"; x: number; y: number; w: number; h: number }, t: number): void {
+  // Lift má zlato-žlutou kovovou plošinu s šipkou nahoru (= bezpečný transport).
+  if (m.kind === "lift") {
+    drawLift(ctx, m, t);
+    return;
+  }
   // Wood-plank look — bottom half darker, with rope/chain hint above for swing.
   const base = m.kind === "swing" ? "#a86b3a" : "#5b7a99";
   const top = m.kind === "swing" ? "#c98a55" : "#8aa9c4";
@@ -114,6 +119,37 @@ function drawMover(ctx: CanvasRenderingContext2D, m: { kind: "swing" | "slide"; 
     ctx.lineTo(m.x + m.w - 4 + sway, m.y - 8);
     ctx.stroke();
   }
+}
+
+// Výtah — kovová žlutá plošina s šipkou nahoru.
+function drawLift(ctx: CanvasRenderingContext2D, m: { x: number; y: number; w: number; h: number }, t: number): void {
+  const blink = (Math.sin(t * 0.006) + 1) * 0.5;
+  // Shadow
+  ctx.fillStyle = "rgba(0,0,0,0.3)";
+  ctx.fillRect(m.x + 1, m.y + m.h, m.w, 2);
+  // Metal plate body
+  ctx.fillStyle = "#d4a82a";
+  ctx.fillRect(m.x, m.y, m.w, m.h);
+  // Top highlight
+  ctx.fillStyle = "#f5d04a";
+  ctx.fillRect(m.x, m.y, m.w, 2);
+  // Bottom edge
+  ctx.fillStyle = "#8a6a14";
+  ctx.fillRect(m.x, m.y + m.h - 2, m.w, 2);
+  // Diagonal hazard stripes
+  ctx.fillStyle = "#1a1a1a";
+  for (let i = 2; i < m.w - 2; i += 4) {
+    ctx.fillRect(m.x + i, m.y + 2, 1, m.h - 4);
+  }
+  // Up arrow on the plate, blinks
+  ctx.fillStyle = `rgba(220,40,40,${0.6 + blink * 0.4})`;
+  const cx = m.x + m.w / 2;
+  ctx.beginPath();
+  ctx.moveTo(cx, m.y - 4);
+  ctx.lineTo(cx - 3, m.y - 1);
+  ctx.lineTo(cx + 3, m.y - 1);
+  ctx.closePath();
+  ctx.fill();
 }
 
 // =====================  TRAMPOLINE TILE  =====================

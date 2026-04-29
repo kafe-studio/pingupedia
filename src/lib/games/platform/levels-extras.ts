@@ -78,6 +78,9 @@ const stanice2: Room = {
   ],
   spawn: { x: 9 * TILE, y: 1 * TILE },
   hint: "Polární kupole — křižovatka. Klíč najdeš dole v kryostatu.",
+  movers: [
+    { kind: "lift", x: 9 * 16, y: 11 * 16, w: 32, h: 6, minY: -8, maxY: 11 * 16, vy: 0.7 },
+  ],
 };
 
 // kantyna — jídelna, conveyor + ryby. Levé od stanice2.
@@ -245,6 +248,9 @@ const kryostat: Room = {
   ],
   spawn: { x: 9 * TILE, y: 12 * TILE },
   hint: "Mrazicí komora. Žlutý klíč otevírá Skok do dálky.",
+  movers: [
+    { kind: "lift", x: 9 * 16, y: 11 * 16, w: 32, h: 6, minY: -8, maxY: 11 * 16, vy: 0.7 },
+  ],
 };
 
 // =============================================================================
@@ -363,6 +369,9 @@ const telocvicna: Room = {
   ],
   spawn: { x: 10 * TILE, y: 12 * TILE },
   hint: "Tělocvična — žebříky nahoru, vlevo ředitelna, vpravo knihovna.",
+  movers: [
+    { kind: "lift", x: 10 * 16, y: 11 * 16, w: 32, h: 6, minY: -8, maxY: 11 * 16, vy: 0.7 },
+  ],
 };
 
 const drilovaciRampa: Room = {
@@ -477,6 +486,7 @@ const prepad: Room = {
   hint: "Propad — křižovatka jeskyně. Klíč najdeš dole v rybníce.",
   movers: [
     { kind: "slide", x: 14 * 16, y: 4 * 16, w: 32, h: 6, minY: 3 * 16, maxY: 11 * 16, vy: 0.5 },
+    { kind: "lift", x: 9 * 16, y: 11 * 16, w: 32, h: 6, minY: -8, maxY: 11 * 16, vy: 0.7 },
   ],
 };
 
@@ -591,6 +601,9 @@ const podzemniRybnik: Room = {
   ],
   spawn: { x: 9 * TILE, y: 12 * TILE },
   hint: "Rybník — zelený klíč otevírá Potápění.",
+  movers: [
+    { kind: "lift", x: 9 * 16, y: 11 * 16, w: 32, h: 6, minY: -8, maxY: 11 * 16, vy: 0.7 },
+  ],
 };
 
 const pokladnice: Room = {
@@ -671,6 +684,9 @@ const kraterUst: Room = {
   ],
   spawn: { x: 1 * TILE, y: 12 * TILE },
   hint: "Ústí kráteru — křižovatka, vede do tří dalších částí ostrova.",
+  movers: [
+    { kind: "lift", x: 9 * 16, y: 11 * 16, w: 32, h: 6, minY: -8, maxY: 11 * 16, vy: 0.7 },
+  ],
 };
 
 const lavoveJezirko: Room = {
@@ -707,6 +723,9 @@ const lavoveJezirko: Room = {
   ],
   spawn: { x: 9 * TILE, y: 12 * TILE },
   hint: "Lávové jezírko — voda hoří, neskákej dolů.",
+  movers: [
+    { kind: "lift", x: 9 * 16, y: 11 * 16, w: 32, h: 6, minY: -8, maxY: 11 * 16, vy: 0.7 },
+  ],
 };
 
 const popelinka: Room = {

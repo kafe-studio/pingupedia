@@ -141,6 +141,9 @@ const zakladna: Room = {
   ],
   spawn: { x: 2 * TILE, y: 12 * TILE },
   doors: [door("zakladna-blue", 4, 12, "blue")],
+  movers: [
+    { kind: "lift", x: 10 * 16, y: 11 * 16, w: 32, h: 6, minY: -8, maxY: 11 * 16, vy: 0.7 },
+  ],
 };
 
 const kolonie: Room = {
@@ -183,6 +186,9 @@ const kolonie: Room = {
   ],
   spawn: { x: 2 * TILE, y: 12 * TILE },
   hint: "Modrý klíč otevírá lyže.",
+  movers: [
+    { kind: "lift", x: 10 * 16, y: 11 * 16, w: 32, h: 6, minY: -8, maxY: 11 * 16, vy: 0.7 },
+  ],
 };
 
 const prusmyk: Room = {
@@ -222,6 +228,9 @@ const prusmyk: Room = {
     exit("top", "schody", 10, 12),
   ],
   spawn: { x: 8 * TILE, y: 12 * TILE },
+  movers: [
+    { kind: "lift", x: 10 * 16, y: 11 * 16, w: 32, h: 6, minY: -8, maxY: 11 * 16, vy: 0.7 },
+  ],
 };
 
 const skaly: Room = {
@@ -260,6 +269,9 @@ const skaly: Room = {
     exit("top", "hreben", 10, 12),
   ],
   spawn: { x: 2 * TILE, y: 12 * TILE },
+  movers: [
+    { kind: "lift", x: 10 * 16, y: 11 * 16, w: 32, h: 6, minY: -8, maxY: 11 * 16, vy: 0.7 },
+  ],
 };
 
 const more: Room = {
@@ -379,6 +391,9 @@ const galapagos: Room = {
   ],
   spawn: { x: 2 * TILE, y: 12 * TILE },
   doors: [door("galapagos-green", 11, 12, "green")],
+  movers: [
+    { kind: "lift", x: 10 * 16, y: 11 * 16, w: 32, h: 6, minY: -8, maxY: 11 * 16, vy: 0.7 },
+  ],
 };
 
 const jeskyne: Room = {
@@ -418,6 +433,9 @@ const jeskyne: Room = {
   ],
   spawn: { x: 10 * TILE, y: 3 * TILE },
   hint: "Krystaly září. Leopardí tuleni nemilí.",
+  movers: [
+    { kind: "lift", x: 10 * 16, y: 11 * 16, w: 32, h: 6, minY: -8, maxY: 11 * 16, vy: 0.7 },
+  ],
 };
 
 const stanice: Room = {
@@ -497,6 +515,9 @@ const laborator: Room = {
   ],
   spawn: { x: 2 * TILE, y: 12 * TILE },
   doors: [door("laborator-red", 6, 12, "red")],
+  movers: [
+    { kind: "lift", x: 10 * 16, y: 11 * 16, w: 32, h: 6, minY: -8, maxY: 11 * 16, vy: 0.7 },
+  ],
 };
 
 const vrak: Room = {
@@ -539,6 +560,9 @@ const vrak: Room = {
   ],
   spawn: { x: 3 * TILE, y: 9 * TILE },
   doors: [door("vrak-yellow", 14, 9, "yellow")],
+  movers: [
+    { kind: "lift", x: 9 * 16, y: 11 * 16, w: 32, h: 6, minY: -8, maxY: 11 * 16, vy: 0.7 },
+  ],
 };
 
 const schody: Room = {
@@ -617,6 +641,9 @@ const hriste: Room = {
   ],
   spawn: { x: 3 * TILE, y: 12 * TILE },
   hint: "Červený klíč pustí na hokejové hřiště.",
+  movers: [
+    { kind: "lift", x: 10 * 16, y: 11 * 16, w: 32, h: 6, minY: -8, maxY: 11 * 16, vy: 0.7 },
+  ],
 };
 
 const tajny: Room = {
@@ -812,6 +839,9 @@ const tunelky: Room = {
     exit("right", "dilna", 1, 12),
   ],
   spawn: { x: 8 * TILE, y: 2 * TILE },
+  movers: [
+    { kind: "lift", x: 8 * 16, y: 11 * 16, w: 32, h: 6, minY: -8, maxY: 11 * 16, vy: 0.7 },
+  ],
 };
 
 const dilna: Room = {
@@ -907,6 +937,9 @@ const vejcohnizdo: Room = {
     exit("top", "mladata", 10, 12),
   ],
   spawn: { x: 3 * TILE, y: 12 * TILE },
+  movers: [
+    { kind: "lift", x: 10 * 16, y: 11 * 16, w: 32, h: 6, minY: -8, maxY: 11 * 16, vy: 0.7 },
+  ],
 };
 
 const mladata: Room = {
@@ -944,6 +977,9 @@ const mladata: Room = {
   ],
   spawn: { x: 8 * TILE, y: 2 * TILE },
   hint: "Mláďata se ti přidají do houfu — doruč je do iglú za bonus body!",
+  movers: [
+    { kind: "lift", x: 10 * 16, y: 11 * 16, w: 32, h: 6, minY: -8, maxY: 11 * 16, vy: 0.7 },
+  ],
 };
 
 const skolka: Room = {
@@ -1130,6 +1166,9 @@ const terasy: Room = {
     exit("top", "palma", 9, 12),
   ],
   spawn: { x: 17 * TILE, y: 12 * TILE },
+  movers: [
+    { kind: "lift", x: 9 * 16, y: 11 * 16, w: 32, h: 6, minY: -8, maxY: 11 * 16, vy: 0.7 },
+  ],
 };
 
 const kalejdoskop: Room = {
@@ -1247,6 +1286,9 @@ const poklad: Room = {
   exits: [exit("top", "propast", 9, 0)],
   spawn: { x: 9 * TILE, y: 2 * TILE },
   hint: "Pirátský poklad — 3 trofeje, dead-end.",
+  movers: [
+    { kind: "lift", x: 9 * 16, y: 11 * 16, w: 32, h: 6, minY: -8, maxY: 11 * 16, vy: 0.7 },
+  ],
 };
 
 // Tree G: jeskyne.bottom → ruda → labyrinth → planety
@@ -1277,6 +1319,9 @@ const ruda: Room = {
     exit("right", "labyrinth", 1, 12),
   ],
   spawn: { x: 8 * TILE, y: 2 * TILE },
+  movers: [
+    { kind: "lift", x: 8 * 16, y: 11 * 16, w: 32, h: 6, minY: -8, maxY: 11 * 16, vy: 0.7 },
+  ],
 };
 
 const labyrinth: Room = {
@@ -1337,6 +1382,9 @@ const planety: Room = {
   ],
   spawn: { x: 17 * TILE, y: 12 * TILE },
   hint: "Krystalové komnaty — 4 trofeje. Aurora se otvírá nahoře.",
+  movers: [
+    { kind: "lift", x: 9 * 16, y: 11 * 16, w: 32, h: 6, minY: -8, maxY: 11 * 16, vy: 0.7 },
+  ],
 };
 
 // Tree H: hriste.top → klubovna → divadlo → kino
@@ -1368,6 +1416,9 @@ const klubovna: Room = {
     exit("top", "sklad", 3, 11),
   ],
   spawn: { x: 8 * TILE, y: 2 * TILE },
+  movers: [
+    { kind: "lift", x: 3 * 16, y: 11 * 16, w: 32, h: 6, minY: -8, maxY: 11 * 16, vy: 0.7 },
+  ],
 };
 
 const divadlo: Room = {

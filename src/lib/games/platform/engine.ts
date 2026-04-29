@@ -564,7 +564,7 @@ export class PlatformGame {
         m.x += m.vx * step;
         if (m.x < m.minX) { m.x = m.minX; m.vx = -m.vx; }
         if (m.x > m.maxX) { m.x = m.maxX; m.vx = -m.vx; }
-      } else if (m.kind === "slide" && m.vy !== undefined && m.minY !== undefined && m.maxY !== undefined) {
+      } else if ((m.kind === "slide" || m.kind === "lift") && m.vy !== undefined && m.minY !== undefined && m.maxY !== undefined) {
         m.y += m.vy * step;
         if (m.y < m.minY) { m.y = m.minY; m.vy = -m.vy; }
         if (m.y > m.maxY) { m.y = m.maxY; m.vy = -m.vy; }

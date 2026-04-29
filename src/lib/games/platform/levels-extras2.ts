@@ -62,6 +62,7 @@ const aurora1: Room = {
   hint: "Polární záře — houpačka mezi platformami.",
   movers: [
     { kind: "swing", x: 2 * TILE, y: 6 * TILE, w: 48, h: 6, minX: 1 * TILE, maxX: 16 * TILE, vx: 0.7 },
+    { kind: "lift", x: 9 * 16, y: 11 * 16, w: 32, h: 6, minY: -8, maxY: 11 * 16, vy: 0.7 },
   ],
 };
 
@@ -221,6 +222,9 @@ const vrak2: Room = {
   ],
   spawn: { x: 1 * TILE, y: 12 * TILE },
   hint: "Vyplavený vrak — přístav doprava, kormidlo dolů.",
+  movers: [
+    { kind: "lift", x: 9 * 16, y: 11 * 16, w: 32, h: 6, minY: -8, maxY: 11 * 16, vy: 0.7 },
+  ],
 };
 
 const pristav: Room = {
@@ -318,6 +322,7 @@ const rezavyKormidlnik: Room = {
   hint: "Rezavé kormidlo — propad k moři.",
   movers: [
     { kind: "slide", x: 8 * 16, y: 4 * 16, w: 32, h: 6, minY: 3 * 16, maxY: 10 * 16, vy: 0.4 },
+    { kind: "lift", x: 9 * 16, y: 11 * 16, w: 32, h: 6, minY: -8, maxY: 11 * 16, vy: 0.7 },
   ],
 };
 
@@ -386,6 +391,9 @@ const palma: Room = {
   ],
   spawn: { x: 1 * TILE, y: 12 * TILE },
   hint: "Pod palmou — křižovatka tropů.",
+  movers: [
+    { kind: "lift", x: 9 * 16, y: 11 * 16, w: 32, h: 6, minY: -8, maxY: 11 * 16, vy: 0.7 },
+  ],
 };
 
 const ananas: Room = {
@@ -543,6 +551,9 @@ const ledovec: Room = {
   ],
   spawn: { x: 9 * TILE, y: 1 * TILE },
   hint: "Velký ledovec — křižovatka severu.",
+  movers: [
+    { kind: "lift", x: 9 * 16, y: 11 * 16, w: 32, h: 6, minY: -8, maxY: 11 * 16, vy: 0.7 },
+  ],
 };
 
 const polarniDen: Room = {
@@ -634,6 +645,9 @@ const iglutop: Room = {
   ],
   spawn: { x: 9 * TILE, y: 12 * TILE },
   hint: "Iglú na vrcholku — výhled na celý sever.",
+  movers: [
+    { kind: "lift", x: 9 * 16, y: 11 * 16, w: 32, h: 6, minY: -8, maxY: 11 * 16, vy: 0.7 },
+  ],
 };
 
 const saneSladcen: Room = {
@@ -665,6 +679,9 @@ const saneSladcen: Room = {
   ],
   spawn: { x: 1 * TILE, y: 12 * TILE },
   hint: "Saně tučňáků — sjezd zleva doprava dolů.",
+  movers: [
+    { kind: "lift", x: 9 * 16, y: 11 * 16, w: 32, h: 6, minY: -8, maxY: 11 * 16, vy: 0.7 },
+  ],
 };
 
 // =============================================================================
@@ -703,6 +720,7 @@ const katedra: Room = {
   hint: "Katedrála — houpačka v lodi přenese tě.",
   movers: [
     { kind: "swing", x: 4 * TILE, y: 7 * TILE, w: 48, h: 6, minX: 2 * TILE, maxX: 14 * TILE, vx: 0.8 },
+    { kind: "lift", x: 9 * 16, y: 11 * 16, w: 32, h: 6, minY: -8, maxY: 11 * 16, vy: 0.7 },
   ],
 };
 
@@ -735,6 +753,9 @@ const chor: Room = {
   ],
   spawn: { x: 9 * TILE, y: 12 * TILE },
   hint: "Chór — kostelní zpěv mezi plošinami.",
+  movers: [
+    { kind: "lift", x: 9 * 16, y: 11 * 16, w: 32, h: 6, minY: -8, maxY: 11 * 16, vy: 0.7 },
+  ],
 };
 
 const vez: Room = {
@@ -862,6 +883,9 @@ const magArchipelag: Room = {
   ],
   spawn: { x: 1 * TILE, y: 12 * TILE },
   hint: "Magellanův archipelag — křižovatka, vede do tří dalších míst.",
+  movers: [
+    { kind: "lift", x: 9 * 16, y: 11 * 16, w: 32, h: 6, minY: -8, maxY: 11 * 16, vy: 0.7 },
+  ],
 };
 
 const magBouracky: Room = {
@@ -925,6 +949,7 @@ const magUniky: Room = {
   hint: "Mořské úniky — posuvníky tě přenesou přes vodu.",
   movers: [
     { kind: "swing", x: 2 * TILE, y: 6 * TILE, w: 48, h: 6, minX: 1 * TILE, maxX: 16 * TILE, vx: 0.7 },
+    { kind: "lift", x: 9 * 16, y: 11 * 16, w: 32, h: 6, minY: -8, maxY: 11 * 16, vy: 0.7 },
   ],
 };
 

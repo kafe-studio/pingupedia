@@ -109,10 +109,11 @@ export type Palette =
   | "wreck" | "tropical" | "sunset" | "night" | "candy"
   | "emperor" | "magellan" | "galapagos";
 
-// Pohyblivá plošina — houpačka (kind="swing": vodorovně) nebo posuvník (kind="slide": svisle).
+// Pohyblivá plošina — houpačka (kind="swing": vodorovně), posuvník (kind="slide": svisle)
+// nebo výtah (kind="lift": svisle, používá se pro bezpečný transport k top exitu).
 // Player může na ní stát a je přenášen. Není fatal.
 export interface Mover {
-  kind: "swing" | "slide";
+  kind: "swing" | "slide" | "lift";
   x: number;        // pixel position (top-left)
   y: number;
   w: number;        // pixel width
