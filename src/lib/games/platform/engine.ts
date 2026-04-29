@@ -775,6 +775,17 @@ export class PlatformGame {
     }
     p.vx = 0;
     p.vy = 0;
+    // Bottom entry: pokud nová místnost má výtah, snap player rovnou na něj a resetuj
+    // lift na floor pozici, ať začne stoupat nahoru s tučňákem.
+    if (side === "bottom") {
+      const lift = nextRoom.movers?.find((m) => m.kind === "lift");
+      if (lift) {
+        lift.y = lift.maxY ?? lift.y;
+        lift.vy = -Math.abs(lift.vy ?? 0.7);
+        p.x = lift.x + (lift.w - PLAYER_W) / 2;
+        p.y = lift.y - PLAYER_H;
+      }
+    }
     // Snap player up if landing position overlaps a solid tile below — jinak by první
     // frame X-axis collision viděl solid podlahu a zablokoval pohyb (= "neprůchozí").
     {
