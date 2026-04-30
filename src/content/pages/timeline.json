@@ -32,7 +32,14 @@
       "category": "discovery",
       "description": "Johann Reinhold Forster během druhé Cookovy plavby vědecky popisuje tučňáky magellanského, oslího, nejmenšího a skalního jižního. Jeho práce položila základy moderní taxonomie čeledi.",
       "location": "jižní Atlantik a Tichomoří",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Johann_Reinhold_Forster"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Johann_Reinhold_Forster",
+      "image": {
+        "file": "forster-1781.jpg",
+        "alt": "Portrét Johanna Reinholda Forstera (1729–1798), německého přírodovědce a účastníka druhé Cookovy plavby.",
+        "author": "neznámý autor (18. století)",
+        "license": "Public Domain",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Forster.jpg"
+      }
     },
     {
       "year": 1840,
@@ -66,7 +73,14 @@
       "category": "expedition",
       "description": "Loď Belgica pod velením Adriena de Gerlache zamrzla v ledu Bellingshausenova moře a stala se první expedicí, která přezimovala jižně od antarktického kruhu. Vědci na palubě (mj. Roald Amundsen, Frederick Cook) studovali tučňáky kroužkové a uzdičkové.",
       "location": "Bellingshausenovo moře",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Belgian_Antarctic_Expedition"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Belgian_Antarctic_Expedition",
+      "image": {
+        "file": "belgica-1898.jpg",
+        "alt": "Loď Belgica zamrzlá v ledu Bellingshausenova moře během belgické antarktické expedice 1898.",
+        "author": "Frederick Cook (expediční fotograf)",
+        "license": "Public Domain",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Belgica1web.jpg"
+      }
     },
     {
       "year": 1911,
@@ -83,7 +97,14 @@
       "category": "conservation",
       "description": "12 zemí podepisuje Antarctic Treaty — kontinent jižně od 60. rovnoběžky se stává neutrálním prostorem věnovaným vědě a ochraně přírody. Komerční lov tučňáků v Antarktidě tím končí.",
       "location": "Washington, USA",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Antarctic_Treaty_System"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Antarctic_Treaty_System",
+      "image": {
+        "file": "treaty-1959.jpg",
+        "alt": "Podpis Smlouvy o Antarktidě, 1. prosince 1959 ve Washingtonu — zástupci 12 zakládajících států.",
+        "author": "U.S. Department of State",
+        "license": "Public Domain (US gov work)",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:1959_Antarctic_Treaty.jpg"
+      }
     },
     {
       "year": 1990,

@@ -4,33 +4,73 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import Mascot from "../components/mascot/Mascot.astro";
 import Timeline from "../components/timeline/Timeline.astro";
 import { getTimelinePage } from "../lib/pages";
+import type { ImageMetadata } from "astro";
 import { getCollection } from "astro:content";
 import { getImage } from "astro:assets";
 
 const page = await getTimelinePage();
 
 // Pro každou událost s `speciesSlug` napárujeme hero fotku druhu jako historickou ilustraci.
-// Druh sám má vždy autora + licenci v `hero` poli, takže atribuce projde do timeline.
+// Pro události bez slugu, ale s `image` polem v JSON, načteme historickou fotografii
+// z `src/assets/timeline/<file>` přes import.meta.glob.
 const species = await getCollection("species");
 const speciesById = new Map(species.map((s) => [s.id, s]));
 
-const enrichedEvents = await Promise.all(page.events.map(async (e) => {
-  if (!e.speciesSlug) return e;
-  const sp = speciesById.get(e.speciesSlug);
-  if (!sp) return e;
-  const hero = sp.data.hero;
-  const opt = await getImage({ src: hero.src, format: "webp", widths: [320, 480, 720], sizes: "(min-width: 768px) 360px, 90vw" });
-  return {
-    ...e,
-    image: {
-      src: opt.src,
-      srcset: opt.srcSet?.attribute,
-      alt: hero.alt,
-      author: hero.author,
-      license: hero.license,
-      sourceUrl: hero.sourceUrl,
-    },
-  };
+const timelineImages = import.meta.glob<{ default: ImageMetadata }>(
+  "../assets/timeline/*.{jpg,jpeg,png,webp}",
+  { eager: true },
+);
+function findTimelineImage(file: string): ImageMetadata | undefined {
+  const entry = Object.entries(timelineImages).find(([path]) => path.endsWith("/" + file));
+  return entry?.[1].default;
+}
+
+type RenderEvent = Omit<typeof page.events[number], "image"> & {
+  image?: { src: string; srcset?: string; alt: string; author: string; license: string; sourceUrl: string };
+};
+
+const enrichedEvents: RenderEvent[] = await Promise.all(page.events.map(async (e): Promise<RenderEvent> => {
+  // Priorita 1: speciesSlug → species hero
+  if (e.speciesSlug) {
+    const sp = speciesById.get(e.speciesSlug);
+    if (sp) {
+      const hero = sp.data.hero;
+      const opt = await getImage({ src: hero.src, format: "webp", widths: [320, 480, 720], sizes: "(min-width: 768px) 360px, 90vw" });
+      return {
+        ...e,
+        image: {
+          src: opt.src,
+          srcset: opt.srcSet?.attribute,
+          alt: hero.alt,
+          author: hero.author,
+          license: hero.license,
+          sourceUrl: hero.sourceUrl,
+        },
+      };
+    }
+  }
+  // Priorita 2: explicit JSON image (historic photo z Commons)
+  if (e.image) {
+    const asset = findTimelineImage(e.image.file);
+    if (asset) {
+      const opt = await getImage({ src: asset, format: "webp", widths: [320, 480, 720], sizes: "(min-width: 768px) 360px, 90vw" });
+      return {
+        ...e,
+        image: {
+          src: opt.src,
+          srcset: opt.srcSet?.attribute,
+          alt: e.image.alt,
+          author: e.image.author,
+          license: e.image.license,
+          sourceUrl: e.image.sourceUrl,
+        },
+      };
+    }
+  }
+  // No image match (no slug, no JSON image, or asset not found) — strip raw image field.
+  const { image: _drop, ...rest } = e;
+  void _drop;
+  return rest;
 }));
 
 const metadata = {

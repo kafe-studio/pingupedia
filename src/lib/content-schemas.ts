@@ -248,6 +248,17 @@ export const timelineSchema = z.object({
         speciesSlug: z.string().regex(slugRe).optional(),
         location: z.string().optional(),
         sourceUrl: httpsUrl.optional(),
+        // Volitelná historická fotografie — když událost nemá speciesSlug,
+        // může mít vlastní obrázek z Wikimedia Commons (např. portrét, lod, podpis).
+        image: z
+          .object({
+            file: z.string().min(1),         // jméno souboru v src/assets/timeline/
+            alt: z.string().min(1),
+            author: z.string().min(1),
+            license: z.string().min(1),
+            sourceUrl: httpsUrl,
+          })
+          .optional(),
       }),
     )
     .min(1),
