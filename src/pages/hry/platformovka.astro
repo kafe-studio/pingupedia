@@ -100,8 +100,9 @@ import GameLayout from "../../layouts/GameLayout.astro";
         <button data-mobile="jump" type="button" class="rounded-lg border border-border bg-muted/30 py-3 font-bold">↑ skok</button>
         <button data-mobile="right" type="button" class="rounded-lg border border-border bg-muted/30 py-3 font-bold">→</button>
         <button data-mobile="up" type="button" class="rounded-lg border border-border bg-muted/30 py-3 font-bold">↑ žebřík</button>
-        <button data-mobile-peck type="button" class="rounded-lg border border-border bg-muted/30 py-3 font-bold">⛏ klovnout</button>
+        <button data-mobile="bigjump" type="button" class="rounded-lg border border-primary/60 bg-primary/15 py-3 font-bold text-primary">⤴ velký skok</button>
         <button data-mobile="down" type="button" class="rounded-lg border border-border bg-muted/30 py-3 font-bold">↓ žebřík</button>
+        <button data-mobile-peck type="button" class="col-span-3 rounded-lg border border-border bg-muted/30 py-3 font-bold">⛏ klovnout (X)</button>
       </div>
     </div>
   </div>
@@ -187,8 +188,8 @@ import GameLayout from "../../layouts/GameLayout.astro";
 
   document.querySelectorAll<HTMLButtonElement>("[data-mobile]").forEach((btn) => {
     const dir = btn.dataset.mobile;
-    const map: Record<string, "left" | "right" | "up" | "down" | "jump"> = {
-      left: "left", right: "right", up: "up", down: "down", jump: "jump",
+    const map: Record<string, "left" | "right" | "up" | "down" | "jump" | "bigJump"> = {
+      left: "left", right: "right", up: "up", down: "down", jump: "jump", bigjump: "bigJump",
     };
     const key = dir && map[dir];
     if (!key) return;

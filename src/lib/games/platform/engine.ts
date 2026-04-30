@@ -139,7 +139,7 @@ export class PlatformGame {
   }
 
   // Virtual controls for mobile buttons.
-  setKey(k: "left" | "right" | "up" | "down" | "jump", down: boolean): void {
+  setKey(k: "left" | "right" | "up" | "down" | "jump" | "bigJump", down: boolean): void {
     this.keys[k] = down;
   }
 
