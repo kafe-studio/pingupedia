@@ -29,22 +29,29 @@ type RenderEvent = Omit<typeof page.events[number], "image"> & {
   image?: { src: string; srcset?: string; alt: string; author: string; license: string; sourceUrl: string };
 };
 
+// Counter pro slug → kolikátá událost daného druhu už byla zpracována.
+// Při >= 2 použijeme rotaci přes gallery, aby se neopakovala stejná hero fotka.
+const slugCounter = new Map<string, number>();
+
 const enrichedEvents: RenderEvent[] = await Promise.all(page.events.map(async (e): Promise<RenderEvent> => {
-  // Priorita 1: speciesSlug → species hero
+  // Priorita 1: speciesSlug → species hero (1. výskyt) nebo gallery rotace (další výskyty).
   if (e.speciesSlug) {
     const sp = speciesById.get(e.speciesSlug);
     if (sp) {
-      const hero = sp.data.hero;
-      const opt = await getImage({ src: hero.src, format: "webp", widths: [320, 480, 720], sizes: "(min-width: 768px) 360px, 90vw" });
+      const idx = slugCounter.get(e.speciesSlug) ?? 0;
+      slugCounter.set(e.speciesSlug, idx + 1);
+      const gallery = sp.data.gallery ?? [];
+      const photo = idx === 0 ? sp.data.hero : (gallery[idx - 1] ?? sp.data.hero);
+      const opt = await getImage({ src: photo.src, format: "webp", widths: [320, 480, 720], sizes: "(min-width: 768px) 360px, 90vw" });
       return {
         ...e,
         image: {
           src: opt.src,
           srcset: opt.srcSet?.attribute,
-          alt: hero.alt,
-          author: hero.author,
-          license: hero.license,
-          sourceUrl: hero.sourceUrl,
+          alt: photo.alt,
+          author: photo.author,
+          license: photo.license,
+          sourceUrl: photo.sourceUrl,
         },
       };
     }
