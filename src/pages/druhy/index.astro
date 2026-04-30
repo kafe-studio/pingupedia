@@ -51,18 +51,14 @@ const genusCount = species.reduce<Record<string, number>>((acc, s) => {
   return acc;
 }, {});
 
-// Menu = abecední seznam všech českých názvů druhů + filtry/CTA na okrajích.
-const navSections = [
-  { id: "filter-heading", title: "Filtry" },
-  ...[...species]
-    .sort((a, b) => a.data.nameCs.localeCompare(b.data.nameCs, "cs"))
-    .map((s) => ({ id: `druh-${s.id}`, title: s.data.nameCs })),
-  { id: "continue-heading", title: "Pokračuj" },
-];
+// Menu = abecední seznam všech českých názvů druhů, nic víc.
+const navSections = [...species]
+  .sort((a, b) => a.data.nameCs.localeCompare(b.data.nameCs, "cs"))
+  .map((s) => ({ id: `druh-${s.id}`, title: s.data.nameCs }));
 ---
 
 <BaseLayout {metadata}>
-  <SpeciesNav sections={navSections} backHref="/" backLabel="Domů" panelLabel="Rody" />
+  <SpeciesNav sections={navSections} backHref="/" backLabel="Domů" />
   <section class="px-4 sm:px-6 pt-28 pb-16">
     <div class="mx-auto max-w-7xl">
       <header class="mb-8 md:mb-12 max-w-4xl reveal">
