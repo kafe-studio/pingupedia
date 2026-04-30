@@ -51,9 +51,12 @@ const genusCount = species.reduce<Record<string, number>>((acc, s) => {
   return acc;
 }, {});
 
+// Menu = abecední seznam všech českých názvů druhů + filtry/CTA na okrajích.
 const navSections = [
   { id: "filter-heading", title: "Filtry" },
-  ...genusList.map((g) => ({ id: `genus-${genusSlug(g)}`, title: g })),
+  ...[...species]
+    .sort((a, b) => a.data.nameCs.localeCompare(b.data.nameCs, "cs"))
+    .map((s) => ({ id: `druh-${s.id}`, title: s.data.nameCs })),
   { id: "continue-heading", title: "Pokračuj" },
 ];
 ---
@@ -98,7 +101,8 @@ const navSections = [
                 const isSurfaced = surface.length > 0;
                 return (
                   <li
-                    class={span}
+                    class={`${span} scroll-mt-24`}
+                    id={`druh-${entry.id}`}
                     data-species-card
                     data-genus={entry.data.genus}
                     data-iucn={entry.data.iucnStatus}
