@@ -394,7 +394,7 @@ const drilovaciRampa: Room = {
     ".cccccccccccccccccc.",
     "####################",
   ],
-  guardians: [h("polarbear", 12, 11, 17, 0.6)],
+  guardians: [h("polarbear", 12, 11, 17, 0.6), v("snowwind", 9, 1, 12, 0.9)],
   items: [
     i("fish", 4, 1, "dr-f1"),
     i("fish", 14, 9, "dr-f2"),
@@ -748,7 +748,7 @@ const popelinka: Room = {
     "....................",
     "########..##########",
   ],
-  guardians: [h("seal", 6, 1, 18, 0.9)],
+  guardians: [h("seal", 6, 1, 18, 0.9), h("petrel", 7, 1, 18, 1.0)],
   items: [
     i("flag", 1, 1, "po-fl"),
     i("crystal", 18, 1, "po-c1"),

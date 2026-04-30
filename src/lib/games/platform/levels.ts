@@ -132,6 +132,9 @@ const zakladna: Room = {
   items: [
     i("fish", 10, 1, "zakladna-f1"),
     i("fish", 1, 6, "zakladna-f2"),
+    i("medal", 5, 5, "zak-m1"),
+    i("flag", 14, 8, "zak-fl"),
+
   ],
   exits: [
     exit("left", "iglu", 17, 11),
@@ -221,6 +224,8 @@ const prusmyk: Room = {
   items: [
     i("fish", 6, 3, "prusmyk-f1"),
     i("fish", 15, 9, "prusmyk-f2"),
+    i("egg", 7, 8, "pru-e1"),
+
   ],
   exits: [
     exit("left", "kolonie", 18, 12),
@@ -589,10 +594,15 @@ const schody: Room = {
   ],
   guardians: [
     d("snowwind", 10, 5, 0, 19, 0, 10, 0.6, 0.6),
+    h("petrel", 6, 1, 18, 0.9),
+
   ],
   items: [
     i("fish", 16, 0, "sch-f1"),
     i("crystal", 2, 10, "sch-c1"),
+    i("medal", 5, 5, "sch-m1"),
+    i("crystal", 14, 8, "sch-c1"),
+
   ],
   exits: [
     exit("bottom", "prusmyk", 9, 1),
@@ -746,8 +756,8 @@ const kuchyne: Room = {
     "....................",
     "####################",
   ],
-  guardians: [h("skua", 7, 3, 14, 0.7)],
-  items: [i("fish", 9, 6, "ku-f1"), i("egg", 4, 8, "ku-e1")],
+  guardians: [h("skua", 7, 3, 14, 0.7), v("snowwind", 10, 1, 12, 0.7)],
+  items: [i("fish", 9, 6, "ku-f1"), i("egg", 4, 8, "ku-e1"), i("medal", 16, 6, "ku-m1"), i("crystal", 3, 2, "ku-c1")],
   exits: [
     exit("right", "iglu", 1, 11),
     exit("left", "spizirna", 18, 12),
@@ -805,7 +815,7 @@ const komin: Room = {
     "####################",
   ],
   guardians: [v("snowwind", 9, 1, 11, 0.7), v("icicle", 12, 0, 11, 0.9)],
-  items: [i("crystal", 9, 7, "ko-c1"), i("medal", 6, 4, "ko-m1")],
+  items: [i("crystal", 9, 7, "ko-c1"), i("medal", 6, 4, "ko-m1"), i("flag", 14, 9, "ko-fl"), i("fish", 14, 4, "ko-f1")],
   exits: [exit("right", "spizirna", 1, 12)],
   spawn: { x: 13 * TILE, y: 12 * TILE },
   hint: "Komín — dead-end. Vyber a vrať se.",
@@ -833,7 +843,7 @@ const tunelky: Room = {
     "####################",
   ],
   guardians: [h("polarbear", 5, 2, 10, 0.8), d("bubble", 14, 5, 0, 19, 1, 10, 0.5, 0.4, 12, 12)],
-  items: [i("crystal", 9, 2, "tu-c1"), i("fish", 14, 5, "tu-f1")],
+  items: [i("crystal", 9, 2, "tu-c1"), i("fish", 14, 5, "tu-f1"), i("medal", 4, 9, "tu-m1"), i("egg", 17, 7, "tu-e1")],
   exits: [
     exit("top", "zakladna", 8, 12),
     exit("right", "dilna", 1, 12),
@@ -931,6 +941,15 @@ const vejcohnizdo: Room = {
     i("egg", 9, 8, "vh-e3"),
     i("chick", 7, 12, "vh-c1"),
     i("chick", 12, 12, "vh-c2"),
+    i("egg", 3, 2, "kuch-e1"),
+    i("medal", 16, 6, "kuch-m1"),
+
+    i("crystal", 9, 3, "kom-c1"),
+    i("flag", 4, 9, "kom-fl"),
+
+    i("medal", 14, 5, "tun-m1"),
+    i("fish", 6, 9, "tun-f1"),
+
   ],
   exits: [
     exit("bottom", "kolonie", 8, 1),
@@ -1069,7 +1088,7 @@ const arch: Room = {
     "####################",
   ],
   guardians: [v("icicle", 10, 5, 11, 1.0), h("petrel", 8, 4, 17, 0.7)],
-  items: [i("fish", 5, 6, "ar-f1"), i("crystal", 16, 6, "ar-c1")],
+  items: [i("fish", 5, 6, "ar-f1"), i("crystal", 16, 6, "ar-c1"), i("flag", 9, 4, "arch-fl"), i("crystal", 14, 8, "arch-c1")],
   exits: [
     exit("left", "hreben", 18, 12),
     exit("right", "vrchol", 1, 12),
@@ -1158,7 +1177,7 @@ const terasy: Room = {
     "....................",
     "####################",
   ],
-  guardians: [d("petrel", 8, 5, 0, 19, 1, 10, 0.6, 0.5)],
+  guardians: [d("petrel", 8, 5, 0, 19, 1, 10, 0.6, 0.5), h("petrel", 5, 1, 18, 0.8)],
   items: [i("fish", 16, 0, "te-f1"), i("egg", 9, 4, "te-e1"), i("medal", 2, 8, "te-m1")],
   exits: [
     exit("right", "sopka", 1, 12),
