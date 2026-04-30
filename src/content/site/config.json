@@ -17,6 +17,7 @@
   "navLinks": [
     { "text": "Druhy", "href": "/druhy/" },
     { "text": "Hledat", "href": "/hledat/" },
+    { "text": "Srovnání", "href": "/srovnani/" },
     { "text": "Infografiky", "href": "/infografiky/" },
     { "text": "Historie", "href": "/historie/" },
     { "text": "Hry", "href": "/hry/" },
