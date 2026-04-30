@@ -4,8 +4,34 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import Mascot from "../components/mascot/Mascot.astro";
 import Timeline from "../components/timeline/Timeline.astro";
 import { getTimelinePage } from "../lib/pages";
+import { getCollection } from "astro:content";
+import { getImage } from "astro:assets";
 
 const page = await getTimelinePage();
+
+// Pro každou událost s `speciesSlug` napárujeme hero fotku druhu jako historickou ilustraci.
+// Druh sám má vždy autora + licenci v `hero` poli, takže atribuce projde do timeline.
+const species = await getCollection("species");
+const speciesById = new Map(species.map((s) => [s.id, s]));
+
+const enrichedEvents = await Promise.all(page.events.map(async (e) => {
+  if (!e.speciesSlug) return e;
+  const sp = speciesById.get(e.speciesSlug);
+  if (!sp) return e;
+  const hero = sp.data.hero;
+  const opt = await getImage({ src: hero.src, format: "webp", widths: [320, 480, 720], sizes: "(min-width: 768px) 360px, 90vw" });
+  return {
+    ...e,
+    image: {
+      src: opt.src,
+      srcset: opt.srcSet?.attribute,
+      alt: hero.alt,
+      author: hero.author,
+      license: hero.license,
+      sourceUrl: hero.sourceUrl,
+    },
+  };
+}));
 
 const metadata = {
   title: page.meta.title,
@@ -57,5 +83,5 @@ const totalYears = Math.max(...page.events.map((e) => e.year)) - Math.min(...pag
     </div>
   </section>
 
-  <Timeline events={page.events} />
+  <Timeline events={enrichedEvents} />
 </BaseLayout>
