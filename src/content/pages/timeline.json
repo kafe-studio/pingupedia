@@ -16,7 +16,14 @@
       "description": "Při první obeplouvce Země pozoruje Magellanova výprava v dnešním Magellanově průlivu skupinu \"podivných hus\" — vůbec první písemný záznam o tučňácích, jak ho znamenal Antonio Pigafetta. Jedná se o tučňáky magellanské.",
       "speciesSlug": "magellansky",
       "location": "Magellanův průliv",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Magellanic_penguin"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Magellanic_penguin",
+      "image": {
+        "file": "magellan-1520.jpg",
+        "alt": "Portrét Ferdinanda Magellana (1480–1521), portugalského mořeplavce, jehož výprava jako první obeplula Zemi.",
+        "author": "neznámý autor (16. století)",
+        "license": "Public Domain",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Ferdinand_Magellan.jpg"
+      }
     },
     {
       "year": 1758,
@@ -24,7 +31,14 @@
       "category": "discovery",
       "description": "V 10. vydání Systema Naturae Carl Linné pojmenovává tučňáka brýlového jako Diomedea demersa — první vědecky popsaný druh tučňáka. Do rodu Spheniscus jej v roce 1760 zařadil Brisson.",
       "speciesSlug": "brylovy",
-      "sourceUrl": "https://en.wikipedia.org/wiki/African_penguin"
+      "sourceUrl": "https://en.wikipedia.org/wiki/African_penguin",
+      "image": {
+        "file": "linne-1758.jpg",
+        "alt": "Portrét Carla Linného (1707–1778), švédského přírodovědce a otce moderní biologické taxonomie.",
+        "author": "Alexander Roslin (18. století)",
+        "license": "Public Domain",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Carl_von_Linn%C3%A9.jpg"
+      }
     },
     {
       "year": 1781,
@@ -48,7 +62,14 @@
       "description": "21. ledna kapitán Jules Dumont d'Urville pojmenovává objevenou Adélie Land po své manželce Adéle. Vědecky druh popsali Hombron a Jacquinot z téže expedice o rok později. Tučňák tak nese jméno francouzské manželky kapitána.",
       "speciesSlug": "krouzkovy",
       "location": "Adélie Land, východní Antarktida",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Ad%C3%A9lie_penguin"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Ad%C3%A9lie_penguin",
+      "image": {
+        "file": "dumont-1840.jpg",
+        "alt": "Portrét Julese Dumonta d'Urville (1790–1842), francouzského mořeplavce a objevitele Adélie Land.",
+        "author": "neznámý autor (19. století)",
+        "license": "Public Domain",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Jules_dumont_d_urville.jpg"
+      }
     },
     {
       "year": 1844,
@@ -56,7 +77,14 @@
       "category": "discovery",
       "description": "Anglický zoolog George Robert Gray formálně popsal tučňáka císařského a pojmenoval ho po Johannu Reinholdu Forsterovi. Druh získal vědecké jméno Aptenodytes forsteri.",
       "speciesSlug": "cisarsky",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Emperor_penguin"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Emperor_penguin",
+      "image": {
+        "file": "gray-1844.jpg",
+        "alt": "Portrét George Roberta Graye (1808–1872), anglického zoologa, který formálně popsal tučňáka císařského.",
+        "author": "neznámý autor (19. století)",
+        "license": "Public Domain",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:George_Robert_Gray.jpg"
+      }
     },
     {
       "year": 1870,
@@ -65,7 +93,14 @@
       "description": "Joseph Hatch zakládá zpracovatelskou stanici na ostrově Macquarie. Mezi lety 1870 a 1919 bude pro výrobu oleje zabito přes dva miliony tučňáků královských a patagonských — v některých letech přesahuje roční úlovek 150 tisíc kusů.",
       "speciesSlug": "royal",
       "location": "Macquarie Island",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Joseph_Hatch"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Joseph_Hatch",
+      "image": {
+        "file": "macquarie-1870.jpg",
+        "alt": "Vrak lodi „Gratitude\" na ostrově Macquarie, 1911 — historická fotografie z období Hatchovy zpracovatelské stanice.",
+        "author": "Frank Hurley / Australasian Antarctic Expedition",
+        "license": "Public Domain",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Wreck_of_the_%27Gratitude%27,_Macquarie_Island,_1911_(2866462013).jpg"
+      }
     },
     {
       "year": 1898,
@@ -89,7 +124,14 @@
       "description": "V červenci, uprostřed antarktické zimy, vyrazili Apsley Cherry-Garrard, Edward Wilson a Henry Bowers ze Scottovy expedice Terra Nova k Cape Crozier sebrat vejce tučňáků císařských. Pět týdnů pochodu při −60 °C ve tmě se stalo legendou polárního cestování.",
       "speciesSlug": "cisarsky",
       "location": "Cape Crozier, Rossův ostrov",
-      "sourceUrl": "https://en.wikipedia.org/wiki/The_Worst_Journey_in_the_World"
+      "sourceUrl": "https://en.wikipedia.org/wiki/The_Worst_Journey_in_the_World",
+      "image": {
+        "file": "cherry-garrard-1911.jpg",
+        "alt": "Ilustrace ze Scottovy expedice Terra Nova — historická fotografie spojená s pochodem k Cape Crozier (Worst Journey in the World).",
+        "author": "Herbert Ponting / Terra Nova Expedition",
+        "license": "Public Domain",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Worst_Journey_in_the_World-1-008.jpg"
+      }
     },
     {
       "year": 1959,

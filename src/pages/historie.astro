@@ -34,7 +34,25 @@ type RenderEvent = Omit<typeof page.events[number], "image"> & {
 const slugCounter = new Map<string, number>();
 
 const enrichedEvents: RenderEvent[] = await Promise.all(page.events.map(async (e): Promise<RenderEvent> => {
-  // Priorita 1: speciesSlug → species hero (1. výskyt) nebo gallery rotace (další výskyty).
+  // Priorita 1: explicit JSON image — historická fotografie/kresba z Commons (preferováno).
+  if (e.image) {
+    const asset = findTimelineImage(e.image.file);
+    if (asset) {
+      const opt = await getImage({ src: asset, format: "webp", widths: [320, 480, 720], sizes: "(min-width: 768px) 360px, 90vw" });
+      return {
+        ...e,
+        image: {
+          src: opt.src,
+          srcset: opt.srcSet?.attribute,
+          alt: e.image.alt,
+          author: e.image.author,
+          license: e.image.license,
+          sourceUrl: e.image.sourceUrl,
+        },
+      };
+    }
+  }
+  // Priorita 2: speciesSlug → species hero (1. výskyt) nebo gallery rotace (další výskyty).
   if (e.speciesSlug) {
     const sp = speciesById.get(e.speciesSlug);
     if (sp) {
@@ -52,24 +70,6 @@ const enrichedEvents: RenderEvent[] = await Promise.all(page.events.map(async (e
           author: photo.author,
           license: photo.license,
           sourceUrl: photo.sourceUrl,
-        },
-      };
-    }
-  }
-  // Priorita 2: explicit JSON image (historic photo z Commons)
-  if (e.image) {
-    const asset = findTimelineImage(e.image.file);
-    if (asset) {
-      const opt = await getImage({ src: asset, format: "webp", widths: [320, 480, 720], sizes: "(min-width: 768px) 360px, 90vw" });
-      return {
-        ...e,
-        image: {
-          src: opt.src,
-          srcset: opt.srcSet?.attribute,
-          alt: e.image.alt,
-          author: e.image.author,
-          license: e.image.license,
-          sourceUrl: e.image.sourceUrl,
         },
       };
     }
