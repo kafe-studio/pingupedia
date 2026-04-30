@@ -775,15 +775,16 @@ export class PlatformGame {
     }
     p.vx = 0;
     p.vy = 0;
-    // Bottom entry: pokud nová místnost má výtah, snap player rovnou na něj a resetuj
-    // lift na floor pozici, ať začne stoupat nahoru s tučňákem.
+    // Bottom entry: tučňák se ocitne uprostřed místnosti (bezpečné výškou) a výtah
+    // se zresetuje dolů, takže pokud existuje, padající tučňák na něj přistane a vyjede.
     if (side === "bottom") {
       const lift = nextRoom.movers?.find((m) => m.kind === "lift");
+      const centerCol = lift ? Math.floor((lift.x + lift.w / 2) / TILE) : (exit.toX ?? 9);
+      p.x = centerCol * TILE + (TILE - PLAYER_W) / 2;
+      p.y = 6 * TILE;
       if (lift) {
         lift.y = lift.maxY ?? lift.y;
         lift.vy = -Math.abs(lift.vy ?? 0.7);
-        p.x = lift.x + (lift.w - PLAYER_W) / 2;
-        p.y = lift.y - PLAYER_H;
       }
     }
     // Snap player up if landing position overlaps a solid tile below — jinak by první
