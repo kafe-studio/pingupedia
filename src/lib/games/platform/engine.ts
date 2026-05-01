@@ -22,8 +22,8 @@ const TRANSITION_INVULN_MS = 1500;
 const PLAYER_W = 16;
 const PLAYER_H = 20;
 const MAX_LIVES = 5;
-const HEART_SPAWN_INTERVAL_MS = 12_000; // try to spawn a new heart every 12s
-const HEART_MAX_ALIVE = 5;              // never more than this many on the map at once
+const HEART_SPAWN_INTERVAL_MS = 7_000;  // try to spawn a new heart every 7s
+const HEART_MAX_ALIVE = 10;             // never more than this many on the map at once
 const PECK_COOLDOWN_MS = 500;           // delay between successive pecks
 
 export class PlatformGame {
@@ -36,6 +36,9 @@ export class PlatformGame {
   private disposed = false;
   private heartSpawnTimer = HEART_SPAWN_INTERVAL_MS / 2;
   private peckCooldown = 0;
+  // Cheat: "PING" = nekonečné životy do uzavření hry.
+  private cheatBuffer = "";
+  private invincible = false;
 
   constructor(canvas: HTMLCanvasElement, hooks: GameHooks) {
     const ctx = canvas.getContext("2d");
@@ -212,6 +215,16 @@ export class PlatformGame {
 
   private onKeyDown = (e: KeyboardEvent): void => {
     const k = e.key;
+    // Cheat detector — buffer posledních 4 zmáčknutých alphabet kláves.
+    if (k.length === 1 && /[a-zA-Z]/.test(k)) {
+      this.cheatBuffer = (this.cheatBuffer + k.toUpperCase()).slice(-4);
+      if (this.cheatBuffer === "PING" && !this.invincible) {
+        this.invincible = true;
+        this.state.lives = MAX_LIVES;
+        this.hooks.onSfx("fanfare");
+        this.emitHud();
+      }
+    }
     if (k === "ArrowLeft" || k === "a" || k === "A") this.keys.left = true;
     else if (k === "ArrowRight" || k === "d" || k === "D") this.keys.right = true;
     else if (k === "ArrowUp" || k === "w" || k === "W") this.keys.up = true;
@@ -820,6 +833,14 @@ export class PlatformGame {
   // --- Death / respawn ---
 
   private handleDeath(): void {
+    // PING cheat — nekonečné životy, jen respawn s invulnerable.
+    if (this.invincible) {
+      this.hooks.onSfx("ouch");
+      const room = this.state.rooms.get(this.state.currentRoomId)!;
+      this.state.player = this.freshPlayer(room);
+      this.state.player.invulnerableMs = INVULN_MS;
+      return;
+    }
     this.state.lives -= 1;
     if (this.state.lives <= 0) {
       this.state.gameover = true;
