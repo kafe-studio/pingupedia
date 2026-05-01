@@ -7,7 +7,7 @@ export class SfxPlayer {
   private ctx: AudioContext | null = null;
   private failed = false;
 
-  /** Lazy init — must be triggered by a user gesture (keypress / click) the first time. */
+  /** Lazy init - must be triggered by a user gesture (keypress / click) the first time. */
   private ensure(): AudioContext | null {
     if (this.ctx) return this.ctx;
     if (this.failed) return null;
@@ -36,7 +36,7 @@ export class SfxPlayer {
     const t = ctx.currentTime;
     switch (kind) {
       case "mlask":
-        // Krátké chrupnutí — "mlask" při sběru ryby.
+        // Krátké chrupnutí - "mlask" při sběru ryby.
         this.blip(ctx, t, 800, 400, 0.05, "square", 0.20);
         this.blip(ctx, t + 0.04, 600, 200, 0.04, "square", 0.15);
         break;
@@ -50,7 +50,7 @@ export class SfxPlayer {
         this.blip(ctx, t + 0.04, 1800, 1800, 0.10, "triangle", 0.14);
         break;
       case "gulp":
-        // Při sběru srdíčka — stoupavé "ham".
+        // Při sběru srdíčka - stoupavé "ham".
         this.blip(ctx, t, 200, 600, 0.12, "sine", 0.22);
         this.blip(ctx, t + 0.10, 600, 800, 0.08, "sine", 0.18);
         break;
@@ -59,7 +59,7 @@ export class SfxPlayer {
         this.blip(ctx, t, 600, 80, 0.18, "sine", 0.20);
         break;
       case "boing":
-        // Skok — krátké stoupání.
+        // Skok - krátké stoupání.
         this.blip(ctx, t, 200, 700, 0.10, "square", 0.14);
         break;
       case "ouch":
@@ -72,19 +72,19 @@ export class SfxPlayer {
         this.blip(ctx, t + 0.30, 80, 40, 0.40, "sawtooth", 0.22);
         break;
       case "tada":
-        // Vítězný akord — C dur arpeggio + finale.
+        // Vítězný akord - C dur arpeggio + finale.
         this.blip(ctx, t,        523, 523, 0.12, "square", 0.16); // C5
         this.blip(ctx, t + 0.12, 659, 659, 0.12, "square", 0.16); // E5
         this.blip(ctx, t + 0.24, 784, 784, 0.12, "square", 0.16); // G5
         this.blip(ctx, t + 0.36, 1047, 1047, 0.30, "square", 0.20); // C6
         break;
       case "peep":
-        // Pípnutí mláděte — krátký vysoký triller, 2 noty.
+        // Pípnutí mláděte - krátký vysoký triller, 2 noty.
         this.blip(ctx, t,        1500, 1800, 0.06, "triangle", 0.12);
         this.blip(ctx, t + 0.07, 1300, 1500, 0.05, "triangle", 0.10);
         break;
       case "fanfare":
-        // Fanfára při doručení mláďat — kratší veselé arpeggio.
+        // Fanfára při doručení mláďat - kratší veselé arpeggio.
         this.blip(ctx, t,        659, 659, 0.10, "square", 0.18); // E5
         this.blip(ctx, t + 0.10, 784, 784, 0.10, "square", 0.18); // G5
         this.blip(ctx, t + 0.20, 1047, 1047, 0.10, "square", 0.18); // C6

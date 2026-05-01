@@ -1,6 +1,6 @@
 // 8-bit chiptune music engine pro Ledovou výpravu.
 // Web Audio API + square waves + envelope, ve stylu NES/Game Boy.
-// Hraje "Korobeiniki" (ruská lidová z 19. století, public domain) — melodie
+// Hraje "Korobeiniki" (ruská lidová z 19. století, public domain) - melodie
 // známá z Tetrise. AutoContext startuje až po user gesture (browser policy).
 
 type Note = number;        // MIDI-like number (60 = C4). 0 = rest.

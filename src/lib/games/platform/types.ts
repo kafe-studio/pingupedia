@@ -11,14 +11,14 @@ export const VIEW_H = ROWS * TILE;   // 224
 export type TileChar =
   | "." // empty
   | "#" // solid block (un-breakable wall / ground)
-  | "b" // breakable ice block — solid until pecked, then becomes "."
+  | "b" // breakable ice block - solid until pecked, then becomes "."
   | "=" // platform / jumpthrough top
   | "H" // ladder
   | "~" // water / death zone
-  | "*" // spikes / crystals — death on touch
+  | "*" // spikes / crystals - death on touch
   | "C" // conveyor (auto-push right)
   | "c" // conveyor (auto-push left)
-  | "T" // trampoline — bounces player upward on landing
+  | "T" // trampoline - bounces player upward on landing
   ;
 
 // Locked doors: 4 colors, each unlocks a different mini-game.
@@ -109,7 +109,7 @@ export type Palette =
   | "wreck" | "tropical" | "sunset" | "night" | "candy"
   | "emperor" | "magellan" | "galapagos";
 
-// Pohyblivá plošina — houpačka (kind="swing": vodorovně), posuvník (kind="slide": svisle)
+// Pohyblivá plošina - houpačka (kind="swing": vodorovně), posuvník (kind="slide": svisle)
 // nebo výtah (kind="lift": svisle, používá se pro bezpečný transport k top exitu).
 // Player může na ní stát a je přenášen. Není fatal.
 export interface Mover {
@@ -152,10 +152,10 @@ export interface PlayerState {
   invulnerableMs: number;
 }
 
-// Mládě následující hráče v "lemmings"-stylu — pamatuje si zpožděnou pozici
+// Mládě následující hráče v "lemmings"-stylu - pamatuje si zpožděnou pozici
 // (delay buffer), takže prochází stejnou cestou s odstupem.
 export interface Chick {
-  id: string;          // unique (originalRoom + index) — survives follow-train
+  id: string;          // unique (originalRoom + index) - survives follow-train
   x: number;
   y: number;
   facing: 1 | -1;
@@ -179,7 +179,7 @@ export interface GameState {
   paused: boolean;                // true while a minigame is active
   chicks: Chick[];                // mláďata aktuálně následující hráče
   deliveredChicks: number;        // počet doručených mláďat do iglu (cumulative)
-  score: number;                  // body — items + bonus za chicks
+  score: number;                  // body - items + bonus za chicks
 }
 
 export interface GameHud {

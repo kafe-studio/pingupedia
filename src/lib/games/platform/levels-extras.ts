@@ -40,7 +40,7 @@ function exit(side: Exit["side"], toRoom: string, toX?: number, toY?: number): E
   return { side, toRoom, toX, toY };
 }
 
-// stanice2 — hub. Top entry ze stanice (drop), exits left/right/bottom.
+// stanice2 - hub. Top entry ze stanice (drop), exits left/right/bottom.
 const stanice2: Room = {
   id: "stanice2",
   name: "Polární kupole",
@@ -77,13 +77,13 @@ const stanice2: Room = {
     exit("bottom", "kryostat", 9, 1),
   ],
   spawn: { x: 9 * TILE, y: 1 * TILE },
-  hint: "Polární kupole — křižovatka. Klíč najdeš dole v kryostatu.",
+  hint: "Polární kupole - křižovatka. Klíč najdeš dole v kryostatu.",
   movers: [
     { kind: "lift", x: 9 * 16, y: 11 * 16, w: 32, h: 6, minY: -8, maxY: 11 * 16, vy: 0.7 },
   ],
 };
 
-// kantyna — jídelna, conveyor + ryby. Levé od stanice2.
+// kantyna - jídelna, conveyor + ryby. Levé od stanice2.
 const kantyna: Room = {
   id: "kantyna",
   name: "Kantýna",
@@ -123,7 +123,7 @@ const kantyna: Room = {
   hint: "Kuchyně tučňáků. Pásový dopravník vlevo dolů.",
 };
 
-// sparna — sklad zásob, dead-end nalevo od kantyna.
+// sparna - sklad zásob, dead-end nalevo od kantyna.
 const sparna: Room = {
   id: "sparna",
   name: "Spárna",
@@ -160,13 +160,13 @@ const sparna: Room = {
     exit("left", "kryostat", 18, 12),
   ],
   spawn: { x: 18 * TILE, y: 12 * TILE },
-  hint: "Spárna — police plné zásob, vlevo kryostat.",
+  hint: "Spárna - police plné zásob, vlevo kryostat.",
   movers: [
     { kind: "swing", x: 1 * 16, y: 7 * 16, w: 32, h: 6, minX: 1 * 16, maxX: 17 * 16, vx: 0.8 },
   ],
 };
 
-// observatorium — dalekohledy a hvězdy. Vpravo od stanice2.
+// observatorium - dalekohledy a hvězdy. Vpravo od stanice2.
 const observatorium: Room = {
   id: "observatorium",
   name: "Observatorium",
@@ -209,7 +209,7 @@ const observatorium: Room = {
   ],
 };
 
-// kryostat — kryogenní lab, žlutý klíč. Pod stanice2.
+// kryostat - kryogenní lab, žlutý klíč. Pod stanice2.
 const kryostat: Room = {
   id: "kryostat",
   name: "Kryostat",
@@ -291,7 +291,7 @@ const trida: Room = {
     exit("bottom", "telocvicna", 10, 1),
   ],
   spawn: { x: 1 * TILE, y: 12 * TILE },
-  hint: "Třída — sběr vajec a první mládě. Doprava do knihovny, dolů do tělocvičny.",
+  hint: "Třída - sběr vajec a první mládě. Doprava do knihovny, dolů do tělocvičny.",
 };
 
 const knihovna: Room = {
@@ -329,7 +329,7 @@ const knihovna: Room = {
     exit("bottom", "telocvicna", 10, 1),
   ],
   spawn: { x: 1 * TILE, y: 11 * TILE },
-  hint: "Knihovna — slalom mezi policemi, dolů do tělocvičny.",
+  hint: "Knihovna - slalom mezi policemi, dolů do tělocvičny.",
   movers: [
     { kind: "swing", x: 1 * 16, y: 9 * 16, w: 48, h: 6, minX: 1 * 16, maxX: 16 * 16, vx: 0.9 },
   ],
@@ -368,7 +368,7 @@ const telocvicna: Room = {
     exit("right", "knihovna", 1, 11),
   ],
   spawn: { x: 10 * TILE, y: 12 * TILE },
-  hint: "Tělocvična — žebříky nahoru, vlevo ředitelna, vpravo knihovna.",
+  hint: "Tělocvična - žebříky nahoru, vlevo ředitelna, vpravo knihovna.",
   movers: [
     { kind: "lift", x: 10 * 16, y: 11 * 16, w: 32, h: 6, minY: -8, maxY: 11 * 16, vy: 0.7 },
   ],
@@ -405,7 +405,7 @@ const drilovaciRampa: Room = {
     exit("right", "reditelna", 1, 12),
   ],
   spawn: { x: 1 * TILE, y: 12 * TILE },
-  hint: "Drilovací rampa — pozor na bodce pod každou plošinou.",
+  hint: "Drilovací rampa - pozor na bodce pod každou plošinou.",
 };
 
 const reditelna: Room = {
@@ -440,7 +440,7 @@ const reditelna: Room = {
     exit("right", "telocvicna", 1, 12),
   ],
   spawn: { x: 1 * TILE, y: 12 * TILE },
-  hint: "Ředitelna — červený klíč otevírá Hokej.",
+  hint: "Ředitelna - červený klíč otevírá Hokej.",
 };
 
 // =============================================================================
@@ -483,7 +483,7 @@ const prepad: Room = {
     exit("bottom", "podzemniRybnik", 9, 1),
   ],
   spawn: { x: 9 * TILE, y: 1 * TILE },
-  hint: "Propad — křižovatka jeskyně. Klíč najdeš dole v rybníce.",
+  hint: "Propad - křižovatka jeskyně. Klíč najdeš dole v rybníce.",
   movers: [
     { kind: "slide", x: 14 * 16, y: 4 * 16, w: 32, h: 6, minY: 3 * 16, maxY: 11 * 16, vy: 0.5 },
     { kind: "lift", x: 9 * 16, y: 11 * 16, w: 32, h: 6, minY: -8, maxY: 11 * 16, vy: 0.7 },
@@ -522,7 +522,7 @@ const stalaktity: Room = {
     exit("left", "pokladnice", 18, 12),
   ],
   spawn: { x: 18 * TILE, y: 12 * TILE },
-  hint: "Stalaktity — bodce ze stropu, plošiny mezi.",
+  hint: "Stalaktity - bodce ze stropu, plošiny mezi.",
   movers: [
     { kind: "swing", x: 2 * 16, y: 9 * 16, w: 64, h: 6, minX: 1 * 16, maxX: 13 * 16, vx: 1.0 },
   ],
@@ -561,7 +561,7 @@ const temnaChodba: Room = {
     exit("right", "podzemniRybnik", 1, 12),
   ],
   spawn: { x: 1 * TILE, y: 12 * TILE },
-  hint: "Temná chodba — dlouhý žebřík, sběr ryb.",
+  hint: "Temná chodba - dlouhý žebřík, sběr ryb.",
   movers: [
     { kind: "slide", x: 16 * 16, y: 2 * 16, w: 32, h: 6, minY: 2 * 16, maxY: 11 * 16, vy: 0.7 },
   ],
@@ -600,7 +600,7 @@ const podzemniRybnik: Room = {
     exit("right", "pokladnice", 1, 12),
   ],
   spawn: { x: 9 * TILE, y: 12 * TILE },
-  hint: "Rybník — zelený klíč otevírá Potápění.",
+  hint: "Rybník - zelený klíč otevírá Potápění.",
   movers: [
     { kind: "lift", x: 9 * 16, y: 11 * 16, w: 32, h: 6, minY: -8, maxY: 11 * 16, vy: 0.7 },
   ],
@@ -639,7 +639,7 @@ const pokladnice: Room = {
     exit("right", "stalaktity", 1, 12),
   ],
   spawn: { x: 1 * TILE, y: 12 * TILE },
-  hint: "Pokladnice — bohatství i past medvěda.",
+  hint: "Pokladnice - bohatství i past medvěda.",
   movers: [
     { kind: "swing", x: 1 * 16, y: 6 * 16, w: 48, h: 6, minX: 1 * 16, maxX: 16 * 16, vx: 0.6 },
   ],
@@ -683,7 +683,7 @@ const kraterUst: Room = {
     exit("top", "popelinka", 9, 12),
   ],
   spawn: { x: 1 * TILE, y: 12 * TILE },
-  hint: "Ústí kráteru — křižovatka, vede do tří dalších částí ostrova.",
+  hint: "Ústí kráteru - křižovatka, vede do tří dalších částí ostrova.",
   movers: [
     { kind: "lift", x: 9 * 16, y: 11 * 16, w: 32, h: 6, minY: -8, maxY: 11 * 16, vy: 0.7 },
   ],
@@ -722,7 +722,7 @@ const lavoveJezirko: Room = {
     exit("right", "cervenyKamen", 1, 12),
   ],
   spawn: { x: 9 * TILE, y: 12 * TILE },
-  hint: "Lávové jezírko — voda hoří, neskákej dolů.",
+  hint: "Lávové jezírko - voda hoří, neskákej dolů.",
   movers: [
     { kind: "lift", x: 9 * 16, y: 11 * 16, w: 32, h: 6, minY: -8, maxY: 11 * 16, vy: 0.7 },
   ],
@@ -761,7 +761,7 @@ const popelinka: Room = {
     exit("right", "lavoveJezirko", 1, 12),
   ],
   spawn: { x: 9 * TILE, y: 1 * TILE },
-  hint: "Popelínka — houpačka přenese tě nad bodci.",
+  hint: "Popelínka - houpačka přenese tě nad bodci.",
   movers: [
     { kind: "swing", x: 2 * TILE, y: 6 * TILE, w: 48, h: 6, minX: 1 * TILE, maxX: 16 * TILE, vx: 0.9 },
   ],
@@ -798,7 +798,7 @@ const horkyKamen: Room = {
     exit("right", "cervenyKamen", 1, 11),
   ],
   spawn: { x: 1 * TILE, y: 12 * TILE },
-  hint: "Horký kámen — průchod doprava ke krvavému kameni.",
+  hint: "Horký kámen - průchod doprava ke krvavému kameni.",
 };
 
 const cervenyKamen: Room = {
@@ -833,7 +833,7 @@ const cervenyKamen: Room = {
     exit("right", "popelinka", 1, 12),
   ],
   spawn: { x: 1 * TILE, y: 12 * TILE },
-  hint: "Červený kámen — modrý klíč otevírá Lyžování.",
+  hint: "Červený kámen - modrý klíč otevírá Lyžování.",
 };
 
 export const EXTRA_ROOMS: Room[] = [

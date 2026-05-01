@@ -316,7 +316,7 @@ const more: Room = {
     exit("right", "rybarska-dira", 1, 5),
   ],
   spawn: { x: 2 * TILE, y: 4 * TILE },
-  hint: "Skoč do vody — tučňák plave a může lovit ryby.",
+  hint: "Skoč do vody - tučňák plave a může lovit ryby.",
 };
 
 const rybarskaDira: Room = {
@@ -691,7 +691,7 @@ const tajny: Room = {
     exit("left", "hriste", 18, 12),
   ],
   spawn: { x: 2 * TILE, y: 12 * TILE },
-  hint: "Trofejní síň — medaile, vlajka, krystal.",
+  hint: "Trofejní síň - medaile, vlajka, krystal.",
 };
 
 const majak: Room = {
@@ -818,7 +818,7 @@ const komin: Room = {
   items: [i("crystal", 9, 7, "ko-c1"), i("medal", 6, 4, "ko-m1"), i("flag", 14, 9, "ko-fl"), i("fish", 14, 4, "ko-f1")],
   exits: [exit("right", "spizirna", 1, 12)],
   spawn: { x: 13 * TILE, y: 12 * TILE },
-  hint: "Komín — dead-end. Vyber a vrať se.",
+  hint: "Komín - dead-end. Vyber a vrať se.",
 };
 
 // Tree B: zakladna.bottom → tunelky → dilna → sklad
@@ -910,7 +910,7 @@ const sklad: Room = {
     exit("bottom", "klubovna", 9, 1),
   ],
   spawn: { x: 17 * TILE, y: 12 * TILE },
-  hint: "Sklad — trofeje + tajný tunel dolů.",
+  hint: "Sklad - trofeje + tajný tunel dolů.",
 };
 
 // Tree C: kolonie.top → vejcohnizdo → mladata → skolka
@@ -995,7 +995,7 @@ const mladata: Room = {
     exit("top", "skolka", 10, 12),
   ],
   spawn: { x: 8 * TILE, y: 2 * TILE },
-  hint: "Mláďata se ti přidají do houfu — doruč je do iglú za bonus body!",
+  hint: "Mláďata se ti přidají do houfu - doruč je do iglú za bonus body!",
   movers: [
     { kind: "lift", x: 10 * 16, y: 11 * 16, w: 32, h: 6, minY: -8, maxY: 11 * 16, vy: 0.7 },
   ],
@@ -1034,7 +1034,7 @@ const skolka: Room = {
     exit("right", "trida", 1, 11),
   ],
   spawn: { x: 8 * TILE, y: 2 * TILE },
-  hint: "Školka pro mláďata — sebrat všechna vejce a chyť mláďata pro doprovod do iglu! Vpravo je akademie.",
+  hint: "Školka pro mláďata - sebrat všechna vejce a chyť mláďata pro doprovod do iglu! Vpravo je akademie.",
 };
 
 // Tree D: skaly.top → hreben → arch → vrchol
@@ -1217,7 +1217,7 @@ const kalejdoskop: Room = {
     exit("left", "magArchipelag", 18, 11),
   ],
   spawn: { x: 17 * TILE, y: 12 * TILE },
-  hint: "Kalejdoskop — barevný průchod, vlevo Magellanův archipelag.",
+  hint: "Kalejdoskop - barevný průchod, vlevo Magellanův archipelag.",
 };
 
 // Tree F: vrak.right → kostra → propast → poklad
@@ -1304,7 +1304,7 @@ const poklad: Room = {
   items: [i("medal", 5, 4, "pk-m1"), i("medal", 14, 4, "pk-m2"), i("flag", 9, 9, "pk-fl")],
   exits: [exit("top", "propast", 9, 0)],
   spawn: { x: 9 * TILE, y: 2 * TILE },
-  hint: "Pirátský poklad — 3 trofeje, dead-end.",
+  hint: "Pirátský poklad - 3 trofeje, dead-end.",
   movers: [
     { kind: "lift", x: 9 * 16, y: 11 * 16, w: 32, h: 6, minY: -8, maxY: 11 * 16, vy: 0.7 },
   ],
@@ -1400,7 +1400,7 @@ const planety: Room = {
     exit("top", "aurora1", 9, 12),
   ],
   spawn: { x: 17 * TILE, y: 12 * TILE },
-  hint: "Krystalové komnaty — 4 trofeje. Aurora se otvírá nahoře.",
+  hint: "Krystalové komnaty - 4 trofeje. Aurora se otvírá nahoře.",
   movers: [
     { kind: "lift", x: 9 * 16, y: 11 * 16, w: 32, h: 6, minY: -8, maxY: 11 * 16, vy: 0.7 },
   ],
@@ -1493,7 +1493,7 @@ const kino: Room = {
   items: [i("medal", 9, 1, "ki-m1"), i("flag", 5, 6, "ki-fl"), i("crystal", 14, 9, "ki-c1")],
   exits: [exit("right", "divadlo", 1, 12)],
   spawn: { x: 13 * TILE, y: 12 * TILE },
-  hint: "Kino — promítací sál, dead-end.",
+  hint: "Kino - promítací sál, dead-end.",
 };
 
 export const ROOMS: Room[] = [

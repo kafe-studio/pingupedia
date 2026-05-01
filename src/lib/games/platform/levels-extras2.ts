@@ -1,5 +1,5 @@
 // Sprint 006 Run 019-024: dalších 30 místností v 6 klastrech.
-// Cluster connections (přes existing rooms — viz levels.ts):
+// Cluster connections (přes existing rooms - viz levels.ts):
 //   planety.top    → aurora1     (Aurora, 5)
 //   iglu.right     → vrak2       (Vrak, 5)
 //   galapagos.right→ palma       (Tropický ostrov, 5)
@@ -27,12 +27,12 @@ function exit(side: Exit["side"], toRoom: string, toX?: number, toY?: number): E
 }
 
 // =============================================================================
-// Cluster: Aurora (5 místností, palette aurora) — vstup z planety.top
+// Cluster: Aurora (5 místností, palette aurora) - vstup z planety.top
 // =============================================================================
 
 const aurora1: Room = {
   id: "aurora1",
-  name: "Polární záře — vstup",
+  name: "Polární záře - vstup",
   palette: "aurora",
   tiles: [
     "....................",
@@ -59,7 +59,7 @@ const aurora1: Room = {
     exit("top", "auroraKomin", 9, 12),
   ],
   spawn: { x: 9 * TILE, y: 1 * TILE },
-  hint: "Polární záře — houpačka mezi platformami.",
+  hint: "Polární záře - houpačka mezi platformami.",
   movers: [
     { kind: "swing", x: 2 * TILE, y: 6 * TILE, w: 48, h: 6, minX: 1 * TILE, maxX: 16 * TILE, vx: 0.7 },
     { kind: "lift", x: 9 * 16, y: 11 * 16, w: 32, h: 6, minY: -8, maxY: 11 * 16, vy: 0.7 },
@@ -93,7 +93,7 @@ const auroraZarka: Room = {
     exit("left", "auroraOblak", 18, 12),
   ],
   spawn: { x: 18 * TILE, y: 12 * TILE },
-  hint: "Zářivý sloup — postup mezi plošinami.",
+  hint: "Zářivý sloup - postup mezi plošinami.",
 };
 
 const auroraOltar: Room = {
@@ -123,7 +123,7 @@ const auroraOltar: Room = {
     exit("right", "auroraKomin", 1, 12),
   ],
   spawn: { x: 1 * TILE, y: 12 * TILE },
-  hint: "Oltář aurory — sebrat srdce a vrátit se.",
+  hint: "Oltář aurory - sebrat srdce a vrátit se.",
 };
 
 const auroraKomin: Room = {
@@ -154,7 +154,7 @@ const auroraKomin: Room = {
     exit("right", "auroraOblak", 1, 12),
   ],
   spawn: { x: 9 * TILE, y: 1 * TILE },
-  hint: "Komín — vyšplhat po žebříku, potom skoky.",
+  hint: "Komín - vyšplhat po žebříku, potom skoky.",
 };
 
 const auroraOblak: Room = {
@@ -185,11 +185,11 @@ const auroraOblak: Room = {
     exit("right", "auroraZarka", 1, 12),
   ],
   spawn: { x: 9 * TILE, y: 12 * TILE },
-  hint: "Oblak aurory — voláci nahoře.",
+  hint: "Oblak aurory - voláci nahoře.",
 };
 
 // =============================================================================
-// Cluster: Vrak (5 místností, palette wreck) — vstup z iglu.right
+// Cluster: Vrak (5 místností, palette wreck) - vstup z iglu.right
 // =============================================================================
 
 const vrak2: Room = {
@@ -221,7 +221,7 @@ const vrak2: Room = {
     exit("top", "pokladVraku", 9, 12),
   ],
   spawn: { x: 1 * TILE, y: 12 * TILE },
-  hint: "Vyplavený vrak — přístav doprava, kormidlo dolů.",
+  hint: "Vyplavený vrak - přístav doprava, kormidlo dolů.",
   movers: [
     { kind: "lift", x: 9 * 16, y: 11 * 16, w: 32, h: 6, minY: -8, maxY: 11 * 16, vy: 0.7 },
   ],
@@ -254,7 +254,7 @@ const pristav: Room = {
     exit("right", "pokladVraku", 1, 12),
   ],
   spawn: { x: 18 * TILE, y: 12 * TILE },
-  hint: "Přístav — posuvník nad vodou tě přenese.",
+  hint: "Přístav - posuvník nad vodou tě přenese.",
   movers: [
     { kind: "slide", x: 10 * TILE, y: 4 * TILE, w: 48, h: 6, minY: 3 * TILE, maxY: 9 * TILE, vy: 0.6 },
   ],
@@ -287,7 +287,7 @@ const prazdnaSelma: Room = {
     exit("left", "pokladVraku", 18, 12),
   ],
   spawn: { x: 1 * TILE, y: 12 * TILE },
-  hint: "Prázdná soutěska — slalom mezi sloupy.",
+  hint: "Prázdná soutěska - slalom mezi sloupy.",
 };
 
 const rezavyKormidlnik: Room = {
@@ -319,7 +319,7 @@ const rezavyKormidlnik: Room = {
     exit("bottom", "more", 9, 1),
   ],
   spawn: { x: 9 * TILE, y: 1 * TILE },
-  hint: "Rezavé kormidlo — propad k moři.",
+  hint: "Rezavé kormidlo - propad k moři.",
   movers: [
     { kind: "slide", x: 8 * 16, y: 4 * 16, w: 32, h: 6, minY: 3 * 16, maxY: 10 * 16, vy: 0.4 },
     { kind: "lift", x: 9 * 16, y: 11 * 16, w: 32, h: 6, minY: -8, maxY: 11 * 16, vy: 0.7 },
@@ -354,11 +354,11 @@ const pokladVraku: Room = {
     exit("right", "prazdnaSelma", 1, 12),
   ],
   spawn: { x: 9 * TILE, y: 1 * TILE },
-  hint: "Poklad vraku — bohatství i past krystalů.",
+  hint: "Poklad vraku - bohatství i past krystalů.",
 };
 
 // =============================================================================
-// Cluster: Tropický ostrov (5 místností, palette tropical) — vstup z galapagos.right
+// Cluster: Tropický ostrov (5 místností, palette tropical) - vstup z galapagos.right
 // =============================================================================
 
 const palma: Room = {
@@ -390,7 +390,7 @@ const palma: Room = {
     exit("left", "liana", 18, 11),
   ],
   spawn: { x: 1 * TILE, y: 12 * TILE },
-  hint: "Pod palmou — křižovatka tropů.",
+  hint: "Pod palmou - křižovatka tropů.",
   movers: [
     { kind: "lift", x: 9 * 16, y: 11 * 16, w: 32, h: 6, minY: -8, maxY: 11 * 16, vy: 0.7 },
   ],
@@ -423,7 +423,7 @@ const ananas: Room = {
     exit("right", "dzungle", 1, 12),
   ],
   spawn: { x: 18 * TILE, y: 12 * TILE },
-  hint: "Ananasovník — výstup po větvích.",
+  hint: "Ananasovník - výstup po větvích.",
 };
 
 const liana: Room = {
@@ -453,7 +453,7 @@ const liana: Room = {
     exit("left", "tropPlazh", 18, 12),
   ],
   spawn: { x: 1 * TILE, y: 12 * TILE },
-  hint: "Liány — žebříky všude, hledej cestu.",
+  hint: "Liány - žebříky všude, hledej cestu.",
 };
 
 const tropPlazh: Room = {
@@ -484,7 +484,7 @@ const tropPlazh: Room = {
     exit("right", "dzungle", 1, 12),
   ],
   spawn: { x: 9 * TILE, y: 1 * TILE },
-  hint: "Tropická pláž — voda dole, sebrat srdce.",
+  hint: "Tropická pláž - voda dole, sebrat srdce.",
 };
 
 const dzungle: Room = {
@@ -514,11 +514,11 @@ const dzungle: Room = {
     exit("right", "tropPlazh", 1, 12),
   ],
   spawn: { x: 18 * TILE, y: 12 * TILE },
-  hint: "Džungle — bujná, vlevo ananas, vpravo pláž.",
+  hint: "Džungle - bujná, vlevo ananas, vpravo pláž.",
 };
 
 // =============================================================================
-// Cluster: Severní pól (5 místností, palette arctic) — vstup z kolonie.top
+// Cluster: Severní pól (5 místností, palette arctic) - vstup z kolonie.top
 // =============================================================================
 
 const ledovec: Room = {
@@ -550,7 +550,7 @@ const ledovec: Room = {
     exit("bottom", "iglutop", 9, 1),
   ],
   spawn: { x: 9 * TILE, y: 1 * TILE },
-  hint: "Velký ledovec — křižovatka severu.",
+  hint: "Velký ledovec - křižovatka severu.",
   movers: [
     { kind: "lift", x: 9 * 16, y: 11 * 16, w: 32, h: 6, minY: -8, maxY: 11 * 16, vy: 0.7 },
   ],
@@ -583,7 +583,7 @@ const polarniDen: Room = {
     exit("left", "saneSladcen", 18, 12),
   ],
   spawn: { x: 18 * TILE, y: 12 * TILE },
-  hint: "Polární den — slunce nezapadá, sbírej rychle.",
+  hint: "Polární den - slunce nezapadá, sbírej rychle.",
 };
 
 const snehovaBoure: Room = {
@@ -613,7 +613,7 @@ const snehovaBoure: Room = {
     exit("right", "iglutop", 1, 12),
   ],
   spawn: { x: 1 * TILE, y: 12 * TILE },
-  hint: "Sněhová bouře — vítr fouká shora dolů.",
+  hint: "Sněhová bouře - vítr fouká shora dolů.",
 };
 
 const iglutop: Room = {
@@ -644,7 +644,7 @@ const iglutop: Room = {
     exit("right", "saneSladcen", 1, 12),
   ],
   spawn: { x: 9 * TILE, y: 12 * TILE },
-  hint: "Iglú na vrcholku — výhled na celý sever.",
+  hint: "Iglú na vrcholku - výhled na celý sever.",
   movers: [
     { kind: "lift", x: 9 * 16, y: 11 * 16, w: 32, h: 6, minY: -8, maxY: 11 * 16, vy: 0.7 },
   ],
@@ -678,14 +678,14 @@ const saneSladcen: Room = {
     exit("right", "polarniDen", 1, 12),
   ],
   spawn: { x: 1 * TILE, y: 12 * TILE },
-  hint: "Saně tučňáků — sjezd zleva doprava dolů.",
+  hint: "Saně tučňáků - sjezd zleva doprava dolů.",
   movers: [
     { kind: "lift", x: 9 * 16, y: 11 * 16, w: 32, h: 6, minY: -8, maxY: 11 * 16, vy: 0.7 },
   ],
 };
 
 // =============================================================================
-// Cluster: Tučňáčí katedrála (5 místností, palette emperor) — vstup z vrchol.top
+// Cluster: Tučňáčí katedrála (5 místností, palette emperor) - vstup z vrchol.top
 // =============================================================================
 
 const katedra: Room = {
@@ -717,7 +717,7 @@ const katedra: Room = {
     exit("top", "klenotnice", 9, 12),
   ],
   spawn: { x: 1 * TILE, y: 12 * TILE },
-  hint: "Katedrála — houpačka v lodi přenese tě.",
+  hint: "Katedrála - houpačka v lodi přenese tě.",
   movers: [
     { kind: "swing", x: 4 * TILE, y: 7 * TILE, w: 48, h: 6, minX: 2 * TILE, maxX: 14 * TILE, vx: 0.8 },
     { kind: "lift", x: 9 * 16, y: 11 * 16, w: 32, h: 6, minY: -8, maxY: 11 * 16, vy: 0.7 },
@@ -752,7 +752,7 @@ const chor: Room = {
     exit("right", "oltarKatedraly", 1, 12),
   ],
   spawn: { x: 9 * TILE, y: 12 * TILE },
-  hint: "Chór — kostelní zpěv mezi plošinami.",
+  hint: "Chór - kostelní zpěv mezi plošinami.",
   movers: [
     { kind: "lift", x: 9 * 16, y: 11 * 16, w: 32, h: 6, minY: -8, maxY: 11 * 16, vy: 0.7 },
   ],
@@ -785,7 +785,7 @@ const vez: Room = {
     exit("right", "klenotnice", 1, 12),
   ],
   spawn: { x: 1 * TILE, y: 12 * TILE },
-  hint: "Zvonice — vyšplhej po žebříku k zvonům.",
+  hint: "Zvonice - vyšplhej po žebříku k zvonům.",
 };
 
 const oltarKatedraly: Room = {
@@ -815,7 +815,7 @@ const oltarKatedraly: Room = {
     exit("left", "chor", 18, 12),
   ],
   spawn: { x: 1 * TILE, y: 12 * TILE },
-  hint: "Oltář katedrály — sebrat srdce.",
+  hint: "Oltář katedrály - sebrat srdce.",
 };
 
 const klenotnice: Room = {
@@ -846,11 +846,11 @@ const klenotnice: Room = {
     exit("right", "chor", 1, 12),
   ],
   spawn: { x: 9 * TILE, y: 1 * TILE },
-  hint: "Klenotnice — krystaly v každém rohu.",
+  hint: "Klenotnice - krystaly v každém rohu.",
 };
 
 // =============================================================================
-// Cluster: Magellan (5 místností, palette magellan) — vstup z kalejdoskop.right
+// Cluster: Magellan (5 místností, palette magellan) - vstup z kalejdoskop.right
 // =============================================================================
 
 const magArchipelag: Room = {
@@ -882,7 +882,7 @@ const magArchipelag: Room = {
     exit("top", "magPosledni", 9, 12),
   ],
   spawn: { x: 1 * TILE, y: 12 * TILE },
-  hint: "Magellanův archipelag — křižovatka, vede do tří dalších míst.",
+  hint: "Magellanův archipelag - křižovatka, vede do tří dalších míst.",
   movers: [
     { kind: "lift", x: 9 * 16, y: 11 * 16, w: 32, h: 6, minY: -8, maxY: 11 * 16, vy: 0.7 },
   ],
@@ -915,7 +915,7 @@ const magBouracky: Room = {
     exit("right", "magOstroh", 1, 12),
   ],
   spawn: { x: 18 * TILE, y: 12 * TILE },
-  hint: "Bouračky — šachovnice plošin, skoč přesně.",
+  hint: "Bouračky - šachovnice plošin, skoč přesně.",
 };
 
 const magUniky: Room = {
@@ -946,7 +946,7 @@ const magUniky: Room = {
     exit("right", "magOstroh", 1, 12),
   ],
   spawn: { x: 9 * TILE, y: 12 * TILE },
-  hint: "Mořské úniky — posuvníky tě přenesou přes vodu.",
+  hint: "Mořské úniky - posuvníky tě přenesou přes vodu.",
   movers: [
     { kind: "swing", x: 2 * TILE, y: 6 * TILE, w: 48, h: 6, minX: 1 * TILE, maxX: 16 * TILE, vx: 0.7 },
     { kind: "lift", x: 9 * 16, y: 11 * 16, w: 32, h: 6, minY: -8, maxY: 11 * 16, vy: 0.7 },
@@ -980,7 +980,7 @@ const magOstroh: Room = {
     exit("left", "magUniky", 18, 12),
   ],
   spawn: { x: 1 * TILE, y: 12 * TILE },
-  hint: "Magellanův ostroh — pevný kus země.",
+  hint: "Magellanův ostroh - pevný kus země.",
 };
 
 const magPosledni: Room = {
@@ -1011,7 +1011,7 @@ const magPosledni: Room = {
     exit("right", "magUniky", 1, 12),
   ],
   spawn: { x: 9 * TILE, y: 1 * TILE },
-  hint: "Poslední maják — vrchol mapy, all you can collect.",
+  hint: "Poslední maják - vrchol mapy, all you can collect.",
 };
 
 export const EXTRA_ROOMS_2: Room[] = [

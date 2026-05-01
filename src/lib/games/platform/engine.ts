@@ -11,7 +11,7 @@ import { ROOMS, START_ROOM_ID } from "./levels";
 import { drawScene } from "./render";
 
 // Physics constants tuned for 320×224 logical world.
-// Jump apex ≈ JUMP_V² / (2·GRAVITY) — needs to clear 4 tiles (≈64 px).
+// Jump apex ≈ JUMP_V² / (2·GRAVITY) - needs to clear 4 tiles (≈64 px).
 const GRAVITY = 0.30;
 const WALK_SPEED = 1.4;
 const JUMP_V = -7.0;
@@ -262,7 +262,7 @@ export class PlatformGame {
     return t === "H";
   }
   private isDeadly(t: string): boolean {
-    // Voda už nezabíjí — tučňák v ní plave. Jen ostny / krystaly zabíjejí.
+    // Voda už nezabíjí - tučňák v ní plave. Jen ostny / krystaly zabíjejí.
     return t === "*";
   }
   private isWater(t: string): boolean {
@@ -329,7 +329,7 @@ export class PlatformGame {
       else if (t === "c") p.vx -= 0.8;
     }
 
-    // Detect swim — center tile is water.
+    // Detect swim - center tile is water.
     const inWater = this.isWater(this.roomTileAt(room, Math.floor(cx / TILE), Math.floor(cy / TILE)));
 
     if (p.onLadder) {
@@ -371,7 +371,7 @@ export class PlatformGame {
         this.keys.bigJump = false;
         this.hooks.onSfx("boing");
       }
-      // Skip gravity while resting on ground — otherwise sub-pixel fall + re-snap
+      // Skip gravity while resting on ground - otherwise sub-pixel fall + re-snap
       // produces a constant jitter at every frame.
       if (!p.onGround) {
         p.vy += GRAVITY * step;
@@ -381,10 +381,10 @@ export class PlatformGame {
       }
     }
 
-    // Move + collide — X first then Y (per-axis solid collision).
+    // Move + collide - X first then Y (per-axis solid collision).
     this.moveAndCollide(p, room, step);
 
-    // Don't clamp X / top-Y here — checkRoomExit needs the player to actually cross
+    // Don't clamp X / top-Y here - checkRoomExit needs the player to actually cross
     // the edge to fire a transition, and bounces him back if that edge has no exit.
     if (p.y > VIEW_H + 8) {
       // Fell off the bottom.
@@ -444,7 +444,7 @@ export class PlatformGame {
           landed = true;
           break;
         }
-        // Trampoline — bounces player upward, only when falling.
+        // Trampoline - bounces player upward, only when falling.
         if (this.isTrampoline(t) && dir > 0) {
           landed = true;
           bounce = true;
@@ -477,7 +477,7 @@ export class PlatformGame {
       }
     }
 
-    // Mover landing — player falling onto a swing/slide platform (only when descending).
+    // Mover landing - player falling onto a swing/slide platform (only when descending).
     if (p.vy > 0 && room.movers) {
       const feetY = p.y + PLAYER_H;
       for (const m of room.movers) {
@@ -569,7 +569,7 @@ export class PlatformGame {
         if (m.y < m.minY) { m.y = m.minY; m.vy = -m.vy; }
         if (m.y > m.maxY) { m.y = m.maxY; m.vy = -m.vy; }
       }
-      // Carry the player if standing on top — player feet within 2px of mover top, x-overlap.
+      // Carry the player if standing on top - player feet within 2px of mover top, x-overlap.
       const dx = m.x - prevX;
       const dy = m.y - prevY;
       const feetY = p.y + PLAYER_H;
@@ -597,7 +597,7 @@ export class PlatformGame {
 
   // --- Chicks (follow-train) ---
 
-  /** Mláďata sledují hráče s odstupem — každá další pozice ze sdíleného trail bufferu.
+  /** Mláďata sledují hráče s odstupem - každá další pozice ze sdíleného trail bufferu.
    *  Mládě N kopíruje pozici hráče se zpožděním N × CHICK_DELAY tiků. */
   private updateChicks(): void {
     if (this.state.chicks.length === 0) return;
@@ -693,7 +693,7 @@ export class PlatformGame {
     for (const door of room.doors) {
       if (this.state.openedDoors.has(door.id)) continue;
       // Adjacency check: player needs to stand next to the door (±1 column) at the same row.
-      // Locked doors are solid walls so the player can never *overlap* them — adjacent triggers.
+      // Locked doors are solid walls so the player can never *overlap* them - adjacent triggers.
       const colAdjacent = door.col >= leftCol - 1 && door.col <= rightCol + 1;
       const rowOverlap = door.row >= topRow && door.row <= botRow + 1;
       if (colAdjacent && rowOverlap) {
@@ -721,7 +721,7 @@ export class PlatformGame {
     const target = ids[Math.floor(Math.random() * ids.length)];
     if (target === "iglu") return;
     const room = this.state.rooms.get(target)!;
-    // Find an empty tile that has a solid/platform tile directly below — heart sits on a surface.
+    // Find an empty tile that has a solid/platform tile directly below - heart sits on a surface.
     for (let attempt = 0; attempt < 25; attempt++) {
       const x = 1 + Math.floor(Math.random() * (COLS - 2));
       const y = 1 + Math.floor(Math.random() * (ROWS - 3));
@@ -750,7 +750,7 @@ export class PlatformGame {
 
     const exit = room.exits.find((e) => e.side === side);
     if (!exit) {
-      // Bounce back — no exit on this edge.
+      // Bounce back - no exit on this edge.
       if (side === "left") p.x = 0;
       else if (side === "right") p.x = VIEW_W - PLAYER_W;
       else if (side === "top") p.y = 0;
@@ -787,7 +787,7 @@ export class PlatformGame {
         lift.vy = -Math.abs(lift.vy ?? 0.7);
       }
     }
-    // Snap player up if landing position overlaps a solid tile below — jinak by první
+    // Snap player up if landing position overlaps a solid tile below - jinak by první
     // frame X-axis collision viděl solid podlahu a zablokoval pohyb (= "neprůchozí").
     {
       const topRow = Math.floor(p.y / TILE);
@@ -802,7 +802,7 @@ export class PlatformGame {
       }
       if (snapRow >= 0) p.y = snapRow * TILE - PLAYER_H;
     }
-    // Daj hráčovi chvíli reagovat — jinak guardian patrolující blízko landing pozice
+    // Daj hráčovi chvíli reagovat - jinak guardian patrolující blízko landing pozice
     // může způsobit okamžitou smrt bez šance se uhnout.
     p.invulnerableMs = TRANSITION_INVULN_MS;
 

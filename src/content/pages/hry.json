@@ -1,7 +1,7 @@
 {
   "meta": {
     "title": "Hry s tučňáky",
-    "description": "Herna pingupedia — mini-hry o tučňácích. Kvíz, pexeso, platformovka, obrana, puzzle."
+    "description": "Herna pingupedia - mini-hry o tučňácích. Kvíz, pexeso, platformovka, obrana, puzzle."
   },
   "hero": {
     "eyebrow": "Herna",
@@ -13,7 +13,7 @@
       "slug": "kviz",
       "title": "Kvíz o tučňácích",
       "tag": "5 otázek · ~2 min",
-      "description": "Pět otázek z biologie, ekologie a historie tučňáků. U každé otázky vybíráš ze čtyř možností; po odpovědi se ukáže krátké vysvětlení. Na konci uvidíš skóre a můžeš si quiz zkusit znovu — otázky se vybírají náhodně z většího setu.",
+      "description": "Pět otázek z biologie, ekologie a historie tučňáků. U každé otázky vybíráš ze čtyř možností; po odpovědi se ukáže krátké vysvětlení. Na konci uvidíš skóre a můžeš si quiz zkusit znovu - otázky se vybírají náhodně z většího setu.",
       "surface": "aurora",
       "mascotPose": "otazka"
     },
@@ -21,7 +21,7 @@
       "slug": "pexeso",
       "title": "Pexeso s tučňáky",
       "tag": "8 párů · 16 karet",
-      "description": "Klasické pexeso s fotkami osmi druhů tučňáků. Otoč dvě karty, hledej páry. Sleduje se čas a počet tahů — čím méně tahů, tím lepší skóre. Vhodné pro děti i dospělé na rychlou hru během pauzy.",
+      "description": "Klasické pexeso s fotkami osmi druhů tučňáků. Otoč dvě karty, hledej páry. Sleduje se čas a počet tahů - čím méně tahů, tím lepší skóre. Vhodné pro děti i dospělé na rychlou hru během pauzy.",
       "surface": "ocean",
       "mascotPose": "detektiv"
     },
@@ -37,7 +37,7 @@
       "slug": "obrana",
       "title": "Ledová obrana",
       "tag": "5 vln · upgrady",
-      "description": "Tučňák stojí dole na ledové kře a brání území před nálety dravců. Střílíš sněhové koule po chaluzích, tuleních leopardech a kosatkách v pěti vlnách rostoucí obtížnosti. Po každé vlně si vybíráš jeden ze tří upgradů — silnější střely, vyšší kadence, multi-shot, štít. Na konci každého bloku čeká boss.",
+      "description": "Tučňák stojí dole na ledové kře a brání území před nálety dravců. Střílíš sněhové koule po chaluzích, tuleních leopardech a kosatkách v pěti vlnách rostoucí obtížnosti. Po každé vlně si vybíráš jeden ze tří upgradů - silnější střely, vyšší kadence, multi-shot, štít. Na konci každého bloku čeká boss.",
       "surface": "sun",
       "mascotPose": "wow"
     },
@@ -53,6 +53,6 @@
   "cta": {
     "eyebrow": "Další hry v přípravě",
     "title": "Máš nápad na hru s tučňáky?",
-    "description": "Omalovánky, puzzle s mapou kolonií nebo uhodni druh podle siluety — přidávají se postupně."
+    "description": "Omalovánky, puzzle s mapou kolonií nebo uhodni druh podle siluety - přidávají se postupně."
   }
 }

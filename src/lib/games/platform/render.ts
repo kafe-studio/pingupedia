@@ -86,7 +86,7 @@ function drawMover(ctx: CanvasRenderingContext2D, m: { kind: "swing" | "slide" |
     drawLift(ctx, m, t);
     return;
   }
-  // Wood-plank look — bottom half darker, with rope/chain hint above for swing.
+  // Wood-plank look - bottom half darker, with rope/chain hint above for swing.
   const base = m.kind === "swing" ? "#a86b3a" : "#5b7a99";
   const top = m.kind === "swing" ? "#c98a55" : "#8aa9c4";
   const dark = m.kind === "swing" ? "#7a4d27" : "#3f566e";
@@ -102,7 +102,7 @@ function drawMover(ctx: CanvasRenderingContext2D, m: { kind: "swing" | "slide" |
   // Bottom shadow
   ctx.fillStyle = dark;
   ctx.fillRect(m.x, m.y + m.h - 2, m.w, 2);
-  // Wood grain — short vertical ticks
+  // Wood grain - short vertical ticks
   ctx.fillStyle = dark;
   for (let i = 4; i < m.w - 2; i += 6) {
     ctx.fillRect(m.x + i, m.y + 3, 1, m.h - 5);
@@ -121,7 +121,7 @@ function drawMover(ctx: CanvasRenderingContext2D, m: { kind: "swing" | "slide" |
   }
 }
 
-// Výtah — kovová žlutá plošina s šipkou nahoru.
+// Výtah - kovová žlutá plošina s šipkou nahoru.
 function drawLift(ctx: CanvasRenderingContext2D, m: { x: number; y: number; w: number; h: number }, t: number): void {
   const blink = (Math.sin(t * 0.006) + 1) * 0.5;
   // Shadow
@@ -155,7 +155,7 @@ function drawLift(ctx: CanvasRenderingContext2D, m: { x: number; y: number; w: n
 // =====================  TRAMPOLINE TILE  =====================
 
 function drawTrampoline(ctx: CanvasRenderingContext2D, x: number, y: number, t: number): void {
-  // Pružinovitá trampolína — orange canvas + 2 black springs.
+  // Pružinovitá trampolína - orange canvas + 2 black springs.
   const wobble = Math.sin(t * 0.008) * 1.2;
   // Frame (legs)
   ctx.fillStyle = "#3a2a1a";
@@ -172,7 +172,7 @@ function drawTrampoline(ctx: CanvasRenderingContext2D, x: number, y: number, t: 
   ctx.lineTo(x + 12, y + 7 + wobble);
   ctx.lineTo(x + 14, y + 4 + wobble);
   ctx.stroke();
-  // Canvas top — orange/red curved
+  // Canvas top - orange/red curved
   ctx.fillStyle = "#e85d3a";
   ctx.fillRect(x, y + 4 + wobble, 16, 4);
   // Canvas highlight
@@ -557,7 +557,7 @@ function drawGalapagosBackdrop(ctx: CanvasRenderingContext2D, t: number): void {
 // =====================  TILES  =====================
 
 function drawSolidBlock(ctx: CanvasRenderingContext2D, pal: PaletteColors, x: number, y: number, palette: Palette): void {
-  // Gradient block — lighter on top, darker on bottom
+  // Gradient block - lighter on top, darker on bottom
   const grad = ctx.createLinearGradient(x, y, x, y + TILE);
   grad.addColorStop(0, pal.blockHi);
   grad.addColorStop(0.4, pal.block);
@@ -604,7 +604,7 @@ function drawSolidBlock(ctx: CanvasRenderingContext2D, pal: PaletteColors, x: nu
 }
 
 function drawPlatform(ctx: CanvasRenderingContext2D, pal: PaletteColors, x: number, y: number, palette: Palette): void {
-  // Top edge — bright
+  // Top edge - bright
   ctx.fillStyle = pal.blockHi;
   ctx.fillRect(x, y, TILE, 2);
   // Body (5-8px tall)
@@ -631,7 +631,7 @@ function drawPlatform(ctx: CanvasRenderingContext2D, pal: PaletteColors, x: numb
 }
 
 function drawLadder(ctx: CanvasRenderingContext2D, pal: PaletteColors, x: number, y: number): void {
-  // Side rails — rounded
+  // Side rails - rounded
   ctx.fillStyle = pal.ladder;
   ctx.fillRect(x + 3, y, 2, TILE);
   ctx.fillRect(x + TILE - 5, y, 2, TILE);
@@ -860,7 +860,7 @@ function drawItem(ctx: CanvasRenderingContext2D, it: Item, t: number): void {
     ctx.fillStyle = "#ffffff";
     ctx.fillRect(cx - 1, cy - 4, 1, 2);
   } else if (it.kind === "key") {
-    // Colored key — bow + shaft + teeth, gently rotating glint
+    // Colored key - bow + shaft + teeth, gently rotating glint
     const colorMap: Record<string, string> = {
       blue: "#3b82f6", red: "#ef4444", yellow: "#fde047", green: "#22c55e",
     };
@@ -919,13 +919,13 @@ function drawItem(ctx: CanvasRenderingContext2D, it: Item, t: number): void {
     ctx.fill();
     ctx.restore();
   } else if (it.kind === "chick") {
-    // Mládě jako item — pípne na místě, čeká až ho hráč sebere.
+    // Mládě jako item - pípne na místě, čeká až ho hráč sebere.
     const bob = Math.sin(t / 200) * 1.5;
     drawChick(ctx, it.x * TILE - 4, it.y * TILE + bob, 1, t);
   }
 }
 
-// Mládě tučňáka — menší (8×10 px) verze hráče. Šedo-bílá hlava, oranžový zobák.
+// Mládě tučňáka - menší (8×10 px) verze hráče. Šedo-bílá hlava, oranžový zobák.
 function drawChick(ctx: CanvasRenderingContext2D, x: number, y: number, facing: 1 | -1, t: number): void {
   const cx = x + 8;
   const cy = y + 10;
@@ -1077,7 +1077,7 @@ function drawSeal(ctx: CanvasRenderingContext2D, g: Guardian, cx: number, cy: nu
 
 function drawPolarbear(ctx: CanvasRenderingContext2D, g: Guardian, cx: number, cy: number, t: number): void {
   const breathe = Math.sin(t / 500) * 0.4;
-  // Body — fluffy
+  // Body - fluffy
   ctx.fillStyle = "#ffffff";
   ctx.beginPath();
   ctx.ellipse(cx, cy, g.w / 2, g.h / 2 + breathe, 0, 0, Math.PI * 2);
@@ -1195,7 +1195,7 @@ function drawWalrus(ctx: CanvasRenderingContext2D, g: Guardian, cx: number, cy: 
 
 function drawPetrel(ctx: CanvasRenderingContext2D, g: Guardian, cx: number, cy: number, phase: number): void {
   const flap = Math.sin(phase * 8) * 5;
-  // Body — sleek
+  // Body - sleek
   ctx.fillStyle = "#334155";
   ctx.beginPath();
   ctx.ellipse(cx, cy, g.w / 2, g.h / 3, 0, 0, Math.PI * 2);
@@ -1337,7 +1337,7 @@ function drawPlayer(ctx: CanvasRenderingContext2D, p: GameState["player"], t: nu
   // ---- BODY: rounded blob (clay-like), wider in middle, tapers slightly toward feet ----
   ctx.fillStyle = "#0a0f1f";
   ctx.beginPath();
-  // Top of head — softly rounded (no cone tip), tiny "tuft" at very top center
+  // Top of head - softly rounded (no cone tip), tiny "tuft" at very top center
   ctx.moveTo(cx - 6.5, yb + 4);
   ctx.bezierCurveTo(cx - 7, yb + 1, cx - 1, yb - 0.5, cx, yb);
   ctx.bezierCurveTo(cx + 1, yb - 0.5, cx + 7, yb + 1, cx + 6.5, yb + 4);
@@ -1387,7 +1387,7 @@ function drawPlayer(ctx: CanvasRenderingContext2D, p: GameState["player"], t: nu
   ctx.fill();
   ctx.restore();
 
-  // ---- EYES: BIG round whites — Pingu's most distinctive feature ----
+  // ---- EYES: BIG round whites - Pingu's most distinctive feature ----
   ctx.fillStyle = "#ffffff";
   ctx.beginPath();
   ctx.arc(cx - 2.4, yb + 5.5, 2.3, 0, Math.PI * 2);

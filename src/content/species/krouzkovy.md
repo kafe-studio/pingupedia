@@ -18,7 +18,7 @@ distribution:
   - "Jižní Shetlandy, Jižní Orkneje, Jižní Sandwichovy ostrovy"
 colonies:
   - { name: "Cape Adare", lat: -71.28, lon: 170.23, type: "breeding", description: "Největší kolonie na světě, Rossovo moře" }
-  - { name: "Danger Islands", lat: -63.42, lon: -54.67, type: "breeding", description: "Souostroví u Antarktického poloostrova — 1,5 milionu párů" }
+  - { name: "Danger Islands", lat: -63.42, lon: -54.67, type: "breeding", description: "Souostroví u Antarktického poloostrova - 1,5 milionu párů" }
   - { name: "Cape Crozier", lat: -77.52, lon: 169.40, type: "breeding", description: "Klíčová studijní kolonie na Rossově ostrově" }
   - { name: "Cape Royds", lat: -77.55, lon: 166.15, type: "breeding", description: "Nejjižnější kolonie druhu, Rossův ostrov" }
   - { name: "Cape Bird", lat: -77.17, lon: 166.68, type: "breeding", description: "Severní cíp Rossova ostrova, dlouhodobě sledovaná" }
@@ -29,7 +29,7 @@ colonies:
   - { name: "Petermann Island", lat: -65.17, lon: -64.17, type: "breeding", description: "Nejjižnější kolonie u Antarktického poloostrova" }
 habitat: "Antarktické pobřeží s dostupným mořem. Hnízdí v obrovských koloniích na pevné zemi nebo skalách, kde si staví kruhová hnízda z malých kamínků."
 diet:
-  - "Krill antarktický (Euphausia superba) — hlavní složka stravy"
+  - "Krill antarktický (Euphausia superba) - hlavní složka stravy"
   - "Menší antarktické ryby (zejména stříbrnoočko antarktické Pleuragramma antarctica a Pagothenia borchgrevinki)"
   - "Medúzy a salpy příležitostně"
 lifespan:
@@ -39,9 +39,9 @@ diving:
   maxDepthM: 175
   typicalDurationSec: 90
   maxDurationSec: 360
-  note: "Hlavní lov stříbrnoočka antarktického a krillu probíhá v hloubkách 20–50 m. Maximální zaznamenaný ponor 175 m."
+  note: "Hlavní lov stříbrnoočka antarktického a krillu probíhá v hloubkách 20-50 m. Maximální zaznamenaný ponor 175 m."
 population: "Odhad přes 10 milionů dospělých jedinců (IUCN 2020). Populace stabilní až mírně rostoucí, ale místní kolonie na západním Antarktickém poloostrově klesají kvůli úbytku mořského ledu."
-historicalNotes: "Druh objevila francouzská expedice Julese Dumonta d'Urvilla 21. ledna 1840. Kapitán pojmenoval pobřeží Adélie Land po své manželce Adéle — a tučňák nese její jméno. Vědecky popsán v roce 1841 přírodovědci Hombronem a Jacquinotem z téže expedice."
+historicalNotes: "Druh objevila francouzská expedice Julese Dumonta d'Urvilla 21. ledna 1840. Kapitán pojmenoval pobřeží Adélie Land po své manželce Adéle - a tučňák nese její jméno. Vědecky popsán v roce 1841 přírodovědci Hombronem a Jacquinotem z téže expedice."
 hero:
   src: "../../assets/penguins/krouzkovy/hero.jpg"
   alt: "Dospělý tučňák kroužkový kráčející po ledu na Antarktickém poloostrově"
@@ -65,48 +65,48 @@ gallery:
     license: "CC BY-SA 2.0"
     sourceUrl: "https://commons.wikimedia.org/wiki/File:Adelie_penguins_in_the_South_Shetland_Islands.jpg"
   - src: "../../assets/penguins/krouzkovy/gallery-4.jpg"
-    alt: "Tučňák kroužkový — fotografie z Wikimedia Commons"
+    alt: "Tučňák kroužkový - fotografie z Wikimedia Commons"
     author: "Marinha do Brasil"
     license: "CC BY-SA 2.0"
     sourceUrl: "https://commons.wikimedia.org/wiki/File:092-antartica_4O7A9857_(33167116410).jpg"
   - src: "../../assets/penguins/krouzkovy/gallery-5.jpg"
-    alt: "Tučňák kroužkový — fotografie z Wikimedia Commons"
+    alt: "Tučňák kroužkový - fotografie z Wikimedia Commons"
     author: "Marinha do Brasil"
     license: "CC BY-SA 2.0"
     sourceUrl: "https://commons.wikimedia.org/wiki/File:092-antartica_4O7A9858_(33167095640).jpg"
   - src: "../../assets/penguins/krouzkovy/gallery-6.jpg"
-    alt: "Tučňák kroužkový — fotografie z Wikimedia Commons"
+    alt: "Tučňák kroužkový - fotografie z Wikimedia Commons"
     author: "Binaryboy"
     license: "CC BY 3.0"
     sourceUrl: "https://commons.wikimedia.org/wiki/File:500px_photo_(134652111).jpeg"
   - src: "../../assets/penguins/krouzkovy/gallery-7.jpg"
-    alt: "Tučňák kroužkový — fotografie z Wikimedia Commons"
+    alt: "Tučňák kroužkový - fotografie z Wikimedia Commons"
     author: "Binaryboy"
     license: "CC BY 3.0"
     sourceUrl: "https://commons.wikimedia.org/wiki/File:500px_photo_(134652119).jpeg"
   - src: "../../assets/penguins/krouzkovy/gallery-8.jpg"
-    alt: "Tučňák kroužkový — fotografie z Wikimedia Commons"
+    alt: "Tučňák kroužkový - fotografie z Wikimedia Commons"
     author: "Grant.C"
     license: "CC BY 2.0"
     sourceUrl: "https://commons.wikimedia.org/wiki/File:Adelie_on_an_iceberg_(24259795169).jpg"
   - src: "../../assets/penguins/krouzkovy/gallery-9.jpg"
-    alt: "Tučňák kroužkový — fotografie z Wikimedia Commons"
+    alt: "Tučňák kroužkový - fotografie z Wikimedia Commons"
     author: "David Stanley from Nanaimo, Canada"
     license: "CC BY 2.0"
     sourceUrl: "https://commons.wikimedia.org/wiki/File:Adelie_Penguin_(16275445625).jpg"
   - src: "../../assets/penguins/krouzkovy/gallery-10.jpg"
-    alt: "Tučňák kroužkový — fotografie z Wikimedia Commons"
+    alt: "Tučňák kroužkový - fotografie z Wikimedia Commons"
     author: "Gregory \"Slobirdr\" Smith"
     license: "CC BY-SA 2.0"
     sourceUrl: "https://commons.wikimedia.org/wiki/File:Adelie_Penguin_(Pygoscelis_adeliae)_-_Flickr_-_Gregory_%22Slobirdr%22_Smith.jpg"
   - src: "../../assets/penguins/krouzkovy/gallery-11.jpg"
-    alt: "Tučňák kroužkový — fotografie z Wikimedia Commons"
+    alt: "Tučňák kroužkový - fotografie z Wikimedia Commons"
     author: "Gregory \"Slobirdr\" Smith"
     license: "CC BY-SA 2.0"
     sourceUrl: "https://commons.wikimedia.org/wiki/File:Adelie_Penguin_(Pygoscelis_adeliae)_Incubating_(31932853291).jpg"
   - src: "../../assets/penguins/krouzkovy/gallery-12.jpg"
-    alt: "Tučňák kroužkový — fotografie z Wikimedia Commons"
-    author: "This illustration was made by Samuel Blanc. If you plan on using it, an email…"
+    alt: "Tučňák kroužkový - fotografie z Wikimedia Commons"
+    author: "This illustration was made by Samuel Blanc. If you plan on using it, an email..."
     license: "CC BY-SA 3.0"
     sourceUrl: "https://commons.wikimedia.org/wiki/File:Manchot_Ad%C3%A9lie_-_Adelie_Penguin.jpg"
 video:
@@ -127,21 +127,21 @@ audio:
   durationSec: 13
 sources:
   - url: "https://cs.wikipedia.org/wiki/Tu%C4%8D%C5%88%C3%A1k_krou%C5%BEkov%C3%BD"
-    title: "Tučňák kroužkový — Wikipedia (CS)"
+    title: "Tučňák kroužkový - Wikipedia (CS)"
     type: "Wikipedia"
   - url: "https://en.wikipedia.org/wiki/Ad%C3%A9lie_penguin"
-    title: "Adélie penguin — Wikipedia (EN)"
+    title: "Adélie penguin - Wikipedia (EN)"
     type: "Wikipedia"
   - url: "https://www.iucnredlist.org/species/22697758/157660553"
-    title: "Pygoscelis adeliae — IUCN Red List"
+    title: "Pygoscelis adeliae - IUCN Red List"
     type: "IUCN"
     note: "Status Least Concern, trend stabilní/mírně rostoucí"
   - url: "https://datazone.birdlife.org/species/factsheet/adelie-penguin-pygoscelis-adeliae"
-    title: "Adélie Penguin — BirdLife International factsheet"
+    title: "Adélie Penguin - BirdLife International factsheet"
     type: "BirdLife"
 updatedAt: "2026-04-19"
 ---
 
-Tučňák kroužkový je středně velký druh a jeden z pouhých tří tučňáků, kteří žijí trvale na Antarktidě. Měří kolem 70 centimetrů a váží zhruba od čtyř do osmi kilogramů — tedy výrazně méně než jeho obrovský příbuzný císařský. Od ostatních druhů ho snadno poznáte podle bílého kroužku kolem oka, který dal druhu český název, a podle zcela černé hlavy a hrdla. Žije v obrovských koloniích čítajících tisíce až stovky tisíc párů, kde si páry staví kruhová hnízda z pečlivě vybíraných kamínků. O ty si navzájem kradou — pokud se sousedovi na chvíli nedívá, kamínek zmizí.
+Tučňák kroužkový je středně velký druh a jeden z pouhých tří tučňáků, kteří žijí trvale na Antarktidě. Měří kolem 70 centimetrů a váží zhruba od čtyř do osmi kilogramů - tedy výrazně méně než jeho obrovský příbuzný císařský. Od ostatních druhů ho snadno poznáte podle bílého kroužku kolem oka, který dal druhu český název, a podle zcela černé hlavy a hrdla. Žije v obrovských koloniích čítajících tisíce až stovky tisíc párů, kde si páry staví kruhová hnízda z pečlivě vybíraných kamínků. O ty si navzájem kradou - pokud se sousedovi na chvíli nedívá, kamínek zmizí.
 
-Druh objevila v lednu 1840 francouzská expedice Julese Dumonta d'Urvilla a kapitán pojmenoval celé pobřeží Antarktidy **Adélie Land** po své manželce. Tučňák zdědil její jméno a nese ho dodnes. Přestože v západní Antarktidě místní kolonie ubývají, globálně je druh stále jedním z nejpočetnějších — IUCN odhaduje přes deset milionů dospělých jedinců. Hlavní hrozbou do budoucna zůstává ubývání mořského ledu, který tučňáci kroužkoví potřebují jako odpočinkovou plochu při lovu krillu.
+Druh objevila v lednu 1840 francouzská expedice Julese Dumonta d'Urvilla a kapitán pojmenoval celé pobřeží Antarktidy **Adélie Land** po své manželce. Tučňák zdědil její jméno a nese ho dodnes. Přestože v západní Antarktidě místní kolonie ubývají, globálně je druh stále jedním z nejpočetnějších - IUCN odhaduje přes deset milionů dospělých jedinců. Hlavní hrozbou do budoucna zůstává ubývání mořského ledu, který tučňáci kroužkoví potřebují jako odpočinkovou plochu při lovu krillu.

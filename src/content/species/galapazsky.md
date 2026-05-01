@@ -4,7 +4,7 @@ nameLat: "Spheniscus mendiculus"
 nameEn: "Galápagos penguin"
 genus: "Spheniscus"
 iucnStatus: "EN"
-description: "Jediný tučňák hnízdící na rovníku a dokonce severně od něj — žije jen na Galapážských ostrovech. Přežívá díky studeným mořským proudům (Humboldtovu a Cromwellovu), které do tropických vod nosí ryby. Nejmenší druh rodu Spheniscus."
+description: "Jediný tučňák hnízdící na rovníku a dokonce severně od něj - žije jen na Galapážských ostrovech. Přežívá díky studeným mořským proudům (Humboldtovu a Cromwellovu), které do tropických vod nosí ryby. Nejmenší druh rodu Spheniscus."
 size:
   heightCm:
     - 48
@@ -15,16 +15,16 @@ size:
 distribution:
   - "Ostrov Fernandina a západ Isabely (≈ 90 % populace)"
   - "Menší kolonie na Santiagu, Bartolomé, severní Santa Cruz a Floreaně"
-  - "Endemit Galapág — nevyskytuje se nikde jinde"
+  - "Endemit Galapág - nevyskytuje se nikde jinde"
 colonies:
-  - { name: "Fernandina", lat: -0.37, lon: -91.55, type: "breeding", description: "Nejzápadnější Galapágy, Punta Espinosa — hlavní kolonie druhu" }
+  - { name: "Fernandina", lat: -0.37, lon: -91.55, type: "breeding", description: "Nejzápadnější Galapágy, Punta Espinosa - hlavní kolonie druhu" }
   - { name: "Isabela", lat: -0.50, lon: -91.07, type: "breeding", description: "Největší ostrov, většina populace, severní část přesahuje rovník" }
   - { name: "Bartolomé", lat: -0.285, lon: -90.549, type: "breeding", description: "Malý ostrov u Santiago, menší populace tučňáků" }
-  - { name: "Santiago", lat: -0.23, lon: -90.71, type: "breeding", description: "Centrální Galapágy, James Bay — rozptýlená hnízda" }
+  - { name: "Santiago", lat: -0.23, lon: -90.71, type: "breeding", description: "Centrální Galapágy, James Bay - rozptýlená hnízda" }
   - { name: "Floreana", lat: -1.30, lon: -90.43, type: "breeding", description: "Jižní Galapágy, malá populace na okraji areálu" }
-habitat: "Skalnaté pobřežní útesy s jeskyněmi, trhlinami a ztuhlými lávovými tunely, kde druh hnízdí. Loví výhradně v pobřežních vodách chlazených Humboldtovým a Cromwellovým proudem — teplota moře kolem ostrovů se díky nim drží často pod 25 °C, což je na rovník neobvyklé."
+habitat: "Skalnaté pobřežní útesy s jeskyněmi, trhlinami a ztuhlými lávovými tunely, kde druh hnízdí. Loví výhradně v pobřežních vodách chlazených Humboldtovým a Cromwellovým proudem - teplota moře kolem ostrovů se díky nim drží často pod 25 °C, což je na rovník neobvyklé."
 diet:
-  - "Drobné hejnové ryby — sardinky, ančovičky, sardele a parmovité ryby"
+  - "Drobné hejnové ryby - sardinky, ančovičky, sardele a parmovité ryby"
   - "Doplňkově malé korýši"
   - "Při El Niño, kdy ryby mizí, jsou ptáci často vyhladovělí"
 lifespan:
@@ -36,8 +36,8 @@ diving:
   typicalDurationSec: 60
   maxDurationSec: 90
   note: "Mělké ponory do chladného Cromwellova proudu, kde loví drobné rybky. Většina ponorů je krátká, do 1 minuty."
-population: "Přibližně **1 200 dospělých jedinců** (IUCN 2018), průměr za poslední roky kolem 1 500. Populace silně osciluje s cyklem **ENSO** (El Niño – Southern Oscillation) — velké El Niño dokážou populaci srazit až o 77 % během jediné sezóny. Druh patří mezi nejohroženější tučňáky světa."
-historicalNotes: "Druh popsal v roce 1871 švédský ornitolog Carl Jakob Sundevall. Předpokládá se, že předci druhu doputovali na Galapágy podél **Humboldtova proudu** z chladných vod jižního Pacifiku a v izolaci rovníkového souostroví se zmenšili i zesvětlili ve srovnání se svými kontinentálními příbuznými (*Spheniscus humboldti* a *S. magellanicus*). Je to jediný druh tučňáka, který hnízdí severně od rovníku — severní cíp Isabely (sopky Volcán Wolf a Volcán Ecuador) leží přímo na rovníku a několik kilometrů na sever, takže nejsevernější kolonie se nacházejí těsně v severní polokouli."
+population: "Přibližně **1 200 dospělých jedinců** (IUCN 2018), průměr za poslední roky kolem 1 500. Populace silně osciluje s cyklem **ENSO** (El Niño - Southern Oscillation) - velké El Niño dokážou populaci srazit až o 77 % během jediné sezóny. Druh patří mezi nejohroženější tučňáky světa."
+historicalNotes: "Druh popsal v roce 1871 švédský ornitolog Carl Jakob Sundevall. Předpokládá se, že předci druhu doputovali na Galapágy podél **Humboldtova proudu** z chladných vod jižního Pacifiku a v izolaci rovníkového souostroví se zmenšili i zesvětlili ve srovnání se svými kontinentálními příbuznými (*Spheniscus humboldti* a *S. magellanicus*). Je to jediný druh tučňáka, který hnízdí severně od rovníku - severní cíp Isabely (sopky Volcán Wolf a Volcán Ecuador) leží přímo na rovníku a několik kilometrů na sever, takže nejsevernější kolonie se nacházejí těsně v severní polokouli."
 hero:
   src: "../../assets/penguins/galapazsky/hero.jpg"
   alt: "Tučňák galapážský stojící na lávové skále v Elizabeth Bay na ostrově Isabela, Galapágy"
@@ -61,52 +61,52 @@ gallery:
     license: "CC BY-SA 4.0"
     sourceUrl: "https://commons.wikimedia.org/wiki/File:Galapagos_penguin_2025-09-02_(54872135677).jpg"
   - src: "../../assets/penguins/galapazsky/gallery-4.jpg"
-    alt: "Tučňák galapážský — fotografie z Wikimedia Commons"
+    alt: "Tučňák galapážský - fotografie z Wikimedia Commons"
     author: "Judy Gallagher"
     license: "CC BY 2.0"
     sourceUrl: "https://commons.wikimedia.org/wiki/File:189_365_Galapagos_Penguin_-_Spheniscus_mendiculus,_Fernandina_Island,_Galapagos,_Ecuador,_July_8,_2021_(51329133046).jpg"
   - src: "../../assets/penguins/galapazsky/gallery-5.jpg"
-    alt: "Tučňák galapážský — fotografie z Wikimedia Commons"
+    alt: "Tučňák galapážský - fotografie z Wikimedia Commons"
     author: "Lieutenant Elizabeth Crapo, NOAA Corps."
     license: "Public domain"
     sourceUrl: "https://commons.wikimedia.org/wiki/File:Anim1673_-_Flickr_-_NOAA_Photo_Library.jpg"
   - src: "../../assets/penguins/galapazsky/gallery-6.jpg"
-    alt: "Tučňák galapážský — fotografie z Wikimedia Commons"
+    alt: "Tučňák galapážský - fotografie z Wikimedia Commons"
     author: "Murray Foubister"
     license: "CC BY-SA 2.0"
     sourceUrl: "https://commons.wikimedia.org/wiki/File:Final_land_excursion_to_Isla_Bartomome_and_the_lava_beds_on_the_E_coast_of_Isla_San_Salvadore_-_greetings_to_the_endemic_Galapagos_Penguin_(Spheniscus_mendiculus)_(16689795161).jpg"
   - src: "../../assets/penguins/galapazsky/gallery-7.jpg"
-    alt: "Tučňák galapážský — fotografie z Wikimedia Commons"
+    alt: "Tučňák galapážský - fotografie z Wikimedia Commons"
     author: "Pedro Szekely from Los Angeles, USA"
     license: "CC BY-SA 2.0"
     sourceUrl: "https://commons.wikimedia.org/wiki/File:Galapagos_(31781068757).jpg"
   - src: "../../assets/penguins/galapazsky/gallery-8.jpg"
-    alt: "Tučňák galapážský — fotografie z Wikimedia Commons"
+    alt: "Tučňák galapážský - fotografie z Wikimedia Commons"
     author: "Pedro Szekely from Los Angeles, USA"
     license: "CC BY-SA 2.0"
     sourceUrl: "https://commons.wikimedia.org/wiki/File:Galapagos_(32171923777).jpg"
   - src: "../../assets/penguins/galapazsky/gallery-9.jpg"
-    alt: "Tučňák galapážský — fotografie z Wikimedia Commons"
+    alt: "Tučňák galapážský - fotografie z Wikimedia Commons"
     author: "Mike's Birds from Riverside, CA, US"
     license: "CC BY-SA 2.0"
     sourceUrl: "https://commons.wikimedia.org/wiki/File:Galapagos_Penguin_(32833346357).jpg"
   - src: "../../assets/penguins/galapazsky/gallery-10.jpg"
-    alt: "Tučňák galapážský — fotografie z Wikimedia Commons"
+    alt: "Tučňák galapážský - fotografie z Wikimedia Commons"
     author: "Mike's Birds from Riverside, CA, US"
     license: "CC BY-SA 2.0"
     sourceUrl: "https://commons.wikimedia.org/wiki/File:Galapagos_Penguin_(32833348207).jpg"
   - src: "../../assets/penguins/galapazsky/gallery-11.jpg"
-    alt: "Tučňák galapážský — fotografie z Wikimedia Commons"
+    alt: "Tučňák galapážský - fotografie z Wikimedia Commons"
     author: "David Stanley from Nanaimo, Canada"
     license: "CC BY 2.0"
     sourceUrl: "https://commons.wikimedia.org/wiki/File:Galapagos_Penguin_(49518911951).jpg"
   - src: "../../assets/penguins/galapazsky/gallery-12.jpg"
-    alt: "Tučňák galapážský — fotografie z Wikimedia Commons"
+    alt: "Tučňák galapážský - fotografie z Wikimedia Commons"
     author: "Gregory \"Slobirdr\" Smith"
     license: "CC BY-SA 2.0"
     sourceUrl: "https://commons.wikimedia.org/wiki/File:Galapagos_Penguin_(Spheniscus_mendiculus)_(16224588607).jpg"
   - src: "../../assets/penguins/galapazsky/gallery-13.jpg"
-    alt: "Tučňák galapážský — fotografie z Wikimedia Commons"
+    alt: "Tučňák galapážský - fotografie z Wikimedia Commons"
     author: "Lip Kee"
     license: "CC BY-SA 2.0"
     sourceUrl: "https://commons.wikimedia.org/wiki/File:Galapagos_Penguin_(Spheniscus_mendiculus)_(19436056066).jpg"
@@ -120,21 +120,21 @@ audio:
   durationSec: 18
 sources:
   - url: "https://cs.wikipedia.org/wiki/Tu%C4%8D%C5%88%C3%A1k_galap%C3%A1%C5%BEsk%C3%BD"
-    title: "Tučňák galapážský — Wikipedia (CS)"
+    title: "Tučňák galapážský - Wikipedia (CS)"
     type: "Wikipedia"
   - url: "https://en.wikipedia.org/wiki/Galapagos_penguin"
-    title: "Galápagos penguin — Wikipedia (EN)"
+    title: "Galápagos penguin - Wikipedia (EN)"
     type: "Wikipedia"
   - url: "https://www.iucnredlist.org/species/22697825/182729677"
-    title: "Spheniscus mendiculus — IUCN Red List"
+    title: "Spheniscus mendiculus - IUCN Red List"
     type: "IUCN"
     note: "Status Endangered, populace nestabilní kvůli El Niño"
   - url: "https://datazone.birdlife.org/species/factsheet/galapagos-penguin-spheniscus-mendiculus"
-    title: "Galápagos Penguin — BirdLife International factsheet"
+    title: "Galápagos Penguin - BirdLife International factsheet"
     type: "BirdLife"
 updatedAt: "2026-04-19"
 ---
 
-Tučňák galapážský je jedním z nejzvláštnějších obyvatel Galapážského souostroví — je to **jediný druh tučňáka žijící na rovníku** a dokonce severně od něj. Dospělci měří kolem padesáti centimetrů a váží dva až čtyři kilogramy, jsou tedy podstatně menší než jejich kontinentální příbuzní z rodu Spheniscus. Černobílé zbarvení doplňuje úzký bílý proužek vedoucí od očí kolem spánků dolů k hrdlu, díky němuž druh poněkud připomíná miniaturní verzi tučňáka Humboldtova. Předkové druhu se na Galapágy dostali pravděpodobně podél studeného **Humboldtova proudu**, který z chladných vod u jihoamerického pobřeží zahýbá k rovníkovému souostroví a spolu s podpovrchovým **Cromwellovým proudem** chladí pobřežní vody kolem Fernandiny a Isabely — právě tak chladí, že tučňáci v nich najdou dostatek sardinek, ančoviček a dalších hejnových ryb.
+Tučňák galapážský je jedním z nejzvláštnějších obyvatel Galapážského souostroví - je to **jediný druh tučňáka žijící na rovníku** a dokonce severně od něj. Dospělci měří kolem padesáti centimetrů a váží dva až čtyři kilogramy, jsou tedy podstatně menší než jejich kontinentální příbuzní z rodu Spheniscus. Černobílé zbarvení doplňuje úzký bílý proužek vedoucí od očí kolem spánků dolů k hrdlu, díky němuž druh poněkud připomíná miniaturní verzi tučňáka Humboldtova. Předkové druhu se na Galapágy dostali pravděpodobně podél studeného **Humboldtova proudu**, který z chladných vod u jihoamerického pobřeží zahýbá k rovníkovému souostroví a spolu s podpovrchovým **Cromwellovým proudem** chladí pobřežní vody kolem Fernandiny a Isabely - právě tak chladí, že tučňáci v nich najdou dostatek sardinek, ančoviček a dalších hejnových ryb.
 
-Druh popsal v roce 1871 švédský ornitolog Carl Jakob Sundevall a dnes tvoří celou globální populaci zhruba 1 200 dospělých jedinců, z nichž drtivá většina (~90 %) žije na ostrovech **Fernandina** a západním pobřeží **Isabely**. Populace tučňáka galapážského je úzce svázaná s cyklem **ENSO** — El Niño – Southern Oscillation. Když na východním Pacifiku zesílí El Niño, povrchové vody u Galapág se prohřejí, studené proudy ustoupí a ryby, na kterých druh závisí, zmizí do větších hloubek. Katastrofální El Niño v letech 1982–1983 snížilo populaci o víc než 77 %, podobně drastické propady přinesly i roky 1997–1998 a 2015–2016. Druh je proto citlivý na klimatické změny a oteplování Pacifiku ho podle IUCN řadí mezi **Endangered** tučňáky, přestože jeho hlavní stanoviště je dobře chráněné v rámci Národního parku Galapágy.
+Druh popsal v roce 1871 švédský ornitolog Carl Jakob Sundevall a dnes tvoří celou globální populaci zhruba 1 200 dospělých jedinců, z nichž drtivá většina (~90 %) žije na ostrovech **Fernandina** a západním pobřeží **Isabely**. Populace tučňáka galapážského je úzce svázaná s cyklem **ENSO** - El Niño - Southern Oscillation. Když na východním Pacifiku zesílí El Niño, povrchové vody u Galapág se prohřejí, studené proudy ustoupí a ryby, na kterých druh závisí, zmizí do větších hloubek. Katastrofální El Niño v letech 1982-1983 snížilo populaci o víc než 77 %, podobně drastické propady přinesly i roky 1997-1998 a 2015-2016. Druh je proto citlivý na klimatické změny a oteplování Pacifiku ho podle IUCN řadí mezi **Endangered** tučňáky, přestože jeho hlavní stanoviště je dobře chráněné v rámci Národního parku Galapágy.

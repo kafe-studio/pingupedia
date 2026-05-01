@@ -6,7 +6,7 @@
   "hero": {
     "eyebrow": "Tučňáci na plátně",
     "titleHtml": "Filmy a <span class=\"text-accent\">pohádky</span><br />o tučňácích",
-    "subtitle": "Od oscarových dokumentů přes stepujícího tučňáka Mumblea až po plastelínový seriál Pingu. Výběr toho nejlepšího, co o tučňácích vzniklo — s odkazy, kde se na to podívat."
+    "subtitle": "Od oscarových dokumentů přes stepujícího tučňáka Mumblea až po plastelínový seriál Pingu. Výběr toho nejlepšího, co o tučňácích vzniklo - s odkazy, kde se na to podívat."
   },
   "sections": [
     {
@@ -22,7 +22,7 @@
           "year": 2006,
           "type": "animovany",
           "director": "George Miller",
-          "description": "Tučňák císařský Mumble se narodí bez schopnosti zpívat — místo toho ale úžasně stepuje. Muzikálová pocta tučňákům císařským, která získala Oscara za nejlepší animovaný film.",
+          "description": "Tučňák císařský Mumble se narodí bez schopnosti zpívat - místo toho ale úžasně stepuje. Muzikálová pocta tučňákům císařským, která získala Oscara za nejlepší animovaný film.",
           "badge": "Oscar 2007",
           "links": [
             { "label": "ČSFD", "url": "https://www.csfd.cz/film/135439-happy-feet/prehled/", "type": "csfd" },
@@ -47,7 +47,7 @@
           "year": 2005,
           "type": "animovany",
           "director": "Eric Darnell, Tom McGrath",
-          "description": "První díl franšízy o zvířatech ze zoo, ve kterém se v roli ironické vojenské jednotky poprvé objevují čtyři tučňáci uzdičkoví — Skipper, Kowalski, Rico a Vojín. Ukradnou loď a chtějí se dostat zpátky na Antarktidu.",
+          "description": "První díl franšízy o zvířatech ze zoo, ve kterém se v roli ironické vojenské jednotky poprvé objevují čtyři tučňáci uzdičkoví - Skipper, Kowalski, Rico a Vojín. Ukradnou loď a chtějí se dostat zpátky na Antarktidu.",
           "links": [
             { "label": "ČSFD", "url": "https://www.csfd.cz/film/117282-madagaskar/prehled/", "type": "csfd" },
             { "label": "Wikipedie", "url": "https://en.wikipedia.org/wiki/Madagascar_(2005_film)", "type": "wikipedia" }
@@ -96,7 +96,7 @@
     {
       "slug": "hrane",
       "title": "Hrané filmy",
-      "subtitle": "Tučňáci po boku slavných herců — komedie, kde hlavní roli hrají skuteční opeřenci.",
+      "subtitle": "Tučňáci po boku slavných herců - komedie, kde hlavní roli hrají skuteční opeřenci.",
       "surface": "ocean",
       "emoji": "🎥",
       "items": [
@@ -118,7 +118,7 @@
     {
       "slug": "dokumenty",
       "title": "Dokumenty",
-      "subtitle": "Skutečný život tučňáků v Antarktidě i jinde — natočený s respektem a často i s Oscarem.",
+      "subtitle": "Skutečný život tučňáků v Antarktidě i jinde - natočený s respektem a často i s Oscarem.",
       "surface": "ice",
       "emoji": "📽️",
       "items": [
@@ -167,7 +167,7 @@
           "year": 2013,
           "type": "dokument",
           "director": "John Downer",
-          "description": "BBC minisérie s komentářem Davida Attenborougha. Filmaři použili padesát skrytých kamer v podobě robotických tučňáků a vajec — díky tomu kolonie přestaly štáb vnímat a kamery zachytily intimní scény, které by jinak nebylo možné natočit.",
+          "description": "BBC minisérie s komentářem Davida Attenborougha. Filmaři použili padesát skrytých kamer v podobě robotických tučňáků a vajec - díky tomu kolonie přestaly štáb vnímat a kamery zachytily intimní scény, které by jinak nebylo možné natočit.",
           "links": [
             { "label": "ČSFD", "url": "https://www.csfd.cz/film/311322-david-attenborough-pribeh-tucnaka/prehled/", "type": "csfd" },
             { "label": "Wikipedie", "url": "https://en.wikipedia.org/wiki/Penguins:_Spy_in_the_Huddle", "type": "wikipedia" }
@@ -179,7 +179,7 @@
           "year": 2007,
           "type": "dokument",
           "director": "Werner Herzog",
-          "description": "Herzogův dokument o Antarktidě a o lidech, kteří se rozhodli na kraji světa žít. Sám režisér v úvodu říká, že tohle nebude další film o „roztomilých tučňácích“ — a přesto natočí jednu z nejsmutnějších a nejneobvyklejších scén s osamělým tučňákem v historii dokumentu. Nominace na Oscara.",
+          "description": "Herzogův dokument o Antarktidě a o lidech, kteří se rozhodli na kraji světa žít. Sám režisér v úvodu říká, že tohle nebude další film o roztomilých tučňácích - a přesto natočí jednu z nejsmutnějších a nejneobvyklejších scén s osamělým tučňákem v historii dokumentu. Nominace na Oscara.",
           "badge": "Nominace na Oscara",
           "links": [
             { "label": "ČSFD", "url": "https://www.csfd.cz/film/234237-setkani-na-konci-sveta/prehled/", "type": "csfd" },
@@ -191,17 +191,17 @@
     {
       "slug": "serialy",
       "title": "Animované seriály",
-      "subtitle": "Pravidelné dávky tučňáčího humoru — od špionážních misí po vědecké pokusy.",
+      "subtitle": "Pravidelné dávky tučňáčího humoru - od špionážních misí po vědecké pokusy.",
       "surface": "sun",
       "emoji": "📺",
       "items": [
         {
           "title": "Tučňáci z Madagaskaru (seriál)",
           "titleOrig": "The Penguins of Madagascar",
-          "yearLabel": "2008–2015",
+          "yearLabel": "2008-2015",
           "type": "serial",
           "director": "Nickelodeon / DreamWorks",
-          "description": "Spin-off seriál o čtveřici tučňáků z newyorské zoo v Central Parku, kteří provádějí tajné mise. Skipperovo „Nikdy nedávejte najevo strach!“ se stalo hláškou několika generací. 149 epizod.",
+          "description": "Spin-off seriál o čtveřici tučňáků z newyorské zoo v Central Parku, kteří provádějí tajné mise. Skipperovo Nikdy nedávejte najevo strach! se stalo hláškou několika generací. 149 epizod.",
           "links": [
             { "label": "ČT iVysílání", "url": "https://www.ceskatelevize.cz/porady/14958796429-tucnaci-z-madagaskaru/", "type": "ivysilani" },
             { "label": "Déčko", "url": "https://decko.ceskatelevize.cz/tucnaci-z-madagaskaru", "type": "decko" },
@@ -213,17 +213,17 @@
     {
       "slug": "pohadky",
       "title": "Pohádky a seriály pro nejmenší",
-      "subtitle": "Klasiky, na kterých vyrostly celé generace dětí. Krátké díly, žádné stahování — odkazy vedou rovnou na video.",
+      "subtitle": "Klasiky, na kterých vyrostly celé generace dětí. Krátké díly, žádné stahování - odkazy vedou rovnou na video.",
       "surface": "candy",
       "emoji": "🧸",
       "items": [
         {
           "title": "Pingu",
           "titleOrig": "Pingu",
-          "yearLabel": "1986–2006",
+          "yearLabel": "1986-2006",
           "type": "serial",
           "director": "Otmar Gutmann",
-          "description": "Švýcarsko-britský animovaný seriál o malém tučňákovi Pingu, jeho sestře Pinze a životě v iglú. Charakteristická plastelínová animace a hláška „Noot noot!“ — bez slov, srozumitelné v každém věku.",
+          "description": "Švýcarsko-britský animovaný seriál o malém tučňákovi Pingu, jeho sestře Pinze a životě v iglú. Charakteristická plastelínová animace a hláška Noot noot! - bez slov, srozumitelné v každém věku.",
           "links": [
             { "label": "Oficiální YouTube kanál", "url": "https://www.youtube.com/channel/UCM88mtSE0zRTn5ae4EbYcuw", "type": "youtube" },
             { "label": "Celé díly (playlist)", "url": "https://www.youtube.com/playlist?list=PLLhOnau-tupSV_oaUUxD3_Bud2VLQOIEc", "type": "youtube" },
@@ -249,7 +249,7 @@
           "year": 1988,
           "type": "animovany",
           "director": "Takashi Anno",
-          "description": "Sovětsko-japonský animovaný film z osmdesátek o tučňákovi Mikem, který se vrací z války a hledá svoji ztracenou lásku. Nezvyklá kombinace dětského designu a vážného příběhu — kultovní záležitost.",
+          "description": "Sovětsko-japonský animovaný film z osmdesátek o tučňákovi Mikem, který se vrací z války a hledá svoji ztracenou lásku. Nezvyklá kombinace dětského designu a vážného příběhu - kultovní záležitost.",
           "links": [
             { "label": "ČSFD", "url": "https://www.csfd.cz/film/233591-dobrodruzstvi-tucnaku/prehled/", "type": "csfd" },
             { "label": "Wikipedie", "url": "https://en.wikipedia.org/wiki/Penguin%27s_Memory", "type": "wikipedia" }
@@ -261,6 +261,6 @@
   "note": {
     "eyebrow": "Něco chybí?",
     "title": "Znáš film o tučňácích, který tu není?",
-    "body": "Seznam průběžně doplňujeme. Pokud znáš pohádku, dokument nebo film s tučňáky, který by sem patřil, napiš nám — rádi ho přidáme. Také prosíme: pokud některý z odkazů přestane fungovat, dejte nám vědět."
+    "body": "Seznam průběžně doplňujeme. Pokud znáš pohádku, dokument nebo film s tučňáky, který by sem patřil, napiš nám - rádi ho přidáme. Také prosíme: pokud některý z odkazů přestane fungovat, dejte nám vědět."
   }
 }

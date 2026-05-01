@@ -1,7 +1,7 @@
 {
   "meta": {
-    "title": "Časová osa — historie tučňáků a lidé",
-    "description": "Pět set let setkávání lidí s tučňáky — od Magellanovy plavby až po současnou ochranu druhu. Klíčové expedice, vědecké objevy, přeřazení statusů ohrožení."
+    "title": "Časová osa - historie tučňáků a lidé",
+    "description": "Pět set let setkávání lidí s tučňáky - od Magellanovy plavby až po současnou ochranu druhu. Klíčové expedice, vědecké objevy, přeřazení statusů ohrožení."
   },
   "hero": {
     "eyebrow": "Časová osa",
@@ -13,13 +13,13 @@
       "year": 1520,
       "title": "Magellanova posádka spatřuje první tučňáky",
       "category": "discovery",
-      "description": "Při první obeplouvce Země pozoruje Magellanova výprava v dnešním Magellanově průlivu skupinu \"podivných hus\" — vůbec první písemný záznam o tučňácích, jak ho znamenal Antonio Pigafetta. Jedná se o tučňáky magellanské.",
+      "description": "Při první obeplouvce Země pozoruje Magellanova výprava v dnešním Magellanově průlivu skupinu \"podivných hus\" - vůbec první písemný záznam o tučňácích, jak ho znamenal Antonio Pigafetta. Jedná se o tučňáky magellanské.",
       "speciesSlug": "magellansky",
       "location": "Magellanův průliv",
       "sourceUrl": "https://en.wikipedia.org/wiki/Magellanic_penguin",
       "image": {
         "file": "magellan-1520.jpg",
-        "alt": "Portrét Ferdinanda Magellana (1480–1521), portugalského mořeplavce, jehož výprava jako první obeplula Zemi.",
+        "alt": "Portrét Ferdinanda Magellana (1480-1521), portugalského mořeplavce, jehož výprava jako první obeplula Zemi.",
         "author": "neznámý autor (16. století)",
         "license": "Public Domain",
         "sourceUrl": "https://commons.wikimedia.org/wiki/File:Ferdinand_Magellan.jpg"
@@ -29,12 +29,12 @@
       "year": 1758,
       "title": "Linné formálně popisuje tučňáka brýlového",
       "category": "discovery",
-      "description": "V 10. vydání Systema Naturae Carl Linné pojmenovává tučňáka brýlového jako Diomedea demersa — první vědecky popsaný druh tučňáka. Do rodu Spheniscus jej v roce 1760 zařadil Brisson.",
+      "description": "V 10. vydání Systema Naturae Carl Linné pojmenovává tučňáka brýlového jako Diomedea demersa - první vědecky popsaný druh tučňáka. Do rodu Spheniscus jej v roce 1760 zařadil Brisson.",
       "speciesSlug": "brylovy",
       "sourceUrl": "https://en.wikipedia.org/wiki/African_penguin",
       "image": {
         "file": "linne-1758.jpg",
-        "alt": "Portrét Carla Linného (1707–1778), švédského přírodovědce a otce moderní biologické taxonomie.",
+        "alt": "Portrét Carla Linného (1707-1778), švédského přírodovědce a otce moderní biologické taxonomie.",
         "author": "Alexander Roslin (18. století)",
         "license": "Public Domain",
         "sourceUrl": "https://commons.wikimedia.org/wiki/File:Carl_von_Linn%C3%A9.jpg"
@@ -49,7 +49,7 @@
       "sourceUrl": "https://en.wikipedia.org/wiki/Johann_Reinhold_Forster",
       "image": {
         "file": "forster-1781.jpg",
-        "alt": "Portrét Johanna Reinholda Forstera (1729–1798), německého přírodovědce a účastníka druhé Cookovy plavby.",
+        "alt": "Portrét Johanna Reinholda Forstera (1729-1798), německého přírodovědce a účastníka druhé Cookovy plavby.",
         "author": "neznámý autor (18. století)",
         "license": "Public Domain",
         "sourceUrl": "https://commons.wikimedia.org/wiki/File:Forster.jpg"
@@ -65,7 +65,7 @@
       "sourceUrl": "https://en.wikipedia.org/wiki/Ad%C3%A9lie_penguin",
       "image": {
         "file": "dumont-1840.jpg",
-        "alt": "Portrét Julese Dumonta d'Urville (1790–1842), francouzského mořeplavce a objevitele Adélie Land.",
+        "alt": "Portrét Julese Dumonta d'Urville (1790-1842), francouzského mořeplavce a objevitele Adélie Land.",
         "author": "neznámý autor (19. století)",
         "license": "Public Domain",
         "sourceUrl": "https://commons.wikimedia.org/wiki/File:Jules_dumont_d_urville.jpg"
@@ -80,7 +80,7 @@
       "sourceUrl": "https://en.wikipedia.org/wiki/Emperor_penguin",
       "image": {
         "file": "gray-1844.jpg",
-        "alt": "Portrét George Roberta Graye (1808–1872), anglického zoologa, který formálně popsal tučňáka císařského.",
+        "alt": "Portrét George Roberta Graye (1808-1872), anglického zoologa, který formálně popsal tučňáka císařského.",
         "author": "neznámý autor (19. století)",
         "license": "Public Domain",
         "sourceUrl": "https://commons.wikimedia.org/wiki/File:George_Robert_Gray.jpg"
@@ -90,13 +90,13 @@
       "year": 1870,
       "title": "Začátek komerčního lovu na Macquarie",
       "category": "tragedy",
-      "description": "Joseph Hatch zakládá zpracovatelskou stanici na ostrově Macquarie. Mezi lety 1870 a 1919 bude pro výrobu oleje zabito přes dva miliony tučňáků královských a patagonských — v některých letech přesahuje roční úlovek 150 tisíc kusů.",
+      "description": "Joseph Hatch zakládá zpracovatelskou stanici na ostrově Macquarie. Mezi lety 1870 a 1919 bude pro výrobu oleje zabito přes dva miliony tučňáků královských a patagonských - v některých letech přesahuje roční úlovek 150 tisíc kusů.",
       "speciesSlug": "royal",
       "location": "Macquarie Island",
       "sourceUrl": "https://en.wikipedia.org/wiki/Joseph_Hatch",
       "image": {
         "file": "macquarie-1870.jpg",
-        "alt": "Vrak lodi „Gratitude\" na ostrově Macquarie, 1911 — historická fotografie z období Hatchovy zpracovatelské stanice.",
+        "alt": "Vrak lodi Gratitude na ostrově Macquarie, 1911 - historická fotografie z období Hatchovy zpracovatelské stanice.",
         "author": "Frank Hurley / Australasian Antarctic Expedition",
         "license": "Public Domain",
         "sourceUrl": "https://commons.wikimedia.org/wiki/File:Wreck_of_the_%27Gratitude%27,_Macquarie_Island,_1911_(2866462013).jpg"
@@ -104,7 +104,7 @@
     },
     {
       "year": 1898,
-      "title": "Belgická expedice — první přezimování v Antarktidě",
+      "title": "Belgická expedice - první přezimování v Antarktidě",
       "category": "expedition",
       "description": "Loď Belgica pod velením Adriena de Gerlache zamrzla v ledu Bellingshausenova moře a stala se první expedicí, která přezimovala jižně od antarktického kruhu. Vědci na palubě (mj. Roald Amundsen, Frederick Cook) studovali tučňáky kroužkové a uzdičkové.",
       "location": "Bellingshausenovo moře",
@@ -119,7 +119,7 @@
     },
     {
       "year": 1911,
-      "title": "Worst Journey in the World — pochod za vejci",
+      "title": "Worst Journey in the World - pochod za vejci",
       "category": "expedition",
       "description": "V červenci, uprostřed antarktické zimy, vyrazili Apsley Cherry-Garrard, Edward Wilson a Henry Bowers ze Scottovy expedice Terra Nova k Cape Crozier sebrat vejce tučňáků císařských. Pět týdnů pochodu při −60 °C ve tmě se stalo legendou polárního cestování.",
       "speciesSlug": "cisarsky",
@@ -127,7 +127,7 @@
       "sourceUrl": "https://en.wikipedia.org/wiki/The_Worst_Journey_in_the_World",
       "image": {
         "file": "cherry-garrard-1911.jpg",
-        "alt": "Ilustrace ze Scottovy expedice Terra Nova — historická fotografie spojená s pochodem k Cape Crozier (Worst Journey in the World).",
+        "alt": "Ilustrace ze Scottovy expedice Terra Nova - historická fotografie spojená s pochodem k Cape Crozier (Worst Journey in the World).",
         "author": "Herbert Ponting / Terra Nova Expedition",
         "license": "Public Domain",
         "sourceUrl": "https://commons.wikimedia.org/wiki/File:Worst_Journey_in_the_World-1-008.jpg"
@@ -137,12 +137,12 @@
       "year": 1959,
       "title": "Smlouva o Antarktidě",
       "category": "conservation",
-      "description": "12 zemí podepisuje Antarctic Treaty — kontinent jižně od 60. rovnoběžky se stává neutrálním prostorem věnovaným vědě a ochraně přírody. Komerční lov tučňáků v Antarktidě tím končí.",
+      "description": "12 zemí podepisuje Antarctic Treaty - kontinent jižně od 60. rovnoběžky se stává neutrálním prostorem věnovaným vědě a ochraně přírody. Komerční lov tučňáků v Antarktidě tím končí.",
       "location": "Washington, USA",
       "sourceUrl": "https://en.wikipedia.org/wiki/Antarctic_Treaty_System",
       "image": {
         "file": "treaty-1959.jpg",
-        "alt": "Podpis Smlouvy o Antarktidě, 1. prosince 1959 ve Washingtonu — zástupci 12 zakládajících států.",
+        "alt": "Podpis Smlouvy o Antarktidě, 1. prosince 1959 ve Washingtonu - zástupci 12 zakládajících států.",
         "author": "U.S. Department of State",
         "license": "Public Domain (US gov work)",
         "sourceUrl": "https://commons.wikimedia.org/wiki/File:1959_Antarctic_Treaty.jpg"
@@ -152,7 +152,7 @@
       "year": 1990,
       "title": "Kooyman měří rekordní ponor císařského",
       "category": "science",
-      "description": "Gerald Kooyman s pomocí miniaturních time-depth recorderů zaznamenává ponor tučňáka císařského do hloubky 535 metrů, trvající 21,8 minuty — tehdy nejhlubší a nejdelší ponor zaznamenaný u jakéhokoli ptáka.",
+      "description": "Gerald Kooyman s pomocí miniaturních time-depth recorderů zaznamenává ponor tučňáka císařského do hloubky 535 metrů, trvající 21,8 minuty - tehdy nejhlubší a nejdelší ponor zaznamenaný u jakéhokoli ptáka.",
       "speciesSlug": "cisarsky",
       "location": "McMurdo Sound, Antarktida",
       "sourceUrl": "https://en.wikipedia.org/wiki/Emperor_penguin"
@@ -170,14 +170,14 @@
       "year": 2007,
       "title": "Wienecke aktualizuje rekord ponoru",
       "category": "science",
-      "description": "Tým Barbary Wienecke u Atka Bay měří ponor tučňáka císařského do hloubky 564 metrů, trvající 32,2 minuty — překonává Kooymanův rekord. Bioenergetická limitace ponoru je tak posunuta dále.",
+      "description": "Tým Barbary Wienecke u Atka Bay měří ponor tučňáka císařského do hloubky 564 metrů, trvající 32,2 minuty - překonává Kooymanův rekord. Bioenergetická limitace ponoru je tak posunuta dále.",
       "speciesSlug": "cisarsky",
       "location": "Atka Bay, Antarktida",
       "sourceUrl": "https://en.wikipedia.org/wiki/Emperor_penguin"
     },
     {
       "year": 2016,
-      "title": "Halley Bay — kolaps druhé největší kolonie",
+      "title": "Halley Bay - kolaps druhé největší kolonie",
       "category": "tragedy",
       "description": "Druhá největší kolonie tučňáků císařských ve světě (Halley Bay, Brunt Ice Shelf) ztratila kvůli rozpadu mořského ledu téměř všechna mláďata tří po sobě jdoucích sezón. Z původních ~14 tisíc párů zbývá jen několik stovek. Klimatická změna přepisuje mapu druhu.",
       "speciesSlug": "cisarsky",
