@@ -92,76 +92,6 @@
   --card: rgba(233, 213, 255, 0.04);
 }
 
-:root[data-variant="pingu"] {
-  --background: #1a4d8c;
-  --foreground: #fff8e7;
-  --primary: #ffd54a;
-  --primary-btn: #ffb000;
-  --primary-btn-hover: #f59e0b;
-  --accent: #ff6b9d;
-  --border: rgba(255, 248, 231, 0.14);
-  --border-interactive: rgba(255, 213, 74, 0.55);
-  --muted: rgba(255, 248, 231, 0.06);
-  --muted-foreground: rgba(255, 248, 231, 0.7);
-  --card: rgba(255, 248, 231, 0.06);
-}
-
-:root[data-variant="dzungle"] {
-  --background: #0f3a1f;
-  --foreground: #e8f5e0;
-  --primary: #84cc16;
-  --primary-btn: #65a30d;
-  --primary-btn-hover: #4d7c0f;
-  --accent: #f97316;
-  --border: rgba(232, 245, 224, 0.1);
-  --border-interactive: rgba(132, 204, 22, 0.55);
-  --muted: rgba(232, 245, 224, 0.06);
-  --muted-foreground: rgba(232, 245, 224, 0.65);
-  --card: rgba(232, 245, 224, 0.05);
-}
-
-:root[data-variant="savana"] {
-  --background: #6b3410;
-  --foreground: #fef3c7;
-  --primary: #fbbf24;
-  --primary-btn: #d97706;
-  --primary-btn-hover: #b45309;
-  --accent: #ef4444;
-  --border: rgba(254, 243, 199, 0.12);
-  --border-interactive: rgba(251, 191, 36, 0.6);
-  --muted: rgba(254, 243, 199, 0.06);
-  --muted-foreground: rgba(254, 243, 199, 0.7);
-  --card: rgba(254, 243, 199, 0.06);
-}
-
-:root[data-variant="vesmir"] {
-  --background: #050516;
-  --foreground: #c7d2fe;
-  --primary: #818cf8;
-  --primary-btn: #6366f1;
-  --primary-btn-hover: #4f46e5;
-  --accent: #f472b6;
-  --border: rgba(199, 210, 254, 0.08);
-  --border-interactive: rgba(129, 140, 248, 0.5);
-  --muted: rgba(199, 210, 254, 0.04);
-  --muted-foreground: rgba(199, 210, 254, 0.6);
-  --card: rgba(199, 210, 254, 0.04);
-}
-
-:root[data-variant="les"] {
-  --background: #2d1810;
-  --foreground: #fef3c7;
-  --primary: #f59e0b;
-  --primary-btn: #c2410c;
-  --primary-btn-hover: #9a3412;
-  --accent: #ec4899;
-  --border: rgba(254, 243, 199, 0.1);
-  --border-interactive: rgba(245, 158, 11, 0.55);
-  --muted: rgba(254, 243, 199, 0.05);
-  --muted-foreground: rgba(254, 243, 199, 0.65);
-  --card: rgba(254, 243, 199, 0.05);
-}
-
 :root[data-theme="light"] {
   --background: #f0f9ff;
   --foreground: #0c1929;
@@ -341,11 +271,6 @@ html.reveal-ready .reveal.active {
 :root[data-variant="ocean"] .themed-bg[data-bg="ocean"],
 :root[data-variant="candy"] .themed-bg[data-bg="candy"],
 :root[data-variant="midnight"] .themed-bg[data-bg="midnight"],
-:root[data-variant="pingu"] .themed-bg[data-bg="pingu"],
-:root[data-variant="dzungle"] .themed-bg[data-bg="dzungle"],
-:root[data-variant="savana"] .themed-bg[data-bg="savana"],
-:root[data-variant="vesmir"] .themed-bg[data-bg="vesmir"],
-:root[data-variant="les"] .themed-bg[data-bg="les"],
 :root:not([data-variant]) .themed-bg[data-bg="arctic"] {
   opacity: 1;
 }
