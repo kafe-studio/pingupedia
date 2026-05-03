@@ -784,17 +784,18 @@ export class PlatformGame {
     if (!nextRoom) return;
     this.state.currentRoomId = nextRoom.id;
 
-    // Position in next room: mirror from THE EXIT'S side (which may differ from crossed
-    // side if fallback was used). Player se objeví na opačné straně exit.side.
-    const entrySide = exit.side;
+    // Position in next room: mirror from CROSSED side (player's visual direction).
+    // Když player jde doprava, vždy se objeví na levé straně další místnosti — bez ohledu
+    // na to, jestli byl exit primary nebo fallback. Tak nedojde k zacyklení (player by
+    // jinak skončil přímo na okraji odkud byl právě vyhozen).
     if (exit.toX !== undefined && exit.toY !== undefined) {
       p.x = exit.toX * TILE;
       p.y = exit.toY * TILE;
     } else {
-      if (entrySide === "right") p.x = 0 + 2;
-      else if (entrySide === "left") p.x = VIEW_W - PLAYER_W - 2;
-      else if (entrySide === "bottom") p.y = 0 + 2;
-      else if (entrySide === "top") p.y = VIEW_H - PLAYER_H - 2;
+      if (side === "right") p.x = 0 + 2;
+      else if (side === "left") p.x = VIEW_W - PLAYER_W - 2;
+      else if (side === "bottom") p.y = 0 + 2;
+      else if (side === "top") p.y = VIEW_H - PLAYER_H - 2;
     }
     p.vx = 0;
     p.vy = 0;
@@ -802,7 +803,7 @@ export class PlatformGame {
     // floor hole, kterou přišel zespoda). Levels mají v row 11 cols toX-1..+1 = "===",
     // takže player landne na pevnou plošku a nepropadne zpět dolů.
     // Pokud existuje lift, override — lift má prioritu a vyveze player nahoru.
-    if (entrySide === "bottom") {
+    if (side === "bottom") {
       const lift = nextRoom.movers?.find((m) => m.kind === "lift");
       const centerCol = lift ? Math.floor((lift.x + lift.w / 2) / TILE) : (exit.toX ?? 9);
       // Catch-platform snap: stand ON top of row 11 platform (player_h px above it).
@@ -831,7 +832,7 @@ export class PlatformGame {
     // Daj hráčovi chvíli reagovat - jinak guardian patrolující blízko landing pozice
     // může způsobit okamžitou smrt bez šance se uhnout. Bottom-entry dostává delší invuln
     // (často přistává na výtahu nebo padá zhůry, potřebuje víc času na orientaci).
-    p.invulnerableMs = entrySide === "bottom" ? TRANSITION_INVULN_MS * 2 : TRANSITION_INVULN_MS;
+    p.invulnerableMs = side === "bottom" ? TRANSITION_INVULN_MS * 2 : TRANSITION_INVULN_MS;
 
     this.hooks.onSfx("zbunk");
     this.showHintIfNew(nextRoom);
