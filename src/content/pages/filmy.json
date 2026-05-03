@@ -162,12 +162,12 @@
           ]
         },
         {
-          "title": "David Attenborough: Příběh tučňáka",
+          "title": "Tučňáci - tajný život",
           "titleOrig": "Penguins: Spy in the Huddle",
           "year": 2013,
           "type": "dokument",
           "director": "John Downer",
-          "description": "BBC minisérie s komentářem Davida Attenborougha. Filmaři použili padesát skrytých kamer v podobě robotických tučňáků a vajec - díky tomu kolonie přestaly štáb vnímat a kamery zachytily intimní scény, které by jinak nebylo možné natočit.",
+          "description": "BBC minisérie s komentářem Davida Tennanta (UK verze). Filmaři použili padesát skrytých kamer v podobě robotických tučňáků a vajec - díky tomu kolonie přestaly štáb vnímat a kamery zachytily intimní scény, které by jinak nebylo možné natočit.",
           "links": [
             { "label": "ČSFD", "url": "https://www.csfd.cz/film/311322-david-attenborough-pribeh-tucnaka/prehled/", "type": "csfd" },
             { "label": "Wikipedie", "url": "https://en.wikipedia.org/wiki/Penguins:_Spy_in_the_Huddle", "type": "wikipedia" }
@@ -245,11 +245,11 @@
         },
         {
           "title": "Dobrodružství tučňáků",
-          "titleOrig": "Penguin's Memory",
-          "year": 1988,
+          "titleOrig": "Penguin's Memory: Shiawase Monogatari",
+          "year": 1985,
           "type": "animovany",
           "director": "Takashi Anno",
-          "description": "Sovětsko-japonský animovaný film z osmdesátek o tučňákovi Mikem, který se vrací z války a hledá svoji ztracenou lásku. Nezvyklá kombinace dětského designu a vážného příběhu - kultovní záležitost.",
+          "description": "Japonský animovaný film z osmdesátek (vznikl rozšířením Suntory reklamy) o tučňákovi Mikem, který se vrací z války a hledá svoji ztracenou lásku. Nezvyklá kombinace dětského designu a vážného příběhu - kultovní záležitost.",
           "links": [
             { "label": "ČSFD", "url": "https://www.csfd.cz/film/233591-dobrodruzstvi-tucnaku/prehled/", "type": "csfd" },
             { "label": "Wikipedie", "url": "https://en.wikipedia.org/wiki/Penguin%27s_Memory", "type": "wikipedia" }

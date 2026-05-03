@@ -3,7 +3,7 @@ nameCs: "Tučňák novozélandský"
 nameLat: "Eudyptes pachyrhynchus"
 nameEn: "Fiordland penguin"
 genus: "Eudyptes"
-iucnStatus: "NT"
+iucnStatus: "VU"
 description: "Lesní tučňák jihozápadního Nového Zélandu s výrazným žlutým chocholem. Maorsky tawaki."
 size:
   heightCm:

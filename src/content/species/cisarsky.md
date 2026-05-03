@@ -7,8 +7,8 @@ iucnStatus: "EN"
 description: "Největší a nejhlouběji se potápějící druh tučňáka. Jediný pták, který hnízdí v antarktické zimě přímo na mořském ledě."
 size:
   heightCm:
-    - 100
-    - 130
+    - 110
+    - 122
   weightKg:
     - 22
     - 45
