@@ -788,15 +788,16 @@ export class PlatformGame {
     }
     p.vx = 0;
     p.vy = 0;
-    // Bottom entry: tučňák se ocitne uprostřed místnosti na zaručeně bezpečném místě.
-    // Najdeme sloupec lift (pokud existuje) a v něm nejvyšší volný (.) tile bez okolního *,
-    // ~ ani guardian — to je spawn. Výtah se resetuje dolů, padající tučňák na něj přistane.
+    // Bottom entry: tučňák se ocitne přímo na catch platformě v row 11 (těsně nad
+    // floor hole, kterou přišel zespoda). Levels mají v row 11 cols toX-1..+1 = "===",
+    // takže player landne na pevnou plošku a nepropadne zpět dolů.
+    // Pokud existuje lift, override — lift má prioritu a vyveze player nahoru.
     if (side === "bottom") {
       const lift = nextRoom.movers?.find((m) => m.kind === "lift");
       const centerCol = lift ? Math.floor((lift.x + lift.w / 2) / TILE) : (exit.toX ?? 9);
-      const safe = this.findSafeSpawn(nextRoom, centerCol);
-      p.x = safe.x;
-      p.y = safe.y;
+      // Catch-platform snap: stand ON top of row 11 platform (player_h px above it).
+      p.x = centerCol * TILE + (TILE - PLAYER_W) / 2;
+      p.y = 11 * TILE - PLAYER_H;
       if (lift) {
         lift.y = lift.maxY ?? lift.y;
         lift.vy = -Math.abs(lift.vy ?? 0.7);
