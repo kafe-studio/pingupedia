@@ -8,9 +8,14 @@ interface Props {
   ignoreTitleTemplate?: boolean;
 }
 
+import { getImage } from "astro:assets";
+import mascotIcon from "../../assets/mascot/ahoj.png";
 import { getSiteConfig } from "../../lib/site";
 
 const siteConfig = await getSiteConfig();
+const favicon32 = await getImage({ src: mascotIcon, format: "png", width: 32, height: 32 });
+const favicon192 = await getImage({ src: mascotIcon, format: "png", width: 192, height: 192 });
+const favicon512 = await getImage({ src: mascotIcon, format: "png", width: 512, height: 512 });
 const {
   title,
   description = siteConfig.description,
@@ -31,7 +36,10 @@ const canonicalURL =
 
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="icon" type="image/png" sizes="32x32" href={favicon32.src} />
+<link rel="icon" type="image/png" sizes="192x192" href={favicon192.src} />
+<link rel="apple-touch-icon" sizes="180x180" href={favicon192.src} />
+<link rel="icon" type="image/png" sizes="512x512" href={favicon512.src} />
 <link rel="canonical" href={canonicalURL} />
 <meta name="generator" content={Astro.generator} />
 
