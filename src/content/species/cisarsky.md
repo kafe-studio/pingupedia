@@ -8,7 +8,7 @@ description: "Největší a nejhlouběji se potápějící druh tučňáka. Jedi
 size:
   heightCm:
     - 110
-    - 122
+    - 120
   weightKg:
     - 22
     - 45
