@@ -22,8 +22,9 @@ const TRANSITION_INVULN_MS = 1500;
 const PLAYER_W = 16;
 const PLAYER_H = 20;
 const MAX_LIVES = 5;
-const HEART_SPAWN_INTERVAL_MS = 12_000; // try to spawn a new heart every 12s
-const HEART_MAX_ALIVE = 5;              // never more than this many on the map at once
+const HEART_SPAWN_INTERVAL_MS = 7_000;  // try to spawn a new heart every 7s
+const HEART_MAX_ALIVE = 8;              // never more than this many on the map at once
+const HEART_LIVES = 3;                  // each heart restores up to 3 lives
 const PECK_COOLDOWN_MS = 500;           // delay between successive pecks
 
 export class PlatformGame {
@@ -259,6 +260,12 @@ export class PlatformGame {
   private isLadder(t: string): boolean {
     return t === "H";
   }
+  // Topmost ladder tile in a column behaves like a jump-through platform —
+  // you land on it from above and can stand. Stack interior (ladder above) doesn't.
+  private isLadderTop(room: Room, col: number, row: number): boolean {
+    if (!this.isLadder(this.roomTileAt(room, col, row))) return false;
+    return !this.isLadder(this.roomTileAt(room, col, row - 1));
+  }
   private isDeadly(t: string): boolean {
     // Voda už nezabíjí — tučňák v ní plave. Jen ostny / krystaly zabíjejí.
     return t === "*";
@@ -350,12 +357,18 @@ export class PlatformGame {
       p.onGround = false;
     } else {
       // Down-press drop through jump-through platform: pokud stojím na "=" a držím dolů, propadnu.
+      // Stejný gesture na vrcholu žebříku → znovu se přichytím a lezu dolů.
       if (this.keys.down && p.onGround) {
         const cxNow = p.x + PLAYER_W / 2;
         const feetRow = Math.floor((p.y + PLAYER_H) / TILE);
-        const tileBelow = this.roomTileAt(room, Math.floor(cxNow / TILE), feetRow);
+        const ladderCol = Math.floor(cxNow / TILE);
+        const tileBelow = this.roomTileAt(room, ladderCol, feetRow);
         if (tileBelow === "=") {
           p.y += 2;
+          p.onGround = false;
+        } else if (tileBelow === "H") {
+          p.x = ladderCol * TILE + (TILE - PLAYER_W) / 2;
+          p.onLadder = true;
           p.onGround = false;
         }
       }
@@ -447,6 +460,14 @@ export class PlatformGame {
             break;
           }
         }
+        // Ladder top behaves like jump-through platform — land when falling from above.
+        if (dir > 0 && !p.onLadder && this.isLadderTop(room, c, row)) {
+          const prevBottomRow = Math.floor((p.y + PLAYER_H - 1) / TILE);
+          if (prevBottomRow < row) {
+            landed = true;
+            break;
+          }
+        }
       }
       if (!landed) p.y = nextY;
       else {
@@ -471,6 +492,7 @@ export class PlatformGame {
         const t = this.roomTileAt(room, c, row);
         if (this.isSolid(t)) { p.onGround = true; break; }
         if (this.isPlatform(t) && (feetY | 0) % TILE === 0) { p.onGround = true; break; }
+        if (!p.onLadder && this.isLadderTop(room, c, row) && (feetY | 0) % TILE === 0) { p.onGround = true; break; }
       }
     }
   }
@@ -559,9 +581,9 @@ export class PlatformGame {
         remaining.push(it);
         continue;
       }
-      // Heart = okamžité +1 život, NE je počítán do totalItems.
+      // Heart = okamžité +3 životy (cap MAX_LIVES), NE je počítán do totalItems.
       if (it.kind === "heart") {
-        if (this.state.lives < MAX_LIVES) this.state.lives++;
+        this.state.lives = Math.min(MAX_LIVES, this.state.lives + HEART_LIVES);
         this.hooks.onSfx("gulp");
         continue;
       }
