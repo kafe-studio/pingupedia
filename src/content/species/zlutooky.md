@@ -10,8 +10,8 @@ size:
     - 62
     - 79
   weightKg:
-    - 3
-    - 8.5
+    - 5
+    - 8
 distribution:
   - "Jihovýchodní pobřeží Jižního ostrova Nového Zélandu (Otago, Catlins)"
   - "Stewart Island a Codfish Island"
