@@ -5,6 +5,7 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 import NoCropImage from "../../components/media/NoCropImage.astro";
 import IucnBadge from "../../components/species/IucnBadge.astro";
 import SpeciesFilter from "../../components/species/SpeciesFilter.astro";
+import SpeciesNav from "../../components/species/SpeciesNav.astro";
 import Mascot from "../../components/mascot/Mascot.astro";
 
 const species = await getCollection("species");
@@ -40,9 +41,20 @@ const genusCount = species.reduce<Record<string, number>>((acc, s) => {
   acc[s.data.genus] = (acc[s.data.genus] || 0) + 1;
   return acc;
 }, {});
+
+const navSections = species.map((entry) => ({
+  id: `species-${entry.id}`,
+  title: entry.data.nameCs,
+}));
 ---
 
 <BaseLayout {metadata}>
+  <SpeciesNav
+    sections={navSections}
+    backHref="/"
+    backLabel="Zpět na úvod"
+    panelLabel="Druhy"
+  />
   <section class="px-4 sm:px-6 pt-28 pb-16">
     <div class="mx-auto max-w-7xl">
       <header class="mb-8 md:mb-12 max-w-4xl reveal">
@@ -73,7 +85,8 @@ const genusCount = species.reduce<Record<string, number>>((acc, s) => {
           const isSurfaced = surface.length > 0;
           return (
             <li
-              class={span}
+              id={`species-${entry.id}`}
+              class={`${span} scroll-mt-24`}
               data-species-card
               data-genus={entry.data.genus}
               data-iucn={entry.data.iucnStatus}

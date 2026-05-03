@@ -116,6 +116,11 @@ const IUCN_LABEL: Record<string, string> = {
           const matchIucn = active.iucn.size === 0 || active.iucn.has(cIucn);
           const show = matchGenus && matchIucn;
           card.dataset.hidden = show ? "false" : "true";
+          // Sync kontextové menu — skryté druhy zmizí i z postranního panelu.
+          if (card.id) {
+            const navLink = document.querySelector<HTMLElement>(`.species-nav-link[data-section="${card.id}"]`);
+            navLink?.parentElement?.classList.toggle("hidden", !show);
+          }
           if (show) visible++;
         });
         if (countEl) {
