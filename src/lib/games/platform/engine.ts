@@ -672,21 +672,31 @@ export class PlatformGame {
     if (!nextRoom) return;
     this.state.currentRoomId = nextRoom.id;
 
-    // Position in next room: mirror from crossed side unless explicit target given.
-    if (exit.toX !== undefined && exit.toY !== undefined) {
+    // Top/bottom přechod = po žebříku. Player se snapne na ladder column toX:
+    //   - bottom entry (zezdola nahoru) → spawn na row 9 (= top of catch platform), žebřík pokračuje dolů
+    //   - top entry (z vrchu dolů)      → spawn na row 0 (těsně pod stropem), žebřík pokračuje dolů ke catch v row 5
+    // Dál ho engine drží na žebříku (`onLadder=true`) — stačí tisknout up/down nebo nic, padání nehrozí.
+    const ladderCol = exit.toX ?? 9;
+    if (side === "bottom") {
+      p.x = ladderCol * TILE + (TILE - PLAYER_W) / 2;
+      p.y = 9 * TILE;
+      p.onLadder = true;
+    } else if (side === "top") {
+      p.x = ladderCol * TILE + (TILE - PLAYER_W) / 2;
+      p.y = 0;
+      p.onLadder = true;
+    } else if (exit.toX !== undefined && exit.toY !== undefined) {
       p.x = exit.toX * TILE;
       p.y = exit.toY * TILE;
     } else {
       if (side === "right") p.x = 0 + 2;
       else if (side === "left") p.x = VIEW_W - PLAYER_W - 2;
-      else if (side === "bottom") p.y = 0 + 2;
-      else if (side === "top") p.y = VIEW_H - PLAYER_H - 2;
     }
     p.vx = 0;
     p.vy = 0;
     // Snap player up if landing position overlaps a solid tile below — jinak by první
     // frame X-axis collision viděl solid podlahu a zablokoval pohyb (= "neprůchozí").
-    {
+    if (side !== "top" && side !== "bottom") {
       const topRow = Math.floor(p.y / TILE);
       const botRow = Math.floor((p.y + PLAYER_H - 1) / TILE);
       const leftCol = Math.floor(p.x / TILE);
@@ -699,9 +709,9 @@ export class PlatformGame {
       }
       if (snapRow >= 0) p.y = snapRow * TILE - PLAYER_H;
     }
-    // Daj hráčovi chvíli reagovat — jinak guardian patrolující blízko landing pozice
-    // může způsobit okamžitou smrt bez šance se uhnout.
-    p.invulnerableMs = TRANSITION_INVULN_MS;
+    // Top/bottom přechod = 5s nezranitelnosti pro pohodlné vystoupení ze žebříku.
+    // Boční přechody jen 1.5s (původní hodnota).
+    p.invulnerableMs = (side === "top" || side === "bottom") ? 5000 : TRANSITION_INVULN_MS;
 
     this.hooks.onSfx("zbunk");
     this.showHintIfNew(nextRoom);
