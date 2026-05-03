@@ -799,16 +799,18 @@ export class PlatformGame {
     }
     p.vx = 0;
     p.vy = 0;
-    // Bottom entry: tučňák se ocitne přímo na catch platformě v row 11 (těsně nad
-    // floor hole, kterou přišel zespoda). Levels mají v row 11 cols toX-1..+1 = "===",
-    // takže player landne na pevnou plošku a nepropadne zpět dolů.
-    // Pokud existuje lift, override — lift má prioritu a vyveze player nahoru.
+    // Bottom entry: tučňák chytá žebřík ústící v podlaze. Levels mají v rows 11+12
+    // col toX = "H" (vertikální žebřík). Player se snapuje na col toX v dolní části
+    // místnosti a `onLadder=true` ho na žebřík hned přilepí — díky tomu může lézt
+    // nahoru bez nutnosti hned stisknout klávesu (engine to respektuje, viz updatePlayer).
     if (side === "bottom") {
+      const ladderCol = exit.toX ?? 9;
+      p.x = ladderCol * TILE + (TILE - PLAYER_W) / 2;
+      p.y = 11 * TILE;
+      p.onLadder = true;
+      // Lift je nyní záložní — pokud existuje, držíme ho dole pro případ, že tučňák
+      // ze žebříku spadne. Reset stavu, aby vyjel nahoru spolu s ladder climbingem.
       const lift = nextRoom.movers?.find((m) => m.kind === "lift");
-      const centerCol = lift ? Math.floor((lift.x + lift.w / 2) / TILE) : (exit.toX ?? 9);
-      // Catch-platform snap: stand ON top of row 11 platform (player_h px above it).
-      p.x = centerCol * TILE + (TILE - PLAYER_W) / 2;
-      p.y = 11 * TILE - PLAYER_H;
       if (lift) {
         lift.y = lift.maxY ?? lift.y;
         lift.vy = -Math.abs(lift.vy ?? 0.7);
