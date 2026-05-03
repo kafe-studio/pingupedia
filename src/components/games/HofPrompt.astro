@@ -1,0 +1,129 @@
+---
+// Modal pro zápis výsledku do Hall of Fame.
+// Otevírá se přes window.openHofPrompt({...}) z herních scriptů.
+---
+
+<div
+  id="hof-prompt"
+  class="fixed inset-0 z-[60] hidden items-center justify-center bg-black/70 backdrop-blur-sm p-4"
+  role="dialog"
+  aria-modal="true"
+  aria-labelledby="hof-prompt-title"
+>
+  <div class="bento-card max-w-sm w-full p-6 text-center">
+    <p class="text-[11px] uppercase tracking-[0.2em] text-primary mb-1">🏆 Síň slávy</p>
+    <h2 id="hof-prompt-title" class="text-2xl font-black mb-3">Zapiš svůj výsledek</h2>
+    <p class="text-sm text-muted-foreground mb-1" data-hof-prompt-value-label>Výsledek</p>
+    <p class="text-3xl font-black tabular-nums mb-4" data-hof-prompt-value>—</p>
+    <label class="block text-left mb-3">
+      <span class="text-xs uppercase tracking-widest text-muted-foreground font-semibold">Tvé jméno</span>
+      <input
+        type="text"
+        data-hof-prompt-name
+        maxlength="16"
+        autocomplete="nickname"
+        placeholder="Hráč"
+        class="mt-1 w-full rounded-xl border border-border bg-muted/30 px-3 py-2.5 text-sm font-medium focus:outline-none focus:border-primary"
+      />
+    </label>
+    <div class="flex gap-2 justify-center">
+      <button
+        type="button"
+        data-hof-prompt-skip
+        class="rounded-full border border-border px-4 py-2 text-xs font-medium hover:border-border-interactive"
+      >
+        Přeskočit
+      </button>
+      <button
+        type="button"
+        data-hof-prompt-save
+        class="rounded-full bg-primary text-primary-foreground px-5 py-2 text-sm font-bold hover:opacity-90"
+      >
+        Uložit
+      </button>
+    </div>
+    <p data-hof-prompt-feedback class="mt-3 text-xs text-emerald-500 font-bold hidden"></p>
+  </div>
+</div>
+
+<script>
+  import { saveHof, loadLastName, saveLastName, formatTime } from "../../lib/games/hall-of-fame";
+
+  type PromptOpts = {
+    gameId: string;
+    value: number;
+    meta?: string;
+    valueLabel: string;
+    valueFormat: "number" | "time";
+    sort: "desc" | "asc";
+    onSaved?: () => void;
+    onClose?: () => void;
+  };
+
+  function openHofPrompt(opts: PromptOpts): void {
+    const root = document.getElementById("hof-prompt");
+    if (!root) return;
+    const $value = root.querySelector<HTMLElement>("[data-hof-prompt-value]")!;
+    const $valueLabel = root.querySelector<HTMLElement>("[data-hof-prompt-value-label]")!;
+    const $name = root.querySelector<HTMLInputElement>("[data-hof-prompt-name]")!;
+    const $save = root.querySelector<HTMLButtonElement>("[data-hof-prompt-save]")!;
+    const $skip = root.querySelector<HTMLButtonElement>("[data-hof-prompt-skip]")!;
+    const $feedback = root.querySelector<HTMLElement>("[data-hof-prompt-feedback]")!;
+
+    $valueLabel.textContent = opts.valueLabel;
+    $value.textContent =
+      opts.valueFormat === "time" ? formatTime(opts.value) : String(opts.value);
+    $name.value = loadLastName();
+    $feedback.classList.add("hidden");
+    $feedback.textContent = "";
+
+    function close(): void {
+      root!.classList.add("hidden");
+      root!.classList.remove("flex");
+      $save.onclick = null;
+      $skip.onclick = null;
+      $name.onkeydown = null;
+      opts.onClose?.();
+    }
+
+    function save(): void {
+      const raw = $name.value;
+      saveLastName(raw);
+      const result = saveHof(
+        opts.gameId,
+        { name: raw, value: opts.value, meta: opts.meta },
+        opts.sort,
+      );
+      const w = window as unknown as { refreshHof?: () => void };
+      w.refreshHof?.();
+      if (result.rank !== null) {
+        $feedback.textContent = `Uloženo na ${result.rank}. místo! 🎉`;
+      } else {
+        $feedback.textContent = "Uloženo (mimo top 10).";
+      }
+      $feedback.classList.remove("hidden");
+      window.setTimeout(() => {
+        opts.onSaved?.();
+        close();
+      }, 900);
+    }
+
+    $save.onclick = save;
+    $skip.onclick = close;
+    $name.onkeydown = (e) => {
+      if (e.key === "Enter") {
+        e.preventDefault();
+        save();
+      } else if (e.key === "Escape") {
+        e.preventDefault();
+        close();
+      }
+    };
+
+    root.classList.remove("hidden");
+    root.classList.add("flex");
+    window.setTimeout(() => $name.focus(), 50);
+  }
+
+  (window as unknown as { openHofPrompt?: typeof openHofPrompt }).openHofPrompt = openHofPrompt;
+</script>

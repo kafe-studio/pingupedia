@@ -1,0 +1,125 @@
+---
+interface Props {
+  gameId: string;
+  title?: string;
+  valueLabel: string;
+  valueFormat: "number" | "time";
+  sort: "desc" | "asc";
+}
+const {
+  gameId,
+  title = "Síň slávy",
+  valueLabel,
+  valueFormat,
+  sort,
+} = Astro.props;
+---
+
+<section
+  class="bento-card p-4 md:p-5 mt-6"
+  data-hof
+  data-hof-game={gameId}
+  data-hof-value-format={valueFormat}
+  data-hof-sort={sort}
+>
+  <header class="mb-3 flex items-center justify-between gap-3">
+    <h2 class="text-lg font-black tracking-tight">🏆 {title}</h2>
+    <button
+      type="button"
+      data-hof-clear
+      class="text-[11px] text-muted-foreground hover:text-foreground underline-offset-2 hover:underline"
+    >
+      Vymazat
+    </button>
+  </header>
+  <div data-hof-list>
+    <p class="text-xs text-muted-foreground italic">Zatím žádné výsledky. Buď první!</p>
+  </div>
+  <table class="hidden w-full text-sm" data-hof-table>
+    <thead>
+      <tr class="text-[11px] uppercase tracking-widest text-muted-foreground border-b border-border">
+        <th class="py-1.5 pr-2 text-left font-semibold w-8">#</th>
+        <th class="py-1.5 pr-2 text-left font-semibold">Jméno</th>
+        <th class="py-1.5 pr-2 text-right font-semibold">{valueLabel}</th>
+        <th class="py-1.5 pr-0 text-right font-semibold hidden sm:table-cell">Datum</th>
+      </tr>
+    </thead>
+    <tbody data-hof-tbody></tbody>
+  </table>
+</section>
+
+<script>
+  import { loadHof, clearHof, formatTime, type HofEntry } from "../../lib/games/hall-of-fame";
+
+  function fmtValue(value: number, kind: string): string {
+    if (kind === "time") return formatTime(value);
+    return String(value);
+  }
+
+  function render(root: HTMLElement): void {
+    const gameId = root.dataset.hofGame ?? "";
+    const valueFormat = root.dataset.hofValueFormat ?? "number";
+    const list = root.querySelector<HTMLElement>("[data-hof-list]");
+    const table = root.querySelector<HTMLTableElement>("[data-hof-table]");
+    const tbody = root.querySelector<HTMLTableSectionElement>("[data-hof-tbody]");
+    if (!list || !table || !tbody) return;
+
+    const entries = loadHof(gameId);
+    if (entries.length === 0) {
+      list.classList.remove("hidden");
+      table.classList.add("hidden");
+      tbody.innerHTML = "";
+      return;
+    }
+    list.classList.add("hidden");
+    table.classList.remove("hidden");
+    tbody.innerHTML = "";
+    entries.forEach((e: HofEntry, i: number) => {
+      const tr = document.createElement("tr");
+      tr.className = "border-b border-border/50 last:border-b-0";
+      const medal = i === 0 ? "🥇" : i === 1 ? "🥈" : i === 2 ? "🥉" : `${i + 1}.`;
+      const meta = e.meta ? ` <span class="text-xs text-muted-foreground">· ${escapeHtml(e.meta)}</span>` : "";
+      tr.innerHTML = `
+        <td class="py-1.5 pr-2 font-bold">${medal}</td>
+        <td class="py-1.5 pr-2 truncate max-w-[160px]">${escapeHtml(e.name)}${meta}</td>
+        <td class="py-1.5 pr-2 text-right tabular-nums font-bold">${fmtValue(e.value, valueFormat)}</td>
+        <td class="py-1.5 pr-0 text-right text-xs text-muted-foreground hidden sm:table-cell tabular-nums">${escapeHtml(e.date)}</td>
+      `;
+      tbody.appendChild(tr);
+    });
+  }
+
+  function escapeHtml(s: string): string {
+    return s
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;");
+  }
+
+  function wire(): void {
+    document.querySelectorAll<HTMLElement>("[data-hof]").forEach((root) => {
+      if (root.dataset.wired) {
+        render(root);
+        return;
+      }
+      root.dataset.wired = "1";
+      const clearBtn = root.querySelector<HTMLButtonElement>("[data-hof-clear]");
+      clearBtn?.addEventListener("click", () => {
+        const gameId = root.dataset.hofGame ?? "";
+        if (!confirm("Opravdu vymazat celý žebříček této hry?")) return;
+        clearHof(gameId);
+        render(root);
+      });
+      render(root);
+    });
+  }
+
+  // Re-render hook for game scripts.
+  (window as unknown as { refreshHof?: () => void }).refreshHof = () => {
+    document.querySelectorAll<HTMLElement>("[data-hof]").forEach(render);
+  };
+
+  wire();
+  document.addEventListener("astro:page-load", wire);
+</script>

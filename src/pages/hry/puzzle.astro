@@ -1,6 +1,8 @@
 ---
 export const prerender = true;
 import GameLayout from "../../layouts/GameLayout.astro";
+import HallOfFame from "../../components/games/HallOfFame.astro";
+import HofPrompt from "../../components/games/HofPrompt.astro";
 import { getImage } from "astro:assets";
 import { getCollection } from "astro:content";
 import type { PuzzleImage } from "../../lib/games/puzzle/types";
@@ -59,7 +61,7 @@ const manifestJson = JSON.stringify(manifest);
 
   <div
     id="puzzle-done"
-    class="fixed inset-0 z-50 hidden flex-col items-center justify-center gap-4 bg-black/70 backdrop-blur-sm p-6 text-center"
+    class="fixed inset-0 z-50 hidden flex-col items-center justify-center gap-4 overflow-y-auto bg-black/70 backdrop-blur-sm p-6 text-center"
   >
     <h2 class="text-3xl md:text-5xl font-black text-white">🎉 Složeno!</h2>
     <p class="text-white/80" data-done-msg></p>
@@ -67,7 +69,11 @@ const manifestJson = JSON.stringify(manifest);
       <button data-done-again type="button" class="rounded-full bg-white text-slate-900 px-5 py-2.5 text-sm font-bold">Jiný obrázek</button>
       <a href="/hry/" class="rounded-full border border-white/40 text-white px-5 py-2.5 text-sm font-bold">Zpět do herny</a>
     </div>
+    <div class="w-full max-w-md text-left">
+      <HallOfFame gameId="puzzle" valueLabel="Čas" valueFormat="time" sort="asc" />
+    </div>
   </div>
+  <HofPrompt />
 
   <script is:inline define:vars={{ manifestJson }}>
     window.__PUZZLE_MANIFEST__ = JSON.parse(manifestJson);
@@ -143,8 +149,16 @@ const manifestJson = JSON.stringify(manifest);
         onComplete(elapsed) {
           const mm = Math.floor(elapsed / 60).toString().padStart(2, "0");
           const ss = (elapsed % 60).toString().padStart(2, "0");
-          doneMsg.textContent = `Čas: ${mm}:${ss}  ·  ${meta.speciesName}`;
+          doneMsg.textContent = `Čas: ${mm}:${ss}  ·  ${meta.speciesName}  ·  ${currentDifficulty}`;
           showDone(true);
+          window.openHofPrompt?.({
+            gameId: "puzzle",
+            value: elapsed,
+            meta: `${meta.speciesName} · ${currentDifficulty}`,
+            valueLabel: "Čas",
+            valueFormat: "time",
+            sort: "asc",
+          });
         },
       }, currentDifficulty);
     }

@@ -42,4 +42,17 @@ declare global {
       isAdmin?: boolean;
     }
   }
+  interface Window {
+    openHofPrompt?: (opts: {
+      gameId: string;
+      value: number;
+      meta?: string;
+      valueLabel: string;
+      valueFormat: "number" | "time";
+      sort: "desc" | "asc";
+      onSaved?: () => void;
+      onClose?: () => void;
+    }) => void;
+    refreshHof?: () => void;
+  }
 }

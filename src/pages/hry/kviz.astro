@@ -1,6 +1,8 @@
 ---
 export const prerender = true;
 import GameLayout from "../../layouts/GameLayout.astro";
+import HallOfFame from "../../components/games/HallOfFame.astro";
+import HofPrompt from "../../components/games/HofPrompt.astro";
 import { getQuiz } from "../../lib/pages";
 
 const quiz = await getQuiz();
@@ -54,7 +56,11 @@ const QUESTIONS_PER_ROUND = 5;
         <a href="/druhy/" class="btn-outline text-white border-white/40">Prozkoumat druhy →</a>
       </div>
     </div>
+
+    <HallOfFame gameId="kviz" valueLabel="Skóre" valueFormat="number" sort="desc" />
   </div>
+
+  <HofPrompt />
 </GameLayout>
 
 <script>
@@ -168,6 +174,14 @@ const QUESTIONS_PER_ROUND = 5;
           ? "Dobrá práce! Většinu tučňáčích záhad máš pod palcem."
           : "Projdi si pár druhů a zkus to znovu — brzy budeš expert.";
     $finalMsg.textContent = msg;
+    window.openHofPrompt?.({
+      gameId: "kviz",
+      value: score,
+      meta: `z ${questions.length} otázek`,
+      valueLabel: "Skóre",
+      valueFormat: "number",
+      sort: "desc",
+    });
   }
 
   function startNewRound(): void {

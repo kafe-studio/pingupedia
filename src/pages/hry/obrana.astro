@@ -1,6 +1,8 @@
 ---
 export const prerender = true;
 import GameLayout from "../../layouts/GameLayout.astro";
+import HallOfFame from "../../components/games/HallOfFame.astro";
+import HofPrompt from "../../components/games/HofPrompt.astro";
 ---
 
 <GameLayout title="Ledová obrana" description="Tučňák střílí sněhové koule na blížící se nepřátele — Space Invaders styl.">
@@ -103,7 +105,11 @@ import GameLayout from "../../layouts/GameLayout.astro";
         <button data-mobile="right" type="button" class="rounded-lg border border-border bg-muted/30 py-3 font-bold">→</button>
       </div>
     </div>
+
+    <HallOfFame gameId="obrana" valueLabel="Skóre" valueFormat="number" sort="desc" />
   </div>
+
+  <HofPrompt />
 </GameLayout>
 
 <script>
@@ -147,15 +153,33 @@ import GameLayout from "../../layouts/GameLayout.astro";
     showOverlay();
   }
 
+  let lastHud: GameHud | null = null;
+
+  function promptHof(label: string): void {
+    if (!lastHud || lastHud.score <= 0) return;
+    window.openHofPrompt?.({
+      gameId: "obrana",
+      value: lastHud.score,
+      meta: `${label} · vlna ${lastHud.wave}/${lastHud.maxWave} · lvl ${lastHud.level}`,
+      valueLabel: "Skóre",
+      valueFormat: "number",
+      sort: "desc",
+    });
+  }
+
   function handleStatus(status: GameStatus): void {
     if (status === "playing") hideOverlay();
-    else if (status === "win")
+    else if (status === "win") {
       showEnd("Kolonie zachráněna!", "Porazil jsi boss kosatky. Jsi legenda.", "Hrát znovu", () => game?.restart());
-    else if (status === "gameover")
+      promptHof("výhra");
+    } else if (status === "gameover") {
       showEnd("Game over", "Ledovce padly. Zkusíš to znovu?", "Znovu", () => game?.restart());
+      promptHof("prohra");
+    }
   }
 
   function renderHud(h: GameHud): void {
+    lastHud = h;
     hudWave.textContent = String(h.wave);
     hudMax.textContent = String(h.maxWave);
     hudLevel.textContent = String(h.level);

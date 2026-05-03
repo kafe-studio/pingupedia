@@ -1,6 +1,8 @@
 ---
 export const prerender = true;
 import GameLayout from "../../layouts/GameLayout.astro";
+import HallOfFame from "../../components/games/HallOfFame.astro";
+import HofPrompt from "../../components/games/HofPrompt.astro";
 ---
 
 <GameLayout title="Ledová výprava" description="Jet Set Willy v Antarktidě — 40 místností, sbírej ryby, vejce, medaile, vlajky a krystaly.">
@@ -105,7 +107,11 @@ import GameLayout from "../../layouts/GameLayout.astro";
         <button data-mobile-peck type="button" class="col-span-3 rounded-lg border border-border bg-muted/30 py-3 font-bold">⛏ klovnout (X)</button>
       </div>
     </div>
+
+    <HallOfFame gameId="platformovka" valueLabel="Skóre" valueFormat="number" sort="desc" />
   </div>
+
+  <HofPrompt />
 </GameLayout>
 
 <script>
@@ -145,7 +151,10 @@ import GameLayout from "../../layouts/GameLayout.astro";
     };
   }
 
+  let lastHud: GameHud | null = null;
+
   function renderHud(h: GameHud): void {
+    lastHud = h;
     const keyChar: Record<string, string> = { blue: "🔵", red: "🔴", yellow: "🟡", green: "🟢" };
     const keys = h.keys.map((k) => keyChar[k] ?? "🔑").join("");
     hudRoom.textContent = `${h.roomIndex}/${h.totalRooms} · ${h.roomName}${keys ? "  " + keys : ""}`;
@@ -267,9 +276,29 @@ import GameLayout from "../../layouts/GameLayout.astro";
       const mm = Math.floor(timeSec / 60).toString().padStart(2, "0");
       const ss = (timeSec % 60).toString().padStart(2, "0");
       showOverlay("🎉 Výprava hotová!", `Všech sbírek doneseno do iglú. Čas: ${mm}:${ss}.`, "Hrát znovu", () => game?.restart());
+      if (lastHud && lastHud.score > 0) {
+        window.openHofPrompt?.({
+          gameId: "platformovka",
+          value: lastHud.score,
+          meta: `výhra · ${mm}:${ss} · ${lastHud.collected}/${lastHud.total}`,
+          valueLabel: "Skóre",
+          valueFormat: "number",
+          sort: "desc",
+        });
+      }
     },
     onGameover() {
       showOverlay("Game over", "Doletěla jsi až na konec — ale bez životů. Znovu?", "Restart", () => game?.restart());
+      if (lastHud && lastHud.score > 0) {
+        window.openHofPrompt?.({
+          gameId: "platformovka",
+          value: lastHud.score,
+          meta: `prohra · ${lastHud.collected}/${lastHud.total} · místnost ${lastHud.roomIndex}`,
+          valueLabel: "Skóre",
+          valueFormat: "number",
+          sort: "desc",
+        });
+      }
     },
   });
   canvas.focus();

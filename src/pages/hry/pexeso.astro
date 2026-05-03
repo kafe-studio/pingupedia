@@ -1,6 +1,8 @@
 ---
 export const prerender = true;
 import GameLayout from "../../layouts/GameLayout.astro";
+import HallOfFame from "../../components/games/HallOfFame.astro";
+import HofPrompt from "../../components/games/HofPrompt.astro";
 import { getImage } from "astro:assets";
 import cisarsky from "../../assets/penguins/cisarsky/hero.jpg";
 import patagonsky from "../../assets/penguins/patagonsky/hero.jpg";
@@ -65,7 +67,11 @@ const data = JSON.stringify(cards);
       </p>
       <button data-finish-reset type="button" class="btn-primary">Hrát znovu</button>
     </div>
+
+    <HallOfFame gameId="pexeso" valueLabel="Čas" valueFormat="time" sort="asc" />
   </div>
+
+  <HofPrompt />
 </GameLayout>
 
 <script>
@@ -181,6 +187,14 @@ const data = JSON.stringify(cards);
     $finishMoves.textContent = String(moves);
     root.classList.add("hidden");
     finish.classList.remove("hidden");
+    window.openHofPrompt?.({
+      gameId: "pexeso",
+      value: total,
+      meta: `${moves} tahů`,
+      valueLabel: "Čas",
+      valueFormat: "time",
+      sort: "asc",
+    });
   }
 
   function render(): void {
