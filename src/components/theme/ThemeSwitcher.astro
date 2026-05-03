@@ -1,21 +1,15 @@
 ---
-const themes = [
-  { id: "arctic", label: "Arctic — polární záře" },
-  { id: "sunny", label: "Sunny — slunečné ráno" },
-  { id: "ocean", label: "Ocean — pod hladinou" },
-  { id: "candy", label: "Candy — duha a srdíčka" },
-  { id: "midnight", label: "Midnight — hvězdopád" },
-];
+// Jeden prvek "Nastav si styl" — po kliknutí přepne na další motiv v pořadí.
+// 5 motivů: arctic → sunny → ocean → candy → midnight → arctic.
 ---
 
 <div class="theme-switcher" data-theme-switcher>
   <button
     type="button"
     class="theme-switcher__trigger"
-    data-theme-trigger
-    aria-haspopup="true"
-    aria-expanded="false"
-    aria-controls="theme-switcher-panel"
+    data-theme-cycle
+    aria-label="Nastav si styl — přepnout barevné schéma"
+    title="Nastav si styl"
   >
     <svg class="theme-switcher__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
       <circle cx="12" cy="12" r="9" />
@@ -24,26 +18,8 @@ const themes = [
       <circle cx="16.5" cy="10.5" r="1" fill="currentColor" />
       <circle cx="15" cy="15" r="1" fill="currentColor" />
     </svg>
-    <span class="theme-switcher__label">Vyber si motiv</span>
+    <span class="theme-switcher__label">Nastav si styl</span>
   </button>
-  <div
-    id="theme-switcher-panel"
-    class="theme-switcher__panel"
-    role="group"
-    aria-label="Přepínač designu"
-    hidden
-  >
-    {themes.map((t) => (
-      <button
-        type="button"
-        class="theme-switcher__btn"
-        data-theme={t.id}
-        aria-label={t.label}
-        aria-pressed={t.id === "arctic" ? "true" : "false"}
-        title={t.label}
-      />
-    ))}
-  </div>
 </div>
 
 <script>
@@ -57,9 +33,6 @@ const themes = [
 
   function apply(theme: Theme): void {
     document.documentElement.setAttribute("data-variant", theme);
-    document.querySelectorAll<HTMLButtonElement>("[data-theme]").forEach((btn) => {
-      btn.setAttribute("aria-pressed", btn.dataset.theme === theme ? "true" : "false");
-    });
     try {
       localStorage.setItem(STORAGE_KEY, theme);
     } catch {
@@ -67,49 +40,18 @@ const themes = [
     }
   }
 
+  function nextTheme(current: string | null): Theme {
+    const idx = current && isTheme(current) ? VALID.indexOf(current as Theme) : -1;
+    return VALID[(idx + 1) % VALID.length];
+  }
+
   function wire(): void {
-    document.querySelectorAll<HTMLButtonElement>("[data-theme-switcher] [data-theme]").forEach((btn) => {
+    document.querySelectorAll<HTMLButtonElement>("[data-theme-cycle]").forEach((btn) => {
       if (btn.dataset.wired) return;
       btn.dataset.wired = "1";
       btn.addEventListener("click", () => {
-        const next = btn.dataset.theme;
-        if (next && isTheme(next)) apply(next);
-      });
-    });
-    const current = document.documentElement.getAttribute("data-variant");
-    if (current && isTheme(current)) {
-      document.querySelectorAll<HTMLButtonElement>("[data-theme]").forEach((btn) => {
-        btn.setAttribute("aria-pressed", btn.dataset.theme === current ? "true" : "false");
-      });
-    }
-
-    document.querySelectorAll<HTMLElement>("[data-theme-switcher]").forEach((root) => {
-      if (root.dataset.wiredTrigger) return;
-      root.dataset.wiredTrigger = "1";
-      const trigger = root.querySelector<HTMLButtonElement>("[data-theme-trigger]");
-      const panel = root.querySelector<HTMLElement>(".theme-switcher__panel");
-      if (!trigger || !panel) return;
-
-      const setOpen = (open: boolean): void => {
-        trigger.setAttribute("aria-expanded", open ? "true" : "false");
-        panel.hidden = !open;
-        root.classList.toggle("is-open", open);
-      };
-
-      trigger.addEventListener("click", (e) => {
-        e.stopPropagation();
-        setOpen(trigger.getAttribute("aria-expanded") !== "true");
-      });
-
-      document.addEventListener("click", (e) => {
-        if (!root.contains(e.target as Node)) setOpen(false);
-      });
-
-      document.addEventListener("keydown", (e) => {
-        if (e.key === "Escape" && trigger.getAttribute("aria-expanded") === "true") {
-          setOpen(false);
-          trigger.focus();
-        }
+        const current = document.documentElement.getAttribute("data-variant");
+        apply(nextTheme(current));
       });
     });
   }
