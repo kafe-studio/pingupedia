@@ -92,6 +92,48 @@
   --card: rgba(233, 213, 255, 0.04);
 }
 
+:root[data-variant="abyss"] {
+  --background: #02080f;
+  --foreground: #cbd5e1;
+  --primary: #38bdf8;
+  --primary-btn: #0ea5e9;
+  --primary-btn-hover: #0284c7;
+  --accent: #67e8f9;
+  --border: rgba(203, 213, 225, 0.08);
+  --border-interactive: rgba(203, 213, 225, 0.35);
+  --muted: rgba(203, 213, 225, 0.04);
+  --muted-foreground: rgba(203, 213, 225, 0.55);
+  --card: rgba(203, 213, 225, 0.04);
+}
+
+:root[data-variant="tundra"] {
+  --background: #e5edf5;
+  --foreground: #0f1f33;
+  --primary: #1e5c91;
+  --primary-btn: #1e5c91;
+  --primary-btn-hover: #0c3a66;
+  --accent: #3b82f6;
+  --border: rgba(15, 31, 51, 0.12);
+  --border-interactive: rgba(15, 31, 51, 0.4);
+  --muted: rgba(255, 255, 255, 0.55);
+  --muted-foreground: rgba(15, 31, 51, 0.65);
+  --card: rgba(255, 255, 255, 0.7);
+}
+
+:root[data-variant="cosmos"] {
+  --background: #03030a;
+  --foreground: #e5e7eb;
+  --primary: #818cf8;
+  --primary-btn: #6366f1;
+  --primary-btn-hover: #4f46e5;
+  --accent: #f472b6;
+  --border: rgba(229, 231, 235, 0.08);
+  --border-interactive: rgba(229, 231, 235, 0.35);
+  --muted: rgba(229, 231, 235, 0.04);
+  --muted-foreground: rgba(229, 231, 235, 0.55);
+  --card: rgba(229, 231, 235, 0.04);
+}
+
 :root[data-theme="light"] {
   --background: #f0f9ff;
   --foreground: #0c1929;
@@ -271,6 +313,9 @@ html.reveal-ready .reveal.active {
 :root[data-variant="ocean"] .themed-bg[data-bg="ocean"],
 :root[data-variant="candy"] .themed-bg[data-bg="candy"],
 :root[data-variant="midnight"] .themed-bg[data-bg="midnight"],
+:root[data-variant="abyss"] .themed-bg[data-bg="abyss"],
+:root[data-variant="tundra"] .themed-bg[data-bg="tundra"],
+:root[data-variant="cosmos"] .themed-bg[data-bg="cosmos"],
 :root:not([data-variant]) .themed-bg[data-bg="arctic"] {
   opacity: 1;
 }
@@ -306,7 +351,8 @@ html.reveal-ready .reveal.active {
 .theme-switcher__icon { width: 1rem; height: 1rem; flex-shrink: 0; }
 .theme-switcher__label { white-space: nowrap; }
 :root[data-variant="sunny"] .theme-switcher__trigger,
-:root[data-variant="candy"] .theme-switcher__trigger {
+:root[data-variant="candy"] .theme-switcher__trigger,
+:root[data-variant="tundra"] .theme-switcher__trigger {
   color: rgba(15, 23, 42, 0.85);
   background: rgba(255, 255, 255, 0.78);
   border-color: rgba(0, 0, 0, 0.1);

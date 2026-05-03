@@ -36,7 +36,7 @@ const finalIgnoreTitleTemplate = metadata?.ignoreTitleTemplate || false;
       (() => {
         try {
           const saved = localStorage.getItem("pingupedia-theme");
-          const valid = ["arctic", "sunny", "ocean", "candy", "midnight"];
+          const valid = ["arctic", "sunny", "ocean", "candy", "midnight", "abyss", "tundra", "cosmos"];
           document.documentElement.setAttribute(
             "data-variant",
             saved && valid.includes(saved) ? saved : "arctic",

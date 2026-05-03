@@ -1,0 +1,91 @@
+---
+import { mulberry32, seedFromString } from "../../../lib/seeded-rng";
+const rand = mulberry32(seedFromString("tundra"));
+const flakes = Array.from({ length: 80 }, () => ({
+  left: rand() * 100,
+  size: 2 + rand() * 5,
+  duration: 8 + rand() * 14,
+  delay: -rand() * 20,
+  drift: -10 + rand() * 20,
+  opacity: 0.4 + rand() * 0.5,
+}));
+---
+
+<div class="themed-bg" data-bg="tundra" aria-hidden="true">
+  <div class="tundra-sky"></div>
+
+  <svg class="bg-mtn-far" viewBox="0 0 1440 500" preserveAspectRatio="xMidYMax slice">
+    <defs>
+      <linearGradient id="tundra-far" x1="0%" y1="0%" x2="0%" y2="100%">
+        <stop offset="0%" stop-color="#aabccc" stop-opacity="0.55" />
+        <stop offset="100%" stop-color="#aabccc" stop-opacity="0.25" />
+      </linearGradient>
+    </defs>
+    <path d="M-20 500 L-20 280 L120 230 L260 270 L420 200 L580 250 L760 190 L920 250 L1100 210 L1280 260 L1490 230 L1490 500 Z" fill="url(#tundra-far)" />
+  </svg>
+
+  <svg class="bg-mtn-mid" viewBox="0 0 1440 500" preserveAspectRatio="xMidYMax slice">
+    <defs>
+      <linearGradient id="tundra-mid" x1="0%" y1="0%" x2="0%" y2="100%">
+        <stop offset="0%" stop-color="#7a8fa3" stop-opacity="0.7" />
+        <stop offset="60%" stop-color="#5a6f85" stop-opacity="0.85" />
+        <stop offset="100%" stop-color="#3d536a" />
+      </linearGradient>
+    </defs>
+    <path d="M-20 500 L-20 360 L100 290 L260 340 L380 250 L520 320 L680 240 L820 310 L980 250 L1140 320 L1320 280 L1490 320 L1490 500 Z" fill="url(#tundra-mid)" />
+    <path d="M100 290 L60 340 L140 340 Z M380 250 L340 305 L420 305 Z M680 240 L640 295 L720 295 Z M980 250 L940 305 L1020 305 Z" fill="#f8fafc" opacity="0.9" />
+  </svg>
+
+  <svg class="bg-mtn-near" viewBox="0 0 1440 400" preserveAspectRatio="xMidYMax slice">
+    <defs>
+      <linearGradient id="tundra-near" x1="0%" y1="0%" x2="0%" y2="100%">
+        <stop offset="0%" stop-color="#2c3e50" />
+        <stop offset="100%" stop-color="#1a2734" />
+      </linearGradient>
+    </defs>
+    <path d="M-20 400 L-20 280 L180 200 L340 280 L520 180 L720 260 L900 190 L1080 270 L1280 200 L1490 250 L1490 400 Z" fill="url(#tundra-near)" />
+    <path d="M180 200 L140 260 L220 260 Z M520 180 L478 245 L562 245 Z M900 190 L858 255 L942 255 Z M1280 200 L1238 265 L1322 265 Z" fill="#ffffff" opacity="0.95" />
+  </svg>
+
+  <div class="tundra-haze"></div>
+
+  <div class="bg-particles">
+    {flakes.map((f) => (
+      <span
+        class="snow-real-dot"
+        style={`left: ${f.left}%; width: ${f.size}px; height: ${f.size}px; opacity: ${f.opacity}; --drift: ${f.drift}px; animation: snowfall-real ${f.duration}s linear ${f.delay}s infinite;`}
+      />
+    ))}
+  </div>
+</div>
+
+<style>
+  .tundra-sky {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, #f1f5f9 0%, #d9e2ec 45%, #c4d3e0 100%);
+  }
+  .bg-mtn-far { position: absolute; left: 0; right: 0; bottom: 18vh; width: 100%; height: 38vh; min-height: 240px; opacity: 0.85; }
+  .bg-mtn-mid { position: absolute; left: 0; right: 0; bottom: 8vh; width: 100%; height: 34vh; min-height: 220px; }
+  .bg-mtn-near { position: absolute; left: 0; right: 0; bottom: 0; width: 100%; height: 28vh; min-height: 180px; }
+  .tundra-haze {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0) 50%, rgba(225, 235, 245, 0.45) 100%);
+    pointer-events: none;
+  }
+  .bg-particles { position: absolute; inset: 0; }
+  .snow-real-dot {
+    position: absolute;
+    top: 0;
+    border-radius: 50%;
+    background: #ffffff;
+    box-shadow: 0 0 2px rgba(255, 255, 255, 0.7);
+    pointer-events: none;
+    will-change: transform;
+  }
+  @keyframes snowfall-real {
+    0% { transform: translate3d(0, -20px, 0); }
+    100% { transform: translate3d(var(--drift, 0), 105vh, 0); }
+  }
+</style>

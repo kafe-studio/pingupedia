@@ -1,0 +1,103 @@
+---
+import { mulberry32, seedFromString } from "../../../lib/seeded-rng";
+const rand = mulberry32(seedFromString("abyss"));
+const marineSnow = Array.from({ length: 60 }, () => ({
+  left: rand() * 100,
+  size: 1 + rand() * 2.5,
+  duration: 18 + rand() * 22,
+  delay: -rand() * 30,
+  opacity: 0.25 + rand() * 0.45,
+}));
+const rays = Array.from({ length: 4 }, (_, i) => ({
+  x: 200 + i * 320 + rand() * 120,
+  width: 80 + rand() * 80,
+  rotation: -8 + rand() * 16,
+}));
+---
+
+<div class="themed-bg" data-bg="abyss" aria-hidden="true">
+  <div class="abyss-depth"></div>
+
+  <svg class="bg-rays" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice">
+    <defs>
+      <linearGradient id="abyss-ray" x1="0%" y1="0%" x2="0%" y2="100%">
+        <stop offset="0%" stop-color="#67e8f9" stop-opacity="0.16" />
+        <stop offset="60%" stop-color="#22d3ee" stop-opacity="0.04" />
+        <stop offset="100%" stop-color="#22d3ee" stop-opacity="0" />
+      </linearGradient>
+    </defs>
+    {rays.map((r) => (
+      <polygon
+        points={`${r.x - r.width / 2},0 ${r.x + r.width / 2},0 ${r.x + r.width * 1.4},900 ${r.x - r.width * 1.4},900`}
+        fill="url(#abyss-ray)"
+        transform={`rotate(${r.rotation} ${r.x} 0)`}
+      />
+    ))}
+  </svg>
+
+  <svg class="bg-creature anim-float" viewBox="0 0 200 80" preserveAspectRatio="xMidYMid meet">
+    <path
+      d="M10 40 Q30 20 70 30 Q110 36 150 32 Q175 28 190 38 Q175 50 150 50 Q110 52 70 50 Q30 56 10 40 Z"
+      fill="#0a1a2c"
+      opacity="0.85"
+    />
+    <path d="M180 38 L195 30 L195 48 Z" fill="#0a1a2c" opacity="0.85" />
+  </svg>
+
+  <svg class="bg-floor" viewBox="0 0 1440 220" preserveAspectRatio="xMidYMax slice">
+    <defs>
+      <linearGradient id="abyss-floor" x1="0%" y1="0%" x2="0%" y2="100%">
+        <stop offset="0%" stop-color="#020a14" />
+        <stop offset="100%" stop-color="#000408" />
+      </linearGradient>
+    </defs>
+    <path d="M-20 220 L-20 160 C200 130 380 175 600 145 C820 115 1040 170 1260 140 C1380 125 1460 155 1500 145 L1500 220 Z" fill="url(#abyss-floor)" />
+    <path d="M180 168 Q190 130 196 168 Z" fill="#03101e" opacity="0.9" />
+    <path d="M520 152 Q536 100 548 152 Z" fill="#03101e" opacity="0.9" />
+    <path d="M880 158 Q894 110 906 158 Z" fill="#03101e" opacity="0.9" />
+    <path d="M1180 148 Q1194 96 1208 148 Z" fill="#03101e" opacity="0.9" />
+  </svg>
+
+  <div class="bg-particles">
+    {marineSnow.map((m) => (
+      <span
+        class="marine-snow-dot"
+        style={`left: ${m.left}%; width: ${m.size}px; height: ${m.size}px; opacity: ${m.opacity}; animation: marine-snow ${m.duration}s linear ${m.delay}s infinite;`}
+      />
+    ))}
+  </div>
+</div>
+
+<style>
+  .abyss-depth {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse at 50% -10%, rgba(56, 189, 248, 0.12), transparent 55%),
+      linear-gradient(180deg, #093048 0%, #051a2a 35%, #02080f 70%, #000204 100%);
+  }
+  .bg-rays { position: absolute; inset: 0; mix-blend-mode: screen; }
+  .bg-creature {
+    position: absolute;
+    top: 58%;
+    left: 12%;
+    width: 180px;
+    height: 70px;
+    opacity: 0.7;
+  }
+  .bg-floor { position: absolute; left: 0; right: 0; bottom: 0; width: 100%; height: 24vh; min-height: 140px; }
+  .bg-particles { position: absolute; inset: 0; }
+  .marine-snow-dot {
+    position: absolute;
+    top: 0;
+    border-radius: 50%;
+    background: rgba(220, 235, 255, 0.85);
+    box-shadow: 0 0 3px rgba(186, 230, 253, 0.5);
+    pointer-events: none;
+    will-change: transform;
+  }
+  @keyframes marine-snow {
+    0% { transform: translate3d(0, -20px, 0); }
+    100% { transform: translate3d(-20px, 105vh, 0); }
+  }
+</style>

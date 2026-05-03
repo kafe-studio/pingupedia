@@ -23,7 +23,7 @@ const { title, description } = Astro.props;
       (() => {
         try {
           const saved = localStorage.getItem("pingupedia-theme");
-          const valid = ["arctic", "sunny", "ocean", "candy", "midnight"];
+          const valid = ["arctic", "sunny", "ocean", "candy", "midnight", "abyss", "tundra", "cosmos"];
           if (saved && valid.includes(saved)) {
             document.documentElement.setAttribute("data-variant", saved);
           }
