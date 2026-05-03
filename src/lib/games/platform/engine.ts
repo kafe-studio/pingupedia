@@ -30,7 +30,7 @@ export class PlatformGame {
   private ctx: CanvasRenderingContext2D;
   private state: GameState;
   private hooks: GameHooks;
-  private keys = { left: false, right: false, up: false, down: false, jump: false };
+  private keys = { left: false, right: false, up: false, down: false, jump: false, bigJump: false };
   private lastTime = 0;
   private rafId = 0;
   private disposed = false;
@@ -137,7 +137,7 @@ export class PlatformGame {
   }
 
   // Virtual controls for mobile buttons.
-  setKey(k: "left" | "right" | "up" | "down" | "jump", down: boolean): void {
+  setKey(k: "left" | "right" | "up" | "down" | "jump" | "bigJump", down: boolean): void {
     this.keys[k] = down;
   }
 
@@ -215,6 +215,7 @@ export class PlatformGame {
     else if (k === "ArrowUp" || k === "w" || k === "W") this.keys.up = true;
     else if (k === "ArrowDown" || k === "s" || k === "S") this.keys.down = true;
     else if (k === " " || k === "Enter") this.keys.jump = true;
+    else if (k === "Control") this.keys.bigJump = true;
     else if (k === "x" || k === "X") this.peck();
     else return;
     e.preventDefault();
@@ -227,6 +228,7 @@ export class PlatformGame {
     else if (k === "ArrowUp" || k === "w" || k === "W") this.keys.up = false;
     else if (k === "ArrowDown" || k === "s" || k === "S") this.keys.down = false;
     else if (k === " " || k === "Enter") this.keys.jump = false;
+    else if (k === "Control") this.keys.bigJump = false;
   };
 
   private bindKeys(): void {
@@ -325,7 +327,14 @@ export class PlatformGame {
     const inWater = this.isWater(this.roomTileAt(room, Math.floor(cx / TILE), Math.floor(cy / TILE)));
 
     if (p.onLadder) {
-      if (this.keys.up) p.vy = -CLIMB_SPEED;
+      // Skok ze žebříku: mezerník = normal jump, CTRL = mega-skok (1.5×).
+      if (this.keys.jump || this.keys.bigJump) {
+        p.vy = this.keys.bigJump ? JUMP_V * 1.5 : JUMP_V;
+        p.onLadder = false;
+        p.onGround = false;
+        this.keys.bigJump = false;
+        this.hooks.onSfx("boing");
+      } else if (this.keys.up) p.vy = -CLIMB_SPEED;
       else if (this.keys.down) p.vy = CLIMB_SPEED;
       else p.vy = 0;
     } else if (inWater) {
@@ -350,9 +359,12 @@ export class PlatformGame {
           p.onGround = false;
         }
       }
-      if (this.keys.jump && p.onGround) {
-        p.vy = JUMP_V;
+      if ((this.keys.jump || this.keys.bigJump) && p.onGround) {
+        // CTRL = mega-skok (1.5×), mezerník = normální skok.
+        const big = this.keys.bigJump;
+        p.vy = big ? JUMP_V * 1.5 : JUMP_V;
         p.onGround = false;
+        this.keys.bigJump = false;
         this.hooks.onSfx("boing");
       }
       // Skip gravity while resting on ground — otherwise sub-pixel fall + re-snap
