@@ -22,8 +22,8 @@ const TRANSITION_INVULN_MS = 1500;
 const PLAYER_W = 16;
 const PLAYER_H = 20;
 const MAX_LIVES = 5;
-const HEART_SPAWN_INTERVAL_MS = 7_000;  // try to spawn a new heart every 7s
-const HEART_MAX_ALIVE = 10;             // never more than this many on the map at once
+const HEART_SPAWN_INTERVAL_MS = 5_000;  // try to spawn a new heart every 5s
+const HEART_MAX_ALIVE = 15;             // never more than this many on the map at once
 const PECK_COOLDOWN_MS = 500;           // delay between successive pecks
 
 export class PlatformGame {
@@ -845,39 +845,6 @@ export class PlatformGame {
   }
 
   // --- Death / respawn ---
-
-  /** Najdi v daném sloupci nejvyšší (od shora) safe tile pro spawn — empty, bez ostnů,
-   *  bez vody a bez statického guardiana v okolí. Použito při bottom-entry. */
-  private findSafeSpawn(room: Room, preferredCol: number): { x: number; y: number } {
-    const cols = [preferredCol, preferredCol - 1, preferredCol + 1, preferredCol - 2, preferredCol + 2];
-    for (const col of cols) {
-      if (col < 1 || col >= COLS - 1) continue;
-      // Hledej řádky 5-9 (stred-horní část místnosti, mimo strop a podlahu).
-      for (let row = 5; row <= 9; row++) {
-        const t = this.roomTileAt(room, col, row);
-        const above = this.roomTileAt(room, col, row - 1);
-        const at = this.roomTileAt(room, col, row);
-        // Player zabírá rows row-1, row (PLAYER_H ≈ 20 px = 1.25 tile).
-        if (this.isDeadly(t) || this.isWater(t) || this.isSolid(t)) continue;
-        if (this.isDeadly(above) || this.isSolid(above)) continue;
-        // Žádný static guardian v okolí 2 tiles.
-        const px = col * TILE + (TILE - PLAYER_W) / 2;
-        const py = (row - 1) * TILE;
-        const tooClose = room.guardians.some((g) =>
-          Math.abs(g.x - px) < 2 * TILE && Math.abs(g.y - py) < 2 * TILE,
-        );
-        if (tooClose) continue;
-        // Suppress unused warning
-        void at;
-        return { x: px, y: py };
-      }
-    }
-    // Fallback: stred místnosti row 6 (původní chování).
-    return {
-      x: preferredCol * TILE + (TILE - PLAYER_W) / 2,
-      y: 6 * TILE,
-    };
-  }
 
   private handleDeath(): void {
     // PING cheat — nekonečné životy, jen respawn s invulnerable.

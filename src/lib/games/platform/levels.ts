@@ -430,6 +430,7 @@ const jeskyne: Room = {
     i("crystal", 4, 4, "jes-c1"),
     i("crystal", 12, 6, "jes-c2"),
     i("crystal", 10, 8, "jes-c3"),
+    i("heart", 4, 5, "je-h1"),
   ],
   exits: [
     exit("top", "rybarska-dira", 10, 2),
@@ -512,6 +513,7 @@ const laborator: Room = {
     i("fish", 4, 1, "lab-f1"),
     i("medal", 17, 3, "lab-m1"),
     i("fish", 2, 5, "lab-f2"),
+    i("heart", 14, 5, "lab-h1"),
   ],
   exits: [
     exit("left", "stanice", 18, 12),
@@ -557,6 +559,7 @@ const vrak: Room = {
     i("flag", 2, 9, "vrak-fl"),
     i("fish", 6, 12, "vrak-f-deep1"),
     i("fish", 16, 13, "vrak-f-deep2"),
+    i("heart", 1, 1, "vr-h1"),
   ],
   exits: [
     exit("left", "galapagos", 18, 10),
@@ -642,6 +645,7 @@ const hriste: Room = {
     i("egg", 14, 7, "hr-e2"),
     i("fish", 10, 9, "hr-f1"),
     key("red", 10, 7, "hr-key-red"),
+    i("heart", 9, 4, "hri-h1"),
   ],
   exits: [
     exit("bottom", "laborator", 9, 1),
@@ -724,6 +728,7 @@ const majak: Room = {
     i("flag", 9, 2, "maj-fl"),
     i("medal", 2, 5, "maj-m1"),
     i("medal", 17, 5, "maj-m2"),
+    i("heart", 2, 6, "maj-h1"),
   ],
   exits: [
     exit("bottom", "zakladna", 10, 1),
@@ -875,7 +880,7 @@ const dilna: Room = {
     "####################",
   ],
   guardians: [d("petrel", 6, 2, 0, 19, 0, 11, 0.6, 0.5), s("crystal", 10, 11)],
-  items: [i("medal", 8, 1, "di-m1"), i("fish", 16, 7, "di-f1"), i("egg", 3, 9, "di-e1")],
+  items: [i("medal", 8, 1, "di-m1"), i("fish", 16, 7, "di-f1"), i("egg", 3, 9, "di-e1"), i("heart", 4, 4, "dil-h1")],
   exits: [
     exit("left", "tunelky", 18, 12),
     exit("right", "sklad", 1, 12),
@@ -950,6 +955,7 @@ const vejcohnizdo: Room = {
     i("medal", 14, 5, "tun-m1"),
     i("fish", 6, 9, "tun-f1"),
 
+    i("heart", 9, 5, "spi-h1"),
   ],
   exits: [
     exit("bottom", "kolonie", 8, 1),
@@ -989,6 +995,7 @@ const mladata: Room = {
     i("chick", 3, 12, "ml-c1"),
     i("chick", 15, 12, "ml-c2"),
     i("chick", 10, 6, "ml-c3"),
+    i("heart", 9, 7, "mla-h1"),
   ],
   exits: [
     exit("bottom", "vejcohnizdo", 8, 1),

@@ -83,6 +83,72 @@ import GameLayout from "../../layouts/GameLayout.astro";
             </button>
           </div>
         </div>
+
+        <!-- Hall of Fame overlay (po vyhrané hře) -->
+        <div
+          id="hof-overlay"
+          class="absolute inset-0 hidden flex-col items-stretch bg-slate-950/95 rounded-xl overflow-y-auto"
+        >
+          <div class="flex items-center justify-between gap-3 px-3 py-2 bg-slate-900/80 border-b border-white/10">
+            <h3 class="text-sm md:text-base font-black text-white">Síň slávy — Ledová výprava</h3>
+            <button data-hof-close type="button" class="rounded-full border border-white/30 text-white px-3 py-1 text-[11px] font-medium hover:bg-white/10">
+              Hrát znovu
+            </button>
+          </div>
+
+          <!-- Form: zadání nicku -->
+          <form data-hof-form class="flex flex-col gap-3 p-4 md:p-6 text-white items-center">
+            <p class="text-2xl md:text-3xl font-black text-center">Výprava hotová!</p>
+            <div class="grid grid-cols-3 gap-3 w-full max-w-md text-center">
+              <div class="bento-card p-3 bg-white/10 border-white/20">
+                <p class="text-xs uppercase tracking-wide text-white/60">Skóre</p>
+                <p data-hof-score class="text-2xl font-black text-amber-300">0</p>
+              </div>
+              <div class="bento-card p-3 bg-white/10 border-white/20">
+                <p class="text-xs uppercase tracking-wide text-white/60">Čas</p>
+                <p data-hof-time class="text-2xl font-black text-cyan-300">00:00</p>
+              </div>
+              <div class="bento-card p-3 bg-white/10 border-white/20">
+                <p class="text-xs uppercase tracking-wide text-white/60">Mláďata</p>
+                <p data-hof-chicks class="text-2xl font-black text-rose-300">0</p>
+              </div>
+            </div>
+            <label class="w-full max-w-md flex flex-col gap-1">
+              <span class="text-xs uppercase tracking-wide text-white/60">Tvůj nick (max 16 znaků)</span>
+              <input
+                data-hof-nick
+                type="text"
+                maxlength="16"
+                placeholder="tučňák"
+                class="rounded-lg px-3 py-2 bg-slate-800 border border-white/30 text-white focus:outline-none focus:border-amber-400"
+                autocomplete="off"
+              />
+            </label>
+            <button type="submit" class="rounded-full bg-amber-400 text-slate-900 px-5 py-2 text-sm font-bold hover:bg-amber-300">
+              Zapsat do síně slávy
+            </button>
+          </form>
+
+          <!-- Leaderboard -->
+          <div data-hof-board class="hidden flex-col gap-3 p-4 md:p-6 text-white">
+            <p class="text-xl md:text-2xl font-black text-center">🏆 Top 10</p>
+            <div class="overflow-x-auto">
+              <table class="w-full text-sm">
+                <thead class="text-xs uppercase tracking-wide text-white/60 border-b border-white/20">
+                  <tr>
+                    <th class="text-left py-2 px-2">#</th>
+                    <th class="text-left py-2 px-2">Nick</th>
+                    <th class="text-right py-2 px-2">Skóre</th>
+                    <th class="text-right py-2 px-2">Čas</th>
+                    <th class="text-right py-2 px-2">🐧</th>
+                    <th class="text-right py-2 px-2 hidden sm:table-cell">Datum</th>
+                  </tr>
+                </thead>
+                <tbody data-hof-rows></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
       </div>
 
       <div class="mt-3 grid grid-cols-2 gap-2 text-[11px] text-muted-foreground">
@@ -114,6 +180,7 @@ import GameLayout from "../../layouts/GameLayout.astro";
   import { SfxPlayer } from "../../lib/games/platform/sfx";
   import { startMinigame, type MinigameInstance } from "../../lib/games/platform/minigames";
   import { MINIGAME_TITLE, type GameHud, type MinigameKind } from "../../lib/games/platform/types";
+  import { addHofEntry, loadHof, type HofEntry } from "../../lib/games/platform/hallOfFame";
 
   const canvas = document.getElementById("platform-canvas") as HTMLCanvasElement | null;
   if (!canvas) throw new Error("platform canvas missing");
@@ -259,14 +326,95 @@ import GameLayout from "../../layouts/GameLayout.astro";
   mgClose.addEventListener("click", () => endMinigame());
   mgResultBtn.addEventListener("click", () => endMinigame());
 
+  // Hall of Fame overlay handling
+  const hofOverlay = document.getElementById("hof-overlay")!;
+  const hofForm = hofOverlay.querySelector<HTMLFormElement>("[data-hof-form]")!;
+  const hofBoard = hofOverlay.querySelector<HTMLElement>("[data-hof-board]")!;
+  const hofRows = hofOverlay.querySelector<HTMLElement>("[data-hof-rows]")!;
+  const hofClose = hofOverlay.querySelector<HTMLButtonElement>("[data-hof-close]")!;
+  const hofScoreEl = hofOverlay.querySelector<HTMLElement>("[data-hof-score]")!;
+  const hofTimeEl = hofOverlay.querySelector<HTMLElement>("[data-hof-time]")!;
+  const hofChicksEl = hofOverlay.querySelector<HTMLElement>("[data-hof-chicks]")!;
+  const hofNickInput = hofOverlay.querySelector<HTMLInputElement>("[data-hof-nick]")!;
+
+  let lastWinStats: { score: number; timeSec: number; chicks: number } | null = null;
+
+  function fmtTime(sec: number): string {
+    const mm = Math.floor(sec / 60).toString().padStart(2, "0");
+    const ss = (sec % 60).toString().padStart(2, "0");
+    return `${mm}:${ss}`;
+  }
+
+  function renderHofTable(entries: HofEntry[], highlightIdx: number = -1): void {
+    hofRows.innerHTML = entries.map((e, i) => {
+      const cls = i === highlightIdx ? "bg-amber-400/20 font-bold" : "";
+      const medals = ["🥇", "🥈", "🥉"];
+      const rank = i < 3 ? medals[i] : `${i + 1}.`;
+      const nickEsc = e.nick.replace(/[<>&]/g, (c) => c === "<" ? "&lt;" : c === ">" ? "&gt;" : "&amp;");
+      return `<tr class="border-b border-white/10 ${cls}">
+        <td class="py-2 px-2">${rank}</td>
+        <td class="py-2 px-2">${nickEsc}</td>
+        <td class="py-2 px-2 text-right font-mono">${e.score}</td>
+        <td class="py-2 px-2 text-right font-mono">${fmtTime(e.timeSec)}</td>
+        <td class="py-2 px-2 text-right">${e.chicksDelivered}</td>
+        <td class="py-2 px-2 text-right hidden sm:table-cell text-white/60">${e.dateIso}</td>
+      </tr>`;
+    }).join("");
+  }
+
+  function showHallOfFame(timeSec: number): void {
+    const stats = lastHud;
+    lastWinStats = {
+      score: stats?.score ?? 0,
+      timeSec,
+      chicks: stats?.chicksDelivered ?? 0,
+    };
+    hofScoreEl.textContent = String(lastWinStats.score);
+    hofTimeEl.textContent = fmtTime(lastWinStats.timeSec);
+    hofChicksEl.textContent = String(lastWinStats.chicks);
+    // Reset to form view
+    hofForm.classList.remove("hidden");
+    hofForm.classList.add("flex");
+    hofBoard.classList.add("hidden");
+    hofBoard.classList.remove("flex");
+    hofNickInput.value = "";
+    hofOverlay.classList.remove("hidden");
+    hofOverlay.classList.add("flex");
+    setTimeout(() => hofNickInput.focus(), 50);
+  }
+
+  hofForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    if (!lastWinStats) return;
+    const nick = hofNickInput.value.trim() || "anonym";
+    const top = addHofEntry(nick, lastWinStats.score, lastWinStats.timeSec, lastWinStats.chicks);
+    const myIdx = top.findIndex((x) => x.nick === nick && x.score === lastWinStats!.score && x.timeSec === Math.round(lastWinStats!.timeSec));
+    renderHofTable(top, myIdx);
+    hofForm.classList.add("hidden");
+    hofForm.classList.remove("flex");
+    hofBoard.classList.remove("hidden");
+    hofBoard.classList.add("flex");
+  });
+
+  hofClose.addEventListener("click", () => {
+    hofOverlay.classList.add("hidden");
+    hofOverlay.classList.remove("flex");
+    game?.restart();
+  });
+
+  // Track last HUD pro Hall of Fame stats (skore + chicksDelivered).
+  let lastHud: GameHud | null = null;
+  const origRenderHud = renderHud;
+  // We'll wire renderHud directly through the hooks below — no override needed.
+  void origRenderHud;
+  void loadHof; // referenced explicitly, may be useful pro debug
+
   game = new PlatformGame(canvas, {
-    onHud: renderHud,
+    onHud: (h) => { lastHud = h; renderHud(h); },
     onSfx: (kind) => sfx.play(kind),
     onMinigame: (kind, doorId) => startMinigameOverlay(kind, doorId),
     onWin(timeSec) {
-      const mm = Math.floor(timeSec / 60).toString().padStart(2, "0");
-      const ss = (timeSec % 60).toString().padStart(2, "0");
-      showOverlay("🎉 Výprava hotová!", `Všech sbírek doneseno do iglú. Čas: ${mm}:${ss}.`, "Hrát znovu", () => game?.restart());
+      showHallOfFame(timeSec);
     },
     onGameover() {
       showOverlay("Game over", "Doletěla jsi až na konec — ale bez životů. Znovu?", "Restart", () => game?.restart());
