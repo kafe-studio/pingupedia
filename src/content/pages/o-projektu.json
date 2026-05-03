@@ -5,7 +5,7 @@
   },
   "hero": {
     "titleHtml": "Proč<br />\n<span class=\"text-accent\">pingupedia</span>",
-    "subtitle": "Populárně-naučná encyklopedie všech druhů tučňáků v češtině&nbsp;— pro zvědavé malé i velké."
+    "subtitle": "Populárně-naučná encyklopedie všech druhů tučňáků v češtině&nbsp; - pro zvědavé malé i velké."
   },
   "personalNote": {
     "body": "Encyklopedie pro Jáchyma a jeho kamarády tučňáky. Veškeré informace jsou z ověřených volně dostupných zdrojů."
@@ -13,17 +13,17 @@
   "sources": {
     "eyebrow": "Zdroje obsahu",
     "items": [
-      "Wikipedia (CS + EN) — základní popis, taxonomie",
-      "IUCN Red List — status ohrožení, populace",
-      "BirdLife International — distribuce, kolonie",
-      "Wikimedia Commons — fotky, videa, audio (CC-BY / PD)",
+      "Wikipedia (CS + EN) - základní popis, taxonomie",
+      "IUCN Red List - status ohrožení, populace",
+      "BirdLife International - distribuce, kolonie",
+      "Wikimedia Commons - fotky, videa, audio (CC-BY / PD)",
       "Vědecké publikace přes Wikipedii"
     ]
   },
   "purpose": {
     "eyebrow": "Záměr",
     "title": "Všech 18 druhů, česky, z ověřených zdrojů.",
-    "body": "Každé tvrzení na tomhle webu má oporu v konkrétním zdroji. Nekopíruju texty z Wikipedie&nbsp;— píšu je sám tak, aby byly srozumitelné pro děti, ale neurážely čtenáře nepřesnostmi. Každá fotka má autora, licenci a odkaz na originál."
+    "body": "Každé tvrzení na tomhle webu má oporu v konkrétním zdroji. Nekopíruju texty z Wikipedie&nbsp; - píšu je sám tak, aby byly srozumitelné pro děti, ale neurážely čtenáře nepřesnostmi. Každá fotka má autora, licenci a odkaz na originál."
   },
   "credits": {
     "author": "Jiří Kačírek",

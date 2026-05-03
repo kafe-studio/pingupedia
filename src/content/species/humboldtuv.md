@@ -4,7 +4,7 @@ nameLat: "Spheniscus humboldti"
 nameEn: "Humboldt penguin"
 genus: "Spheniscus"
 iucnStatus: "VU"
-description: "Druh žijící podél Humboldtova proudu na pobřeží Peru a Chile. Pojmenován po přírodovědci Alexandru von Humboldtovi. Populace citlivá na cyklus El Niño — při velkém El Niño 1982-83 klesla o 65 %."
+description: "Druh žijící podél Humboldtova proudu na pobřeží Peru a Chile. Pojmenován po přírodovědci Alexandru von Humboldtovi. Populace citlivá na cyklus El Niño - při velkém El Niño 1982-83 klesla o 65 %."
 size:
   heightCm:
     - 56
@@ -16,20 +16,20 @@ distribution:
   - "Tichomořské pobřeží Peru a Chile podél Humboldtova proudu"
   - "Severní hranice u mysu Parinas v Peru (asi 4° j. š.)"
   - "Jižní hranice u ostrova Chiloé v jižním Chile"
-  - "Isla Chañaral a Isla Choros — největší chilské kolonie (Atacama, Coquimbo)"
-  - "Punta San Juan v Peru — hlavní chráněná kolonie"
+  - "Isla Chañaral a Isla Choros - největší chilské kolonie (Atacama, Coquimbo)"
+  - "Punta San Juan v Peru - hlavní chráněná kolonie"
 colonies:
-  - { name: "Punta San Juan", lat: -15.37, lon: -75.18, type: "breeding", description: "Peru, Ica — jedna z největších kolonií, chráněná rezervace" }
-  - { name: "Isla Chañaral", lat: -29.03, lon: -71.59, type: "breeding", description: "Chile, Atacama — největší chilská kolonie druhu" }
-  - { name: "Isla Foca", lat: -5.20, lon: -81.21, type: "breeding", description: "Severní Peru, Piura — severní hranice areálu druhu" }
+  - { name: "Punta San Juan", lat: -15.37, lon: -75.18, type: "breeding", description: "Peru, Ica - jedna z největších kolonií, chráněná rezervace" }
+  - { name: "Isla Chañaral", lat: -29.03, lon: -71.59, type: "breeding", description: "Chile, Atacama - největší chilská kolonie druhu" }
+  - { name: "Isla Foca", lat: -5.20, lon: -81.21, type: "breeding", description: "Severní Peru, Piura - severní hranice areálu druhu" }
   - { name: "Pan de Azúcar", lat: -26.15, lon: -70.65, type: "breeding", description: "Chilský národní park, ostrov u pobřeží Atacamy" }
-  - { name: "Ballestas", lat: -13.74, lon: -76.40, type: "breeding", description: "Peru, Paracas — ostrovy s velkou populací mořských ptáků" }
+  - { name: "Ballestas", lat: -13.74, lon: -76.40, type: "breeding", description: "Peru, Paracas - ostrovy s velkou populací mořských ptáků" }
   - { name: "Cachagua", lat: -32.58, lon: -71.46, type: "breeding", description: "Chile, středopacifické pobřeží, ~800 ptáků" }
-  - { name: "Isla Choros", lat: -29.25, lon: -71.55, type: "breeding", description: "Chile, Coquimbo — rezervace Pingüino de Humboldt" }
-  - { name: "Piñihuil (Chiloé)", lat: -41.92, lon: -74.04, type: "breeding", description: "Chile, severozápadní Chiloé — jižní hranice areálu" }
-habitat: "Skalnaté pobřežní ostrovy a útesy chlazené Humboldtovým proudem. Tučňáci hnízdí v norách vyhloubených do silných vrstev guana, ve skalních puklinách nebo pod balvany. Upwelling studené vody udržuje teplotu moře kolem 15 °C i v tropech, zatímco vzduch může přes den překročit 30 °C — tučňáci proto pouštějí přebytečné teplo skrz neopeřené plošky na obličeji a nohou."
+  - { name: "Isla Choros", lat: -29.25, lon: -71.55, type: "breeding", description: "Chile, Coquimbo - rezervace Pingüino de Humboldt" }
+  - { name: "Piñihuil (Chiloé)", lat: -41.92, lon: -74.04, type: "breeding", description: "Chile, severozápadní Chiloé - jižní hranice areálu" }
+habitat: "Skalnaté pobřežní ostrovy a útesy chlazené Humboldtovým proudem. Tučňáci hnízdí v norách vyhloubených do silných vrstev guana, ve skalních puklinách nebo pod balvany. Upwelling studené vody udržuje teplotu moře kolem 15 °C i v tropech, zatímco vzduch může přes den překročit 30 °C - tučňáci proto pouštějí přebytečné teplo skrz neopeřené plošky na obličeji a nohou."
 diet:
-  - "Drobné hejnové ryby — sardele peruánské a sardinky"
+  - "Drobné hejnové ryby - sardele peruánské a sardinky"
   - "Severnější kolonie konzumují saury (Scomberesox saurus) a jehlici mořskou (Belone)"
   - "Doplňkově olihně a drobní korýši"
   - "Kořist velikosti 3-27 cm, běžný lov do hloubky 30 m, zaznamenáno až 54 m"
@@ -67,52 +67,52 @@ gallery:
     license: "CC BY 2.0"
     sourceUrl: "https://commons.wikimedia.org/wiki/File:Spheniscus_humboldti,_Islas_Ballestas_6.jpg"
   - src: "../../assets/penguins/humboldtuv/gallery-4.jpg"
-    alt: "Tučňák Humboldtův — fotografie z Wikimedia Commons"
+    alt: "Tučňák Humboldtův - fotografie z Wikimedia Commons"
     author: "PsamatheM"
     license: "CC BY-SA 4.0"
     sourceUrl: "https://commons.wikimedia.org/wiki/File:15-Islas_Ballestas-nX-22.jpg"
   - src: "../../assets/penguins/humboldtuv/gallery-5.jpg"
-    alt: "Tučňák Humboldtův — fotografie z Wikimedia Commons"
+    alt: "Tučňák Humboldtův - fotografie z Wikimedia Commons"
     author: "PsamatheM"
     license: "CC BY-SA 4.0"
     sourceUrl: "https://commons.wikimedia.org/wiki/File:15-Islas_Ballestas-nX-24.jpg"
   - src: "../../assets/penguins/humboldtuv/gallery-6.jpg"
-    alt: "Tučňák Humboldtův — fotografie z Wikimedia Commons"
+    alt: "Tučňák Humboldtův - fotografie z Wikimedia Commons"
     author: "The original uploader was Ljuba brank at Slovenian Wikipedia."
     license: "CC BY-SA 3.0"
     sourceUrl: "https://commons.wikimedia.org/wiki/File:65_Paracas_Islas_Ballestras_(21).jpg"
   - src: "../../assets/penguins/humboldtuv/gallery-7.jpg"
-    alt: "Tučňák Humboldtův — fotografie z Wikimedia Commons"
+    alt: "Tučňák Humboldtův - fotografie z Wikimedia Commons"
     author: "CARLOS TEIXIDOR CADENAS"
     license: "CC BY-SA 4.0"
     sourceUrl: "https://commons.wikimedia.org/wiki/File:Colonia_de_ping%C3%BCinos_de_Humboldt_(Spheniscus_humboldti)._Caldera_(Chile).jpg"
   - src: "../../assets/penguins/humboldtuv/gallery-8.jpg"
-    alt: "Tučňák Humboldtův — fotografie z Wikimedia Commons"
+    alt: "Tučňák Humboldtův - fotografie z Wikimedia Commons"
     author: "Murray Foubister"
     license: "CC BY-SA 2.0"
     sourceUrl: "https://commons.wikimedia.org/wiki/File:Day_trip_from_Puerto_Varas_to_Isla_Grande_de_Chiloe_-_a_visit_and_boat_trip_to_Pinguinera_Isloto_de_Punihuil_on_the_open_Ocean_-_Peruvian_(Humboldt)_Penguin_(Spheniscus_humboldt),_mostly_%3F_-_(24889558310).jpg"
   - src: "../../assets/penguins/humboldtuv/gallery-9.jpg"
-    alt: "Tučňák Humboldtův — fotografie z Wikimedia Commons"
+    alt: "Tučňák Humboldtův - fotografie z Wikimedia Commons"
     author: "Murray Foubister"
     license: "CC BY-SA 2.0"
     sourceUrl: "https://commons.wikimedia.org/wiki/File:Day_trip_from_Puerto_Varas_to_Isla_Grande_de_Chiloe_-_a_visit_and_boat_trip_to_Pinguinera_Isloto_de_Punihuil_on_the_open_Ocean_-_Peruvian_(Humboldt)_Penguin_(Spheniscus_humboldt),_mostly_%3F_-_(25185182305).jpg"
   - src: "../../assets/penguins/humboldtuv/gallery-10.jpg"
-    alt: "Tučňák Humboldtův — fotografie z Wikimedia Commons"
+    alt: "Tučňák Humboldtův - fotografie z Wikimedia Commons"
     author: "Dominic Sherony"
     license: "CC BY-SA 2.0"
     sourceUrl: "https://commons.wikimedia.org/wiki/File:Humboldt_Penguin_(Spheniscus_humboldti)_(9496964083).jpg"
   - src: "../../assets/penguins/humboldtuv/gallery-11.jpg"
-    alt: "Tučňák Humboldtův — fotografie z Wikimedia Commons"
+    alt: "Tučňák Humboldtův - fotografie z Wikimedia Commons"
     author: "Charles J. Sharp"
     license: "CC BY-SA 4.0"
     sourceUrl: "https://commons.wikimedia.org/wiki/File:Humboldt_penguin_(Spheniscus_humboldti)_Chiloe_2.jpg"
   - src: "../../assets/penguins/humboldtuv/gallery-12.jpg"
-    alt: "Tučňák Humboldtův — fotografie z Wikimedia Commons"
+    alt: "Tučňák Humboldtův - fotografie z Wikimedia Commons"
     author: "Charles J. Sharp"
     license: "CC BY-SA 4.0"
     sourceUrl: "https://commons.wikimedia.org/wiki/File:Humboldt_penguin_(Spheniscus_humboldti)_Chiloe.jpg"
   - src: "../../assets/penguins/humboldtuv/gallery-13.jpg"
-    alt: "Tučňák Humboldtův — fotografie z Wikimedia Commons"
+    alt: "Tučňák Humboldtův - fotografie z Wikimedia Commons"
     author: "Francesco Veronesi from Italy"
     license: "CC BY-SA 2.0"
     sourceUrl: "https://commons.wikimedia.org/wiki/File:Humboldt_Penguin_-_Paracas_-_Per%C3%B9149_(15358564226).jpg"
@@ -126,21 +126,21 @@ audio:
   durationSec: 30
 sources:
   - url: "https://cs.wikipedia.org/wiki/Tu%C4%8D%C5%88%C3%A1k_Humboldt%C5%AFv"
-    title: "Tučňák Humboldtův — Wikipedia (CS)"
+    title: "Tučňák Humboldtův - Wikipedia (CS)"
     type: "Wikipedia"
   - url: "https://en.wikipedia.org/wiki/Humboldt_penguin"
-    title: "Humboldt penguin — Wikipedia (EN)"
+    title: "Humboldt penguin - Wikipedia (EN)"
     type: "Wikipedia"
   - url: "https://www.iucnredlist.org/species/22697817/182714418"
-    title: "Spheniscus humboldti — IUCN Red List"
+    title: "Spheniscus humboldti - IUCN Red List"
     type: "IUCN"
     note: "Status Vulnerable, populace klesající, citlivá na El Niño"
   - url: "https://datazone.birdlife.org/species/factsheet/humboldt-penguin-spheniscus-humboldti"
-    title: "Humboldt Penguin — BirdLife International factsheet"
+    title: "Humboldt Penguin - BirdLife International factsheet"
     type: "BirdLife"
 updatedAt: "2026-04-19"
 ---
 
-Tučňák Humboldtův je středně velký pobřežní tučňák, který obývá **Tichomořské pobřeží Peru a Chile** podél studeného Humboldtova proudu. Dospělci měří 56 až 73 centimetrů a s hmotností kolem pěti kilogramů patří mezi **nejtěžší druhy rodu Spheniscus** — jsou tedy o něco větší než jejich bližší příbuzní tučňák brýlový a galapážský. Podobně jako ostatní zástupci rodu má černou hlavu lemovanou bílým proužkem od oka přes spánky k hrdlu, ale v porovnání s tučňákem magellanským má jen jeden výrazný černý pás přes hruď. Druh je silně vázaný na **Humboldtův proud** — studenou mořskou masu, která se valí od Antarktidy kolem jihoamerického pobřeží a tlačí se k severu až k Peru. Tam se potkává s teplejšími tropickými vodami a vytváří jeden z nejproduktivnějších mořských ekosystémů planety, plný sardel peruánských a sardinek — hlavní kořisti tučňáků.
+Tučňák Humboldtův je středně velký pobřežní tučňák, který obývá **Tichomořské pobřeží Peru a Chile** podél studeného Humboldtova proudu. Dospělci měří 56 až 73 centimetrů a s hmotností kolem pěti kilogramů patří mezi **nejtěžší druhy rodu Spheniscus** - jsou tedy o něco větší než jejich bližší příbuzní tučňák brýlový a galapážský. Podobně jako ostatní zástupci rodu má černou hlavu lemovanou bílým proužkem od oka přes spánky k hrdlu, ale v porovnání s tučňákem magellanským má jen jeden výrazný černý pás přes hruď. Druh je silně vázaný na **Humboldtův proud** - studenou mořskou masu, která se valí od Antarktidy kolem jihoamerického pobřeží a tlačí se k severu až k Peru. Tam se potkává s teplejšími tropickými vodami a vytváří jeden z nejproduktivnějších mořských ekosystémů planety, plný sardel peruánských a sardinek - hlavní kořisti tučňáků.
 
-Druh popsal v roce 1834 německý přírodovědec **Franz Julius Ferdinand Meyen** během plavby kolem světa a pojmenoval ho po **Alexandru von Humboldtovi**, který o tři desetiletí dříve objevil a zmapoval studený proud odpovědný za neobvyklou produktivitu peruánského moře. Dnes IUCN vede druh jako *Vulnerable* a v roce 2020 odhaduje přibližně 23 800 dospělých jedinců s klesajícím trendem. Populace je mimořádně citlivá na cyklus **El Niño – Southern Oscillation**: když se povrchové vody v Tichomoří oteplí, sardele klesnou do větších hloubek a tučňáci zůstanou bez potravy. Největší zaznamenaný propad přineslo velké El Niño v letech 1982-1983, kdy se globální stavy snížily o zhruba 65 %. Zhruba 80 % dnešní populace žije v chráněných oblastech severního Chile — především na ostrovech **Chañaral** a **Choros**, tvořících národní rezervaci Pingüino de Humboldt. V Peru je klíčová kolonie na poloostrově Punta San Juan, kde druh chrání Peruánská univerzita agrární La Molina spolu s průmyslem sklízejícím guáno. Hlavními hrozbami zůstávají klimatické změny, přerybaření hejnových ryb, bycatch v rybářských sítích a plánovaná těžba u pobřežních kolonií.
+Druh popsal v roce 1834 německý přírodovědec **Franz Julius Ferdinand Meyen** během plavby kolem světa a pojmenoval ho po **Alexandru von Humboldtovi**, který o tři desetiletí dříve objevil a zmapoval studený proud odpovědný za neobvyklou produktivitu peruánského moře. Dnes IUCN vede druh jako *Vulnerable* a v roce 2020 odhaduje přibližně 23 800 dospělých jedinců s klesajícím trendem. Populace je mimořádně citlivá na cyklus **El Niño - Southern Oscillation**: když se povrchové vody v Tichomoří oteplí, sardele klesnou do větších hloubek a tučňáci zůstanou bez potravy. Největší zaznamenaný propad přineslo velké El Niño v letech 1982-1983, kdy se globální stavy snížily o zhruba 65 %. Zhruba 80 % dnešní populace žije v chráněných oblastech severního Chile - především na ostrovech **Chañaral** a **Choros**, tvořících národní rezervaci Pingüino de Humboldt. V Peru je klíčová kolonie na poloostrově Punta San Juan, kde druh chrání Peruánská univerzita agrární La Molina spolu s průmyslem sklízejícím guáno. Hlavními hrozbami zůstávají klimatické změny, přerybaření hejnových ryb, bycatch v rybářských sítích a plánovaná těžba u pobřežních kolonií.

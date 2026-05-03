@@ -4,7 +4,7 @@ nameLat: "Eudyptula minor"
 nameEn: "Little penguin"
 genus: "Eudyptula"
 iucnStatus: "LC"
-description: "Nejmenší tučňák světa — vysoký přibližně 30–33 cm a vážící kolem kilogramu. Typické je modravě šedé peří na hřbetě. Jediný druh tučňáka, který na pevninu vylézá pouze za tmy."
+description: "Nejmenší tučňák světa - vysoký přibližně 30-33 cm a vážící kolem kilogramu. Typické je modravě šedé peří na hřbetě. Jediný druh tučňáka, který na pevninu vylézá pouze za tmy."
 size:
   heightCm:
     - 30
@@ -20,16 +20,16 @@ distribution:
 colonies:
   - { name: "Phillip Island", lat: -38.50, lon: 145.23, type: "breeding", description: "Austrálie, ~32 tisíc párů, slavná Penguin Parade" }
   - { name: "St Kilda Breakwater", lat: -37.87, lon: 144.97, type: "breeding", description: "Vlnolam u Melbourne, městská kolonie ~1 400 ptáků" }
-  - { name: "Penguin Place", lat: -45.78, lon: 170.73, type: "breeding", description: "Otago Peninsula, NZ — soukromá rezervace" }
+  - { name: "Penguin Place", lat: -45.78, lon: 170.73, type: "breeding", description: "Otago Peninsula, NZ - soukromá rezervace" }
   - { name: "Oamaru Blue Penguin Colony", lat: -45.10, lon: 170.97, type: "breeding", description: "Nový Zéland, lov u kamenolomu, večerní pochod" }
   - { name: "Bicheno", lat: -41.87, lon: 148.30, type: "breeding", description: "Východní Tasmánie, několik desítek nor" }
   - { name: "Bruny Island", lat: -43.30, lon: 147.30, type: "breeding", description: "Tasmánie, ostrov u jižního pobřeží" }
-  - { name: "Granite Island", lat: -35.55, lon: 138.62, type: "breeding", description: "Jižní Austrálie, Victor Harbor — populace dramaticky klesá" }
+  - { name: "Granite Island", lat: -35.55, lon: 138.62, type: "breeding", description: "Jižní Austrálie, Victor Harbor - populace dramaticky klesá" }
   - { name: "Kangaroo Island", lat: -35.83, lon: 137.20, type: "breeding", description: "Jižní Austrálie, několik kolonií podél pobřeží" }
-  - { name: "Bowen Island", lat: -35.13, lon: 150.77, type: "breeding", description: "Nový Jižní Wales, Jervis Bay — ~5 000 párů" }
+  - { name: "Bowen Island", lat: -35.13, lon: 150.77, type: "breeding", description: "Nový Jižní Wales, Jervis Bay - ~5 000 párů" }
 habitat: "Pobřeží s písečnými pláními, kamenitými útesy, dunami i lidskými stavbami. Nory si druh hloubí v písku nebo hlíně, případně využívá skalní štěrbiny a opuštěné králičí doupata. Často hnízdí přímo pod domy nebo v zahradních kolnách v městském pobřeží Austrálie a Nového Zélandu."
 diet:
-  - "Drobné hejnové ryby — sardinky, sardele a ančovičky (~76 % stravy)"
+  - "Drobné hejnové ryby - sardinky, sardele a ančovičky (~76 % stravy)"
   - "Olihně a drobní hlavonožci (~24 % stravy)"
   - "Doplňkově korýši a larvy ryb"
 lifespan:
@@ -40,9 +40,9 @@ diving:
   maxDepthM: 67
   typicalDurationSec: 21
   maxDurationSec: 90
-  note: "Krátké, mělké ponory blízko hladiny — průměrný ponor jen 21 sekund. Maximální zaznamenaná hloubka 66,7 m."
-population: "Globálně odhadem přes 500 000 hnízdních párů. Největší populace žije v Tasmánii (110 000–190 000 párů) a kolem australské pevniny. Celkově druh zůstává hojný a IUCN ho vede jako *Least Concern*, místní populace v urbanizovaných oblastech ale ubývají kvůli predátorům (psi, kočky) a srážkám s auty."
-historicalNotes: "Druh popsal v roce 1781 německý přírodovědec Johann Reinhold Forster během druhé Cookovy plavby — téhož roku popsal i tučňáka magellanského, oslího a skalního jižního. Dlouho trval taxonomický spor, zda je *Eudyptula minor* jediný druh nebo dva: australské populace se geneticky liší od novozélandských a někteří autoři je oddělují jako *Eudyptula novaehollandiae*. IUCN i BirdLife v roce 2026 pracují s pojetím **jednoho druhu** s několika poddruhy."
+  note: "Krátké, mělké ponory blízko hladiny - průměrný ponor jen 21 sekund. Maximální zaznamenaná hloubka 66,7 m."
+population: "Globálně odhadem přes 500 000 hnízdních párů. Největší populace žije v Tasmánii (110 000-190 000 párů) a kolem australské pevniny. Celkově druh zůstává hojný a IUCN ho vede jako *Least Concern*, místní populace v urbanizovaných oblastech ale ubývají kvůli predátorům (psi, kočky) a srážkám s auty."
+historicalNotes: "Druh popsal v roce 1781 německý přírodovědec Johann Reinhold Forster během druhé Cookovy plavby - téhož roku popsal i tučňáka magellanského, oslího a skalního jižního. Dlouho trval taxonomický spor, zda je *Eudyptula minor* jediný druh nebo dva: australské populace se geneticky liší od novozélandských a někteří autoři je oddělují jako *Eudyptula novaehollandiae*. IUCN i BirdLife v roce 2026 pracují s pojetím **jednoho druhu** s několika poddruhy."
 hero:
   src: "../../assets/penguins/nejmensi/hero.jpg"
   alt: "Tučňák nejmenší s modravě šedým peřím na hřbetě na pláži Waipatiko Beach na Novém Zélandu"
@@ -66,72 +66,72 @@ gallery:
     license: "CC BY-SA 4.0"
     sourceUrl: "https://commons.wikimedia.org/wiki/File:Moutling_Little_Penguin.jpg"
   - src: "../../assets/penguins/nejmensi/gallery-4.jpg"
-    alt: "Tučňák nejmenší — fotografie z Wikimedia Commons"
+    alt: "Tučňák nejmenší - fotografie z Wikimedia Commons"
     author: "Tanya Dropbear"
     license: "CC BY 2.0"
     sourceUrl: "https://commons.wikimedia.org/wiki/File:Little_Blue_Penguin_(Eudyptula_minor)_-group_at_Adelaide_Zoo.jpg"
   - src: "../../assets/penguins/nejmensi/gallery-5.jpg"
-    alt: "Tučňák nejmenší — fotografie z Wikimedia Commons"
+    alt: "Tučňák nejmenší - fotografie z Wikimedia Commons"
     author: "Broinowski, Gracius J."
     license: "Public domain"
     sourceUrl: "https://commons.wikimedia.org/wiki/File:The_birds_of_Australia_(16085087534).jpg"
   - src: "../../assets/penguins/nejmensi/gallery-6.jpg"
-    alt: "Tučňák nejmenší — fotografie z Wikimedia Commons"
+    alt: "Tučňák nejmenší - fotografie z Wikimedia Commons"
     author: "Takver (www.takver.com)."
     license: "CC BY-SA 3.0"
     sourceUrl: "https://commons.wikimedia.org/wiki/File:Eudyptula_minor_Melbourne.jpg"
   - src: "../../assets/penguins/nejmensi/gallery-7.jpg"
-    alt: "Tučňák nejmenší — fotografie z Wikimedia Commons"
+    alt: "Tučňák nejmenší - fotografie z Wikimedia Commons"
     author: "Magnus Kjaergaard"
     license: "CC BY 3.0"
     sourceUrl: "https://commons.wikimedia.org/wiki/File:Eudyptula_minor_Phillip_Island.JPG"
   - src: "../../assets/penguins/nejmensi/gallery-8.jpg"
-    alt: "Tučňák nejmenší — fotografie z Wikimedia Commons"
+    alt: "Tučňák nejmenší - fotografie z Wikimedia Commons"
     author: "Mikeybear"
     license: "CC BY 3.0"
     sourceUrl: "https://commons.wikimedia.org/wiki/File:20091121_Little_Penguin_on_rock_at_St_Kilda_Breakwater_(left_side_view).jpg"
   - src: "../../assets/penguins/nejmensi/gallery-9.jpg"
-    alt: "Tučňák nejmenší — fotografie z Wikimedia Commons"
+    alt: "Tučňák nejmenší - fotografie z Wikimedia Commons"
     author: "Genet (Diskussion)"
     license: "CC BY-SA 4.0"
     sourceUrl: "https://commons.wikimedia.org/wiki/File:Australia_-_Phillip_Island_-_Penguin_(Eudyptula_minor).jpg"
   - src: "../../assets/penguins/nejmensi/gallery-10.jpg"
-    alt: "Tučňák nejmenší — fotografie z Wikimedia Commons"
+    alt: "Tučňák nejmenší - fotografie z Wikimedia Commons"
     author: "Duncan Wright"
     license: "CC BY-SA 3.0"
     sourceUrl: "https://commons.wikimedia.org/wiki/File:Blue_Penguin_Kapiti.jpg"
   - src: "../../assets/penguins/nejmensi/gallery-11.jpg"
-    alt: "Tučňák nejmenší — fotografie z Wikimedia Commons"
+    alt: "Tučňák nejmenší - fotografie z Wikimedia Commons"
     author: "Liese Coulter, CSIRO"
     license: "CC BY 3.0"
     sourceUrl: "https://commons.wikimedia.org/wiki/File:CSIRO_ScienceImage_11266_Penguin_tracks.jpg"
   - src: "../../assets/penguins/nejmensi/gallery-12.jpg"
-    alt: "Tučňák nejmenší — fotografie z Wikimedia Commons"
+    alt: "Tučňák nejmenší - fotografie z Wikimedia Commons"
     author: "Wandering and Wilderness"
     license: "CC BY 4.0"
     sourceUrl: "https://commons.wikimedia.org/wiki/File:Eudyptula_minor_246654753.jpg"
   - src: "../../assets/penguins/nejmensi/gallery-13.jpg"
-    alt: "Tučňák nejmenší — fotografie z Wikimedia Commons"
+    alt: "Tučňák nejmenší - fotografie z Wikimedia Commons"
     author: "siuyeung ho"
     license: "CC0"
     sourceUrl: "https://commons.wikimedia.org/wiki/File:Eudyptula_minor_253910126.jpg"
   - src: "../../assets/penguins/nejmensi/gallery-14.jpg"
-    alt: "Tučňák nejmenší — fotografie z Wikimedia Commons"
+    alt: "Tučňák nejmenší - fotografie z Wikimedia Commons"
     author: "Auckland Museum Collections from Auckland, Aotearoa New Zealand"
     license: "CC BY 2.0"
     sourceUrl: "https://commons.wikimedia.org/wiki/File:Eudyptula_minor_albosignata_(White-flippered_Penguin)_(48719167383).jpg"
   - src: "../../assets/penguins/nejmensi/gallery-15.jpg"
-    alt: "Tučňák nejmenší — fotografie z Wikimedia Commons"
+    alt: "Tučňák nejmenší - fotografie z Wikimedia Commons"
     author: "Auckland Museum Collections from Auckland, Aotearoa New Zealand"
     license: "CC BY 2.0"
     sourceUrl: "https://commons.wikimedia.org/wiki/File:Eudyptula_minor_albosignata_(White-flippered_Penguin)_(48719503626).jpg"
   - src: "../../assets/penguins/nejmensi/gallery-16.jpg"
-    alt: "Tučňák nejmenší — fotografie z Wikimedia Commons"
+    alt: "Tučňák nejmenší - fotografie z Wikimedia Commons"
     author: "JJ Harrison (https://www.jjharrison.com.au/)"
     license: "CC BY-SA 2.5"
     sourceUrl: "https://commons.wikimedia.org/wiki/File:Eudyptula_minor_Bruny_Island.jpg"
   - src: "../../assets/penguins/nejmensi/gallery-17.jpg"
-    alt: "Tučňák nejmenší — fotografie z Wikimedia Commons"
+    alt: "Tučňák nejmenší - fotografie z Wikimedia Commons"
     author: "Kaela Wilbur"
     license: "CC BY 4.0"
     sourceUrl: "https://commons.wikimedia.org/wiki/File:Eudyptula_minor_iredalei_243414179.jpg"
@@ -145,21 +145,21 @@ audio:
   durationSec: 85
 sources:
   - url: "https://cs.wikipedia.org/wiki/Tu%C4%8D%C5%88%C3%A1k_nejmen%C5%A1%C3%AD"
-    title: "Tučňák nejmenší — Wikipedia (CS)"
+    title: "Tučňák nejmenší - Wikipedia (CS)"
     type: "Wikipedia"
   - url: "https://en.wikipedia.org/wiki/Little_penguin"
-    title: "Little penguin — Wikipedia (EN)"
+    title: "Little penguin - Wikipedia (EN)"
     type: "Wikipedia"
   - url: "https://www.iucnredlist.org/species/22697805/184801115"
-    title: "Eudyptula minor — IUCN Red List"
+    title: "Eudyptula minor - IUCN Red List"
     type: "IUCN"
     note: "Status Least Concern, populace stabilní"
   - url: "https://datazone.birdlife.org/species/factsheet/little-penguin-eudyptula-minor"
-    title: "Little Penguin — BirdLife International factsheet"
+    title: "Little Penguin - BirdLife International factsheet"
     type: "BirdLife"
 updatedAt: "2026-04-27"
 ---
 
-Tučňák nejmenší si své jméno zaslouží doslova — dospělý jedinec měří sotva třiatřicet centimetrů a váží okolo kilogramu. Je tedy o dvacet centimetrů menší než kočka a skoro pětkrát lehčí než jeho nejbližší novozélandský příbuzný, tučňák žlutooký. Jeho nejcharakterističtějším znakem je ale barva peří — místo černé má na hřbetě tmavě **modravě šedé** peří, které v australské a novozélandské angličtině dalo vzniknout také přezdívce *blue penguin*. Další unikát: tučňák nejmenší je jediný druh tučňáka, který se po celý rok vrací na pevninu **pouze za tmy**. Přes den jsou ptáci buď na moři, nebo zalezlí v norách, a teprve po západu slunce se v dlouhé procesi vrací k hnízdu. Na australských a novozélandských pobřežích je toto noční defilé turistickou atrakcí — například na ostrově Phillip Island ve Victorii jihovýchodně od Melbourne se průchod „modrých tučňáků" pláží sleduje z tribun každý večer.
+Tučňák nejmenší si své jméno zaslouží doslova - dospělý jedinec měří sotva třiatřicet centimetrů a váží okolo kilogramu. Je tedy o dvacet centimetrů menší než kočka a skoro pětkrát lehčí než jeho nejbližší novozélandský příbuzný, tučňák žlutooký. Jeho nejcharakterističtějším znakem je ale barva peří - místo černé má na hřbetě tmavě **modravě šedé** peří, které v australské a novozélandské angličtině dalo vzniknout také přezdívce *blue penguin*. Další unikát: tučňák nejmenší je jediný druh tučňáka, který se po celý rok vrací na pevninu **pouze za tmy**. Přes den jsou ptáci buď na moři, nebo zalezlí v norách, a teprve po západu slunce se v dlouhé procesi vrací k hnízdu. Na australských a novozélandských pobřežích je toto noční defilé turistickou atrakcí - například na ostrově Phillip Island ve Victorii jihovýchodně od Melbourne se průchod "modrých tučňáků" pláží sleduje z tribun každý večer.
 
-Druh popsal v roce 1781 německý přírodovědec Johann Reinhold Forster. Dnes žije tučňák nejmenší podél celého jižního pobřeží Austrálie (včetně Tasmánie) a na větší části Nového Zélandu. Globální populace přesahuje půl milionu hnízdních párů, a tak ho IUCN vede jako *Least Concern* — celkově tedy jde o nejběžnějšího tučňáka na jižní polokouli mimo Antarktidu. Lokálně ale druh trpí: v urbanizovaných oblastech australského pobřeží mu hrozí psi, kočky i srážky s auty při nočních přechodech silnic, některé menší populace v posledních desetiletích zanikly. Taxonomické postavení druhu je stále živé — australská populace se od novozélandské geneticky poměrně výrazně liší a část vědců ji odděluje jako samostatný druh *Eudyptula novaehollandiae*. IUCN i BirdLife se zatím drží pojetí jednoho druhu s několika poddruhy.
+Druh popsal v roce 1781 německý přírodovědec Johann Reinhold Forster. Dnes žije tučňák nejmenší podél celého jižního pobřeží Austrálie (včetně Tasmánie) a na větší části Nového Zélandu. Globální populace přesahuje půl milionu hnízdních párů, a tak ho IUCN vede jako *Least Concern* - celkově tedy jde o nejběžnějšího tučňáka na jižní polokouli mimo Antarktidu. Lokálně ale druh trpí: v urbanizovaných oblastech australského pobřeží mu hrozí psi, kočky i srážky s auty při nočních přechodech silnic, některé menší populace v posledních desetiletích zanikly. Taxonomické postavení druhu je stále živé - australská populace se od novozélandské geneticky poměrně výrazně liší a část vědců ji odděluje jako samostatný druh *Eudyptula novaehollandiae*. IUCN i BirdLife se zatím drží pojetí jednoho druhu s několika poddruhy.

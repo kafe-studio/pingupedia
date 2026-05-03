@@ -4,7 +4,7 @@ nameLat: "Eudyptes chrysocome"
 nameEn: "Southern rockhopper penguin"
 genus: "Eudyptes"
 iucnStatus: "VU"
-description: "Malý chocholatý tučňák se žlutými pírky nad očima a červenýma očima. Žije na subantarktických ostrovech, kde ke koloniím šplhá po strmých skalách — odtud jeho anglický název rockhopper."
+description: "Malý chocholatý tučňák se žlutými pírky nad očima a červenýma očima. Žije na subantarktických ostrovech, kde ke koloniím šplhá po strmých skalách - odtud jeho anglický název rockhopper."
 size:
   heightCm:
     - 45
@@ -19,8 +19,8 @@ distribution:
   - "Ostrovy Tristan da Cunha a Gough"
   - "Subantarktické ostrovy jižně od Nového Zélandu (Auckland, Campbell, Antipody)"
 colonies:
-  - { name: "Falklandy — Saunders Island", lat: -51.34, lon: -60.18, type: "breeding", description: "Jedna z hlavních falklandských kolonií" }
-  - { name: "Falklandy — New Island", lat: -51.72, lon: -61.30, type: "breeding", description: "Smíšené hnízdiště s albatrosy a kormorány" }
+  - { name: "Falklandy - Saunders Island", lat: -51.34, lon: -60.18, type: "breeding", description: "Jedna z hlavních falklandských kolonií" }
+  - { name: "Falklandy - New Island", lat: -51.72, lon: -61.30, type: "breeding", description: "Smíšené hnízdiště s albatrosy a kormorány" }
   - { name: "Isla de los Estados (Argentina)", lat: -54.78, lon: -64.25, type: "breeding", description: "Hlavní jihoamerická kolonie u Ohňové země" }
   - { name: "Diego Ramírezovy ostrovy (Chile)", lat: -56.48, lon: -68.73, type: "breeding", description: "Nejjižnější chilská kolonie, jih od Hornova mysu" }
   - { name: "Kerguelenovy ostrovy", lat: -49.25, lon: 69.17, type: "breeding", description: "Velké francouzské subantarktické hnízdiště" }
@@ -32,7 +32,7 @@ colonies:
 habitat: "Strmé skalnaté pobřeží, morénové svahy a lávové útesy. Hnízdí v hustých koloniích vysoko nad mořem, kam se dostává skákáním po skalách a oblázkových plážích."
 diet:
   - "Antarktický a subantarktický kril"
-  - "Drobné hlavonožce — olihně a sepiolky"
+  - "Drobné hlavonožce - olihně a sepiolky"
   - "Korýši amfipodi a drobné mezopelagické ryby"
 lifespan:
   wildYears: 10
@@ -67,52 +67,52 @@ gallery:
     license: "CC BY-SA 3.0 DE"
     sourceUrl: "https://commons.wikimedia.org/wiki/File:2024_Eudyptes_chrysocome_-_Felsenpinguin_-_by_2eight_-_9SC3799.jpg"
   - src: "../../assets/penguins/skalni-jizni/gallery-4.jpg"
-    alt: "Tučňák skalní jižní — fotografie z Wikimedia Commons"
+    alt: "Tučňák skalní jižní - fotografie z Wikimedia Commons"
     author: "Christopher Michel"
     license: "CC BY 2.0"
     sourceUrl: "https://commons.wikimedia.org/wiki/File:091126_west_point_falklands_0305_(4172603955).jpg"
   - src: "../../assets/penguins/skalni-jizni/gallery-5.jpg"
-    alt: "Tučňák skalní jižní — fotografie z Wikimedia Commons"
+    alt: "Tučňák skalní jižní - fotografie z Wikimedia Commons"
     author: "Christopher Michel"
     license: "CC BY 2.0"
     sourceUrl: "https://commons.wikimedia.org/wiki/File:091126_west_point_falklands_9847_(4172601291).jpg"
   - src: "../../assets/penguins/skalni-jizni/gallery-6.jpg"
-    alt: "Tučňák skalní jižní — fotografie z Wikimedia Commons"
+    alt: "Tučňák skalní jižní - fotografie z Wikimedia Commons"
     author: "Liam Quinn from Canada"
     license: "CC BY-SA 2.0"
     sourceUrl: "https://commons.wikimedia.org/wiki/File:Black-browed_Albatross_flying_over_penguins_and_albatrosses_(5545919066).jpg"
   - src: "../../assets/penguins/skalni-jizni/gallery-7.jpg"
-    alt: "Tučňák skalní jižní — fotografie z Wikimedia Commons"
+    alt: "Tučňák skalní jižní - fotografie z Wikimedia Commons"
     author: "Liam Quinn from Canada"
     license: "CC BY-SA 2.0"
     sourceUrl: "https://commons.wikimedia.org/wiki/File:Black-browed_Albatross_flying_over_West_Point_Island_(5545300203).jpg"
   - src: "../../assets/penguins/skalni-jizni/gallery-8.jpg"
-    alt: "Tučňák skalní jižní — fotografie z Wikimedia Commons"
+    alt: "Tučňák skalní jižní - fotografie z Wikimedia Commons"
     author: "Neil T from Bradford, United Kingdom"
     license: "CC BY-SA 2.0"
     sourceUrl: "https://commons.wikimedia.org/wiki/File:Eudyptes_-_London_Zoo,_England.jpg"
   - src: "../../assets/penguins/skalni-jizni/gallery-9.jpg"
-    alt: "Tučňák skalní jižní — fotografie z Wikimedia Commons"
+    alt: "Tučňák skalní jižní - fotografie z Wikimedia Commons"
     author: "Ruben Undheim from Trondheim, Norway"
     license: "CC BY-SA 2.0"
     sourceUrl: "https://commons.wikimedia.org/wiki/File:Eudyptes_chrysocome_(6338006712).jpg"
   - src: "../../assets/penguins/skalni-jizni/gallery-10.jpg"
-    alt: "Tučňák skalní jižní — fotografie z Wikimedia Commons"
+    alt: "Tučňák skalní jižní - fotografie z Wikimedia Commons"
     author: "Auckland Museum Collections from Auckland, Aotearoa New Zealand"
     license: "CC BY 2.0"
     sourceUrl: "https://commons.wikimedia.org/wiki/File:Eudyptes_chrysocome_(Western_Rockhopper_Penguin)_(48719502781).jpg"
   - src: "../../assets/penguins/skalni-jizni/gallery-11.jpg"
-    alt: "Tučňák skalní jižní — fotografie z Wikimedia Commons"
+    alt: "Tučňák skalní jižní - fotografie z Wikimedia Commons"
     author: "Stan Shebs"
     license: "CC BY-SA 3.0"
     sourceUrl: "https://commons.wikimedia.org/wiki/File:Eudyptes_chrysocome_at_waters_edge.jpg"
   - src: "../../assets/penguins/skalni-jizni/gallery-12.jpg"
-    alt: "Tučňák skalní jižní — fotografie z Wikimedia Commons"
+    alt: "Tučňák skalní jižní - fotografie z Wikimedia Commons"
     author: "Stan Shebs"
     license: "CC BY-SA 3.0"
     sourceUrl: "https://commons.wikimedia.org/wiki/File:Eudyptes_chrysocome_chicks_molting.jpg"
   - src: "../../assets/penguins/skalni-jizni/gallery-13.jpg"
-    alt: "Tučňák skalní jižní — fotografie z Wikimedia Commons"
+    alt: "Tučňák skalní jižní - fotografie z Wikimedia Commons"
     author: "Eva bindhi"
     license: "CC BY-SA 4.0"
     sourceUrl: "https://commons.wikimedia.org/wiki/File:Eudyptes_chrysocome-Ping%C3%BCino_Penacho_amarillo.png"
@@ -126,21 +126,21 @@ audio:
   durationSec: 104
 sources:
   - url: "https://cs.wikipedia.org/wiki/Tu%C4%8D%C5%88%C3%A1k_skaln%C3%AD"
-    title: "Tučňák skalní — Wikipedia (CS)"
+    title: "Tučňák skalní - Wikipedia (CS)"
     type: "Wikipedia"
   - url: "https://en.wikipedia.org/wiki/Southern_rockhopper_penguin"
-    title: "Southern rockhopper penguin — Wikipedia (EN)"
+    title: "Southern rockhopper penguin - Wikipedia (EN)"
     type: "Wikipedia"
   - url: "https://www.iucnredlist.org/species/22735250/182762377"
-    title: "Eudyptes chrysocome — IUCN Red List"
+    title: "Eudyptes chrysocome - IUCN Red List"
     type: "IUCN"
     note: "Status Vulnerable, populace klesající"
   - url: "https://datazone.birdlife.org/species/factsheet/southern-rockhopper-penguin-eudyptes-chrysocome"
-    title: "Southern Rockhopper Penguin — BirdLife International factsheet"
+    title: "Southern Rockhopper Penguin - BirdLife International factsheet"
     type: "BirdLife"
 updatedAt: "2026-04-19"
 ---
 
-Tučňák skalní jižní patří mezi nejmenší a zároveň nejcharakterističtější tučňáky vůbec. Dospělec má sotva přes padesát centimetrů a váží okolo dvou a půl kilogramu, přesto je v koloniích neuvěřitelně hlasitý a velmi odolný. Nápadnou vizitkou jsou divoké žluté chocholky nad očima a jasně červené duhovky, které ho odlišují od ostatních chocholatých tučňáků. Díky silným nohám a velké hbitosti dokáže šplhat po skalách do kolonií položených desítky metrů nad mořem — místo kolébání mezi kameny prostě skáče snožmo, odtud i anglický název **rockhopper**.
+Tučňák skalní jižní patří mezi nejmenší a zároveň nejcharakterističtější tučňáky vůbec. Dospělec má sotva přes padesát centimetrů a váží okolo dvou a půl kilogramu, přesto je v koloniích neuvěřitelně hlasitý a velmi odolný. Nápadnou vizitkou jsou divoké žluté chocholky nad očima a jasně červené duhovky, které ho odlišují od ostatních chocholatých tučňáků. Díky silným nohám a velké hbitosti dokáže šplhat po skalách do kolonií položených desítky metrů nad mořem - místo kolébání mezi kameny prostě skáče snožmo, odtud i anglický název **rockhopper**.
 
-Druh vědecky popsal v roce 1781 Johann Reinhold Forster během druhé Cookovy expedice. Ještě na začátku 21. století byli všichni rockhoppeři považováni za jeden druh, v roce 2006 navrhli Banks et al. severní populaci z ostrovů kolem Tristan da Cunha a St. Paul vyčlenit jako samostatný druh *Eudyptes moseleyi* — na základě rozdílů v hlase, velikosti chocholky a genetice. Globální populace jižního rockhoppera se za posledních třicet let snížila zhruba o třetinu a IUCN ho proto vede jako **zranitelný**. Hlavními hrozbami jsou změny oceánských proudů ovlivňující dostupnost krilu a historicky také introdukovaní predátoři na některých ostrovech.
+Druh vědecky popsal v roce 1781 Johann Reinhold Forster během druhé Cookovy expedice. Ještě na začátku 21. století byli všichni rockhoppeři považováni za jeden druh, v roce 2006 navrhli Banks et al. severní populaci z ostrovů kolem Tristan da Cunha a St. Paul vyčlenit jako samostatný druh *Eudyptes moseleyi* - na základě rozdílů v hlase, velikosti chocholky a genetice. Globální populace jižního rockhoppera se za posledních třicet let snížila zhruba o třetinu a IUCN ho proto vede jako **zranitelný**. Hlavními hrozbami jsou změny oceánských proudů ovlivňující dostupnost krilu a historicky také introdukovaní predátoři na některých ostrovech.

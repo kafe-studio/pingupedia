@@ -4,8 +4,81 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import Mascot from "../components/mascot/Mascot.astro";
 import Timeline from "../components/timeline/Timeline.astro";
 import { getTimelinePage } from "../lib/pages";
+import type { ImageMetadata } from "astro";
+import { getCollection } from "astro:content";
+import { getImage } from "astro:assets";
 
 const page = await getTimelinePage();
+
+// Pro každou událost s `speciesSlug` napárujeme hero fotku druhu jako historickou ilustraci.
+// Pro události bez slugu, ale s `image` polem v JSON, načteme historickou fotografii
+// z `src/assets/timeline/<file>` přes import.meta.glob.
+const species = await getCollection("species");
+const speciesById = new Map(species.map((s) => [s.id, s]));
+
+const timelineImages = import.meta.glob<{ default: ImageMetadata }>(
+  "../assets/timeline/*.{jpg,jpeg,png,webp}",
+  { eager: true },
+);
+function findTimelineImage(file: string): ImageMetadata | undefined {
+  const entry = Object.entries(timelineImages).find(([path]) => path.endsWith("/" + file));
+  return entry?.[1].default;
+}
+
+type RenderEvent = Omit<typeof page.events[number], "image"> & {
+  image?: { src: string; srcset?: string; alt: string; author: string; license: string; sourceUrl: string };
+};
+
+// Counter pro slug → kolikátá událost daného druhu už byla zpracována.
+// Při >= 2 použijeme rotaci přes gallery, aby se neopakovala stejná hero fotka.
+const slugCounter = new Map<string, number>();
+
+const enrichedEvents: RenderEvent[] = await Promise.all(page.events.map(async (e): Promise<RenderEvent> => {
+  // Priorita 1: explicit JSON image — historická fotografie/kresba z Commons (preferováno).
+  if (e.image) {
+    const asset = findTimelineImage(e.image.file);
+    if (asset) {
+      const opt = await getImage({ src: asset, format: "webp", widths: [320, 480, 720], sizes: "(min-width: 768px) 360px, 90vw" });
+      return {
+        ...e,
+        image: {
+          src: opt.src,
+          srcset: opt.srcSet?.attribute,
+          alt: e.image.alt,
+          author: e.image.author,
+          license: e.image.license,
+          sourceUrl: e.image.sourceUrl,
+        },
+      };
+    }
+  }
+  // Priorita 2: speciesSlug → species hero (1. výskyt) nebo gallery rotace (další výskyty).
+  if (e.speciesSlug) {
+    const sp = speciesById.get(e.speciesSlug);
+    if (sp) {
+      const idx = slugCounter.get(e.speciesSlug) ?? 0;
+      slugCounter.set(e.speciesSlug, idx + 1);
+      const gallery = sp.data.gallery ?? [];
+      const photo = idx === 0 ? sp.data.hero : (gallery[idx - 1] ?? sp.data.hero);
+      const opt = await getImage({ src: photo.src, format: "webp", widths: [320, 480, 720], sizes: "(min-width: 768px) 360px, 90vw" });
+      return {
+        ...e,
+        image: {
+          src: opt.src,
+          srcset: opt.srcSet?.attribute,
+          alt: photo.alt,
+          author: photo.author,
+          license: photo.license,
+          sourceUrl: photo.sourceUrl,
+        },
+      };
+    }
+  }
+  // No image match (no slug, no JSON image, or asset not found) — strip raw image field.
+  const { image: _drop, ...rest } = e;
+  void _drop;
+  return rest;
+}));
 
 const metadata = {
   title: page.meta.title,
@@ -57,5 +130,5 @@ const totalYears = Math.max(...page.events.map((e) => e.year)) - Math.min(...pag
     </div>
   </section>
 
-  <Timeline events={page.events} />
+  <Timeline events={enrichedEvents} />
 </BaseLayout>

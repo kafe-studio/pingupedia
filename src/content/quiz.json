@@ -141,7 +141,7 @@
         "moa"
       ],
       "correct": 1,
-      "explanation": "Hoiho znamená v maorštině doslova „křičící pták“ podle jeho pronikavých volání."
+      "explanation": "Hoiho znamená v maorštině doslova křičící pták podle jeho pronikavých volání."
     },
     {
       "question": "Který tučňák jako jediný nehnízdí v koloniích?",
@@ -438,7 +438,7 @@
         "Stříbrné s pruhy"
       ],
       "correct": 1,
-      "explanation": "Tučňák nejmenší má charakteristické modravě šedé peří — anglicky se mu proto říká „little blue penguin“."
+      "explanation": "Tučňák nejmenší má charakteristické modravě šedé peří — anglicky se mu proto říká little blue penguin."
     },
     {
       "question": "Který tučňák vychází na pevninu pouze za tmy?",
@@ -834,7 +834,7 @@
         "Tučný plavec"
       ],
       "correct": 0,
-      "explanation": "Megadyptes znamená „velký potápěč“ — odkazuje k tomu, že žlutooký je největším tučňákem Nového Zélandu."
+      "explanation": "Megadyptes znamená velký potápěč — odkazuje k tomu, že žlutooký je největším tučňákem Nového Zélandu."
     },
     {
       "question": "Který tučňák hnízdí ve velkých koloniích na ostrově Macquarie a má až 850 000 párů?",
@@ -1596,7 +1596,7 @@
       "explanation": "Krill je drobný korýš (Euphausia superba a další) — základ potravního řetězce jižních moří."
     },
     {
-      "question": "Co znamená „pelichání“ u tučňáků?",
+      "question": "Co znamená pelichání u tučňáků?",
       "options": [
         "Změna pohlaví",
         "Hromadná výměna peří, kterou tučňák tráví na souši",
@@ -1607,7 +1607,7 @@
       "explanation": "Tučňáci jednou ročně vymění peří — pelichání trvá několik týdnů, během nichž se na souši nesmí dostat do vody."
     },
     {
-      "question": "Co je „crèche“ (jesle) u tučňáka císařského?",
+      "question": "Co je crèche (jesle) u tučňáka císařského?",
       "options": [
         "Hnízdo z kamínků",
         "Skupina mláďat hlídaných několika dospělci",

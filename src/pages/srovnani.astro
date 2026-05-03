@@ -1,0 +1,151 @@
+---
+export const prerender = true;
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Mascot from "../components/mascot/Mascot.astro";
+import IucnBadge from "../components/species/IucnBadge.astro";
+import { Image } from "astro:assets";
+import { getCollection } from "astro:content";
+
+const species = await getCollection("species");
+
+// Sestav řádky tabulky — předpočítané min/max textové hodnoty + numerické pro řazení.
+const rows = species
+  .map((s) => {
+    const d = s.data;
+    const [hMin, hMax] = d.size.heightCm;
+    const [wMin, wMax] = d.size.weightKg;
+    const heightAvg = (hMin + hMax) / 2;
+    const weightAvg = (wMin + wMax) / 2;
+    const maxDive = d.diving?.maxDepthM ?? null;
+    const lifespan = d.lifespan.wildYears;
+    return {
+      slug: s.id,
+      nameCs: d.nameCs,
+      nameLat: d.nameLat,
+      genus: d.genus,
+      iucn: d.iucnStatus,
+      heightLabel: hMin === hMax ? `${hMin}` : `${hMin}–${hMax}`,
+      heightSort: heightAvg,
+      weightLabel: wMin === wMax ? `${wMin}` : `${wMin}–${wMax}`,
+      weightSort: weightAvg,
+      diveLabel: maxDive !== null ? `${maxDive}` : "—",
+      diveSort: maxDive ?? -1,
+      lifespanLabel: `${lifespan}`,
+      lifespanSort: lifespan,
+      heroSrc: d.hero.src,
+      heroAlt: d.hero.alt,
+    };
+  })
+  .sort((a, b) => a.nameCs.localeCompare(b.nameCs, "cs"));
+
+const metadata = {
+  title: "Srovnání druhů tučňáků",
+  description: `Tabulkové srovnání všech ${rows.length} druhů tučňáků — výška, hmotnost, maximální ponor, délka života, status IUCN. Klikni na záhlaví sloupce pro řazení.`,
+};
+---
+
+<BaseLayout {metadata}>
+  <section class="px-4 sm:px-6 pt-28 pb-16">
+    <div class="mx-auto max-w-6xl">
+      <header class="mb-8 md:mb-12 flex flex-col md:flex-row md:items-end md:justify-between gap-6 reveal">
+        <div class="max-w-2xl">
+          <p class="text-sm uppercase tracking-[0.2em] text-primary/80 mb-4">Srovnání</p>
+          <h1 class="text-5xl md:text-7xl font-black tracking-tight leading-[0.95] mb-4">
+            Všech <span class="text-accent">{rows.length}</span> druhů<br />
+            v jedné tabulce.
+          </h1>
+          <p class="text-lg md:text-xl text-muted-foreground">
+            Výška, hmotnost, hloubka ponoru, délka života a IUCN status. Klikni na záhlaví sloupce pro řazení.
+          </p>
+        </div>
+        <div class="shrink-0 anim-float hidden md:block">
+          <Mascot pose="palec" size={140} />
+        </div>
+      </header>
+
+      <div class="bento-card overflow-x-auto reveal">
+        <table id="compare-table" class="w-full text-sm">
+          <thead class="text-left text-xs uppercase tracking-wider text-muted-foreground border-b border-border">
+            <tr>
+              <th class="py-3 px-3 sticky left-0 bg-card">Druh</th>
+              <th class="py-3 px-3 cursor-pointer select-none hover:text-primary" data-sort="genus">Rod ↕</th>
+              <th class="py-3 px-3 cursor-pointer select-none hover:text-primary" data-sort="iucn">IUCN ↕</th>
+              <th class="py-3 px-3 cursor-pointer select-none hover:text-primary text-right" data-sort="height">Výška (cm) ↕</th>
+              <th class="py-3 px-3 cursor-pointer select-none hover:text-primary text-right" data-sort="weight">Váha (kg) ↕</th>
+              <th class="py-3 px-3 cursor-pointer select-none hover:text-primary text-right" data-sort="dive">Max ponor (m) ↕</th>
+              <th class="py-3 px-3 cursor-pointer select-none hover:text-primary text-right" data-sort="lifespan">Věk (roky) ↕</th>
+            </tr>
+          </thead>
+          <tbody>
+            {rows.map((r) => (
+              <tr
+                class="border-b border-border/40 hover:bg-foreground/5 transition-colors"
+                data-genus={r.genus}
+                data-iucn={r.iucn}
+                data-height={r.heightSort}
+                data-weight={r.weightSort}
+                data-dive={r.diveSort}
+                data-lifespan={r.lifespanSort}
+                data-name={r.nameCs}
+              >
+                <td class="py-2 px-3 sticky left-0 bg-card">
+                  <a href={`/druhy/${r.slug}/`} data-astro-prefetch="false" class="flex items-center gap-3 hover:text-primary transition-colors">
+                    <span class="shrink-0 w-12 h-9 rounded overflow-hidden bg-muted">
+                      <Image src={r.heroSrc} alt={r.heroAlt} widths={[96, 144]} sizes="48px" class="w-full h-full object-cover" />
+                    </span>
+                    <span class="min-w-0">
+                      <span class="block font-semibold leading-tight truncate">{r.nameCs}</span>
+                      <span class="block text-xs italic text-muted-foreground leading-tight truncate">{r.nameLat}</span>
+                    </span>
+                  </a>
+                </td>
+                <td class="py-2 px-3 text-muted-foreground">{r.genus}</td>
+                <td class="py-2 px-3"><IucnBadge status={r.iucn} size="sm" /></td>
+                <td class="py-2 px-3 text-right font-mono">{r.heightLabel}</td>
+                <td class="py-2 px-3 text-right font-mono">{r.weightLabel}</td>
+                <td class="py-2 px-3 text-right font-mono">{r.diveLabel}</td>
+                <td class="py-2 px-3 text-right font-mono">{r.lifespanLabel}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+      <p class="mt-4 text-xs text-muted-foreground reveal">
+        Hodnoty z primárních zdrojů na detailních stránkách druhů. Některé druhy nemají měření maximálního ponoru — zobrazeno „—".
+      </p>
+    </div>
+  </section>
+</BaseLayout>
+
+<script>
+  function setupCompareSort() {
+    const table = document.getElementById("compare-table") as HTMLTableElement | null;
+    if (!table || table.dataset.wired === "1") return;
+    table.dataset.wired = "1";
+    const tbody = table.tBodies[0];
+    if (!tbody) return;
+    const NUMERIC_KEYS = new Set(["height", "weight", "dive", "lifespan"]);
+    let activeKey: string | null = null;
+    let activeDir: 1 | -1 = 1;
+
+    table.querySelectorAll<HTMLTableCellElement>("th[data-sort]").forEach((th) => {
+      th.addEventListener("click", () => {
+        const key = th.dataset.sort!;
+        if (activeKey === key) activeDir = (activeDir * -1) as 1 | -1;
+        else { activeKey = key; activeDir = 1; }
+        const rows = Array.from(tbody.rows);
+        const numeric = NUMERIC_KEYS.has(key);
+        rows.sort((a, b) => {
+          const av = a.dataset[key]!;
+          const bv = b.dataset[key]!;
+          const cmp = numeric ? parseFloat(av) - parseFloat(bv) : av.localeCompare(bv, "cs");
+          return cmp * activeDir;
+        });
+        rows.forEach((r) => tbody.appendChild(r));
+      });
+    });
+  }
+  setupCompareSort();
+  document.addEventListener("astro:page-load", setupCompareSort);
+</script>
