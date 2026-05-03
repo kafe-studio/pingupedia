@@ -281,22 +281,60 @@ html.reveal-ready .reveal.active {
   bottom: 1rem;
   z-index: 60;
   display: flex;
+  flex-direction: column;
+  align-items: flex-end;
   gap: 0.5rem;
-  padding: 0.5rem 0.75rem;
+}
+.theme-switcher__trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.35rem 0.7rem 0.35rem 0.55rem;
   border-radius: 9999px;
-  background: rgba(0, 0, 0, 0.35);
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  color: rgba(255, 255, 255, 0.92);
+  background: rgba(0, 0, 0, 0.45);
+  border: 1px solid rgba(255, 255, 255, 0.18);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
+  cursor: pointer;
+  transition: transform 0.15s, background 0.2s, border-color 0.2s;
 }
-:root[data-variant="sunny"] .theme-switcher,
-:root[data-variant="candy"] .theme-switcher {
-  background: rgba(255, 255, 255, 0.7);
+.theme-switcher__trigger:hover { transform: translateY(-1px); }
+.theme-switcher__icon { width: 1rem; height: 1rem; flex-shrink: 0; }
+.theme-switcher__label { white-space: nowrap; }
+:root[data-variant="sunny"] .theme-switcher__trigger,
+:root[data-variant="candy"] .theme-switcher__trigger {
+  color: rgba(15, 23, 42, 0.85);
+  background: rgba(255, 255, 255, 0.78);
   border-color: rgba(0, 0, 0, 0.1);
 }
+.theme-switcher__panel {
+  display: flex;
+  gap: 0.4rem;
+  padding: 0.45rem 0.6rem;
+  border-radius: 9999px;
+  background: rgba(0, 0, 0, 0.45);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  animation: theme-switcher-pop 180ms cubic-bezier(0.16, 1, 0.3, 1);
+  transform-origin: bottom right;
+}
+:root[data-variant="sunny"] .theme-switcher__panel,
+:root[data-variant="candy"] .theme-switcher__panel {
+  background: rgba(255, 255, 255, 0.78);
+  border-color: rgba(0, 0, 0, 0.1);
+}
+@keyframes theme-switcher-pop {
+  from { opacity: 0; transform: translateY(4px) scale(0.94); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
 .theme-switcher__btn {
-  width: 1.75rem;
-  height: 1.75rem;
+  width: 1.5rem;
+  height: 1.5rem;
   border-radius: 9999px;
   border: 2px solid transparent;
   cursor: pointer;
