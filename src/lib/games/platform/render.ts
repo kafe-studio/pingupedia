@@ -74,6 +74,47 @@ export function drawScene(ctx: CanvasRenderingContext2D, state: GameState): void
   // Chicks za hráčem (kreslíme dřív, aby hráč byl nad nimi)
   for (const c of state.chicks) drawChick(ctx, c.x, c.y, c.facing, state.time);
   drawPlayer(ctx, state.player, state.time);
+  for (const b of state.bombs) drawBomb(ctx, b, state.time);
+}
+
+function drawBomb(
+  ctx: CanvasRenderingContext2D,
+  b: { x: number; y: number; fuseMs: number; exploded: boolean; flashMs: number },
+  t: number,
+): void {
+  if (!b.exploded) {
+    // Tělo bomby — černý kruh s lesklým odleskem.
+    ctx.fillStyle = "#0c0c0c";
+    ctx.beginPath();
+    ctx.arc(b.x, b.y, 6, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.fillStyle = "rgba(255,255,255,0.25)";
+    ctx.beginPath();
+    ctx.arc(b.x - 2, b.y - 2, 1.5, 0, Math.PI * 2);
+    ctx.fill();
+    // Knot.
+    ctx.strokeStyle = "#a16207";
+    ctx.lineWidth = 1.5;
+    ctx.beginPath();
+    ctx.moveTo(b.x, b.y - 6);
+    ctx.lineTo(b.x + 3, b.y - 11);
+    ctx.stroke();
+    // Jiskra na konci knotu — bliká.
+    const blink = Math.sin(t / 60) > 0;
+    ctx.fillStyle = blink ? "#fef08a" : "#f97316";
+    ctx.beginPath();
+    ctx.arc(b.x + 3, b.y - 11, 1.8, 0, Math.PI * 2);
+    ctx.fill();
+  } else if (b.flashMs > 0) {
+    // Výbuchový flash — žluto-oranžová záře.
+    const a = Math.max(0, b.flashMs / 350);
+    ctx.fillStyle = `rgba(254, 240, 138, ${a * 0.85})`;
+    ctx.fillRect(b.x - 24, b.y - 24, 48, 48);
+    ctx.fillStyle = `rgba(249, 115, 22, ${a * 0.7})`;
+    ctx.fillRect(b.x - 18, b.y - 18, 36, 36);
+    ctx.fillStyle = `rgba(255, 255, 255, ${a})`;
+    ctx.fillRect(b.x - 8, b.y - 8, 16, 16);
+  }
 }
 
 // =====================  BACKDROPS  =====================

@@ -133,6 +133,15 @@ export interface PlayerState {
   invulnerableMs: number;
 }
 
+// Bomba položená hráčem — odpočítává a po výbuchu rozbije pevné stěny v okolí.
+export interface Bomb {
+  x: number;       // pixel center
+  y: number;       // pixel center
+  fuseMs: number;  // remaining time before explosion
+  exploded: boolean;
+  flashMs: number; // remaining time of explosion flash
+}
+
 // Mládě následující hráče v "lemmings"-stylu — pamatuje si zpožděnou pozici
 // (delay buffer), takže prochází stejnou cestou s odstupem.
 export interface Chick {
@@ -161,6 +170,7 @@ export interface GameState {
   chicks: Chick[];                // mláďata aktuálně následující hráče
   deliveredChicks: number;        // počet doručených mláďat do iglu (cumulative)
   score: number;                  // body — items + bonus za chicks
+  bombs: Bomb[];                  // aktivní bomby (max 1 najednou)
 }
 
 export interface GameHud {

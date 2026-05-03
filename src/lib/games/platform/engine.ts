@@ -26,17 +26,24 @@ const HEART_SPAWN_INTERVAL_MS = 7_000;  // try to spawn a new heart every 7s
 const HEART_MAX_ALIVE = 8;              // never more than this many on the map at once
 const HEART_LIVES = 3;                  // each heart restores up to 3 lives
 const PECK_COOLDOWN_MS = 500;           // delay between successive pecks
+const BOMB_FUSE_MS = 1500;              // čas po stisknutí ALT do výbuchu
+const BOMB_COOLDOWN_MS = 2500;          // mezi položením dvou bomb
+const BOMB_FLASH_MS = 350;              // doba výbuchového flashe v rendereru
+const BOMB_RADIUS = 1;                  // tile radius — 3×3 zóna
+const DOUBLE_JUMP_V = -6.0;             // druhý skok ve vzduchu (mírně slabší než JUMP_V)
 
 export class PlatformGame {
   private ctx: CanvasRenderingContext2D;
   private state: GameState;
   private hooks: GameHooks;
-  private keys = { left: false, right: false, up: false, down: false, jump: false, bigJump: false };
+  private keys = { left: false, right: false, up: false, down: false, jump: false, bigJump: false, bomb: false };
   private lastTime = 0;
   private rafId = 0;
   private disposed = false;
   private heartSpawnTimer = HEART_SPAWN_INTERVAL_MS / 2;
   private peckCooldown = 0;
+  private bombCooldown = 0;
+  private hasDoubleJumped = false;
 
   constructor(canvas: HTMLCanvasElement, hooks: GameHooks) {
     const ctx = canvas.getContext("2d");
@@ -85,6 +92,7 @@ export class PlatformGame {
       chicks: [],
       deliveredChicks: 0,
       score: 0,
+      bombs: [],
     };
     this.bindKeys();
     this.showHintIfNew(start);
@@ -122,7 +130,10 @@ export class PlatformGame {
     this.state.keys = new Set();
     this.state.openedDoors = new Set();
     this.state.paused = false;
+    this.state.bombs = [];
     this.peckCooldown = 0;
+    this.bombCooldown = 0;
+    this.hasDoubleJumped = false;
     this.heartSpawnTimer = HEART_SPAWN_INTERVAL_MS / 2;
     this.showHintIfNew(start);
     this.emitHud();
@@ -138,8 +149,25 @@ export class PlatformGame {
   }
 
   // Virtual controls for mobile buttons.
-  setKey(k: "left" | "right" | "up" | "down" | "jump" | "bigJump", down: boolean): void {
+  setKey(k: "left" | "right" | "up" | "down" | "jump" | "bigJump" | "bomb", down: boolean): void {
     this.keys[k] = down;
+  }
+
+  /** Bomb request from keyboard (Alt) or mobile button. Cooldown-gated, max 1 active. */
+  dropBomb(): void {
+    if (this.bombCooldown > 0) return;
+    if (this.state.completed || this.state.gameover || this.state.paused) return;
+    if (this.state.bombs.some((b) => !b.exploded)) return;
+    const p = this.state.player;
+    this.state.bombs.push({
+      x: p.x + PLAYER_W / 2,
+      y: p.y + PLAYER_H - 4,
+      fuseMs: BOMB_FUSE_MS,
+      exploded: false,
+      flashMs: 0,
+    });
+    this.bombCooldown = BOMB_COOLDOWN_MS;
+    this.hooks.onSfx("ding");
   }
 
   /** Peck request from keyboard or mobile button. Cooldown-gated. */
@@ -217,6 +245,7 @@ export class PlatformGame {
     else if (k === "ArrowDown" || k === "s" || k === "S") this.keys.down = true;
     else if (k === " " || k === "Enter") this.keys.jump = true;
     else if (k === "Control") this.keys.bigJump = true;
+    else if (k === "Alt") this.dropBomb();
     else if (k === "x" || k === "X") this.peck();
     else return;
     e.preventDefault();
@@ -284,9 +313,11 @@ export class PlatformGame {
 
     if (!this.state.completed && !this.state.gameover && !this.state.paused) {
       this.peckCooldown = Math.max(0, this.peckCooldown - dt);
+      this.bombCooldown = Math.max(0, this.bombCooldown - dt);
       this.updatePlayer(dt);
       this.updateChicks();
       this.updateGuardians(dt);
+      this.updateBombs(dt);
       this.checkCollectibles();
       this.checkDoors();
       this.checkRoomExit();
@@ -308,6 +339,7 @@ export class PlatformGame {
     const ladderHere = this.isLadder(this.roomTileAt(room, Math.floor(cx / TILE), Math.floor(cy / TILE)));
     p.onLadder = ladderHere && (this.keys.up || this.keys.down || p.onLadder);
     if (!ladderHere) p.onLadder = false;
+    if (p.onLadder) this.hasDoubleJumped = false;
 
     // Horizontal input.
     p.vx = 0;
@@ -334,11 +366,12 @@ export class PlatformGame {
     const inWater = this.isWater(this.roomTileAt(room, Math.floor(cx / TILE), Math.floor(cy / TILE)));
 
     if (p.onLadder) {
-      // Skok ze žebříku: mezerník = normal jump, CTRL = mega-skok (1.5×).
+      // Skok ze žebříku: mezerník nebo CTRL spustí normální skok pryč.
       if (this.keys.jump || this.keys.bigJump) {
-        p.vy = this.keys.bigJump ? JUMP_V * 1.5 : JUMP_V;
+        p.vy = JUMP_V;
         p.onLadder = false;
         p.onGround = false;
+        this.hasDoubleJumped = false;
         this.keys.bigJump = false;
         this.hooks.onSfx("boing");
       } else if (this.keys.up) p.vy = -CLIMB_SPEED;
@@ -373,10 +406,16 @@ export class PlatformGame {
         }
       }
       if ((this.keys.jump || this.keys.bigJump) && p.onGround) {
-        // CTRL = mega-skok (1.5×), mezerník = normální skok.
-        const big = this.keys.bigJump;
-        p.vy = big ? JUMP_V * 1.5 : JUMP_V;
+        // První skok ze země — SPACE i CTRL fungují stejně.
+        p.vy = JUMP_V;
         p.onGround = false;
+        this.hasDoubleJumped = false;
+        this.keys.bigJump = false;
+        this.hooks.onSfx("boing");
+      } else if (this.keys.bigJump && !p.onGround && !this.hasDoubleJumped) {
+        // Druhý skok ve vzduchu — CTRL spustí double jump (jen jednou za skok).
+        p.vy = DOUBLE_JUMP_V;
+        this.hasDoubleJumped = true;
         this.keys.bigJump = false;
         this.hooks.onSfx("boing");
       }
@@ -392,6 +431,9 @@ export class PlatformGame {
 
     // Move + collide — X first then Y (per-axis solid collision).
     this.moveAndCollide(p, room, step);
+
+    // Reset double-jump charge na zemi i ve vodě (oboje znamená kontakt).
+    if (p.onGround || inWater) this.hasDoubleJumped = false;
 
     // Don't clamp X / top-Y here — checkRoomExit needs the player to actually cross
     // the edge to fire a transition, and bounces him back if that edge has no exit.
@@ -561,6 +603,40 @@ export class PlatformGame {
       // Sdílený trail držíme jen na c[0] (zbytek by se duplikoval).
       if (i > 0) c.trail = [];
     });
+  }
+
+  // --- Bombs ---
+
+  /** Bomby odpočítávají; po vypršení knotu zničí #/=/b tiles v 3×3 zóně. */
+  private updateBombs(dt: number): void {
+    if (this.state.bombs.length === 0) return;
+    const room = this.state.rooms.get(this.state.currentRoomId)!;
+    for (const b of this.state.bombs) {
+      if (!b.exploded) {
+        b.fuseMs -= dt;
+        if (b.fuseMs <= 0) {
+          b.exploded = true;
+          b.flashMs = BOMB_FLASH_MS;
+          const cc = Math.floor(b.x / TILE);
+          const cr = Math.floor(b.y / TILE);
+          for (let r = cr - BOMB_RADIUS; r <= cr + BOMB_RADIUS; r++) {
+            for (let c = cc - BOMB_RADIUS; c <= cc + BOMB_RADIUS; c++) {
+              if (r < 1 || r >= ROWS - 1) continue;       // chrání horní/dolní rám
+              if (c < 1 || c >= COLS - 1) continue;       // chrání boční rám
+              const t = room.tiles[r]?.[c];
+              if (t === "#" || t === "b" || t === "=") {
+                const row = room.tiles[r];
+                room.tiles[r] = row.slice(0, c) + "." + row.slice(c + 1);
+              }
+            }
+          }
+          this.hooks.onSfx("bzzt");
+        }
+      } else {
+        b.flashMs -= dt;
+      }
+    }
+    this.state.bombs = this.state.bombs.filter((b) => !b.exploded || b.flashMs > 0);
   }
 
   // --- Collectibles ---
