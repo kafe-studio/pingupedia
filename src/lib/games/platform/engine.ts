@@ -761,9 +761,17 @@ export class PlatformGame {
     else if (p.y > VIEW_H) side = "bottom";
     if (!side) return;
 
-    const exit = room.exits.find((e) => e.side === side);
+    // Žádná místnost nesmí mít uzavřený východ — když player narazí na stranu bez exitu,
+    // najdeme fallback: nejdřív protilehlá strana (pravo→levo, dolů→nahoru), pak libovolný
+    // existující exit. Tučňák tak vždy přejde do nějaké logicky napojené místnosti.
+    const OPPOSITE: Record<typeof side, "left" | "right" | "top" | "bottom"> = {
+      left: "right", right: "left", top: "bottom", bottom: "top",
+    };
+    let exit = room.exits.find((e) => e.side === side);
+    if (!exit) exit = room.exits.find((e) => e.side === OPPOSITE[side]);
+    if (!exit) exit = room.exits[0];
     if (!exit) {
-      // Bounce back - no exit on this edge.
+      // Skutečně izolovaná místnost (graf chyba) — bounce zpět dovnitř.
       if (side === "left") p.x = 0;
       else if (side === "right") p.x = VIEW_W - PLAYER_W;
       else if (side === "top") p.y = 0;
@@ -776,15 +784,17 @@ export class PlatformGame {
     if (!nextRoom) return;
     this.state.currentRoomId = nextRoom.id;
 
-    // Position in next room: mirror from crossed side unless explicit target given.
+    // Position in next room: mirror from THE EXIT'S side (which may differ from crossed
+    // side if fallback was used). Player se objeví na opačné straně exit.side.
+    const entrySide = exit.side;
     if (exit.toX !== undefined && exit.toY !== undefined) {
       p.x = exit.toX * TILE;
       p.y = exit.toY * TILE;
     } else {
-      if (side === "right") p.x = 0 + 2;
-      else if (side === "left") p.x = VIEW_W - PLAYER_W - 2;
-      else if (side === "bottom") p.y = 0 + 2;
-      else if (side === "top") p.y = VIEW_H - PLAYER_H - 2;
+      if (entrySide === "right") p.x = 0 + 2;
+      else if (entrySide === "left") p.x = VIEW_W - PLAYER_W - 2;
+      else if (entrySide === "bottom") p.y = 0 + 2;
+      else if (entrySide === "top") p.y = VIEW_H - PLAYER_H - 2;
     }
     p.vx = 0;
     p.vy = 0;
@@ -792,7 +802,7 @@ export class PlatformGame {
     // floor hole, kterou přišel zespoda). Levels mají v row 11 cols toX-1..+1 = "===",
     // takže player landne na pevnou plošku a nepropadne zpět dolů.
     // Pokud existuje lift, override — lift má prioritu a vyveze player nahoru.
-    if (side === "bottom") {
+    if (entrySide === "bottom") {
       const lift = nextRoom.movers?.find((m) => m.kind === "lift");
       const centerCol = lift ? Math.floor((lift.x + lift.w / 2) / TILE) : (exit.toX ?? 9);
       // Catch-platform snap: stand ON top of row 11 platform (player_h px above it).
@@ -821,7 +831,7 @@ export class PlatformGame {
     // Daj hráčovi chvíli reagovat - jinak guardian patrolující blízko landing pozice
     // může způsobit okamžitou smrt bez šance se uhnout. Bottom-entry dostává delší invuln
     // (často přistává na výtahu nebo padá zhůry, potřebuje víc času na orientaci).
-    p.invulnerableMs = side === "bottom" ? TRANSITION_INVULN_MS * 2 : TRANSITION_INVULN_MS;
+    p.invulnerableMs = entrySide === "bottom" ? TRANSITION_INVULN_MS * 2 : TRANSITION_INVULN_MS;
 
     this.hooks.onSfx("zbunk");
     this.showHintIfNew(nextRoom);
