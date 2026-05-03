@@ -1,4 +1,5 @@
 import type {
+  Exit,
   GameHooks,
   GameState,
   Guardian,
@@ -762,14 +763,36 @@ export class PlatformGame {
     if (!side) return;
 
     // Žádná místnost nesmí mít uzavřený východ — když player narazí na stranu bez exitu,
-    // najdeme fallback: nejdřív protilehlá strana (pravo→levo, dolů→nahoru), pak libovolný
-    // existující exit. Tučňák tak vždy přejde do nějaké logicky napojené místnosti.
+    // projdeme řetěz protilehlé strany (right missing → left.left.left...) až k poslední
+    // logické místnosti, která už další protilehlý exit nemá. Tučňák skončí v "konci"
+    // řetězu, ne hned v sousední místnosti.
     const OPPOSITE: Record<typeof side, "left" | "right" | "top" | "bottom"> = {
       left: "right", right: "left", top: "bottom", bottom: "top",
     };
     let exit = room.exits.find((e) => e.side === side);
-    if (!exit) exit = room.exits.find((e) => e.side === OPPOSITE[side]);
-    if (!exit) exit = room.exits[0];
+    let destinationOverride: Room | null = null;
+    if (!exit) {
+      const oppExit = room.exits.find((e) => e.side === OPPOSITE[side]);
+      if (oppExit) {
+        // Walk chain — accumulate poslední validní exit + cílovou místnost.
+        let cur: Room | undefined = this.state.rooms.get(oppExit.toRoom);
+        let lastExit: Exit = oppExit;
+        const visited = new Set<string>([room.id]);
+        while (cur && !visited.has(cur.id)) {
+          visited.add(cur.id);
+          const nextOpp = cur.exits.find((e) => e.side === OPPOSITE[side]);
+          if (!nextOpp) break;
+          const nextRoom = this.state.rooms.get(nextOpp.toRoom);
+          if (!nextRoom) break;
+          lastExit = nextOpp;
+          cur = nextRoom;
+        }
+        exit = lastExit;
+        destinationOverride = cur ?? null;
+      } else {
+        exit = room.exits[0];
+      }
+    }
     if (!exit) {
       // Skutečně izolovaná místnost (graf chyba) — bounce zpět dovnitř.
       if (side === "left") p.x = 0;
@@ -780,7 +803,7 @@ export class PlatformGame {
       p.vy = 0;
       return;
     }
-    const nextRoom = this.state.rooms.get(exit.toRoom);
+    const nextRoom = destinationOverride ?? this.state.rooms.get(exit.toRoom);
     if (!nextRoom) return;
     this.state.currentRoomId = nextRoom.id;
 
