@@ -91,7 +91,8 @@ import HofPrompt from "../../components/games/HofPrompt.astro";
         <div>← → pohyb</div>
         <div>↑ ↓ žebřík</div>
         <div>mezera = skok</div>
-        <div>CTRL = mega-skok</div>
+        <div>CTRL = dvojitý skok ve vzduchu</div>
+        <div>ALT = bomba (rozbije pevné stěny)</div>
         <div>↓ = seskok z plošiny</div>
         <div>X = klovnout pod sebou</div>
         <div>R = restart</div>
@@ -102,9 +103,10 @@ import HofPrompt from "../../components/games/HofPrompt.astro";
         <button data-mobile="jump" type="button" class="rounded-lg border border-border bg-muted/30 py-3 font-bold">↑ skok</button>
         <button data-mobile="right" type="button" class="rounded-lg border border-border bg-muted/30 py-3 font-bold">→</button>
         <button data-mobile="up" type="button" class="rounded-lg border border-border bg-muted/30 py-3 font-bold">↑ žebřík</button>
-        <button data-mobile="bigjump" type="button" class="rounded-lg border border-primary/60 bg-primary/15 py-3 font-bold text-primary">⤴ mega</button>
+        <button data-mobile="bigjump" type="button" class="rounded-lg border border-primary/60 bg-primary/15 py-3 font-bold text-primary">⤴ 2× skok</button>
         <button data-mobile="down" type="button" class="rounded-lg border border-border bg-muted/30 py-3 font-bold">↓ žebřík</button>
-        <button data-mobile-peck type="button" class="col-span-3 rounded-lg border border-border bg-muted/30 py-3 font-bold">⛏ klovnout (X)</button>
+        <button data-mobile-peck type="button" class="col-span-2 rounded-lg border border-border bg-muted/30 py-3 font-bold">⛏ klovnout</button>
+        <button data-mobile-bomb type="button" class="col-span-1 rounded-lg border border-amber-500/60 bg-amber-500/15 py-3 font-bold text-amber-500">💣 bomba</button>
       </div>
     </div>
 
@@ -193,6 +195,13 @@ import HofPrompt from "../../components/games/HofPrompt.astro";
     const fire = (e: Event) => { e.preventDefault(); game?.peck(); };
     peckBtn.addEventListener("touchstart", fire, { passive: false });
     peckBtn.addEventListener("mousedown", fire);
+  }
+
+  const bombBtn = document.querySelector<HTMLButtonElement>("[data-mobile-bomb]");
+  if (bombBtn) {
+    const fire = (e: Event) => { e.preventDefault(); game?.dropBomb(); };
+    bombBtn.addEventListener("touchstart", fire, { passive: false });
+    bombBtn.addEventListener("mousedown", fire);
   }
 
   document.querySelectorAll<HTMLButtonElement>("[data-mobile]").forEach((btn) => {
