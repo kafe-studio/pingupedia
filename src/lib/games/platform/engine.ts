@@ -788,13 +788,15 @@ export class PlatformGame {
     }
     p.vx = 0;
     p.vy = 0;
-    // Bottom entry: tučňák se ocitne uprostřed místnosti (bezpečné výškou) a výtah
-    // se zresetuje dolů, takže pokud existuje, padající tučňák na něj přistane a vyjede.
+    // Bottom entry: tučňák se ocitne uprostřed místnosti na zaručeně bezpečném místě.
+    // Najdeme sloupec lift (pokud existuje) a v něm nejvyšší volný (.) tile bez okolního *,
+    // ~ ani guardian — to je spawn. Výtah se resetuje dolů, padající tučňák na něj přistane.
     if (side === "bottom") {
       const lift = nextRoom.movers?.find((m) => m.kind === "lift");
       const centerCol = lift ? Math.floor((lift.x + lift.w / 2) / TILE) : (exit.toX ?? 9);
-      p.x = centerCol * TILE + (TILE - PLAYER_W) / 2;
-      p.y = 6 * TILE;
+      const safe = this.findSafeSpawn(nextRoom, centerCol);
+      p.x = safe.x;
+      p.y = safe.y;
       if (lift) {
         lift.y = lift.maxY ?? lift.y;
         lift.vy = -Math.abs(lift.vy ?? 0.7);
@@ -816,8 +818,9 @@ export class PlatformGame {
       if (snapRow >= 0) p.y = snapRow * TILE - PLAYER_H;
     }
     // Daj hráčovi chvíli reagovat - jinak guardian patrolující blízko landing pozice
-    // může způsobit okamžitou smrt bez šance se uhnout.
-    p.invulnerableMs = TRANSITION_INVULN_MS;
+    // může způsobit okamžitou smrt bez šance se uhnout. Bottom-entry dostává delší invuln
+    // (často přistává na výtahu nebo padá zhůry, potřebuje víc času na orientaci).
+    p.invulnerableMs = side === "bottom" ? TRANSITION_INVULN_MS * 2 : TRANSITION_INVULN_MS;
 
     this.hooks.onSfx("zbunk");
     this.showHintIfNew(nextRoom);
@@ -831,6 +834,39 @@ export class PlatformGame {
   }
 
   // --- Death / respawn ---
+
+  /** Najdi v daném sloupci nejvyšší (od shora) safe tile pro spawn — empty, bez ostnů,
+   *  bez vody a bez statického guardiana v okolí. Použito při bottom-entry. */
+  private findSafeSpawn(room: Room, preferredCol: number): { x: number; y: number } {
+    const cols = [preferredCol, preferredCol - 1, preferredCol + 1, preferredCol - 2, preferredCol + 2];
+    for (const col of cols) {
+      if (col < 1 || col >= COLS - 1) continue;
+      // Hledej řádky 5-9 (stred-horní část místnosti, mimo strop a podlahu).
+      for (let row = 5; row <= 9; row++) {
+        const t = this.roomTileAt(room, col, row);
+        const above = this.roomTileAt(room, col, row - 1);
+        const at = this.roomTileAt(room, col, row);
+        // Player zabírá rows row-1, row (PLAYER_H ≈ 20 px = 1.25 tile).
+        if (this.isDeadly(t) || this.isWater(t) || this.isSolid(t)) continue;
+        if (this.isDeadly(above) || this.isSolid(above)) continue;
+        // Žádný static guardian v okolí 2 tiles.
+        const px = col * TILE + (TILE - PLAYER_W) / 2;
+        const py = (row - 1) * TILE;
+        const tooClose = room.guardians.some((g) =>
+          Math.abs(g.x - px) < 2 * TILE && Math.abs(g.y - py) < 2 * TILE,
+        );
+        if (tooClose) continue;
+        // Suppress unused warning
+        void at;
+        return { x: px, y: py };
+      }
+    }
+    // Fallback: stred místnosti row 6 (původní chování).
+    return {
+      x: preferredCol * TILE + (TILE - PLAYER_W) / 2,
+      y: 6 * TILE,
+    };
+  }
 
   private handleDeath(): void {
     // PING cheat — nekonečné životy, jen respawn s invulnerable.
