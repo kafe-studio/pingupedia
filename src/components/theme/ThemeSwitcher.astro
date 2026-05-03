@@ -1,6 +1,6 @@
 ---
 // Jeden prvek "Nastav si styl" — po kliknutí přepne na další motiv v pořadí.
-// 5 motivů: arctic → sunny → ocean → candy → midnight → arctic.
+// 10 motivů: arctic → sunny → ocean → candy → midnight → pingu → dzungle → savana → vesmir → les → arctic.
 ---
 
 <div class="theme-switcher" data-theme-switcher>
@@ -24,7 +24,7 @@
 
 <script>
   const STORAGE_KEY = "pingupedia-theme";
-  const VALID = ["arctic", "sunny", "ocean", "candy", "midnight"] as const;
+  const VALID = ["arctic", "sunny", "ocean", "candy", "midnight", "pingu", "dzungle", "savana", "vesmir", "les"] as const;
   type Theme = (typeof VALID)[number];
 
   function isTheme(value: string): value is Theme {

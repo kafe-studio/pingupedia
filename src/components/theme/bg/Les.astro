@@ -1,0 +1,85 @@
+---
+import { mulberry32, seedFromString } from "../../../lib/seeded-rng";
+const rand = mulberry32(seedFromString("les"));
+const fireflies = Array.from({ length: 22 }, () => ({
+  top: 30 + rand() * 60,
+  left: rand() * 100,
+  size: 2 + rand() * 3,
+  delay: rand() * 4,
+}));
+const trees = Array.from({ length: 6 }, (_, i) => ({
+  x: 100 + i * 240 + rand() * 60,
+  height: 280 + rand() * 120,
+}));
+---
+
+<div class="themed-bg" data-bg="les" aria-hidden="true">
+  <svg class="bg-layer" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice">
+    <defs>
+      <linearGradient id="les-sky" x1="0%" y1="0%" x2="0%" y2="100%">
+        <stop offset="0%" stop-color="#2d1810" />
+        <stop offset="50%" stop-color="#7c2d12" />
+        <stop offset="100%" stop-color="#a16207" />
+      </linearGradient>
+      <radialGradient id="les-moon" cx="80%" cy="20%" r="10%">
+        <stop offset="0%" stop-color="#fef3c7" />
+        <stop offset="100%" stop-color="#fef3c7" stop-opacity="0" />
+      </radialGradient>
+    </defs>
+    <rect width="1440" height="900" fill="url(#les-sky)" />
+    <circle cx="1150" cy="180" r="50" fill="#fef3c7" opacity="0.9" class="anim-sparkle" />
+    <rect width="1440" height="900" fill="url(#les-moon)" />
+    {/* Stromy v pozadí — silueta */}
+    <g fill="#1a0f08" opacity="0.85">
+      {trees.map((t) => (
+        <g>
+          <rect x={t.x - 6} y={900 - t.height} width="12" height={t.height} />
+          <polygon points={`${t.x},${900 - t.height - 80} ${t.x - 60},${900 - t.height + 20} ${t.x + 60},${900 - t.height + 20}`} />
+          <polygon points={`${t.x},${900 - t.height - 30} ${t.x - 50},${900 - t.height + 50} ${t.x + 50},${900 - t.height + 50}`} />
+        </g>
+      ))}
+    </g>
+    {/* Liška silueta */}
+    <g class="anim-bob" style="transform-origin: 360px 760px;">
+      <ellipse cx="360" cy="770" rx="40" ry="20" fill="#c2410c" />
+      <circle cx="332" cy="755" r="16" fill="#c2410c" />
+      <polygon points="320,742 326,732 332,742" fill="#c2410c" />
+      <polygon points="338,742 344,732 350,742" fill="#c2410c" />
+      <circle cx="328" cy="755" r="2" fill="#1a1a1a" />
+      <circle cx="336" cy="755" r="2" fill="#1a1a1a" />
+      <path d="M 396 760 Q 430 760 440 740 Q 425 760 396 770" fill="#fef3c7" />
+    </g>
+    {/* Sova na větvi */}
+    <g class="anim-float">
+      <ellipse cx="900" cy="380" rx="26" ry="32" fill="#451a03" />
+      <ellipse cx="900" cy="385" rx="14" ry="20" fill="#fbbf24" opacity="0.55" />
+      <circle cx="893" cy="372" r="6" fill="#fef3c7" />
+      <circle cx="907" cy="372" r="6" fill="#fef3c7" />
+      <circle cx="893" cy="372" r="3" fill="#1a1a1a" />
+      <circle cx="907" cy="372" r="3" fill="#1a1a1a" />
+      <polygon points="897,380 903,380 900,386" fill="#f97316" />
+      <line x1="870" y1="412" x2="930" y2="412" stroke="#451a03" stroke-width="3" />
+    </g>
+  </svg>
+  <div class="bg-particles">
+    {fireflies.map((f) => (
+      <span class="firefly" style={`top: ${f.top}%; left: ${f.left}%; width: ${f.size}px; height: ${f.size}px; animation-delay: ${f.delay}s;`} />
+    ))}
+  </div>
+</div>
+
+<style>
+  .bg-layer { position: absolute; inset: 0; width: 100%; height: 100%; }
+  .bg-particles { position: absolute; inset: 0; }
+  .firefly {
+    position: absolute;
+    background: #fbbf24;
+    border-radius: 50%;
+    box-shadow: 0 0 8px #f59e0b, 0 0 14px #fbbf24;
+    animation: firefly-glow 3s ease-in-out infinite;
+  }
+  @keyframes firefly-glow {
+    0%, 100% { opacity: 0.2; transform: scale(0.6); }
+    50% { opacity: 1; transform: scale(1.2); }
+  }
+</style>
