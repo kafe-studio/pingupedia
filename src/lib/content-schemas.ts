@@ -19,6 +19,8 @@ const filmLinkTypeEnum = z.enum([
   "wikipedia",
   "imdb",
   "youtube",
+  "youtube-full",
+  "archive",
   "netflix",
   "disneyplus",
   "primevideo",

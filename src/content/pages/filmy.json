@@ -379,6 +379,11 @@
           "description": "Švýcarsko-britský animovaný seriál o malém tučňákovi Pingu, jeho sestře Pinze a životě v iglú. Charakteristická plastelínová animace a hláška Noot noot! - bez slov, srozumitelné v každém věku.",
           "links": [
             {
+              "label": "Celé epizody (YouTube)",
+              "url": "https://www.youtube.com/playlist?list=PLLhOnau-tupSV_oaUUxD3_Bud2VLQOIEc",
+              "type": "youtube-full"
+            },
+            {
               "label": "Oficiální YouTube kanál",
               "url": "https://www.youtube.com/channel/UCM88mtSE0zRTn5ae4EbYcuw",
               "type": "youtube"
@@ -404,6 +409,11 @@
           "director": "Iconix Entertainment",
           "description": "Jihokorejský 3D animovaný seriál o tučňákovi Pororovi a jeho přátelích, kteří žijí v zasněžené vesničce Porong Porong. Každý díl končí drobným ponaučením. Vysíláno ve více než 140 zemích.",
           "links": [
+            {
+              "label": "Celé epizody (YouTube)",
+              "url": "https://www.youtube.com/channel/UCAmia3u27mHY-Y6c-lwakAQ",
+              "type": "youtube-full"
+            },
             {
               "label": "Wikipedie",
               "url": "https://cs.wikipedia.org/wiki/Mal%C3%BD_tu%C4%8D%C5%88%C3%A1k_Pororo",
