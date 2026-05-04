@@ -56,17 +56,25 @@ const data = JSON.stringify(cards);
       </div>
     </div>
 
-    <div data-versus class="bento-card p-3 mb-3 hidden">
-      <div class="grid grid-cols-2 gap-3">
-        <div data-side-1 class="rounded-xl border-2 border-transparent bg-muted/30 p-3 text-center transition-all">
-          <p class="text-[10px] uppercase tracking-widest text-muted-foreground font-semibold" data-versus-name-1>Hráč 1</p>
-          <p class="text-2xl font-black tabular-nums" data-versus-score-1>0</p>
-          <p class="text-[10px] text-muted-foreground" data-versus-status-1>—</p>
-        </div>
-        <div data-side-2 class="rounded-xl border-2 border-transparent bg-muted/30 p-3 text-center transition-all">
-          <p class="text-[10px] uppercase tracking-widest text-muted-foreground font-semibold" data-versus-name-2>Hráč 2</p>
-          <p class="text-2xl font-black tabular-nums" data-versus-score-2>0</p>
-          <p class="text-[10px] text-muted-foreground" data-versus-status-2>—</p>
+    <div data-versus class="hidden mb-3 space-y-3">
+      <div class="bento-card bento-surface-aurora p-4 md:p-5 text-white text-center">
+        <p class="text-[10px] uppercase tracking-[0.25em] font-bold text-white/70 mb-1">Na tahu</p>
+        <p class="text-3xl md:text-4xl font-black leading-tight" data-versus-active>—</p>
+      </div>
+      <div class="bento-card p-3">
+        <div class="grid grid-cols-2 gap-3">
+          <div data-side-1 class="relative rounded-xl border-2 border-transparent bg-muted/30 p-3 text-center transition-all">
+            <span data-side-arrow-1 class="absolute -top-2 left-1/2 -translate-x-1/2 inline-flex items-center justify-center w-7 h-7 rounded-full bg-primary text-primary-foreground text-sm font-black shadow opacity-0 transition-opacity" aria-hidden="true">▼</span>
+            <p class="text-[10px] uppercase tracking-widest text-muted-foreground font-semibold" data-versus-name-1>Hráč 1</p>
+            <p class="text-2xl font-black tabular-nums" data-versus-score-1>0</p>
+            <p class="text-[10px] font-bold uppercase tracking-widest" data-versus-status-1>—</p>
+          </div>
+          <div data-side-2 class="relative rounded-xl border-2 border-transparent bg-muted/30 p-3 text-center transition-all">
+            <span data-side-arrow-2 class="absolute -top-2 left-1/2 -translate-x-1/2 inline-flex items-center justify-center w-7 h-7 rounded-full bg-primary text-primary-foreground text-sm font-black shadow opacity-0 transition-opacity" aria-hidden="true">▼</span>
+            <p class="text-[10px] uppercase tracking-widest text-muted-foreground font-semibold" data-versus-name-2>Hráč 2</p>
+            <p class="text-2xl font-black tabular-nums" data-versus-score-2>0</p>
+            <p class="text-[10px] font-bold uppercase tracking-widest" data-versus-status-2>—</p>
+          </div>
         </div>
       </div>
     </div>
@@ -146,6 +154,9 @@ const data = JSON.stringify(cards);
   const $vScore2 = document.querySelector<HTMLElement>("[data-versus-score-2]")!;
   const $vStatus1 = document.querySelector<HTMLElement>("[data-versus-status-1]")!;
   const $vStatus2 = document.querySelector<HTMLElement>("[data-versus-status-2]")!;
+  const $vActive = document.querySelector<HTMLElement>("[data-versus-active]")!;
+  const $arrow1 = document.querySelector<HTMLElement>("[data-side-arrow-1]")!;
+  const $arrow2 = document.querySelector<HTMLElement>("[data-side-arrow-2]")!;
 
   type Mode = 1 | 2;
   let mode: Mode = loadMode();
@@ -288,12 +299,28 @@ const data = JSON.stringify(cards);
     $vScore1.textContent = String(p1Score);
     $vScore2.textContent = String(p2Score);
     const active1 = currentPlayer === 1;
+    $vActive.textContent = active1 ? p1Name : p2Name;
+    // Side highlight
     $side1.classList.toggle("border-primary", active1);
     $side1.classList.toggle("bg-primary/10", active1);
+    $side1.classList.toggle("scale-105", active1);
     $side2.classList.toggle("border-primary", !active1);
     $side2.classList.toggle("bg-primary/10", !active1);
-    $vStatus1.textContent = active1 ? "na tahu" : "čeká";
-    $vStatus2.textContent = active1 ? "čeká" : "na tahu";
+    $side2.classList.toggle("scale-105", !active1);
+    // Arrow indicator
+    $arrow1.classList.toggle("opacity-100", active1);
+    $arrow1.classList.toggle("opacity-0", !active1);
+    $arrow1.classList.toggle("animate-bounce", active1);
+    $arrow2.classList.toggle("opacity-100", !active1);
+    $arrow2.classList.toggle("opacity-0", active1);
+    $arrow2.classList.toggle("animate-bounce", !active1);
+    // Status text
+    $vStatus1.textContent = active1 ? "▶ na tahu" : "čeká";
+    $vStatus2.textContent = active1 ? "čeká" : "▶ na tahu";
+    $vStatus1.classList.toggle("text-primary", active1);
+    $vStatus1.classList.toggle("text-muted-foreground", !active1);
+    $vStatus2.classList.toggle("text-primary", !active1);
+    $vStatus2.classList.toggle("text-muted-foreground", active1);
   }
 
   function endGame(): void {
