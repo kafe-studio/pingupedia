@@ -1,5 +1,6 @@
 import { defineMiddleware } from "astro:middleware";
 import { readCookie, verifySessionCookie } from "./lib/admin/session";
+import { recordHit } from "./lib/analytics";
 
 const ADMIN_PREFIX = "/admin";
 const LOGIN_PATH = "/admin/login/";
@@ -46,7 +47,22 @@ export const onRequest = defineMiddleware(async (context, next) => {
   const isAdminPage = pathname === ADMIN_PREFIX || pathname.startsWith(ADMIN_PREFIX + "/");
   const isAdminApi = pathname === API_ADMIN_PREFIX.slice(0, -1) || pathname.startsWith(API_ADMIN_PREFIX);
 
-  if (!isAdminPage && !isAdminApi) return applySecurity(await next());
+  if (!isAdminPage && !isAdminApi) {
+    // Záznam návštěvy do KV — non-blocking přes ctx.waitUntil (až do dokončení response).
+    try {
+      const { env } = await import("cloudflare:workers");
+      const kv = (env as { SESSION?: KVNamespace }).SESSION;
+      if (kv) {
+        const country = (context.request as Request & { cf?: { country?: string } }).cf?.country;
+        const promise = recordHit(kv, context.request, context.url, { country });
+        // ctx.waitUntil pokud existuje (Cloudflare Workers); jinak fire-and-forget.
+        const ctx = (context.locals as { runtime?: { ctx?: { waitUntil?: (p: Promise<unknown>) => void } } }).runtime?.ctx;
+        if (ctx?.waitUntil) ctx.waitUntil(promise);
+        else void promise.catch(() => { /* swallow */ });
+      }
+    } catch { /* never block render on analytics */ }
+    return applySecurity(await next());
+  }
 
   if (pathname === LOGIN_PATH || API_SESSION_PATHS.has(pathname)) {
     return withNoStore(await next());

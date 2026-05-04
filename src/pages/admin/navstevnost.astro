@@ -1,0 +1,255 @@
+---
+export const prerender = false;
+import AdminLayout from "../../layouts/AdminLayout.astro";
+import { aggregate, dayList, getHitsForDays, type AggregatedHits } from "../../lib/analytics";
+
+const range = (() => {
+  const r = Astro.url.searchParams.get("range");
+  if (r === "1" || r === "7" || r === "30") return Number(r);
+  return 7;
+})();
+
+const { env } = await import("cloudflare:workers");
+const kv = (env as { SESSION?: KVNamespace }).SESSION;
+
+let agg: AggregatedHits = {
+  total: 0,
+  unique: 0,
+  topPaths: [],
+  topCountries: [],
+  topBrowsers: [],
+  topOs: [],
+  topReferers: [],
+  hourly: new Array(24).fill(0),
+  recent: [],
+};
+let kvAvailable = false;
+let errorMsg: string | null = null;
+
+if (!kv) {
+  errorMsg = "SESSION KV binding není dostupný — analytics nejsou ukládány.";
+} else {
+  kvAvailable = true;
+  try {
+    const days = dayList(range);
+    const hits = await getHitsForDays(kv, days);
+    agg = aggregate(hits, 20);
+  } catch (err) {
+    errorMsg = `Chyba při čtení analytics: ${err instanceof Error ? err.message : String(err)}`;
+  }
+}
+
+const hourlyMax = Math.max(1, ...agg.hourly);
+
+function fmtTime(ts: number): string {
+  const d = new Date(ts);
+  return d.toLocaleString("cs-CZ", {
+    day: "2-digit",
+    month: "2-digit",
+    hour: "2-digit",
+    minute: "2-digit",
+    second: "2-digit",
+    timeZone: "Europe/Prague",
+  });
+}
+
+function pathLabel(p: string): string {
+  if (p.length <= 50) return p;
+  return p.slice(0, 47) + "…";
+}
+---
+
+<AdminLayout title="Návštěvnost" section="navstevnost">
+  <header class="mb-8 flex flex-wrap items-end justify-between gap-4">
+    <div>
+      <p class="text-xs uppercase tracking-widest text-primary font-semibold mb-2">Statistiky</p>
+      <h1 class="text-4xl md:text-5xl font-black tracking-tight">Návštěvnost</h1>
+      <p class="mt-2 text-sm text-muted-foreground">
+        Vlastní KV-based analytics — ukládá se každý GET request mimo /admin a static assets. Retence 31 dní. Časy v UTC.
+      </p>
+    </div>
+    <nav class="flex items-center gap-1 text-sm" aria-label="Časový rozsah">
+      {[
+        { v: 1, label: "Dnes" },
+        { v: 7, label: "7 dní" },
+        { v: 30, label: "30 dní" },
+      ].map((opt) => (
+        <a
+          href={`?range=${opt.v}`}
+          class:list={[
+            "px-3 py-1.5 rounded-lg font-medium transition-colors",
+            range === opt.v
+              ? "bg-primary/15 text-primary"
+              : "text-muted-foreground hover:text-foreground hover:bg-muted",
+          ]}
+        >
+          {opt.label}
+        </a>
+      ))}
+    </nav>
+  </header>
+
+  {errorMsg && (
+    <div class="rounded-xl border border-amber-500/40 bg-amber-500/5 p-4 mb-6 text-sm text-amber-300">
+      ⚠️ {errorMsg}
+    </div>
+  )}
+
+  {kvAvailable && (
+    <>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+        <div class="rounded-xl border border-border bg-card p-5">
+          <p class="text-xs uppercase tracking-widest text-muted-foreground mb-1">Návštěv</p>
+          <p class="text-3xl font-black tabular-nums">{agg.total.toLocaleString("cs-CZ")}</p>
+        </div>
+        <div class="rounded-xl border border-border bg-card p-5">
+          <p class="text-xs uppercase tracking-widest text-muted-foreground mb-1">Unikátní</p>
+          <p class="text-3xl font-black tabular-nums">{agg.unique.toLocaleString("cs-CZ")}</p>
+        </div>
+        <div class="rounded-xl border border-border bg-card p-5">
+          <p class="text-xs uppercase tracking-widest text-muted-foreground mb-1">Stránek</p>
+          <p class="text-3xl font-black tabular-nums">{agg.topPaths.length}</p>
+        </div>
+        <div class="rounded-xl border border-border bg-card p-5">
+          <p class="text-xs uppercase tracking-widest text-muted-foreground mb-1">Zemí</p>
+          <p class="text-3xl font-black tabular-nums">{agg.topCountries.length}</p>
+        </div>
+      </div>
+
+      <section class="rounded-xl border border-border bg-card p-5 mb-6">
+        <h2 class="text-sm font-bold uppercase tracking-widest text-muted-foreground mb-4">Posledních 24 hodin (UTC)</h2>
+        <div class="flex items-end gap-1 h-32">
+          {agg.hourly.map((c, h) => (
+            <div class="flex-1 flex flex-col items-center justify-end gap-1" title={`${h}:00 UTC — ${c}`}>
+              <div
+                class="w-full bg-primary/70 rounded-t transition-colors hover:bg-primary"
+                style={`height: ${(c / hourlyMax) * 100}%; min-height: ${c > 0 ? "2px" : "0"}`}
+              ></div>
+              <span class="text-[9px] text-muted-foreground tabular-nums">{h}</span>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+        <section class="rounded-xl border border-border bg-card p-5">
+          <h2 class="text-sm font-bold uppercase tracking-widest text-muted-foreground mb-4">Top stránky</h2>
+          {agg.topPaths.length === 0 ? (
+            <p class="text-sm text-muted-foreground italic">Žádná data.</p>
+          ) : (
+            <ul class="space-y-1.5">
+              {agg.topPaths.map((p) => (
+                <li class="flex items-center justify-between gap-3 text-sm">
+                  <a href={p.path} target="_blank" rel="noopener" class="text-foreground/85 hover:text-primary truncate max-w-[80%]" title={p.path}>
+                    {pathLabel(p.path)}
+                  </a>
+                  <span class="tabular-nums font-semibold text-foreground">{p.count}</span>
+                </li>
+              ))}
+            </ul>
+          )}
+        </section>
+
+        <section class="rounded-xl border border-border bg-card p-5">
+          <h2 class="text-sm font-bold uppercase tracking-widest text-muted-foreground mb-4">Země</h2>
+          {agg.topCountries.length === 0 ? (
+            <p class="text-sm text-muted-foreground italic">Žádná data.</p>
+          ) : (
+            <ul class="space-y-1.5">
+              {agg.topCountries.map((c) => (
+                <li class="flex items-center justify-between gap-3 text-sm">
+                  <span class="text-foreground/85 font-mono uppercase">{c.country}</span>
+                  <span class="tabular-nums font-semibold text-foreground">{c.count}</span>
+                </li>
+              ))}
+            </ul>
+          )}
+        </section>
+
+        <section class="rounded-xl border border-border bg-card p-5">
+          <h2 class="text-sm font-bold uppercase tracking-widest text-muted-foreground mb-4">Prohlížeče</h2>
+          {agg.topBrowsers.length === 0 ? (
+            <p class="text-sm text-muted-foreground italic">Žádná data.</p>
+          ) : (
+            <ul class="space-y-1.5">
+              {agg.topBrowsers.map((b) => (
+                <li class="flex items-center justify-between gap-3 text-sm">
+                  <span class="text-foreground/85 capitalize">{b.browser}</span>
+                  <span class="tabular-nums font-semibold text-foreground">{b.count}</span>
+                </li>
+              ))}
+            </ul>
+          )}
+        </section>
+
+        <section class="rounded-xl border border-border bg-card p-5">
+          <h2 class="text-sm font-bold uppercase tracking-widest text-muted-foreground mb-4">Operační systémy</h2>
+          {agg.topOs.length === 0 ? (
+            <p class="text-sm text-muted-foreground italic">Žádná data.</p>
+          ) : (
+            <ul class="space-y-1.5">
+              {agg.topOs.map((o) => (
+                <li class="flex items-center justify-between gap-3 text-sm">
+                  <span class="text-foreground/85 capitalize">{o.os}</span>
+                  <span class="tabular-nums font-semibold text-foreground">{o.count}</span>
+                </li>
+              ))}
+            </ul>
+          )}
+        </section>
+
+        <section class="rounded-xl border border-border bg-card p-5 md:col-span-2">
+          <h2 class="text-sm font-bold uppercase tracking-widest text-muted-foreground mb-4">Externí zdroje (referer)</h2>
+          {agg.topReferers.length === 0 ? (
+            <p class="text-sm text-muted-foreground italic">Žádné externí refery.</p>
+          ) : (
+            <ul class="space-y-1.5">
+              {agg.topReferers.map((r) => (
+                <li class="flex items-center justify-between gap-3 text-sm">
+                  <span class="text-foreground/85 truncate max-w-[80%] font-mono text-xs">{r.ref}</span>
+                  <span class="tabular-nums font-semibold text-foreground">{r.count}</span>
+                </li>
+              ))}
+            </ul>
+          )}
+        </section>
+      </div>
+
+      <section class="rounded-xl border border-border bg-card p-5">
+        <h2 class="text-sm font-bold uppercase tracking-widest text-muted-foreground mb-4">
+          Posledních {agg.recent.length} návštěv
+        </h2>
+        {agg.recent.length === 0 ? (
+          <p class="text-sm text-muted-foreground italic">Žádná data.</p>
+        ) : (
+          <div class="overflow-x-auto">
+            <table class="w-full text-sm">
+              <thead>
+                <tr class="text-[11px] uppercase tracking-widest text-muted-foreground border-b border-border">
+                  <th class="py-2 pr-3 text-left font-semibold">Čas</th>
+                  <th class="py-2 pr-3 text-left font-semibold">Stránka</th>
+                  <th class="py-2 pr-3 text-left font-semibold">Země</th>
+                  <th class="py-2 pr-3 text-left font-semibold">Prohlížeč</th>
+                  <th class="py-2 pr-3 text-left font-semibold">OS</th>
+                  <th class="py-2 pr-3 text-left font-semibold">Zdroj</th>
+                </tr>
+              </thead>
+              <tbody>
+                {agg.recent.map((h) => (
+                  <tr class="border-b border-border/50 last:border-b-0">
+                    <td class="py-1.5 pr-3 text-xs text-muted-foreground tabular-nums whitespace-nowrap">{fmtTime(h.ts)}</td>
+                    <td class="py-1.5 pr-3 truncate max-w-[260px]"><a href={h.path} target="_blank" rel="noopener" class="text-foreground/85 hover:text-primary" title={h.path}>{pathLabel(h.path)}</a></td>
+                    <td class="py-1.5 pr-3 font-mono uppercase text-xs">{h.country}</td>
+                    <td class="py-1.5 pr-3 capitalize text-xs">{h.browser}</td>
+                    <td class="py-1.5 pr-3 capitalize text-xs">{h.os}</td>
+                    <td class="py-1.5 pr-3 font-mono text-xs text-muted-foreground truncate max-w-[160px]">{h.ref || "—"}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        )}
+      </section>
+    </>
+  )}
+</AdminLayout>
