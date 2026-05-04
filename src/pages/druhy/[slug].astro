@@ -46,6 +46,7 @@ const allSpecies = await getCollection("species");
 const relatedSpecies = getRelatedSpecies(entry, allSpecies, 4);
 
 const { nameCs, nameLat, description, historicalNotes, gallery, hero, colonies, audio, video } = entry.data;
+void audio; void video; // používají se v <SpeciesMedia /> přes entry, lokální vars zůstávají kvůli původnímu API
 
 const heroImage = await getImage({ src: hero.src, format: "jpeg", width: 1200 });
 const heroAbsoluteUrl = new URL(heroImage.src, Astro.site ?? "https://pingupedia.kafe.studio").toString();
@@ -58,16 +59,15 @@ const metadata = {
   canonical: canonicalUrl,
 };
 
-const navSections = [
-  { id: "about-heading", title: "O druhu" },
-  { id: "facts-heading", title: "Fakta" },
-  ...(colonies && colonies.length > 0 ? [{ id: "map-heading", title: "Mapa výskytu" }] : []),
-  ...(historicalNotes ? [{ id: "history-heading", title: "Historie" }] : []),
-  ...(gallery && gallery.length > 0 ? [{ id: `gallery-${entry.id}-heading`, title: "Galerie" }] : []),
-  ...(audio || video ? [{ id: "media-heading", title: "Zvuk a video" }] : []),
-  { id: "related-heading", title: "Podobné druhy" },
-  { id: "sources-heading", title: "Zdroje" },
-];
+// Stejné menu jako v přehledu druhů — proklik přímo na detail jiného druhu.
+const allSpeciesSorted = [...allSpecies].sort((a, b) =>
+  a.data.nameCs.localeCompare(b.data.nameCs, "cs"),
+);
+const navSections = allSpeciesSorted.map((s) => ({
+  id: `species-${s.id}`,
+  title: s.data.nameCs,
+  href: `/druhy/${s.id}/`,
+}));
 ---
 
 <BaseLayout {metadata}>
@@ -83,7 +83,7 @@ const navSections = [
       url: canonicalUrl,
     }}
   />
-  <SpeciesNav sections={navSections} />
+  <SpeciesNav sections={navSections} backHref="/druhy/" backLabel="Zpět na všechny druhy" panelLabel="Druhy" />
   <article
     data-pagefind-body
     data-pagefind-meta={`title:${nameCs}, lat:${nameLat}, image[content]:${entry.data.hero.alt}`}

@@ -11,6 +11,7 @@ const {
   backLabel = "Zpět na Druhy",
   panelLabel = "Obsah",
 } = Astro.props;
+const currentPath = Astro.url.pathname.replace(/\/$/, "");
 ---
 
 <button
@@ -42,19 +43,28 @@ const {
 
     <nav class="flex-1 overflow-y-auto py-4 px-3" aria-label="Sekce stránky">
       <ol class="space-y-0.5">
-        {sections.map((s, i) => (
-          <li>
-            <a
-              href={s.href ?? `#${s.id}`}
-              data-astro-prefetch={s.href ? "" : null}
-              class="species-nav-link flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-muted-foreground hover:text-foreground hover:bg-foreground/5 transition-all group"
-              data-section={s.href ? null : s.id}
-            >
-              <span class="w-6 h-6 rounded-md bg-foreground/5 group-hover:bg-primary/10 group-hover:text-primary flex items-center justify-center text-[10px] font-bold shrink-0 transition-colors species-nav-num">{String(i + 1).padStart(2, '0')}</span>
-              <span class="leading-snug">{s.title}</span>
-            </a>
-          </li>
-        ))}
+        {sections.map((s, i) => {
+          const isCurrent = s.href ? s.href.replace(/\/$/, "") === currentPath : false;
+          return (
+            <li>
+              <a
+                href={s.href ?? `#${s.id}`}
+                data-astro-prefetch={s.href ? "" : null}
+                aria-current={isCurrent ? "page" : undefined}
+                class:list={[
+                  "species-nav-link flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm transition-all group",
+                  isCurrent
+                    ? "active text-foreground"
+                    : "text-muted-foreground hover:text-foreground hover:bg-foreground/5",
+                ]}
+                data-section={s.href ? null : s.id}
+              >
+                <span class="w-6 h-6 rounded-md bg-foreground/5 group-hover:bg-primary/10 group-hover:text-primary flex items-center justify-center text-[10px] font-bold shrink-0 transition-colors species-nav-num">{String(i + 1).padStart(2, '0')}</span>
+                <span class="leading-snug">{s.title}</span>
+              </a>
+            </li>
+          );
+        })}
       </ol>
     </nav>
 
