@@ -63,9 +63,40 @@ const metadata = {
           <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-5">
             {section.items.map((item) => {
               const img = item.speciesSlug ? heroBySlug(item.speciesSlug) : undefined;
+              const ytThumb = item.trailerYtId
+                ? `https://img.youtube.com/vi/${item.trailerYtId}/hqdefault.jpg`
+                : null;
+              const ytUrl = item.trailerYtId
+                ? `https://www.youtube.com/watch?v=${item.trailerYtId}`
+                : null;
               return (
                 <article class="bento-card overflow-hidden flex flex-col">
-                  {img ? (
+                  {ytThumb && ytUrl ? (
+                    <a
+                      href={ytUrl}
+                      target="_blank"
+                      rel="noopener"
+                      class="relative block aspect-[16/9] bg-muted overflow-hidden group"
+                      aria-label={`Pustit trailer ${item.title} na YouTube`}
+                    >
+                      <img
+                        src={ytThumb}
+                        alt={`Trailer — ${item.title}`}
+                        loading="lazy"
+                        decoding="async"
+                        class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.04]"
+                      />
+                      <span class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent"></span>
+                      <span class="absolute inset-0 flex items-center justify-center">
+                        <span class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-red-600 text-white text-2xl shadow-lg group-hover:scale-110 transition-transform" aria-hidden="true">
+                          ▶
+                        </span>
+                      </span>
+                      <span class="absolute bottom-2 left-3 inline-flex items-center gap-1 rounded-full bg-black/60 backdrop-blur-sm px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-widest text-white">
+                        Trailer
+                      </span>
+                    </a>
+                  ) : img ? (
                     <a
                       href={`/druhy/${item.speciesSlug}/`}
                       data-astro-prefetch

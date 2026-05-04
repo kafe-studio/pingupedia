@@ -208,6 +208,7 @@ export const filmySchema = z.object({
               description: z.string().min(1),
               badge: z.string().optional(),
               speciesSlug: z.string().regex(slugRe).optional(),
+              trailerYtId: z.string().regex(/^[A-Za-z0-9_-]{11}$/).optional(),
               links: z
                 .array(
                   z.object({
