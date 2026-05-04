@@ -4,24 +4,51 @@ import GameLayout from "../../layouts/GameLayout.astro";
 import HallOfFame from "../../components/games/HallOfFame.astro";
 import HofPrompt from "../../components/games/HofPrompt.astro";
 import { getQuiz } from "../../lib/pages";
+import { getCollection } from "astro:content";
+import { getImage } from "astro:assets";
 
 const quiz = await getQuiz();
-const data = JSON.stringify(quiz.questions);
-const QUESTIONS_PER_ROUND = 5;
+const QUESTIONS_PER_ROUND = 15;
+
+// Optimalizované hero fotky pro otázky se speciesSlug.
+const species = await getCollection("species");
+const speciesPhotos: Record<string, string> = {};
+for (const s of species) {
+  const opt = await getImage({ src: s.data.hero.src, width: 480, format: "webp" });
+  speciesPhotos[s.id] = opt.src;
+}
+
+const questionsData = JSON.stringify(quiz.questions);
+const photosData = JSON.stringify(speciesPhotos);
 ---
 
-<GameLayout title="Kvíz" description="Otestuj si, co víš o tučňácích.">
+<GameLayout title="Kvíz" description="Otestuj si, co víš o tučňácích — 15 otázek, 5 obtížností, fotky.">
   <div class="mx-auto max-w-2xl px-4 sm:px-6 pt-14 pb-10">
     <header class="mb-5 text-center">
       <p class="text-[11px] uppercase tracking-[0.2em] text-primary mb-1.5">Mini-hra</p>
       <h1 class="text-2xl md:text-3xl font-black mb-1.5">Kvíz o tučňácích</h1>
-      <p class="text-sm text-muted-foreground">{QUESTIONS_PER_ROUND} náhodných otázek z databáze {quiz.questions.length}. Každý test je jiný.</p>
+      <p class="text-sm text-muted-foreground">{QUESTIONS_PER_ROUND} otázek z databáze {quiz.questions.length}. Vyber obtížnost 1–5.</p>
     </header>
+
+    <div class="bento-card p-4 mb-4 flex flex-wrap items-center gap-2 justify-center">
+      <span class="text-[11px] uppercase tracking-[0.18em] text-muted-foreground font-semibold mr-1">Obtížnost:</span>
+      {[1, 2, 3, 4, 5].map((n) => (
+        <button
+          type="button"
+          data-difficulty={n}
+          class="rounded-full border border-border bg-muted/30 px-3.5 py-1.5 text-xs font-bold tabular-nums hover:border-border-interactive transition-colors"
+          aria-pressed="false"
+        >
+          {n} {n === 1 ? "★" : n === 2 ? "★★" : n === 3 ? "★★★" : n === 4 ? "★★★★" : "★★★★★"}
+        </button>
+      ))}
+    </div>
 
     <div
       id="quiz-root"
       class="bento-card p-4 md:p-5"
-      data-questions={data}
+      data-questions={questionsData}
+      data-photos={photosData}
       data-round-size={QUESTIONS_PER_ROUND}
     >
       <div class="mb-2 flex items-center justify-between text-xs text-muted-foreground">
@@ -29,7 +56,12 @@ const QUESTIONS_PER_ROUND = 5;
         <span data-score>Skóre: 0</span>
       </div>
       <div class="h-1.5 rounded-full bg-muted overflow-hidden mb-4">
-        <div data-bar class="h-full bg-primary transition-[width] duration-300" style="width: 20%;"></div>
+        <div data-bar class="h-full bg-primary transition-[width] duration-300" style="width: 0%;"></div>
+      </div>
+      <div data-photo-wrap class="mb-4 hidden">
+        <div class="aspect-[4/3] rounded-xl overflow-hidden bg-muted/40">
+          <img data-photo src="" alt="" loading="eager" class="w-full h-full object-contain" />
+        </div>
       </div>
       <h2 data-question class="text-lg md:text-xl font-bold mb-4 leading-snug"></h2>
       <ul data-options class="grid gap-2"></ul>
@@ -69,17 +101,23 @@ const QUESTIONS_PER_ROUND = 5;
     options: string[];
     correct: number;
     explanation: string;
+    difficulty?: number;
+    speciesSlug?: string;
   }
+
+  const STORAGE_DIFFICULTY = "pingupedia-quiz-difficulty";
 
   const root = document.getElementById("quiz-root")!;
   const finish = document.getElementById("quiz-finish")!;
 
   const allQuestions: Question[] = JSON.parse(root.dataset.questions || "[]");
+  const photos: Record<string, string> = JSON.parse(root.dataset.photos || "{}");
   const roundSize = Math.min(
-    Number(root.dataset.roundSize) || 5,
+    Number(root.dataset.roundSize) || 15,
     allQuestions.length,
   );
 
+  let currentDifficulty: number = loadDifficulty();
   let questions: Question[] = [];
   let currentIndex = 0;
   let score = 0;
@@ -92,9 +130,23 @@ const QUESTIONS_PER_ROUND = 5;
   const $progress = root.querySelector<HTMLElement>("[data-progress]")!;
   const $score = root.querySelector<HTMLElement>("[data-score]")!;
   const $bar = root.querySelector<HTMLElement>("[data-bar]")!;
+  const $photoWrap = root.querySelector<HTMLElement>("[data-photo-wrap]")!;
+  const $photo = root.querySelector<HTMLImageElement>("[data-photo]")!;
   const $final = finish.querySelector<HTMLElement>("[data-final]")!;
   const $finalMsg = finish.querySelector<HTMLElement>("[data-final-msg]")!;
   const $retry = finish.querySelector<HTMLButtonElement>("[data-retry]")!;
+
+  function loadDifficulty(): number {
+    try {
+      const v = Number(localStorage.getItem(STORAGE_DIFFICULTY));
+      if (Number.isInteger(v) && v >= 1 && v <= 5) return v;
+    } catch { /* ignore */ }
+    return 3;
+  }
+
+  function saveDifficulty(d: number): void {
+    try { localStorage.setItem(STORAGE_DIFFICULTY, String(d)); } catch { /* ignore */ }
+  }
 
   function shuffle<T>(arr: T[]): T[] {
     const out = arr.slice();
@@ -106,8 +158,16 @@ const QUESTIONS_PER_ROUND = 5;
   }
 
   function pickRound(): Question[] {
-    const picked = shuffle(allQuestions).slice(0, roundSize);
-    return picked.map((q) => {
+    // Filtruj na vybranou obtížnost; pokud má míň než roundSize, doplň náhodně z ostatních.
+    const matching = allQuestions.filter((q) => q.difficulty === currentDifficulty);
+    let pool: Question[];
+    if (matching.length >= roundSize) {
+      pool = shuffle(matching).slice(0, roundSize);
+    } else {
+      const fill = shuffle(allQuestions.filter((q) => q.difficulty !== currentDifficulty));
+      pool = [...shuffle(matching), ...fill].slice(0, roundSize);
+    }
+    return pool.map((q) => {
       const indexed = q.options.map((text, i) => ({ text, i }));
       const shuffled = shuffle(indexed);
       return {
@@ -115,6 +175,8 @@ const QUESTIONS_PER_ROUND = 5;
         options: shuffled.map((o) => o.text),
         correct: shuffled.findIndex((o) => o.i === q.correct),
         explanation: q.explanation,
+        difficulty: q.difficulty,
+        speciesSlug: q.speciesSlug,
       };
     });
   }
@@ -131,6 +193,15 @@ const QUESTIONS_PER_ROUND = 5;
     $progress.textContent = `Otázka ${currentIndex + 1} z ${questions.length}`;
     $score.textContent = `Skóre: ${score}`;
     $bar.style.width = `${((currentIndex + 1) / questions.length) * 100}%`;
+
+    if (q.speciesSlug && photos[q.speciesSlug]) {
+      $photo.src = photos[q.speciesSlug];
+      $photo.alt = `Fotka tučňáka — ${q.speciesSlug}`;
+      $photoWrap.classList.remove("hidden");
+    } else {
+      $photo.src = "";
+      $photoWrap.classList.add("hidden");
+    }
 
     q.options.forEach((text, i) => {
       const li = document.createElement("li");
@@ -177,7 +248,7 @@ const QUESTIONS_PER_ROUND = 5;
     window.openHofPrompt?.({
       gameId: "kviz",
       value: score,
-      meta: `z ${questions.length} otázek`,
+      meta: `z ${questions.length} otázek · obtížnost ${currentDifficulty}/5`,
       valueLabel: "Skóre",
       valueFormat: "number",
       sort: "desc",
@@ -193,6 +264,29 @@ const QUESTIONS_PER_ROUND = 5;
     render();
   }
 
+  function syncDifficultyButtons(): void {
+    document.querySelectorAll<HTMLButtonElement>("[data-difficulty]").forEach((btn) => {
+      const n = Number(btn.dataset.difficulty);
+      const active = n === currentDifficulty;
+      btn.setAttribute("aria-pressed", active ? "true" : "false");
+      btn.classList.toggle("!bg-primary", active);
+      btn.classList.toggle("!text-primary-foreground", active);
+      btn.classList.toggle("!border-primary", active);
+    });
+  }
+
+  document.querySelectorAll<HTMLButtonElement>("[data-difficulty]").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const n = Number(btn.dataset.difficulty);
+      if (!Number.isInteger(n) || n < 1 || n > 5) return;
+      if (n === currentDifficulty) return;
+      currentDifficulty = n;
+      saveDifficulty(n);
+      syncDifficultyButtons();
+      startNewRound();
+    });
+  });
+
   $next.addEventListener("click", () => {
     if (currentIndex < questions.length - 1) {
       currentIndex++;
@@ -204,5 +298,6 @@ const QUESTIONS_PER_ROUND = 5;
 
   $retry.addEventListener("click", startNewRound);
 
+  syncDifficultyButtons();
   startNewRound();
 </script>

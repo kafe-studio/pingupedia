@@ -171,6 +171,8 @@ export const quizSchema = z.object({
         options: z.array(z.string().min(1)).length(4),
         correct: z.number().int().min(0).max(3),
         explanation: z.string().min(1),
+        difficulty: z.number().int().min(1).max(5).optional(),
+        speciesSlug: z.string().min(1).optional(),
       }),
     )
     .min(1),
