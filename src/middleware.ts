@@ -17,12 +17,14 @@ const SECURITY_HEADERS: Record<string, string> = {
   "Permissions-Policy": "camera=(), microphone=(), geolocation=(), interest-cohort=()",
   "Content-Security-Policy":
     "default-src 'self'; " +
-    "script-src 'self' 'unsafe-inline'; " +
+    "script-src 'self' 'unsafe-inline' 'unsafe-eval' blob:; " +
+    "script-src-elem 'self' 'unsafe-inline'; " +
     "style-src 'self' 'unsafe-inline'; " +
     "img-src 'self' data: blob: https:; " +
     "font-src 'self' data:; " +
-    "connect-src 'self'; " +
-    "media-src 'self' https:; " +
+    "connect-src 'self' https:; " +
+    "media-src 'self' data: blob: https:; " +
+    "worker-src 'self' blob:; " +
     "object-src 'none'; " +
     "base-uri 'self'; " +
     "form-action 'self'; " +
