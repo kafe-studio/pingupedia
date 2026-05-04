@@ -35,6 +35,7 @@ const { species, currentGenus } = Astro.props;
                     alt={s.data.hero.alt}
                     ratio="4/3"
                     sizes="(min-width: 768px) 240px, 45vw"
+                    widths={[240, 480]}
                   />
                   <span class="absolute top-2 right-2">
                     <IucnBadge status={s.data.iucnStatus} />

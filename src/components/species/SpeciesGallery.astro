@@ -45,6 +45,8 @@ const allSlides: Photo[] = hero ? [hero, ...photos] : photos;
               alt={photo.alt}
               sizes="(min-width: 1024px) 400px, (min-width: 640px) 50vw, 100vw"
               widths={[400, 800]}
+              format="webp"
+              quality={70}
               class="img-nocrop"
               loading="lazy"
             />
@@ -77,6 +79,8 @@ const allSlides: Photo[] = hero ? [hero, ...photos] : photos;
                 alt={photo.alt}
                 sizes="(min-width: 1024px) 1200px, 90vw"
                 widths={[800, 1200, 1600]}
+                format="webp"
+                quality={82}
                 class="lightbox-image"
                 loading="lazy"
               />

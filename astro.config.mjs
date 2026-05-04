@@ -13,10 +13,6 @@ export default defineConfig({
     configPath: "./wrangler.jsonc",
     persistState: true,
     prerenderEnvironment: "node",
-    // Build-time optimization sharpem v Node, runtime servuje statické soubory bez
-    // dalšího CF Images bindingu. Obchází bug v 13.3.0, kdy transform({width,height})
-    // bez `fit` vrací HTTP 500.
-    imageService: { runtime: "passthrough" },
   }),
   integrations: [
     sitemap({
@@ -41,6 +37,9 @@ export default defineConfig({
   },
   build: {
     inlineStylesheets: "always",
+  },
+  image: {
+    endpoint: { entrypoint: "./src/lib/image-endpoint.ts" },
   },
   fonts: [
     {

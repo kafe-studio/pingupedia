@@ -104,6 +104,7 @@ const navSections = species.map((entry) => ({
                       alt={entry.data.hero.alt}
                       ratio={isWide ? "16/10" : "4/3"}
                       sizes={isWide ? "(min-width: 1024px) 600px, 100vw" : "(min-width: 1024px) 300px, 50vw"}
+                      widths={isWide ? [400, 600, 1000] : [300, 500, 600]}
                     />
                     <span class="absolute top-3 right-3">
                       <IucnBadge status={entry.data.iucnStatus} />

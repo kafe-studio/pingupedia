@@ -8,6 +8,7 @@ interface Props {
   ratio?: string;
   class?: string;
   sizes?: string;
+  widths?: number[];
   loading?: "eager" | "lazy";
   fetchpriority?: "high" | "low" | "auto";
 }
@@ -18,13 +19,24 @@ const {
   ratio = "4/3",
   class: className = "",
   sizes,
+  widths = [400, 800],
   loading = "lazy",
   fetchpriority,
 } = Astro.props;
 ---
 
 <div class:list={["nocrop-wrapper", className]} style={`aspect-ratio: ${ratio};`}>
-  <Image src={src} alt={alt} sizes={sizes} loading={loading} fetchpriority={fetchpriority} class="img-nocrop" />
+  <Image
+    src={src}
+    alt={alt}
+    sizes={sizes}
+    widths={widths}
+    loading={loading}
+    fetchpriority={fetchpriority}
+    format="webp"
+    quality={75}
+    class="img-nocrop"
+  />
 </div>
 
 <style>
