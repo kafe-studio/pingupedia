@@ -350,6 +350,24 @@ html.reveal-ready .reveal.active {
 .theme-switcher__trigger:hover { transform: translateY(-1px); }
 .theme-switcher__icon { width: 1rem; height: 1rem; flex-shrink: 0; }
 .theme-switcher__label { white-space: nowrap; }
+.theme-switcher__swatch {
+  width: 1.05rem;
+  height: 1.05rem;
+  border-radius: 9999px;
+  flex-shrink: 0;
+  border: 1.5px solid rgba(255, 255, 255, 0.5);
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.25), 0 1px 4px rgba(0, 0, 0, 0.3);
+  transition: transform 0.25s, background 0.3s;
+}
+.theme-switcher__trigger:hover .theme-switcher__swatch { transform: rotate(45deg) scale(1.08); }
+.theme-switcher__swatch[data-current-theme="arctic"]   { background: linear-gradient(135deg, #0c2843, #22d3ee); }
+.theme-switcher__swatch[data-current-theme="sunny"]    { background: linear-gradient(135deg, #fef9c3, #38bdf8); }
+.theme-switcher__swatch[data-current-theme="ocean"]    { background: linear-gradient(135deg, #022c43, #14b8a6); }
+.theme-switcher__swatch[data-current-theme="candy"]    { background: linear-gradient(135deg, #fce7f3, #a78bfa); }
+.theme-switcher__swatch[data-current-theme="midnight"] { background: linear-gradient(135deg, #0a0a1a, #a78bfa); }
+.theme-switcher__swatch[data-current-theme="abyss"]    { background: linear-gradient(135deg, #02080f, #38bdf8); }
+.theme-switcher__swatch[data-current-theme="tundra"]   { background: linear-gradient(135deg, #e5edf5, #1e5c91); }
+.theme-switcher__swatch[data-current-theme="cosmos"]   { background: linear-gradient(135deg, #03030a, #f472b6); }
 :root[data-variant="sunny"] .theme-switcher__trigger,
 :root[data-variant="candy"] .theme-switcher__trigger,
 :root[data-variant="tundra"] .theme-switcher__trigger {

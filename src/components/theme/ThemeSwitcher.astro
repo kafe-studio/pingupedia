@@ -1,5 +1,5 @@
 ---
-// Jeden prvek "Nastav si styl" — po kliknutí přepne na další motiv v pořadí.
+// Jeden prvek se swatch kolečkem aktuálního tématu — po kliknutí přepne na další.
 // 8 motivů: arctic → sunny → ocean → candy → midnight → abyss → tundra → cosmos → arctic.
 ---
 
@@ -8,17 +8,11 @@
     type="button"
     class="theme-switcher__trigger"
     data-theme-cycle
-    aria-label="Nastav si styl — přepnout barevné schéma"
-    title="Nastav si styl"
+    aria-label="Změnit barevné schéma"
+    title="Změnit barevné schéma"
   >
-    <svg class="theme-switcher__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-      <circle cx="12" cy="12" r="9" />
-      <circle cx="7.5" cy="10.5" r="1" fill="currentColor" />
-      <circle cx="12" cy="7" r="1" fill="currentColor" />
-      <circle cx="16.5" cy="10.5" r="1" fill="currentColor" />
-      <circle cx="15" cy="15" r="1" fill="currentColor" />
-    </svg>
-    <span class="theme-switcher__label">Nastav si styl</span>
+    <span class="theme-switcher__swatch" data-current-theme="arctic" aria-hidden="true"></span>
+    <span class="theme-switcher__label">Změnit</span>
   </button>
 </div>
 
@@ -33,6 +27,9 @@
 
   function apply(theme: Theme): void {
     document.documentElement.setAttribute("data-variant", theme);
+    document
+      .querySelectorAll<HTMLElement>(".theme-switcher__swatch")
+      .forEach((el) => { el.dataset.currentTheme = theme; });
     try {
       localStorage.setItem(STORAGE_KEY, theme);
     } catch {
@@ -45,7 +42,16 @@
     return VALID[(idx + 1) % VALID.length];
   }
 
+  function syncSwatch(): void {
+    const current = document.documentElement.getAttribute("data-variant");
+    if (!current || !isTheme(current)) return;
+    document
+      .querySelectorAll<HTMLElement>(".theme-switcher__swatch")
+      .forEach((el) => { el.dataset.currentTheme = current; });
+  }
+
   function wire(): void {
+    syncSwatch();
     document.querySelectorAll<HTMLButtonElement>("[data-theme-cycle]").forEach((btn) => {
       if (btn.dataset.wired) return;
       btn.dataset.wired = "1";
