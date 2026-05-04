@@ -100,7 +100,7 @@ const iglu: Room = {
     exit("left", "kuchyne", 18, 11),
   ],
   spawn: { x: 4 * TILE, y: 11 * TILE },
-  hint: "Jet Set Pingu. Sesbírej všechno a vrať se sem.",
+  hint: "Posbírej poklady, doveď 20 mláďat do iglú a vrať se sem.",
 };
 
 const zakladna: Room = {
