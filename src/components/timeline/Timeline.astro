@@ -92,7 +92,7 @@ const sorted = [...events].sort((a, b) => a.year - b.year);
                   />
                   <figcaption class="px-3 py-2 text-[11px] text-muted-foreground">
                     Foto: <span class="font-medium text-foreground/80">{e.image.author}</span> · {e.image.license} ·
-                    <a href={e.image.sourceUrl} target="_blank" rel="noopener" class="ml-1 hover:text-primary underline decoration-dotted">zdroj</a>
+                    <a href={e.image.sourceUrl} target="_blank" rel="noopener noreferrer" class="ml-1 hover:text-primary underline decoration-dotted">zdroj</a>
                   </figcaption>
                 </figure>
               )}
@@ -112,7 +112,7 @@ const sorted = [...events].sort((a, b) => a.year - b.year);
                   <a
                     href={e.sourceUrl}
                     target="_blank"
-                    rel="noopener"
+                    rel="noopener noreferrer"
                     class="inline-flex items-center gap-1 hover:text-primary transition-colors"
                   >
                     zdroj ↗

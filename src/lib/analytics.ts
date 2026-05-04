@@ -85,10 +85,9 @@ export async function recordHit(
   if (request.method !== "GET") return;
 
   const ua = request.headers.get("user-agent") ?? "";
-  const ip =
-    request.headers.get("cf-connecting-ip") ||
-    request.headers.get("x-forwarded-for")?.split(",")[0].trim() ||
-    "unknown";
+  // Na CF Workers je cf-connecting-ip nastavený CF a klient ho nemůže spoofovat;
+  // x-forwarded-for je klientský header → fallback by umožnil falšování unique counts.
+  const ip = request.headers.get("cf-connecting-ip") ?? "unknown";
 
   const refererRaw = request.headers.get("referer") ?? "";
   let ref = "";
@@ -120,7 +119,8 @@ export async function recordHit(
   });
 }
 
-/** Načte všechny hity ze zadaných dní (UTC). Paginates KV list. */
+/** Načte všechny hity ze zadaných dní (UTC). Paginates KV list a batchuje GETy
+ *  paralelně přes Promise.all (sekvenční loop dělal 30s+ na 30denním rozsahu). */
 export async function getHitsForDays(
   kv: KVNamespace,
   days: string[],
@@ -130,8 +130,8 @@ export async function getHitsForDays(
     let cursor: string | undefined;
     do {
       const list = await kv.list({ prefix: `${PREFIX}${day}:`, cursor, limit: 1000 });
-      for (const k of list.keys) {
-        const raw = await kv.get(k.name);
+      const values = await Promise.all(list.keys.map((k) => kv.get(k.name)));
+      for (const raw of values) {
         if (!raw) continue;
         try {
           all.push(JSON.parse(raw) as HitEntry);

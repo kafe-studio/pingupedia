@@ -24,7 +24,7 @@ import AdminLayout from "../../../layouts/AdminLayout.astro";
   <details class="mt-6 rounded-2xl border border-border bg-card/50 p-6">
     <summary class="cursor-pointer font-semibold">Jak nastavit secrets v produkci</summary>
     <div class="mt-4 space-y-2 text-sm text-muted-foreground">
-      <p>1. Vytvoř fine-grained PAT na <a href="https://github.com/settings/personal-access-tokens" class="text-primary hover:underline" rel="noopener" target="_blank">github.com/settings/personal-access-tokens</a>. Repo: <code class="bg-muted px-1 rounded">kafe-studio/pingupedia</code>, Permissions → Contents: <strong>Read and write</strong>.</p>
+      <p>1. Vytvoř fine-grained PAT na <a href="https://github.com/settings/personal-access-tokens" class="text-primary hover:underline" rel="noopener noreferrer" target="_blank">github.com/settings/personal-access-tokens</a>. Repo: <code class="bg-muted px-1 rounded">kafe-studio/pingupedia</code>, Permissions → Contents: <strong>Read and write</strong>.</p>
       <p>2. V terminálu z repa:</p>
       <pre class="rounded bg-background border border-border p-3 text-xs font-mono overflow-x-auto">pnpm wrangler secret put GITHUB_TOKEN</pre>
       <p>3. V <code class="bg-muted px-1 rounded">wrangler.jsonc</code> přidat plain vars (ne secrety):</p>

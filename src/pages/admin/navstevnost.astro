@@ -140,7 +140,7 @@ function pathLabel(p: string): string {
             <ul class="space-y-1.5">
               {agg.topPaths.map((p) => (
                 <li class="flex items-center justify-between gap-3 text-sm">
-                  <a href={p.path} target="_blank" rel="noopener" class="text-foreground/85 hover:text-primary truncate max-w-[80%]" title={p.path}>
+                  <a href={p.path} target="_blank" rel="noopener noreferrer" class="text-foreground/85 hover:text-primary truncate max-w-[80%]" title={p.path}>
                     {pathLabel(p.path)}
                   </a>
                   <span class="tabular-nums font-semibold text-foreground">{p.count}</span>
@@ -238,7 +238,7 @@ function pathLabel(p: string): string {
                 {agg.recent.map((h) => (
                   <tr class="border-b border-border/50 last:border-b-0">
                     <td class="py-1.5 pr-3 text-xs text-muted-foreground tabular-nums whitespace-nowrap">{fmtTime(h.ts)}</td>
-                    <td class="py-1.5 pr-3 truncate max-w-[260px]"><a href={h.path} target="_blank" rel="noopener" class="text-foreground/85 hover:text-primary" title={h.path}>{pathLabel(h.path)}</a></td>
+                    <td class="py-1.5 pr-3 truncate max-w-[260px]"><a href={h.path} target="_blank" rel="noopener noreferrer" class="text-foreground/85 hover:text-primary" title={h.path}>{pathLabel(h.path)}</a></td>
                     <td class="py-1.5 pr-3 font-mono uppercase text-xs">{h.country}</td>
                     <td class="py-1.5 pr-3 capitalize text-xs">{h.browser}</td>
                     <td class="py-1.5 pr-3 capitalize text-xs">{h.os}</td>

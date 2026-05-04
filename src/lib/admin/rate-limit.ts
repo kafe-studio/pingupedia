@@ -11,11 +11,10 @@ export interface RateLimitResult {
 }
 
 export function clientIp(request: Request): string {
-  const cf = request.headers.get("cf-connecting-ip");
-  if (cf) return cf;
-  const xff = request.headers.get("x-forwarded-for");
-  if (xff) return xff.split(",")[0].trim();
-  return "unknown";
+  // Na Cloudflare Workers je `cf-connecting-ip` nastavený CF a klient ho nemůže
+  // spoofovat. `x-forwarded-for` je v public requestech ovládaný klientem —
+  // fallback na něj umožňoval bypass rate-limitu posíláním různých XFF hlaviček.
+  return request.headers.get("cf-connecting-ip") ?? "unknown";
 }
 
 export async function checkLoginRate(

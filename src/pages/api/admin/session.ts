@@ -17,8 +17,14 @@ export const prerender = false;
 
 function sanitizeNext(raw: unknown): string {
   if (typeof raw !== "string") return "/admin/";
-  if (!raw.startsWith("/") || raw.startsWith("//")) return "/admin/";
-  return raw;
+  // Některé prohlížeče interpretují `\` jako `/` při parsingu Location → `/\evil.com`
+  // by se z `/admin/login` redirectovalo na cizí origin. Normalizuj a poté odmítni
+  // protocol-relative paths.
+  const normalized = raw.replace(/\\/g, "/");
+  if (!normalized.startsWith("/") || normalized.startsWith("//")) return "/admin/";
+  // Whitelist znaků v URL — žádný kontrolní znak, pouze běžné path/query bezpečné.
+  if (!/^\/[A-Za-z0-9/?&=._~%-]*$/.test(normalized)) return "/admin/";
+  return normalized;
 }
 
 function loginRedirect(url: URL, error: string, next: string): Response {
@@ -33,7 +39,12 @@ export const POST: APIRoute = async ({ request, url }) => {
     return new Response("Forbidden", { status: 403 });
   }
 
-  const form = await request.formData();
+  let form: FormData;
+  try {
+    form = await request.formData();
+  } catch {
+    return new Response("Invalid form data", { status: 400 });
+  }
   const action = form.get("action");
   const secure = url.protocol === "https:";
 

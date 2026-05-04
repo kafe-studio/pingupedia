@@ -67,7 +67,12 @@ export const PUT: APIRoute = async ({ params, request, url }) => {
   if (!isSameOriginRequest(request, url)) return json({ error: "Forbidden" }, 403);
   if (!validateSlug(params.slug)) return json({ error: "Invalid slug" }, 400);
 
-  const form = await request.formData();
+  let form: FormData;
+  try {
+    form = await request.formData();
+  } catch {
+    return json({ error: "Invalid form data" }, 400);
+  }
   const content = form.get("content");
   const sha = form.get("sha");
   const message = form.get("message");

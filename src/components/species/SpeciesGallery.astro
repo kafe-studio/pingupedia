@@ -55,7 +55,7 @@ const allSlides: Photo[] = hero ? [hero, ...photos] : photos;
             Foto {photo.author}, {photo.license}.{" "}
             <a
               href={photo.sourceUrl}
-              rel="noopener"
+              rel="noopener noreferrer"
               target="_blank"
               class="underline decoration-dotted hover:text-primary"
             >
@@ -88,7 +88,7 @@ const allSlides: Photo[] = hero ? [hero, ...photos] : photos;
             <figcaption class="lightbox-caption">
               <span class="lightbox-counter">{i + 1} / {allSlides.length}</span>
               <span>Foto {photo.author}, {photo.license}.{" "}
-                <a href={photo.sourceUrl} rel="noopener" target="_blank">Zdroj</a>
+                <a href={photo.sourceUrl} rel="noopener noreferrer" target="_blank">Zdroj</a>
               </span>
             </figcaption>
           </figure>

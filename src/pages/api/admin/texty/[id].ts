@@ -113,7 +113,12 @@ export const PUT: APIRoute = async ({ params, request, url }) => {
   const resolved = resolvePath(params.id);
   if (!resolved.ok) return json({ error: resolved.error }, 400);
 
-  const form = await request.formData();
+  let form: FormData;
+  try {
+    form = await request.formData();
+  } catch {
+    return json({ error: "Invalid form data" }, 400);
+  }
   const content = form.get("content");
   const sha = form.get("sha");
   const message = form.get("message");
