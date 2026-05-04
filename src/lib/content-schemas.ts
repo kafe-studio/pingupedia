@@ -207,6 +207,7 @@ export const filmySchema = z.object({
               director: z.string().optional(),
               description: z.string().min(1),
               badge: z.string().optional(),
+              speciesSlug: z.string().regex(slugRe).optional(),
               links: z
                 .array(
                   z.object({
