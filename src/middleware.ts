@@ -12,7 +12,9 @@ const NO_STORE = "private, no-store";
 const SECURITY_HEADERS: Record<string, string> = {
   "Strict-Transport-Security": "max-age=31536000; includeSubDomains",
   "X-Content-Type-Options": "nosniff",
-  "X-Frame-Options": "DENY",
+  // SAMEORIGIN, ne DENY — povoluje vlastní iframe (např. <dialog> s herním oknem na /hry/),
+  // ale stále blokuje clickjacking z cizích domén.
+  "X-Frame-Options": "SAMEORIGIN",
   "Referrer-Policy": "strict-origin-when-cross-origin",
   "Permissions-Policy": "camera=(), microphone=(), geolocation=(), interest-cohort=()",
   "Content-Security-Policy":
@@ -28,7 +30,7 @@ const SECURITY_HEADERS: Record<string, string> = {
     "object-src 'none'; " +
     "base-uri 'self'; " +
     "form-action 'self'; " +
-    "frame-ancestors 'none'; " +
+    "frame-ancestors 'self'; " +
     "upgrade-insecure-requests",
 };
 
@@ -41,7 +43,10 @@ function applySecurity(response: Response): Response {
 
 function withNoStore(response: Response): Response {
   response.headers.set("Cache-Control", NO_STORE);
-  return applySecurity(response);
+  applySecurity(response);
+  // Admin pages — striktnější: nesmí být embedded ani na vlastní stránce.
+  response.headers.set("X-Frame-Options", "DENY");
+  return response;
 }
 
 export const onRequest = defineMiddleware(async (context, next) => {
