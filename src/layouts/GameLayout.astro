@@ -4,7 +4,6 @@ interface Props {
   description?: string;
 }
 import { Font } from "astro:assets";
-import ThemedBackground from "../components/theme/ThemedBackground.astro";
 import ThemeSwitcher from "../components/theme/ThemeSwitcher.astro";
 import "../styles/global.css";
 import { getSiteConfig } from "../lib/site";
@@ -36,7 +35,6 @@ const { title, description } = Astro.props;
     </script>
   </head>
   <body class="bg-background text-foreground antialiased">
-    <ThemedBackground />
     <main class="min-h-screen relative z-10"><slot /></main>
     <a
       href="/hry/"
