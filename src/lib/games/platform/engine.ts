@@ -604,26 +604,17 @@ export class PlatformGame {
 
   // --- Chicks (follow-train) ---
 
-  /** Mláďata sledují hráče s odstupem — každá další pozice ze sdíleného trail bufferu.
-   *  Mládě N kopíruje pozici hráče se zpožděním N × CHICK_DELAY tiků. */
+  /** Mláďata se drží těsně u hráče — každé o pár pixelů za ním ve směru couvání.
+   *  Bez trail bufferu, žádné zpoždění; vlak se sune přilepený dokud nedoručíš. */
   private updateChicks(): void {
     if (this.state.chicks.length === 0) return;
     const p = this.state.player;
-    const CHICK_DELAY = 8; // tiků mezi jednotlivými mláďaty (≈130 ms při 60 Hz)
-    const MAX_TRAIL = this.state.chicks.length * CHICK_DELAY + 2;
-    // Sdílený trail: hlava je nejnovější pozice hráče.
-    const trail = this.state.chicks[0].trail;
-    trail.unshift({ x: p.x, y: p.y, facing: p.facing });
-    if (trail.length > MAX_TRAIL) trail.length = MAX_TRAIL;
-    // Aplikuj zpožděnou pozici na každého chick.
+    const STEP = 5; // px za hráčem na každé další mládě
     this.state.chicks.forEach((c, i) => {
-      const idx = Math.min((i + 1) * CHICK_DELAY, trail.length - 1);
-      const t = trail[idx];
-      c.x = t.x;
-      c.y = t.y;
-      c.facing = t.facing;
-      // Sdílený trail držíme jen na c[0] (zbytek by se duplikoval).
-      if (i > 0) c.trail = [];
+      c.x = p.x - p.facing * STEP * (i + 1);
+      c.y = p.y;
+      c.facing = p.facing;
+      c.trail = [];
     });
   }
 
