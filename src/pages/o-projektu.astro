@@ -19,7 +19,7 @@ const metadata = {
         <h1 class="text-5xl md:text-7xl font-black tracking-tight leading-[0.95] mb-5">
           <Fragment set:html={page.hero.titleHtml} />
         </h1>
-        <p class="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto" set:html={page.hero.subtitle} />
+        <p class="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto">{page.hero.subtitle}</p>
       </header>
 
       <div class="bento-card bento-surface-aurora p-6 md:p-8 text-white reveal mb-6 flex items-center gap-5">
@@ -44,7 +44,7 @@ const metadata = {
         <article class="bento-card p-6 md:p-7 reveal">
           <p class="text-xs uppercase tracking-widest text-primary font-semibold mb-3">{page.purpose.eyebrow}</p>
           <h2 class="text-xl md:text-2xl font-black leading-tight mb-3">{page.purpose.title}</h2>
-          <p class="text-sm text-muted-foreground leading-relaxed" set:html={page.purpose.body} />
+          <p class="text-sm text-muted-foreground leading-relaxed">{page.purpose.body}</p>
         </article>
       </div>
 

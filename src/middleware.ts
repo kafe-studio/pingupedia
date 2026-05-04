@@ -8,9 +8,37 @@ const API_SESSION_PATHS = new Set(["/api/admin/session", "/api/admin/session/"])
 
 const NO_STORE = "private, no-store";
 
+const SECURITY_HEADERS: Record<string, string> = {
+  "Strict-Transport-Security": "max-age=31536000; includeSubDomains",
+  "X-Content-Type-Options": "nosniff",
+  "X-Frame-Options": "DENY",
+  "Referrer-Policy": "strict-origin-when-cross-origin",
+  "Permissions-Policy": "camera=(), microphone=(), geolocation=(), interest-cohort=()",
+  "Content-Security-Policy":
+    "default-src 'self'; " +
+    "script-src 'self' 'unsafe-inline'; " +
+    "style-src 'self' 'unsafe-inline'; " +
+    "img-src 'self' data: blob: https:; " +
+    "font-src 'self' data:; " +
+    "connect-src 'self'; " +
+    "media-src 'self' https:; " +
+    "object-src 'none'; " +
+    "base-uri 'self'; " +
+    "form-action 'self'; " +
+    "frame-ancestors 'none'; " +
+    "upgrade-insecure-requests",
+};
+
+function applySecurity(response: Response): Response {
+  for (const [k, v] of Object.entries(SECURITY_HEADERS)) {
+    if (!response.headers.has(k)) response.headers.set(k, v);
+  }
+  return response;
+}
+
 function withNoStore(response: Response): Response {
   response.headers.set("Cache-Control", NO_STORE);
-  return response;
+  return applySecurity(response);
 }
 
 export const onRequest = defineMiddleware(async (context, next) => {
@@ -18,7 +46,7 @@ export const onRequest = defineMiddleware(async (context, next) => {
   const isAdminPage = pathname === ADMIN_PREFIX || pathname.startsWith(ADMIN_PREFIX + "/");
   const isAdminApi = pathname === API_ADMIN_PREFIX.slice(0, -1) || pathname.startsWith(API_ADMIN_PREFIX);
 
-  if (!isAdminPage && !isAdminApi) return next();
+  if (!isAdminPage && !isAdminApi) return applySecurity(await next());
 
   if (pathname === LOGIN_PATH || API_SESSION_PATHS.has(pathname)) {
     return withNoStore(await next());

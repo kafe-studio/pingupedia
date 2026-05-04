@@ -6,6 +6,12 @@ import {
   createSessionCookie,
   isSameOriginRequest,
 } from "../../../lib/admin/session";
+import {
+  checkLoginRate,
+  clearLoginRate,
+  clientIp,
+  recordLoginFailure,
+} from "../../../lib/admin/rate-limit";
 
 export const prerender = false;
 
@@ -32,7 +38,11 @@ export const POST: APIRoute = async ({ request, url }) => {
   const secure = url.protocol === "https:";
 
   const { env } = await import("cloudflare:workers");
-  const adminEnv = env as { ADMIN_PASSWORD?: string; SESSION_SECRET?: string };
+  const adminEnv = env as {
+    ADMIN_PASSWORD?: string;
+    SESSION_SECRET?: string;
+    SESSION?: KVNamespace;
+  };
 
   if (action === "logout") {
     return new Response(null, {
@@ -58,9 +68,30 @@ export const POST: APIRoute = async ({ request, url }) => {
     );
   }
 
+  // Per-IP rate limit — 5 failed attempts / 15 min. SESSION KV chybí jen v dev fallbacku.
+  const ip = clientIp(request);
+  if (adminEnv.SESSION) {
+    const rate = await checkLoginRate(adminEnv.SESSION, ip);
+    if (!rate.allowed) {
+      return new Response(
+        "Příliš mnoho pokusů o přihlášení. Zkus to za chvíli znovu.",
+        {
+          status: 429,
+          headers: {
+            "Content-Type": "text/plain; charset=utf-8",
+            "Retry-After": String(rate.retryAfter),
+          },
+        },
+      );
+    }
+  }
+
   if (typeof password !== "string" || !(await constantTimeEqualString(password, adminEnv.ADMIN_PASSWORD))) {
+    if (adminEnv.SESSION) await recordLoginFailure(adminEnv.SESSION, ip);
     return loginRedirect(url, "bad-password", next);
   }
+
+  if (adminEnv.SESSION) await clearLoginRate(adminEnv.SESSION, ip);
 
   const { value, maxAgeSec } = await createSessionCookie(adminEnv.SESSION_SECRET);
   return new Response(null, {
