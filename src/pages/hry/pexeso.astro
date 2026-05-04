@@ -34,13 +34,42 @@ const cards = await Promise.all(
 const data = JSON.stringify(cards);
 ---
 
-<GameLayout title="Pexeso" description="Pexeso s fotkami tučňáků.">
+<GameLayout title="Pexeso" description="Pexeso s fotkami tučňáků — 1 nebo 2 hráči.">
   <div class="mx-auto max-w-5xl px-4 sm:px-6 pt-14 pb-8">
     <header class="mb-4 text-center">
       <p class="text-[11px] uppercase tracking-[0.2em] text-primary mb-1.5">Mini-hra</p>
       <h1 class="text-2xl md:text-3xl font-black mb-1.5">Pexeso s tučňáky</h1>
       <p class="text-sm text-muted-foreground">8 druhů, 16 karet. Najdi všechny páry.</p>
     </header>
+
+    <div class="bento-card p-3 md:p-4 mb-3 flex flex-wrap items-center justify-center gap-2">
+      <span class="text-[11px] uppercase tracking-[0.18em] text-muted-foreground font-semibold mr-1">Režim:</span>
+      <button data-mode="1" type="button" class="rounded-full border border-border bg-muted/30 px-3.5 py-1.5 text-xs font-bold hover:border-border-interactive" aria-pressed="false">1 hráč</button>
+      <button data-mode="2" type="button" class="rounded-full border border-border bg-muted/30 px-3.5 py-1.5 text-xs font-bold hover:border-border-interactive" aria-pressed="false">2 hráči</button>
+    </div>
+
+    <div data-players-setup class="bento-card p-4 mb-3 hidden">
+      <p class="text-xs uppercase tracking-widest text-muted-foreground font-semibold mb-3 text-center">Jména hráčů</p>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 max-w-md mx-auto">
+        <input data-name-1 type="text" maxlength="16" placeholder="Hráč 1" class="rounded-xl border border-border bg-muted/30 px-3 py-2 text-sm font-medium focus:outline-none focus:border-primary" />
+        <input data-name-2 type="text" maxlength="16" placeholder="Hráč 2" class="rounded-xl border border-border bg-muted/30 px-3 py-2 text-sm font-medium focus:outline-none focus:border-primary" />
+      </div>
+    </div>
+
+    <div data-versus class="bento-card p-3 mb-3 hidden">
+      <div class="grid grid-cols-2 gap-3">
+        <div data-side-1 class="rounded-xl border-2 border-transparent bg-muted/30 p-3 text-center transition-all">
+          <p class="text-[10px] uppercase tracking-widest text-muted-foreground font-semibold" data-versus-name-1>Hráč 1</p>
+          <p class="text-2xl font-black tabular-nums" data-versus-score-1>0</p>
+          <p class="text-[10px] text-muted-foreground" data-versus-status-1>—</p>
+        </div>
+        <div data-side-2 class="rounded-xl border-2 border-transparent bg-muted/30 p-3 text-center transition-all">
+          <p class="text-[10px] uppercase tracking-widest text-muted-foreground font-semibold" data-versus-name-2>Hráč 2</p>
+          <p class="text-2xl font-black tabular-nums" data-versus-score-2>0</p>
+          <p class="text-[10px] text-muted-foreground" data-versus-status-2>—</p>
+        </div>
+      </div>
+    </div>
 
     <div class="bento-card p-3 md:p-4" id="pexeso-root" data-cards={data}>
       <div class="mb-3 flex flex-wrap items-center justify-between gap-3 text-xs text-muted-foreground">
@@ -49,7 +78,7 @@ const data = JSON.stringify(cards);
           <span>Páry: <strong data-pairs class="text-foreground font-bold">0 / 8</strong></span>
         </div>
         <div class="flex items-center gap-3">
-          <span>Čas: <strong data-time class="text-foreground font-bold">0:00</strong></span>
+          <span data-time-wrap>Čas: <strong data-time class="text-foreground font-bold">0:00</strong></span>
           <button data-music type="button" class="rounded-full border border-border px-3 py-1.5 text-[11px] font-medium hover:border-border-interactive" aria-pressed="false" title="Relaxační hudba">🔇 Hudba</button>
           <button data-reset type="button" class="rounded-full border border-border px-3 py-1.5 text-[11px] font-medium hover:border-border-interactive">Začít znovu</button>
         </div>
@@ -61,15 +90,16 @@ const data = JSON.stringify(cards);
       id="pexeso-finish"
       class="bento-card bento-surface-aurora p-6 text-center text-white hidden mt-6"
     >
-      <p class="text-xs uppercase tracking-widest text-accent font-semibold mb-2">Gratulujeme!</p>
-      <h2 class="text-2xl font-black mb-1">Všechny páry nalezeny</h2>
-      <p class="text-sm text-white/85 mb-4">
+      <p class="text-xs uppercase tracking-widest text-accent font-semibold mb-2" data-finish-eyebrow>Gratulujeme!</p>
+      <h2 class="text-2xl font-black mb-1" data-finish-title>Všechny páry nalezeny</h2>
+      <p class="text-sm text-white/85 mb-4" data-finish-detail>
         Dokončeno za <strong data-final-time>0:00</strong> a <strong data-final-moves>0</strong> tahů.
       </p>
       <button data-finish-reset type="button" class="btn-primary">Hrát znovu</button>
     </div>
 
-    <HallOfFame gameId="pexeso" valueLabel="Čas" valueFormat="time" sort="asc" />
+    <HallOfFame gameId="pexeso" title="Síň slávy — 1 hráč" valueLabel="Čas" valueFormat="time" sort="asc" />
+    <HallOfFame gameId="pexeso-2p" title="Síň slávy — 2 hráči" valueLabel="Páry" valueFormat="number" sort="desc" />
   </div>
 
   <HofPrompt />
@@ -82,6 +112,9 @@ const data = JSON.stringify(cards);
     url: string;
   }
 
+  const STORAGE_MODE = "pingupedia-pexeso-mode";
+  const STORAGE_NAMES = "pingupedia-pexeso-names";
+
   const root = document.getElementById("pexeso-root")!;
   const finish = document.getElementById("pexeso-finish")!;
 
@@ -90,10 +123,32 @@ const data = JSON.stringify(cards);
   const $moves = root.querySelector<HTMLElement>("[data-moves]")!;
   const $pairs = root.querySelector<HTMLElement>("[data-pairs]")!;
   const $time = root.querySelector<HTMLElement>("[data-time]")!;
+  const $timeWrap = root.querySelector<HTMLElement>("[data-time-wrap]")!;
   const $reset = root.querySelector<HTMLButtonElement>("[data-reset]")!;
+  const $finishEyebrow = finish.querySelector<HTMLElement>("[data-finish-eyebrow]")!;
+  const $finishTitle = finish.querySelector<HTMLElement>("[data-finish-title]")!;
+  const $finishDetail = finish.querySelector<HTMLElement>("[data-finish-detail]")!;
   const $finishTime = finish.querySelector<HTMLElement>("[data-final-time]")!;
   const $finishMoves = finish.querySelector<HTMLElement>("[data-final-moves]")!;
   const $finishReset = finish.querySelector<HTMLButtonElement>("[data-finish-reset]")!;
+
+  // 2P UI
+  const $modeBtns = document.querySelectorAll<HTMLButtonElement>("[data-mode]");
+  const $playersSetup = document.querySelector<HTMLElement>("[data-players-setup]")!;
+  const $name1 = document.querySelector<HTMLInputElement>("[data-name-1]")!;
+  const $name2 = document.querySelector<HTMLInputElement>("[data-name-2]")!;
+  const $versus = document.querySelector<HTMLElement>("[data-versus]")!;
+  const $side1 = document.querySelector<HTMLElement>("[data-side-1]")!;
+  const $side2 = document.querySelector<HTMLElement>("[data-side-2]")!;
+  const $vName1 = document.querySelector<HTMLElement>("[data-versus-name-1]")!;
+  const $vName2 = document.querySelector<HTMLElement>("[data-versus-name-2]")!;
+  const $vScore1 = document.querySelector<HTMLElement>("[data-versus-score-1]")!;
+  const $vScore2 = document.querySelector<HTMLElement>("[data-versus-score-2]")!;
+  const $vStatus1 = document.querySelector<HTMLElement>("[data-versus-status-1]")!;
+  const $vStatus2 = document.querySelector<HTMLElement>("[data-versus-status-2]")!;
+
+  type Mode = 1 | 2;
+  let mode: Mode = loadMode();
 
   let moves = 0;
   let pairs = 0;
@@ -101,6 +156,42 @@ const data = JSON.stringify(cards);
   let timer: number | null = null;
   let first: HTMLButtonElement | null = null;
   let lock = false;
+  // 2P state
+  let currentPlayer: 1 | 2 = 1;
+  let p1Score = 0;
+  let p2Score = 0;
+  let p1Name = "";
+  let p2Name = "";
+
+  function loadMode(): Mode {
+    try {
+      const v = localStorage.getItem(STORAGE_MODE);
+      if (v === "2") return 2;
+    } catch { /* ignore */ }
+    return 1;
+  }
+  function saveMode(m: Mode): void {
+    try { localStorage.setItem(STORAGE_MODE, String(m)); } catch { /* ignore */ }
+  }
+  function loadNames(): { n1: string; n2: string } {
+    try {
+      const raw = localStorage.getItem(STORAGE_NAMES);
+      if (raw) return JSON.parse(raw) as { n1: string; n2: string };
+    } catch { /* ignore */ }
+    return { n1: "", n2: "" };
+  }
+  function saveNames(): void {
+    try {
+      localStorage.setItem(STORAGE_NAMES, JSON.stringify({
+        n1: $name1.value,
+        n2: $name2.value,
+      }));
+    } catch { /* ignore */ }
+  }
+  function effectiveName(slot: 1 | 2): string {
+    const raw = (slot === 1 ? $name1.value : $name2.value).trim();
+    return raw || `Hráč ${slot}`;
+  }
 
   function shuffle<T>(arr: T[]): T[] {
     return arr
@@ -152,7 +243,7 @@ const data = JSON.stringify(cards);
 
   function onFlip(btn: HTMLButtonElement): void {
     if (lock || btn.classList.contains("is-flipped")) return;
-    if (moves === 0 && pairs === 0) startTimer();
+    if (moves === 0 && pairs === 0 && mode === 1) startTimer();
     flip(btn);
 
     if (!first) {
@@ -167,6 +258,11 @@ const data = JSON.stringify(cards);
       matchPair(first, btn);
       pairs++;
       $pairs.textContent = `${pairs} / ${base.length}`;
+      if (mode === 2) {
+        if (currentPlayer === 1) p1Score++;
+        else p2Score++;
+        renderVersus();
+      }
       first = null;
       lock = false;
       if (pairs === base.length) endGame();
@@ -179,30 +275,105 @@ const data = JSON.stringify(cards);
       unflipPair(a, b);
       first = null;
       lock = false;
+      if (mode === 2) {
+        currentPlayer = currentPlayer === 1 ? 2 : 1;
+        renderVersus();
+      }
     }, 900);
   }
 
+  function renderVersus(): void {
+    $vName1.textContent = p1Name;
+    $vName2.textContent = p2Name;
+    $vScore1.textContent = String(p1Score);
+    $vScore2.textContent = String(p2Score);
+    const active1 = currentPlayer === 1;
+    $side1.classList.toggle("border-primary", active1);
+    $side1.classList.toggle("bg-primary/10", active1);
+    $side2.classList.toggle("border-primary", !active1);
+    $side2.classList.toggle("bg-primary/10", !active1);
+    $vStatus1.textContent = active1 ? "na tahu" : "čeká";
+    $vStatus2.textContent = active1 ? "čeká" : "na tahu";
+  }
+
   function endGame(): void {
-    const total = stopTimer();
-    $finishTime.textContent = fmt(total);
-    $finishMoves.textContent = String(moves);
+    if (mode === 1) {
+      const total = stopTimer();
+      $finishEyebrow.textContent = "Gratulujeme!";
+      $finishTitle.textContent = "Všechny páry nalezeny";
+      $finishTime.textContent = fmt(total);
+      $finishMoves.textContent = String(moves);
+      $finishDetail.innerHTML = `Dokončeno za <strong>${fmt(total)}</strong> a <strong>${moves}</strong> tahů.`;
+      root.classList.add("hidden");
+      finish.classList.remove("hidden");
+      window.openHofPrompt?.({
+        gameId: "pexeso",
+        value: total,
+        meta: `${moves} tahů`,
+        valueLabel: "Čas",
+        valueFormat: "time",
+        sort: "asc",
+      });
+      return;
+    }
+    // mode === 2
+    let title: string;
+    let winnerName = "";
+    let winnerScore = 0;
+    if (p1Score > p2Score) {
+      title = `🥇 Vítězí ${p1Name}!`;
+      winnerName = p1Name;
+      winnerScore = p1Score;
+    } else if (p2Score > p1Score) {
+      title = `🥇 Vítězí ${p2Name}!`;
+      winnerName = p2Name;
+      winnerScore = p2Score;
+    } else {
+      title = "🤝 Remíza!";
+      winnerName = `${p1Name} & ${p2Name}`;
+      winnerScore = p1Score;
+    }
+    $finishEyebrow.textContent = "Konec hry";
+    $finishTitle.textContent = title;
+    $finishDetail.innerHTML = `${p1Name}: <strong>${p1Score}</strong> · ${p2Name}: <strong>${p2Score}</strong> · ${moves} tahů`;
     root.classList.add("hidden");
     finish.classList.remove("hidden");
     window.openHofPrompt?.({
-      gameId: "pexeso",
-      value: total,
-      meta: `${moves} tahů`,
-      valueLabel: "Čas",
-      valueFormat: "time",
-      sort: "asc",
+      gameId: "pexeso-2p",
+      value: winnerScore,
+      meta: `${winnerName} · ${p1Score}:${p2Score} · ${moves} tahů`,
+      valueLabel: "Páry vítěze",
+      valueFormat: "number",
+      sort: "desc",
     });
   }
 
-  function render(): void {
+  function applyMode(): void {
     moves = 0;
     pairs = 0;
     first = null;
     lock = false;
+    p1Score = 0;
+    p2Score = 0;
+    currentPlayer = 1;
+    p1Name = effectiveName(1);
+    p2Name = effectiveName(2);
+    $modeBtns.forEach((b) => {
+      const m = Number(b.dataset.mode) as Mode;
+      const active = m === mode;
+      b.setAttribute("aria-pressed", active ? "true" : "false");
+      b.classList.toggle("!bg-primary", active);
+      b.classList.toggle("!text-primary-foreground", active);
+      b.classList.toggle("!border-primary", active);
+    });
+    $playersSetup.classList.toggle("hidden", mode !== 2);
+    $versus.classList.toggle("hidden", mode !== 2);
+    $timeWrap.classList.toggle("hidden", mode === 2);
+    if (mode === 2) renderVersus();
+  }
+
+  function render(): void {
+    applyMode();
     stopTimer();
     $time.textContent = "0:00";
     $moves.textContent = "0";
@@ -237,6 +408,23 @@ const data = JSON.stringify(cards);
 
   $reset.addEventListener("click", render);
   $finishReset.addEventListener("click", render);
+
+  // Mode toggle wiring
+  const savedNames = loadNames();
+  $name1.value = savedNames.n1;
+  $name2.value = savedNames.n2;
+  $name1.addEventListener("change", saveNames);
+  $name2.addEventListener("change", saveNames);
+  $modeBtns.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const m = Number(btn.dataset.mode) as Mode;
+      if (m === mode) return;
+      mode = m;
+      saveMode(m);
+      render();
+    });
+  });
+
   render();
 
   // Relaxační hudba — toggle.
