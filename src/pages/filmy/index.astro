@@ -140,15 +140,6 @@ const metadata = {
                     </div>
                     <p class="text-sm text-foreground/85 leading-relaxed mb-4 flex-1">{item.description}</p>
                     <div class="flex flex-wrap gap-2 mt-auto items-center">
-                      {item.speciesSlug && (
-                        <a
-                          href={`/druhy/${item.speciesSlug}/`}
-                          data-astro-prefetch
-                          class="inline-flex items-center gap-1.5 rounded-full bg-primary/15 text-primary px-3.5 py-1.5 text-xs font-semibold hover:bg-primary/25 transition-colors"
-                        >
-                          🐧 detail druhu
-                        </a>
-                      )}
                       {item.links.map((link) => {
                         const isFull = link.type === "youtube-full" || link.type === "archive";
                         const isFreeStream = isFull || link.type === "ivysilani" || link.type === "decko";
