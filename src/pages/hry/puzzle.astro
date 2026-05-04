@@ -53,6 +53,7 @@ const manifestJson = JSON.stringify(manifest);
       <span><strong data-hud-placed class="text-foreground">0</strong> / <strong data-hud-total>—</strong></span>
       <button data-btn-peek type="button" class="rounded-full border border-border px-3 py-1.5 text-[11px] font-medium hover:border-border-interactive">👁 Náhled</button>
       <button data-btn-scatter type="button" class="rounded-full border border-border px-3 py-1.5 text-[11px] font-medium hover:border-border-interactive">🔀 Rozstrkat</button>
+      <button data-btn-music type="button" class="rounded-full border border-border px-3 py-1.5 text-[11px] font-medium hover:border-border-interactive" aria-pressed="false" title="Relaxační hudba">🔇 Hudba</button>
       <button data-btn-new type="button" class="rounded-full bg-primary text-primary-foreground px-3 py-1.5 text-[11px] font-bold">🎲 Nová hra</button>
     </div>
   </div>
@@ -166,6 +167,26 @@ const manifestJson = JSON.stringify(manifest);
     btnPeek.addEventListener("click", () => game?.peek(1500));
     btnScatter.addEventListener("click", () => game?.reshuffleUnplaced());
     btnNew.addEventListener("click", () => { void start(); });
+
+    const btnMusic = document.querySelector<HTMLButtonElement>("[data-btn-music]");
+    if (btnMusic) {
+      const { RelaxingMusic } = await import("../../lib/games/relaxing-music");
+      const music = new RelaxingMusic();
+      btnMusic.addEventListener("click", () => {
+        if (music.isPlaying()) {
+          music.stop();
+          btnMusic.textContent = "🔇 Hudba";
+          btnMusic.setAttribute("aria-pressed", "false");
+        } else {
+          const ok = music.start();
+          if (ok) {
+            btnMusic.textContent = "🔊 Hudba";
+            btnMusic.setAttribute("aria-pressed", "true");
+          }
+        }
+      });
+      window.addEventListener("beforeunload", () => music.destroy());
+    }
     doneAgain.addEventListener("click", () => { void start(); });
     selDifficulty.addEventListener("change", () => {
       const v = selDifficulty.value as Difficulty;

@@ -50,6 +50,7 @@ const data = JSON.stringify(cards);
         </div>
         <div class="flex items-center gap-3">
           <span>Čas: <strong data-time class="text-foreground font-bold">0:00</strong></span>
+          <button data-music type="button" class="rounded-full border border-border px-3 py-1.5 text-[11px] font-medium hover:border-border-interactive" aria-pressed="false" title="Relaxační hudba">🔇 Hudba</button>
           <button data-reset type="button" class="rounded-full border border-border px-3 py-1.5 text-[11px] font-medium hover:border-border-interactive">Začít znovu</button>
         </div>
       </div>
@@ -237,6 +238,26 @@ const data = JSON.stringify(cards);
   $reset.addEventListener("click", render);
   $finishReset.addEventListener("click", render);
   render();
+
+  // Relaxační hudba — toggle.
+  import("../../lib/games/relaxing-music").then(({ RelaxingMusic }) => {
+    const music = new RelaxingMusic();
+    const btn = document.querySelector<HTMLButtonElement>("[data-music]");
+    btn?.addEventListener("click", () => {
+      if (music.isPlaying()) {
+        music.stop();
+        btn.textContent = "🔇 Hudba";
+        btn.setAttribute("aria-pressed", "false");
+      } else {
+        const ok = music.start();
+        if (ok) {
+          btn.textContent = "🔊 Hudba";
+          btn.setAttribute("aria-pressed", "true");
+        }
+      }
+    });
+    window.addEventListener("beforeunload", () => music.destroy());
+  });
 </script>
 
 <style is:global>
