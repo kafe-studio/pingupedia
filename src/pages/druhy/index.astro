@@ -45,6 +45,7 @@ const genusCount = species.reduce<Record<string, number>>((acc, s) => {
 const navSections = species.map((entry) => ({
   id: `species-${entry.id}`,
   title: entry.data.nameCs,
+  href: `/druhy/${entry.id}/`,
 }));
 ---
 

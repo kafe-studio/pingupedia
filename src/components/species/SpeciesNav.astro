@@ -1,6 +1,6 @@
 ---
 interface Props {
-  sections: { id: string; title: string }[];
+  sections: { id: string; title: string; href?: string }[];
   backHref?: string;
   backLabel?: string;
   panelLabel?: string;
@@ -45,9 +45,10 @@ const {
         {sections.map((s, i) => (
           <li>
             <a
-              href={`#${s.id}`}
+              href={s.href ?? `#${s.id}`}
+              data-astro-prefetch={s.href ? "" : null}
               class="species-nav-link flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-muted-foreground hover:text-foreground hover:bg-foreground/5 transition-all group"
-              data-section={s.id}
+              data-section={s.href ? null : s.id}
             >
               <span class="w-6 h-6 rounded-md bg-foreground/5 group-hover:bg-primary/10 group-hover:text-primary flex items-center justify-center text-[10px] font-bold shrink-0 transition-colors species-nav-num">{String(i + 1).padStart(2, '0')}</span>
               <span class="leading-snug">{s.title}</span>
