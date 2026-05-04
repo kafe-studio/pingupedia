@@ -8,6 +8,7 @@ import type {
 } from "./types";
 import { COLS, ROWS, TILE, VIEW_H, VIEW_W, KEY_TO_MINIGAME } from "./types";
 import { ROOMS, START_ROOM_ID } from "./levels";
+import { placeChicksAndIglus } from "./levels-chicks";
 import { drawScene } from "./render";
 
 // Physics constants tuned for 320×224 logical world.
@@ -31,6 +32,9 @@ const BOMB_COOLDOWN_MS = 2500;          // mezi položením dvou bomb
 const BOMB_FLASH_MS = 350;              // doba výbuchového flashe v rendereru
 const BOMB_RADIUS = 1;                  // tile radius — 3×3 zóna
 const DOUBLE_JUMP_V = -6.0;             // druhý skok ve vzduchu (mírně slabší než JUMP_V)
+const IGLU_DELIVER_COOLDOWN_MS = 600;   // mezi po sobě jdoucími doručeními do iglu
+const CHICK_DELIVER_BONUS = 50;         // body za doručené mládě
+const CONFETTI_COUNT = 24;              // počet částic na jedno doručení
 
 export class PlatformGame {
   private ctx: CanvasRenderingContext2D;
@@ -43,6 +47,7 @@ export class PlatformGame {
   private heartSpawnTimer = HEART_SPAWN_INTERVAL_MS / 2;
   private peckCooldown = 0;
   private bombCooldown = 0;
+  private igluCooldown = 0;
   private hasDoubleJumped = false;
 
   constructor(canvas: HTMLCanvasElement, hooks: GameHooks) {
@@ -59,7 +64,6 @@ export class PlatformGame {
     ctx.scale(SCALE, SCALE);
 
     const rooms = new Map<string, Room>();
-    let totalItems = 0;
     for (const r of ROOMS) {
       // Deep-clone guardians/items so restart resets their state.
       const cloned: Room = {
@@ -70,7 +74,15 @@ export class PlatformGame {
         items: r.items.map((it) => ({ ...it })),
       };
       rooms.set(r.id, cloned);
-      totalItems += r.items.length;
+    }
+    placeChicksAndIglus(rooms);
+    let totalItems = 0;
+    let totalChicks = 0;
+    for (const r of rooms.values()) {
+      for (const it of r.items) {
+        if (it.kind === "chick") totalChicks++;
+        else if (it.kind !== "heart" && it.kind !== "key" && it.kind !== "iglu") totalItems++;
+      }
     }
 
     const start = rooms.get(START_ROOM_ID)!;
@@ -91,8 +103,10 @@ export class PlatformGame {
       paused: false,
       chicks: [],
       deliveredChicks: 0,
+      totalChicks,
       score: 0,
       bombs: [],
+      confetti: [],
     };
     this.bindKeys();
     this.showHintIfNew(start);
@@ -117,6 +131,7 @@ export class PlatformGame {
         items: r.items.map((it) => ({ ...it })),
       });
     }
+    placeChicksAndIglus(this.state.rooms);
     this.state.currentRoomId = START_ROOM_ID;
     const start = this.state.rooms.get(START_ROOM_ID)!;
     this.state.player = this.freshPlayer(start);
@@ -131,7 +146,11 @@ export class PlatformGame {
     this.state.openedDoors = new Set();
     this.state.paused = false;
     this.state.bombs = [];
+    this.state.confetti = [];
+    this.state.chicks = [];
+    this.state.deliveredChicks = 0;
     this.peckCooldown = 0;
+    this.igluCooldown = 0;
     this.bombCooldown = 0;
     this.hasDoubleJumped = false;
     this.heartSpawnTimer = HEART_SPAWN_INTERVAL_MS / 2;
@@ -226,6 +245,7 @@ export class PlatformGame {
       keys: [...this.state.keys],
       chicksFollowing: this.state.chicks.length,
       chicksDelivered: this.state.deliveredChicks,
+      totalChicks: this.state.totalChicks,
       score: this.state.score,
     });
   }
@@ -314,10 +334,12 @@ export class PlatformGame {
     if (!this.state.completed && !this.state.gameover && !this.state.paused) {
       this.peckCooldown = Math.max(0, this.peckCooldown - dt);
       this.bombCooldown = Math.max(0, this.bombCooldown - dt);
+      this.igluCooldown = Math.max(0, this.igluCooldown - dt);
       this.updatePlayer(dt);
       this.updateChicks();
       this.updateGuardians(dt);
       this.updateBombs(dt);
+      this.updateConfetti(dt);
       this.checkCollectibles();
       this.checkDoors();
       this.checkRoomExit();
@@ -681,6 +703,14 @@ export class PlatformGame {
         this.hooks.onSfx("peep");
         continue;
       }
+      // Iglu = cíl doručení; nikdy se nesebere, jen aktivuje doručení jednoho mláděte.
+      if (it.kind === "iglu") {
+        if (this.igluCooldown <= 0 && this.state.chicks.length > 0) {
+          this.deliverOneChick(it.x * TILE + TILE / 2, it.y * TILE + TILE / 2);
+        }
+        remaining.push(it);
+        continue;
+      }
       this.state.collected.add(it.id);
       this.state.score += it.kind === "fish" ? 5 : it.kind === "egg" ? 10 : 25;
       if (it.kind === "fish") this.hooks.onSfx("mlask");
@@ -688,16 +718,48 @@ export class PlatformGame {
       else this.hooks.onSfx("ding"); // medal / flag / crystal
     }
     room.items = remaining;
+  }
 
-    // Iglu drop-off: pokud hráč vstoupil do místnosti označené jako iglu a má chicks,
-    // doruč je všechny + bonus body (50 per chick).
-    if (room.id === "iglu" && this.state.chicks.length > 0) {
-      const delivered = this.state.chicks.length;
-      this.state.deliveredChicks += delivered;
-      this.state.score += delivered * 50;
-      this.state.chicks = [];
-      this.hooks.onSfx("fanfare");
+  /** Doručí jedno mládě (FIFO) na pozici iglu, spustí konfety + fanfáru. */
+  private deliverOneChick(centerX: number, centerY: number): void {
+    this.state.chicks.shift();
+    this.state.deliveredChicks++;
+    this.state.score += CHICK_DELIVER_BONUS;
+    this.igluCooldown = IGLU_DELIVER_COOLDOWN_MS;
+    this.spawnConfetti(centerX, centerY);
+    this.hooks.onSfx("fanfare");
+  }
+
+  /** Vyplive částice nad iglu — jasné barvy, gravitace, krátká životnost. */
+  private spawnConfetti(cx: number, cy: number): void {
+    const colors = ["#fbbf24", "#ef4444", "#22c55e", "#3b82f6", "#a855f7", "#ec4899", "#fef3c7"];
+    for (let i = 0; i < CONFETTI_COUNT; i++) {
+      this.state.confetti.push({
+        x: cx + (Math.random() - 0.5) * 6,
+        y: cy + (Math.random() - 0.5) * 4,
+        vx: (Math.random() - 0.5) * 4,
+        vy: -3 - Math.random() * 2.5,
+        color: colors[Math.floor(Math.random() * colors.length)],
+        lifeMs: 1200 + Math.random() * 600,
+        rot: Math.random() * Math.PI * 2,
+        vrot: (Math.random() - 0.5) * 0.4,
+      });
     }
+  }
+
+  /** Aktualizuje konfetí — gravitace, drag, doživotní úbytek. */
+  private updateConfetti(dt: number): void {
+    if (this.state.confetti.length === 0) return;
+    const step = dt / 16;
+    for (const c of this.state.confetti) {
+      c.x += c.vx * step;
+      c.y += c.vy * step;
+      c.vy += 0.18 * step;
+      c.vx *= 0.99;
+      c.rot += c.vrot * step;
+      c.lifeMs -= dt;
+    }
+    this.state.confetti = this.state.confetti.filter((c) => c.lifeMs > 0);
   }
 
   /** Pokud hráč stojí těsně vedle zamčených dveří a má klíč, spustí mini-hru. */
@@ -826,8 +888,12 @@ export class PlatformGame {
     this.hooks.onSfx("zbunk");
     this.showHintIfNew(nextRoom);
 
-    // Returning to iglu with everything → win.
-    if (nextRoom.id === "iglu" && this.state.collected.size >= this.state.totalItems) {
+    // Returning to iglu with everything → win (collected + all chicks delivered).
+    if (
+      nextRoom.id === "iglu" &&
+      this.state.collected.size >= this.state.totalItems &&
+      this.state.deliveredChicks >= this.state.totalChicks
+    ) {
       this.state.completed = true;
       this.hooks.onSfx("tada");
       this.hooks.onWin(Math.round(this.state.time / 1000));

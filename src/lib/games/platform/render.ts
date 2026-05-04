@@ -75,6 +75,22 @@ export function drawScene(ctx: CanvasRenderingContext2D, state: GameState): void
   for (const c of state.chicks) drawChick(ctx, c.x, c.y, c.facing, state.time);
   drawPlayer(ctx, state.player, state.time);
   for (const b of state.bombs) drawBomb(ctx, b, state.time);
+  for (const c of state.confetti) drawConfettiParticle(ctx, c);
+}
+
+function drawConfettiParticle(
+  ctx: CanvasRenderingContext2D,
+  c: { x: number; y: number; rot: number; color: string; lifeMs: number },
+): void {
+  const a = Math.min(1, c.lifeMs / 600);
+  ctx.save();
+  ctx.translate(c.x, c.y);
+  ctx.rotate(c.rot);
+  ctx.globalAlpha = a;
+  ctx.fillStyle = c.color;
+  ctx.fillRect(-2, -1, 4, 2);
+  ctx.restore();
+  ctx.globalAlpha = 1;
 }
 
 function drawBomb(
@@ -856,7 +872,64 @@ function drawItem(ctx: CanvasRenderingContext2D, it: Item, t: number): void {
     // Mládě jako item — pípne na místě, čeká až ho hráč sebere.
     const bob = Math.sin(t / 200) * 1.5;
     drawChick(ctx, it.x * TILE - 4, it.y * TILE + bob, 1, t);
+  } else if (it.kind === "iglu") {
+    // Mini-iglu — modrá kupole se vstupem, sídlo pro doručení mláděte.
+    drawMiniIglu(ctx, it.x * TILE, it.y * TILE, t);
   }
+}
+
+/** Malé iglu (16×16 px) — kupole z bloků sněhu s tmavým vchodem a jiskrou. */
+function drawMiniIglu(ctx: CanvasRenderingContext2D, x: number, y: number, t: number): void {
+  const cx = x + 8;
+  const cy = y + 11;
+  // Půdorysný stín pod iglu.
+  ctx.fillStyle = "rgba(15, 23, 42, 0.18)";
+  ctx.beginPath();
+  ctx.ellipse(cx, cy + 4, 8, 1.5, 0, 0, Math.PI * 2);
+  ctx.fill();
+  // Hlavní kupole.
+  ctx.fillStyle = "#dbeafe";
+  ctx.beginPath();
+  ctx.arc(cx, cy, 7, Math.PI, 0);
+  ctx.lineTo(cx + 7, cy + 4);
+  ctx.lineTo(cx - 7, cy + 4);
+  ctx.closePath();
+  ctx.fill();
+  // Bloky sněhu — vodorovné a svislé čáry.
+  ctx.strokeStyle = "rgba(96, 165, 250, 0.55)";
+  ctx.lineWidth = 0.6;
+  ctx.beginPath();
+  ctx.moveTo(cx - 7, cy - 1); ctx.lineTo(cx + 7, cy - 1);
+  ctx.moveTo(cx - 7, cy + 1.5); ctx.lineTo(cx + 7, cy + 1.5);
+  ctx.moveTo(cx - 4, cy - 4); ctx.lineTo(cx - 4, cy - 1);
+  ctx.moveTo(cx, cy - 5); ctx.lineTo(cx, cy - 1);
+  ctx.moveTo(cx + 4, cy - 4); ctx.lineTo(cx + 4, cy - 1);
+  ctx.moveTo(cx - 5, cy + 1.5); ctx.lineTo(cx - 5, cy + 4);
+  ctx.moveTo(cx - 1, cy + 1.5); ctx.lineTo(cx - 1, cy + 4);
+  ctx.moveTo(cx + 3, cy + 1.5); ctx.lineTo(cx + 3, cy + 4);
+  ctx.stroke();
+  // Tmavý vchod.
+  ctx.fillStyle = "#1e3a8a";
+  ctx.beginPath();
+  ctx.arc(cx, cy + 4, 2.6, Math.PI, 0);
+  ctx.lineTo(cx + 2.6, cy + 4);
+  ctx.lineTo(cx - 2.6, cy + 4);
+  ctx.closePath();
+  ctx.fill();
+  // Vlající vlaječka na vrcholu.
+  ctx.strokeStyle = "#475569";
+  ctx.lineWidth = 0.7;
+  ctx.beginPath();
+  ctx.moveTo(cx, cy - 7); ctx.lineTo(cx, cy - 11);
+  ctx.stroke();
+  ctx.fillStyle = "#ef4444";
+  const wave = Math.sin(t / 220) * 0.8;
+  ctx.beginPath();
+  ctx.moveTo(cx, cy - 11);
+  ctx.lineTo(cx + 3, cy - 10 + wave);
+  ctx.lineTo(cx, cy - 9);
+  ctx.closePath();
+  ctx.fill();
 }
 
 // Mládě tučňáka — menší (8×10 px) verze hráče. Šedo-bílá hlava, oranžový zobák.

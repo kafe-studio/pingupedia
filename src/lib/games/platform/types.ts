@@ -73,7 +73,7 @@ export interface Guardian {
   phase?: number;
 }
 
-export type ItemKind = "fish" | "egg" | "medal" | "flag" | "crystal" | "heart" | "key" | "chick";
+export type ItemKind = "fish" | "egg" | "medal" | "flag" | "crystal" | "heart" | "key" | "chick" | "iglu";
 
 export type SfxKind =
   | "mlask"   // sběr ryby
@@ -133,6 +133,18 @@ export interface PlayerState {
   invulnerableMs: number;
 }
 
+// Konfetí částice — krátkodobá animace nad iglu po doručení mláděte.
+export interface ConfettiParticle {
+  x: number;
+  y: number;
+  vx: number;
+  vy: number;
+  color: string;
+  lifeMs: number;
+  rot: number;
+  vrot: number;
+}
+
 // Bomba položená hráčem — odpočítává a po výbuchu rozbije pevné stěny v okolí.
 export interface Bomb {
   x: number;       // pixel center
@@ -169,8 +181,10 @@ export interface GameState {
   paused: boolean;                // true while a minigame is active
   chicks: Chick[];                // mláďata aktuálně následující hráče
   deliveredChicks: number;        // počet doručených mláďat do iglu (cumulative)
+  totalChicks: number;            // celkový počet mláďat ve hře (cíl)
   score: number;                  // body — items + bonus za chicks
   bombs: Bomb[];                  // aktivní bomby (max 1 najednou)
+  confetti: ConfettiParticle[];   // krátkodobá konfetí animace
 }
 
 export interface GameHud {
@@ -184,6 +198,7 @@ export interface GameHud {
   keys: KeyColor[];      // colors of keys currently held
   chicksFollowing: number;  // mláďata aktuálně v doprovodu
   chicksDelivered: number;  // mláďata doručená do iglu (kumulativně)
+  totalChicks: number;      // cíl — kolik mláďat je ve hře k doručení
   score: number;
 }
 
