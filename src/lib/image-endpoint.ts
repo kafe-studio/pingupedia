@@ -54,49 +54,81 @@ interface AssetsBinding {
   fetch(req: Request | URL): Promise<Response>;
 }
 
+function fallbackResponse(buffer: ArrayBuffer, sourceContentType: string | null): Response {
+  return new Response(buffer, {
+    headers: {
+      "Content-Type": sourceContentType ?? "application/octet-stream",
+      "Cache-Control": "public, max-age=3600",
+      "X-Image-Fallback": "transform-failed",
+    },
+  });
+}
+
 async function handle(request: Request, images: CfImagesBinding, assets: AssetsBinding): Promise<Response> {
+  const url = new URL(request.url);
+  const href = url.searchParams.get("href");
+  if (!href) return new Response("Bad Request", { status: 400 });
+  if (isRemotePath(href) && !isRemoteAllowed(href, imageConfig as IsRemoteAllowedConfig)) {
+    return new Response("Forbidden", { status: 403 });
+  }
+
+  let content: Response;
   try {
-    const url = new URL(request.url);
-    const href = url.searchParams.get("href");
-    if (!href) return new Response("Bad Request", { status: 400 });
-    if (isRemotePath(href) && !isRemoteAllowed(href, imageConfig as IsRemoteAllowedConfig)) {
-      return new Response("Forbidden", { status: 403 });
-    }
     const imageSrc = new URL(href, url.origin);
-    const content = isRemotePath(href)
+    content = isRemotePath(href)
       ? await fetch(imageSrc, { redirect: "manual" })
       : await assets.fetch(new Request(imageSrc));
-    if (content.status >= 300 && content.status < 400) return new Response("Not Found", { status: 404 });
-    if (!content.body) return new Response(null, { status: 404 });
+  } catch {
+    return new Response("Source fetch failed", { status: 502 });
+  }
+  if (content.status >= 300 && content.status < 400) return new Response("Not Found", { status: 404 });
+  if (!content.body || content.status >= 400) return new Response(null, { status: 404 });
 
-    const outputFormat = supportedFormats[url.searchParams.get("f") ?? ""];
-    if (!outputFormat) {
-      return new Response(`Unsupported format: ${url.searchParams.get("f")}`, { status: 400 });
-    }
+  const sourceContentType = content.headers.get("Content-Type");
+  let sourceBuffer: ArrayBuffer;
+  try {
+    sourceBuffer = await content.arrayBuffer();
+  } catch {
+    return new Response("Source read failed", { status: 502 });
+  }
 
-    const width = url.searchParams.has("w")
-      ? Number.parseInt(url.searchParams.get("w") as string)
-      : undefined;
-    const height = url.searchParams.has("h")
-      ? Number.parseInt(url.searchParams.get("h") as string)
-      : undefined;
-    // CRUX OPRAVY: pokud má request oba rozměry a chybí fit, dovysvětlíme `cover`.
-    const explicitFit = url.searchParams.get("fit");
-    const fit = explicitFit ?? (width && height ? "cover" : null);
+  const outputFormat = supportedFormats[url.searchParams.get("f") ?? ""];
+  if (!outputFormat) {
+    return new Response(`Unsupported format: ${url.searchParams.get("f")}`, { status: 400 });
+  }
 
-    const qRaw = url.searchParams.get("q");
-    const quality = qRaw ? (qualityTable[qRaw] ?? Number.parseInt(qRaw)) : undefined;
+  const width = url.searchParams.has("w")
+    ? Number.parseInt(url.searchParams.get("w") as string)
+    : undefined;
+  const height = url.searchParams.has("h")
+    ? Number.parseInt(url.searchParams.get("h") as string)
+    : undefined;
+  // Pokud má request oba rozměry a chybí fit, dovysvětlíme `cover` (CF binding bug fallback).
+  const explicitFit = url.searchParams.get("fit");
+  const fit = explicitFit ?? (width && height ? "cover" : null);
 
+  const qRaw = url.searchParams.get("q");
+  const quality = qRaw ? (qualityTable[qRaw] ?? Number.parseInt(qRaw)) : undefined;
+
+  try {
     const result = await images
-      .input(content.body)
+      .input(sourceBuffer)
       .transform({ width, height, fit })
       .output({ quality, format: outputFormat });
 
-    const response = result.response();
-    response.headers.set("Cache-Control", "public, max-age=31536000, immutable");
-    return response;
+    // Buffer the response body — pokud stream selže mid-flight, padne to do catch
+    // a vrátí fallback místo prázdného 500 (worker-kill při streamingu).
+    const transformed = result.response();
+    const transformedBuffer = await transformed.arrayBuffer();
+
+    return new Response(transformedBuffer, {
+      headers: {
+        "Content-Type": outputFormat,
+        "Cache-Control": "public, max-age=31536000, immutable",
+      },
+    });
   } catch {
-    return new Response("Internal Server Error", { status: 500 });
+    return fallbackResponse(sourceBuffer, sourceContentType);
   }
 }
 
