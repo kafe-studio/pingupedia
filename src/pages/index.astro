@@ -30,8 +30,27 @@ function heroBySlug(slug: string): ImageMetadata | undefined {
   return heroImages[`../assets/penguins/${slug}/hero.jpg`];
 }
 
+// Druh, který reprezentuje sekci Chovy v homepage banneru — záměrně jiný,
+// aby se na hlavní stránce nikdy neopakoval stejný hero photo.
+const CHOVY_BANNER_SPECIES = "skalni-jizni";
+
+// Druhy už zobrazené staticky v section cards (jeden hero photo na sekci)
+// + v Chovy banneru. Tučňák dne se vybírá z pool BEZ těchto druhů, takže
+// na homepage nejsou nikdy dva stejné obrázky najednou.
+const usedSlugs = new Set<string>([
+  CHOVY_BANNER_SPECIES,
+  ...home.sections
+    .filter((s): s is typeof s & { speciesSlug: string } =>
+      s.preview === "species-photo" && typeof s.speciesSlug === "string",
+    )
+    .map((s) => s.speciesSlug),
+]);
+
 const speciesWithHero = species.filter((s) => heroBySlug(s.id) !== undefined);
-const speciesOfDay = pickSpeciesOfDay(speciesWithHero.length ? speciesWithHero : species);
+const speciesPoolForDayPicker = speciesWithHero.filter((s) => !usedSlugs.has(s.id));
+const speciesOfDay = pickSpeciesOfDay(
+  speciesPoolForDayPicker.length ? speciesPoolForDayPicker : speciesWithHero,
+);
 const featuredImage = heroBySlug(speciesOfDay.id) ?? heroImages[Object.keys(heroImages)[0]];
 
 const featured = {
@@ -266,21 +285,18 @@ const metadata = {
         class="bento-card is-link bento-surface-ocean p-6 md:p-10 flex flex-col md:flex-row md:items-center gap-6 md:gap-10 mb-6 md:mb-8 reveal relative"
         data-astro-prefetch
       >
-        <div class="md:w-2/5 grid grid-cols-2 gap-2">
-          {["cisarsky", "patagonsky", "osli", "humboldtuv"]
-            .map((slug) => heroBySlug(slug))
-            .filter((img): img is ImageMetadata => img !== undefined)
-            .map((img) => (
-              <div class="rounded-xl overflow-hidden bg-white/5">
-                <NoCropImage
-                  src={img}
-                  alt=""
-                  ratio="1/1"
-                  sizes="(min-width: 768px) 200px, 45vw"
-                  widths={[200, 400]}
-                />
-              </div>
-            ))}
+        <div class="md:w-2/5">
+          {heroBySlug(CHOVY_BANNER_SPECIES) && (
+            <div class="rounded-xl overflow-hidden bg-white/5">
+              <NoCropImage
+                src={heroBySlug(CHOVY_BANNER_SPECIES)!}
+                alt=""
+                ratio="4/3"
+                sizes="(min-width: 768px) 400px, 90vw"
+                widths={[400, 800]}
+              />
+            </div>
+          )}
         </div>
         <div class="md:flex-1 min-w-0">
           <p class="text-xs uppercase tracking-widest text-accent font-semibold">Naživo</p>
