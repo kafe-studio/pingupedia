@@ -82,6 +82,7 @@ export const chovySchema = z.object({
         country: z.string().min(1),
         countryCode: z.string().length(2),
         url: httpsUrl,
+        speciesSlugs: z.array(z.string().regex(slugRe)).min(1),
       }),
     )
     .optional(),

@@ -1,6 +1,7 @@
 ---
 export const prerender = true;
 import type { ImageMetadata } from "astro";
+import { getCollection } from "astro:content";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import NoCropImage from "../../components/media/NoCropImage.astro";
 import Mascot from "../../components/mascot/Mascot.astro";
@@ -16,6 +17,11 @@ const heroImages = import.meta.glob("../../assets/penguins/*/hero.jpg", {
 function heroBySlug(slug: string): ImageMetadata | undefined {
   return heroImages[`../../assets/penguins/${slug}/hero.jpg`];
 }
+
+const speciesCollection = await getCollection("species");
+const shortNameBySlug = new Map(
+  speciesCollection.map((s) => [s.id, s.data.nameCs.replace(/^Tučňák\s+/i, "")]),
+);
 
 type FacilityCard = (typeof page.facilities)[number] & {
   speciesImages: { slug: string; name: string; img: ImageMetadata }[];
@@ -206,6 +212,9 @@ const metadata = {
                   <span class="min-w-0 flex-1 text-sm">
                     <span class="font-semibold text-foreground group-hover:text-primary transition-colors">{f.name}</span>
                     <span class="text-muted-foreground"> · {f.city}</span>
+                    <span class="block text-xs text-muted-foreground/70 mt-0.5">
+                      {f.speciesSlugs.map((slug) => shortNameBySlug.get(slug) ?? slug).join(", ")}
+                    </span>
                   </span>
                   <span class="text-muted-foreground/60 group-hover:text-primary transition-colors text-xs">↗</span>
                 </a>
