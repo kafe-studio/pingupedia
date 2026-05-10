@@ -50,9 +50,19 @@ function gameImageByName(name: string): ImageMetadata | undefined {
   return gameImages[`../assets/games/${name}.png`];
 }
 
+const timelineImages = import.meta.glob("../assets/timeline/*.{jpg,jpeg,png,webp}", {
+  eager: true,
+  import: "default",
+}) as Record<string, ImageMetadata>;
+function timelineImageByFile(file: string): ImageMetadata | undefined {
+  return timelineImages[`../assets/timeline/${file}`];
+}
+
 type SectionCard = (typeof home.sections)[number] & {
   mosaicImages?: ImageMetadata[];
+  speciesImg?: ImageMetadata;
   gameImg?: ImageMetadata;
+  timelineImg?: ImageMetadata;
 };
 
 const sections: SectionCard[] = home.sections.map((s) => {
@@ -62,8 +72,14 @@ const sections: SectionCard[] = home.sections.map((s) => {
       .filter((img): img is ImageMetadata => img !== undefined);
     return { ...s, mosaicImages: imgs };
   }
+  if (s.preview === "species-photo" && s.speciesSlug) {
+    return { ...s, speciesImg: heroBySlug(s.speciesSlug) };
+  }
   if (s.preview === "game-image" && s.gameImage) {
     return { ...s, gameImg: gameImageByName(s.gameImage) };
+  }
+  if (s.preview === "timeline-photo" && s.timelineFile) {
+    return { ...s, timelineImg: timelineImageByFile(s.timelineFile) };
   }
   return s;
 });
@@ -200,10 +216,27 @@ const metadata = {
                     />
                   </div>
                 )}
-                {s.preview === "icon" && (
-                  <span class="text-7xl md:text-8xl leading-none select-none" aria-hidden="true">
-                    {s.emoji}
-                  </span>
+                {s.preview === "species-photo" && s.speciesImg && (
+                  <div class="w-full h-full">
+                    <NoCropImage
+                      src={s.speciesImg}
+                      alt=""
+                      ratio="16/9"
+                      sizes="(min-width: 1024px) 360px, (min-width: 640px) 440px, 90vw"
+                      widths={[360, 720]}
+                    />
+                  </div>
+                )}
+                {s.preview === "timeline-photo" && s.timelineImg && (
+                  <div class="w-full h-full">
+                    <NoCropImage
+                      src={s.timelineImg}
+                      alt=""
+                      ratio="16/9"
+                      sizes="(min-width: 1024px) 360px, (min-width: 640px) 440px, 90vw"
+                      widths={[360, 720]}
+                    />
+                  </div>
                 )}
               </div>
               <div class="flex-1 flex flex-col">

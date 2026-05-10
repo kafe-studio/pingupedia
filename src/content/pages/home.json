@@ -34,8 +34,8 @@
       "eyebrow": "Plátno",
       "title": "Filmy a pohádky",
       "description": "Happy Feet, Madagaskar, Pororo, plastelínové Pingu. Výběr toho nejlepšího s odkazy na ČSFD a kde se dá podívat.",
-      "preview": "icon",
-      "emoji": "🎬",
+      "preview": "species-photo",
+      "speciesSlug": "cisarsky",
       "surface": "candy"
     },
     {
@@ -44,8 +44,8 @@
       "eyebrow": "Porovnej",
       "title": "Druhy vedle sebe",
       "description": "Postav až čtyři druhy proti sobě — výška, váha, hloubka ponoru, status ohrožení. Všechno přehledně v jedné tabulce.",
-      "preview": "icon",
-      "emoji": "⚖️",
+      "preview": "species-mosaic",
+      "speciesSlugs": ["cisarsky", "osli", "galapazsky", "novozelandsky"],
       "surface": "ocean"
     },
     {
@@ -54,8 +54,8 @@
       "eyebrow": "Vizuálně",
       "title": "Tučňáci v číslech",
       "description": "Velikosti, hloubky ponoru, rozložení statusu IUCN. Všech 18 druhů na jednom obrázku.",
-      "preview": "icon",
-      "emoji": "📊",
+      "preview": "species-mosaic",
+      "speciesSlugs": ["humboldtuv", "magellansky", "patagonsky", "zlatovlasy"],
       "surface": "sun"
     },
     {
@@ -64,8 +64,8 @@
       "eyebrow": "Časová osa",
       "title": "Od pravěku po dnešek",
       "description": "Od fosilních obřích tučňáků přes Amundsenovu výpravu až po sledování kolonií ze satelitu. Klíčové milníky na časové ose.",
-      "preview": "icon",
-      "emoji": "📜",
+      "preview": "timeline-photo",
+      "timelineFile": "cherry-garrard-1911.jpg",
       "surface": "ice"
     }
   ],

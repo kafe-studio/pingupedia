@@ -80,10 +80,11 @@ export const homeSchema = z.object({
         eyebrow: z.string().min(1),
         title: z.string().min(1),
         description: z.string().min(1),
-        preview: z.enum(["species-mosaic", "game-image", "icon"]),
+        preview: z.enum(["species-mosaic", "species-photo", "game-image", "timeline-photo"]),
         speciesSlugs: z.array(z.string().regex(slugRe)).optional(),
+        speciesSlug: z.string().regex(slugRe).optional(),
         gameImage: z.string().optional(),
-        emoji: z.string().optional(),
+        timelineFile: z.string().optional(),
         surface: z.enum(["aurora", "ocean", "sun", "ice", "candy"]).optional(),
       }),
     )
