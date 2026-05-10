@@ -72,12 +72,14 @@ function errorResponse(body: BodyInit | null, status: number, contentType?: stri
 }
 
 /** Fallback při selhání transformace — vrací originální asset.
- *  Krátká cache (1h) — kdyby se CF Images zotavil, refresh není kritický. */
+ *  CDN nekešuje (kvůli flapping bindingu), browser na 1h. */
 function fallbackResponse(buffer: ArrayBuffer, sourceContentType: string | null): Response {
   return new Response(buffer, {
     headers: {
       "Content-Type": sourceContentType ?? "application/octet-stream",
       "Cache-Control": "public, max-age=3600",
+      "CDN-Cache-Control": "no-store",
+      "Cloudflare-CDN-Cache-Control": "no-store",
       "X-Image-Fallback": "transform-failed",
     },
   });
@@ -141,7 +143,14 @@ async function handle(request: Request, images: CfImagesBinding, assets: AssetsB
     return new Response(transformedBuffer, {
       headers: {
         "Content-Type": outputFormat,
+        // Browser cachuje na rok (immutable hash v URL).
         "Cache-Control": "public, max-age=31536000, immutable",
+        // CF zone NEKEŠUJE — CF Images binding flapuje a edge si cachoval 500ky
+        // i přes opakované purge. Bez zone cache se to už nezopakuje.
+        // Trade-off: každý NEW user / NEW URL hit jde na worker, ale browser
+        // cache pokrývá repeat visits.
+        "CDN-Cache-Control": "no-store",
+        "Cloudflare-CDN-Cache-Control": "no-store",
       },
     });
   } catch {
