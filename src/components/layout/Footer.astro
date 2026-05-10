@@ -70,7 +70,9 @@ const socials = [
       <nav aria-label="Navigace v paticce">
         <h3 class="text-xs font-bold uppercase tracking-widest text-muted-foreground mb-4">Navigace</h3>
         <ul class="space-y-3">
-          {siteConfig.navLinks.map((link) => (
+          {siteConfig.navLinks
+            .filter((link) => link.href !== "/hledat/")
+            .map((link) => (
             <li><a href={link.href} data-astro-prefetch="false" class="text-sm text-foreground/70 hover:text-primary transition-colors">{link.text}</a></li>
           ))}
         </ul>

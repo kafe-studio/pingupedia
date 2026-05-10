@@ -4,15 +4,19 @@ const siteConfig = await getSiteConfig();
 
 const pathname = Astro.url.pathname.endsWith("/") ? Astro.url.pathname : Astro.url.pathname + "/";
 const isActive = (href: string) => href === "/" ? pathname === "/" : pathname.startsWith(href);
+
+// Vyhledávací pole nahrazuje původní /hledat/ link v navu — odfiltrujeme ho z navLinks.
+const navLinks = siteConfig.navLinks.filter((link) => link.href !== "/hledat/");
 ---
 
 <nav class="fixed top-0 z-50 w-full bg-background/70 backdrop-blur-xl border-b border-border" aria-label="Hlavni navigace">
-  <div class="mx-auto max-w-7xl flex items-center justify-between px-6 py-4 lg:px-8">
-    <a href="/" aria-current={pathname === "/" ? "page" : undefined} class="text-lg font-bold text-foreground transition-opacity hover:opacity-80">
+  <div class="mx-auto max-w-7xl flex items-center gap-4 px-6 py-3 lg:px-8">
+    <a href="/" aria-current={pathname === "/" ? "page" : undefined} class="text-lg font-bold text-foreground transition-opacity hover:opacity-80 shrink-0">
       {siteConfig.name}
     </a>
-    <div class="hidden md:flex items-center gap-8">
-      {siteConfig.navLinks.map((link) => {
+
+    <div class="hidden md:flex items-center gap-6 lg:gap-7 ml-2 mr-auto">
+      {navLinks.map((link) => {
         const active = isActive(link.href);
         return (
           <a
@@ -20,34 +24,75 @@ const isActive = (href: string) => href === "/" ? pathname === "/" : pathname.st
             data-astro-prefetch="false"
             aria-current={active ? "page" : undefined}
             class:list={[
-              "text-sm font-medium transition-colors",
+              "text-sm font-medium transition-colors whitespace-nowrap",
               active ? "text-foreground font-semibold" : "text-muted-foreground hover:text-foreground",
             ]}
           >{link.text}</a>
         );
       })}
     </div>
-    <button id="mobile-menu-button" type="button" class="p-2 rounded-lg text-foreground md:hidden" aria-controls="mobile-menu" aria-expanded="false" aria-label="Menu">
+
+    <form
+      action="/hledat/"
+      method="get"
+      role="search"
+      class="hidden md:flex items-center bg-muted/40 border border-border rounded-full px-3 py-1.5 w-48 lg:w-64 focus-within:border-primary/60 focus-within:bg-muted/60 transition-colors"
+    >
+      <svg class="h-4 w-4 text-muted-foreground shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m21 21-4.3-4.3M11 19a8 8 0 1 1 0-16 8 8 0 0 1 0 16Z" />
+      </svg>
+      <input
+        type="search"
+        name="q"
+        aria-label="Hledat"
+        placeholder="Hledat druh, fakt, kolonii…"
+        class="bg-transparent border-0 outline-none text-sm ml-2 w-full text-foreground placeholder:text-muted-foreground/70"
+        autocomplete="off"
+      />
+    </form>
+
+    <button id="mobile-menu-button" type="button" class="p-2 rounded-lg text-foreground md:hidden ml-auto" aria-controls="mobile-menu" aria-expanded="false" aria-label="Menu">
       <svg id="menu-icon-closed" class="block h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16" /></svg>
       <svg id="menu-icon-open" class="hidden h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12" /></svg>
     </button>
   </div>
+
   <div class="hidden md:hidden" id="mobile-menu">
-    <div class="glass mx-4 mb-4 p-2 rounded-xl space-y-1">
-      {siteConfig.navLinks.map((link) => {
-        const active = isActive(link.href);
-        return (
-          <a
-            href={link.href}
-            data-astro-prefetch="false"
-            aria-current={active ? "page" : undefined}
-            class:list={[
-              "block rounded-lg px-4 py-3 text-base font-medium transition-colors",
-              active ? "text-primary bg-primary/10" : "text-foreground hover:text-primary",
-            ]}
-          >{link.text}</a>
-        );
-      })}
+    <div class="glass mx-4 mb-4 p-3 rounded-xl space-y-2">
+      <form
+        action="/hledat/"
+        method="get"
+        role="search"
+        class="flex items-center bg-muted/40 border border-border rounded-full px-3 py-2 focus-within:border-primary/60"
+      >
+        <svg class="h-4 w-4 text-muted-foreground shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m21 21-4.3-4.3M11 19a8 8 0 1 1 0-16 8 8 0 0 1 0 16Z" />
+        </svg>
+        <input
+          type="search"
+          name="q"
+          aria-label="Hledat"
+          placeholder="Hledat druh, fakt, kolonii…"
+          class="bg-transparent border-0 outline-none text-sm ml-2 w-full text-foreground placeholder:text-muted-foreground/70"
+          autocomplete="off"
+        />
+      </form>
+      <div class="space-y-1">
+        {navLinks.map((link) => {
+          const active = isActive(link.href);
+          return (
+            <a
+              href={link.href}
+              data-astro-prefetch="false"
+              aria-current={active ? "page" : undefined}
+              class:list={[
+                "block rounded-lg px-4 py-3 text-base font-medium transition-colors",
+                active ? "text-primary bg-primary/10" : "text-foreground hover:text-primary",
+              ]}
+            >{link.text}</a>
+          );
+        })}
+      </div>
     </div>
   </div>
 </nav>
