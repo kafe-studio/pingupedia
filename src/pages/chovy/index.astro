@@ -37,9 +37,16 @@ const facilities: FacilityCard[] = page.facilities.map((f) => ({
     .filter((x): x is { slug: string; name: string; img: ImageMetadata } => x !== null),
 }));
 
-const totalFacilities = page.facilities.length;
-const uniqueSpecies = new Set(page.facilities.flatMap((f) => f.species.map((sp) => sp.slug))).size;
-const countries = new Set(page.facilities.map((f) => f.countryCode)).size;
+const additional = page.additional ?? [];
+const totalFacilities = page.facilities.length + additional.length;
+const uniqueSpecies = new Set([
+  ...page.facilities.flatMap((f) => f.species.map((sp) => sp.slug)),
+  ...additional.flatMap((f) => f.speciesSlugs),
+]).size;
+const countries = new Set([
+  ...page.facilities.map((f) => f.countryCode),
+  ...additional.map((f) => f.countryCode),
+]).size;
 
 const metadata = {
   title: page.meta.title,
