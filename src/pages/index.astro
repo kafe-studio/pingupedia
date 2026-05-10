@@ -21,7 +21,6 @@ const home = await getHomePage();
 const species = await getCollection("species");
 const total = species.length;
 
-// Eager glob pro hero obrázky druhů — podle slugu z JSON.
 const heroImages = import.meta.glob("../assets/penguins/*/hero.jpg", {
   eager: true,
   import: "default",
@@ -31,21 +30,50 @@ function heroBySlug(slug: string): ImageMetadata | undefined {
   return heroImages[`../assets/penguins/${slug}/hero.jpg`];
 }
 
-// Tučňák dne — rotuje každý UTC den deterministicky přes všechny druhy.
-// Pokud hero pro vybraný druh chybí, najdeme první druh, který hero má.
 const speciesWithHero = species.filter((s) => heroBySlug(s.id) !== undefined);
 const speciesOfDay = pickSpeciesOfDay(speciesWithHero.length ? speciesWithHero : species);
 const featuredImage = heroBySlug(speciesOfDay.id) ?? heroImages[Object.keys(heroImages)[0]];
 
-const speciesCards = home.speciesCards
-  .map((card) => ({ card, img: heroBySlug(card.slug) }))
-  .filter((entry): entry is { card: typeof entry.card; img: ImageMetadata } => entry.img !== undefined);
 const featured = {
   slug: speciesOfDay.id,
   name: speciesOfDay.data.nameCs,
   genus: speciesOfDay.data.genus,
   description: speciesOfDay.data.description,
   imageAlt: speciesOfDay.data.hero.alt,
+};
+
+const gameImages = import.meta.glob("../assets/games/*.png", {
+  eager: true,
+  import: "default",
+}) as Record<string, ImageMetadata>;
+function gameImageByName(name: string): ImageMetadata | undefined {
+  return gameImages[`../assets/games/${name}.png`];
+}
+
+type SectionCard = (typeof home.sections)[number] & {
+  mosaicImages?: ImageMetadata[];
+  gameImg?: ImageMetadata;
+};
+
+const sections: SectionCard[] = home.sections.map((s) => {
+  if (s.preview === "species-mosaic" && s.speciesSlugs) {
+    const imgs = s.speciesSlugs
+      .map((slug) => heroBySlug(slug))
+      .filter((img): img is ImageMetadata => img !== undefined);
+    return { ...s, mosaicImages: imgs };
+  }
+  if (s.preview === "game-image" && s.gameImage) {
+    return { ...s, gameImg: gameImageByName(s.gameImage) };
+  }
+  return s;
+});
+
+const surfaceClass: Record<string, string> = {
+  aurora: "bento-surface-aurora",
+  ocean: "bento-surface-ocean",
+  sun: "bento-surface-sun",
+  ice: "bento-surface-ice",
+  candy: "bento-surface-candy",
 };
 
 const metadata = {
@@ -56,14 +84,14 @@ const metadata = {
 ---
 
 <BaseLayout {metadata}>
-  <section class="relative px-4 sm:px-6 pt-28 pb-16">
+  <section class="px-4 sm:px-6 pt-28 pb-12 md:pb-16">
     <div class="mx-auto max-w-7xl">
-      <header class="mb-8 md:mb-12 flex flex-col-reverse sm:flex-row sm:items-end gap-6 md:gap-10">
+      <header class="mb-10 md:mb-16 flex flex-col-reverse sm:flex-row sm:items-center gap-6 md:gap-12">
         <div class="flex-1 min-w-0 max-w-3xl">
           <p class="text-sm uppercase tracking-[0.2em] text-primary/80 mb-4">
             {home.hero.eyebrow}
           </p>
-          <h1 class="text-5xl md:text-7xl font-black tracking-tight leading-[0.95] mb-4">
+          <h1 class="text-4xl md:text-6xl lg:text-7xl font-black tracking-tight leading-[0.95] mb-5">
             <Fragment set:html={home.hero.titleHtml} />
           </h1>
           <p class="text-lg md:text-xl text-muted-foreground max-w-2xl">{home.hero.subtitle}</p>
@@ -81,10 +109,10 @@ const metadata = {
         </div>
       </header>
 
-      <div class="grid grid-cols-12 auto-rows-[minmax(160px,auto)] gap-4 md:gap-5">
+      <div class="grid grid-cols-12 gap-4 md:gap-5 mb-10 md:mb-14">
         <a
           href={`/druhy/${featured.slug}/`}
-          class="bento-card is-link bento-surface-aurora col-span-12 md:col-span-8 md:row-span-2 p-6 md:p-8 flex flex-col md:flex-row md:items-stretch gap-6 min-h-[360px] reveal"
+          class="bento-card is-link bento-surface-aurora col-span-12 md:col-span-8 p-6 md:p-8 flex flex-col md:flex-row md:items-stretch gap-6 min-h-[320px] reveal relative"
           data-astro-prefetch
         >
           <div class="md:w-1/2 flex flex-col justify-between">
@@ -114,89 +142,105 @@ const metadata = {
               />
             </div>
           </div>
-          <span class="absolute top-5 right-5 inline-flex h-11 w-11 items-center justify-center rounded-full bg-white/15 text-white backdrop-blur-sm transition group-hover:bg-white">
+          <span class="absolute top-5 right-5 inline-flex h-11 w-11 items-center justify-center rounded-full bg-white/15 text-white backdrop-blur-sm">
             →
           </span>
         </a>
 
-        <div class="bento-card bento-surface-ice col-span-6 md:col-span-4 p-6 flex flex-col justify-between min-h-[200px]">
-          <div class="flex items-start justify-between gap-3">
-            <div>
-              <p class="text-xs uppercase tracking-widest text-accent/90 font-semibold">{home.stats.eyebrow}</p>
-              <p class="mt-2 text-6xl md:text-7xl font-black text-white leading-none">{total}</p>
-              <p class="mt-1 text-sm text-white/70">{home.stats.subtitle}</p>
-            </div>
-            <div class="shrink-0 anim-float">
-              <Mascot pose="detektiv" size={140} />
-            </div>
+        <div class="bento-card bento-surface-ice col-span-12 md:col-span-4 p-6 md:p-8 flex items-center justify-between gap-4 min-h-[180px] md:min-h-[320px]">
+          <div>
+            <p class="text-xs uppercase tracking-widest text-accent/90 font-semibold">{home.stats.eyebrow}</p>
+            <p class="mt-3 text-7xl md:text-8xl font-black text-white leading-none">{total}</p>
+            <p class="mt-2 text-sm text-white/70">{home.stats.subtitle}</p>
+          </div>
+          <div class="shrink-0 anim-float">
+            <Mascot pose="detektiv" size={140} />
           </div>
         </div>
-
-        <a
-          href="/druhy/"
-          class="bento-card is-link bento-surface-sun col-span-6 md:col-span-4 p-6 flex flex-col justify-between min-h-[200px] reveal"
-          data-astro-prefetch
-        >
-          <div>
-            <p class="text-xs uppercase tracking-widest font-bold opacity-80">{home.catalogCta.eyebrow}</p>
-            <h3 class="mt-2 text-3xl md:text-4xl font-black leading-tight">
-              <Fragment set:html={home.catalogCta.titleHtml} />
-            </h3>
-          </div>
-          <p class="text-sm font-medium opacity-85">{home.catalogCta.subtitle}</p>
-        </a>
-
-        {speciesCards.map(({ card, img }) => (
-          <a
-            href={`/druhy/${card.slug}/`}
-            class="bento-card is-link col-span-6 md:col-span-3 p-5 reveal overflow-hidden"
-            data-astro-prefetch
-          >
-            <div class="mb-3 aspect-[4/3] rounded-xl overflow-hidden bg-muted hover-wiggle">
-              <NoCropImage
-                src={img}
-                alt={card.alt}
-                ratio="4/3"
-                sizes="(min-width: 768px) 280px, 45vw"
-                widths={[280, 560]}
-              />
-            </div>
-            <p class="text-xs text-muted-foreground">{card.genus}</p>
-            <h3 class="text-lg font-bold mt-0.5">{card.name}</h3>
-          </a>
-        ))}
-
-        <div class="bento-card bento-surface-ocean col-span-12 md:col-span-6 p-6 md:p-8 flex flex-col justify-between min-h-[220px] reveal">
-          <div>
-            <p class="text-xs uppercase tracking-widest text-accent font-semibold">{home.howSection.eyebrow}</p>
-            <h3 class="mt-3 text-2xl md:text-3xl font-black text-white leading-tight">
-              <Fragment set:html={home.howSection.titleHtml} />
-            </h3>
-          </div>
-          <ul class="mt-4 grid grid-cols-2 gap-3 text-sm text-white/85">
-            {home.howSection.items.map((item) => (
-              <li class="flex items-start gap-2"><span class="text-accent">✓</span> {item}</li>
-            ))}
-          </ul>
-        </div>
-
-        <a
-          href="/o-projektu/"
-          class="bento-card is-link col-span-12 md:col-span-6 p-6 md:p-8 flex items-center justify-between gap-4 min-h-[180px]"
-          data-astro-prefetch
-        >
-          <div>
-            <p class="text-xs uppercase tracking-widest text-primary font-semibold">{home.aboutCta.eyebrow}</p>
-            <h3 class="mt-2 text-2xl md:text-3xl font-black leading-tight">
-              <Fragment set:html={home.aboutCta.titleHtml} />
-            </h3>
-            <p class="mt-2 text-sm text-muted-foreground">{home.aboutCta.description}</p>
-          </div>
-          <div class="shrink-0 anim-bob">
-            <Mascot pose="srdce" size={140} />
-          </div>
-        </a>
       </div>
+
+      <div class="mb-10 md:mb-14">
+        <h2 class="text-2xl md:text-3xl font-black tracking-tight mb-6 md:mb-8">
+          Co tě tady čeká
+        </h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5">
+          {sections.map((s) => (
+            <a
+              href={s.href}
+              data-astro-prefetch
+              class:list={[
+                "bento-card is-link p-6 flex flex-col gap-5 reveal",
+                s.surface ? surfaceClass[s.surface] : "",
+              ]}
+            >
+              <div class="aspect-[16/9] rounded-xl overflow-hidden flex items-center justify-center bg-muted/40">
+                {s.preview === "species-mosaic" && s.mosaicImages && s.mosaicImages.length === 4 && (
+                  <div class="grid grid-cols-2 gap-1.5 w-full h-full p-1.5">
+                    {s.mosaicImages.map((img) => (
+                      <div class="rounded-lg overflow-hidden bg-muted">
+                        <NoCropImage
+                          src={img}
+                          alt=""
+                          ratio="1/1"
+                          sizes="(min-width: 1024px) 160px, (min-width: 640px) 220px, 45vw"
+                          widths={[160, 320]}
+                        />
+                      </div>
+                    ))}
+                  </div>
+                )}
+                {s.preview === "game-image" && s.gameImg && (
+                  <div class="w-full h-full">
+                    <NoCropImage
+                      src={s.gameImg}
+                      alt=""
+                      ratio="16/9"
+                      sizes="(min-width: 1024px) 360px, (min-width: 640px) 440px, 90vw"
+                      widths={[360, 720]}
+                    />
+                  </div>
+                )}
+                {s.preview === "icon" && (
+                  <span class="text-7xl md:text-8xl leading-none select-none" aria-hidden="true">
+                    {s.emoji}
+                  </span>
+                )}
+              </div>
+              <div class="flex-1 flex flex-col">
+                <p class:list={[
+                  "text-xs uppercase tracking-widest font-semibold mb-1",
+                  s.surface ? "text-white/70" : "text-primary/80",
+                ]}>{s.eyebrow}</p>
+                <h3 class:list={[
+                  "text-xl md:text-2xl font-black leading-tight mb-2",
+                  s.surface ? "text-white" : "text-foreground",
+                ]}>{s.title}</h3>
+                <p class:list={[
+                  "text-sm leading-relaxed",
+                  s.surface ? "text-white/80" : "text-muted-foreground",
+                ]}>{s.description}</p>
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
+
+      <a
+        href="/o-projektu/"
+        class="bento-card is-link p-6 md:p-8 flex items-center justify-between gap-6 min-h-[160px]"
+        data-astro-prefetch
+      >
+        <div class="min-w-0">
+          <p class="text-xs uppercase tracking-widest text-primary font-semibold">{home.aboutCta.eyebrow}</p>
+          <h3 class="mt-2 text-2xl md:text-3xl font-black leading-tight">
+            <Fragment set:html={home.aboutCta.titleHtml} />
+          </h3>
+          <p class="mt-2 text-sm text-muted-foreground max-w-xl">{home.aboutCta.description}</p>
+        </div>
+        <div class="shrink-0 anim-bob">
+          <Mascot pose="srdce" size={140} />
+        </div>
+      </a>
     </div>
   </section>
 </BaseLayout>

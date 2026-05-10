@@ -1,52 +1,77 @@
 {
   "hero": {
     "eyebrow": "Jáchymova česká encyklopedie tučňáků",
-    "titleHtml": "Poznáš všech<br />\n<span class=\"text-accent\">18 druhů</span> tučňáků?",
-    "subtitle": "pro děti i dospělé."
-  },
-  "featured": {
-    "badge": "Tučňák týdne",
-    "slug": "cisarsky",
-    "titleHtml": "Tučňák<br />císařský",
-    "description": "Největší a nejpozoruhodnější. Hnízdí v antarktické zimě na mořském ledě a samec dva měsíce inkubuje vejce na nohou.",
-    "imageAlt": "Tučňák císařský s mládětem na Snow Hill Islandu"
+    "titleHtml": "Encyklopedie <span class=\"text-accent\">tučňáků</span><br />pro děti a rodiče",
+    "subtitle": "Všech 18 druhů, fakta z ověřených zdrojů, hry, filmy i historie. Populárně-naučně, ale věcně."
   },
   "stats": {
     "eyebrow": "Druhů celkem",
     "subtitle": "kompletní taxonomie"
   },
-  "catalogCta": {
-    "eyebrow": "Katalog",
-    "titleHtml": "Všechny<br />druhy →",
-    "subtitle": "Hero fotky · fakta · zdroje · galerie"
-  },
-  "speciesCards": [
+  "sections": [
     {
-      "slug": "krouzkovy",
-      "genus": "Rod Pygoscelis",
-      "name": "Tučňák kroužkový",
-      "alt": "Tučňák kroužkový"
+      "slug": "druhy",
+      "href": "/druhy/",
+      "eyebrow": "Katalog",
+      "title": "Všech 18 druhů",
+      "description": "Profil každého tučňáka — od největšího císařského po nejmenšího malého modrého. Hero fotka, fakta z IUCN, mapa rozšíření, galerie, zdroje.",
+      "preview": "species-mosaic",
+      "speciesSlugs": ["cisarsky", "skalni-jizni", "krouzkovy", "osli"]
     },
     {
-      "slug": "skalni-jizni",
-      "genus": "Rod Eudyptes",
-      "name": "Rockhopper",
-      "alt": "Tučňák skalní jižní"
+      "slug": "hry",
+      "href": "/hry/",
+      "eyebrow": "Herna",
+      "title": "Pět her v prohlížeči",
+      "description": "Kvíz, pexeso, platformovka, ledová obrana, puzzle. Žádné stahování, žádné reklamy. Vlastní síň slávy pro každou hru.",
+      "preview": "game-image",
+      "gameImage": "kviz",
+      "surface": "aurora"
+    },
+    {
+      "slug": "filmy",
+      "href": "/filmy/",
+      "eyebrow": "Plátno",
+      "title": "Filmy a pohádky",
+      "description": "Happy Feet, Madagaskar, Pororo, plastelínové Pingu. Výběr toho nejlepšího s odkazy na ČSFD a kde se dá podívat.",
+      "preview": "icon",
+      "emoji": "🎬",
+      "surface": "candy"
+    },
+    {
+      "slug": "srovnani",
+      "href": "/srovnani/",
+      "eyebrow": "Porovnej",
+      "title": "Druhy vedle sebe",
+      "description": "Postav až čtyři druhy proti sobě — výška, váha, hloubka ponoru, status ohrožení. Všechno přehledně v jedné tabulce.",
+      "preview": "icon",
+      "emoji": "⚖️",
+      "surface": "ocean"
+    },
+    {
+      "slug": "infografiky",
+      "href": "/infografiky/",
+      "eyebrow": "Vizuálně",
+      "title": "Tučňáci v číslech",
+      "description": "Velikosti, hloubky ponoru, rozložení statusu IUCN. Všech 18 druhů na jednom obrázku.",
+      "preview": "icon",
+      "emoji": "📊",
+      "surface": "sun"
+    },
+    {
+      "slug": "historie",
+      "href": "/historie/",
+      "eyebrow": "Časová osa",
+      "title": "Od pravěku po dnešek",
+      "description": "Od fosilních obřích tučňáků přes Amundsenovu výpravu až po sledování kolonií ze satelitu. Klíčové milníky na časové ose.",
+      "preview": "icon",
+      "emoji": "📜",
+      "surface": "ice"
     }
   ],
-  "howSection": {
-    "eyebrow": "Jak to děláme",
-    "titleHtml": "Žádné výmysly.<br />Jen ověřená fakta.",
-    "items": [
-      "Wikipedia CS + EN",
-      "IUCN Red List",
-      "BirdLife",
-      "Fotky s licencí"
-    ]
-  },
   "aboutCta": {
     "eyebrow": "O projektu",
     "titleHtml": "Proč<br />pingupedia?",
-    "description": "Populárně-naučně, ale věcně. Pro zvědavé malé i velké."
+    "description": "Populárně-naučně, ale věcně. Každý fakt má zdroj. Pro zvědavé malé i velké."
   }
 }

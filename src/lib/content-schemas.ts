@@ -68,37 +68,26 @@ export const homeSchema = z.object({
     titleHtml: z.string().min(1),
     subtitle: z.string().min(1),
   }),
-  featured: z.object({
-    badge: z.string().min(1),
-    slug: z.string().regex(slugRe),
-    titleHtml: z.string().min(1),
-    description: z.string().min(1),
-    imageAlt: z.string().min(1),
-  }),
   stats: z.object({
     eyebrow: z.string().min(1),
     subtitle: z.string().min(1),
   }),
-  catalogCta: z.object({
-    eyebrow: z.string().min(1),
-    titleHtml: z.string().min(1),
-    subtitle: z.string().min(1),
-  }),
-  speciesCards: z
+  sections: z
     .array(
       z.object({
-        slug: z.string().regex(slugRe),
-        genus: z.string().min(1),
-        name: z.string().min(1),
-        alt: z.string().min(1),
+        slug: z.string().min(1),
+        href: z.string().min(1),
+        eyebrow: z.string().min(1),
+        title: z.string().min(1),
+        description: z.string().min(1),
+        preview: z.enum(["species-mosaic", "game-image", "icon"]),
+        speciesSlugs: z.array(z.string().regex(slugRe)).optional(),
+        gameImage: z.string().optional(),
+        emoji: z.string().optional(),
+        surface: z.enum(["aurora", "ocean", "sun", "ice", "candy"]).optional(),
       }),
     )
-    .min(1),
-  howSection: z.object({
-    eyebrow: z.string().min(1),
-    titleHtml: z.string().min(1),
-    items: z.array(z.string().min(1)).min(1),
-  }),
+    .min(3),
   aboutCta: z.object({
     eyebrow: z.string().min(1),
     titleHtml: z.string().min(1),
