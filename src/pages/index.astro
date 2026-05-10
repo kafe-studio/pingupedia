@@ -1,5 +1,10 @@
 ---
-export const prerender = false;
+// Prerender:true — homepage je staticky vygenerovaná při buildu, takže obrázky
+// jsou /_astro/<hash>.webp soubory (servírované přes ASSETS binding), ne přes
+// runtime /_image/ endpoint, který opakovaně způsoboval cache-poisoning 500ek
+// z flapping CF Images bindingu. „Tučňák dne" se vybírá při buildu (Date.now()
+// při wrangler deploy) — každý deploy → nový druh dne.
+export const prerender = true;
 import type { ImageMetadata } from "astro";
 import { Image } from "astro:assets";
 import BaseLayout from "../layouts/BaseLayout.astro";
@@ -10,11 +15,6 @@ import { getSiteConfig } from "../lib/site";
 import { getHomePage } from "../lib/pages";
 import { pickSpeciesOfDay } from "../lib/species-of-day";
 import { getCollection } from "astro:content";
-
-Astro.response.headers.set(
-  "Cache-Control",
-  "public, max-age=0, s-maxage=3600, stale-while-revalidate=86400",
-);
 
 const siteConfig = await getSiteConfig();
 const home = await getHomePage();
