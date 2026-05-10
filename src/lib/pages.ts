@@ -47,3 +47,11 @@ export async function getTimelinePage() {
 }
 
 export type TimelinePage = Awaited<ReturnType<typeof getTimelinePage>>;
+
+export async function getChovyPage() {
+  const entry = await getEntry("chovy", "chovy");
+  if (!entry) throw new Error("src/content/pages/chovy.json not found");
+  return entry.data;
+}
+
+export type ChovyPage = Awaited<ReturnType<typeof getChovyPage>>;

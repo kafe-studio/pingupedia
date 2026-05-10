@@ -22,6 +22,7 @@
     { "text": "Historie", "href": "/historie/" },
     { "text": "Hry", "href": "/hry/" },
     { "text": "Filmy", "href": "/filmy/" },
+    { "text": "Chovy", "href": "/chovy/" },
     { "text": "O projektu", "href": "/o-projektu/" }
   ]
 }

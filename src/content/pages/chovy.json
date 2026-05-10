@@ -1,0 +1,148 @@
+{
+  "meta": {
+    "title": "Chovy tučňáků v Evropě — kde naživo?",
+    "description": "Kompletní průvodce evropskými zoologickými zahradami a oceánariími, ve kterých chovají tučňáky. Které druhy kde uvidíš a něco o jednotlivých kolekcích."
+  },
+  "hero": {
+    "eyebrow": "Naživo",
+    "titleHtml": "Kde potkat <span class=\"text-accent\">tučňáky</span><br />v Evropě?",
+    "subtitle": "Tučňáky chová v Evropě řada zoologických zahrad a oceánarií. Některé mají jeden druh, jiné celou kolekci včetně císařských. Tady je přehled, kam za nimi vyrazit."
+  },
+  "facilities": [
+    {
+      "slug": "zoo-praha",
+      "name": "ZOO Praha",
+      "city": "Praha",
+      "country": "Česko",
+      "countryCode": "CZ",
+      "url": "https://www.zoopraha.cz/",
+      "species": [
+        { "slug": "humboldtuv", "name": "Tučňák Humboldtův" }
+      ],
+      "description": "Jedna ze tří českých zoologických zahrad s chovem tučňáků. Skupina Humboldtových tučňáků v expozici Vodní svět a opičí ostrovy je dlouhodobě stabilní a každoročně se zde rozmnožuje.",
+      "highlight": "Nejstarší český chov"
+    },
+    {
+      "slug": "zoo-plzen",
+      "name": "ZOO Plzeň",
+      "city": "Plzeň",
+      "country": "Česko",
+      "countryCode": "CZ",
+      "url": "https://www.zooplzen.cz/",
+      "species": [
+        { "slug": "humboldtuv", "name": "Tučňák Humboldtův" }
+      ],
+      "description": "Plzeňská zoo má kolonii Humboldtových tučňáků v expozici, která jim dává možnost plavání v hlubokém bazénu i hnízdění v umělých norách. Pravidelná komentovaná krmení."
+    },
+    {
+      "slug": "zoo-ostrava",
+      "name": "ZOO Ostrava",
+      "city": "Ostrava",
+      "country": "Česko",
+      "countryCode": "CZ",
+      "url": "https://www.zoo-ostrava.cz/",
+      "species": [
+        { "slug": "humboldtuv", "name": "Tučňák Humboldtův" }
+      ],
+      "description": "Třetí český chov Humboldtových tučňáků. Zoo se zapojuje do evropského záchovného programu (EEP) pro tento ohrožený druh."
+    },
+    {
+      "slug": "zoo-bratislava",
+      "name": "ZOO Bratislava",
+      "city": "Bratislava",
+      "country": "Slovensko",
+      "countryCode": "SK",
+      "url": "https://www.zoobratislava.sk/",
+      "species": [
+        { "slug": "humboldtuv", "name": "Tučňák Humboldtův" }
+      ],
+      "description": "Slovenský chov Humboldtových tučňáků s venkovní expozicí, kde jsou tučňáci k vidění po celý rok."
+    },
+    {
+      "slug": "loro-parque",
+      "name": "Loro Parque",
+      "city": "Puerto de la Cruz, Tenerife",
+      "country": "Španělsko",
+      "countryCode": "ES",
+      "url": "https://www.loroparque.com/",
+      "species": [
+        { "slug": "cisarsky", "name": "Tučňák císařský" },
+        { "slug": "osli", "name": "Tučňák oslí" },
+        { "slug": "krouzkovy", "name": "Tučňák kroužkový" },
+        { "slug": "patagonsky", "name": "Tučňák patagonský" }
+      ],
+      "description": "Planet Penguin — největší krytá expozice tučňáků v Evropě. Simuluje antarktické podmínky včetně každodenního sněžení a 12 tun ledu denně. Jediný evropský chov, který drží tučňáky císařské.",
+      "highlight": "Jediný v Evropě s císařskými",
+      "established": "1999"
+    },
+    {
+      "slug": "edinburgh-zoo",
+      "name": "Edinburgh Zoo",
+      "city": "Edinburgh",
+      "country": "Skotsko",
+      "countryCode": "GB",
+      "url": "https://www.edinburghzoo.org.uk/",
+      "species": [
+        { "slug": "patagonsky", "name": "Tučňák patagonský" },
+        { "slug": "osli", "name": "Tučňák oslí" },
+        { "slug": "krouzkovy", "name": "Tučňák kroužkový" }
+      ],
+      "description": "Penguins Rock — největší tučňáčí bazén v Evropě. Edinburská zoo má slavný Penguin Parade, průvod tučňáků kolem návštěvníků, který běží od roku 1951. První zoo na světě, která rozmnožila tučňáka patagonského v péči člověka (1919).",
+      "highlight": "Slavný Penguin Parade od 1951"
+    },
+    {
+      "slug": "schonbrunn",
+      "name": "Tiergarten Schönbrunn",
+      "city": "Vídeň",
+      "country": "Rakousko",
+      "countryCode": "AT",
+      "url": "https://www.zoovienna.at/",
+      "species": [
+        { "slug": "osli", "name": "Tučňák oslí" },
+        { "slug": "krouzkovy", "name": "Tučňák kroužkový" },
+        { "slug": "patagonsky", "name": "Tučňák patagonský" }
+      ],
+      "description": "Polarium — moderní expozice z roku 2022 simulující polární prostředí. Kombinace venkovního výběhu a krytého bazénu s podvodním tunelem. Pravidelně se zde rozmnožují všechny tři druhy.",
+      "established": "2022"
+    },
+    {
+      "slug": "burgers-zoo",
+      "name": "Burgers' Zoo",
+      "city": "Arnhem",
+      "country": "Nizozemsko",
+      "countryCode": "NL",
+      "url": "https://www.burgerszoo.com/",
+      "species": [
+        { "slug": "osli", "name": "Tučňák oslí" },
+        { "slug": "krouzkovy", "name": "Tučňák kroužkový" }
+      ],
+      "description": "Ocean — krytá expozice s velkým tučňáčím bazénem, kterým proudí chlazená voda. Návštěvníci vidí tučňáky jak nad hladinou, tak při potápění skleněnou stěnou."
+    },
+    {
+      "slug": "berlin-zoo",
+      "name": "Zoologischer Garten Berlin",
+      "city": "Berlín",
+      "country": "Německo",
+      "countryCode": "DE",
+      "url": "https://www.zoo-berlin.de/",
+      "species": [
+        { "slug": "humboldtuv", "name": "Tučňák Humboldtův" },
+        { "slug": "patagonsky", "name": "Tučňák patagonský" }
+      ],
+      "description": "Berlínská zoo (založena 1844) má dvě oddělené expozice: venkovní pro Humboldtovy a krytou chlazenou pro patagonské tučňáky. Patří k nejstarším chovům tučňáků v Evropě."
+    },
+    {
+      "slug": "oceanografic-valencia",
+      "name": "L'Oceanogràfic",
+      "city": "Valencie",
+      "country": "Španělsko",
+      "countryCode": "ES",
+      "url": "https://www.oceanografic.org/",
+      "species": [
+        { "slug": "osli", "name": "Tučňák oslí" },
+        { "slug": "krouzkovy", "name": "Tučňák kroužkový" }
+      ],
+      "description": "Největší oceanárium v Evropě. Tučňáčí expozice v sekci Antártico s krytým bazénem a podvodním pozorovacím tunelem. Součást komplexu Ciudad de las Artes y las Ciencias."
+    }
+  ]
+}

@@ -41,6 +41,41 @@ const timelineCategoryEnum = z.enum([
   "milestone",   // jiný milník
 ]);
 
+export const chovySchema = z.object({
+  meta: z.object({
+    title: z.string().min(1),
+    description: z.string().min(1),
+  }),
+  hero: z.object({
+    eyebrow: z.string().min(1),
+    titleHtml: z.string().min(1),
+    subtitle: z.string().min(1),
+  }),
+  facilities: z
+    .array(
+      z.object({
+        slug: z.string().regex(slugRe),
+        name: z.string().min(1),
+        city: z.string().min(1),
+        country: z.string().min(1),
+        countryCode: z.string().length(2),
+        url: httpsUrl,
+        species: z
+          .array(
+            z.object({
+              slug: z.string().regex(slugRe),
+              name: z.string().min(1),
+            }),
+          )
+          .min(1),
+        description: z.string().min(1),
+        highlight: z.string().optional(),
+        established: z.string().optional(),
+      }),
+    )
+    .min(1),
+});
+
 export const siteSchema = z.object({
   name: z.string().min(1),
   description: z.string().min(1),
