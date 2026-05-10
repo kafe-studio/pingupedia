@@ -85,7 +85,6 @@ const navSections = allSpeciesSorted.map((s) => ({
   />
   <SpeciesNav sections={navSections} backHref="/druhy/" backLabel="Zpět na všechny druhy" panelLabel="Druhy" />
   <article
-    data-pagefind-body
     data-pagefind-meta={`title:${nameCs}, lat:${nameLat}, image[content]:${entry.data.hero.alt}`}
     data-pagefind-filter={`Rod:${entry.data.genus}, IUCN:${entry.data.iucnStatus}`}
   >
