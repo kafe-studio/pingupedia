@@ -74,6 +74,17 @@ export const chovySchema = z.object({
       }),
     )
     .min(1),
+  additional: z
+    .array(
+      z.object({
+        name: z.string().min(1),
+        city: z.string().min(1),
+        country: z.string().min(1),
+        countryCode: z.string().length(2),
+        url: httpsUrl,
+      }),
+    )
+    .optional(),
 });
 
 export const siteSchema = z.object({

@@ -180,8 +180,43 @@ const metadata = {
         ))}
       </div>
 
+      {page.additional && page.additional.length > 0 && (
+        <div class="mt-16 md:mt-20 reveal">
+          <header class="mb-6 md:mb-8">
+            <p class="text-xs uppercase tracking-[0.2em] text-primary/80 mb-2">Další evropské chovy</p>
+            <h2 class="text-2xl md:text-3xl font-black tracking-tight">
+              {page.additional.length}+ dalších míst, kde tučňáky najdeš
+            </h2>
+            <p class="mt-2 text-sm text-muted-foreground max-w-2xl">
+              Zoologické zahrady a oceanária s chovem tučňáků (převážně Humboldtových). Klikni pro oficiální web.
+            </p>
+          </header>
+          <ul class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-4 gap-y-1.5">
+            {page.additional.map((f) => (
+              <li>
+                <a
+                  href={f.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="group flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-muted/40 transition-colors"
+                >
+                  <span class="inline-flex items-center justify-center min-w-[2rem] px-1.5 py-0.5 rounded-md bg-muted/60 text-[10px] font-bold uppercase tracking-wide text-foreground/80 shrink-0">
+                    {f.countryCode}
+                  </span>
+                  <span class="min-w-0 flex-1 text-sm">
+                    <span class="font-semibold text-foreground group-hover:text-primary transition-colors">{f.name}</span>
+                    <span class="text-muted-foreground"> · {f.city}</span>
+                  </span>
+                  <span class="text-muted-foreground/60 group-hover:text-primary transition-colors text-xs">↗</span>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+
       <p class="mt-12 text-xs text-muted-foreground text-center max-w-3xl mx-auto">
-        Přehled není vyčerpávající — soustředí se na zařízení s dlouhodobým chovem a několika druhy. Údaje o druzích vychází z oficiálních webů jednotlivých zoologických zahrad. Pokud víš o dalším evropském chovu, který by tu měl být, dej vědět.
+        Údaje o druzích vychází z oficiálních webů jednotlivých zoologických zahrad. Stavy se v čase mění — v případě nejasností pošli zpětnou vazbu.
       </p>
     </div>
   </section>

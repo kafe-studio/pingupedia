@@ -144,5 +144,56 @@
       ],
       "description": "Největší oceanárium v Evropě. Tučňáčí expozice v sekci Antártico s krytým bazénem a podvodním pozorovacím tunelem. Součást komplexu Ciudad de las Artes y las Ciencias."
     }
+  ],
+  "additional": [
+    { "name": "ZOO Liberec", "city": "Liberec", "country": "Česko", "countryCode": "CZ", "url": "https://www.zooliberec.cz/" },
+    { "name": "ZOO Olomouc", "city": "Olomouc", "country": "Česko", "countryCode": "CZ", "url": "https://www.zoo-olomouc.cz/" },
+    { "name": "ZOO Brno", "city": "Brno", "country": "Česko", "countryCode": "CZ", "url": "https://www.zoobrno.cz/" },
+
+    { "name": "Tierpark Berlin", "city": "Berlín", "country": "Německo", "countryCode": "DE", "url": "https://www.tierpark-berlin.de/" },
+    { "name": "Zoo Frankfurt", "city": "Frankfurt nad Mohanem", "country": "Německo", "countryCode": "DE", "url": "https://www.zoo-frankfurt.de/" },
+    { "name": "Tierpark Hellabrunn", "city": "Mnichov", "country": "Německo", "countryCode": "DE", "url": "https://www.hellabrunn.de/" },
+    { "name": "Zoo Hannover", "city": "Hannover", "country": "Německo", "countryCode": "DE", "url": "https://www.zoo-hannover.de/" },
+    { "name": "Tierpark Hagenbeck", "city": "Hamburk", "country": "Německo", "countryCode": "DE", "url": "https://www.hagenbeck.de/" },
+    { "name": "Kölner Zoo", "city": "Kolín nad Rýnem", "country": "Německo", "countryCode": "DE", "url": "https://www.koelnerzoo.de/" },
+    { "name": "Zoo Leipzig", "city": "Lipsko", "country": "Německo", "countryCode": "DE", "url": "https://www.zoo-leipzig.de/" },
+    { "name": "Grüner Zoo Wuppertal", "city": "Wuppertal", "country": "Německo", "countryCode": "DE", "url": "https://www.zoo-wuppertal.de/" },
+    { "name": "Tiergarten Nürnberg", "city": "Norimberk", "country": "Německo", "countryCode": "DE", "url": "https://tiergarten.nuernberg.de/" },
+
+    { "name": "ZSL London Zoo", "city": "Londýn", "country": "Spojené království", "countryCode": "GB", "url": "https://www.londonzoo.org/" },
+    { "name": "Chester Zoo", "city": "Chester", "country": "Spojené království", "countryCode": "GB", "url": "https://www.chesterzoo.org/" },
+    { "name": "Whipsnade Zoo", "city": "Bedfordshire", "country": "Spojené království", "countryCode": "GB", "url": "https://www.whipsnadezoo.org/" },
+    { "name": "Birdland Park", "city": "Bourton-on-the-Water", "country": "Spojené království", "countryCode": "GB", "url": "https://www.birdland.co.uk/" },
+
+    { "name": "Parc Zoologique de Paris", "city": "Paříž", "country": "Francie", "countryCode": "FR", "url": "https://www.parczoologiquedeparis.fr/" },
+    { "name": "Zoo de La Palmyre", "city": "Les Mathes", "country": "Francie", "countryCode": "FR", "url": "https://www.zoo-palmyre.fr/" },
+    { "name": "ZooParc de Beauval", "city": "Saint-Aignan", "country": "Francie", "countryCode": "FR", "url": "https://www.zoobeauval.com/" },
+    { "name": "Aquarium La Rochelle", "city": "La Rochelle", "country": "Francie", "countryCode": "FR", "url": "https://www.aquarium-larochelle.com/" },
+
+    { "name": "Diergaarde Blijdorp", "city": "Rotterdam", "country": "Nizozemsko", "countryCode": "NL", "url": "https://www.diergaardeblijdorp.nl/" },
+    { "name": "Artis", "city": "Amsterdam", "country": "Nizozemsko", "countryCode": "NL", "url": "https://www.artis.nl/" },
+    { "name": "Wildlands Adventure Zoo", "city": "Emmen", "country": "Nizozemsko", "countryCode": "NL", "url": "https://www.wildlands.nl/" },
+
+    { "name": "Pairi Daiza", "city": "Brugelette", "country": "Belgie", "countryCode": "BE", "url": "https://www.pairidaiza.eu/" },
+    { "name": "ZOO Antwerpen", "city": "Antverpy", "country": "Belgie", "countryCode": "BE", "url": "https://www.zooantwerpen.be/" },
+    { "name": "Planckendael", "city": "Mechelen", "country": "Belgie", "countryCode": "BE", "url": "https://www.planckendael.be/" },
+
+    { "name": "Faunia", "city": "Madrid", "country": "Španělsko", "countryCode": "ES", "url": "https://www.faunia.es/" },
+    { "name": "Zoo Aquarium de Madrid", "city": "Madrid", "country": "Španělsko", "countryCode": "ES", "url": "https://www.zoomadrid.com/" },
+    { "name": "Zoo de Barcelona", "city": "Barcelona", "country": "Španělsko", "countryCode": "ES", "url": "https://www.zoobarcelona.cat/" },
+
+    { "name": "Zoom Torino", "city": "Cumiana, Turín", "country": "Itálie", "countryCode": "IT", "url": "https://www.zoomtorino.it/" },
+    { "name": "Acquario di Genova", "city": "Janov", "country": "Itálie", "countryCode": "IT", "url": "https://www.acquariodigenova.it/" },
+
+    { "name": "Zoo Zürich", "city": "Curych", "country": "Švýcarsko", "countryCode": "CH", "url": "https://www.zoo.ch/" },
+    { "name": "Zoo Basel", "city": "Basilej", "country": "Švýcarsko", "countryCode": "CH", "url": "https://www.zoobasel.ch/" },
+
+    { "name": "Copenhagen Zoo", "city": "Kodaň", "country": "Dánsko", "countryCode": "DK", "url": "https://www.zoo.dk/" },
+    { "name": "Aalborg Zoo", "city": "Aalborg", "country": "Dánsko", "countryCode": "DK", "url": "https://www.aalborgzoo.dk/" },
+
+    { "name": "Wrocławská zoo", "city": "Vratislav", "country": "Polsko", "countryCode": "PL", "url": "https://zoo.wroclaw.pl/" },
+    { "name": "Warszawské zoo", "city": "Varšava", "country": "Polsko", "countryCode": "PL", "url": "https://zoo.waw.pl/" },
+
+    { "name": "Budapešťská zoo", "city": "Budapešť", "country": "Maďarsko", "countryCode": "HU", "url": "https://www.zoobudapest.com/" }
   ]
 }
