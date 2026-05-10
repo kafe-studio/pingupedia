@@ -7,7 +7,7 @@
     "start": "wrangler types && astro dev",
     "build": "wrangler types && astro check && astro build",
     "preview": "wrangler types && astro preview",
-    "ship": "pnpm build && pnpm pagefind:index && wrangler deploy",
+    "ship": "pnpm build && pnpm pagefind:index && wrangler deploy && node scripts/purge-cf-cache.mjs",
     "pagefind:index": "pagefind --site dist/client --output-subdir _pagefind",
     "astro": "astro",
     "lint": "eslint . --fix",

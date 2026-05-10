@@ -1,10 +1,15 @@
 // Vlastní image endpoint pro Cloudflare Workers — drop-in replacement za
 // @astrojs/cloudflare/image-transform-endpoint, který doplní výchozí `fit`
-// pokud chybí. CF Images binding vrací HTTP 500 pro transform({width,height})
-// bez fit; bug je v adapteru 13.3.0.
+// pokud chybí (CF Images binding vrací HTTP 500 pro transform({width,height})
+// bez fit).
 //
-// Logika je 1:1 s adapterem (image-binding-transform.js), jen na řádku
-// `transform({...})` přidáme fit fallback.
+// Robustness:
+//   1. ArrayBuffer buffering source i transformed body — chytí stream-mid-flight
+//      chyby do catch a vrátí fallback (originální asset) místo prázdného 500.
+//   2. Všechny error responses mají `CDN-Cache-Control: no-store` (CF zone cache
+//      je nikdy nekešuje) + `Cache-Control: no-store` (browser taky ne) — brání
+//      cache poisoningu, který se nám stal několikrát: jednou cachovaný 500 by
+//      jinak přetrvával celé hodiny / dny.
 
 import type { APIRoute } from "astro";
 import { imageConfig } from "astro:assets";
@@ -54,6 +59,20 @@ interface AssetsBinding {
   fetch(req: Request | URL): Promise<Response>;
 }
 
+/** Error response — CF zone NIKDY nekešuje (CDN-Cache-Control: no-store).
+ *  Brání tomu, aby se nám "zapekly" 500ky v edge cache jako se nám stalo. */
+function errorResponse(body: BodyInit | null, status: number, contentType?: string): Response {
+  const headers: Record<string, string> = {
+    "Cache-Control": "no-store",
+    "CDN-Cache-Control": "no-store",
+    "Cloudflare-CDN-Cache-Control": "no-store",
+  };
+  if (contentType) headers["Content-Type"] = contentType;
+  return new Response(body, { status, headers });
+}
+
+/** Fallback při selhání transformace — vrací originální asset.
+ *  Krátká cache (1h) — kdyby se CF Images zotavil, refresh není kritický. */
 function fallbackResponse(buffer: ArrayBuffer, sourceContentType: string | null): Response {
   return new Response(buffer, {
     headers: {
@@ -67,9 +86,9 @@ function fallbackResponse(buffer: ArrayBuffer, sourceContentType: string | null)
 async function handle(request: Request, images: CfImagesBinding, assets: AssetsBinding): Promise<Response> {
   const url = new URL(request.url);
   const href = url.searchParams.get("href");
-  if (!href) return new Response("Bad Request", { status: 400 });
+  if (!href) return errorResponse("Bad Request", 400, "text/plain");
   if (isRemotePath(href) && !isRemoteAllowed(href, imageConfig as IsRemoteAllowedConfig)) {
-    return new Response("Forbidden", { status: 403 });
+    return errorResponse("Forbidden", 403, "text/plain");
   }
 
   let content: Response;
@@ -79,22 +98,22 @@ async function handle(request: Request, images: CfImagesBinding, assets: AssetsB
       ? await fetch(imageSrc, { redirect: "manual" })
       : await assets.fetch(new Request(imageSrc));
   } catch {
-    return new Response("Source fetch failed", { status: 502 });
+    return errorResponse("Source fetch failed", 502, "text/plain");
   }
-  if (content.status >= 300 && content.status < 400) return new Response("Not Found", { status: 404 });
-  if (!content.body || content.status >= 400) return new Response(null, { status: 404 });
+  if (content.status >= 300 && content.status < 400) return errorResponse("Not Found", 404, "text/plain");
+  if (!content.body || content.status >= 400) return errorResponse(null, 404);
 
   const sourceContentType = content.headers.get("Content-Type");
   let sourceBuffer: ArrayBuffer;
   try {
     sourceBuffer = await content.arrayBuffer();
   } catch {
-    return new Response("Source read failed", { status: 502 });
+    return errorResponse("Source read failed", 502, "text/plain");
   }
 
   const outputFormat = supportedFormats[url.searchParams.get("f") ?? ""];
   if (!outputFormat) {
-    return new Response(`Unsupported format: ${url.searchParams.get("f")}`, { status: 400 });
+    return errorResponse(`Unsupported format: ${url.searchParams.get("f")}`, 400, "text/plain");
   }
 
   const width = url.searchParams.has("w")
@@ -116,8 +135,6 @@ async function handle(request: Request, images: CfImagesBinding, assets: AssetsB
       .transform({ width, height, fit })
       .output({ quality, format: outputFormat });
 
-    // Buffer the response body — pokud stream selže mid-flight, padne to do catch
-    // a vrátí fallback místo prázdného 500 (worker-kill při streamingu).
     const transformed = result.response();
     const transformedBuffer = await transformed.arrayBuffer();
 
@@ -137,7 +154,7 @@ export const prerender = false;
 export const GET: APIRoute = async ({ request, locals }) => {
   const env = (locals as { runtime?: { env?: { IMAGES?: CfImagesBinding; ASSETS?: AssetsBinding } } }).runtime?.env;
   if (!env?.IMAGES || !env?.ASSETS) {
-    return new Response("Image binding unavailable", { status: 503 });
+    return errorResponse("Image binding unavailable", 503, "text/plain");
   }
   return handle(request, env.IMAGES, env.ASSETS);
 };
