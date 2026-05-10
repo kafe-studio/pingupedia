@@ -15,8 +15,8 @@
       "eyebrow": "Katalog",
       "title": "Všech 18 druhů",
       "description": "Profil každého tučňáka — od největšího císařského po nejmenšího malého modrého. Hero fotka, fakta z IUCN, mapa rozšíření, galerie, zdroje.",
-      "preview": "species-mosaic",
-      "speciesSlugs": ["cisarsky", "skalni-jizni", "krouzkovy", "osli"]
+      "preview": "species-photo",
+      "speciesSlug": "patagonsky"
     },
     {
       "slug": "hry",
@@ -44,8 +44,8 @@
       "eyebrow": "Porovnej",
       "title": "Druhy vedle sebe",
       "description": "Postav až čtyři druhy proti sobě — výška, váha, hloubka ponoru, status ohrožení. Všechno přehledně v jedné tabulce.",
-      "preview": "species-mosaic",
-      "speciesSlugs": ["cisarsky", "osli", "galapazsky", "novozelandsky"],
+      "preview": "species-photo",
+      "speciesSlug": "osli",
       "surface": "ocean"
     },
     {
@@ -54,8 +54,8 @@
       "eyebrow": "Vizuálně",
       "title": "Tučňáci v číslech",
       "description": "Velikosti, hloubky ponoru, rozložení statusu IUCN. Všech 18 druhů na jednom obrázku.",
-      "preview": "species-mosaic",
-      "speciesSlugs": ["humboldtuv", "magellansky", "patagonsky", "zlatovlasy"],
+      "preview": "species-photo",
+      "speciesSlug": "humboldtuv",
       "surface": "sun"
     },
     {

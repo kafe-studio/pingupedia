@@ -1,0 +1,58 @@
+name: Daily rebuild & deploy
+
+# Denní rebuild na Cloudflare Workers — kvůli `pickSpeciesOfDay()` v homepage
+# (deterministicky podle UTC dne). Bez denního buildu by „Tučňák dne" zůstal
+# stejný do dalšího pushe. Tenhle workflow se spustí každý den brzy ráno UTC,
+# zbuildí, deploynul a purgne CF cache.
+#
+# Vyžaduje GitHub secrets:
+#   - CLOUDFLARE_API_TOKEN     (Workers Scripts:Edit na pingupedia)
+#   - CLOUDFLARE_PURGE_TOKEN   (Zone:Cache Purge na kafe.studio)
+
+on:
+  schedule:
+    # 02:30 UTC = 03:30 SEČ / 04:30 SELČ — uživatelé v ČR ráno uvidí nového tučňáka
+    - cron: "30 2 * * *"
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+
+concurrency:
+  group: deploy-pingupedia
+  cancel-in-progress: false
+
+jobs:
+  rebuild:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build (sharp pre-renderuje všechny obrázky)
+        run: pnpm build
+
+      - name: Pagefind search index
+        run: pnpm pagefind:index
+
+      - name: Deploy to Cloudflare Workers
+        run: pnpm exec wrangler deploy
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+
+      - name: Purge Cloudflare cache
+        run: node scripts/purge-cf-cache.mjs
+        env:
+          CLOUDFLARE_PURGE_TOKEN: ${{ secrets.CLOUDFLARE_PURGE_TOKEN }}
