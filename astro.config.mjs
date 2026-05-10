@@ -39,6 +39,10 @@ export default defineConfig({
     inlineStylesheets: "always",
   },
   image: {
+    // Sharp pre-renderuje všechny varianty při buildu → statické /_astro/*.webp
+    // soubory servírované přes ASSETS binding. Vyhýbáme se CF Images binding
+    // runtime transformacím, které opakovaně způsobovaly cache poisoning 500ek.
+    service: { entrypoint: "astro/assets/services/sharp" },
     endpoint: { entrypoint: "./src/lib/image-endpoint.ts" },
   },
   fonts: [
