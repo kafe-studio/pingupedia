@@ -92,7 +92,13 @@ const metadata = {
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
         {facilities.map((f) => (
           <article class="bento-card p-5 md:p-6 flex flex-col gap-4 reveal">
-            <div class="aspect-[16/10] rounded-xl overflow-hidden bg-muted/40">
+            <div class:list={[
+              "rounded-xl overflow-hidden bg-muted/40",
+              f.speciesImages.length === 1 ? "aspect-[16/10]" :
+              f.speciesImages.length === 2 ? "aspect-[2/1]" :
+              f.speciesImages.length === 3 ? "aspect-[3/1]" :
+              "aspect-square",
+            ]}>
               {f.speciesImages.length === 1 && (
                 <div class="w-full h-full">
                   <NoCropImage

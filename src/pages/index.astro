@@ -189,7 +189,10 @@ const metadata = {
                 s.surface ? surfaceClass[s.surface] : "",
               ]}
             >
-              <div class="aspect-[16/9] rounded-xl overflow-hidden flex items-center justify-center bg-muted/40">
+              <div class:list={[
+                "rounded-xl overflow-hidden flex items-center justify-center bg-muted/40",
+                s.preview === "species-mosaic" ? "aspect-square" : "aspect-[16/9]",
+              ]}>
                 {s.preview === "species-mosaic" && s.mosaicImages && s.mosaicImages.length === 4 && (
                   <div class="grid grid-cols-2 gap-1.5 w-full h-full p-1.5">
                     {s.mosaicImages.map((img) => (
