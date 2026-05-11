@@ -1,6 +1,6 @@
 {
   "meta": {
-    "title": "Chovy tučňáků v Evropě — kde naživo?",
+    "title": "Chovy tučňáků v Evropě: kde naživo?",
     "description": "Kompletní průvodce evropskými zoologickými zahradami a oceánariími, ve kterých chovají tučňáky. Které druhy kde uvidíš a něco o jednotlivých kolekcích."
   },
   "hero": {
@@ -71,7 +71,7 @@
         { "slug": "krouzkovy", "name": "Tučňák kroužkový" },
         { "slug": "patagonsky", "name": "Tučňák patagonský" }
       ],
-      "description": "Planet Penguin — největší krytá expozice tučňáků v Evropě. Simuluje antarktické podmínky včetně každodenního sněžení a 12 tun ledu denně. Jediný evropský chov, který drží tučňáky císařské.",
+      "description": "Planet Penguin: největší krytá expozice tučňáků v Evropě. Simuluje antarktické podmínky včetně každodenního sněžení a 12 tun ledu denně. Jediný evropský chov, který drží tučňáky císařské.",
       "highlight": "Jediný v Evropě s císařskými",
       "established": "1999"
     },
@@ -87,7 +87,7 @@
         { "slug": "osli", "name": "Tučňák oslí" },
         { "slug": "krouzkovy", "name": "Tučňák kroužkový" }
       ],
-      "description": "Penguins Rock — největší tučňáčí bazén v Evropě. Edinburská zoo má slavný Penguin Parade, průvod tučňáků kolem návštěvníků, který běží od roku 1951. První zoo na světě, která rozmnožila tučňáka patagonského v péči člověka (1919).",
+      "description": "Penguins Rock: největší tučňáčí bazén v Evropě. Edinburská zoo má slavný Penguin Parade, průvod tučňáků kolem návštěvníků, který běží od roku 1951. První zoo na světě, která rozmnožila tučňáka patagonského v péči člověka (1919).",
       "highlight": "Slavný Penguin Parade od 1951"
     },
     {
@@ -102,7 +102,7 @@
         { "slug": "krouzkovy", "name": "Tučňák kroužkový" },
         { "slug": "patagonsky", "name": "Tučňák patagonský" }
       ],
-      "description": "Polarium — moderní expozice z roku 2022 simulující polární prostředí. Kombinace venkovního výběhu a krytého bazénu s podvodním tunelem. Pravidelně se zde rozmnožují všechny tři druhy.",
+      "description": "Polarium: moderní expozice z roku 2022 simulující polární prostředí. Kombinace venkovního výběhu a krytého bazénu s podvodním tunelem. Pravidelně se zde rozmnožují všechny tři druhy.",
       "established": "2022"
     },
     {
@@ -116,7 +116,7 @@
         { "slug": "osli", "name": "Tučňák oslí" },
         { "slug": "krouzkovy", "name": "Tučňák kroužkový" }
       ],
-      "description": "Ocean — krytá expozice s velkým tučňáčím bazénem, kterým proudí chlazená voda. Návštěvníci vidí tučňáky jak nad hladinou, tak při potápění skleněnou stěnou."
+      "description": "Ocean: krytá expozice s velkým tučňáčím bazénem, kterým proudí chlazená voda. Návštěvníci vidí tučňáky jak nad hladinou, tak při potápění skleněnou stěnou."
     },
     {
       "slug": "berlin-zoo",

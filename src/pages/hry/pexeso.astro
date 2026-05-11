@@ -34,7 +34,7 @@ const cards = await Promise.all(
 const data = JSON.stringify(cards);
 ---
 
-<GameLayout title="Pexeso" description="Pexeso s fotkami tučňáků — 1 nebo 2 hráči.">
+<GameLayout title="Pexeso" description="Pexeso s fotkami tučňáků pro 1 nebo 2 hráče.">
   <div class="mx-auto max-w-5xl px-4 sm:px-6 pt-14 pb-8">
     <header class="mb-4 text-center">
       <p class="text-[11px] uppercase tracking-[0.2em] text-primary mb-1.5">Mini-hra</p>
@@ -106,8 +106,8 @@ const data = JSON.stringify(cards);
       <button data-finish-reset type="button" class="btn-primary">Hrát znovu</button>
     </div>
 
-    <HallOfFame gameId="pexeso" title="Síň slávy — 1 hráč" valueLabel="Čas" valueFormat="time" sort="asc" />
-    <HallOfFame gameId="pexeso-2p" title="Síň slávy — 2 hráči" valueLabel="Páry" valueFormat="number" sort="desc" />
+    <HallOfFame gameId="pexeso" title="Síň slávy (1 hráč)" valueLabel="Čas" valueFormat="time" sort="asc" />
+    <HallOfFame gameId="pexeso-2p" title="Síň slávy (2 hráči)" valueLabel="Páry" valueFormat="number" sort="desc" />
   </div>
 
   <HofPrompt />

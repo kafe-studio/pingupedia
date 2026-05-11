@@ -1,19 +1,19 @@
 {
   "meta": {
     "title": "Hry s tučňáky",
-    "description": "Herna pingupedia — mini-hry o tučňácích. Kvíz, pexeso, platformovka, obrana, puzzle. Každá hra má vlastní síň slávy."
+    "description": "Herna pingupedia: mini-hry o tučňácích. Kvíz, pexeso, platformovka, obrana, puzzle. Každá hra má vlastní síň slávy."
   },
   "hero": {
     "eyebrow": "Herna",
     "titleHtml": "Hry<br />s <span class=\"text-accent\">tučňáky</span>",
-    "subtitle": "Pět mini-her přímo v prohlížeči — žádné stahování, žádné reklamy. Po skončení každé hry můžeš zapsat své jméno do síně slávy."
+    "subtitle": "Pět mini-her přímo v prohlížeči. Žádné stahování, žádné reklamy. Po skončení každé hry můžeš zapsat své jméno do síně slávy."
   },
   "games": [
     {
       "slug": "kviz",
       "title": "Kvíz o tučňácích",
       "tag": "15 otázek · 5 obtížností",
-      "description": "Patnáct otázek z biologie, ekologie a historie tučňáků s fotkami druhů. Vybíráš si obtížnost 1–5 (★ až ★★★★★) a otázky se losují z databáze 150 — každý test je jiný. Po odpovědi se ukáže krátké vysvětlení; na konci skóre a zápis do síně slávy.",
+      "description": "Patnáct otázek z biologie, ekologie a historie tučňáků s fotkami druhů. Vybíráš si obtížnost 1–5 (★ až ★★★★★) a otázky se losují z databáze 150, takže každý test je jiný. Po odpovědi se ukáže krátké vysvětlení; na konci skóre a zápis do síně slávy.",
       "surface": "aurora",
       "mascotPose": "otazka"
     },
@@ -21,7 +21,7 @@
       "slug": "pexeso",
       "title": "Pexeso s tučňáky",
       "tag": "8 párů · 16 karet",
-      "description": "Klasické pexeso s fotkami osmi druhů tučňáků. Otoč dvě karty, hledej páry. Sleduje se čas a počet tahů — čím rychleji a s méně tahy, tím lepší zápis do síně slávy. Vhodné pro děti i dospělé na rychlou hru během pauzy.",
+      "description": "Klasické pexeso s fotkami osmi druhů tučňáků. Otoč dvě karty, hledej páry. Sleduje se čas a počet tahů: čím rychleji a s méně tahy, tím lepší zápis do síně slávy. Vhodné pro děti i dospělé na rychlou hru během pauzy.",
       "surface": "ocean",
       "mascotPose": "detektiv"
     },
@@ -29,7 +29,7 @@
       "slug": "platformovka",
       "title": "Ledová výprava",
       "tag": "90 místností · 20 mláďat · 4 mini-hry",
-      "description": "Tučňák Pingu prolézá 90 propojených místností Antarktidy. Sbírej rybky, vejce, medaile, vlajky a krystaly, přiveď 20 mláďat do 10 iglu — po doručení každého spadnou konfety a zahraje fanfára. CTRL ve vzduchu = dvojitý skok, ALT = bomba na pevné stěny, X = klovnutí. Klíče čtyř barev otevírají dveře do mini-her: lyžování, hokeje, skoku do dálky a potápění.",
+      "description": "Tučňák Pingu prolézá 90 propojených místností Antarktidy. Sbírej rybky, vejce, medaile, vlajky a krystaly, přiveď 20 mláďat do 10 iglu. Po doručení každého spadnou konfety a zahraje fanfára. CTRL ve vzduchu = dvojitý skok, ALT = bomba na pevné stěny, X = klovnutí. Klíče čtyř barev otevírají dveře do mini-her: lyžování, hokeje, skoku do dálky a potápění.",
       "surface": "ice",
       "mascotPose": "plave"
     },
@@ -37,7 +37,7 @@
       "slug": "obrana",
       "title": "Ledová obrana",
       "tag": "6 vln · boss · upgrady",
-      "description": "Space Invaders na ledové kře. Stříleš sněhové koule na chaluhy, tuleně leopardí a kosatky v pěti vlnách rostoucí obtížnosti, šestá je boss — Kolosální kosatka. Sbíráš barevné kontejnery: síla, vějíř, kadence, rychlost a život. Mobilní ovládání má vlastní tlačítka.",
+      "description": "Space Invaders na ledové kře. Stříleš sněhové koule na chaluhy, tuleně leopardí a kosatky v pěti vlnách rostoucí obtížnosti, šestá je boss: Kolosální kosatka. Sbíráš barevné kontejnery: síla, vějíř, kadence, rychlost a život. Mobilní ovládání má vlastní tlačítka.",
       "surface": "sun",
       "mascotPose": "wow"
     },
@@ -45,7 +45,7 @@
       "slug": "puzzle",
       "title": "Puzzle s tučňáky",
       "tag": "36 / 56 / 96 dílků · 3 obtížnosti",
-      "description": "Skládačka z náhodně vybrané fotky z galerie druhů — vybíráš si lehkou (~36 dílků), střední (~56) nebo těžkou (~96). Přetahuj kousky myší nebo prstem, hra se přizpůsobí celé obrazovce. Tlačítko Náhled na chvíli ukáže předlohu. Po složení čas zapíšeš do síně slávy.",
+      "description": "Skládačka z náhodně vybrané fotky z galerie druhů. Vybíráš si lehkou (~36 dílků), střední (~56) nebo těžkou (~96). Přetahuj kousky myší nebo prstem, hra se přizpůsobí celé obrazovce. Tlačítko Náhled na chvíli ukáže předlohu. Po složení čas zapíšeš do síně slávy.",
       "surface": "candy",
       "mascotPose": "cte"
     }
@@ -53,6 +53,6 @@
   "cta": {
     "eyebrow": "Další hry v přípravě",
     "title": "Máš nápad na hru s tučňáky?",
-    "description": "Omalovánky, puzzle s mapou kolonií nebo uhodni druh podle siluety — přidávají se postupně."
+    "description": "Omalovánky, puzzle s mapou kolonií nebo uhodni druh podle siluety. Přidávají se postupně."
   }
 }

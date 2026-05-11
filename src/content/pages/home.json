@@ -14,7 +14,7 @@
       "href": "/druhy/",
       "eyebrow": "Katalog",
       "title": "Všech 18 druhů",
-      "description": "Profil každého tučňáka — od největšího císařského po nejmenšího malého modrého. Hero fotka, fakta z IUCN, mapa rozšíření, galerie, zdroje.",
+      "description": "Profil každého tučňáka. Od největšího císařského po nejmenšího malého modrého. Hero fotka, fakta z IUCN, mapa rozšíření, galerie, zdroje.",
       "preview": "species-photo",
       "speciesSlug": "patagonsky"
     },
@@ -43,7 +43,7 @@
       "href": "/srovnani/",
       "eyebrow": "Porovnej",
       "title": "Druhy vedle sebe",
-      "description": "Postav až čtyři druhy proti sobě — výška, váha, hloubka ponoru, status ohrožení. Všechno přehledně v jedné tabulce.",
+      "description": "Postav až čtyři druhy proti sobě: výška, váha, hloubka ponoru, status ohrožení. Všechno přehledně v jedné tabulce.",
       "preview": "species-photo",
       "speciesSlug": "osli",
       "surface": "ocean"
