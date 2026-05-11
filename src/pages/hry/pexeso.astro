@@ -204,6 +204,12 @@ const data = JSON.stringify(cards);
     return raw || `Hráč ${slot}`;
   }
 
+  function escapeHtml(s: string): string {
+    return s.replace(/[&<>"']/g, (c) => (
+      c === "&" ? "&amp;" : c === "<" ? "&lt;" : c === ">" ? "&gt;" : c === "\"" ? "&quot;" : "&#39;"
+    ));
+  }
+
   function shuffle<T>(arr: T[]): T[] {
     return arr
       .map((v) => [Math.random(), v] as const)
@@ -362,7 +368,8 @@ const data = JSON.stringify(cards);
     }
     $finishEyebrow.textContent = "Konec hry";
     $finishTitle.textContent = title;
-    $finishDetail.innerHTML = `${p1Name}: <strong>${p1Score}</strong> · ${p2Name}: <strong>${p2Score}</strong> · ${moves} tahů`;
+    // Hráčská jména jsou z input fieldu — escape proti XSS před vložením do innerHTML.
+    $finishDetail.innerHTML = `${escapeHtml(p1Name)}: <strong>${p1Score}</strong> · ${escapeHtml(p2Name)}: <strong>${p2Score}</strong> · ${moves} tahů`;
     root.classList.add("hidden");
     finish.classList.remove("hidden");
     window.openHofPrompt?.({
