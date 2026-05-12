@@ -2,28 +2,28 @@
   "hero": {
     "eyebrow": "Jáchymova česká encyklopedie tučňáků",
     "titleHtml": "Encyklopedie <span class=\"text-accent\">tučňáků</span><br />pro děti a rodiče",
-    "subtitle": "Všech 18 druhů, fakta z ověřených zdrojů, hry, filmy i historie. Populárně-naučně, ale věcně."
+    "subtitle": "Všech 18 druhů, hry, filmy a wow fakta. Všechno ověřené, ale baví."
   },
   "stats": {
-    "eyebrow": "Druhů celkem",
-    "subtitle": "kompletní taxonomie"
+    "eyebrow": "Druhů tučňáků",
+    "subtitle": "tolik jich svět má"
   },
   "sections": [
     {
       "slug": "druhy",
       "href": "/druhy/",
-      "eyebrow": "Katalog",
+      "eyebrow": "Poznej",
       "title": "Všech 18 druhů",
-      "description": "Profil každého tučňáka. Od největšího císařského po nejmenšího malého modrého. Hero fotka, fakta z IUCN, mapa rozšíření, galerie, zdroje.",
+      "description": "Největší je vyšší než pětileté dítě, nejmenší se vejde do tašky. Fotky, fakta, mapy a galerie.",
       "preview": "species-photo",
       "speciesSlug": "patagonsky"
     },
     {
       "slug": "hry",
       "href": "/hry/",
-      "eyebrow": "Herna",
+      "eyebrow": "Hraj",
       "title": "Pět her v prohlížeči",
-      "description": "Kvíz, pexeso, platformovka, ledová obrana, puzzle. Žádné stahování, žádné reklamy. Vlastní síň slávy pro každou hru.",
+      "description": "Otestuj se v kvízu, slož puzzle, hraj pexeso nebo prolez Pingovu ledovou výpravu. Zapiš se do síně slávy.",
       "preview": "game-image",
       "gameImage": "kviz",
       "surface": "aurora"
@@ -31,9 +31,9 @@
     {
       "slug": "filmy",
       "href": "/filmy/",
-      "eyebrow": "Plátno",
+      "eyebrow": "Koukej",
       "title": "Filmy a pohádky",
-      "description": "Happy Feet, Madagaskar, Pororo, plastelínové Pingu. Výběr toho nejlepšího s odkazy na ČSFD a kde se dá podívat.",
+      "description": "Happy Feet, Madagaskar, Pingu, Pororo. Animáky a anime s tučňáky, plus odkazy, kde to běží.",
       "preview": "species-photo",
       "speciesSlug": "cisarsky",
       "surface": "candy"
@@ -41,9 +41,9 @@
     {
       "slug": "infografiky",
       "href": "/infografiky/",
-      "eyebrow": "Vizuálně",
+      "eyebrow": "Porovnej",
       "title": "Tučňáci v číslech",
-      "description": "Velikosti, hloubky ponoru, rozložení statusu IUCN. Všech 18 druhů na jednom obrázku.",
+      "description": "Kdo je největší? Kdo se potápí nejhlouběji? Kdo je v ohrožení? Všech 18 druhů vedle sebe.",
       "preview": "species-photo",
       "speciesSlug": "humboldtuv",
       "surface": "sun"
@@ -51,9 +51,9 @@
     {
       "slug": "historie",
       "href": "/historie/",
-      "eyebrow": "Časová osa",
+      "eyebrow": "Cestuj časem",
       "title": "Od pravěku po dnešek",
-      "description": "Od fosilních obřích tučňáků přes Amundsenovu výpravu až po sledování kolonií ze satelitu. Klíčové milníky na časové ose.",
+      "description": "Obří fosilní tučňáci, polární výpravy, satelitní sledování kolonií. Příběh tučňáků na časové ose.",
       "preview": "timeline-photo",
       "timelineFile": "cherry-garrard-1911.jpg",
       "surface": "ice"
@@ -99,6 +99,6 @@
   "aboutCta": {
     "eyebrow": "O projektu",
     "titleHtml": "Proč<br />pingupedia?",
-    "description": "Populárně-naučně, ale věcně. Každý fakt má zdroj. Pro zvědavé malé i velké."
+    "description": "Bez výmyslů. Každý fakt má zdroj. Pro zvědavé malé i velké."
   }
 }
