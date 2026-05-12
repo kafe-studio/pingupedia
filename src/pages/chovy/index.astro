@@ -180,7 +180,7 @@ const metadata = {
                 <a
                   href={`/druhy/${sp.slug}/`}
                   data-astro-prefetch
-                  class="text-xs font-medium px-2.5 py-1 rounded-full bg-muted/60 text-foreground/80 hover:bg-primary/15 hover:text-primary transition-colors"
+                  class="inline-flex items-center min-h-[28px] text-xs font-medium px-3 py-1.5 rounded-full bg-muted/60 text-foreground/80 hover:bg-primary/15 hover:text-primary transition-colors"
                 >
                   {sp.name}
                 </a>
@@ -229,7 +229,7 @@ const metadata = {
                       {f.speciesSlugs.map((slug) => shortNameBySlug.get(slug) ?? slug).join(", ")}
                     </span>
                   </span>
-                  <span class="text-muted-foreground/60 group-hover:text-primary transition-colors text-xs">↗</span>
+                  <span class="text-muted-foreground/60 group-hover:text-primary transition-colors text-xs" aria-hidden="true">↗</span>
                 </a>
               </li>
             ))}

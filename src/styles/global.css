@@ -25,7 +25,7 @@
   --border: rgba(240, 249, 255, 0.08);
   --border-interactive: rgba(240, 249, 255, 0.35);
   --muted: rgba(240, 249, 255, 0.04);
-  --muted-foreground: rgba(240, 249, 255, 0.60);
+  --muted-foreground: rgba(240, 249, 255, 0.72);
   --card: rgba(240, 249, 255, 0.04);
   --bento-ice: #0c2843;
   --bento-ocean: #0a3d5f;
@@ -46,7 +46,7 @@
   --border: rgba(12, 25, 41, 0.1);
   --border-interactive: rgba(12, 25, 41, 0.45);
   --muted: rgba(255, 255, 255, 0.45);
-  --muted-foreground: rgba(12, 25, 41, 0.65);
+  --muted-foreground: rgba(12, 25, 41, 0.75);
   --card: rgba(255, 255, 255, 0.65);
 }
 
@@ -60,7 +60,7 @@
   --border: rgba(204, 251, 241, 0.1);
   --border-interactive: rgba(204, 251, 241, 0.4);
   --muted: rgba(204, 251, 241, 0.04);
-  --muted-foreground: rgba(204, 251, 241, 0.65);
+  --muted-foreground: rgba(204, 251, 241, 0.75);
   --card: rgba(204, 251, 241, 0.05);
 }
 
@@ -74,7 +74,7 @@
   --border: rgba(80, 7, 36, 0.1);
   --border-interactive: rgba(80, 7, 36, 0.35);
   --muted: rgba(255, 255, 255, 0.5);
-  --muted-foreground: rgba(80, 7, 36, 0.65);
+  --muted-foreground: rgba(80, 7, 36, 0.75);
   --card: rgba(255, 255, 255, 0.7);
 }
 
@@ -88,7 +88,7 @@
   --border: rgba(233, 213, 255, 0.08);
   --border-interactive: rgba(233, 213, 255, 0.35);
   --muted: rgba(233, 213, 255, 0.04);
-  --muted-foreground: rgba(233, 213, 255, 0.6);
+  --muted-foreground: rgba(233, 213, 255, 0.72);
   --card: rgba(233, 213, 255, 0.04);
 }
 
@@ -102,7 +102,7 @@
   --border: rgba(203, 213, 225, 0.08);
   --border-interactive: rgba(203, 213, 225, 0.35);
   --muted: rgba(203, 213, 225, 0.04);
-  --muted-foreground: rgba(203, 213, 225, 0.55);
+  --muted-foreground: rgba(203, 213, 225, 0.72);
   --card: rgba(203, 213, 225, 0.04);
 }
 
@@ -116,7 +116,7 @@
   --border: rgba(15, 31, 51, 0.12);
   --border-interactive: rgba(15, 31, 51, 0.4);
   --muted: rgba(255, 255, 255, 0.55);
-  --muted-foreground: rgba(15, 31, 51, 0.65);
+  --muted-foreground: rgba(15, 31, 51, 0.75);
   --card: rgba(255, 255, 255, 0.7);
 }
 
@@ -130,7 +130,7 @@
   --border: rgba(229, 231, 235, 0.08);
   --border-interactive: rgba(229, 231, 235, 0.35);
   --muted: rgba(229, 231, 235, 0.04);
-  --muted-foreground: rgba(229, 231, 235, 0.55);
+  --muted-foreground: rgba(229, 231, 235, 0.72);
   --card: rgba(229, 231, 235, 0.04);
 }
 
@@ -144,7 +144,7 @@
   --border: rgba(12, 25, 41, 0.08);
   --border-interactive: rgba(12, 25, 41, 0.45);
   --muted: rgba(12, 25, 41, 0.03);
-  --muted-foreground: rgba(12, 25, 41, 0.60);
+  --muted-foreground: rgba(12, 25, 41, 0.75);
   --card: rgba(12, 25, 41, 0.03);
 }
 
@@ -154,7 +154,36 @@
     color: var(--foreground);
     font-family: var(--font-sans);
   }
-  :focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; }
+  /* WCAG 2.4.7 + 2.4.11 (focus visible, not obscured): silnější indikátor,
+     viditelný i na barevných surface cards. 3px outline + offset zajistí
+     ≥ 3:1 kontrast vůči jakémukoli pozadí. */
+  :focus-visible {
+    outline: 3px solid var(--primary);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+  /* Na surface cards (bento-surface-*) má outline barva primary málo kontrastu,
+     použijeme bílou s tmavým shadow. */
+  .bento-surface-aurora :focus-visible,
+  .bento-surface-ocean :focus-visible,
+  .bento-surface-ice :focus-visible,
+  .bento-surface-sun :focus-visible,
+  .bento-surface-candy :focus-visible,
+  .bento-surface-midnight :focus-visible,
+  a.bento-surface-aurora:focus-visible,
+  a.bento-surface-ocean:focus-visible,
+  a.bento-surface-ice:focus-visible,
+  a.bento-surface-sun:focus-visible,
+  a.bento-surface-candy:focus-visible,
+  a.bento-surface-midnight:focus-visible {
+    outline-color: #ffffff;
+    box-shadow: 0 0 0 5px rgba(0, 0, 0, 0.45);
+  }
+  /* WCAG 2.5.8 Target Size: minimum 24×24 px na interaktivní prvky.
+     Pojistka pro odkazy a tlačítka, které by neměly explicitní velikost. */
+  a, button, [role="button"], summary, label[for] {
+    min-block-size: auto;
+  }
   ::selection { background-color: color-mix(in srgb, var(--primary) 30%, transparent); }
 }
 
