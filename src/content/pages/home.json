@@ -39,16 +39,6 @@
       "surface": "candy"
     },
     {
-      "slug": "srovnani",
-      "href": "/srovnani/",
-      "eyebrow": "Porovnej",
-      "title": "Druhy vedle sebe",
-      "description": "Postav až čtyři druhy proti sobě: výška, váha, hloubka ponoru, status ohrožení. Všechno přehledně v jedné tabulce.",
-      "preview": "species-photo",
-      "speciesSlug": "osli",
-      "surface": "ocean"
-    },
-    {
       "slug": "infografiky",
       "href": "/infografiky/",
       "eyebrow": "Vizuálně",
