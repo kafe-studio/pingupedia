@@ -5,13 +5,16 @@ interface SaveResponse { commitSha: string; commitUrl: string; newSha: string; }
 interface ErrorResponse { error: string; status?: number; }
 
 type Surface = "aurora" | "ocean" | "ice" | "sun" | "candy" | "midnight";
+type MascotPose =
+  | "ahoj" | "plave" | "detektiv" | "cte" | "radost"
+  | "otazka" | "palec" | "wow" | "srdce" | "vajicko";
 interface Game {
   slug: string;
   title: string;
   tag: string;
   description: string;
   surface: Surface;
-  emoji: string;
+  mascotPose: MascotPose;
 }
 interface HryData {
   meta: { title: string; description: string };
@@ -29,6 +32,10 @@ const setVal = (id: string, v: string): void => {
 
 const BLOCK_SEP = /\r?\n---\r?\n/;
 const SURFACES: Surface[] = ["aurora", "ocean", "ice", "sun", "candy", "midnight"];
+const MASCOT_POSES: MascotPose[] = [
+  "ahoj", "plave", "detektiv", "cte", "radost",
+  "otazka", "palec", "wow", "srdce", "vajicko",
+];
 
 function showError(message: string): void {
   $("loading")?.classList.add("hidden");
@@ -45,7 +52,7 @@ function gamesToText(games: Game[]): string {
       `tag: ${g.tag}`,
       `description: ${g.description}`,
       `surface: ${g.surface}`,
-      `emoji: ${g.emoji}`,
+      `mascotPose: ${g.mascotPose}`,
     ].join("\n"),
   ).join("\n---\n");
 }
@@ -66,7 +73,7 @@ function parseBlock(block: string, index: number): Game {
     }
     kv[key] = value;
   }
-  const required = ["slug", "title", "tag", "description", "surface", "emoji"];
+  const required = ["slug", "title", "tag", "description", "surface", "mascotPose"];
   for (const k of required) {
     if (!kv[k]) throw new Error(`Karta #${index + 1}: chybí klíč "${k}"`);
   }
@@ -76,13 +83,16 @@ function parseBlock(block: string, index: number): Game {
   if (!SURFACES.includes(kv.surface as Surface)) {
     throw new Error(`Karta #${index + 1}: surface "${kv.surface}" není z ${SURFACES.join("/")}`);
   }
+  if (!MASCOT_POSES.includes(kv.mascotPose as MascotPose)) {
+    throw new Error(`Karta #${index + 1}: mascotPose "${kv.mascotPose}" není z ${MASCOT_POSES.join("/")}`);
+  }
   return {
     slug: kv.slug,
     title: kv.title,
     tag: kv.tag,
     description: kv.description,
     surface: kv.surface as Surface,
-    emoji: kv.emoji,
+    mascotPose: kv.mascotPose as MascotPose,
   };
 }
 

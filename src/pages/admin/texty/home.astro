@@ -20,7 +20,7 @@ const hintCls = "text-xs text-muted-foreground";
     <p class="text-xs uppercase tracking-widest text-primary font-semibold mb-2">Strukturovaný editor</p>
     <h1 class="text-3xl md:text-4xl font-black tracking-tight">Homepage</h1>
     <p class="mt-2 text-muted-foreground max-w-2xl">
-      Hero, bento karty a CTA na úvodní stránce <code class="text-xs bg-muted px-1 rounded">/</code>. Slug druhů a obrázky zůstávají pevné, edituje se jen text.
+      Hero, section karty, wow fakta, quiz CTA a O projektu na úvodní stránce <code class="text-xs bg-muted px-1 rounded">/</code>. Slug druhů, preview type a surface jsou readonly (drží se z původního JSON).
     </p>
   </header>
 
@@ -43,9 +43,8 @@ const hintCls = "text-xs text-muted-foreground";
         <input id="heroEyebrow" type="text" required class={inputCls} />
       </div>
       <div>
-        <label class={labelCls} for="heroTitleHtml">Nadpis (HTML — <code>&lt;span&gt;</code>, <code>&lt;br /&gt;</code> povolené)</label>
+        <label class={labelCls} for="heroTitleHtml">Nadpis (HTML <code>&lt;span class="text-accent"&gt;</code>, <code>&lt;br /&gt;</code> povolené)</label>
         <textarea id="heroTitleHtml" required rows="3" class={`${inputCls} font-mono text-xs leading-relaxed`}></textarea>
-        <p class={hintCls}>Příklad: <code>{`Pozná<span class="text-primary">š</span> všech<br />...`}</code></p>
       </div>
       <div>
         <label class={labelCls} for="heroSubtitle">Podnadpis</label>
@@ -54,33 +53,7 @@ const hintCls = "text-xs text-muted-foreground";
     </section>
 
     <section class={sectionCls}>
-      <p class={sectionTitleCls}>Tučňák týdne (hlavní karta)</p>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <div>
-          <label class={labelCls} for="featuredBadge">Štítek</label>
-          <input id="featuredBadge" type="text" required class={inputCls} />
-        </div>
-        <div>
-          <label class={labelCls} for="featuredSlug">Slug druhu (readonly)</label>
-          <input id="featuredSlug" type="text" readonly class={`${inputCls} font-mono opacity-70`} />
-        </div>
-      </div>
-      <div>
-        <label class={labelCls} for="featuredTitleHtml">Nadpis (HTML povolené)</label>
-        <textarea id="featuredTitleHtml" required rows="2" class={`${inputCls} font-mono text-xs`}></textarea>
-      </div>
-      <div>
-        <label class={labelCls} for="featuredDescription">Popis</label>
-        <textarea id="featuredDescription" required rows="3" class={inputCls}></textarea>
-      </div>
-      <div>
-        <label class={labelCls} for="featuredImageAlt">Alt text obrázku</label>
-        <input id="featuredImageAlt" type="text" required class={inputCls} />
-      </div>
-    </section>
-
-    <section class={sectionCls}>
-      <p class={sectionTitleCls}>Statistiky (druhů celkem)</p>
+      <p class={sectionTitleCls}>Statistika (počet druhů)</p>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div>
           <label class={labelCls} for="statsEyebrow">Eyebrow</label>
@@ -94,45 +67,52 @@ const hintCls = "text-xs text-muted-foreground";
     </section>
 
     <section class={sectionCls}>
-      <p class={sectionTitleCls}>Katalog CTA</p>
-      <div>
-        <label class={labelCls} for="catalogEyebrow">Eyebrow</label>
-        <input id="catalogEyebrow" type="text" required class={inputCls} />
+      <p class={sectionTitleCls}>Section karty („Co tě tady čeká")</p>
+      <p class={hintCls}>Editovatelné: eyebrow, title, description. Slug/href/preview/surface readonly — drží se z JSONu.</p>
+      <div id="sections-container" class="space-y-3"></div>
+    </section>
+
+    <section class={sectionCls}>
+      <p class={sectionTitleCls}>Wow fakta</p>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div>
+          <label class={labelCls} for="wowEyebrow">Eyebrow</label>
+          <input id="wowEyebrow" type="text" class={inputCls} />
+        </div>
+        <div class="md:col-span-2">
+          <label class={labelCls} for="wowTitle">Nadpis</label>
+          <input id="wowTitle" type="text" class={inputCls} />
+        </div>
       </div>
       <div>
-        <label class={labelCls} for="catalogTitleHtml">Nadpis (HTML povolené)</label>
-        <textarea id="catalogTitleHtml" required rows="2" class={`${inputCls} font-mono text-xs`}></textarea>
-      </div>
-      <div>
-        <label class={labelCls} for="catalogSubtitle">Podnadpis</label>
-        <input id="catalogSubtitle" type="text" required class={inputCls} />
+        <p class={hintCls}>Hodnoty a popisky jednotlivých faktů. Mascot/surface readonly.</p>
+        <div id="wowfacts-container" class="space-y-3 mt-2"></div>
       </div>
     </section>
 
     <section class={sectionCls}>
-      <p class={sectionTitleCls}>Karty druhů na homepage</p>
-      <p class={hintCls}>Jedna karta na řádek, formát <code>slug | Rod Xxx | Název druhu | Alt text</code>. Slug musí odpovídat souboru <code>src/assets/penguins/&lt;slug&gt;/hero.jpg</code>.</p>
-      <textarea
-        id="speciesCards"
-        required
-        rows="4"
-        class={`${inputCls} font-mono text-xs`}
-      ></textarea>
-    </section>
-
-    <section class={sectionCls}>
-      <p class={sectionTitleCls}>Sekce „Jak to děláme"</p>
-      <div>
-        <label class={labelCls} for="howEyebrow">Eyebrow</label>
-        <input id="howEyebrow" type="text" required class={inputCls} />
+      <p class={sectionTitleCls}>Quiz CTA</p>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div>
+          <label class={labelCls} for="quizEyebrow">Eyebrow</label>
+          <input id="quizEyebrow" type="text" class={inputCls} />
+        </div>
+        <div>
+          <label class={labelCls} for="quizButtonLabel">Text tlačítka</label>
+          <input id="quizButtonLabel" type="text" class={inputCls} />
+        </div>
       </div>
       <div>
-        <label class={labelCls} for="howTitleHtml">Nadpis (HTML povolené)</label>
-        <textarea id="howTitleHtml" required rows="2" class={`${inputCls} font-mono text-xs`}></textarea>
+        <label class={labelCls} for="quizTitleHtml">Nadpis (HTML povolené)</label>
+        <textarea id="quizTitleHtml" rows="2" class={`${inputCls} font-mono text-xs`}></textarea>
       </div>
       <div>
-        <label class={labelCls} for="howItems">Bullet pointy (jeden na řádek)</label>
-        <textarea id="howItems" required rows="4" class={inputCls}></textarea>
+        <label class={labelCls} for="quizDescription">Popis</label>
+        <textarea id="quizDescription" rows="2" class={inputCls}></textarea>
+      </div>
+      <div>
+        <label class={labelCls} for="quizHref">Odkaz</label>
+        <input id="quizHref" type="text" class={`${inputCls} font-mono text-xs`} />
       </div>
     </section>
 
@@ -178,7 +158,7 @@ const hintCls = "text-xs text-muted-foreground";
         <p class="mt-1 text-emerald-100">
           Commit: <a id="commit-link" href="#" rel="noopener noreferrer" target="_blank" class="underline"></a>
         </p>
-        <p class="mt-1 text-xs text-emerald-100/70">Deploy na produkci proběhne po rebuildu CF Workers.</p>
+        <p class="mt-1 text-xs text-emerald-100/70">Deploy proběhne automaticky po denním rebuildu (02:30 UTC) nebo po `pnpm ship` lokálně.</p>
       </div>
     </section>
   </form>
