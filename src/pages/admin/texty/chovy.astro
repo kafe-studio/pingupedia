@@ -1,0 +1,20 @@
+---
+export const prerender = false;
+import AdminLayout from "../../../layouts/AdminLayout.astro";
+import RawJsonEditor from "../../../components/admin/RawJsonEditor.astro";
+---
+
+<AdminLayout title="Chovy" section="texty">
+  <RawJsonEditor
+    contentId="page/chovy"
+    title="Chovy tučňáků v Evropě"
+    description="10 hlavních zoo/oceánarií s detailem + kompaktní seznam dalších evropských chovů pro stránku /chovy/."
+    schemaHint="Schema: chovySchema v src/lib/content-schemas.ts. Struktura: meta, hero, facilities[] (s species[]), additional[] (s speciesSlugs[])."
+    defaultMessagePrefix="Edit chovy: "
+  />
+
+  <script>
+    import { mountRawJsonForm } from "../../../lib/admin/raw-json-form-client";
+    mountRawJsonForm({ defaultMessagePrefix: "Edit chovy: " });
+  </script>
+</AdminLayout>

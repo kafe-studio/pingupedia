@@ -11,6 +11,8 @@ import {
   hrySchema,
   quizSchema,
   filmySchema,
+  timelineSchema,
+  chovySchema,
 } from "../../../../lib/content-schemas";
 
 type ContentSchema = z.ZodType<unknown>;
@@ -23,6 +25,8 @@ function schemaForRef(ref: ContentRef): ContentSchema | null {
     if (ref.slug === "o-projektu") return oProjektuSchema;
     if (ref.slug === "hry") return hrySchema;
     if (ref.slug === "filmy") return filmySchema;
+    if (ref.slug === "timeline") return timelineSchema;
+    if (ref.slug === "chovy") return chovySchema;
   }
   return null;
 }

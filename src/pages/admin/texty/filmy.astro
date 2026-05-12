@@ -1,0 +1,20 @@
+---
+export const prerender = false;
+import AdminLayout from "../../../layouts/AdminLayout.astro";
+import RawJsonEditor from "../../../components/admin/RawJsonEditor.astro";
+---
+
+<AdminLayout title="Filmy" section="texty">
+  <RawJsonEditor
+    contentId="page/filmy"
+    title="Filmy a pohádky"
+    description="Strom kategorií filmů (animované / hrané / dokumenty / seriály) s jednotlivými tituly, odkazy a metadaty pro stránku /filmy/."
+    schemaHint="Schema: filmySchema v src/lib/content-schemas.ts. Struktura: meta, hero, sections[] kde každá section má items[] s filmy."
+    defaultMessagePrefix="Edit filmy: "
+  />
+
+  <script>
+    import { mountRawJsonForm } from "../../../lib/admin/raw-json-form-client";
+    mountRawJsonForm({ defaultMessagePrefix: "Edit filmy: " });
+  </script>
+</AdminLayout>

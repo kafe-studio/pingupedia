@@ -1,0 +1,20 @@
+---
+export const prerender = false;
+import AdminLayout from "../../../layouts/AdminLayout.astro";
+import RawJsonEditor from "../../../components/admin/RawJsonEditor.astro";
+---
+
+<AdminLayout title="Historie / Timeline" section="texty">
+  <RawJsonEditor
+    contentId="page/timeline"
+    title="Časová osa (Historie)"
+    description="Klíčové milníky v historii tučňáků a jejich výzkumu pro stránku /historie/."
+    schemaHint="Schema: timelineSchema v src/lib/content-schemas.ts. Struktura: meta, hero, events[] s date, title, description, category, optional speciesSlug nebo image."
+    defaultMessagePrefix="Edit timeline: "
+  />
+
+  <script>
+    import { mountRawJsonForm } from "../../../lib/admin/raw-json-form-client";
+    mountRawJsonForm({ defaultMessagePrefix: "Edit timeline: " });
+  </script>
+</AdminLayout>
