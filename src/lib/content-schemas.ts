@@ -136,6 +136,31 @@ export const homeSchema = z.object({
       }),
     )
     .min(3),
+  wowFacts: z
+    .object({
+      eyebrow: z.string().min(1),
+      title: z.string().min(1),
+      items: z
+        .array(
+          z.object({
+            value: z.string().min(1),
+            label: z.string().min(1),
+            mascot: z.enum(["ahoj", "plave", "detektiv", "cte", "radost", "otazka", "palec", "wow", "srdce", "vajicko"]),
+            surface: z.enum(["aurora", "ocean", "sun", "ice", "candy"]).optional(),
+          }),
+        )
+        .min(2),
+    })
+    .optional(),
+  quizCta: z
+    .object({
+      eyebrow: z.string().min(1),
+      titleHtml: z.string().min(1),
+      description: z.string().min(1),
+      buttonLabel: z.string().min(1),
+      href: z.string().min(1),
+    })
+    .optional(),
   aboutCta: z.object({
     eyebrow: z.string().min(1),
     titleHtml: z.string().min(1),

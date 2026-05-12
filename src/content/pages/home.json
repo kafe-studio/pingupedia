@@ -59,6 +59,43 @@
       "surface": "ice"
     }
   ],
+  "wowFacts": {
+    "eyebrow": "Wow!",
+    "title": "Tučňáci umí věci, co by ses nenadál",
+    "items": [
+      {
+        "value": "500 m",
+        "label": "Tak hluboko se umí potopit tučňák císařský. To je jako 130 dospělých nad sebou.",
+        "mascot": "plave",
+        "surface": "ocean"
+      },
+      {
+        "value": "30 min",
+        "label": "Pod vodou vydrží přes půl hodiny na jediný nádech.",
+        "mascot": "vajicko",
+        "surface": "ice"
+      },
+      {
+        "value": "22 km/h",
+        "label": "Plave rychleji než dospělý olympijský plavec.",
+        "mascot": "wow",
+        "surface": "sun"
+      },
+      {
+        "value": "−60 °C",
+        "label": "V mrazu, který by sundal i polárního medvěda. Pero u peří se choulí v iglu.",
+        "mascot": "ahoj",
+        "surface": "aurora"
+      }
+    ]
+  },
+  "quizCta": {
+    "eyebrow": "Otestuj se",
+    "titleHtml": "Víš, který tučňák je <span class=\"text-accent\">největší?</span>",
+    "description": "Kvíz se 150 otázkami, pět obtížností, hvězdičky za správné odpovědi. Hraj klidně každý den s jinou sadou.",
+    "buttonLabel": "Spustit kvíz",
+    "href": "/hry/kviz/"
+  },
   "aboutCta": {
     "eyebrow": "O projektu",
     "titleHtml": "Proč<br />pingupedia?",

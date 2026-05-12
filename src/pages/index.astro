@@ -194,6 +194,35 @@ const metadata = {
         </div>
       </div>
 
+      {home.wowFacts && (
+        <div class="mb-10 md:mb-14">
+          <header class="mb-6 md:mb-8">
+            <p class="text-xs uppercase tracking-[0.2em] text-accent font-bold mb-2">{home.wowFacts.eyebrow}</p>
+            <h2 class="text-2xl md:text-3xl font-black tracking-tight">{home.wowFacts.title}</h2>
+          </header>
+          <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4">
+            {home.wowFacts.items.map((f) => (
+              <div class:list={[
+                "bento-card p-5 md:p-6 flex flex-col gap-3 reveal relative overflow-hidden",
+                f.surface ? surfaceClass[f.surface] : "",
+              ]}>
+                <div class="absolute -bottom-3 -right-3 opacity-25 pointer-events-none">
+                  <Mascot pose={f.mascot} size={120} />
+                </div>
+                <p class:list={[
+                  "text-3xl md:text-5xl font-black leading-none tabular-nums",
+                  f.surface ? "text-white" : "text-foreground",
+                ]}>{f.value}</p>
+                <p class:list={[
+                  "text-xs md:text-sm leading-snug relative z-10",
+                  f.surface ? "text-white/85" : "text-muted-foreground",
+                ]}>{f.label}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+
       <div class="mb-10 md:mb-14">
         <h2 class="text-2xl md:text-3xl font-black tracking-tight mb-6 md:mb-8">
           Co tě tady čeká
@@ -279,6 +308,28 @@ const metadata = {
           ))}
         </div>
       </div>
+
+      {home.quizCta && (
+        <a
+          href={home.quizCta.href}
+          class="bento-card is-link bento-surface-candy p-6 md:p-10 flex flex-col-reverse md:flex-row md:items-center gap-6 md:gap-10 mb-6 md:mb-8 reveal relative overflow-hidden"
+          data-astro-prefetch
+        >
+          <div class="md:flex-1 min-w-0">
+            <p class="text-xs uppercase tracking-widest text-white/70 font-bold">{home.quizCta.eyebrow}</p>
+            <h3 class="mt-2 text-3xl md:text-4xl font-black text-white leading-tight">
+              <Fragment set:html={home.quizCta.titleHtml} />
+            </h3>
+            <p class="mt-3 text-white/85 text-base md:text-lg max-w-xl">{home.quizCta.description}</p>
+            <span class="inline-flex items-center gap-2 mt-5 px-5 py-2.5 rounded-full bg-white text-foreground font-bold text-sm shadow-lg hover:scale-[1.03] transition-transform">
+              {home.quizCta.buttonLabel} →
+            </span>
+          </div>
+          <div class="shrink-0 anim-bob">
+            <Mascot pose="otazka" size={180} />
+          </div>
+        </a>
+      )}
 
       <a
         href="/chovy/"
