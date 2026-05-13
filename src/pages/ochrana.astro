@@ -1,0 +1,226 @@
+---
+export const prerender = true;
+import type { ImageMetadata } from "astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import NoCropImage from "../components/media/NoCropImage.astro";
+import Mascot from "../components/mascot/Mascot.astro";
+import { getOchranaPage } from "../lib/pages";
+import { getCollection } from "astro:content";
+
+const page = await getOchranaPage();
+const species = await getCollection("species");
+const speciesById = new Map(species.map((s) => [s.id, s]));
+
+const heroImages = import.meta.glob("../assets/penguins/*/hero.jpg", {
+  eager: true,
+  import: "default",
+}) as Record<string, ImageMetadata>;
+function heroBySlug(slug: string): ImageMetadata | undefined {
+  return heroImages[`../assets/penguins/${slug}/hero.jpg`];
+}
+
+const metadata = {
+  title: page.meta.title,
+  description: page.meta.description,
+};
+---
+
+<BaseLayout {metadata}>
+  <section class="px-4 sm:px-6 pt-28 pb-8">
+    <div class="mx-auto max-w-5xl">
+      <header class="mb-10 md:mb-14 flex flex-col md:flex-row md:items-end md:justify-between gap-6 reveal">
+        <div class="max-w-2xl">
+          <p class="text-sm uppercase tracking-[0.2em] text-primary/80 mb-4">{page.hero.eyebrow}</p>
+          <h1 class="text-4xl md:text-6xl lg:text-7xl font-black tracking-tight leading-[0.95] mb-5">
+            <Fragment set:html={page.hero.titleHtml} />
+          </h1>
+          <p class="text-lg md:text-xl text-muted-foreground">{page.hero.subtitle}</p>
+        </div>
+        <div class="shrink-0 self-center md:self-end anim-bob">
+          <Mascot pose="srdce" size={160} />
+        </div>
+      </header>
+
+      <div class="space-y-4 mb-12 md:mb-16 reveal max-w-3xl text-base md:text-lg text-foreground/85 leading-relaxed">
+        {page.intro.map((para) => (
+          <p>{para}</p>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="px-4 sm:px-6 pb-12">
+    <div class="mx-auto max-w-5xl">
+      <div class="bento-card bento-surface-ocean p-6 md:p-10 reveal">
+        <p class="text-xs uppercase tracking-widest text-accent font-bold mb-2">{page.statusSection.eyebrow}</p>
+        <h2 class="text-2xl md:text-3xl font-black text-white tracking-tight mb-4">{page.statusSection.title}</h2>
+        <div class="space-y-3 text-white/85 leading-relaxed">
+          {page.statusSection.body.map((para) => (
+            <p>{para}</p>
+          ))}
+        </div>
+        <p class="mt-5 text-xs text-white/60">
+          {page.statusSection.asOfDate} ·
+          <a href={page.statusSection.sourceUrl} target="_blank" rel="noopener noreferrer" class="underline hover:text-white">
+            {page.statusSection.sourceLabel}
+          </a>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="px-4 sm:px-6 pb-12">
+    <div class="mx-auto max-w-5xl">
+      <header class="mb-6 md:mb-8 reveal">
+        <p class="text-xs uppercase tracking-[0.2em] text-primary/80 mb-2">{page.threats.eyebrow}</p>
+        <h2 class="text-3xl md:text-4xl font-black tracking-tight">{page.threats.title}</h2>
+      </header>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-5">
+        {page.threats.items.map((threat) => (
+          <article class="bento-card p-5 md:p-6 reveal">
+            <h3 class="text-lg md:text-xl font-black mb-2">{threat.title}</h3>
+            <p class="text-sm text-muted-foreground leading-relaxed mb-3">{threat.description}</p>
+            {threat.affectsSpecies && threat.affectsSpecies.length > 0 && (
+              <div class="flex flex-wrap gap-1.5 pt-3 border-t border-border">
+                <span class="text-[10px] uppercase tracking-widest text-muted-foreground/70 font-semibold mr-1 self-center">Týká se:</span>
+                {threat.affectsSpecies.map((sp) => (
+                  <span class="text-xs px-2 py-1 rounded-full bg-muted/60 text-foreground/80">{sp}</span>
+                ))}
+              </div>
+            )}
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="px-4 sm:px-6 pb-12">
+    <div class="mx-auto max-w-5xl">
+      <header class="mb-6 md:mb-8 reveal">
+        <p class="text-xs uppercase tracking-[0.2em] text-primary/80 mb-2">{page.efforts.eyebrow}</p>
+        <h2 class="text-3xl md:text-4xl font-black tracking-tight">{page.efforts.title}</h2>
+      </header>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-5">
+        {page.efforts.items.map((effort) => (
+          <article class="bento-card p-5 md:p-6 flex flex-col gap-3 reveal">
+            <div class="flex items-baseline justify-between gap-3">
+              <h3 class="text-lg md:text-xl font-black leading-tight">{effort.title}</h3>
+              {effort.sinceYear && (
+                <span class="shrink-0 text-xs font-mono text-accent font-bold tabular-nums">
+                  od {effort.sinceYear}
+                </span>
+              )}
+            </div>
+            <p class="text-sm text-muted-foreground leading-relaxed">{effort.description}</p>
+            {effort.url && (
+              <a
+                href={effort.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center gap-1.5 text-sm font-semibold text-primary hover:underline mt-auto"
+              >
+                Více informací <span aria-hidden="true">↗</span>
+              </a>
+            )}
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="px-4 sm:px-6 pb-12">
+    <div class="mx-auto max-w-5xl">
+      <header class="mb-6 md:mb-8 reveal">
+        <p class="text-xs uppercase tracking-[0.2em] text-primary/80 mb-2">{page.criticalSpecies.eyebrow}</p>
+        <h2 class="text-3xl md:text-4xl font-black tracking-tight">{page.criticalSpecies.title}</h2>
+      </header>
+      <div class="space-y-4 md:space-y-5">
+        {page.criticalSpecies.items.map((item) => {
+          const sp = speciesById.get(item.speciesSlug);
+          const img = heroBySlug(item.speciesSlug);
+          return (
+            <a
+              href={`/druhy/${item.speciesSlug}/`}
+              data-astro-prefetch
+              class="bento-card is-link p-5 md:p-6 flex flex-col sm:flex-row gap-4 md:gap-6 reveal"
+            >
+              {img && (
+                <div class="sm:w-48 md:w-56 shrink-0 rounded-xl overflow-hidden bg-muted/40">
+                  <NoCropImage
+                    src={img}
+                    alt={sp?.data.hero.alt ?? ""}
+                    ratio="4/3"
+                    sizes="(min-width: 768px) 220px, 90vw"
+                    widths={[220, 440]}
+                  />
+                </div>
+              )}
+              <div class="flex-1 min-w-0">
+                <p class="text-xs uppercase tracking-widest text-muted-foreground font-semibold">
+                  {sp?.data.genus} · IUCN {sp?.data.iucnStatus}
+                </p>
+                <h3 class="mt-1 text-xl md:text-2xl font-black leading-tight">
+                  {sp?.data.nameCs ?? item.speciesSlug}
+                </h3>
+                {sp?.data.nameLat && (
+                  <p class="text-sm italic text-muted-foreground mt-0.5" lang="la">{sp.data.nameLat}</p>
+                )}
+                <p class="mt-3 text-sm text-muted-foreground leading-relaxed">{item.story}</p>
+              </div>
+            </a>
+          );
+        })}
+      </div>
+    </div>
+  </section>
+
+  <section class="px-4 sm:px-6 pb-12">
+    <div class="mx-auto max-w-5xl">
+      <header class="mb-6 md:mb-8 reveal">
+        <p class="text-xs uppercase tracking-[0.2em] text-accent font-bold mb-2">{page.howToHelp.eyebrow}</p>
+        <h2 class="text-3xl md:text-4xl font-black tracking-tight">{page.howToHelp.title}</h2>
+        <p class="mt-3 text-base md:text-lg text-muted-foreground max-w-2xl">{page.howToHelp.intro}</p>
+      </header>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5">
+        {page.howToHelp.items.map((item, i) => (
+          <article class="bento-card p-5 md:p-6 reveal">
+            <p class="text-3xl md:text-4xl font-black text-accent/30 leading-none tabular-nums mb-2">
+              {String(i + 1).padStart(2, "0")}
+            </p>
+            <h3 class="text-lg font-black mb-2">{item.title}</h3>
+            <p class="text-sm text-muted-foreground leading-relaxed">{item.description}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="px-4 sm:px-6 pb-20">
+    <div class="mx-auto max-w-5xl">
+      <header class="mb-6 md:mb-8 reveal">
+        <p class="text-xs uppercase tracking-[0.2em] text-primary/80 mb-2">{page.sources.eyebrow}</p>
+        <h2 class="text-2xl md:text-3xl font-black tracking-tight">{page.sources.title}</h2>
+      </header>
+      <ul class="space-y-2.5 text-sm">
+        {page.sources.items.map((src) => (
+          <li class="flex items-start gap-3 reveal">
+            <span class="text-muted-foreground/40 mt-0.5">·</span>
+            <div class="flex-1 min-w-0">
+              <a
+                href={src.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="font-semibold text-foreground hover:text-primary transition-colors"
+              >
+                {src.label} <span class="text-muted-foreground/60 text-xs" aria-hidden="true">↗</span>
+              </a>
+              {src.note && (
+                <p class="text-muted-foreground text-sm mt-0.5">{src.note}</p>
+              )}
+            </div>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+</BaseLayout>

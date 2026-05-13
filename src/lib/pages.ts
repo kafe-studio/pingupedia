@@ -55,3 +55,11 @@ export async function getChovyPage() {
 }
 
 export type ChovyPage = Awaited<ReturnType<typeof getChovyPage>>;
+
+export async function getOchranaPage() {
+  const entry = await getEntry("ochrana", "ochrana");
+  if (!entry) throw new Error("src/content/pages/ochrana.json not found");
+  return entry.data;
+}
+
+export type OchranaPage = Awaited<ReturnType<typeof getOchranaPage>>;

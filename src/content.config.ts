@@ -10,6 +10,7 @@ import {
   filmySchema,
   timelineSchema,
   chovySchema,
+  ochranaSchema,
 } from "./lib/content-schemas";
 
 const iucnStatus = z.enum(["LC", "NT", "VU", "EN", "CR", "DD", "EX"]);
@@ -167,4 +168,9 @@ const chovy = defineCollection({
   schema: chovySchema,
 });
 
-export const collections = { species, site, home, oProjektu, hry, quiz, filmy, timeline, chovy };
+const ochrana = defineCollection({
+  loader: glob({ pattern: "ochrana.json", base: "./src/content/pages" }),
+  schema: ochranaSchema,
+});
+
+export const collections = { species, site, home, oProjektu, hry, quiz, filmy, timeline, chovy, ochrana };

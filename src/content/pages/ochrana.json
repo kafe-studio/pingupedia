@@ -1,0 +1,209 @@
+{
+  "meta": {
+    "title": "Ochrana tučňáků — co jim hrozí a co s tím můžeme dělat",
+    "description": "Ochrana 18 druhů tučňáků: stav podle IUCN Red List, hlavní hrozby (klimatická změna, přelov, plast, zavlečené druhy), mezinárodní ochrana (Antarktická smlouva, CCAMLR, MPA), konkrétní úspěchy a jak může pomoct každý."
+  },
+  "hero": {
+    "eyebrow": "Ochrana",
+    "titleHtml": "Tučňáci a jejich <span class=\"text-accent\">budoucnost</span>",
+    "subtitle": "Z 18 druhů tučňáků jich přibližně polovina čelí vážnému ohrožení. Tady je přehled, co se s nimi děje, kdo se o ně stará a co můžeš udělat ty."
+  },
+  "intro": [
+    "Tučňáci jsou ptáci, kteří se před desítkami milionů let vzdali letu a místo toho se proměnili v dokonalé plavce. Žijí jen na jižní polokouli (a v okolí rovníku), kde se přizpůsobili životu od antarktického mrazu po galapážské tropy.",
+    "Žádný druh tučňáka ještě nevyhynul v historii, kterou dokumentujeme. Ale několik z nich se k tomu blíží. Ohrožení nezpůsobují útoky predátorů ani nemoci v běžném smyslu — ale rychlé změny prostředí, které my lidé dokážeme ovlivnit."
+  ],
+  "statusSection": {
+    "eyebrow": "Stav populací",
+    "title": "Co říká IUCN Red List",
+    "body": [
+      "Mezinárodní organizace IUCN hodnotí stav každého druhu na světě a zařazuje ho do kategorií od LC (Least Concern, neohrožený) po CR (Critically Endangered, kriticky ohrožený) a EX (Extinct, vyhynulý).",
+      "Z 18 druhů tučňáků je dnes 1 druh kriticky ohrožený (CR), několik je ohrožených (EN) a další zranitelných (VU). Nejhůř je na tom tučňák brýlový (Spheniscus demersus), který žije u jižní Afriky a v říjnu 2024 byl přeřazen z EN do CR.",
+      "Konkrétní zařazení každého druhu i jeho populační odhady najdeš v naší infografice (status ohrožení) a v profilu každého druhu."
+    ],
+    "asOfDate": "stav k roku 2024",
+    "sourceLabel": "IUCN Red List",
+    "sourceUrl": "https://www.iucnredlist.org/"
+  },
+  "threats": {
+    "eyebrow": "Hlavní hrozby",
+    "title": "Co tučňákům škodí nejvíc",
+    "items": [
+      {
+        "title": "Klimatická změna a ztráta mořského ledu",
+        "description": "Tučňák císařský potřebuje stabilní mořský led k vychování mláďat. Pokud led roztaje příliš brzy, mláďata nepřežijí. Vědecké studie publikované v posledních letech naznačují, že při současném tempu oteplování by mohlo do roku 2100 zmizet velké procento císařských kolonií.",
+        "affectsSpecies": ["Tučňák císařský", "Tučňák kroužkový", "Tučňák oslí"]
+      },
+      {
+        "title": "Přelov ryb a krillu",
+        "description": "Tučňáci se živí převážně rybami, krillem a hlavonožci. Když průmyslový rybolov vybere stejnou kořist, na kterou jsou tučňáci specializovaní, kolonie kolabují. Týká se to hlavně tučňáka Humboldtova, brýlového a magellanského.",
+        "affectsSpecies": ["Tučňák Humboldtův", "Tučňák brýlový", "Tučňák magellanský"]
+      },
+      {
+        "title": "Ropné skvrny a znečištění",
+        "description": "Ropné havárie u pobřeží jižní Afriky a Jižní Ameriky opakovaně zasáhly kolonie tučňáků. Ropa zničí izolační schopnost peří a tučňáci umírají na podchlazení. Pomáhá organizace jako SANCCOB, která zachraňuje a rehabilituje postižené ptáky.",
+        "affectsSpecies": ["Tučňák brýlový", "Tučňák magellanský"]
+      },
+      {
+        "title": "Zavlečené druhy na hnízdištích",
+        "description": "Na ostrovech, kde tučňáci hnízdí, často přibyli predátoři, které tam nikdy přirozeně nepatřili: krysy, kočky, lasičky, lišky. Žerou vejce a mláďata. Tučňák žlutooký na Novém Zélandu i tučňák galapážský patří mezi nejvíc postižené.",
+        "affectsSpecies": ["Tučňák žlutooký", "Tučňák galapážský", "Tučňák novozélandský"]
+      },
+      {
+        "title": "Choroby a ptačí chřipka",
+        "description": "Vysoce patogenní ptačí chřipka H5N1 se od let 2022–2023 šíří i v jižních oblastech a začala zasahovat kolonie tučňáků v Antarktidě i Jižní Americe. Pro malé izolované populace může jediná epidemie znamenat dramatický pokles.",
+        "affectsSpecies": ["Tučňák císařský", "Tučňák patagonský", "Tučňák magellanský"]
+      },
+      {
+        "title": "Změna mořských proudů",
+        "description": "Tučňák galapážský je jediný, který hnízdí u rovníku. Závisí na studeném Cromwellově a Humboldtově proudu, který tam přivádí ryby. Když El Niño tyto proudy oslabí, ryby zmizí a tučňáci nemají co lovit. Populace pak prudce klesá.",
+        "affectsSpecies": ["Tučňák galapážský"]
+      }
+    ]
+  },
+  "efforts": {
+    "eyebrow": "Co se dělá",
+    "title": "Mezinárodní ochrana a konkrétní programy",
+    "items": [
+      {
+        "title": "Antarktická smlouva",
+        "description": "Mezinárodní dohoda, která vyhradila Antarktidu pro mírové účely a vědecký výzkum. Zakazuje vojenské aktivity, těžbu a komerční využívání kontinentu. Tučňákům antarktického prostoru tak poskytuje nejvyšší úroveň ochrany území na světě.",
+        "sinceYear": 1959,
+        "url": "https://www.ats.aq/"
+      },
+      {
+        "title": "Madridský protokol",
+        "description": "Protokol o ochraně životního prostředí k Antarktické smlouvě. Vyhrazuje Antarktidu jako přírodní rezervaci věnovanou míru a vědě a zakazuje veškerou těžbu nerostných surovin v Antarktidě nejméně do roku 2048.",
+        "sinceYear": 1991,
+        "url": "https://www.ats.aq/e/protocol.html"
+      },
+      {
+        "title": "CCAMLR — ochrana mořských zdrojů jižního oceánu",
+        "description": "Commission for the Conservation of Antarctic Marine Living Resources. 27 členských států řídí rybolov krillu a ryb v jižních oceánech tak, aby zůstal dostatek potravy pro tučňáky a jiné mořské druhy.",
+        "sinceYear": 1982,
+        "url": "https://www.ccamlr.org/"
+      },
+      {
+        "title": "Ross Sea — mořská chráněná oblast",
+        "description": "V roce 2016 vyhlásila CCAMLR Rossovo moře jako největší mořskou chráněnou oblast (MPA) na světě, s rozlohou přes 1,55 milionu km². Plný zákaz komerčního rybolovu v jádrové zóně chrání kolonie tučňáků kroužkových i císařských.",
+        "sinceYear": 2016,
+        "url": "https://www.ccamlr.org/en/science/ross-sea-region-marine-protected-area-mpa"
+      },
+      {
+        "title": "SANCCOB — záchrana tučňáků brýlových",
+        "description": "Jihoafrická nezisková organizace, která od roku 1968 zachraňuje, ošetřuje a vrací zpět do přírody mořské ptáky postižené ropou, zraněními nebo opuštěním. Každý rok rehabilituje tisíce ptáků, převážně tučňáků brýlových.",
+        "sinceYear": 1968,
+        "url": "https://sanccob.co.za/"
+      },
+      {
+        "title": "Yellow-eyed Penguin Trust",
+        "description": "Novozélandská nadace věnovaná ochraně nejvzácnějšího tučňáka — tučňáka žlutookého (hoiho). Pracuje s farmáři, vědci a místními komunitami: obnovuje hnízdní biotop, sleduje populace a léčí nemocné ptáky.",
+        "sinceYear": 1987,
+        "url": "https://www.yellow-eyedpenguin.org.nz/"
+      },
+      {
+        "title": "BirdLife International — globální monitoring",
+        "description": "Celosvětová síť organizací na ochranu ptáků. Provozuje hodnotící proces IUCN pro všechny ptačí druhy a koordinuje monitoring a ochranná opatření v zemích, kde tučňáci žijí.",
+        "url": "https://www.birdlife.org/"
+      },
+      {
+        "title": "IUCN Penguin Specialist Group",
+        "description": "Skupina vědců a ochranářů specializovaných na tučňáky. Koordinuje výzkum populací, navrhuje ochranářské strategie a aktualizuje IUCN Red List zařazení pro všech 18 druhů.",
+        "url": "https://www.iucn-penguins.org/"
+      }
+    ]
+  },
+  "criticalSpecies": {
+    "eyebrow": "V nejvážnějším stavu",
+    "title": "Druhy, kterým hrozí ztráta nejdřív",
+    "items": [
+      {
+        "speciesSlug": "brylovy",
+        "story": "Tučňák brýlový (africký) byl v říjnu 2024 přeřazen IUCN z Endangered do Critically Endangered — nejvážnější kategorie před vyhynutím. Před sto lety jich u jižní Afriky žily statisíce, dnes zbývá zhruba 8 000–10 000 hnízdících párů. Hlavní příčiny: kolaps populací sardinek a sardelí (přelov), historický odběr ptačího trusu (guano) z hnízdišť, ropné havárie."
+      },
+      {
+        "speciesSlug": "galapazsky",
+        "story": "Jediný tučňák, který hnízdí na rovníku. Žije na Galápágách a závisí na studených oceánských proudech. Při silných epizodách El Niño se proudy oslabí, ryby zmizí a tučňáci hladoví. Populace kolísá kolem 1 500–2 000 dospělých ptáků. Status: Endangered."
+      },
+      {
+        "speciesSlug": "zlutooky",
+        "story": "Nejvzácnější tučňák s vlastním rodem (Megadyptes). Maorsky se mu říká hoiho. Žije jen na Novém Zélandu a hnízdí v podrostu pobřežních lesů. Trpí ztrátou hnízdního biotopu, predací zavlečenými šelmami a nemocemi. Populace se odhaduje na 2 600–3 000 dospělých ptáků. Status: Endangered."
+      },
+      {
+        "speciesSlug": "cisarsky",
+        "story": "Největší druh, závislý na mořském ledu jako platformě pro vychování mláďat. Pokud led roztaje předtím, než mláďata získají voděodolné peří, padají do moře a tonou. Vědecké modely předpovídají, že při současném tempu změn klimatu by mohlo zmizet velké procento císařských kolonií do konce století. Status: Near Threatened, sledováno blízko ohrožené kategorie."
+      }
+    ]
+  },
+  "howToHelp": {
+    "eyebrow": "Co můžeš udělat ty",
+    "title": "Konkrétní kroky pro každého",
+    "intro": "Žádný jednotlivec sám nezachrání celý druh. Ale tisíce malých kroků dohromady něco znamenají. Tady jsou způsoby, jak může i běžný člověk pomoct.",
+    "items": [
+      {
+        "title": "Vědět o nich",
+        "description": "Nejjednodušší krok. Čím víc lidí ví, že tučňák brýlový je kriticky ohrožený nebo proč závisí tučňák císařský na ledě, tím větší je tlak na politiky, firmy a školy, aby s tím něco dělaly. Mluv o tom doma i ve škole."
+      },
+      {
+        "title": "Volit ryby z udržitelného rybolovu",
+        "description": "V obchodě hledej u ryb logo MSC (Marine Stewardship Council). To znamená, že rybolov byl certifikován jako udržitelný a nepřispívá k vyčerpávání populací, na kterých tučňáci závisí."
+      },
+      {
+        "title": "Redukovat jednorázový plast",
+        "description": "Plast v oceánech zabíjí mořské živočichy včetně tučňáků. Méně jednorázových obalů, opakovaně použitelné lahve, taška, kelímek — drobnost, která ale v součtu mění situaci."
+      },
+      {
+        "title": "Podpořit konkrétní organizaci",
+        "description": "SANCCOB v Jihoafrické republice (sanccob.co.za), Yellow-eyed Penguin Trust na Novém Zélandu, nebo BirdLife International globálně. I malý dar nebo členství pomůže financovat výzkum a záchranné programy."
+      },
+      {
+        "title": "Snižovat svou klimatickou stopu",
+        "description": "Klimatická změna ovlivňuje všech 18 druhů. Ne každý si může pořídit tepelné čerpadlo, ale jíst méně masa, létat méně, používat veřejnou dopravu, izolovat bydlení — to vše přidá."
+      },
+      {
+        "title": "Respektovat pravidla při návštěvě zoo nebo přírody",
+        "description": "Pokud potkáš tučňáky v zoo nebo na výletě (např. v Patagonii nebo Jižní Africe), drž odstup, nekrm a nedotýkej se. Stres a nemoci z lidského kontaktu ohrožují i kolonie, které jinak vypadají v pořádku."
+      }
+    ]
+  },
+  "sources": {
+    "eyebrow": "Zdroje",
+    "title": "Odkud čerpáme",
+    "items": [
+      {
+        "label": "IUCN Red List",
+        "url": "https://www.iucnredlist.org/",
+        "note": "Status každého druhu, populační odhady, hlavní hrozby. Aktualizace probíhají průběžně."
+      },
+      {
+        "label": "BirdLife International — Species Factsheets",
+        "url": "https://datazone.birdlife.org/",
+        "note": "Detailní informace o populačních trendech, hnízdištích a ochranných opatřeních pro každý druh."
+      },
+      {
+        "label": "IUCN Penguin Specialist Group",
+        "url": "https://www.iucn-penguins.org/",
+        "note": "Mezinárodní skupina vědců, kteří aktualizují stav všech 18 druhů a koordinují výzkum."
+      },
+      {
+        "label": "Antarctic Treaty System",
+        "url": "https://www.ats.aq/",
+        "note": "Oficiální stránky Antarktické smlouvy a Madridského protokolu."
+      },
+      {
+        "label": "CCAMLR",
+        "url": "https://www.ccamlr.org/",
+        "note": "Komise pro zachování antarktických mořských živých zdrojů. Spravuje Ross Sea MPA."
+      },
+      {
+        "label": "SANCCOB",
+        "url": "https://sanccob.co.za/",
+        "note": "Jihoafrická záchranná stanice pro mořské ptáky, hlavně tučňáky brýlové."
+      },
+      {
+        "label": "Yellow-eyed Penguin Trust",
+        "url": "https://www.yellow-eyedpenguin.org.nz/",
+        "note": "Novozélandská nadace věnovaná ochraně tučňáka žlutookého (hoiho)."
+      }
+    ]
+  }
+}

@@ -41,6 +41,92 @@ const timelineCategoryEnum = z.enum([
   "milestone",   // jiný milník
 ]);
 
+export const ochranaSchema = z.object({
+  meta: z.object({
+    title: z.string().min(1),
+    description: z.string().min(1),
+  }),
+  hero: z.object({
+    eyebrow: z.string().min(1),
+    titleHtml: z.string().min(1),
+    subtitle: z.string().min(1),
+  }),
+  intro: z.array(z.string().min(1)).min(1),
+  statusSection: z.object({
+    eyebrow: z.string().min(1),
+    title: z.string().min(1),
+    body: z.array(z.string().min(1)).min(1),
+    asOfDate: z.string().min(1),
+    sourceLabel: z.string().min(1),
+    sourceUrl: httpsUrl,
+  }),
+  threats: z.object({
+    eyebrow: z.string().min(1),
+    title: z.string().min(1),
+    items: z
+      .array(
+        z.object({
+          title: z.string().min(1),
+          description: z.string().min(1),
+          affectsSpecies: z.array(z.string()).optional(),
+        }),
+      )
+      .min(1),
+  }),
+  efforts: z.object({
+    eyebrow: z.string().min(1),
+    title: z.string().min(1),
+    items: z
+      .array(
+        z.object({
+          title: z.string().min(1),
+          description: z.string().min(1),
+          sinceYear: z.number().int().optional(),
+          url: httpsUrl.optional(),
+        }),
+      )
+      .min(1),
+  }),
+  criticalSpecies: z.object({
+    eyebrow: z.string().min(1),
+    title: z.string().min(1),
+    items: z
+      .array(
+        z.object({
+          speciesSlug: z.string().regex(slugRe),
+          story: z.string().min(1),
+        }),
+      )
+      .min(1),
+  }),
+  howToHelp: z.object({
+    eyebrow: z.string().min(1),
+    title: z.string().min(1),
+    intro: z.string().min(1),
+    items: z
+      .array(
+        z.object({
+          title: z.string().min(1),
+          description: z.string().min(1),
+        }),
+      )
+      .min(1),
+  }),
+  sources: z.object({
+    eyebrow: z.string().min(1),
+    title: z.string().min(1),
+    items: z
+      .array(
+        z.object({
+          label: z.string().min(1),
+          url: httpsUrl,
+          note: z.string().optional(),
+        }),
+      )
+      .min(1),
+  }),
+});
+
 export const chovySchema = z.object({
   meta: z.object({
     title: z.string().min(1),
