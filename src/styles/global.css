@@ -321,8 +321,9 @@ html.reveal-ready .reveal.active {
 .bento-surface-ice { background: linear-gradient(135deg, var(--bento-ice) 0%, var(--bento-polar) 100%); }
 .bento-surface-ocean { background: linear-gradient(135deg, var(--bento-ocean) 0%, #1e6091 100%); }
 .bento-surface-aurora { background: linear-gradient(135deg, #1e1b4b 0%, #0f172a 50%, #064e3b 100%); }
-.bento-surface-candy { background: linear-gradient(135deg, #be185d 0%, #6d28d9 100%); }
-.bento-surface-midnight { background: linear-gradient(135deg, #1e1b4b 0%, #4c1d95 100%); }
+/* Candy: ladí s arctic primary (sky/cyan) — teal-700 -> cyan-600. Kontrast s bílou ≥ 5:1. */
+.bento-surface-candy { background: linear-gradient(135deg, #0f766e 0%, #0891b2 100%); }
+.bento-surface-midnight { background: linear-gradient(135deg, #0c4a6e 0%, #134e4a 100%); }
 .bento-surface-sun { background: linear-gradient(135deg, #fbbf24 0%, #f97316 100%); color: #1f2937; }
 /* Sun surface vždy tmavý text (i s text-white v HTML). Ostatní surface mají
    forcing white pro případ, že téma by chtělo překrýt přes utility class. */
