@@ -15,8 +15,8 @@
       "eyebrow": "Poznej",
       "title": "Všech 18 druhů",
       "description": "Největší je vyšší než pětileté dítě, nejmenší se vejde do tašky. Fotky, fakta, mapy a galerie.",
-      "preview": "species-photo",
-      "speciesSlug": "patagonsky"
+      "preview": "custom-photo",
+      "customPhoto": "druhy.png"
     },
     {
       "slug": "hry",
