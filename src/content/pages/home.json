@@ -34,8 +34,8 @@
       "eyebrow": "Koukej",
       "title": "Filmy a pohádky",
       "description": "Happy Feet, Madagaskar, Pingu, Pororo. Animáky a anime s tučňáky, plus odkazy, kde to běží.",
-      "preview": "species-photo",
-      "speciesSlug": "cisarsky",
+      "preview": "custom-photo",
+      "customPhoto": "filmy.jpg",
       "surface": "candy"
     },
     {
