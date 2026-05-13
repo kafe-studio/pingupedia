@@ -62,6 +62,16 @@
       "preview": "timeline-photo",
       "timelineFile": "cherry-garrard-1911.jpg",
       "surface": "ice"
+    },
+    {
+      "slug": "ochrana",
+      "href": "/ochrana/",
+      "eyebrow": "Pomoz",
+      "title": "Ochrana tučňáků",
+      "description": "Polovina z 18 druhů čelí ohrožení. Co jim hrozí, kdo se o ně stará a co můžeš udělat ty.",
+      "preview": "species-photo",
+      "speciesSlug": "galapazsky",
+      "surface": "aurora"
     }
   ],
   "wowFacts": {
