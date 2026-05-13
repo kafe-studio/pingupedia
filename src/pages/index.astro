@@ -194,15 +194,28 @@ const metadata = {
           </span>
         </a>
 
-        <div class="bento-card bento-surface-ice col-span-12 md:col-span-4 p-6 md:p-8 flex items-center justify-between gap-4 min-h-[180px] md:min-h-[320px]">
-          <div>
-            <p class="text-xs uppercase tracking-widest text-accent/90 font-semibold">{home.stats.eyebrow}</p>
-            <p class="mt-3 text-7xl md:text-8xl font-black text-white leading-none">{total}</p>
-            <p class="mt-2 text-sm text-white/70">{home.stats.subtitle}</p>
+        <div class="bento-card bento-surface-ice col-span-12 md:col-span-4 p-6 md:p-8 flex flex-col gap-4 min-h-[180px] md:min-h-[320px]">
+          <div class="flex items-start justify-between gap-3">
+            <div class="min-w-0">
+              <p class="text-xs uppercase tracking-widest text-accent/90 font-semibold">{home.stats.eyebrow}</p>
+              <p class="mt-3 leading-none">
+                <span class="text-6xl md:text-7xl font-black text-white align-baseline">{total}</span>
+                <span class="ml-2 text-2xl md:text-3xl font-bold text-white/85 align-baseline">druhů</span>
+              </p>
+              <p class="mt-2 text-sm text-white/70">{home.stats.subtitle}</p>
+            </div>
+            <div class="shrink-0 anim-float">
+              <Mascot pose="detektiv" size={100} />
+            </div>
           </div>
-          <div class="shrink-0 anim-float">
-            <Mascot pose="detektiv" size={140} />
-          </div>
+          {home.stats.appealHeadline && (
+            <p class="mt-1 text-base md:text-lg font-bold text-white leading-snug">
+              {home.stats.appealHeadline}
+            </p>
+          )}
+          {home.stats.appealBody && home.stats.appealBody.map((para) => (
+            <p class="text-sm text-white/80 leading-relaxed">{para}</p>
+          ))}
         </div>
       </div>
 

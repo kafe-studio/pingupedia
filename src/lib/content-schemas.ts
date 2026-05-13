@@ -118,6 +118,8 @@ export const homeSchema = z.object({
   stats: z.object({
     eyebrow: z.string().min(1),
     subtitle: z.string().min(1),
+    appealHeadline: z.string().optional(),
+    appealBody: z.array(z.string().min(1)).optional(),
   }),
   sections: z
     .array(

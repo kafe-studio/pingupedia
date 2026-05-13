@@ -6,7 +6,12 @@
   },
   "stats": {
     "eyebrow": "Druhů tučňáků",
-    "subtitle": "tolik jich svět má"
+    "subtitle": "tolik jich svět má",
+    "appealHeadline": "A generace, která je teď poznává, jim může pomoct nejvíc.",
+    "appealBody": [
+      "Většina dospělých dnes ví, co tučňákům hrozí. Někteří se snaží, někteří ne. Ale děti, které se o nich učí dnes, jsou ti, kdo budou rozhodovat zítra. O tom, kde se loví ryby, jak se chrání pobřeží, čí led zůstane.",
+      "Vědět o nich je první krok. Druhý děláte už tím, že jste tady."
+    ]
   },
   "sections": [
     {
