@@ -127,11 +127,13 @@ export const homeSchema = z.object({
         eyebrow: z.string().min(1),
         title: z.string().min(1),
         description: z.string().min(1),
-        preview: z.enum(["species-mosaic", "species-photo", "game-image", "timeline-photo"]),
+        preview: z.enum(["species-mosaic", "species-photo", "game-image", "timeline-photo", "custom-photo"]),
         speciesSlugs: z.array(z.string().regex(slugRe)).optional(),
         speciesSlug: z.string().regex(slugRe).optional(),
         gameImage: z.string().optional(),
         timelineFile: z.string().optional(),
+        // Pro custom-photo: soubor v src/assets/homepage/<file>
+        customPhoto: z.string().optional(),
         surface: z.enum(["aurora", "ocean", "sun", "ice", "candy"]).optional(),
       }),
     )

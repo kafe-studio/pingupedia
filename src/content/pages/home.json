@@ -44,8 +44,8 @@
       "eyebrow": "Porovnej",
       "title": "Tučňáci v číslech",
       "description": "Kdo je největší? Kdo se potápí nejhlouběji? Kdo je v ohrožení? Všech 18 druhů vedle sebe.",
-      "preview": "species-photo",
-      "speciesSlug": "humboldtuv",
+      "preview": "custom-photo",
+      "customPhoto": "tucnaci-v-cislech.png",
       "surface": "sun"
     },
     {

@@ -77,11 +77,20 @@ function timelineImageByFile(file: string): ImageMetadata | undefined {
   return timelineImages[`../assets/timeline/${file}`];
 }
 
+const homepageImages = import.meta.glob("../assets/homepage/*.{jpg,jpeg,png,webp}", {
+  eager: true,
+  import: "default",
+}) as Record<string, ImageMetadata>;
+function homepageImageByFile(file: string): ImageMetadata | undefined {
+  return homepageImages[`../assets/homepage/${file}`];
+}
+
 type SectionCard = (typeof home.sections)[number] & {
   mosaicImages?: ImageMetadata[];
   speciesImg?: ImageMetadata;
   gameImg?: ImageMetadata;
   timelineImg?: ImageMetadata;
+  customImg?: ImageMetadata;
 };
 
 const sections: SectionCard[] = home.sections.map((s) => {
@@ -99,6 +108,9 @@ const sections: SectionCard[] = home.sections.map((s) => {
   }
   if (s.preview === "timeline-photo" && s.timelineFile) {
     return { ...s, timelineImg: timelineImageByFile(s.timelineFile) };
+  }
+  if (s.preview === "custom-photo" && s.customPhoto) {
+    return { ...s, customImg: homepageImageByFile(s.customPhoto) };
   }
   return s;
 });
@@ -282,6 +294,17 @@ const metadata = {
                   <div class="w-full h-full">
                     <NoCropImage
                       src={s.timelineImg}
+                      alt=""
+                      ratio="16/9"
+                      sizes="(min-width: 1024px) 360px, (min-width: 640px) 440px, 90vw"
+                      widths={[360, 720]}
+                    />
+                  </div>
+                )}
+                {s.preview === "custom-photo" && s.customImg && (
+                  <div class="w-full h-full">
+                    <NoCropImage
+                      src={s.customImg}
                       alt=""
                       ratio="16/9"
                       sizes="(min-width: 1024px) 360px, (min-width: 640px) 440px, 90vw"
