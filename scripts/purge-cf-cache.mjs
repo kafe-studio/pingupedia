@@ -1,15 +1,15 @@
 #!/usr/bin/env node
-// Purge Cloudflare zone cache pro kafe.studio.
+// Purge Cloudflare zone cache pro hrava.wiki.
 // Volá se automaticky na konci `pnpm ship` (po wrangler deploy), aby ze stale
 // edge cache zmizely případné staré 5xx odpovědi (CF občas zacachuje 500ky
 // při flapping CF Images bindingu — viz docs/incidents nebo git log).
 //
 // Token: env CLOUDFLARE_PURGE_TOKEN (priorita) nebo CLOUDFLARE_API_TOKEN.
-// Token musí mít oprávnění Zone:Cache Purge:Purge na kafe.studio.
+// Token musí mít oprávnění Zone:Cache Purge:Purge na hrava.wiki.
 // Pokud token chybí, skript vypíše warning a skončí 0 (deploy už proběhl).
 
-const ZONE_ID = process.env.CLOUDFLARE_ZONE_ID || "f81b9f9fdbb0d4db4561e88798872489";
-const ZONE_NAME = "kafe.studio";
+const ZONE_ID = process.env.CLOUDFLARE_ZONE_ID || "9ada9af63ca729411a067f2ed7523820";
+const ZONE_NAME = "hrava.wiki";
 
 const token = process.env.CLOUDFLARE_PURGE_TOKEN || process.env.CLOUDFLARE_API_TOKEN;
 if (!token) {

@@ -7,7 +7,7 @@ name: Daily rebuild & deploy
 #
 # Vyžaduje GitHub secrets:
 #   - CLOUDFLARE_API_TOKEN     (Workers Scripts:Edit na pingupedia)
-#   - CLOUDFLARE_PURGE_TOKEN   (Zone:Cache Purge na kafe.studio)
+#   - CLOUDFLARE_PURGE_TOKEN   (Zone:Cache Purge na hrava.wiki)
 
 on:
   schedule:

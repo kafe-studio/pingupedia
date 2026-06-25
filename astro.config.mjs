@@ -6,7 +6,7 @@ import icon from "astro-icon";
 import remarkReadingTime from "remark-reading-time";
 
 export default defineConfig({
-  site: "https://pingupedia.cz/",
+  site: "https://pingupedia.hrava.wiki/",
   output: "server",
   trailingSlash: "always",
   adapter: cloudflare({
